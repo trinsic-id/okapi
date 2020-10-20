@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package DIDCommMessaging;
+
+// JWS
+
+message SignedMessage {
+    bytes payload = 1;
+    repeated Signature signatures = 2;
+
+    message Header {
+        string algorithm = 1;
+        string key_id = 2;
+        string nonce = 3;
+    }
+}
+
+message Signature {
+    oneof header {
+        bytes protected = 1;
+        SignedMessage.Header unprotected = 2;
+    }
+    bytes signature = 3;
+}
+
+// JWE
+
+message EncryptedMessage {
+    bytes protected = 1;
+    Header unprotected = 2;
+    bytes iv = 3;
+    string aad = 4;
+    bytes ciphertext = 5;
+    bytes tag = 6;
+    repeated EncryptionRecipient recipients = 7;
+
+    message Header {
+        string algorithm = 1 [json_name="alg"];
+        string encryption_algorithm = 2 [json_name="enc"];
+        string key_id = 3 [json_name="kid"];
+        string type = 4 [json_name="typ"];
+        string content_type = 5 [json_name="cty"];
+    }
+}
+
+message EncryptionRecipient {
+    EncryptedMessage.Header header = 1;
+    bytes encrypted_key = 2;
+}
