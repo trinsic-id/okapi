@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package DIDCommMessaging;
+
+message BasicMessage {
+    string text = 1;
+}

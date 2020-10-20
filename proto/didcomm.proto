@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package DIDCommMessaging;
+
+import "security.proto";
+
+message DidcommMessage {
+    string id = 1;
+    string type = 2;
+    bytes body = 3;
+    repeated string to = 4;
+    string from = 5;
+    string correlation_id = 6 [json_name="thread_id"];
+    int64 created = 7 [json_name="created_time"];
+    int64 expires = 8 [json_name="expires_time"];
+    string reply_url = 9;
+    string reply_to = 10;
+}
+
+service DIDComm {
+    rpc Unary(DidcommMessage) returns (DidcommMessage);
+
+    rpc UnarySigned(SignedMessage) returns (SignedMessage);
+
+    rpc ServerStreaming(DidcommMessage) returns (stream DidcommMessage);
+
+    rpc ClientStreaming(stream DidcommMessage) returns (DidcommMessage);
+
+    rpc BidirectionalStraming(stream DidcommMessage) returns (stream DidcommMessage);
+}
