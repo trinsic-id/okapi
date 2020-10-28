@@ -1,0 +1,14 @@
+{
+  // See http://go.microsoft.com/fwlink/?LinkId=827846
+  // for the documentation about the extensions.json format.
+  "recommendations": [
+    // Rust language support.
+    "matklad.rust-analyzer",
+    // Protobuf files support.
+    "zxh404.vscode-proto3",
+    // TOML language support.
+    "bungcip.better-toml",
+    // Native debugger based on LLDB.
+    "vadimcn.vscode-lldb"
+  ]
+}
