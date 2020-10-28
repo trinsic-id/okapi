@@ -2,25 +2,32 @@ syntax = "proto3";
 
 package DIDCommMessaging;
 
+message DidcommMessage {
+    string id = 1;
+    string type = 2;
+    bytes body = 3;
+    repeated string to = 4;
+    string from = 5;
+    string correlation_id = 6 [json_name="thread_id"];
+    int64 created = 7 [json_name="created_time"];
+    int64 expires = 8 [json_name="expires_time"];
+    string reply_url = 9;
+    string reply_to = 10;
+}
+
 // JWS
 
 message SignedMessage {
     bytes payload = 1;
     repeated Signature signatures = 2;
-
-    message Header {
-        string algorithm = 1;
-        string key_id = 2;
-        string nonce = 3;
-    }
 }
-
 message Signature {
-    oneof header {
-        bytes protected = 1;
-        SignedMessage.Header unprotected = 2;
-    }
+    bytes header = 1;
     bytes signature = 3;
+}
+message SignatureHeader {
+    string algorithm = 1;
+    string key_id = 2;
 }
 
 // JWE
@@ -46,4 +53,55 @@ message EncryptedMessage {
 message EncryptionRecipient {
     EncryptedMessage.Header header = 1;
     bytes encrypted_key = 2;
+}
+
+message Key {
+    string key_id = 1;
+    bytes public_key = 2;
+    bytes secret_key = 3;
+    KeyType key_type = 4;
+    string fingerprint = 5;
+}
+enum KeyType {
+    x25519 = 0;
+    p256 = 1;
+    ed25519 = 2;
+}
+
+message GenerateKeyRequest {
+    bytes seed = 1;
+    KeyType key_type = 2;
+}
+message GenerateKeyResponse {
+    Key key = 1;
+}
+message ConvertKeyRequest {
+    Key key = 1;
+    KeyType target_type = 2;
+}
+message ConvertKeyResponse {
+    Key key = 1;
+}
+
+message PackRequest {
+    Key sender_key = 1;
+    Key receiver_key = 2;
+    bytes nonce = 3;
+    bytes plaintext = 4;
+}
+
+message PackResponse {
+    EncryptedMessage message = 1;
+}
+
+message UnpackRequest {
+    string key_id = 1;
+    bytes key_data = 2;
+    bytes nonce = 3;
+    string sender_key_id = 4;
+    bytes plaintext = 5;
+}
+
+message UnpackResponse {
+    DidcommMessage message = 1;
 }
