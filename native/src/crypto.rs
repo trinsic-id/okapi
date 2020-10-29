@@ -1,57 +1,10 @@
 use crate::didcomm::*;
-use chacha20poly1305::aead::{Aead, NewAead};
+use chacha20poly1305::aead::{AeadInPlace, NewAead};
 use chacha20poly1305::{Key, XChaCha20Poly1305, XNonce}; // Or `XChaCha20Poly1305`
 use ffi_support::{ByteBuffer, ExternError};
 use prost::Message;
 use rand::{rngs::OsRng, RngCore};
-
-#[no_mangle]
-pub extern "C" fn didcomm_encrypt(
-    enc_key: ByteBuffer,
-    nonce: ByteBuffer,
-    message: ByteBuffer,
-    ciphertext: &mut ByteBuffer,
-    err: &mut ExternError,
-) -> i32 {
-    // key 32-bytes
-    // nonce 24 bytes
-    let key = Key::from_slice(enc_key.as_slice());
-    let aead = XChaCha20Poly1305::new(key);
-
-    let nonce = XNonce::from_slice(nonce.as_slice()); //b"extra long unique nonce!"); // 24-bytes; unique
-    let payload = aead
-        .encrypt(nonce, message.as_slice())
-        .expect("encryption failure!");
-
-    *ciphertext = ByteBuffer::from_vec(payload);
-    *err = ExternError::success();
-
-    0
-}
-
-#[no_mangle]
-pub extern "C" fn didcomm_decrypt(
-    enc_key: ByteBuffer,
-    nonce: ByteBuffer,
-    ciphertext: ByteBuffer,
-    message: &mut ByteBuffer,
-    err: &mut ExternError,
-) -> i32 {
-    // key 32-bytes
-    // nonce 24 bytes
-    let key = Key::from_slice(enc_key.as_slice());
-    let aead = XChaCha20Poly1305::new(key);
-
-    let xnonce = XNonce::from_slice(nonce.as_slice()); //b"extra long unique nonce!"); // 24-bytes; unique
-    let payload = aead
-        .decrypt(xnonce, ciphertext.as_slice())
-        .expect("decryption failure!");
-
-    *message = ByteBuffer::from_vec(payload);
-    *err = ExternError::success();
-
-    0
-}
+use x25519_dalek::*;
 
 #[no_mangle]
 pub extern "C" fn didcomm_pack(
@@ -60,27 +13,41 @@ pub extern "C" fn didcomm_pack(
     err: &mut ExternError,
 ) -> i32 {
     let req = request_to_message!(PackRequest, request, err);
+    let aad = req.associated_data.clone();
 
     // Generate random content encryption key
-    let mut cek = [0u8; 32];
-    OsRng.fill_bytes(&mut cek);
+    let mut nonce = [0u8; 24];
+    OsRng.fill_bytes(&mut nonce);
+
+    let receiver_key = req.receiver_key.unwrap();
+    let sender_key = req.sender_key.unwrap();
+
+    let cek = key_exchange(
+        &receiver_key.public_key,
+        &sender_key.secret_key,
+    ).to_bytes();
+
+    let mut payload = req.plaintext.clone();
+
     let key = Key::from_slice(&cek);
     let aead = XChaCha20Poly1305::new(key);
-    let nonce = XNonce::from_slice(req.nonce.as_slice()); //b"extra long unique nonce!"); // 24-bytes; unique
-    let payload = aead
-        .encrypt(nonce, req.plaintext.as_slice())
+    let nonce = XNonce::from_slice(&nonce); //b"extra long unique nonce!"); // 24-bytes; unique
+    let tag = aead
+        .encrypt_in_place_detached(nonce, aad.as_slice(), &mut payload)
         .expect("encryption failure!");
 
     *response = byte_buffer!(PackResponse {
         message: Some(EncryptedMessage {
             ciphertext: payload.clone(),
-            iv: req.nonce.clone(),
-            unprotected: None,
-            aad: String::new(),
-            protected: vec![],
-            tag: vec![],
+            iv: nonce.as_slice().to_vec(),
+            aad: aad.clone(),
+            tag: tag.as_slice().to_vec(),
             recipients: vec![EncryptionRecipient {
-                header: None,
+                header: Some(EncryptionHeader {
+                    algorithm: String::new(),
+                    key_id: receiver_key.key_id.clone(),
+                    sender_key_id: sender_key.key_id.clone()
+                }),
                 encrypted_key: cek.to_vec() // TODO: encrypt with key exchange key
             }]
         })
@@ -89,60 +56,119 @@ pub extern "C" fn didcomm_pack(
     0
 }
 
+#[no_mangle]
+pub extern "C" fn didcomm_unpack(
+    request: ByteBuffer,
+    response: &mut ByteBuffer,
+    err: &mut ExternError,
+) -> i32 {
+    let req = request_to_message!(UnpackRequest, request, err);
+    let message = req.message.unwrap();
+    let recipient = message.recipients.first().unwrap();
+
+    let cek = key_exchange(
+        &req.sender_key.unwrap().public_key,
+        &req.receiver_key.unwrap().secret_key,
+    ).to_bytes();
+
+    // Generate random content encryption key
+    let mut payload = message.ciphertext.clone();
+
+    let key = Key::from_slice(&cek);
+    let aead = XChaCha20Poly1305::new(key);
+    let iv = XNonce::from_slice(message.iv.as_slice());
+
+    aead.decrypt_in_place_detached(
+        iv,
+        &message.aad.as_slice(),
+        &mut payload,
+        message.tag.as_slice().into(),
+    )
+    .expect("encryption failure!");
+
+    *response = byte_buffer!(UnpackResponse {
+        plaintext: payload.to_vec()
+    });
+    *err = ExternError::success();
+    0
+}
+
+fn key_exchange(pk: &Vec<u8>, sk: &Vec<u8>) -> SharedSecret {
+    let mut secret_key = [0u8; 32];
+    secret_key.copy_from_slice(sk);
+    let mut public_key = [0u8; 32];
+    public_key.copy_from_slice(pk);
+
+    let secret = StaticSecret::from(secret_key);
+    let public = PublicKey::from(public_key);
+    let shared_secret = secret.diffie_hellman(&public);
+
+    shared_secret
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
+    use fluid::prelude::*;
+    use std::str::from_utf8;
 
-    #[test]
-    fn test_encrypt() {
-        let key = ByteBuffer::from_vec(b"an example very very secret key.".to_vec());
-        let nonce = ByteBuffer::from_vec(b"extra long unique nonce!".to_vec());
-        let message = ByteBuffer::from_vec(b"plaintext message".to_vec());
-
-        let mut ciphertext: ByteBuffer = byte_buffer!();
-        let mut err: ExternError = ExternError::default();
-
-        let result = didcomm_encrypt(key, nonce, message, &mut ciphertext, &mut err);
-
-        assert!(ciphertext.as_slice().len() > 0);
-        assert_eq!(0, result);
+    fn key_from(pk: &str, sk: &str) -> crate::didcomm::Key {
+        crate::didcomm::Key {
+            key_id: String::new(),
+            public_key: base58_decode!(pk),
+            secret_key: base58_decode!(sk),
+            key_type: KeyType::X25519 as i32,
+            fingerprint: String::new(),
+        }
     }
 
-    #[test]
-    fn test_encrypt_decrypt() {
-        let key = b"an example very very secret key.";
-        let nonce = b"extra long unique nonce!";
-        let message = b"plaintext message";
+    #[theory]
+    #[case(
+        "3EK9AYXoUV4Unn5AjvYY39hyK91n7gg4ExC8rKKSUQXJ",
+        "BEyxtiSbfeXZxBmgg9et5oo3nYMh11iQ8TVvJSrKJQzQ",
+        "9hUD26JdvUXqv4Q6S5LAbs6qVD6tW5NNr9xLcLqyPpxm",
+        "G5UdbKAt8ux4CgFySveHQLbjY9GJqxsXhFuFkDtQVuSo"
+    )]
+    #[case(
+        "9hUD26JdvUXqv4Q6S5LAbs6qVD6tW5NNr9xLcLqyPpxm",
+        "G5UdbKAt8ux4CgFySveHQLbjY9GJqxsXhFuFkDtQVuSo",
+        "3EK9AYXoUV4Unn5AjvYY39hyK91n7gg4ExC8rKKSUQXJ",
+        "BEyxtiSbfeXZxBmgg9et5oo3nYMh11iQ8TVvJSrKJQzQ"
+    )]
+    #[case(
+        "kbNfYQnMuhunbnMGKzkoQgwYpTXUYu9KrLNUweqRjdd",
+        "3CuA2V94oE76bPYwZyQMo8c2r3RRL7izhrU95JmBrpWC",
+        "B3xzCuy2AxwM2EMSQw4yLRakn6QEuuNytiRidWpCoUcH",
+        "6wB1rMc9dUuPeZzX2wyAG4DcuDL9VSiTfy47jTjzcBzr"
+    )]
+    fn encrypt_then_decrypt(alice_pk: &str, alice_sk: &str, bob_pk: &str, bob_sk: &str) {
+        const MESSAGE: &str = "super secret message";
 
-        let mut ciphertext: ByteBuffer = byte_buffer!();
-        let mut err: ExternError = ExternError::default();
-        let mut plaintext: ByteBuffer = byte_buffer!();
+        // Encrypt
+        let request = byte_buffer!(PackRequest {
+            receiver_key: Some(key_from(bob_pk, bob_sk)),
+            sender_key: Some(key_from(alice_pk, alice_sk)),
+            associated_data: vec![],
+            plaintext: MESSAGE.as_bytes().to_vec()
+        });
+        let mut response = byte_buffer!();
+        let mut err = err!();
 
-        let encrypted = didcomm_encrypt(
-            ByteBuffer::from_vec(key.to_vec()),
-            ByteBuffer::from_vec(nonce.to_vec()),
-            ByteBuffer::from_vec(message.to_vec()),
-            &mut ciphertext,
-            &mut err,
-        );
+        let encrypt_result = didcomm_pack(request, &mut response, &mut err);
+        let pack_response = request_to_message!(PackResponse, response);
+        let encrypted_message = pack_response.message.unwrap();
 
-        let mut vec = Vec::new();
-        vec.extend(ciphertext.as_slice().iter().copied());
+        // Decrypt
+        let unpack_request = byte_buffer!(UnpackRequest {
+            receiver_key: Some(key_from(alice_pk, alice_sk)),
+            sender_key: Some(key_from(bob_pk, bob_sk)),
+            message: Some(encrypted_message.clone())
+        });
+        let decrypt_result = didcomm_unpack(unpack_request, &mut response, &mut err);
+        let unpack_response = request_to_message!(UnpackResponse, response);
 
-        let decrypted = didcomm_decrypt(
-            ByteBuffer::from_vec(key.to_vec()),
-            ByteBuffer::from_vec(nonce.to_vec()),
-            ByteBuffer::from(vec),
-            &mut plaintext,
-            &mut err,
-        );
-
-        assert_eq!(0, encrypted);
-        assert_eq!(0, decrypted);
-        assert!(ciphertext.as_slice().len() > 0);
-        assert_eq!(
-            "plaintext message",
-            std::str::from_utf8(plaintext.as_slice()).unwrap()
-        );
+        assert_eq!(0, encrypt_result);
+        assert_eq!(0, decrypt_result);
+        assert_eq!(MESSAGE, from_utf8(&unpack_response.plaintext).unwrap());
     }
 }

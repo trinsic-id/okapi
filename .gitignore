@@ -364,3 +364,5 @@ Cargo.lock
 native/.DS_Store
 
 .DS_Store
+
+native/out.h
