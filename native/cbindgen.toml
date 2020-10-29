@@ -1,0 +1,2 @@
+# cargo install --force cbindgen
+# cbindgen --config cbindgen.toml --crate didcomm --output out.h --lang c

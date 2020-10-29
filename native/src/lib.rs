@@ -14,4 +14,5 @@ pub mod crypto;
 pub mod envelope;
 pub mod keys;
 
+#[cfg(test)]
 mod tests;

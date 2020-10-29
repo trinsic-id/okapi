@@ -33,25 +33,21 @@ message SignatureHeader {
 // JWE
 
 message EncryptedMessage {
-    bytes protected = 1;
-    Header unprotected = 2;
-    bytes iv = 3;
-    string aad = 4;
-    bytes ciphertext = 5;
-    bytes tag = 6;
-    repeated EncryptionRecipient recipients = 7;
+    bytes iv = 1;
+    bytes aad = 2;
+    bytes ciphertext = 3;
+    bytes tag = 4;
+    repeated EncryptionRecipient recipients = 5;
+}
 
-    message Header {
-        string algorithm = 1 [json_name="alg"];
-        string encryption_algorithm = 2 [json_name="enc"];
-        string key_id = 3 [json_name="kid"];
-        string type = 4 [json_name="typ"];
-        string content_type = 5 [json_name="cty"];
-    }
+message EncryptionHeader {
+    string algorithm = 1                [json_name="alg"];
+    string key_id = 2                   [json_name="kid"];
+    string sender_key_id = 3            [json_name="skid"];
 }
 
 message EncryptionRecipient {
-    EncryptedMessage.Header header = 1;
+    EncryptionHeader header = 1;
     bytes encrypted_key = 2;
 }
 
@@ -86,7 +82,7 @@ message ConvertKeyResponse {
 message PackRequest {
     Key sender_key = 1;
     Key receiver_key = 2;
-    bytes nonce = 3;
+    bytes associated_data = 3;
     bytes plaintext = 4;
 }
 
@@ -95,13 +91,12 @@ message PackResponse {
 }
 
 message UnpackRequest {
-    string key_id = 1;
-    bytes key_data = 2;
-    bytes nonce = 3;
-    string sender_key_id = 4;
-    bytes plaintext = 5;
+    Key sender_key = 1;
+    Key receiver_key = 2;
+
+    EncryptedMessage message = 3;
 }
 
 message UnpackResponse {
-    DidcommMessage message = 1;
+   bytes plaintext = 1;
 }
