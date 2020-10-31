@@ -79,7 +79,7 @@ fn test_generate_key_no_seed(key_type: i32, public_key_size: usize) {
 fn test_generate_key_with_seed(key_type: KeyType, seed: &str, public_key: &str) {
     let request = byte_buffer!(GenerateKeyRequest {
         seed: hex::decode(seed).expect("invalid hex string"),
-        key_type: key_type as i32
+        key_type: key_type.into()
     });
     let mut response = byte_buffer!();
     let mut err = err!();
@@ -92,43 +92,28 @@ fn test_generate_key_with_seed(key_type: KeyType, seed: &str, public_key: &str) 
     let _ = base58_decode!(public_key);
 
     assert_eq!(0, code);
-    assert_eq!(key_type as i32, key.key_type);
+    assert_eq!(key.key_type, key_type.into());
     assert_eq!(32, key.public_key.len());
     assert_eq!(32, key.secret_key.len());
     assert_eq!(public_key, base58_encode!(key.public_key));
 }
 
 #[theory]
-#[case(
-    "6fioC1zcDPyPEL19pXRS2E4iJ46zH7xP6uSgAaPdwDrx",
-    "FxfdY3DCQxVZddKGAtSjZdFW9bCCW7oRwZn1NFJ2Tbg2"
-)]
-#[case(
-    "9j1mZuDTFSsrP8xwS4iyJwi22GZEsGFe2nutDB25R4jY",
-    "Ff8nD7Zgm8ZNhBZcmHTqrfg2FRf6tU6Ki5BDmA9gtrRm"
-)]
-#[case(
-    "CTDAH3MW8Dorz6XpLHtwTXgAfkkXBbRVSJy4aXyj13CR",
-    "GkMFTHJ2DuwfsSiJ1eKpcNBqYau9i5VW5qXiy2po4tqJ"
-)]
-#[case(
-    "2E9xcBvRVRGAgnySqpNzW6JoYjnjtt2BtqDSPEdsWNjk",
-    "ELMGmTD43y15v6YaD3kfM5oF5xHnpv9eiNkZoNQxWunh"
-)]
-#[case(
-    "6JmFgRnWVTUi4vVZAd4aNpZKfP8LenvQGk1q1uM34ajq",
-    "AgEcgKRLDXS1puWdz3o2uyAuFZXRMGLi2widbZ1G7MLv"
-)]
+#[case("6fioC1zcDPyPEL19pXRS2E4iJ46zH7xP6uSgAaPdwDrx", "FxfdY3DCQxVZddKGAtSjZdFW9bCCW7oRwZn1NFJ2Tbg2")]
+#[case("9j1mZuDTFSsrP8xwS4iyJwi22GZEsGFe2nutDB25R4jY", "Ff8nD7Zgm8ZNhBZcmHTqrfg2FRf6tU6Ki5BDmA9gtrRm")]
+#[case("CTDAH3MW8Dorz6XpLHtwTXgAfkkXBbRVSJy4aXyj13CR", "GkMFTHJ2DuwfsSiJ1eKpcNBqYau9i5VW5qXiy2po4tqJ")]
+#[case("2E9xcBvRVRGAgnySqpNzW6JoYjnjtt2BtqDSPEdsWNjk", "ELMGmTD43y15v6YaD3kfM5oF5xHnpv9eiNkZoNQxWunh")]
+#[case("6JmFgRnWVTUi4vVZAd4aNpZKfP8LenvQGk1q1uM34ajq", "AgEcgKRLDXS1puWdz3o2uyAuFZXRMGLi2widbZ1G7MLv")]
 fn convert_ed_to_montgomery(ed_key: &str, montgomery_key: &str) {
     let request = byte_buffer!(ConvertKeyRequest {
         key: Some(Key {
             key_id: String::default(),
-            key_type: KeyType::Ed25519 as i32,
+            key_type: KeyType::Ed25519.into(),
             secret_key: vec![],
             public_key: base58_decode!(ed_key),
             fingerprint: String::default()
         }),
-        target_type: KeyType::X25519 as i32
+        target_type: KeyType::X25519.into()
     });
     let mut response = byte_buffer!();
     let mut err = err!();

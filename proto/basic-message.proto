@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package DIDCommMessaging;
+package didcomm.messaging;
 
 message BasicMessage {
     string text = 1;

@@ -1,17 +1,17 @@
 syntax = "proto3";
 
-package DIDCommMessaging;
+package didcomm.messaging;
 
 import "security.proto";
 
 service DIDComm {
-    rpc Unary(DidcommMessage) returns (DidcommMessage);
+    rpc Unary(DCMessage) returns (DCMessage);
 
     rpc UnarySigned(SignedMessage) returns (SignedMessage);
 
-    rpc ServerStreaming(DidcommMessage) returns (stream DidcommMessage);
+    rpc ServerStreaming(DCMessage) returns (stream DCMessage);
 
-    rpc ClientStreaming(stream DidcommMessage) returns (DidcommMessage);
+    rpc ClientStreaming(stream DCMessage) returns (DCMessage);
 
-    rpc BidirectionalStraming(stream DidcommMessage) returns (stream DidcommMessage);
+    rpc BidirectionalStraming(stream DCMessage) returns (stream DCMessage);
 }

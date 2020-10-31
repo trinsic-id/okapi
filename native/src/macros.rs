@@ -23,6 +23,9 @@ macro_rules! err {
     () => {
         ::ffi_support::ExternError::success()
     };
+    ($message:expr) => {
+        ::ffi_support::ExternError::new_error(::ffi_support::ErrorCode::new(100), $message);
+    };
     ($code:expr,$message:expr) => {
         ::ffi_support::ExternError::new_error(::ffi_support::ErrorCode::new($code), $message);
     };
@@ -31,9 +34,7 @@ macro_rules! err {
 #[macro_export]
 macro_rules! base58_decode {
     ($name:expr) => {
-        bs58::decode($name)
-            .into_vec()
-            .expect("invalid base58 string")
+        bs58::decode($name).into_vec().expect("invalid base58 string")
     };
 }
 
@@ -54,6 +55,36 @@ macro_rules! unwrap {
             }
         }
     };
+    ($name:expr,$err:expr,$err_text:expr) => {
+        match $name {
+            Ok(a) => a,
+            Err(_) => {
+                *$err = err!(100, $err_text);
+                return 1;
+            }
+        }
+    };
+}
+
+macro_rules! unwrap_opt {
+    ($name:expr,$err:expr) => {
+        match $name {
+            Some(a) => a,
+            None => {
+                *$err = err!(100, "optional value not found");
+                return 1;
+            }
+        }
+    };
+    ($name:expr,$err:expr,$err_text:expr) => {
+        match $name {
+            Some(a) => a,
+            None => {
+                *$err = err!(100, $err_text);
+                return 1;
+            }
+        }
+    };
 }
 
 /// Convert a `ByteBuffer` to specific protobuf struct
@@ -70,7 +101,7 @@ macro_rules! request_to_message {
     ($message:ty,$request:expr) => {
         match <$message>::decode($request.as_slice()) {
             Ok(x) => x,
-            Err(_) => panic!("Can't decode")
+            Err(_) => panic!("Can't decode"),
         };
     };
 }
