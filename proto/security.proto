@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package DIDCommMessaging;
+package didcomm.messaging;
 
-message DidcommMessage {
+message DCMessage {
     string id = 1;
     string type = 2;
     bytes body = 3;
@@ -11,8 +11,6 @@ message DidcommMessage {
     string correlation_id = 6 [json_name="thread_id"];
     int64 created = 7 [json_name="created_time"];
     int64 expires = 8 [json_name="expires_time"];
-    string reply_url = 9;
-    string reply_to = 10;
 }
 
 // JWS
@@ -33,70 +31,31 @@ message SignatureHeader {
 // JWE
 
 message EncryptedMessage {
-    bytes iv = 1;
-    bytes aad = 2;
-    bytes ciphertext = 3;
+    bytes iv = 1                                    [json_name="iv"];
+    bytes aad = 2                                   [json_name="aad"];
+    bytes ciphertext = 3                            [json_name="ciphertext"];
     bytes tag = 4;
     repeated EncryptionRecipient recipients = 5;
 }
 
 message EncryptionHeader {
-    string algorithm = 1                [json_name="alg"];
-    string key_id = 2                   [json_name="kid"];
-    string sender_key_id = 3            [json_name="skid"];
+    EncryptionMode mode = 1                         [json_name="enc"];
+    string key_id = 2                               [json_name="kid"];
+    string sender_key_id = 3                        [json_name="skid"];
+    EncryptionAlgorithm algorithm = 4               [json_name="alg"];
 }
 
 message EncryptionRecipient {
-    EncryptionHeader header = 1;
-    bytes encrypted_key = 2;
+    EncryptionHeader header = 1                     [json_name="unprotected"];
+    bytes content_encryption_key = 2                [json_name="cek"];
 }
 
-message Key {
-    string key_id = 1;
-    bytes public_key = 2;
-    bytes secret_key = 3;
-    KeyType key_type = 4;
-    string fingerprint = 5;
-}
-enum KeyType {
-    x25519 = 0;
-    p256 = 1;
-    ed25519 = 2;
+enum EncryptionMode {
+    direct = 0;
+    content_encryption_key = 1;
 }
 
-message GenerateKeyRequest {
-    bytes seed = 1;
-    KeyType key_type = 2;
-}
-message GenerateKeyResponse {
-    Key key = 1;
-}
-message ConvertKeyRequest {
-    Key key = 1;
-    KeyType target_type = 2;
-}
-message ConvertKeyResponse {
-    Key key = 1;
-}
-
-message PackRequest {
-    Key sender_key = 1;
-    Key receiver_key = 2;
-    bytes associated_data = 3;
-    bytes plaintext = 4;
-}
-
-message PackResponse {
-    EncryptedMessage message = 1;
-}
-
-message UnpackRequest {
-    Key sender_key = 1;
-    Key receiver_key = 2;
-
-    EncryptedMessage message = 3;
-}
-
-message UnpackResponse {
-   bytes plaintext = 1;
+enum EncryptionAlgorithm {
+    xchacha20poly1305 = 0;
+    aes_gcm = 1;
 }

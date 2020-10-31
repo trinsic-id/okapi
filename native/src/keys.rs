@@ -9,11 +9,7 @@ use std::convert::TryInto;
 use x25519_dalek as x25519;
 
 #[no_mangle]
-pub extern "C" fn didcomm_generate_key(
-    request: ByteBuffer,
-    response: &mut ByteBuffer,
-    err: &mut ExternError,
-) -> i32 {
+pub extern "C" fn didcomm_generate_key(request: ByteBuffer, response: &mut ByteBuffer, err: &mut ExternError) -> i32 {
     let req = request_to_message!(GenerateKeyRequest, request, err);
 
     // if `seed` is empty, generate random one
@@ -37,10 +33,7 @@ pub extern "C" fn didcomm_generate_key(
             let sk = SigningKey::new(&seed).expect("Couldn't create key");
             let pk = VerifyKey::from(&sk);
 
-            (
-                pk.to_encoded_point(false).as_bytes().to_vec(),
-                sk.to_bytes().to_vec(),
-            )
+            (pk.to_encoded_point(false).as_bytes().to_vec(), sk.to_bytes().to_vec())
         }
     };
 
@@ -49,7 +42,7 @@ pub extern "C" fn didcomm_generate_key(
     *response = byte_buffer!(GenerateKeyResponse {
         key: Some(Key {
             key_id: format!("#{}", fingerprint.clone()),
-            key_type: key_type as i32,
+            key_type: key_type.into(),
             public_key: public_key.clone(),
             secret_key: secret_key.clone(),
             fingerprint: fingerprint.clone()
@@ -64,10 +57,7 @@ fn generate_seed(initial_seed: &Vec<u8>) -> [u8; 32] {
     if initial_seed.is_empty() {
         OsRng.fill_bytes(&mut seed)
     } else {
-        seed = initial_seed
-            .as_slice()
-            .try_into()
-            .expect("Invalid seed size")
+        seed = initial_seed.as_slice().try_into().expect("Invalid seed size")
     }
     seed
 }
@@ -87,11 +77,7 @@ fn get_fingerprint(key: &Vec<u8>, key_type: i32) -> String {
 }
 
 #[no_mangle]
-pub extern "C" fn didcomm_convert_key(
-    request: ByteBuffer,
-    response: &mut ByteBuffer,
-    err: &mut ExternError,
-) -> i32 {
+pub extern "C" fn didcomm_convert_key(request: ByteBuffer, response: &mut ByteBuffer, err: &mut ExternError) -> i32 {
     let req = request_to_message!(ConvertKeyRequest, request, err);
 
     let key = req.key.expect("Key not found");
@@ -113,7 +99,7 @@ pub extern "C" fn didcomm_convert_key(
     *response = byte_buffer!(ConvertKeyResponse {
         key: Some(Key {
             key_id: String::default(),
-            key_type: KeyType::X25519 as i32,
+            key_type: KeyType::X25519.into(),
             public_key: pk.clone(),
             secret_key: sk.clone(),
             fingerprint: get_fingerprint(&key.public_key, req.target_type)

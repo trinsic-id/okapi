@@ -7,11 +7,7 @@ use rand::{rngs::OsRng, RngCore};
 use x25519_dalek::*;
 
 #[no_mangle]
-pub extern "C" fn didcomm_pack(
-    request: ByteBuffer,
-    response: &mut ByteBuffer,
-    err: &mut ExternError,
-) -> i32 {
+pub extern "C" fn didcomm_pack(request: ByteBuffer, response: &mut ByteBuffer, err: &mut ExternError) -> i32 {
     let req = request_to_message!(PackRequest, request, err);
     let aad = req.associated_data.clone();
 
@@ -19,22 +15,17 @@ pub extern "C" fn didcomm_pack(
     let mut nonce = [0u8; 24];
     OsRng.fill_bytes(&mut nonce);
 
-    let receiver_key = req.receiver_key.unwrap();
-    let sender_key = req.sender_key.unwrap();
+    let receiver_key = unwrap_opt!(req.receiver_key, err, "receiver key not found");
+    let sender_key = unwrap_opt!(req.sender_key, err, "sender key not found");
 
-    let cek = key_exchange(
-        &receiver_key.public_key,
-        &sender_key.secret_key,
-    ).to_bytes();
+    let cek = key_exchange(&receiver_key.public_key, &sender_key.secret_key).to_bytes();
 
     let mut payload = req.plaintext.clone();
 
     let key = Key::from_slice(&cek);
     let aead = XChaCha20Poly1305::new(key);
-    let nonce = XNonce::from_slice(&nonce); //b"extra long unique nonce!"); // 24-bytes; unique
-    let tag = aead
-        .encrypt_in_place_detached(nonce, aad.as_slice(), &mut payload)
-        .expect("encryption failure!");
+    let nonce = XNonce::from_slice(&nonce);
+    let tag = unwrap!(aead.encrypt_in_place_detached(nonce, aad.as_slice(), &mut payload), err, "encryption failed");
 
     *response = byte_buffer!(PackResponse {
         message: Some(EncryptedMessage {
@@ -44,11 +35,12 @@ pub extern "C" fn didcomm_pack(
             tag: tag.as_slice().to_vec(),
             recipients: vec![EncryptionRecipient {
                 header: Some(EncryptionHeader {
-                    algorithm: String::new(),
+                    mode: EncryptionMode::Direct.into(),
+                    algorithm: EncryptionAlgorithm::Xchacha20poly1305.into(),
                     key_id: receiver_key.key_id.clone(),
                     sender_key_id: sender_key.key_id.clone()
                 }),
-                encrypted_key: cek.to_vec() // TODO: encrypt with key exchange key
+                content_encryption_key: vec!()
             }]
         })
     });
@@ -57,19 +49,19 @@ pub extern "C" fn didcomm_pack(
 }
 
 #[no_mangle]
-pub extern "C" fn didcomm_unpack(
-    request: ByteBuffer,
-    response: &mut ByteBuffer,
-    err: &mut ExternError,
-) -> i32 {
+pub extern "C" fn didcomm_unpack(request: ByteBuffer, response: &mut ByteBuffer, err: &mut ExternError) -> i32 {
     let req = request_to_message!(UnpackRequest, request, err);
-    let message = req.message.unwrap();
-    let recipient = message.recipients.first().unwrap();
+    let message = unwrap_opt!(req.message, err, "message not found");
+    let recipient = unwrap_opt!(message.recipients.first(), err, "recipient not found");
+    let header = unwrap_opt!(&recipient.header, err, "header not found");
 
-    let cek = key_exchange(
-        &req.sender_key.unwrap().public_key,
-        &req.receiver_key.unwrap().secret_key,
-    ).to_bytes();
+    let cek = match unwrap_opt!(EncryptionMode::from_i32(header.mode), err, "unexpected encryption mode code") {
+        EncryptionMode::Direct => key_exchange(&req.sender_key.unwrap().public_key, &req.receiver_key.unwrap().secret_key).to_bytes(),
+        _ => {
+            *err = err!("unsupported encryption mode");
+            return 1;
+        }
+    };
 
     // Generate random content encryption key
     let mut payload = message.ciphertext.clone();
@@ -78,17 +70,10 @@ pub extern "C" fn didcomm_unpack(
     let aead = XChaCha20Poly1305::new(key);
     let iv = XNonce::from_slice(message.iv.as_slice());
 
-    aead.decrypt_in_place_detached(
-        iv,
-        &message.aad.as_slice(),
-        &mut payload,
-        message.tag.as_slice().into(),
-    )
-    .expect("encryption failure!");
+    aead.decrypt_in_place_detached(iv, &message.aad.as_slice(), &mut payload, message.tag.as_slice().into())
+        .expect("encryption failure!");
 
-    *response = byte_buffer!(UnpackResponse {
-        plaintext: payload.to_vec()
-    });
+    *response = byte_buffer!(UnpackResponse { plaintext: payload.to_vec() });
     *err = ExternError::success();
     0
 }
@@ -117,7 +102,7 @@ mod tests {
             key_id: String::new(),
             public_key: base58_decode!(pk),
             secret_key: base58_decode!(sk),
-            key_type: KeyType::X25519 as i32,
+            key_type: KeyType::X25519.into(),
             fingerprint: String::new(),
         }
     }
