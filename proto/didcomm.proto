@@ -2,9 +2,11 @@ syntax = "proto3";
 
 package didcomm.messaging;
 
+option csharp_namespace = "DIDComm.Messaging";
+
 import "security.proto";
 
-service DIDComm {
+service DIDCommEndpoint {
     rpc Unary(DCMessage) returns (DCMessage);
 
     rpc UnarySigned(SignedMessage) returns (SignedMessage);
