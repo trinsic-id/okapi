@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Common
+namespace DIDComm.Messaging
 {
     [StructLayout(LayoutKind.Sequential)]
     internal struct ByteBuffer

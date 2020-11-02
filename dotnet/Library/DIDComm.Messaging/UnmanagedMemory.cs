@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.InteropServices;
 
-namespace Common
+namespace DIDComm.Messaging
 {
     /// <summary>
     /// Provides unmanaged memory context will automatic allocation and deallocation of pointers
@@ -78,7 +78,7 @@ namespace Common
             UnmanagedStrings.Add(error.Message);
             var data = Marshal.PtrToStringUTF8(error.Message);
 
-            throw new DIDCommCryptoException(error.Code, data);
+            throw new DIDCommException(error.Code, data);
         }
 
         /// <summary>

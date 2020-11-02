@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package didcomm.messaging;
 
+option csharp_namespace = "DIDComm.Messaging";
+
 import "security.proto";
 
 message GenerateKeyRequest {

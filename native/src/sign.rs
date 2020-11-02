@@ -18,7 +18,10 @@ pub extern "C" fn didcomm_sign(request: ByteBuffer, response: &mut ByteBuffer, e
 
             esk.sign(&req.payload, &pk).to_bytes()
         }
-        _ => panic!("unsupported key type"),
+        _ => {
+            *err = err!("unsupported key type");
+            return 1;
+        }
     };
 
     *response = byte_buffer!(SignResponse {
@@ -56,7 +59,8 @@ pub extern "C" fn didcomm_verify(request: ByteBuffer, response: &mut ByteBuffer,
             use ed25519_dalek::*;
 
             let pk = unwrap!(PublicKey::from_bytes(key.public_key.as_slice()), err, "public key not found");
-            pk.verify(message.payload.as_slice(), &Signature::try_from(signature.signature.as_slice()).unwrap())
+            let sig = unwrap!(Signature::try_from(signature.signature.as_slice()), err, "invalid signature data");
+            pk.verify(message.payload.as_slice(), &sig)
         }
         _ => {
             *err = err!("unsupported key type");

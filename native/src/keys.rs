@@ -13,7 +13,7 @@ pub extern "C" fn didcomm_generate_key(request: ByteBuffer, response: &mut ByteB
     let req = request_to_message!(GenerateKeyRequest, request, err);
 
     // if `seed` is empty, generate random one
-    let seed = generate_seed(&req.seed);
+    let seed = unwrap!(generate_seed(&req.seed), err, "error generating seed");
     let key_type = KeyType::from_i32(req.key_type).expect("invalid key type");
 
     let (public_key, secret_key) = match key_type {
@@ -52,14 +52,17 @@ pub extern "C" fn didcomm_generate_key(request: ByteBuffer, response: &mut ByteB
     0
 }
 
-fn generate_seed(initial_seed: &Vec<u8>) -> [u8; 32] {
+fn generate_seed(initial_seed: &Vec<u8>) -> Result<[u8; 32], &str> {
     let mut seed = [0u8; 32];
     if initial_seed.is_empty() {
         OsRng.fill_bytes(&mut seed)
     } else {
-        seed = initial_seed.as_slice().try_into().expect("Invalid seed size")
+        seed = match initial_seed.as_slice().try_into() {
+            Ok(x) => x,
+            Err(_) => return Err("invalid seed size"),
+        };
     }
-    seed
+    Ok(seed)
 }
 
 fn get_fingerprint(key: &Vec<u8>, key_type: i32) -> String {
