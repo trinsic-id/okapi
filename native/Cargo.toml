@@ -1,11 +1,11 @@
 [package]
-name = "didcomm"
+name = "didcomm-grpc"
 version = "0.1.0"
 authors = ["Tomislav Markovski <tomislav@trinsic.id>"]
 edition = "2018"
 
 [lib]
-name = "didcomm_grpc"
+name = "didcommgrpc"
 crate-type = ["staticlib", "cdylib"]
 
 [dependencies]
