@@ -10,6 +10,10 @@ typedef struct {
     char* message; /* note: nullable */
 } ExternError;
 
+void didcomm_string_free(char* string);
+
+void didcomm_byte_buffer_free(ByteBuffer data);
+
 int32_t didcomm_generate_key(ByteBuffer request, ByteBuffer *response, ExternError *err);
 
 int32_t didcomm_convert_key(ByteBuffer request, ByteBuffer *response, ExternError *err);
