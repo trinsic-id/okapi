@@ -7,6 +7,7 @@
 
 import XCTest
 import DIDCommGrpc
+import SwiftProtobuf
 
 class DMGrpcTests: XCTestCase {
 
@@ -18,20 +19,14 @@ class DMGrpcTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testGenerateKeyWithRandomSeed() throws {
+        var request = Didcomm_Messaging_GenerateKeyRequest()
+        request.keyType = .ed25519
         
-        let response = try DIDCommGrpc.generateKey(request: Data())
+        let response = try DIDCommGrpc.generateKey(request: request)
         
-        assert(response.count > 0)
+        assert(response.hasKey)
+        assert(response.key.publicKey.count == 32)
+        assert(response.key.secretKey.count == 32)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }
