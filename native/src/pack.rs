@@ -6,33 +6,85 @@ use prost::Message;
 use rand::{rngs::OsRng, RngCore};
 use x25519_dalek::*;
 
+trait CryptoSuite {
+    fn encrypt(&self, nonce: &[u8], associated_data: &[u8], plaintext: &[u8]) -> Result<EncryptResult, String>;
+
+    fn decrypt(&self, nonce: &[u8], associated_data: &[u8], ciphertext: &[u8], tag: &[u8]) -> Result<Vec<u8>, String>;
+}
+
+struct XChaCha {
+    aead: XChaCha20Poly1305,
+}
+
+impl From<&[u8; 32]> for XChaCha {
+    fn from(key: &[u8; 32]) -> Self {
+        XChaCha {
+            aead: XChaCha20Poly1305::new(Key::from_slice(key)),
+        }
+    }
+}
+
+#[allow(dead_code)]
+struct AesGcm;
+
+struct EncryptResult {
+    ciphertext: Vec<u8>,
+    tag: Vec<u8>,
+}
+
+impl CryptoSuite for XChaCha {
+    fn encrypt(&self, nonce: &[u8], associated_data: &[u8], plaintext: &[u8]) -> Result<EncryptResult, String> {
+        let mut payload = plaintext.to_vec();
+        let iv = XNonce::from_slice(&nonce);
+
+        match self.aead.encrypt_in_place_detached(iv, associated_data, &mut payload) {
+            Ok(tag) => Ok(EncryptResult {
+                ciphertext: payload.to_vec(),
+                tag: tag.to_vec(),
+            }),
+            Err(_) => Err("encryption failed".to_string()),
+        }
+    }
+
+    fn decrypt(&self, nonce: &[u8], associated_data: &[u8], ciphertext: &[u8], tag: &[u8]) -> Result<Vec<u8>, String> {
+        let mut payload = ciphertext.to_vec();
+        let iv = XNonce::from_slice(nonce);
+
+        match self.aead.decrypt_in_place_detached(iv, associated_data, &mut payload, tag.into()) {
+            Ok(_) => Ok(payload.to_vec()),
+            Err(_) => Err("decryption failure".to_string()),
+        }
+    }
+}
+
 #[no_mangle]
 pub extern "C" fn didcomm_pack(request: ByteBuffer, response: &mut ByteBuffer, err: &mut ExternError) -> i32 {
     let req = request_to_message!(PackRequest, request, err);
+    let algorithm = unwrap_opt!(EncryptionAlgorithm::from_i32(req.mode), err, "incorrect code");
     let aad = req.associated_data.clone();
-
-    // Generate random content encryption key
-    let mut nonce = [0u8; 24];
-    OsRng.fill_bytes(&mut nonce);
 
     let receiver_key = unwrap_opt!(req.receiver_key, err, "receiver key not found");
     let sender_key = unwrap_opt!(req.sender_key, err, "sender key not found");
 
     let cek = key_exchange(&receiver_key.public_key, &sender_key.secret_key).to_bytes();
+    let mut nonce = [0u8; 24];
+    OsRng.fill_bytes(&mut nonce);
 
-    let mut payload = req.plaintext.clone();
-
-    let key = Key::from_slice(&cek);
-    let aead = XChaCha20Poly1305::new(key);
-    let nonce = XNonce::from_slice(&nonce);
-    let tag = unwrap!(aead.encrypt_in_place_detached(nonce, aad.as_slice(), &mut payload), err, "encryption failed");
+    let result = unwrap!(
+        match algorithm {
+            EncryptionAlgorithm::Xchacha20poly1305 => XChaCha::from(&cek.to_owned()).encrypt(&nonce, &aad, &req.plaintext),
+            _ => todo!(),
+        },
+        err,
+        "encryption failed"
+    );
 
     *response = byte_buffer!(PackResponse {
         message: Some(EncryptedMessage {
-            ciphertext: payload.clone(),
-            iv: nonce.as_slice().to_vec(),
+            ciphertext: result.ciphertext.clone(),
+            iv: nonce.to_vec(),
             aad: aad.clone(),
-            tag: tag.as_slice().to_vec(),
+            tag: result.tag.clone(),
             recipients: vec![EncryptionRecipient {
                 header: Some(EncryptionHeader {
                     mode: EncryptionMode::Direct.into(),
@@ -89,71 +141,4 @@ fn key_exchange(pk: &Vec<u8>, sk: &Vec<u8>) -> SharedSecret {
     let shared_secret = secret.diffie_hellman(&public);
 
     shared_secret
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use fluid::prelude::*;
-    use std::str::from_utf8;
-
-    fn key_from(pk: &str, sk: &str) -> crate::didcomm::Key {
-        crate::didcomm::Key {
-            key_id: String::new(),
-            public_key: base58_decode!(pk),
-            secret_key: base58_decode!(sk),
-            key_type: KeyType::X25519.into(),
-            fingerprint: String::new(),
-        }
-    }
-
-    #[theory]
-    #[case(
-        "3EK9AYXoUV4Unn5AjvYY39hyK91n7gg4ExC8rKKSUQXJ",
-        "BEyxtiSbfeXZxBmgg9et5oo3nYMh11iQ8TVvJSrKJQzQ",
-        "9hUD26JdvUXqv4Q6S5LAbs6qVD6tW5NNr9xLcLqyPpxm",
-        "G5UdbKAt8ux4CgFySveHQLbjY9GJqxsXhFuFkDtQVuSo"
-    )]
-    #[case(
-        "9hUD26JdvUXqv4Q6S5LAbs6qVD6tW5NNr9xLcLqyPpxm",
-        "G5UdbKAt8ux4CgFySveHQLbjY9GJqxsXhFuFkDtQVuSo",
-        "3EK9AYXoUV4Unn5AjvYY39hyK91n7gg4ExC8rKKSUQXJ",
-        "BEyxtiSbfeXZxBmgg9et5oo3nYMh11iQ8TVvJSrKJQzQ"
-    )]
-    #[case(
-        "kbNfYQnMuhunbnMGKzkoQgwYpTXUYu9KrLNUweqRjdd",
-        "3CuA2V94oE76bPYwZyQMo8c2r3RRL7izhrU95JmBrpWC",
-        "B3xzCuy2AxwM2EMSQw4yLRakn6QEuuNytiRidWpCoUcH",
-        "6wB1rMc9dUuPeZzX2wyAG4DcuDL9VSiTfy47jTjzcBzr"
-    )]
-    fn encrypt_then_decrypt(alice_pk: &str, alice_sk: &str, bob_pk: &str, bob_sk: &str) {
-        const MESSAGE: &str = "super secret message";
-
-        // Encrypt
-        let request = byte_buffer!(PackRequest {
-            receiver_key: Some(key_from(bob_pk, bob_sk)),
-            sender_key: Some(key_from(alice_pk, alice_sk)),
-            associated_data: vec![],
-            plaintext: MESSAGE.as_bytes().to_vec()
-        });
-        let mut response = byte_buffer!();
-        let mut err = err!();
-
-        let encrypt_result = didcomm_pack(request, &mut response, &mut err);
-        let pack_response = request_to_message!(PackResponse, response);
-        let encrypted_message = pack_response.message.unwrap();
-
-        // Decrypt
-        let unpack_request = byte_buffer!(UnpackRequest {
-            receiver_key: Some(key_from(alice_pk, alice_sk)),
-            sender_key: Some(key_from(bob_pk, bob_sk)),
-            message: Some(encrypted_message.clone())
-        });
-        let decrypt_result = didcomm_unpack(unpack_request, &mut response, &mut err);
-        let unpack_response = request_to_message!(UnpackResponse, response);
-
-        assert_eq!(0, encrypt_result);
-        assert_eq!(0, decrypt_result);
-        assert_eq!(MESSAGE, from_utf8(&unpack_response.plaintext).unwrap());
-    }
 }

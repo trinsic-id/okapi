@@ -20,8 +20,11 @@ static NSString *const DMGrpcErrorDomain = @"DIDCommGrpcError";
         free(error->message);
     }
 
+    NSError *result = [NSError errorWithDomain:DMGrpcErrorDomain code:error->code userInfo:userInfo];
+    
     free(error);
-    return [NSError errorWithDomain:DMGrpcErrorDomain code:error->code userInfo:userInfo];
+    
+    return result;
 }
 
 @end

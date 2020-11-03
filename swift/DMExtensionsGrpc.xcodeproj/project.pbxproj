@@ -21,6 +21,10 @@
 		A0A2DB412550AAED00DA4989 /* DMNative.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A2DB3F2550AAED00DA4989 /* DMNative.m */; };
 		A0A2DB4A2550B18500DA4989 /* DMGrpcError.h in Headers */ = {isa = PBXBuildFile; fileRef = A0A2DB482550B18500DA4989 /* DMGrpcError.h */; };
 		A0A2DB4B2550B18500DA4989 /* DMGrpcError.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A2DB492550B18500DA4989 /* DMGrpcError.m */; };
+		A0A2DB542551A94600DA4989 /* api.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2DB512551A94600DA4989 /* api.pb.swift */; };
+		A0A2DB552551A94600DA4989 /* didcomm.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2DB522551A94600DA4989 /* didcomm.pb.swift */; };
+		A0A2DB562551A94600DA4989 /* security.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2DB532551A94600DA4989 /* security.pb.swift */; };
+		A0A2DB5B2551AB2300DA4989 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = A0A2DB5A2551AB2300DA4989 /* SwiftProtobuf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +76,9 @@
 		A0A2DB3F2550AAED00DA4989 /* DMNative.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DMNative.m; sourceTree = "<group>"; };
 		A0A2DB482550B18500DA4989 /* DMGrpcError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMGrpcError.h; sourceTree = "<group>"; };
 		A0A2DB492550B18500DA4989 /* DMGrpcError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DMGrpcError.m; sourceTree = "<group>"; };
+		A0A2DB512551A94600DA4989 /* api.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = api.pb.swift; sourceTree = "<group>"; };
+		A0A2DB522551A94600DA4989 /* didcomm.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = didcomm.pb.swift; sourceTree = "<group>"; };
+		A0A2DB532551A94600DA4989 /* security.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = security.pb.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +104,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79AA80D42550A03F005B5C1B /* DIDCommGrpcNative.framework in Frameworks */,
+				A0A2DB5B2551AB2300DA4989 /* SwiftProtobuf in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +114,7 @@
 		79AA8039255098CB005B5C1B = {
 			isa = PBXGroup;
 			children = (
+				A0A2DB502551A92100DA4989 /* Protobuf */,
 				79AA80CB2550A02F005B5C1B /* DIDCommGrpc */,
 				79AA8045255098CB005B5C1B /* DIDCommGrpcNative */,
 				79AA809025509B12005B5C1B /* Tests */,
@@ -164,6 +173,16 @@
 				79AA80D92550A04B005B5C1B /* DIDComm.swift */,
 			);
 			path = DIDCommGrpc;
+			sourceTree = "<group>";
+		};
+		A0A2DB502551A92100DA4989 /* Protobuf */ = {
+			isa = PBXGroup;
+			children = (
+				A0A2DB512551A94600DA4989 /* api.pb.swift */,
+				A0A2DB522551A94600DA4989 /* didcomm.pb.swift */,
+				A0A2DB532551A94600DA4989 /* security.pb.swift */,
+			);
+			path = Protobuf;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +262,9 @@
 				79AA80D72550A03F005B5C1B /* PBXTargetDependency */,
 			);
 			name = DIDCommGrpc;
+			packageProductDependencies = (
+				A0A2DB5A2551AB2300DA4989 /* SwiftProtobuf */,
+			);
 			productName = DIDCommExtensionGrpc;
 			productReference = 79AA80CA2550A02F005B5C1B /* DIDCommGrpc.framework */;
 			productType = "com.apple.product-type.framework";
@@ -277,6 +299,9 @@
 				Base,
 			);
 			mainGroup = 79AA8039255098CB005B5C1B;
+			packageReferences = (
+				A0A2DB592551AB2300DA4989 /* XCRemoteSwiftPackageReference "swift-protobuf" */,
+			);
 			productRefGroup = 79AA8044255098CB005B5C1B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -334,7 +359,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0A2DB562551A94600DA4989 /* security.pb.swift in Sources */,
+				A0A2DB552551A94600DA4989 /* didcomm.pb.swift in Sources */,
 				79AA80DA2550A04B005B5C1B /* DIDComm.swift in Sources */,
+				A0A2DB542551A94600DA4989 /* api.pb.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -657,6 +685,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A0A2DB592551AB2300DA4989 /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-protobuf.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.13.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A0A2DB5A2551AB2300DA4989 /* SwiftProtobuf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A0A2DB592551AB2300DA4989 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobuf;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 79AA803A255098CB005B5C1B /* Project object */;
 }

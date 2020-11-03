@@ -42,9 +42,9 @@ message EncryptedMessage {
 
 message EncryptionHeader {
     EncryptionMode mode = 1                         [json_name="enc"];
-    string key_id = 2                               [json_name="kid"];
-    string sender_key_id = 3                        [json_name="skid"];
-    EncryptionAlgorithm algorithm = 4               [json_name="alg"];
+    EncryptionAlgorithm algorithm = 2               [json_name="alg"];
+    string key_id = 3                               [json_name="kid"];
+    string sender_key_id = 4                        [json_name="skid"];
 }
 
 message EncryptionRecipient {

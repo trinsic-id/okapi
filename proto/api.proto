@@ -44,6 +44,8 @@ message PackRequest {
     Key receiver_key = 2;
     bytes associated_data = 3;
     bytes plaintext = 4;
+    EncryptionMode mode = 5;
+    EncryptionAlgorithm algorithm = 6;
 }
 
 message PackResponse {
