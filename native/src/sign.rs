@@ -1,7 +1,11 @@
-use crate::didcomm::*;
+#![cfg(not(target_arch = "wasm32"))]
+
+use crate::{
+    didcomm::*,
+    keys::{ed25519::Ed25519Key, p256::P256Key, x25519::X25519Key, *},
+};
 use ffi_support::{ByteBuffer, ExternError};
 use prost::Message;
-use std::convert::TryFrom;
 
 #[no_mangle]
 pub extern "C" fn didcomm_sign(request: ByteBuffer, response: &mut ByteBuffer, err: &mut ExternError) -> i32 {
@@ -46,7 +50,11 @@ pub extern "C" fn didcomm_verify(request: ByteBuffer, response: &mut ByteBuffer,
     let key = unwrap_opt!(req.key, err, "key is required");
     let message = unwrap_opt!(req.message, err, "message is required");
     let signature = unwrap_opt!(message.signatures.first(), err, "signature is required");
-    let header = unwrap!(SignatureHeader::decode(signature.header.as_slice()), err, "header in signature is required");
+    let header = unwrap!(
+        SignatureHeader::decode(signature.header.as_slice()),
+        err,
+        "header in signature is required"
+    );
     let key_type = unwrap_opt!(KeyType::from_i32(key.key_type), err, "invalid enum code");
 
     if header.key_id != key.key_id {
@@ -54,25 +62,16 @@ pub extern "C" fn didcomm_verify(request: ByteBuffer, response: &mut ByteBuffer,
         return 1;
     }
 
-    let result = match key_type {
-        KeyType::Ed25519 => {
-            use ed25519_dalek::*;
-
-            let pk = unwrap!(PublicKey::from_bytes(key.public_key.as_slice()), err, "public key not found");
-            let sig = unwrap!(Signature::try_from(signature.signature.as_slice()), err, "invalid signature data");
-            pk.verify(message.payload.as_slice(), &sig)
-        }
-        _ => {
-            *err = err!("unsupported key type");
-            return 1;
-        }
+    let key: Box<dyn Signer<Err = _>> = match key_type {
+        KeyType::Ed25519 => Box::new(Ed25519Key::from(key)),
+        KeyType::X25519 => Box::new(X25519Key::from(key)),
+        KeyType::P256 => Box::new(P256Key::from(key)),
     };
 
     *response = byte_buffer!(VerifyResponse {
-        is_valid: match result {
-            Ok(_) => true,
-            _ => false,
-        }
+        is_valid: key
+            .verify(message.payload.as_slice(), signature.signature.as_slice())
+            .map_or(false, |_| true)
     });
     *err = err!();
     0
