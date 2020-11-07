@@ -1,7 +1,7 @@
 use crate::{didcomm::*, pack::*};
 use fluid::prelude::*;
-use std::str::from_utf8;
 use prost::Message;
+use std::str::from_utf8;
 
 #[theory]
 #[case(

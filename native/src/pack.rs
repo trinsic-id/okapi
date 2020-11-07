@@ -1,15 +1,24 @@
+#![cfg(not(target_arch = "wasm32"))]
+
 use crate::didcomm::*;
 use chacha20poly1305::aead::{AeadInPlace, NewAead};
 use chacha20poly1305::{Key, XChaCha20Poly1305, XNonce}; // Or `XChaCha20Poly1305`
 use ffi_support::{ByteBuffer, ExternError};
 use prost::Message;
-use rand::{rngs::OsRng, RngCore};
 use x25519_dalek::*;
 
 trait CryptoSuite {
-    fn encrypt(&self, nonce: &[u8], associated_data: &[u8], plaintext: &[u8]) -> Result<EncryptResult, String>;
+    type Err;
 
-    fn decrypt(&self, nonce: &[u8], associated_data: &[u8], ciphertext: &[u8], tag: &[u8]) -> Result<Vec<u8>, String>;
+    fn encrypt(&self, nonce: &[u8], associated_data: &[u8], plaintext: &[u8]) -> Result<EncryptResult, Self::Err>;
+
+    fn decrypt(
+        &self,
+        nonce: &[u8],
+        associated_data: &[u8],
+        ciphertext: &[u8],
+        tag: &[u8],
+    ) -> Result<Vec<u8>, Self::Err>;
 }
 
 struct XChaCha {
@@ -33,7 +42,9 @@ struct EncryptResult {
 }
 
 impl CryptoSuite for XChaCha {
-    fn encrypt(&self, nonce: &[u8], associated_data: &[u8], plaintext: &[u8]) -> Result<EncryptResult, String> {
+    type Err = String;
+
+    fn encrypt(&self, nonce: &[u8], associated_data: &[u8], plaintext: &[u8]) -> Result<EncryptResult, Self::Err> {
         let mut payload = plaintext.to_vec();
         let iv = XNonce::from_slice(&nonce);
 
@@ -46,11 +57,20 @@ impl CryptoSuite for XChaCha {
         }
     }
 
-    fn decrypt(&self, nonce: &[u8], associated_data: &[u8], ciphertext: &[u8], tag: &[u8]) -> Result<Vec<u8>, String> {
+    fn decrypt(
+        &self,
+        nonce: &[u8],
+        associated_data: &[u8],
+        ciphertext: &[u8],
+        tag: &[u8],
+    ) -> Result<Vec<u8>, Self::Err> {
         let mut payload = ciphertext.to_vec();
         let iv = XNonce::from_slice(nonce);
 
-        match self.aead.decrypt_in_place_detached(iv, associated_data, &mut payload, tag.into()) {
+        match self
+            .aead
+            .decrypt_in_place_detached(iv, associated_data, &mut payload, tag.into())
+        {
             Ok(_) => Ok(payload.to_vec()),
             Err(_) => Err("decryption failure".to_string()),
         }
@@ -60,7 +80,7 @@ impl CryptoSuite for XChaCha {
 #[no_mangle]
 pub extern "C" fn didcomm_pack(request: ByteBuffer, response: &mut ByteBuffer, err: &mut ExternError) -> i32 {
     let req = request_to_message!(PackRequest, request, err);
-    let algorithm = unwrap_opt!(EncryptionAlgorithm::from_i32(req.mode), err, "incorrect code");
+    let alg = unwrap_opt!(EncryptionAlgorithm::from_i32(req.mode), err, "invalid code");
     let aad = req.associated_data.clone();
 
     let receiver_key = unwrap_opt!(req.receiver_key, err, "receiver key not found");
@@ -68,11 +88,12 @@ pub extern "C" fn didcomm_pack(request: ByteBuffer, response: &mut ByteBuffer, e
 
     let cek = key_exchange(&receiver_key.public_key, &sender_key.secret_key).to_bytes();
     let mut nonce = [0u8; 24];
-    OsRng.fill_bytes(&mut nonce);
+    getrandom::getrandom(&mut nonce).expect("cannot generate random seed");
 
     let result = unwrap!(
-        match algorithm {
-            EncryptionAlgorithm::Xchacha20poly1305 => XChaCha::from(&cek.to_owned()).encrypt(&nonce, &aad, &req.plaintext),
+        match alg {
+            EncryptionAlgorithm::Xchacha20poly1305 =>
+                XChaCha::from(&cek.to_owned()).encrypt(&nonce, &aad, &req.plaintext),
             _ => todo!(),
         },
         err,
@@ -107,8 +128,16 @@ pub extern "C" fn didcomm_unpack(request: ByteBuffer, response: &mut ByteBuffer,
     let recipient = unwrap_opt!(message.recipients.first(), err, "recipient not found");
     let header = unwrap_opt!(&recipient.header, err, "header not found");
 
-    let cek = match unwrap_opt!(EncryptionMode::from_i32(header.mode), err, "unexpected encryption mode code") {
-        EncryptionMode::Direct => key_exchange(&req.sender_key.unwrap().public_key, &req.receiver_key.unwrap().secret_key).to_bytes(),
+    let cek = match unwrap_opt!(
+        EncryptionMode::from_i32(header.mode),
+        err,
+        "unexpected encryption mode code"
+    ) {
+        EncryptionMode::Direct => key_exchange(
+            &req.sender_key.unwrap().public_key,
+            &req.receiver_key.unwrap().secret_key,
+        )
+        .to_bytes(),
         _ => {
             *err = err!("unsupported encryption mode");
             return 1;
@@ -125,7 +154,9 @@ pub extern "C" fn didcomm_unpack(request: ByteBuffer, response: &mut ByteBuffer,
     aead.decrypt_in_place_detached(iv, &message.aad.as_slice(), &mut payload, message.tag.as_slice().into())
         .expect("encryption failure!");
 
-    *response = byte_buffer!(UnpackResponse { plaintext: payload.to_vec() });
+    *response = byte_buffer!(UnpackResponse {
+        plaintext: payload.to_vec()
+    });
     *err = ExternError::success();
     0
 }
@@ -138,7 +169,6 @@ fn key_exchange(pk: &Vec<u8>, sk: &Vec<u8>) -> SharedSecret {
 
     let secret = StaticSecret::from(secret_key);
     let public = PublicKey::from(public_key);
-    let shared_secret = secret.diffie_hellman(&public);
 
-    shared_secret
+    secret.diffie_hellman(&public)
 }

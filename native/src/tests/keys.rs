@@ -1,15 +1,15 @@
-use crate::{didcomm::*, keys::*};
+use crate::{api::keys::*, didcomm::*};
 use fluid::prelude::*;
 use prost::Message;
 
 #[theory]
-#[case(0, 32)]
-#[case(1, 65)]
-#[case(2, 32)]
-fn test_generate_key_no_seed(key_type: i32, public_key_size: usize) {
+#[case(KeyType::X25519, 32)]
+#[case(KeyType::P256, 65)]
+#[case(KeyType::Ed25519, 32)]
+fn test_generate_key_no_seed(key_type: KeyType, public_key_size: usize) {
     let request = byte_buffer!(GenerateKeyRequest {
         seed: vec![],
-        key_type: key_type
+        key_type: key_type as i32
     });
     let mut response = byte_buffer!();
     let mut err = err!();
@@ -20,7 +20,7 @@ fn test_generate_key_no_seed(key_type: i32, public_key_size: usize) {
     let key = res.key.expect("Missing key");
 
     assert_eq!(0, code);
-    assert_eq!(key_type, key.key_type);
+    assert_eq!(key_type as i32, key.key_type);
     assert_eq!(public_key_size, key.public_key.len());
     assert_eq!(32, key.secret_key.len());
 }
@@ -99,11 +99,26 @@ fn test_generate_key_with_seed(key_type: KeyType, seed: &str, public_key: &str) 
 }
 
 #[theory]
-#[case("6fioC1zcDPyPEL19pXRS2E4iJ46zH7xP6uSgAaPdwDrx", "FxfdY3DCQxVZddKGAtSjZdFW9bCCW7oRwZn1NFJ2Tbg2")]
-#[case("9j1mZuDTFSsrP8xwS4iyJwi22GZEsGFe2nutDB25R4jY", "Ff8nD7Zgm8ZNhBZcmHTqrfg2FRf6tU6Ki5BDmA9gtrRm")]
-#[case("CTDAH3MW8Dorz6XpLHtwTXgAfkkXBbRVSJy4aXyj13CR", "GkMFTHJ2DuwfsSiJ1eKpcNBqYau9i5VW5qXiy2po4tqJ")]
-#[case("2E9xcBvRVRGAgnySqpNzW6JoYjnjtt2BtqDSPEdsWNjk", "ELMGmTD43y15v6YaD3kfM5oF5xHnpv9eiNkZoNQxWunh")]
-#[case("6JmFgRnWVTUi4vVZAd4aNpZKfP8LenvQGk1q1uM34ajq", "AgEcgKRLDXS1puWdz3o2uyAuFZXRMGLi2widbZ1G7MLv")]
+#[case(
+    "6fioC1zcDPyPEL19pXRS2E4iJ46zH7xP6uSgAaPdwDrx",
+    "FxfdY3DCQxVZddKGAtSjZdFW9bCCW7oRwZn1NFJ2Tbg2"
+)]
+#[case(
+    "9j1mZuDTFSsrP8xwS4iyJwi22GZEsGFe2nutDB25R4jY",
+    "Ff8nD7Zgm8ZNhBZcmHTqrfg2FRf6tU6Ki5BDmA9gtrRm"
+)]
+#[case(
+    "CTDAH3MW8Dorz6XpLHtwTXgAfkkXBbRVSJy4aXyj13CR",
+    "GkMFTHJ2DuwfsSiJ1eKpcNBqYau9i5VW5qXiy2po4tqJ"
+)]
+#[case(
+    "2E9xcBvRVRGAgnySqpNzW6JoYjnjtt2BtqDSPEdsWNjk",
+    "ELMGmTD43y15v6YaD3kfM5oF5xHnpv9eiNkZoNQxWunh"
+)]
+#[case(
+    "6JmFgRnWVTUi4vVZAd4aNpZKfP8LenvQGk1q1uM34ajq",
+    "AgEcgKRLDXS1puWdz3o2uyAuFZXRMGLi2widbZ1G7MLv"
+)]
 fn convert_ed_to_montgomery(ed_key: &str, montgomery_key: &str) {
     let request = byte_buffer!(ConvertKeyRequest {
         key: Some(Key {
@@ -126,4 +141,18 @@ fn convert_ed_to_montgomery(ed_key: &str, montgomery_key: &str) {
     assert_eq!(0, code);
     assert_eq!(32, key.public_key.len());
     assert_eq!(montgomery_key, base58_encode!(key.public_key));
+}
+
+
+//#![cfg(target_arch = "wasm32")]
+
+extern crate wasm_bindgen_test;
+use wasm_bindgen_test::*;
+
+wasm_bindgen_test_configure!(run_in_browser);
+
+#[wasm_bindgen_test]
+fn test() {
+    let seed = crate::keys::generate_seed(vec!().as_ref()).expect("couldn't generate random seed");
+    assert_eq!(seed.len(), 32)
 }
