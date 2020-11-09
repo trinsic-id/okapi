@@ -4,17 +4,6 @@ package didcomm.messaging;
 
 option csharp_namespace = "DIDComm.Messaging";
 
-message DCMessage {
-    string id = 1;
-    string type = 2;
-    bytes body = 3;
-    repeated string to = 4;
-    string from = 5;
-    string correlation_id = 6 [json_name="thread_id"];
-    int64 created = 7 [json_name="created_time"];
-    int64 expires = 8 [json_name="expires_time"];
-}
-
 // JWS
 
 message SignedMessage {

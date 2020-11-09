@@ -1,0 +1,8 @@
+@startuml
+Alice -> [Send Message]
+[Send Message] -> (Encrypt)
+note right of (Encrypt) : Using a key exchange from\nAlice and Bob's DID docs
+(Encrypt) .. (Decrypt): Wire Transport
+(Decrypt) -> [Receive Message]
+[Receive Message] -> Bob
+@enduml
