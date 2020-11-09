@@ -5,15 +5,26 @@ package didcomm.messaging;
 option csharp_namespace = "DIDComm.Messaging";
 
 import "security.proto";
+import "google/protobuf/struct.proto";
+
+message CoreMessage {
+    string id = 1;
+    string type = 2;
+    bytes body = 3;
+    repeated string to = 4;
+    string from = 5;
+    int64 created = 6 [json_name="created_time"];
+    int64 expires = 7 [json_name="expires_time"];
+}
 
 service DIDCommEndpoint {
-    rpc Unary(DCMessage) returns (DCMessage);
-
+    rpc Unary(CoreMessage) returns (CoreMessage);
     rpc UnarySigned(SignedMessage) returns (SignedMessage);
+    rpc UnaryEncrypted(EncryptedMessage) returns (EncryptedMessage);
 
-    rpc ServerStreaming(DCMessage) returns (stream DCMessage);
+    rpc ServerStreaming(CoreMessage) returns (stream CoreMessage);
 
-    rpc ClientStreaming(stream DCMessage) returns (DCMessage);
+    rpc ClientStreaming(stream CoreMessage) returns (CoreMessage);
 
-    rpc BidirectionalStraming(stream DCMessage) returns (stream DCMessage);
+    rpc BidirectionalStraming(stream CoreMessage) returns (stream CoreMessage);
 }
