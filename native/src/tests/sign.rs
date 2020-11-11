@@ -15,7 +15,8 @@ fn test_sign_payload(secret_key: &str, payload: &str) {
             secret_key: base58_decode!(secret_key),
             key_type: KeyType::Ed25519.into(),
             fingerprint: String::new()
-        })
+        }),
+        append_to: None
     });
     let mut response = byte_buffer!();
     let mut err = err!();
@@ -54,7 +55,8 @@ fn test_sign_verify(secret_key: &str, public_key: &str, payload: &str) {
             secret_key: base58_decode!(secret_key),
             key_type: KeyType::Ed25519.into(),
             fingerprint: String::new()
-        })
+        }),
+        append_to: None
     });
     let mut response = byte_buffer!();
     let mut err = err!();

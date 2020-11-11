@@ -17,14 +17,22 @@ message CoreMessage {
     int64 expires = 7 [json_name="expires_time"];
 }
 
-service DIDCommEndpoint {
-    rpc Unary(CoreMessage) returns (CoreMessage);
-    rpc UnarySigned(SignedMessage) returns (SignedMessage);
-    rpc UnaryEncrypted(EncryptedMessage) returns (EncryptedMessage);
-
-    rpc ServerStreaming(CoreMessage) returns (stream CoreMessage);
-
-    rpc ClientStreaming(stream CoreMessage) returns (CoreMessage);
-
-    rpc BidirectionalStraming(stream CoreMessage) returns (stream CoreMessage);
+service DIDCommPlain {
+    rpc Unary(CoreMessage)                              returns (CoreMessage);
+    rpc ServerStreaming(CoreMessage)                    returns (stream CoreMessage);
+    rpc ClientStreaming(stream CoreMessage)             returns (CoreMessage);
+    rpc BidirectionalStreaming(stream CoreMessage)      returns (stream CoreMessage);
 }
+
+service DIDCommEncrypted {
+    rpc Unary(EncryptedMessage)                         returns (EncryptedMessage);
+    rpc ServerStreaming(EncryptedMessage)               returns (stream EncryptedMessage);
+    rpc ClientStreaming(stream EncryptedMessage)        returns (EncryptedMessage);
+    rpc BidirectionalStreaming(stream EncryptedMessage) returns (stream EncryptedMessage);
+}
+
+service DIDCommSimplex {
+    rpc Simplex(EncryptedMessage)                       returns (NoOp);
+}
+
+message NoOp {}

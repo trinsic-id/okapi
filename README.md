@@ -13,12 +13,15 @@ Implementation and message definition for extending DIDComm Messaging v2 using b
   - [Message Structure](#message-structure)
   - [Message Encryption](#message-encryption)
   - [Message Signing](#message-signing)
-  - [Endpoints and Transport](#endpoints-and-transport)
+- [Endpoints and Transport](#endpoints-and-transport)
+  - [HTTP/1.x](#http1x)
+  - [HTTP/2 with gRPC](#http2-with-grpc)
+  - [Service in DID Document](#service-in-did-document)
 - [Supported Platforms](#supported-platforms)
   - [Rust](native/README.md)
   - [.NET](dotnet/README.md)
   - [WebAssembly](wasm/README.md)
-  - [Swift/Objective C](swift/README.md)
+  - [Objective C](objc/README.md)
   - Planned
     - Kotlin/Java
     - Python
@@ -38,19 +41,20 @@ Protobuf and gRPC focus on interface definition and code generation to achieve m
 
 ### Design Approach
 
-In order to extend DIDComm Messaging for use with other protocols, we need to provide a solution in the following areas:
+In order to extend DIDComm Messaging for use with other protocols, we need to describe the approach taken in the following areas:
 
 - Message contract
 - Security layer
 - Transport
 
+**Message contracts** in this extension use protocol buffers message descriptors. See the section on [Message Structure](#message-structure) for different message formats.<br />
+**Security layer** is written as a cross-platform library in Rust that can perform security related operations, such as message packing, signing, etc. The library publishes a C style interface for invocation by different platforms.<br />
+**Transport of messages** is described in the context of HTTP/1.x and HTTP/2 using gRPC. The latter uses protobuf defintion to standardize the endpoints and bootstrap implementations.
+
+
 ![DIDComm Exchange](docs/images/design-approach-1.png "DIDComm Exchange")
 
-*<small><center>Figure 1: Components of DIDComm exchange</center></small>*
-
-For the **message contracts** in this extension we will use protocol buffers message descriptors. See the section on [Message Structure](#message-structure) for different message formats.<br />
-**Security layer** is done using a Rust library that can perform security related operations, such as message packing, signing, etc.<br />
-The **transport of messages** relies entirely on gRPC components. The DIDComm endpoints are described as RPC services along the message definitions.
+*<small>Figure 1: Components of DIDComm exchange</small>*
 
 ## Extension Architecture
 
@@ -62,9 +66,13 @@ This library is built in Rust and avaialble for all architectures. It supports t
 This libary exposes all functionality through a simple foreign function interface (FFI). All functions exposed have the same method signature:
 
 ```rust
-pub extern "C" fn didcomm_pack(request: ByteBuffer, response: &mut ByteBuffer, err: &mut ExternError) -> i32
+pub extern "C" fn didcomm_pack(request: ByteBuffer,
+                               response: &mut ByteBuffer,
+                               err: &mut ExternError) -> i32 { }
 
-pub extern "C" fn didcomm_sign(request: ByteBuffer, response: &mut ByteBuffer, err: &mut ExternError) -> i32
+pub extern "C" fn didcomm_sign(request: ByteBuffer,
+                               response: &mut ByteBuffer,
+                               err: &mut ExternError) -> i32 { }
 ```
 
 This allows us to use the protobuf encoded payloads as request and response to each interface. By convention, the request and response message types are named after the function. For example, the function `didcomm_generate_key` uses `GenerateKeyRequest` for input and `GenerateKeyResponse` for output message. The corresponding protobuf messages are defined as:
@@ -81,34 +89,33 @@ message GenerateKeyResponse {
 
 All FFI messages are maintained in the [api.proto](proto/api.proto) file.
 
-This approach makes it easy to create and maintain platform specific wrappers. Due to the code generation capabilities of gRPC libraries, these API contracts are instantly available to us, so we can immedately start using them:
+This approach makes it easy to create and maintain platform specific wrappers. Due to the code generation capabilities of gRPC libraries, these API contracts are instantly available to us in a language idiomatic way:
 
 ```js
-    // JavaScript
+// JavaScript
 
-    let request = new dm.GenerateKeyRequest({
-      keyType: dm.KeyType.x25519,
-    });
+let request = {
+    keyType: dm.KeyType.x25519,
+};
 
-    var response = generateKey(request);
+var response = generateKey(request);
 ```
 
 ```swift
-    // Swift
+// Swift
 
-    var request = Didcomm_Messaging_GenerateKeyRequest()
-    request.keyType = .ed25519
+var request = Didcomm_Messaging_GenerateKeyRequest()
+request.keyType = .ed25519
 
-    let response = try DIDCommGrpc.generateKey(request: request)
+let response = try DIDCommGrpc.generateKey(request: request)
 ```
 
 ```cs
-    // C#
+// C#
 
-    var request = new GenerateKeyRequest { KeyType = KeyType.Ed25519 };
+var request = new GenerateKeyRequest { KeyType = KeyType.P256 };
 
-    var response = DIDComm.GenerateKey(request);
-
+var response = DIDComm.GenerateKey(request);
 ```
 
 ### Other Protocols
@@ -239,15 +246,94 @@ Similar to JWS, the signature in this format is produced by concatenating the `S
 
 > It is expected that the signed payload of `SignedMesage` and `EncryptedMessage` will always be a `DCMessage` (or JWM in this example). Messages can also be nested in each other.
 
-### Endpoints and Transport
+## Endpoints and Transport
 
-TODO
+### HTTP/1.x
+
+```
+POST /agent HTTP/1.1
+HOST: api.example.com
+Content-Type: application/didcomm-encrypted+protobuf
+
+<protobuf encoded payload>
+```
+
+### HTTP/2 with gRPC
+
+There are two possible scenarios to use HTTP/2. Using gRPC, we can utilize the streaming capabilities in HTTP/2 to perform bi-directional communication if required. Proto service definitions require specifying message type. This allows us to avoid specifying the content type manually with the request. By default, gRPC implementations will set the content type to `application/grpc`. This can be changed, although it's not required.
+
+#### gRPC Service using protobuf messages
+
+This definiton uses the core DIDComm message for it's endpoint definition.
+
+```protobuf
+service DIDCommPlain {
+    rpc Unary(CoreMessage)                              returns (CoreMessage);
+    rpc ServerStreaming(CoreMessage)                    returns (stream CoreMessage);
+    rpc ClientStreaming(stream CoreMessage)             returns (CoreMessage);
+    rpc BidirectionalStreaming(stream CoreMessage)      returns (stream CoreMessage);
+}
+```
+
+Similarly, we can define a service that uses `EncryptedMessage` for it's definition.
+
+```protobuf
+service DIDCommEncrypted {
+    rpc Unary(EncryptedMessage)                         returns (EncryptedMessage);
+    rpc ServerStreaming(EncryptedMessage)               returns (stream EncryptedMessage);
+    rpc ClientStreaming(stream EncryptedMessage)        returns (EncryptedMessage);
+    rpc BidirectionalStreaming(stream EncryptedMessage) returns (stream EncryptedMessage);
+}
+```
+
+Implementers can mix and match these endpoints to match their use case. One can also define an endpoint without a return result, to match the asynchronous nature of DC messaging.
+
+```protobuf
+service DIDCommSimple {
+    rpc Unary(EncryptedMessage)                         returns (NoOp);
+}
+message NoOp {}
+```
+#### Using request/response REST style API
+
+One can also use HTTP/2 outside of gRPC. A number of platforms today support HTTP/2, though only as a simple request/response. In this case, we should specify the content type of the message:
+
+```
+POST /agent HTTP/2
+HOST: api.example.com
+Content-Type: application/didcomm-encrypted+protobuf
+
+<protobuf encoded payload>
+```
+
+### Service in DID Document
+
+This is a non-normative entry and should probably be standardized for all DIDComm services.
+
+```json
+{
+    "service": [{
+        "id": "did:example:123456789abcdefghi#messages",
+        "type": "DIDCommService",
+        "serviceEndpoint": "https://example.com/agent",
+        "contentTypes": [
+            "application/didcomm-encrypted+protobuf",
+            "application/didcomm-encrypted+json" ]
+    }, {
+        "id": "did:example:123456789abcdefghi#rpc",
+        "type": "DIDCommService",
+        "serviceEndpoint": "https://example.com/DIDCommEncrypted",
+        "contentTypes": ["application/grpc" ],
+        "grpcEndpoints": [ "Unary", "ServerStreaming" ]
+    }]
+}
+```
 
 ## Supported Platforms
 
 - [Rust](native/README.md)
 - [.NET](dotnet/README.md)
 - [WebAssembly](wasm/README.md)
-- [Swift/Objective C](swift/README.md)
+- [Objective C](objc/README.md)
 
 ## Get Involved

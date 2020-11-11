@@ -24,6 +24,7 @@ message ConvertKeyResponse {
 message SignRequest {
     bytes payload = 1;
     Key key = 2;
+    SignedMessage append_to = 3;
 }
 
 message SignResponse {
