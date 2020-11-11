@@ -1,0 +1,14 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '13.0'
+
+install! 'cocoapods', :deterministic_uuids => false
+
+target 'DIDComm-gRPC' do
+  # Depend on the generated HelloWorld library.
+  pod 'DIDComm-Proto', :path => '.'
+end
+
+target 'Tests' do
+  # Depend on the generated HelloWorld library.
+  pod 'DIDComm-Proto', :path => '.'
+end
