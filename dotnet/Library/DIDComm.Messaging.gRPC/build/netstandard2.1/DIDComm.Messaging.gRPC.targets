@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- 
+    'Grpc_SkipNativeLibsCopy' should not be enabled in normal use.
+
+    It only exists to support special scenarios where user wants to copy the native libraries
+    to output directory themselves, in a separate build step or script.
+
+    Only use this flag if you really know what you're doing. It's your responsibility to ensure that matching versions of 
+    the Grpc.Core.dll assembly and the native libraries are used at all times.
+  -->
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)..\..\native\windows\didcommgrpc.dll" Condition="'$([MSBuild]::IsOsPlatform(Windows))'">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Link>didcommgrpc.dll</Link>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)..\..\native\linux\libdidcommgrpc.so" Condition="'$([MSBuild]::IsOsPlatform(Linux))'">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Link>libdidcommgrpc.so</Link>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)..\..\native\macos\libdidcommgrpc.dylib" Condition="'$([MSBuild]::IsOsPlatform(OSX))'">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Link>libdidcommgrpc.dylib</Link>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>
+
+</Project>

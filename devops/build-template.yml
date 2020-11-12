@@ -1,0 +1,23 @@
+parameters:
+  platform: ''
+  additionalArguments: ''
+  vmImage: 'windows-latest'
+
+jobs:
+- job: BuildFor${{ parameters.platform }}
+
+  pool:
+    vmImage: ${{ parameters.vmImage }}
+  steps:
+  - task: PowerShell@2
+    inputs:
+      filePath: 'devops/Build.ps1'
+      arguments: '-Platform ${{ parameters.platform }} -OutLocation $(Build.ArtifactStagingDirectory) ${{ parameters.additionalArguments }}'
+      pwsh: true
+      workingDirectory: './native'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: '${{ parameters.platform }}'
+      publishLocation: 'Container'

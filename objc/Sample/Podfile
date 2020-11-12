@@ -6,5 +6,4 @@ install! 'cocoapods', :deterministic_uuids => false
 target 'DIDComm-gRPC-Example' do
   # Depend on the generated HelloWorld library.
   pod 'DIDComm-gRPC', :path => '../../'
-  pod 'bbs-signatures', :git => "https://github.com/mattrglobal/ffi-bbs-signatures.git"
 end
