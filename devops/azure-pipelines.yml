@@ -1,0 +1,41 @@
+trigger:
+- master
+
+stages:
+  - stage: BuildNativeLibraries
+    jobs:
+    - template: build-template.yml
+      parameters:
+        vmImage: 'macos-latest'
+        platform: 'iOS'
+
+    - template: build-template.yml
+      parameters:
+        vmImage: 'windows-latest'
+        platform: 'Windows'
+
+    - template: build-template.yml
+      parameters:
+        vmImage: 'macos-latest'
+        platform: 'MacOS'
+
+    - template: build-template.yml
+      parameters:
+        vmImage: 'ubuntu-latest'
+        platform: 'Linux'
+
+    - template: build-template.yml
+      parameters:
+        vmImage: 'macos-latest'
+        platform: 'Android'
+        additionalArguments: -AndroidNdkHome ~/Library/Developer/Xamarin/android-ndk/
+
+  - stage: RunTests
+    dependsOn: BuildNativeLibraries
+    jobs:
+    - template: run-tests.yml
+    
+  - stage: CreatePackages
+    dependsOn: BuildNativeLibraries
+    jobs:
+    - template: package-nuget.yml

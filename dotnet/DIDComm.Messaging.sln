@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{0D8BF78D-13E7-4FDB-A359-6B9A4042A5DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DIDComm.Messaging", "Library\DIDComm.Messaging\DIDComm.Messaging.csproj", "{6377041A-25C4-4B54-8AB8-87629C566615}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DIDComm.Messaging.gRPC", "Library\DIDComm.Messaging.gRPC\DIDComm.Messaging.gRPC.csproj", "{6377041A-25C4-4B54-8AB8-87629C566615}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{CFCC068B-5B5C-4B2D-BCC0-DEA880F552E3}"
 EndProject

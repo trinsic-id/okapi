@@ -1,0 +1,64 @@
+<Project Sdk="MSBuild.Sdk.Extras/2.0.54">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.1;xamarinios10</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <SkipNativeLibsCopy>false</SkipNativeLibsCopy>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.13.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Grpc" Version="2.32.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.32.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\libs\macos\libdidcommgrpc.dylib" PackagePath="native/macos/libdidcommgrpc.dylib" Pack="true" Visible="false" />
+    <None Include="..\..\..\libs\ios\libdidcommgrpc.a" PackagePath="native/ios/libdidcommgrpc.a" Pack="true" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="..\..\..\proto\security.proto" Link="Protobuf/security.proto" />
+    <Protobuf Include="..\..\..\proto\didcomm.proto" Link="Protobuf/didcomm.proto" />
+    <Protobuf Include="..\..\..\proto\api.proto" Link="Protobuf/api.proto" />
+    <Protobuf Include="..\..\..\proto\basic-message.proto" Link="Protobuf/basic-message.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="build\netstandard2.1\DIDComm.Messaging.gRPC.targets" Pack="true" PackagePath="build/netstandard2.1" Visible="false" />
+    <Content Include="build\xamarinios10\DIDComm.Messaging.gRPC.targets" Pack="true" PackagePath="build/xamarinios10" Visible="false" />
+    <Content Include="build\MonoAndroid10\DIDComm.Messaging.gRPC.targets" Pack="true" PackagePath="build/MonoAndroid10" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="build\netstandard2.1\DIDComm.Messaging.gRPC.targets" Visible="false" />
+    <None Update="build\xamarinios10\DIDComm.Messaging.gRPC.targets" Visible="false" />
+    <None Update="build\MonoAndroid10\DIDComm.Messaging.gRPC.targets" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(SkipNativeLibsCopy)' != 'true'">
+    <Content Include="..\..\..\libs\windows\didcommgrpc.dll" Condition="'$([MSBuild]::IsOsPlatform(Windows))'">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Link>didcommgrpc.dll</Link>
+      <Visible>false</Visible>
+      <Pack>false</Pack>
+    </Content>
+    <Content Include="..\..\..\libs\linux\libdidcommgrpc.so" Condition="'$([MSBuild]::IsOsPlatform(Linux))'">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Link>libdidcommgrpc.so</Link>
+      <Visible>false</Visible>
+      <Pack>false</Pack>
+    </Content>
+    <Content Include="..\..\..\libs\macos\libdidcommgrpc.dylib" Condition="'$([MSBuild]::IsOsPlatform(OSX))'">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Link>libdidcommgrpc.dylib</Link>
+      <Visible>false</Visible>
+      <Pack>false</Pack>
+    </Content>
+  </ItemGroup>
+
+</Project>

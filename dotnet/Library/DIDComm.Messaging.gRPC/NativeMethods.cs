@@ -12,7 +12,7 @@ namespace DIDComm.Messaging
 #if __IOS__
         internal const string LibraryName = "__Internal";
 #else
-        internal const string LibraryName = "didcomm_grpc";
+        internal const string LibraryName = "didcommgrpc";
 #endif
 
         #region Resources
