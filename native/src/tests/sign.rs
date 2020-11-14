@@ -31,21 +31,9 @@ fn test_sign_payload(secret_key: &str, payload: &str) {
 }
 
 #[theory]
-#[case(
-    "6Lx39RyWn3syuozAe2WiPdAYn1ctMx17t8yrBMGFBmZy",
-    "6fioC1zcDPyPEL19pXRS2E4iJ46zH7xP6uSgAaPdwDrx",
-    "message"
-)]
-#[case(
-    "352bT2PhPyDS5pzHSfCN1Hcp8E67anpyNwLuWp3ga6VD",
-    "9j1mZuDTFSsrP8xwS4iyJwi22GZEsGFe2nutDB25R4jY",
-    "message"
-)]
-#[case(
-    "Aw5dELfJvRbc2BwXKEogdpFfNGsZ7gx2Bi6PahGfzboe",
-    "2E9xcBvRVRGAgnySqpNzW6JoYjnjtt2BtqDSPEdsWNjk",
-    "message"
-)]
+#[case("6Lx39RyWn3syuozAe2WiPdAYn1ctMx17t8yrBMGFBmZy", "6fioC1zcDPyPEL19pXRS2E4iJ46zH7xP6uSgAaPdwDrx", "message")]
+#[case("352bT2PhPyDS5pzHSfCN1Hcp8E67anpyNwLuWp3ga6VD", "9j1mZuDTFSsrP8xwS4iyJwi22GZEsGFe2nutDB25R4jY", "message")]
+#[case("Aw5dELfJvRbc2BwXKEogdpFfNGsZ7gx2Bi6PahGfzboe", "2E9xcBvRVRGAgnySqpNzW6JoYjnjtt2BtqDSPEdsWNjk", "message")]
 fn test_sign_verify(secret_key: &str, public_key: &str, payload: &str) {
     let request = byte_buffer!(SignRequest {
         payload: payload.as_bytes().to_vec(),

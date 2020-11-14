@@ -1,30 +1,40 @@
 import { expect } from "chai";
-import { generateKey, sign, verify, didcomm } from "../index";
-
-const dm = didcomm.messaging;
-
+import {
+  generateKey,
+  sign,
+  verify,
+  GenerateKeyRequest,
+  SignRequest,
+  VerifyRequest,
+  KeyType,
+} from "../index";
 describe("Sign and verify demo", () => {
   it("generate keys, sign and verify", () => {
     let payload = Buffer.from("Hello DIDComm over gRPC!");
 
-    let key = generateKey({
-      keyType: dm.KeyType.ed25519,
-    }).key;
+    let keyRequest = new GenerateKeyRequest();
+    keyRequest.setKeyType(KeyType.ED25519);
 
-    let signature = sign({
-      payload: payload,
-      key: key,
-    }).message;
+    let keyResponse = generateKey(keyRequest);
 
-    let verified = verify({
-      message: signature,
-      key: key,
-    }).isValid;
+    // Sign payload
+    let signRequest = new SignRequest();
+    signRequest.setPayload(payload);
+    signRequest.setKey(keyResponse.getKey());
 
-    expect(verified).to.equal(true);
+    let signResponse = sign(signRequest);
+
+    // Verify payload
+    let verifyRequest = new VerifyRequest();
+    verifyRequest.setKey(keyResponse.getKey());
+    verifyRequest.setMessage(signResponse.getMessage());
+
+    let verifyResponse = verify(verifyRequest);
+
+    expect(verifyResponse.getIsValid()).to.equal(true);
   });
 
   it("sign throws on incorrect input", () => {
-    expect(() => sign({})).to.throw("unreachable");
+    expect(() => sign(new SignRequest())).to.throw("unreachable");
   });
 });

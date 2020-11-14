@@ -20,3 +20,13 @@ export function sign(request: Uint8Array): Uint8Array;
 * @returns {Uint8Array}
 */
 export function verify(request: Uint8Array): Uint8Array;
+/**
+* @param {Uint8Array} request
+* @returns {Uint8Array}
+*/
+export function pack(request: Uint8Array): Uint8Array;
+/**
+* @param {Uint8Array} request
+* @returns {Uint8Array}
+*/
+export function unpack(request: Uint8Array): Uint8Array;

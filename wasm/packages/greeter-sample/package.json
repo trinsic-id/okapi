@@ -1,0 +1,31 @@
+{
+  "name": "greeter-sample",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "Tomislav Markovski <tomislav@trinsic.id>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "npx tsc",
+    "server": "node dist/index",
+    "client": "node dist/client",
+    "mocha": "mocha -r ts-node/register"
+  },
+  "dependencies": {
+    "@types/bs58": "^4.0.1",
+    "@types/prompt-sync": "^4.1.0",
+    "bs58": "^4.0.1",
+    "didcomm-grpc": "file:../didcomm-grpc",
+    "grpc": "^1.24.4",
+    "prompt-sync": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/mocha": "^8.0.4",
+    "mocha": "^8.2.1",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.5"
+  }
+}

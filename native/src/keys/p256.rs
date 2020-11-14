@@ -1,13 +1,22 @@
-use super::{generate_seed, Signer};
+use std::convert::TryFrom;
+
+use super::{generate_seed, EcdsaSigner};
 use crate::didcomm::{Key, KeyType};
 use p256::{
-    ecdsa::{SigningKey, VerifyKey},
+    ecdsa::{signature::Signer, signature::Verifier, Signature, SigningKey, VerifyKey},
     EncodedPoint,
 };
+use url::Url;
 
 pub struct P256Key {
     signing_key: Option<SigningKey>,
     verify_key: VerifyKey,
+}
+
+impl std::fmt::Debug for P256Key {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.write_fmt(format_args!("{:?}", self.verify_key))
+    }
 }
 
 impl P256Key {
@@ -24,10 +33,17 @@ impl P256Key {
     }
 
     pub fn from_public_key(public_key: &[u8]) -> Self {
+        let pk: Vec<u8> = match public_key.len() == 65 {
+            true => public_key.to_vec(),
+            false => {
+                let mut pkk = public_key.to_vec();
+                pkk.insert(0, 0x04);
+                pkk
+            }
+        };
         P256Key {
-            verify_key: VerifyKey::from_encoded_point(&EncodedPoint::from_bytes(public_key).expect("invalid key"))
-                .expect("invalid point"), //.to_encoded_point(false),
-            signing_key: None,
+            signing_key: None, //.to_encoded_point(false),
+            verify_key: VerifyKey::from_encoded_point(&EncodedPoint::from_bytes(pk.as_slice()).expect("invalid key")).expect("invalid point"),
         }
     }
 }
@@ -41,15 +57,41 @@ impl From<Key> for P256Key {
     }
 }
 
-impl Signer for P256Key {
+impl TryFrom<String> for P256Key {
+    type Error = String;
+
+    fn try_from(did_uri: String) -> Result<Self, Self::Error> {
+        // let re = Regex::new(r"did:key:[\w]*#[\w]*\??[\w]*").unwrap();
+
+        let url = Url::parse(did_uri.as_ref()).unwrap();
+
+        let fingerprint = base58_decode!(url.fragment().unwrap().strip_prefix("z").unwrap());
+        let fingerprint_data = fingerprint.as_slice();
+
+        let codec = &fingerprint_data[..3];
+        if codec != &[0x12, 0x0, 0x1] {
+            return Err("invalid multicodec bytes".to_string());
+        }
+        Ok(P256Key::from_public_key(&fingerprint_data[3..]))
+    }
+}
+
+impl EcdsaSigner for P256Key {
     type Err = String;
 
     fn sign(&self, payload: &[u8]) -> Vec<u8> {
-        todo!()
+        let signature = match &self.signing_key {
+            Some(sig) => sig.sign(payload),
+            None => panic!("secret key not found"),
+        };
+        signature.as_ref().to_vec()
     }
 
     fn verify(&self, payload: &[u8], signature: &[u8]) -> Result<(), Self::Err> {
-        todo!()
+        match self.verify_key.verify(payload, &Signature::try_from(signature).unwrap()).is_ok() {
+            true => Ok(()),
+            false => Err("invalid signature".to_string()),
+        }
     }
 
     fn get_fingerprint(&self) -> String {

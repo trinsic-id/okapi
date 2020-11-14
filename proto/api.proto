@@ -5,6 +5,7 @@ package didcomm.messaging;
 option csharp_namespace = "DIDComm.Messaging";
 
 import "security.proto";
+import "google/protobuf/struct.proto";
 
 message GenerateKeyRequest {
     bytes seed = 1;
@@ -64,6 +65,13 @@ message UnpackResponse {
    bytes plaintext = 1;
 }
 
+message GetDidDocumentRequest {
+    Key key = 1;
+}
+
+message GetDidDocumentResponse {
+    google.protobuf.Struct did_document = 1;
+}
 
 message Key {
     string key_id = 1                               [json_name="kid"];

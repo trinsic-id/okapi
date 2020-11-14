@@ -12,7 +12,7 @@ pub fn generate_key(request: Uint8Array) -> Result<Uint8Array, JsValue> {
     let req = GenerateKeyRequest::decode(request.to_vec().as_slice()).unwrap();
     let key_type = KeyType::from_i32(req.key_type).expect("invalid key type");
 
-    let ver_method: Box<dyn Signer<Err = _>> = match key_type {
+    let ver_method: Box<dyn EcdsaSigner<Err = _>> = match key_type {
         KeyType::Ed25519 => Box::new(Ed25519Key::from_seed(&req.seed)),
         KeyType::X25519 => Box::new(X25519Key::from_seed(&req.seed)),
         KeyType::P256 => Box::new(P256Key::from_seed(&req.seed)),
@@ -29,25 +29,16 @@ pub fn convert_key(request: Uint8Array) -> Result<Uint8Array, JsValue> {
     let req = ConvertKeyRequest::decode(request.to_vec().as_slice()).unwrap();
     let key = req.key.expect("Key not found");
 
-    let (sk, pk) = match (
+    let converted_key: X25519Key = match (
         KeyType::from_i32(key.key_type).expect("invalid key type"),
         KeyType::from_i32(req.target_type).expect("invalid key type"),
     ) {
-        (KeyType::Ed25519, KeyType::X25519) => match key.secret_key.is_empty() {
-            true => (vec![], ed25519_public_to_x25519_public(&key.public_key)),
-            false => ed25519_secret_to_x25519_keypair(&key.secret_key),
-        },
+        (KeyType::Ed25519, KeyType::X25519) => Ed25519Key::from(key).into(),
         _ => panic!("unsupported conversion"),
     };
 
     let response = encode!(ConvertKeyResponse {
-        key: Some(Key {
-            key_id: String::default(),
-            key_type: KeyType::X25519.into(),
-            public_key: pk.clone(),
-            secret_key: sk.clone(),
-            fingerprint: String::default()
-        })
+        key: Some(converted_key.as_key())
     });
     Ok(response.as_slice().into())
 }
@@ -58,7 +49,7 @@ pub fn sign(request: Uint8Array) -> Result<Uint8Array, JsValue> {
     let key = req.key.expect("Key not found");
     let key_type = KeyType::from_i32(key.key_type).expect("invalid key type");
 
-    let ver_method: Box<dyn Signer<Err = _>> = match key_type {
+    let ver_method: Box<dyn EcdsaSigner<Err = _>> = match key_type {
         KeyType::Ed25519 => Box::new(Ed25519Key::from_seed(&key.secret_key)),
         KeyType::X25519 => Box::new(X25519Key::from_seed(&key.secret_key)),
         KeyType::P256 => Box::new(P256Key::from_seed(&key.secret_key)),
@@ -87,19 +78,16 @@ pub fn verify(request: Uint8Array) -> Result<Uint8Array, JsValue> {
 
     let message = req.message.expect("message is required");
     let signature = message.signatures.first().expect("signature is required");
-    let _ = SignatureHeader::decode(signature.header.as_slice())
-        .expect("header in signature is required");
+    let _ = SignatureHeader::decode(signature.header.as_slice()).expect("header in signature is required");
 
-    let ver_method: Box<dyn Signer<Err = _>> = match key_type {
+    let ver_method: Box<dyn EcdsaSigner<Err = _>> = match key_type {
         KeyType::Ed25519 => Box::new(Ed25519Key::from_seed(&key.secret_key)),
         KeyType::X25519 => Box::new(X25519Key::from_seed(&key.secret_key)),
         KeyType::P256 => Box::new(P256Key::from_seed(&key.secret_key)),
     };
 
     let response = encode!(VerifyResponse {
-        is_valid: ver_method
-            .verify(&message.payload, &signature.signature)
-            .map_or(false, |_| true)
+        is_valid: ver_method.verify(&message.payload, &signature.signature).map_or(false, |_| true)
     });
     Ok(response.as_slice().into())
 }
