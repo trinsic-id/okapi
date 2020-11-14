@@ -1,56 +1,45 @@
 import { expect } from "chai";
-import { generateKey, convertKey, didcomm } from "../index";
-
-const dm = didcomm.messaging;
+import { generateKey, GenerateKeyRequest, KeyType } from "../index";
 
 describe("Generate key tests", () => {
-  it("should encode generate key request", () => {
-    let request = new dm.GenerateKeyRequest({
-      keyType: dm.KeyType.ed25519,
-    });
+  it("should encode generate key request (p256)", () => {
+    let request = new GenerateKeyRequest();
+    request.setKeyType(KeyType.P256);
 
     var actual = generateKey(request);
 
-    expect(actual)
-      .to.have.property("key")
-      .and.to.have.property("keyType")
-      .and.to.equal(dm.KeyType.ed25519);
+    expect(actual.getKey()).to.be.not.null;
+    expect(actual.getKey().getKeyType()).to.be.eq(KeyType.P256);
   });
 
   it("should generate key with random seed (ed25519)", () => {
-    let request = new dm.GenerateKeyRequest({
-      keyType: dm.KeyType.ed25519,
-      seed: new Uint8Array(32),
-    });
+    let request = new GenerateKeyRequest();
+    request.setKeyType(KeyType.ED25519);
 
-    var response = generateKey(request);
+    var actual = generateKey(request);
 
-    expect(response).to.have.property("key");
-    expect(response.key)
-      .to.have.property("keyType")
-      .and.be.equal(dm.KeyType.ed25519);
-    expect(response.key).to.have.property("publicKey");
-    expect(response.key).to.have.property("secretKey");
+    expect(actual.getKey()).to.be.not.null;
+    expect(actual.getKey().getKeyType()).to.be.eq(KeyType.ED25519);
+    expect(actual.getKey().getPublicKey()).not.null;
+    expect(actual.getKey().getSecretKey()).not.null;
   });
 
   it("should generate key with no seed (x25519)", () => {
-    let request = new dm.GenerateKeyRequest({
-      keyType: dm.KeyType.x25519,
-    });
+    let request = new GenerateKeyRequest();
+    request.setKeyType(KeyType.X25519);
 
-    var response = generateKey(request);
+    var actual = generateKey(request);
 
-    expect(response).to.have.property("key");
-    expect(response.key)
-      .to.have.property("keyType")
-      .and.be.equal(dm.KeyType.x25519);
-    expect(response.key).to.have.property("publicKey");
-    expect(response.key).to.have.property("secretKey");
+    expect(actual.getKey()).to.be.not.null;
+    expect(actual.getKey().getKeyType()).to.equal(KeyType.X25519);
+    expect(actual.getKey().getPublicKey()).not.null;
+    expect(actual.getKey().getSecretKey()).not.null;
   });
 
-  it("validate throws on incorrect input", () => {
-    expect(() => generateKey({ keyType: -1 })).to.throw(
-      "keyType: enum value expected"
-    );
+  it("throws on incorrect input for key type", () => {
+    let request = new GenerateKeyRequest();
+    request.setKeyType(-1);
+
+    expect(() => generateKey(request)).to.throw("unreachable");
   });
 });

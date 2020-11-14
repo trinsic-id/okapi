@@ -1,4 +1,10 @@
-use crate::{api::keys::*, didcomm::*};
+use std::convert::TryFrom;
+
+use crate::{
+    api::keys::*,
+    didcomm::*,
+    keys::{ed25519::Ed25519Key, p256::P256Key, x25519::X25519Key, EcdsaSigner},
+};
 use fluid::prelude::*;
 use prost::Message;
 
@@ -23,6 +29,23 @@ fn test_generate_key_no_seed(key_type: KeyType, public_key_size: usize) {
     assert_eq!(key_type as i32, key.key_type);
     assert_eq!(public_key_size, key.public_key.len());
     assert_eq!(32, key.secret_key.len());
+}
+
+#[test]
+fn test_did_uri_to_ed25519() {
+    let did_uri = "did:key:z6Mkk7yqnGF3YwTrLpqrW6PGsKci7dNqh1CjnvMbzrMerSeL#z6Mkk7yqnGF3YwTrLpqrW6PGsKci7dNqh1CjnvMbzrMerSeL";
+    let key = Ed25519Key::try_from(did_uri.to_string());
+
+    assert!(key.map_or(false, |_| true));
+}
+
+#[test]
+fn test_did_uri_to_x25519() {
+    let did_uri =
+        "did:key:zXwpEHqfc5gnkCBdCnBqYaaoCaeLRSEPjLg2CAJB6H1ST7XC96h8C3N1MBEAefmPaSGv8aFnLDAgPzKhPQZX7vVVJsyd#zXwpEHqfc5gnkCBdCnBqYaaoCaeLRSEPjLg2CAJB6H1ST7XC96h8C3N1MBEAefmPaSGv8aFnLDAgPzKhPQZX7vVVJsyd";
+    let key = P256Key::try_from(did_uri.to_string());
+
+    assert!(key.map_or(false, |_| true));
 }
 
 #[theory]
@@ -98,27 +121,19 @@ fn test_generate_key_with_seed(key_type: KeyType, seed: &str, public_key: &str) 
     assert_eq!(public_key, base58_encode!(key.public_key));
 }
 
+#[test]
+fn t() {
+    let key = X25519Key::from_public_key(base58_decode!("3EK9AYXoUV4Unn5AjvYY39hyK91n7gg4ExC8rKKSUQXJ").as_ref());
+
+    println!("{:?}", key.as_key().fingerprint);
+}
+
 #[theory]
-#[case(
-    "6fioC1zcDPyPEL19pXRS2E4iJ46zH7xP6uSgAaPdwDrx",
-    "FxfdY3DCQxVZddKGAtSjZdFW9bCCW7oRwZn1NFJ2Tbg2"
-)]
-#[case(
-    "9j1mZuDTFSsrP8xwS4iyJwi22GZEsGFe2nutDB25R4jY",
-    "Ff8nD7Zgm8ZNhBZcmHTqrfg2FRf6tU6Ki5BDmA9gtrRm"
-)]
-#[case(
-    "CTDAH3MW8Dorz6XpLHtwTXgAfkkXBbRVSJy4aXyj13CR",
-    "GkMFTHJ2DuwfsSiJ1eKpcNBqYau9i5VW5qXiy2po4tqJ"
-)]
-#[case(
-    "2E9xcBvRVRGAgnySqpNzW6JoYjnjtt2BtqDSPEdsWNjk",
-    "ELMGmTD43y15v6YaD3kfM5oF5xHnpv9eiNkZoNQxWunh"
-)]
-#[case(
-    "6JmFgRnWVTUi4vVZAd4aNpZKfP8LenvQGk1q1uM34ajq",
-    "AgEcgKRLDXS1puWdz3o2uyAuFZXRMGLi2widbZ1G7MLv"
-)]
+#[case("6fioC1zcDPyPEL19pXRS2E4iJ46zH7xP6uSgAaPdwDrx", "FxfdY3DCQxVZddKGAtSjZdFW9bCCW7oRwZn1NFJ2Tbg2")]
+#[case("9j1mZuDTFSsrP8xwS4iyJwi22GZEsGFe2nutDB25R4jY", "Ff8nD7Zgm8ZNhBZcmHTqrfg2FRf6tU6Ki5BDmA9gtrRm")]
+#[case("CTDAH3MW8Dorz6XpLHtwTXgAfkkXBbRVSJy4aXyj13CR", "GkMFTHJ2DuwfsSiJ1eKpcNBqYau9i5VW5qXiy2po4tqJ")]
+#[case("2E9xcBvRVRGAgnySqpNzW6JoYjnjtt2BtqDSPEdsWNjk", "ELMGmTD43y15v6YaD3kfM5oF5xHnpv9eiNkZoNQxWunh")]
+#[case("6JmFgRnWVTUi4vVZAd4aNpZKfP8LenvQGk1q1uM34ajq", "AgEcgKRLDXS1puWdz3o2uyAuFZXRMGLi2widbZ1G7MLv")]
 fn convert_ed_to_montgomery(ed_key: &str, montgomery_key: &str) {
     let request = byte_buffer!(ConvertKeyRequest {
         key: Some(Key {
@@ -143,16 +158,12 @@ fn convert_ed_to_montgomery(ed_key: &str, montgomery_key: &str) {
     assert_eq!(montgomery_key, base58_encode!(key.public_key));
 }
 
+#[test]
+fn test_p256_signature_demo() {
+    let key = P256Key::from_seed(vec![].as_slice());
+    let message = b"super sensitive message";
 
-//#![cfg(target_arch = "wasm32")]
+    let signature = key.sign(message);
 
-extern crate wasm_bindgen_test;
-use wasm_bindgen_test::*;
-
-wasm_bindgen_test_configure!(run_in_browser);
-
-#[wasm_bindgen_test]
-fn test() {
-    let seed = crate::keys::generate_seed(vec!().as_ref()).expect("couldn't generate random seed");
-    assert_eq!(seed.len(), 32)
+    assert!(key.verify(message, signature.as_slice()).map_or(false, |_| true));
 }

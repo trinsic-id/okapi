@@ -1,11 +1,13 @@
-use super::{generate_seed, Signer};
+use super::{generate_seed, EcdsaSigner};
 use crate::didcomm::{Key, KeyType};
 use ed25519_dalek::*;
 use std::convert::{TryFrom, TryInto};
+use url::Url;
 
+#[derive(Debug)]
 pub struct Ed25519Key {
-    secret_key: Option<SecretKey>,
-    public_key: PublicKey,
+    pub secret_key: Option<SecretKey>,
+    pub public_key: PublicKey,
 }
 
 impl Ed25519Key {
@@ -38,7 +40,28 @@ impl From<Key> for Ed25519Key {
     }
 }
 
-impl Signer for Ed25519Key {
+impl TryFrom<String> for Ed25519Key {
+    type Error = String;
+
+    fn try_from(did_uri: String) -> Result<Self, Self::Error> {
+        // let re = Regex::new(r"did:key:[\w]*#[\w]*\??[\w]*").unwrap();
+
+        let url = Url::parse(did_uri.as_ref()).unwrap();
+
+        let fingerprint = base58_decode!(url.fragment().unwrap().strip_prefix("z").unwrap());
+        let fingerprint_data = fingerprint.as_slice();
+
+        let codec = &fingerprint_data[..2];
+        if codec != &[0xed, 0x1] {
+            return Err("invalid multicodec bytes".to_string());
+        }
+        let public_key = &fingerprint_data[2..];
+
+        Ok(Ed25519Key::from_public_key(public_key))
+    }
+}
+
+impl EcdsaSigner for Ed25519Key {
     type Err = String;
 
     fn sign(&self, payload: &[u8]) -> Vec<u8> {

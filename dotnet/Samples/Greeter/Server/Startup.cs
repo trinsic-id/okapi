@@ -20,7 +20,7 @@ namespace Server
             app.UseGrpcWeb();
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGrpcService<DIDCommService>().EnableGrpcWeb();
+                endpoints.MapGrpcService<DIDCommEncryptedService>().EnableGrpcWeb();
             });
         }
     }

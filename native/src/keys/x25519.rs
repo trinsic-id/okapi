@@ -1,4 +1,4 @@
-use super::{generate_seed, Signer};
+use super::{generate_seed, EcdhExchange, EcdsaSigner};
 use crate::didcomm::{Key, KeyType};
 use std::convert::TryInto;
 use x25519_dalek::*;
@@ -40,15 +40,15 @@ impl From<Key> for X25519Key {
     }
 }
 
-impl Signer for X25519Key {
+impl EcdsaSigner for X25519Key {
     type Err = String;
 
-    fn sign(&self, payload: &[u8]) -> Vec<u8> {
-        todo!()
+    fn sign(&self, _: &[u8]) -> Vec<u8> {
+        unimplemented!()
     }
 
-    fn verify(&self, payload: &[u8], signature: &[u8]) -> Result<(), Self::Err> {
-        todo!()
+    fn verify(&self, _: &[u8], _: &[u8]) -> Result<(), Self::Err> {
+        unimplemented!()
     }
 
     fn get_fingerprint(&self) -> String {
@@ -67,6 +67,15 @@ impl Signer for X25519Key {
             public_key: self.get_public_key(),
             secret_key: (&self.static_secret).as_ref().map_or(vec![], |x| x.to_bytes().to_vec()),
             fingerprint: self.get_fingerprint(),
+        }
+    }
+}
+
+impl EcdhExchange for X25519Key {
+    fn key_exchange(&self, key: &Self) -> Vec<u8> {
+        match &(self.static_secret) {
+            Some(x) => x.diffie_hellman(&key.public_key).as_bytes().to_vec(),
+            None => panic!("secret key not present"),
         }
     }
 }

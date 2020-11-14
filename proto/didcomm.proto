@@ -5,7 +5,6 @@ package didcomm.messaging;
 option csharp_namespace = "DIDComm.Messaging";
 
 import "security.proto";
-import "google/protobuf/struct.proto";
 
 message CoreMessage {
     string id = 1;

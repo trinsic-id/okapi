@@ -1,4 +1,4 @@
-<Project Sdk="MSBuild.Sdk.Extras/2.0.54">
+<Project Sdk="MSBuild.Sdk.Extras/2.1.2">
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.1;xamarinios10</TargetFrameworks>
@@ -10,15 +10,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Google.Protobuf" Version="3.13.0" />
+    <PackageReference Include="Google.Protobuf" Version="3.14.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="Grpc" Version="2.32.0" />
-    <PackageReference Include="Grpc.Tools" Version="2.32.0" PrivateAssets="All" />
+    <PackageReference Include="Grpc" Version="2.33.1" />
+    <PackageReference Include="Grpc.Tools" Version="2.33.1" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="..\..\..\libs\macos\libdidcommgrpc.dylib" PackagePath="native/macos/libdidcommgrpc.dylib" Pack="true" Visible="false" />
     <None Include="..\..\..\libs\ios\libdidcommgrpc.a" PackagePath="native/ios/libdidcommgrpc.a" Pack="true" Visible="false" />
+    <None Include="..\..\..\libs\linux\libdidcommgrpc.so" PackagePath="native/linux/libdidcommgrpc.so" Pack="true" Visible="false" />
+    <None Include="..\..\..\libs\windows\didcommgrpc.dll" PackagePath="native/windows/didcommgrpc.dll" Pack="true" Visible="false" />
+    <None Include="..\..\..\libs\android\arm64-v8a\libdidcommgrpc.so" PackagePath="native/android/arm64-v8a/libdidcommgrpc.so" Pack="true" Visible="false" />
+    <None Include="..\..\..\libs\android\armeabi-v7a\libdidcommgrpc.so" PackagePath="native/android/armeabi-v7a/libdidcommgrpc.so" Pack="true" Visible="false" />
+    <None Include="..\..\..\libs\android\x86\libdidcommgrpc.so" PackagePath="native/android/x86/libdidcommgrpc.so" Pack="true" Visible="false" />
   </ItemGroup>
 
   <ItemGroup>

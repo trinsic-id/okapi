@@ -1,4 +1,8 @@
-use crate::{didcomm::*, pack::*};
+use crate::{
+    api::pack::*,
+    didcomm::*,
+    keys::{ecdh_key_exchange, x25519::*, EcdhExchange, EcdsaSigner},
+};
 use fluid::prelude::*;
 use prost::Message;
 use std::str::from_utf8;
@@ -55,6 +59,27 @@ fn encrypt_then_decrypt(alice_pk: &str, alice_sk: &str, bob_pk: &str, bob_sk: &s
     assert_eq!(MESSAGE, from_utf8(&unpack_response.plaintext).unwrap());
 }
 
+#[test]
+fn test_x25519_exchange() {
+    let alice = X25519Key::from_seed(vec![].as_slice());
+    let bob = X25519Key::from_seed(vec![].as_slice());
+
+    let ex1 = alice.key_exchange(&bob);
+    let ex2 = bob.key_exchange(&alice);
+
+    assert_eq!(ex1, ex2);
+}
+
+#[test]
+fn test_ecdh_key_exchange() {
+    let alice: Key = X25519Key::from_seed(vec![].as_slice()).as_key();
+    let bob: Key = X25519Key::from_seed(vec![].as_slice()).as_key();
+
+    let ex1 = ecdh_key_exchange(&alice, &bob);
+    let ex2 = ecdh_key_exchange(&bob, &alice);
+
+    assert_eq!(ex1, ex2);
+}
 fn key_from(pk: &str, sk: &str) -> crate::didcomm::Key {
     crate::didcomm::Key {
         key_id: String::new(),

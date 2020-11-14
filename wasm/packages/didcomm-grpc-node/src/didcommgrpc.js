@@ -83,6 +83,24 @@ module.exports.verify = function(request) {
     return takeObject(ret);
 };
 
+/**
+* @param {Uint8Array} request
+* @returns {Uint8Array}
+*/
+module.exports.pack = function(request) {
+    var ret = wasm.pack(addHeapObject(request));
+    return takeObject(ret);
+};
+
+/**
+* @param {Uint8Array} request
+* @returns {Uint8Array}
+*/
+module.exports.unpack = function(request) {
+    var ret = wasm.unpack(addHeapObject(request));
+    return takeObject(ret);
+};
+
 function handleError(f) {
     return function () {
         try {

@@ -10,7 +10,7 @@ pub extern "C" fn didcomm_generate_key(request: ByteBuffer, response: &mut ByteB
     let req = request_to_message!(GenerateKeyRequest, request, err);
     let key_type = KeyType::from_i32(req.key_type).expect("invalid key type");
 
-    let ver_method: Box<dyn Signer<Err = _>> = match key_type {
+    let ver_method: Box<dyn EcdsaSigner<Err = _>> = match key_type {
         KeyType::Ed25519 => Box::new(Ed25519Key::from_seed(&req.seed)),
         KeyType::X25519 => Box::new(X25519Key::from_seed(&req.seed)),
         KeyType::P256 => Box::new(P256Key::from_seed(&req.seed)),
@@ -29,14 +29,11 @@ pub extern "C" fn didcomm_convert_key(request: ByteBuffer, response: &mut ByteBu
 
     let key = req.key.expect("Key not found");
 
-    let (sk, pk) = match (
+    let converted_key: X25519Key = match (
         KeyType::from_i32(key.key_type).expect("invalid key type"),
         KeyType::from_i32(req.target_type).expect("invalid key type"),
     ) {
-        (KeyType::Ed25519, KeyType::X25519) => match key.secret_key.is_empty() {
-            true => (vec![], ed25519_public_to_x25519_public(&key.public_key)),
-            false => ed25519_secret_to_x25519_keypair(&key.secret_key),
-        },
+        (KeyType::Ed25519, KeyType::X25519) => Ed25519Key::from(key).into(),
         _ => {
             *err = err!(100, "unsupported conversion");
             return 1;
@@ -44,13 +41,7 @@ pub extern "C" fn didcomm_convert_key(request: ByteBuffer, response: &mut ByteBu
     };
 
     *response = byte_buffer!(ConvertKeyResponse {
-        key: Some(Key {
-            key_id: String::default(),
-            key_type: KeyType::X25519.into(),
-            public_key: pk.clone(),
-            secret_key: sk.clone(),
-            fingerprint: String::default()
-        })
+        key: Some(converted_key.as_key())
     });
     0
 }
