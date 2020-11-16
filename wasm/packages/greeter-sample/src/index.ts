@@ -2,6 +2,7 @@ import { GreeterService } from "./server";
 
 import { Server, ServerCredentials } from "grpc";
 import { DIDCommEncryptedService } from "didcomm-grpc";
+export * from "./client";
 
 const server: Server = new Server({
   "grpc.max_receive_message_length": -1,

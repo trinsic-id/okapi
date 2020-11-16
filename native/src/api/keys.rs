@@ -1,5 +1,3 @@
-#![cfg(not(target_arch = "wasm32"))]
-
 use crate::didcomm::*;
 use crate::keys::{ed25519::*, p256::*, x25519::*, *};
 use ffi_support::{ByteBuffer, ExternError};

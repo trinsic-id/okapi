@@ -7,7 +7,7 @@
   "scripts": {
     "build": "npx tsc -p . & npm run copy",
     "copy": "npx copyfiles -u 1 ./src/proto/* ./dist/",
-    "test": "npx ts-mocha --color src/**/*.spec.ts"
+    "test": "ts-mocha --color src/**/*.spec.ts"
   },
   "author": "",
   "license": "ISC",

@@ -4,7 +4,7 @@ The sample contains both a server and a client
 
 ## Build
 
-Run `npm i` and `npm run build`
+See the top level lerna [package build instructions](../../README.md)
 
 ### Start Server
 

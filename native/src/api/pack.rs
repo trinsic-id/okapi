@@ -1,5 +1,3 @@
-#![cfg(not(target_arch = "wasm32"))]
-
 use crate::{didcomm::*, keys::ecdh_key_exchange, pack::xchacha::XChaCha, pack::AeadSuite};
 use ffi_support::{ByteBuffer, ExternError};
 use prost::Message;

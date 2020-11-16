@@ -20,13 +20,22 @@ Implementation and message definition for extending DIDComm Messaging v2 using b
 - [Supported Platforms](#supported-platforms)
   - [Rust](native/README.md)
   - [.NET](dotnet/README.md)
-  - [WebAssembly](wasm/README.md)
+    - [x] NET Core
+    - [x] Xamarin
+    - [ ] WebAssembly
   - [Objective C](objc/README.md)
+    - [x] Swift
+  - [WebAssembly](wasm/README.md)
+    - [x] Node
+    - [ ] Browser
   - Planned
-    - Kotlin/Java
-    - Python
-    - Go
-    - Dart
+    - [ ] Java
+      - [ ] Kotlin
+      - [ ] Android
+    - [ ] React Native
+    - [ ] Python
+    - [ ] Go
+    - [ ] Dart
 - [License](LICENSE)
 - [Get Involved](#get-involved) 🙌
 
@@ -59,6 +68,8 @@ In order to extend DIDComm Messaging for use with other protocols, we need to de
 ## Extension Architecture
 
 An important factor in driving DIDComm Messaging adoption is providing libraries for multiple languages. gRPC and Protobuf libraries are already highly available; this extensions provides the missing component in the secutiry layer and packs everything together.
+
+![DIDComm gRPC Extension Architecture](docs/images/didcomm-arch-diag.png "DIDComm gRPC Extension Architecture")
 
 ### Native Security Library
 
@@ -331,9 +342,23 @@ This is a non-normative entry and should probably be standardized for all DIDCom
 
 ## Supported Platforms
 
-- [Rust](native/README.md)
-- [.NET](dotnet/README.md)
-- [WebAssembly](wasm/README.md)
-- [Objective C](objc/README.md)
+  - [Rust](native/README.md)
+  - [.NET](dotnet/README.md)
+    - [x] NET Core
+    - [x] Xamarin
+    - [ ] WebAssembly
+  - [Objective C](objc/README.md)
+    - [x] Swift
+  - [WebAssembly](wasm/README.md)
+    - [x] Node
+    - [ ] Browser
+  - Planned
+    - [ ] Java
+      - [ ] Kotlin
+      - [ ] Android
+    - [ ] React Native
+    - [ ] Python
+    - [ ] Go
+    - [ ] Dart
 
 ## Get Involved

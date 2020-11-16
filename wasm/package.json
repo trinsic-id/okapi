@@ -2,19 +2,12 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "start": "npx lerna --sort exec npm install",
-    "build": "npx lerna --sort exec npm run build",
+    "start": "npm install && npx lerna exec npm install",
+    "build": "npx lerna exec npm run build",
     "test": "npx lerna run test --stream"
   },
   "devDependencies": {
-    "lerna": "^3.22.1",
-    "mocha": "^8.2.1",
-    "ts-mocha": "^8.0.0",
-    "grpc-tools": "^1.9.1",
-    "grpc_tools_node_protoc_ts": "^5.0.1"
+    "lerna": "^3.22.1"
   },
-  "dependencies": {
-    "didcomm-grpc": "file:packages/didcomm-grpc",
-    "didcomm-grpc-node": "file:packages/didcomm-grpc-node"
-  }
+  "dependencies": {}
 }
