@@ -1,5 +1,3 @@
-#![cfg(target_arch = "wasm32")]
-
 use js_sys::Uint8Array;
 use wasm_bindgen::prelude::*;
 
