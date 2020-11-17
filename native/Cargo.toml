@@ -13,22 +13,13 @@ chacha20poly1305 = "0.7.0"
 ffi-support = "0.4"
 prost = "0.6"
 prost-types = "0.6"
-ed25519-dalek = "1.0.1"
-x25519-dalek = "1.1.0"
-curve25519-dalek = "3.0.0"
 base64 = "0.13.0"
-sha2 = "0.9.1"
-bs58 = "0.3.1"
 hex = "0.4.2"
 wasm-bindgen = "0.2.63"
 js-sys = "0.3.45"
 getrandom = { version = "0.2", features = ["js"] }
 regex = "1"
-url = "2.2"
-
-[dependencies.p256]
-version = "0.5.2"
-features = ["ecdsa", "ecdh"]
+did-key = { path = "./did-key.rs" }
 
 [build-dependencies]
 prost-build = "0.6"

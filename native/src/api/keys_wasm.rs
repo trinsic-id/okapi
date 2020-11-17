@@ -1,8 +1,8 @@
+use did_key::{DIDKey, Payload};
 use js_sys::Uint8Array;
 use wasm_bindgen::prelude::*;
 
 use crate::didcomm::*;
-use crate::keys::{ed25519::*, p256::*, x25519::*, *};
 use prost::Message;
 
 #[wasm_bindgen]
@@ -10,15 +10,9 @@ pub fn generate_key(request: Uint8Array) -> Result<Uint8Array, JsValue> {
     let req = GenerateKeyRequest::decode(request.to_vec().as_slice()).unwrap();
     let key_type = KeyType::from_i32(req.key_type).expect("invalid key type");
 
-    let ver_method: Box<dyn EcdsaSigner<Err = _>> = match key_type {
-        KeyType::Ed25519 => Box::new(Ed25519Key::from_seed(&req.seed)),
-        KeyType::X25519 => Box::new(X25519Key::from_seed(&req.seed)),
-        KeyType::P256 => Box::new(P256Key::from_seed(&req.seed)),
-    };
+    let key: Key = DIDKey::from_seed(key_type.into(), req.seed.as_slice()).into();
 
-    let response = encode!(GenerateKeyResponse {
-        key: Some(ver_method.as_key())
-    });
+    let response = encode!(GenerateKeyResponse { key: Some(key.clone()) });
     Ok(response.as_slice().into())
 }
 
@@ -27,16 +21,17 @@ pub fn convert_key(request: Uint8Array) -> Result<Uint8Array, JsValue> {
     let req = ConvertKeyRequest::decode(request.to_vec().as_slice()).unwrap();
     let key = req.key.expect("Key not found");
 
-    let converted_key: X25519Key = match (
-        KeyType::from_i32(key.key_type).expect("invalid key type"),
-        KeyType::from_i32(req.target_type).expect("invalid key type"),
-    ) {
-        (KeyType::Ed25519, KeyType::X25519) => Ed25519Key::from(key).into(),
-        _ => panic!("unsupported conversion"),
+    let target_type = KeyType::from_i32(req.target_type).expect("invalid code");
+    let key: DIDKey = key.into();
+
+    let target_did_key: DIDKey = match (key, target_type) {
+        (DIDKey::Ed25519(x), KeyType::X25519) => DIDKey::X25519(x.into()),
+        _ => unimplemented!(),
     };
+    let target_as_key: Key = target_did_key.into();
 
     let response = encode!(ConvertKeyResponse {
-        key: Some(converted_key.as_key())
+        key: Some(target_as_key.clone())
     });
     Ok(response.as_slice().into())
 }
@@ -44,20 +39,16 @@ pub fn convert_key(request: Uint8Array) -> Result<Uint8Array, JsValue> {
 #[wasm_bindgen]
 pub fn sign(request: Uint8Array) -> Result<Uint8Array, JsValue> {
     let req = SignRequest::decode(request.to_vec().as_slice()).unwrap();
-    let key = req.key.expect("Key not found");
-    let key_type = KeyType::from_i32(key.key_type).expect("invalid key type");
+    let key = req.clone().key.expect("Key not found");
 
-    let ver_method: Box<dyn EcdsaSigner<Err = _>> = match key_type {
-        KeyType::Ed25519 => Box::new(Ed25519Key::from_seed(&key.secret_key)),
-        KeyType::X25519 => Box::new(X25519Key::from_seed(&key.secret_key)),
-        KeyType::P256 => Box::new(P256Key::from_seed(&key.secret_key)),
-    };
+    let did_key: DIDKey = key.clone().into();
+    let signature = did_key.sign(Payload::Buffer(&req.payload));
 
     let response = encode!(SignResponse {
         message: Some(SignedMessage {
-            payload: req.payload.to_vec(),
+            payload: req.payload.clone(),
             signatures: vec![Signature {
-                signature: ver_method.sign(&req.payload),
+                signature: signature.clone(),
                 header: encode!(SignatureHeader {
                     algorithm: String::from("TODO"),
                     key_id: key.key_id.clone()
@@ -72,20 +63,14 @@ pub fn sign(request: Uint8Array) -> Result<Uint8Array, JsValue> {
 pub fn verify(request: Uint8Array) -> Result<Uint8Array, JsValue> {
     let req = VerifyRequest::decode(request.to_vec().as_slice()).unwrap();
     let key = req.key.expect("Key not found");
-    let key_type = KeyType::from_i32(key.key_type).expect("invalid key type");
 
     let message = req.message.expect("message is required");
     let signature = message.signatures.first().expect("signature is required");
     let _ = SignatureHeader::decode(signature.header.as_slice()).expect("header in signature is required");
 
-    let ver_method: Box<dyn EcdsaSigner<Err = _>> = match key_type {
-        KeyType::Ed25519 => Box::new(Ed25519Key::from_seed(&key.secret_key)),
-        KeyType::X25519 => Box::new(X25519Key::from_seed(&key.secret_key)),
-        KeyType::P256 => Box::new(P256Key::from_seed(&key.secret_key)),
-    };
+    let did_key: DIDKey = key.into();
+    let valid = did_key.verify(Payload::Buffer(&signature.signature), &signature.signature);
 
-    let response = encode!(VerifyResponse {
-        is_valid: ver_method.verify(&message.payload, &signature.signature).map_or(false, |_| true)
-    });
+    let response = encode!(VerifyResponse { is_valid: valid });
     Ok(response.as_slice().into())
 }

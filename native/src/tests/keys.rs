@@ -1,10 +1,7 @@
 use std::convert::TryFrom;
 
-use crate::{
-    api::keys::*,
-    didcomm::*,
-    keys::{ed25519::Ed25519Key, p256::P256Key, x25519::X25519Key, EcdsaSigner},
-};
+use crate::{api::keys::*, didcomm::*};
+use did_key::{ed25519::Ed25519Key, p256::P256Key, DIDKey, Payload};
 use fluid::prelude::*;
 use prost::Message;
 
@@ -121,13 +118,6 @@ fn test_generate_key_with_seed(key_type: KeyType, seed: &str, public_key: &str) 
     assert_eq!(public_key, base58_encode!(key.public_key));
 }
 
-#[test]
-fn t() {
-    let key = X25519Key::from_public_key(base58_decode!("3EK9AYXoUV4Unn5AjvYY39hyK91n7gg4ExC8rKKSUQXJ").as_ref());
-
-    println!("{:?}", key.as_key().fingerprint);
-}
-
 #[theory]
 #[case("6fioC1zcDPyPEL19pXRS2E4iJ46zH7xP6uSgAaPdwDrx", "FxfdY3DCQxVZddKGAtSjZdFW9bCCW7oRwZn1NFJ2Tbg2")]
 #[case("9j1mZuDTFSsrP8xwS4iyJwi22GZEsGFe2nutDB25R4jY", "Ff8nD7Zgm8ZNhBZcmHTqrfg2FRf6tU6Ki5BDmA9gtrRm")]
@@ -160,10 +150,10 @@ fn convert_ed_to_montgomery(ed_key: &str, montgomery_key: &str) {
 
 #[test]
 fn test_p256_signature_demo() {
-    let key = P256Key::from_seed(vec![].as_slice());
+    let key = DIDKey::P256(P256Key::from_seed(vec![].as_slice()));
     let message = b"super sensitive message";
 
-    let signature = key.sign(message);
+    let signature = key.sign(Payload::Buffer(&message.to_vec()));
 
-    assert!(key.verify(message, signature.as_slice()).map_or(false, |_| true));
+    assert!(key.verify(Payload::Buffer(&message.to_vec()), &signature));
 }

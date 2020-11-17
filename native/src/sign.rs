@@ -1,9 +1,7 @@
 #![cfg(not(target_arch = "wasm32"))]
 
-use crate::{
-    didcomm::*,
-    keys::{ed25519::Ed25519Key, p256::P256Key, x25519::X25519Key, *},
-};
+use crate::didcomm::*;
+use did_key::{DIDKey, Payload};
 use ffi_support::{ByteBuffer, ExternError};
 use prost::Message;
 
@@ -12,21 +10,11 @@ pub extern "C" fn didcomm_sign(request: ByteBuffer, response: &mut ByteBuffer, e
     let req = request_to_message!(SignRequest, request, err);
     let key = unwrap_opt!(req.key, err, "key not found");
 
-    let signature = match KeyType::from_i32(key.key_type).expect("invalid enum code") {
-        KeyType::Ed25519 => {
-            use ed25519_dalek::*;
+    let did_key: DIDKey = key.clone().into();
+    let signature = did_key.sign(Payload::Buffer(&req.payload));
 
-            let sk: SecretKey = unwrap!(SecretKey::from_bytes(&key.secret_key), err);
-            let pk: PublicKey = (&sk).into();
-            let esk: ExpandedSecretKey = (&sk).into();
-
-            esk.sign(&req.payload, &pk).to_bytes()
-        }
-        _ => {
-            *err = err!("unsupported key type");
-            return 1;
-        }
-    };
+    println!("message {:?}", &req.payload);
+    println!("signature {:?}", &signature.to_vec());
 
     *response = byte_buffer!(SignResponse {
         message: Some(SignedMessage {
@@ -51,22 +39,19 @@ pub extern "C" fn didcomm_verify(request: ByteBuffer, response: &mut ByteBuffer,
     let message = unwrap_opt!(req.message, err, "message is required");
     let signature = unwrap_opt!(message.signatures.first(), err, "signature is required");
     let header = unwrap!(SignatureHeader::decode(signature.header.as_slice()), err, "header in signature is required");
-    let key_type = unwrap_opt!(KeyType::from_i32(key.key_type), err, "invalid enum code");
 
     if header.key_id != key.key_id {
         *err = err!("supplied key id doesn't match signature header");
         return 1;
     }
 
-    let key: Box<dyn EcdsaSigner<Err = _>> = match key_type {
-        KeyType::Ed25519 => Box::new(Ed25519Key::from(key)),
-        KeyType::X25519 => Box::new(X25519Key::from(key)),
-        KeyType::P256 => Box::new(P256Key::from(key)),
-    };
+    let did_key: DIDKey = key.into();
+    let valid = did_key.verify(Payload::Buffer(&message.payload), &signature.signature);
 
-    *response = byte_buffer!(VerifyResponse {
-        is_valid: key.verify(message.payload.as_slice(), signature.signature.as_slice()).map_or(false, |_| true)
-    });
+    println!("message {:?}", &message.payload);
+    println!("signature {:?}", &signature.signature);
+
+    *response = byte_buffer!(VerifyResponse { is_valid: valid });
     *err = err!();
     0
 }

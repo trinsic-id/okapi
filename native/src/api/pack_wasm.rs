@@ -1,7 +1,8 @@
+use did_key::DIDKey;
 use js_sys::Uint8Array;
 use wasm_bindgen::prelude::*;
 
-use crate::{didcomm::*, keys::ecdh_key_exchange, pack::xchacha::XChaCha, pack::AeadSuite};
+use crate::{didcomm::*, pack::xchacha::XChaCha, pack::AeadSuite};
 use prost::Message;
 
 #[wasm_bindgen]
@@ -13,7 +14,9 @@ pub fn pack(request: Uint8Array) -> Result<Uint8Array, JsValue> {
     let receiver_key = req.receiver_key.expect("receiver key not found");
     let sender_key = req.sender_key.expect("sender key not found");
 
-    let cek = ecdh_key_exchange(&sender_key, &receiver_key);
+    let sender_did_key: DIDKey = sender_key.clone().into();
+    let cek = sender_did_key.key_exchange(&receiver_key.clone().into());
+
     let mut nonce = [0u8; 24];
     getrandom::getrandom(&mut nonce).expect("cannot generate random seed");
 
@@ -51,15 +54,12 @@ pub fn unpack(request: Uint8Array) -> Result<Uint8Array, JsValue> {
     let recipient = message.recipients.first().unwrap().clone();
     let header = recipient.header.unwrap();
     let alg = EncryptionAlgorithm::from_i32(header.algorithm).expect("invalid code");
-    let mode = EncryptionMode::from_i32(header.mode).expect("invalid code");
 
     let receiver_key = req.receiver_key.expect("receiver key not found");
     let sender_key = req.sender_key.expect("sender key not found");
 
-    let cek = match mode {
-        EncryptionMode::Direct => ecdh_key_exchange(&receiver_key, &sender_key),
-        _ => panic!("unsupported encryption mode"),
-    };
+    let sender_did_key: DIDKey = sender_key.clone().into();
+    let cek = sender_did_key.key_exchange(&receiver_key.clone().into());
 
     let result = match alg {
         EncryptionAlgorithm::Xchacha20poly1305 => XChaCha::from(&cek).decrypt(
