@@ -13,7 +13,6 @@ pub mod didcomm {
 #[macro_use]
 mod macros;
 pub mod api;
-pub mod keys;
 pub mod pack;
 pub mod sign;
 #[cfg(test)]

@@ -1,4 +1,5 @@
-use crate::{didcomm::*, keys::ecdh_key_exchange, pack::xchacha::XChaCha, pack::AeadSuite};
+use crate::{didcomm::*, pack::xchacha::XChaCha, pack::AeadSuite};
+use did_key::DIDKey;
 use ffi_support::{ByteBuffer, ExternError};
 use prost::Message;
 
@@ -11,7 +12,9 @@ pub extern "C" fn didcomm_pack(request: ByteBuffer, response: &mut ByteBuffer, e
     let receiver_key = unwrap_opt!(req.receiver_key, err, "receiver key not found");
     let sender_key = unwrap_opt!(req.sender_key, err, "sender key not found");
 
-    let cek = ecdh_key_exchange(&sender_key, &receiver_key);
+    let sender_did_key: DIDKey = sender_key.clone().into();
+    let cek = sender_did_key.key_exchange(&receiver_key.clone().into());
+
     let mut nonce = [0u8; 24];
     getrandom::getrandom(&mut nonce).expect("cannot generate random seed");
 
@@ -58,7 +61,10 @@ pub extern "C" fn didcomm_unpack(request: ByteBuffer, response: &mut ByteBuffer,
     let sender_key = unwrap_opt!(req.sender_key, err, "sender key not found");
 
     let cek = match mode {
-        EncryptionMode::Direct => ecdh_key_exchange(&receiver_key, &sender_key),
+        EncryptionMode::Direct => {
+            let rec_did_key: DIDKey = receiver_key.into();
+            rec_did_key.key_exchange(&sender_key.into())
+        }
         _ => {
             *err = err!("unsupported encryption mode");
             return 1;
