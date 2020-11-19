@@ -1,7 +1,7 @@
-use crate::{api::pack::*, didcomm::*};
+use crate::{proto::*, DIDComm};
 use did_key::{x25519::X25519Key, DIDKey};
 use fluid::prelude::*;
-use prost::Message;
+
 use std::str::from_utf8;
 
 #[theory]
@@ -27,32 +27,26 @@ fn encrypt_then_decrypt(alice_pk: &str, alice_sk: &str, bob_pk: &str, bob_sk: &s
     const MESSAGE: &str = "super secret message";
 
     // Encrypt
-    let request = byte_buffer!(PackRequest {
+    let request = PackRequest {
         receiver_key: Some(key_from(bob_pk, bob_sk)),
         sender_key: Some(key_from(alice_pk, alice_sk)),
         associated_data: vec![],
         plaintext: MESSAGE.as_bytes().to_vec(),
         mode: EncryptionMode::Direct as i32,
-        algorithm: EncryptionAlgorithm::Xchacha20poly1305 as i32
-    });
-    let mut response = byte_buffer!();
-    let mut err = err!();
+        algorithm: EncryptionAlgorithm::Xchacha20poly1305 as i32,
+    };
 
-    let encrypt_result = didcomm_pack(request, &mut response, &mut err);
-    let pack_response = request_to_message!(PackResponse, response);
+    let pack_response = DIDComm::pack(&request).unwrap();
     let encrypted_message = pack_response.message.unwrap();
 
     // Decrypt
-    let unpack_request = byte_buffer!(UnpackRequest {
+    let unpack_request = UnpackRequest {
         receiver_key: Some(key_from(alice_pk, alice_sk)),
         sender_key: Some(key_from(bob_pk, bob_sk)),
-        message: Some(encrypted_message.clone())
-    });
-    let decrypt_result = didcomm_unpack(unpack_request, &mut response, &mut err);
-    let unpack_response = request_to_message!(UnpackResponse, response);
+        message: Some(encrypted_message.clone()),
+    };
+    let unpack_response = DIDComm::unpack(&unpack_request).unwrap();
 
-    assert_eq!(0, encrypt_result);
-    assert_eq!(0, decrypt_result);
     assert_eq!(MESSAGE, from_utf8(&unpack_response.plaintext).unwrap());
 }
 
@@ -67,18 +61,8 @@ fn test_x25519_exchange() {
     assert_eq!(ex1, ex2);
 }
 
-// #[test]
-// fn test_ecdh_key_exchange() {
-//     let alice: Key = DIDKey::X25519(X25519Key::from_seed(vec![].as_slice())).into();
-//     let bob: Key = DIDKey::X25519(X25519Key::from_seed(vec![].as_slice())).into();
-
-//     let ex1 = ecdh_key_exchange(&alice, &bob);
-//     let ex2 = ecdh_key_exchange(&bob, &alice);
-
-//     assert_eq!(ex1, ex2);
-// }
-fn key_from(pk: &str, sk: &str) -> crate::didcomm::Key {
-    crate::didcomm::Key {
+fn key_from(pk: &str, sk: &str) -> Key {
+    Key {
         key_id: String::new(),
         public_key: base58_decode!(pk),
         secret_key: base58_decode!(sk),

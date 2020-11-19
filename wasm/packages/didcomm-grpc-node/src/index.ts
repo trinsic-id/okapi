@@ -1,10 +1,17 @@
-import { generate_key, convert_key, sign, verify, pack, unpack } from "./didcommgrpc";
+import {
+  didcomm_pack,
+  didcomm_sign,
+  didcomm_unpack,
+  didcomm_verify,
+  didkey_convert,
+  didkey_generate,
+} from "./didcommgrpc";
 
 export default {
-    generate_key,
-    convert_key,
-    sign,
-    verify,
-    pack,
-    unpack
+  didcomm_pack,
+  didcomm_sign,
+  didcomm_unpack,
+  didcomm_verify,
+  didkey_convert,
+  didkey_generate,
 };

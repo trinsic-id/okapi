@@ -7,6 +7,9 @@
     "test": "npx lerna run test --stream"
   },
   "devDependencies": {
+    "@types/chai": "^4.2.14",
+    "@types/mocha": "^8.0.4",
+    "jest": "^26.6.3",
     "lerna": "^3.22.1"
   },
   "dependencies": {}

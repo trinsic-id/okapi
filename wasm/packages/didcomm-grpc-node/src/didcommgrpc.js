@@ -51,8 +51,8 @@ function addHeapObject(obj) {
 * @param {Uint8Array} request
 * @returns {Uint8Array}
 */
-module.exports.generate_key = function(request) {
-    var ret = wasm.generate_key(addHeapObject(request));
+module.exports.didcomm_pack = function(request) {
+    var ret = wasm.didcomm_pack(addHeapObject(request));
     return takeObject(ret);
 };
 
@@ -60,8 +60,8 @@ module.exports.generate_key = function(request) {
 * @param {Uint8Array} request
 * @returns {Uint8Array}
 */
-module.exports.convert_key = function(request) {
-    var ret = wasm.convert_key(addHeapObject(request));
+module.exports.didcomm_unpack = function(request) {
+    var ret = wasm.didcomm_unpack(addHeapObject(request));
     return takeObject(ret);
 };
 
@@ -69,8 +69,8 @@ module.exports.convert_key = function(request) {
 * @param {Uint8Array} request
 * @returns {Uint8Array}
 */
-module.exports.sign = function(request) {
-    var ret = wasm.sign(addHeapObject(request));
+module.exports.didcomm_sign = function(request) {
+    var ret = wasm.didcomm_sign(addHeapObject(request));
     return takeObject(ret);
 };
 
@@ -78,8 +78,8 @@ module.exports.sign = function(request) {
 * @param {Uint8Array} request
 * @returns {Uint8Array}
 */
-module.exports.verify = function(request) {
-    var ret = wasm.verify(addHeapObject(request));
+module.exports.didcomm_verify = function(request) {
+    var ret = wasm.didcomm_verify(addHeapObject(request));
     return takeObject(ret);
 };
 
@@ -87,8 +87,8 @@ module.exports.verify = function(request) {
 * @param {Uint8Array} request
 * @returns {Uint8Array}
 */
-module.exports.pack = function(request) {
-    var ret = wasm.pack(addHeapObject(request));
+module.exports.didkey_generate = function(request) {
+    var ret = wasm.didkey_generate(addHeapObject(request));
     return takeObject(ret);
 };
 
@@ -96,8 +96,8 @@ module.exports.pack = function(request) {
 * @param {Uint8Array} request
 * @returns {Uint8Array}
 */
-module.exports.unpack = function(request) {
-    var ret = wasm.unpack(addHeapObject(request));
+module.exports.didkey_convert = function(request) {
+    var ret = wasm.didkey_convert(addHeapObject(request));
     return takeObject(ret);
 };
 
@@ -118,6 +118,40 @@ function getArrayU8FromWasm0(ptr, len) {
 
 module.exports.__wbindgen_object_drop_ref = function(arg0) {
     takeObject(arg0);
+};
+
+module.exports.__wbindgen_string_new = function(arg0, arg1) {
+    var ret = getStringFromWasm0(arg0, arg1);
+    return addHeapObject(ret);
+};
+
+module.exports.__wbindgen_is_undefined = function(arg0) {
+    var ret = getObject(arg0) === undefined;
+    return ret;
+};
+
+module.exports.__wbg_buffer_49131c283a06686f = function(arg0) {
+    var ret = getObject(arg0).buffer;
+    return addHeapObject(ret);
+};
+
+module.exports.__wbg_newwithbyteoffsetandlength_c0f38401daad5a22 = function(arg0, arg1, arg2) {
+    var ret = new Uint8Array(getObject(arg0), arg1 >>> 0, arg2 >>> 0);
+    return addHeapObject(ret);
+};
+
+module.exports.__wbg_length_2b13641a9d906653 = function(arg0) {
+    var ret = getObject(arg0).length;
+    return ret;
+};
+
+module.exports.__wbg_new_9b295d24cf1d706f = function(arg0) {
+    var ret = new Uint8Array(getObject(arg0));
+    return addHeapObject(ret);
+};
+
+module.exports.__wbg_set_3bb960a9975f3cd2 = function(arg0, arg1, arg2) {
+    getObject(arg0).set(getObject(arg1), arg2 >>> 0);
 };
 
 module.exports.__wbg_getRandomValues_11115a852729f4e8 = handleError(function(arg0, arg1, arg2) {
@@ -153,37 +187,12 @@ module.exports.__wbg_msCrypto_c8be2bb4fc7d8cd3 = function(arg0) {
     return addHeapObject(ret);
 };
 
-module.exports.__wbindgen_is_undefined = function(arg0) {
-    var ret = getObject(arg0) === undefined;
-    return ret;
-};
-
-module.exports.__wbg_buffer_49131c283a06686f = function(arg0) {
-    var ret = getObject(arg0).buffer;
-    return addHeapObject(ret);
-};
-
-module.exports.__wbg_newwithbyteoffsetandlength_c0f38401daad5a22 = function(arg0, arg1, arg2) {
-    var ret = new Uint8Array(getObject(arg0), arg1 >>> 0, arg2 >>> 0);
-    return addHeapObject(ret);
-};
-
-module.exports.__wbg_length_2b13641a9d906653 = function(arg0) {
-    var ret = getObject(arg0).length;
-    return ret;
-};
-
-module.exports.__wbg_new_9b295d24cf1d706f = function(arg0) {
-    var ret = new Uint8Array(getObject(arg0));
-    return addHeapObject(ret);
-};
-
-module.exports.__wbg_set_3bb960a9975f3cd2 = function(arg0, arg1, arg2) {
-    getObject(arg0).set(getObject(arg1), arg2 >>> 0);
-};
-
 module.exports.__wbindgen_throw = function(arg0, arg1) {
     throw new Error(getStringFromWasm0(arg0, arg1));
+};
+
+module.exports.__wbindgen_rethrow = function(arg0) {
+    throw takeObject(arg0);
 };
 
 module.exports.__wbindgen_memory = function() {

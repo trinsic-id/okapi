@@ -1,0 +1,14 @@
+[package]
+name = "didcomm-grpc-wasm"
+version = "0.1.0"
+authors = ["Tomislav Markovski <tomislav@trinsic.id>"]
+edition = "2018"
+
+[lib]
+name = "didcommgrpc"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+wasm-bindgen = "0.2.63"
+js-sys = "0.3.45"
+didcomm-grpc = { path = "../native" }

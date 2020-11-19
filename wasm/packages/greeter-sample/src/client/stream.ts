@@ -1,7 +1,6 @@
 
 import {
-    pack,
-    unpack,
+    DIDComm,
     BasicMessage,
     PackRequest,
     UnpackRequest,
@@ -19,7 +18,7 @@ import {
     let start = new Date().getTime();
     let begin = start;
 
-    let encryptedMessage = pack(
+    let encryptedMessage = DIDComm.pack(
         new PackRequest()
             .setPlaintext(message.serializeBinary())
             .setSenderKey(Alice.secretKey)
@@ -28,7 +27,7 @@ import {
     return new Promise<void>((resolve, reject) => {
         let call = client.serverStreaming(encryptedMessage.getMessage()!);
         call.on("data", (response: EncryptedMessage) => {
-            let decryptedResponse = unpack(
+            let decryptedResponse = DIDComm.unpack(
                 new UnpackRequest()
                     .setMessage(response)
                     .setReceiverKey(Alice.secretKey)
