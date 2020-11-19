@@ -1,28 +1,22 @@
-use std::convert::TryFrom;
-
-use crate::{api::keys::*, didcomm::*};
-use did_key::{ed25519::Ed25519Key, p256::P256Key, DIDKey, Payload};
+use crate::{proto::*, DIDKey};
+use did_key::{ed25519::Ed25519Key, p256::P256Key};
 use fluid::prelude::*;
-use prost::Message;
+use std::convert::TryFrom;
 
 #[theory]
 #[case(KeyType::X25519, 32)]
 #[case(KeyType::P256, 65)]
 #[case(KeyType::Ed25519, 32)]
 fn test_generate_key_no_seed(key_type: KeyType, public_key_size: usize) {
-    let request = byte_buffer!(GenerateKeyRequest {
+    let request = GenerateKeyRequest {
         seed: vec![],
-        key_type: key_type as i32
-    });
-    let mut response = byte_buffer!();
-    let mut err = err!();
+        key_type: key_type as i32,
+    };
 
-    let code = didcomm_generate_key(request, &mut response, &mut err);
+    let response = DIDKey::generate(&request).expect("invalid response");
 
-    let res = request_to_message!(GenerateKeyResponse, response);
-    let key = res.key.expect("Missing key");
+    let key = response.key.expect("Missing key");
 
-    assert_eq!(0, code);
     assert_eq!(key_type as i32, key.key_type);
     assert_eq!(public_key_size, key.public_key.len());
     assert_eq!(32, key.secret_key.len());
@@ -97,25 +91,18 @@ fn test_did_uri_to_x25519() {
     "yyDzHfQa9HQNdGiLQuhPorPYZMwjmLQkQefRvKYbnK3"
 )]
 fn test_generate_key_with_seed(key_type: KeyType, seed: &str, public_key: &str) {
-    let request = byte_buffer!(GenerateKeyRequest {
+    let request = GenerateKeyRequest {
         seed: hex::decode(seed).expect("invalid hex string"),
-        key_type: key_type.into()
-    });
-    let mut response = byte_buffer!();
-    let mut err = err!();
+        key_type: key_type.into(),
+    };
 
-    let code = didcomm_generate_key(request, &mut response, &mut err);
+    let response = DIDKey::generate(&request).expect("invalid response");
+    let key = response.key.expect("Missing key");
 
-    let res = request_to_message!(GenerateKeyResponse, response);
-    let key = res.key.expect("Missing key");
-
-    let _ = base58_decode!(public_key);
-
-    assert_eq!(0, code);
     assert_eq!(key.key_type, key_type.into());
     assert_eq!(32, key.public_key.len());
     assert_eq!(32, key.secret_key.len());
-    assert_eq!(public_key, base58_encode!(key.public_key));
+    assert_eq!(public_key, bs58::encode(key.public_key).into_string());
 }
 
 #[theory]
@@ -125,35 +112,20 @@ fn test_generate_key_with_seed(key_type: KeyType, seed: &str, public_key: &str) 
 #[case("2E9xcBvRVRGAgnySqpNzW6JoYjnjtt2BtqDSPEdsWNjk", "ELMGmTD43y15v6YaD3kfM5oF5xHnpv9eiNkZoNQxWunh")]
 #[case("6JmFgRnWVTUi4vVZAd4aNpZKfP8LenvQGk1q1uM34ajq", "AgEcgKRLDXS1puWdz3o2uyAuFZXRMGLi2widbZ1G7MLv")]
 fn convert_ed_to_montgomery(ed_key: &str, montgomery_key: &str) {
-    let request = byte_buffer!(ConvertKeyRequest {
+    let request = ConvertKeyRequest {
         key: Some(Key {
             key_id: String::default(),
             key_type: KeyType::Ed25519.into(),
             secret_key: vec![],
-            public_key: base58_decode!(ed_key),
-            fingerprint: String::default()
+            public_key: bs58::decode(ed_key).into_vec().unwrap(),
+            fingerprint: String::default(),
         }),
-        target_type: KeyType::X25519.into()
-    });
-    let mut response = byte_buffer!();
-    let mut err = err!();
+        target_type: KeyType::X25519.into(),
+    };
 
-    let code = didcomm_convert_key(request, &mut response, &mut err);
+    let response = DIDKey::convert(&request).expect("invalid response");
+    let key = response.key.expect("Missing key");
 
-    let res = request_to_message!(ConvertKeyResponse, response);
-    let key = res.key.expect("Missing key");
-
-    assert_eq!(0, code);
     assert_eq!(32, key.public_key.len());
-    assert_eq!(montgomery_key, base58_encode!(key.public_key));
-}
-
-#[test]
-fn test_p256_signature_demo() {
-    let key = DIDKey::P256(P256Key::from_seed(vec![].as_slice()));
-    let message = b"super sensitive message";
-
-    let signature = key.sign(Payload::Buffer(&message.to_vec()));
-
-    assert!(key.verify(Payload::Buffer(&message.to_vec()), &signature));
+    assert_eq!(montgomery_key, bs58::encode(key.public_key).into_string());
 }

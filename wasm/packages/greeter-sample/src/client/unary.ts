@@ -1,7 +1,6 @@
 import {
   DIDCommEncryptedClient,
-  pack,
-  unpack,
+  DIDComm,
   BasicMessage,
   PackRequest,
   UnpackRequest,
@@ -16,7 +15,7 @@ function sendUnary(client: DIDCommEncryptedClient, loop: boolean = false) {
 
   let start = new Date().getTime();
 
-  let encryptedMessage = pack(
+  let encryptedMessage = DIDComm.pack(
     new PackRequest()
       .setPlaintext(message.serializeBinary())
       .setSenderKey(Alice.secretKey)
@@ -29,7 +28,7 @@ function sendUnary(client: DIDCommEncryptedClient, loop: boolean = false) {
       return;
     }
 
-    let decryptedResponse = unpack(
+    let decryptedResponse = DIDComm.unpack(
       new UnpackRequest()
         .setMessage(response)
         .setReceiverKey(Alice.secretKey)

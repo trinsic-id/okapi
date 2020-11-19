@@ -1,12 +1,12 @@
 import { expect } from "chai";
-import { generateKey, GenerateKeyRequest, KeyType } from "../index";
+import { GenerateKeyRequest, DIDKey, KeyType } from "../index";
 
 describe("Generate key tests", () => {
   it("should encode generate key request (p256)", () => {
     let request = new GenerateKeyRequest();
     request.setKeyType(KeyType.P256);
 
-    var actual = generateKey(request);
+    var actual = DIDKey.generate(request);
 
     expect(actual.getKey()).to.be.not.null;
     expect(actual.getKey().getKeyType()).to.be.eq(KeyType.P256);
@@ -16,7 +16,7 @@ describe("Generate key tests", () => {
     let request = new GenerateKeyRequest();
     request.setKeyType(KeyType.ED25519);
 
-    var actual = generateKey(request);
+    var actual = DIDKey.generate(request);
 
     expect(actual.getKey()).to.be.not.null;
     expect(actual.getKey().getKeyType()).to.be.eq(KeyType.ED25519);
@@ -28,7 +28,7 @@ describe("Generate key tests", () => {
     let request = new GenerateKeyRequest();
     request.setKeyType(KeyType.X25519);
 
-    var actual = generateKey(request);
+    var actual = DIDKey.generate(request);
 
     expect(actual.getKey()).to.be.not.null;
     expect(actual.getKey().getKeyType()).to.equal(KeyType.X25519);
@@ -40,6 +40,6 @@ describe("Generate key tests", () => {
     let request = new GenerateKeyRequest();
     request.setKeyType(-1);
 
-    expect(() => generateKey(request)).to.throw("unreachable");
+    expect(() => DIDKey.generate(request)).to.throw("error packing InvalidField(\"key_type\")");
   });
 });

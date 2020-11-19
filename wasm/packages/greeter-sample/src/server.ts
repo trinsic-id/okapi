@@ -2,8 +2,7 @@ import {
   EncryptedMessage,
   IDIDCommEncryptedServer,
   BasicMessage,
-  unpack,
-  pack,
+  DIDComm,
   UnpackRequest,
   PackRequest,
 } from "didcomm-grpc";
@@ -22,7 +21,7 @@ export class GreeterService implements IDIDCommEncryptedServer {
     callback: sendUnaryData<EncryptedMessage>
   ): void {
     // unpack incoming request
-    let response = unpack(
+    let response = DIDComm.unpack(
       new UnpackRequest()
         .setMessage(call.request)
         .setSenderKey(Alice.publicKey)
@@ -35,7 +34,7 @@ export class GreeterService implements IDIDCommEncryptedServer {
     // prepare a response
     let reply = new BasicMessage().setText(`You said: ${message.getText()}`);
     // encrypt the response
-    let encryptedReply = pack(
+    let encryptedReply = DIDComm.pack(
       new PackRequest()
         .setPlaintext(reply.serializeBinary())
         .setReceiverKey(Alice.publicKey)
@@ -49,7 +48,7 @@ export class GreeterService implements IDIDCommEncryptedServer {
   public serverStreaming(
     call: ServerWriteableStream<EncryptedMessage, EncryptedMessage>
   ): void {
-    let response = unpack(
+    let response = DIDComm.unpack(
       new UnpackRequest()
         .setMessage(call.request)
         .setSenderKey(Alice.publicKey)
@@ -63,7 +62,7 @@ export class GreeterService implements IDIDCommEncryptedServer {
       // prepare a response
       let reply = new BasicMessage().setText(`You said: ${char}`);
       // encrypt the response
-      let encryptedReply = pack(
+      let encryptedReply = DIDComm.pack(
         new PackRequest()
           .setPlaintext(reply.serializeBinary())
           .setReceiverKey(Alice.publicKey)

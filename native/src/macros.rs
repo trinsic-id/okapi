@@ -1,107 +1,49 @@
-macro_rules! encode {
-    ($input:expr) => {{
-        let mut buf = vec![];
-        buf.reserve($input.encoded_len());
-        $input.encode(&mut buf).unwrap();
-        buf
-    }};
-}
-
-macro_rules! byte_buffer {
-    () => {
-        ::ffi_support::ByteBuffer::default()
-    };
-    ($input:expr) => {{
-        let mut buf = vec![];
-        buf.reserve($input.encoded_len());
-        $input.encode(&mut buf).unwrap();
-        ::ffi_support::ByteBuffer::from_vec(buf)
-    }};
-}
-
-macro_rules! err {
-    () => {
-        ::ffi_support::ExternError::success()
-    };
-    ($message:expr) => {
-        ::ffi_support::ExternError::new_error(::ffi_support::ErrorCode::new(100), $message);
-    };
-    ($code:expr,$message:expr) => {
-        ::ffi_support::ExternError::new_error(::ffi_support::ErrorCode::new($code), $message);
-    };
-}
-
 #[macro_export]
 macro_rules! base58_decode {
     ($name:expr) => {
-        bs58::decode($name).into_vec().expect("invalid base58 string")
+        ::bs58::decode($name).into_vec().expect("invalid base58 string")
     };
 }
 
-#[macro_export]
-macro_rules! base58_encode {
-    ($name:expr) => {
-        bs58::encode($name).into_string()
-    };
-}
-
-macro_rules! unwrap {
-    ($name:expr,$err:expr) => {
-        match $name {
-            Ok(a) => a,
-            Err(_) => {
-                *$err = err!(100, "Can't unwrap result");
-                return 1;
-            }
-        }
-    };
-    ($name:expr,$err:expr,$err_text:expr) => {
-        match $name {
-            Ok(a) => a,
-            Err(_) => {
-                *$err = err!(100, $err_text);
-                return 1;
-            }
-        }
-    };
-}
-
-macro_rules! unwrap_opt {
+macro_rules! unwrap_or_return {
     ($name:expr,$err:expr) => {
         match $name {
             Some(a) => a,
-            None => {
-                *$err = err!(100, "optional value not found");
-                return 1;
-            }
-        }
-    };
-    ($name:expr,$err:expr,$err_text:expr) => {
-        match $name {
-            Some(a) => a,
-            None => {
-                *$err = err!(100, $err_text);
-                return 1;
-            }
+            None => return Err($err),
         }
     };
 }
 
-/// Convert a `ByteBuffer` to specific protobuf struct
-macro_rules! request_to_message {
-    ($message:ty,$request:expr,$err:expr) => {
-        match <$message>::decode($request.as_slice()) {
-            Ok(x) => x,
+#[allow(unused_macros)]
+macro_rules! impl_c_method {
+    ($message:ty,$struct:ident,$func:ident,$req:expr,$res:expr,$err:expr) => {{
+        let request = match <$message>::from_vec(&$req.destroy_into_vec()) {
+            Ok(request) => request,
             Err(_) => {
-                *$err = err!(100, "cannot decode request");
+                *$err = ExternError::new_error(::ffi_support::ErrorCode::new(100), "erorr processing");
                 return 1;
             }
         };
-    };
-    ($message:ty,$request:expr) => {
-        match <$message>::decode($request.as_slice()) {
-            Ok(x) => x,
-            Err(_) => panic!("Can't decode"),
-        };
+
+        match crate::$struct::$func(&request) {
+            Ok(request) => {
+                *$res = ByteBuffer::from_vec(request.to_vec());
+                *$err = ExternError::success();
+                return 0;
+            }
+            Err(_) => {
+                *$err = ExternError::new_error(::ffi_support::ErrorCode::new(100), "erorr processing");
+                return 1;
+            }
+        }
+    };};
+}
+
+macro_rules! map_or_return {
+    ($name:expr,$err:expr) => {
+        match $name {
+            Ok(a) => a,
+            Err(_) => return Err($err),
+        }
     };
 }

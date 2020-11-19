@@ -1,8 +1,7 @@
 import { expect } from "chai";
 import {
-  generateKey,
-  sign,
-  verify,
+  DIDComm,
+  DIDKey,
   GenerateKeyRequest,
   SignRequest,
   VerifyRequest,
@@ -15,26 +14,26 @@ describe("Sign and verify demo", () => {
     let keyRequest = new GenerateKeyRequest();
     keyRequest.setKeyType(KeyType.ED25519);
 
-    let keyResponse = generateKey(keyRequest);
+    let keyResponse = DIDKey.generate(keyRequest);
 
     // Sign payload
     let signRequest = new SignRequest();
     signRequest.setPayload(payload);
     signRequest.setKey(keyResponse.getKey());
 
-    let signResponse = sign(signRequest);
+    let signResponse = DIDComm.sign(signRequest);
 
     // Verify payload
     let verifyRequest = new VerifyRequest();
     verifyRequest.setKey(keyResponse.getKey());
     verifyRequest.setMessage(signResponse.getMessage());
 
-    let verifyResponse = verify(verifyRequest);
+    let verifyResponse = DIDComm.verify(verifyRequest);
 
     expect(verifyResponse.getIsValid()).to.equal(true);
   });
 
   it("sign throws on incorrect input", () => {
-    expect(() => sign(new SignRequest())).to.throw("unreachable");
+    expect(() => DIDComm.sign(new SignRequest())).to.throw("error packing MissingField(\"key not found\")");
   });
 });

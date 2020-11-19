@@ -1,8 +1,7 @@
 import { expect } from "chai";
 import {
   BasicMessage,
-  pack,
-  unpack,
+  DIDComm,
   PackRequest,
   UnpackRequest,
 } from "../index";
@@ -10,14 +9,14 @@ import { Alice, Bob } from "./test-keys";
 describe("Pack and unpack demo", () => {
   it("pack and unpack basic message", () => {
     let message = new BasicMessage().setText("Hi there");
-    let encryptedMessage = pack(
+    let encryptedMessage = DIDComm.pack(
       new PackRequest()
         .setPlaintext(message.serializeBinary())
         .setSenderKey(Alice.secretKey)
         .setReceiverKey(Bob.publicKey)
     );
 
-    let decryptedMessage = unpack(
+    let decryptedMessage = DIDComm.unpack(
       new UnpackRequest()
         .setMessage(encryptedMessage.getMessage())
         .setReceiverKey(Bob.secretKey)
