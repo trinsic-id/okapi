@@ -28,13 +28,13 @@ Implementation and message definition for extending DIDComm Messaging v2 using b
   - [WebAssembly](wasm/README.md)
     - [x] Node
     - [ ] Browser
+  - [Python](python/README.md)
+  - [Go](go/README.md)
   - Planned
     - [ ] Java
       - [ ] Kotlin
       - [ ] Android
     - [ ] React Native
-    - [ ] Python
-    - [ ] Go
     - [ ] Dart
 - [License](LICENSE)
 - [Get Involved](#get-involved) 🙌
@@ -352,13 +352,13 @@ This is a non-normative entry and should probably be standardized for all DIDCom
   - [WebAssembly](wasm/README.md)
     - [x] Node
     - [ ] Browser
+  - [Python](python/README.md)
+  - [Go](go/README.md)
   - Planned
     - [ ] Java
       - [ ] Kotlin
       - [ ] Android
     - [ ] React Native
-    - [ ] Python
-    - [ ] Go
     - [ ] Dart
 
 ## Get Involved
