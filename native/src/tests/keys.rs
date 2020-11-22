@@ -1,5 +1,6 @@
 use crate::{proto::*, DIDKey};
 use did_key::{ed25519::Ed25519Key, p256::P256Key};
+use ffi_support::{ByteBuffer, ExternError};
 use fluid::prelude::*;
 use std::convert::TryFrom;
 
@@ -20,6 +21,25 @@ fn test_generate_key_no_seed(key_type: KeyType, public_key_size: usize) {
     assert_eq!(key_type as i32, key.key_type);
     assert_eq!(public_key_size, key.public_key.len());
     assert_eq!(32, key.secret_key.len());
+}
+
+#[theory]
+#[case(KeyType::X25519)]
+#[case(KeyType::P256)]
+#[case(KeyType::Ed25519)]
+fn test_ffi_generate_key_no_seed(key_type: KeyType) {
+    let request = GenerateKeyRequest {
+        seed: vec![],
+        key_type: key_type as i32,
+    };
+
+    let req_buf = ByteBuffer::from_vec(request.to_vec());
+    let mut res_buf = ByteBuffer::default();
+    let mut err = ExternError::default();
+
+    let response = crate::ffi::didkey::didkey_generate(req_buf, &mut res_buf, &mut err);
+
+    assert_eq!(response, 0);
 }
 
 #[test]

@@ -17,7 +17,7 @@ did-key = { path = "./did-key.rs" }
 
 [lib]
 name = "didcommgrpc"
-crate-type = [ "lib", "rlib", "cdylib", "staticlib" ]
+crate-type = [ "cdylib", "staticlib" ]
 
 [build-dependencies]
 prost-build = "0.6"

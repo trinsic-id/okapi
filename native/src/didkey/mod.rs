@@ -52,9 +52,10 @@ impl crate::DIDKey {
         let request = request.clone();
 
         let target_type = unwrap_or_return!(KeyType::from_i32(request.target_type), Error::InvalidField("target_type"));
-        let key: DIDKey = request.key.expect("Key not found").into();
+        let key = unwrap_or_return!(request.key, Error::MissingField("key not found"));
+        let did_key: DIDKey = key.into();
 
-        let target_did_key: DIDKey = match (key, target_type) {
+        let target_did_key: DIDKey = match (did_key, target_type) {
             (DIDKey::Ed25519(x), KeyType::X25519) => DIDKey::X25519(x.into()),
             _ => return Err(Error::InvalidRequest),
         };
