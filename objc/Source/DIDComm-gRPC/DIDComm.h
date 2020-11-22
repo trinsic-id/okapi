@@ -8,18 +8,11 @@
 #import <Foundation/Foundation.h>
 #import "Api.pbobjc.h"
 #import "Security.pbobjc.h"
+#import "BasicMessage.pbobjc.h"
 #import "Didcomm.pbobjc.h"
 #import "Didcomm.pbrpc.h"
 
 @interface DIDComm : NSObject
-/**
- * Generate new key
- **/
-+ (GenerateKeyResponse *_Nullable)generateKey:(GenerateKeyRequest *_Nonnull)request
-                                     withError:(NSError *_Nullable*_Nullable)error;
-
-+ (ConvertKeyResponse *_Nullable)convertKey:(ConvertKeyRequest *_Nonnull)request
-                                  withError:(NSError *_Nullable*_Nullable)error;
 
 + (PackResponse *_Nullable)pack:(PackRequest *_Nonnull)request
                       withError:(NSError *_Nullable*_Nullable)error;

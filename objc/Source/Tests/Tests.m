@@ -7,6 +7,7 @@
 
 #import <XCTest/XCTest.h>
 #import <DIDComm-gRPC/DIDComm.h>
+#import <DIDComm-gRPC/DIDKey.h>
 #import <DIDComm-Proto/Api.pbobjc.h>
 #import <Foundation/Foundation.h>
 
@@ -29,7 +30,7 @@
     request.keyType = KeyType_P256;
     
     NSError* error;
-    GenerateKeyResponse* response = [DIDComm generateKey:request withError:&error];
+    GenerateKeyResponse* response = [DIDKey generate:request withError:&error];
     
     XCTAssertNotNil(response);
     XCTAssertNotNil(response.key);
@@ -42,7 +43,7 @@
     keyRequest.keyType = KeyType_Ed25519;
     
     NSError* error;
-    GenerateKeyResponse *keyResponse = [DIDComm generateKey:keyRequest withError:&error];
+    GenerateKeyResponse *keyResponse = [DIDKey generate:keyRequest withError:&error];
     
     SignRequest *signRequest = [SignRequest message];
     signRequest.key = keyResponse.key;
