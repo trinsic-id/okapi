@@ -12,7 +12,7 @@ namespace DIDComm.Messaging.Tests
         [Fact(DisplayName = "Generate new key with empty seed")]
         public void TestGenerateKeyNoSeed()
         {
-            var response = DIDComm.GenerateKey(new GenerateKeyRequest { KeyType = KeyType.Ed25519 });
+            var response = DIDKey.Generate(new GenerateKeyRequest { KeyType = KeyType.Ed25519 });
 
             response.Should().NotBeNull();
             response.Key.Should().NotBeNull();
@@ -21,14 +21,13 @@ namespace DIDComm.Messaging.Tests
             response.Key.SecretKey.Should().NotBeNull().And.HaveCount(32);
         }
 
-        [Fact(DisplayName = "Generate new key throws with incorrect seed size")]
+        [Fact(DisplayName = "Generate new key throws for invalid key type")]
         public void TestGenerateKeyThrowsInvalidSeedSize()
         {
             Assert.Throws<DIDCommException>(() =>
-                _ = DIDComm.GenerateKey(new GenerateKeyRequest
+                _ = DIDKey.Generate(new GenerateKeyRequest
                 {
-                    KeyType = KeyType.Ed25519,
-                    Seed = ByteString.CopyFrom(new byte[] { 1, 2, 3 })
+                    KeyType = (KeyType)(-1)
                 })
             );
         }
@@ -38,7 +37,7 @@ namespace DIDComm.Messaging.Tests
         [InlineData(KeyType.X25519, "9b29d42b38ddd52ed39c0ff70b39572a6eb9b3cac201918dc6d6a84b4c88d2a5", "3EK9AYXoUV4Unn5AjvYY39hyK91n7gg4ExC8rKKSUQXJ")]
         public void TestGenerateKeyFromSeed(KeyType keyType, string seed, string publicKey)
         {
-            var response = DIDComm.GenerateKey(new GenerateKeyRequest
+            var response = DIDKey.Generate(new GenerateKeyRequest
             {
                 KeyType = keyType,
                 Seed = ByteString.CopyFrom(StringToByteArray(seed))

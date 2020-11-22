@@ -23,7 +23,7 @@
     ByteBuffer *response = (ByteBuffer*) malloc(sizeof(ByteBuffer));
     ExternError *err = (ExternError*) malloc(sizeof(ExternError));
 
-    if (didcomm_generate_key(req, response, err) != 0) {
+    if (didkey_generate(req, response, err) != 0) {
         *error = [self errorFromExternError:err];
         return nil;
     }
@@ -45,7 +45,7 @@
     ByteBuffer *response = (ByteBuffer*) malloc(sizeof(ByteBuffer));
     ExternError *err = (ExternError*) malloc(sizeof(ExternError));
 
-    if (didcomm_convert_key(req, response, err) != 0) {
+    if (didkey_convert(req, response, err) != 0) {
         *error = [self errorFromExternError:err];
         return nil;
     }

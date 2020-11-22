@@ -9,6 +9,6 @@
 #define Header_h
 
 #import <DIDComm-gRPC/DIDComm.h>
-#import <bbs-signatures/bbs_key_pair.h>
+#import <DIDComm-gRPC/NativeFunc.h>
 
 #endif /* Header_h */

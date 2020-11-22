@@ -15,9 +15,10 @@ macro_rules! unwrap_or_return {
 }
 
 #[allow(unused_macros)]
-macro_rules! impl_c_method {
+macro_rules! c_impl {
     ($message:ty,$struct:ident,$func:ident,$req:expr,$res:expr,$err:expr) => {{
-        let request = match <$message>::from_vec(&$req.destroy_into_vec()) {
+        // do not use `destroy_into_vec()`, it causes crash from callers
+        let request = match <$message>::from_vec(&$req.as_slice().to_vec()) {
             Ok(request) => request,
             Err(_) => {
                 *$err = ExternError::new_error(::ffi_support::ErrorCode::new(100), "erorr processing");

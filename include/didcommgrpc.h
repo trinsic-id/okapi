@@ -14,9 +14,9 @@ void didcomm_string_free(char* _Nonnull string);
 
 void didcomm_byte_buffer_free(ByteBuffer data);
 
-int32_t didcomm_generate_key(ByteBuffer request, ByteBuffer * _Nullable response, ExternError * _Nullable err);
+int32_t didkey_generate(ByteBuffer request, ByteBuffer * _Nullable response, ExternError * _Nullable err);
 
-int32_t didcomm_convert_key(ByteBuffer request, ByteBuffer * _Nullable response, ExternError * _Nullable err);
+int32_t didkey_convert(ByteBuffer request, ByteBuffer * _Nullable response, ExternError * _Nullable err);
 
 int32_t didcomm_pack(ByteBuffer request, ByteBuffer * _Nullable response, ExternError * _Nullable err);
 

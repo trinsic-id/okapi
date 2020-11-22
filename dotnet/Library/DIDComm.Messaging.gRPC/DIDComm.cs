@@ -1,12 +1,12 @@
-﻿using Google.Protobuf;
+using Google.Protobuf;
 
 namespace DIDComm.Messaging
 {
     public static class DIDComm
     {
-        private delegate int NativeMethod(ByteBuffer request, out ByteBuffer response, out ExternError error);
+        internal delegate int NativeMethod(ByteBuffer request, out ByteBuffer response, out ExternError error);
 
-        private static TResponse Call<TRequest, TResponse>(TRequest request, NativeMethod nativeMethod)
+        internal static TResponse Call<TRequest, TResponse>(TRequest request, NativeMethod nativeMethod)
             where TRequest: IMessage
             where TResponse: IMessage, new()
         {
@@ -19,17 +19,6 @@ namespace DIDComm.Messaging
             res.MergeFrom(memory.ToArray(response));
             return res;
         }
-
-        /// <summary>
-        /// Generate new key
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        public static GenerateKeyResponse GenerateKey(GenerateKeyRequest request) =>
-            Call<GenerateKeyRequest, GenerateKeyResponse>(request, NativeMethods.didcomm_generate_key);
-
-        public static ConvertKeyResponse ConvertKey(ConvertKeyRequest request) =>
-            Call<ConvertKeyRequest, ConvertKeyResponse>(request, NativeMethods.didcomm_convert_key);
 
         public static PackResponse Pack(PackRequest request) =>
             Call<PackRequest, PackResponse>(request, NativeMethods.didcomm_pack);

@@ -28,10 +28,10 @@ namespace DIDComm.Messaging
         #region Keys
 
         [DllImport(LibraryName, CharSet = CharSet.Auto, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-        internal static extern int didcomm_generate_key(ByteBuffer request, out ByteBuffer response, out ExternError error);
+        internal static extern int didkey_generate(ByteBuffer request, out ByteBuffer response, out ExternError error);
 
         [DllImport(LibraryName, CharSet = CharSet.Auto, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-        internal static extern int didcomm_convert_key(ByteBuffer request, out ByteBuffer response, out ExternError error);
+        internal static extern int didkey_convert(ByteBuffer request, out ByteBuffer response, out ExternError error);
 
         #endregion
 
