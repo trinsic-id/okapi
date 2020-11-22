@@ -14,11 +14,25 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        let response = try! DIDComm.generateKey(GenerateKeyRequest())
+        let keyRequest = GenerateKeyRequest()
+        keyRequest.keyType = .ed25519
         
-        NSLog(response.description)
+        let keyResponse = try! DIDKey.generate(keyRequest)
+        
+        let message = BasicMessage()
+        message.text = "Hello Swift!"
+        
+        let signRequest = SignRequest()
+        signRequest.payload = message.data()
+        signRequest.key = keyResponse.key
+        
+        do {
+            let signedMessage = try DIDComm.sign(signRequest)
+            
+            print(signedMessage.description)
+        } catch {
+            print("Couldn't sign")
+        }
     }
-
-
 }
 

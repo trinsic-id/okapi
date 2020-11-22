@@ -15,6 +15,9 @@
 		A02AA9AE255B530900E8068D /* libdidcommgrpc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A02AA9AD255B530900E8068D /* libdidcommgrpc.a */; };
 		A02AA9BC255B56E300E8068D /* DIDComm.m in Sources */ = {isa = PBXBuildFile; fileRef = A02AA9BB255B56E300E8068D /* DIDComm.m */; };
 		A02AA9BF255B577F00E8068D /* DIDComm.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A02AA9BA255B56E300E8068D /* DIDComm.h */; };
+		A0A2B90F256ADB3000D74B4A /* DIDKey.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A2B90E256ADB3000D74B4A /* DIDKey.m */; };
+		A0A2B912256ADBEE00D74B4A /* DIDKey.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A0A2B90D256ADB3000D74B4A /* DIDKey.h */; };
+		A0A2B915256ADC0200D74B4A /* NativeFunc.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A02AA9B7255B565F00E8068D /* NativeFunc.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,8 @@
 			dstSubfolderSpec = 16;
 			files = (
 				A02AA9BF255B577F00E8068D /* DIDComm.h in CopyFiles */,
+				A0A2B912256ADBEE00D74B4A /* DIDKey.h in CopyFiles */,
+				A0A2B915256ADC0200D74B4A /* NativeFunc.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +57,8 @@
 		A02AA9B7255B565F00E8068D /* NativeFunc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NativeFunc.h; sourceTree = "<group>"; };
 		A02AA9BA255B56E300E8068D /* DIDComm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DIDComm.h; sourceTree = "<group>"; };
 		A02AA9BB255B56E300E8068D /* DIDComm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DIDComm.m; sourceTree = "<group>"; };
+		A0A2B90D256ADB3000D74B4A /* DIDKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DIDKey.h; sourceTree = "<group>"; };
+		A0A2B90E256ADB3000D74B4A /* DIDKey.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DIDKey.m; sourceTree = "<group>"; };
 		A3E54EED76828BF20C2E18AC /* libPods-DIDComm-gRPC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DIDComm-gRPC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8C32F2EEE3B2B1037E693E9 /* Pods-DIDComm-gRPC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DIDComm-gRPC.release.xcconfig"; path = "Target Support Files/Pods-DIDComm-gRPC/Pods-DIDComm-gRPC.release.xcconfig"; sourceTree = "<group>"; };
 		C1FB46C6AAADD1C1FE214D8F /* Pods-DIDComm-gRPC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DIDComm-gRPC.debug.xcconfig"; path = "Target Support Files/Pods-DIDComm-gRPC/Pods-DIDComm-gRPC.debug.xcconfig"; sourceTree = "<group>"; };
@@ -127,6 +134,8 @@
 				A02AA9B7255B565F00E8068D /* NativeFunc.h */,
 				A02AA9BA255B56E300E8068D /* DIDComm.h */,
 				A02AA9BB255B56E300E8068D /* DIDComm.m */,
+				A0A2B90D256ADB3000D74B4A /* DIDKey.h */,
+				A0A2B90E256ADB3000D74B4A /* DIDKey.m */,
 			);
 			path = "DIDComm-gRPC";
 			sourceTree = "<group>";
@@ -296,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A02AA9BC255B56E300E8068D /* DIDComm.m in Sources */,
+				A0A2B90F256ADB3000D74B4A /* DIDKey.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
