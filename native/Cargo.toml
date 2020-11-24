@@ -15,10 +15,6 @@ getrandom = { version = "0.2", features = ["js"] }
 regex = "1"
 did-key = { path = "./did-key.rs" }
 
-[lib]
-name = "didcommgrpc"
-crate-type = [ "cdylib", "staticlib" ]
-
 [build-dependencies]
 prost-build = "0.6"
 

@@ -7,8 +7,8 @@ import sendUnary from "./unary";
 let creds = grpc.credentials.createInsecure();
 let client = new DIDCommEncryptedClient("localhost:5000", creds);
 
-console.log(`Alice - ${Alice.publicKey.getKeyId()}`);
-console.log(`Bob - ${Alice.publicKey.getKeyId()}`);
+console.log(`Alice - ${Alice.publicKey().getKeyId()}`);
+console.log(`Bob - ${Alice.publicKey().getKeyId()}`);
 console.log();
 console.log("Say something to Bob (CTRL+C to cancel)");
 console.log();

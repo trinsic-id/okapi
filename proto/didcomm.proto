@@ -17,6 +17,7 @@ message CoreMessage {
     int64 expires = 7 [json_name="expires_time"];
 }
 
+
 service DIDCommPlain {
     rpc Unary(CoreMessage)                              returns (CoreMessage);
     rpc ServerStreaming(CoreMessage)                    returns (stream CoreMessage);

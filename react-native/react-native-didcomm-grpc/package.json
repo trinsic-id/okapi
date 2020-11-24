@@ -19,6 +19,9 @@
     "!**/__fixtures__",
     "!**/__mocks__"
   ],
+  "dependencies": {
+    "didcomm-proto": "../../wasm/packages/didcomm-proto/"
+  },
   "scripts": {
     "test": "jest",
     "typescript": "tsc --noEmit",

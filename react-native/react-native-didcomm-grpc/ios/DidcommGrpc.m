@@ -27,8 +27,8 @@ RCT_REMAP_METHOD(echo,
   return;
 }
 
-RCT_REMAP_METHOD(generateKey,
-                 generateKeyWithRequest:(nonnull NSArray*)request
+RCT_REMAP_METHOD(pack,
+                 packWithRequest:(nonnull NSArray*)request
                  withResolver:(RCTPromiseResolveBlock)resolve
                  withRejecter:(RCTPromiseRejectBlock)reject)
 {
@@ -44,7 +44,7 @@ RCT_REMAP_METHOD(generateKey,
   ByteBuffer *response = (ByteBuffer*) malloc(sizeof(ByteBuffer));
   ExternError *err = (ExternError*) malloc(sizeof(ExternError));
 
-  if (didcomm_generate_key(req, response, err) != 0) {
+  if (didcomm_pack(req, response, err) != 0) {
       NSError *error = [DidcommGrpc errorFromExternError:err];
       reject(@"err_native", @"Error in native library", error);
       return;

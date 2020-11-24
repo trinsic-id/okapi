@@ -2,8 +2,8 @@
 
 'use strict';
 var grpc = require('grpc');
-var didcomm_pb = require('./didcomm_pb.js');
-var security_pb = require('./security_pb.js');
+var didcomm_pb = require('didcomm-proto');
+var security_pb = require('didcomm-proto');
 
 function serialize_didcomm_messaging_CoreMessage(arg) {
   if (!(arg instanceof didcomm_pb.CoreMessage)) {
