@@ -21,7 +21,7 @@ macro_rules! c_impl {
         let request = match <$message>::from_vec(&$req.as_slice().to_vec()) {
             Ok(request) => request,
             Err(_) => {
-                *$err = ExternError::new_error(::ffi_support::ErrorCode::new(100), "erorr processing");
+                *$err = ExternError::new_error(::ffi_support::ErrorCode::new(100), "failed to decode request");
                 return 1;
             }
         };
@@ -33,7 +33,7 @@ macro_rules! c_impl {
                 return 0;
             }
             Err(_) => {
-                *$err = ExternError::new_error(::ffi_support::ErrorCode::new(100), "erorr processing");
+                *$err = ExternError::new_error(::ffi_support::ErrorCode::new(100), "failed to execute function");
                 return 1;
             }
         }

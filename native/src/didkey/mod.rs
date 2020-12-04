@@ -10,6 +10,8 @@ impl From<DIDKey> for Key {
                 DIDKey::Ed25519(_) => KeyType::Ed25519,
                 DIDKey::X25519(_) => KeyType::X25519,
                 DIDKey::P256(_) => KeyType::P256,
+                DIDKey::Bls12381G1(_) => todo!(),
+                DIDKey::Bls12381G2(_) => todo!(),
             } as i32,
             public_key: key.public_key(),
             secret_key: key.secret_key().map_or(vec![], |x| x),
