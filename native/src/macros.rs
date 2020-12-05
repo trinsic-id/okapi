@@ -40,6 +40,30 @@ macro_rules! c_impl {
     };};
 }
 
+macro_rules! jni_impl {
+    ($message:ty,$struct:ident,$func:ident,$env:expr,$req:expr) => {{
+        let request = $env.convert_byte_array($req).unwrap();
+
+        let gen_key_req = match <$message>::from_vec(&request) {
+            Ok(request) => request,
+            Err(err) => {
+                $env.throw_new("java/lang/Exception", format!("{:?}", err)).unwrap_or_default();
+                return $env.byte_array_from_slice(&vec![].as_slice()).unwrap();
+            }
+        };
+
+        let response = match crate::$struct::$func(&gen_key_req) {
+            Ok(response) => response,
+            Err(err) => {
+                $env.throw_new("java/lang/Exception", format!("{:?}", err)).unwrap_or_default();
+                return $env.byte_array_from_slice(&vec![].as_slice()).unwrap();
+            }
+        };
+
+        return $env.byte_array_from_slice(&response.to_vec().as_slice()).unwrap();
+    }};
+}
+
 macro_rules! map_or_return {
     ($name:expr,$err:expr) => {
         match $name {
