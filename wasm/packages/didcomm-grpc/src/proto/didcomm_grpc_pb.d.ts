@@ -5,8 +5,8 @@
 /* eslint-disable */
 
 import * as grpc from "grpc";
-import * as didcomm_pb from "./didcomm_pb";
-import * as security_pb from "./security_pb";
+import * as didcomm_pb from "didcomm-proto";
+import * as security_pb from "didcomm-proto";
 
 interface IDIDCommPlainService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
     unary: IDIDCommPlainService_IUnary;

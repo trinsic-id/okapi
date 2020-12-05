@@ -1,7 +1,7 @@
-import * as proto from "./proto";
 import { default as native } from "didcomm-grpc-node";
-
+import * as proto from "didcomm-proto";
 export * as grpc from "grpc";
+export * from "didcomm-proto"
 export * from "./proto";
 
 export class DIDKey {
