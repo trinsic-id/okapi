@@ -18,7 +18,7 @@ jni = "0.18.0"
 
 [lib]
 name = "didcommgrpc"
-crate-type = [ "cdylib", "staticlib" ]
+crate-type = [ "lib", "cdylib", "staticlib" ]
 
 [build-dependencies]
 prost-build = "0.6"

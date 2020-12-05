@@ -11,16 +11,17 @@ import { Alice, Bob } from "../keys";
 let Prompt = PromptSync();
 
 function sendUnary(client: DIDCommEncryptedClient, loop: boolean = false) {
-  let message = new BasicMessage().setText(Prompt("<Alice> "));
+  let message = new BasicMessage();
+  message.setText(Prompt("<Alice> "));
 
   let start = new Date().getTime();
 
-  let encryptedMessage = DIDComm.pack(
-    new PackRequest()
-      .setPlaintext(message.serializeBinary())
-      .setSenderKey(Alice.secretKey)
-      .setReceiverKey(Bob.publicKey)
-  );
+  let packRequest = new PackRequest();
+  packRequest.setPlaintext(message.serializeBinary());
+  packRequest.setSenderKey(Alice.secretKey());
+  packRequest.setReceiverKey(Bob.publicKey());
+
+  let encryptedMessage = DIDComm.pack(packRequest);
 
   client.unary(encryptedMessage.getMessage()!, (error, response) => {
     if (error != null) {
@@ -28,12 +29,12 @@ function sendUnary(client: DIDCommEncryptedClient, loop: boolean = false) {
       return;
     }
 
-    let decryptedResponse = DIDComm.unpack(
-      new UnpackRequest()
-        .setMessage(response)
-        .setReceiverKey(Alice.secretKey)
-        .setSenderKey(Bob.publicKey)
-    );
+    let unpackRequest = new UnpackRequest();
+    unpackRequest.setMessage(response);
+    unpackRequest.setReceiverKey(Alice.secretKey());
+    unpackRequest.setSenderKey(Bob.publicKey());
+
+    let decryptedResponse = DIDComm.unpack(unpackRequest);
     let reply = BasicMessage.deserializeBinary(
       decryptedResponse.getPlaintext_asU8()
     );

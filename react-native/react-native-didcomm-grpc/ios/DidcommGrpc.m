@@ -6,37 +6,17 @@
 
 RCT_EXPORT_MODULE()
 
-// Example method
-// See // https://facebook.github.io/react-native/docs/native-modules-ios
-RCT_REMAP_METHOD(multiply,
-                 multiplyWithA:(nonnull NSNumber*)a withB:(nonnull NSNumber*)b
-                 withResolver:(RCTPromiseResolveBlock)resolve
-                 withRejecter:(RCTPromiseRejectBlock)reject)
-{
-  NSNumber *result = @([a floatValue] * [b floatValue]);
-
-  resolve(result);
-}
-
-RCT_REMAP_METHOD(echo,
-                 echoWithRequest:(nonnull NSArray*)request
-                 withResolver:(RCTPromiseResolveBlock)resolve
-                 withRejecter:(RCTPromiseRejectBlock)reject)
-{
-  resolve(request);
-  return;
-}
-
-RCT_REMAP_METHOD(generateKey,
-                 generateKeyWithRequest:(nonnull NSArray*)request
+RCT_REMAP_METHOD(pack,
+                 packWithRequest:(nonnull NSArray*)request
                  withResolver:(RCTPromiseResolveBlock)resolve
                  withRejecter:(RCTPromiseRejectBlock)reject)
 {
   NSMutableData *requestData = [[NSMutableData alloc] initWithCapacity:request.count];
   for (id item in request) {
-      [requestData appendBytes:&item length:1];
+      uint a = [item unsignedCharValue];
+      [requestData appendBytes:&a length:1];
   }
-  
+
   ByteBuffer req;
   req.len = requestData.length;
   req.data = (uint8_t *)[requestData bytes];
@@ -44,18 +24,105 @@ RCT_REMAP_METHOD(generateKey,
   ByteBuffer *response = (ByteBuffer*) malloc(sizeof(ByteBuffer));
   ExternError *err = (ExternError*) malloc(sizeof(ExternError));
 
-  if (didcomm_generate_key(req, response, err) != 0) {
+  if (didcomm_pack(req, response, err) != 0) {
       NSError *error = [DidcommGrpc errorFromExternError:err];
       reject(@"err_native", @"Error in native library", error);
       return;
   }
 
   NSData* responseData =[[NSData alloc] initWithBytesNoCopy:response->data length:(NSUInteger)response->len freeWhenDone:true];
-
-  //resolve([NSKeyedUnarchiver unarchivedObjectOfClass:NSData.class fromData:responseData error:nil]);
   NSArray *responseArray = [DidcommGrpc arrayFromData:responseData];
-  //[NSKeyedUnarchiver unarchivedObjectOfClass:NSData.class fromData:responseData error:nil];
-  //[DidcommGrpc arrayFromData:responseData];
+
+  resolve(responseArray);
+}
+
+RCT_REMAP_METHOD(unpack,
+                 unpackWithRequest:(nonnull NSArray*)request
+                 withResolver:(RCTPromiseResolveBlock)resolve
+                 withRejecter:(RCTPromiseRejectBlock)reject)
+{
+  NSMutableData *requestData = [[NSMutableData alloc] initWithCapacity:request.count];
+  for (id item in request) {
+      uint a = [item unsignedCharValue];
+      [requestData appendBytes:&a length:1];
+  }
+
+  ByteBuffer req;
+  req.len = requestData.length;
+  req.data = (uint8_t *)[requestData bytes];
+  
+  ByteBuffer *response = (ByteBuffer*) malloc(sizeof(ByteBuffer));
+  ExternError *err = (ExternError*) malloc(sizeof(ExternError));
+
+  if (didcomm_unpack(req, response, err) != 0) {
+      NSError *error = [DidcommGrpc errorFromExternError:err];
+      reject(@"err_native", @"Error in native library", error);
+      return;
+  }
+
+  NSData* responseData =[[NSData alloc] initWithBytesNoCopy:response->data length:(NSUInteger)response->len freeWhenDone:true];
+  NSArray *responseArray = [DidcommGrpc arrayFromData:responseData];
+
+  resolve(responseArray);
+}
+
+RCT_REMAP_METHOD(sign,
+                 signWithRequest:(nonnull NSArray*)request
+                 withResolver:(RCTPromiseResolveBlock)resolve
+                 withRejecter:(RCTPromiseRejectBlock)reject)
+{
+  NSMutableData *requestData = [[NSMutableData alloc] initWithCapacity:request.count];
+  for (id item in request) {
+      uint a = [item unsignedCharValue];
+      [requestData appendBytes:&a length:1];
+  }
+
+  ByteBuffer req;
+  req.len = requestData.length;
+  req.data = (uint8_t *)[requestData bytes];
+  
+  ByteBuffer *response = (ByteBuffer*) malloc(sizeof(ByteBuffer));
+  ExternError *err = (ExternError*) malloc(sizeof(ExternError));
+
+  if (didcomm_sign(req, response, err) != 0) {
+      NSError *error = [DidcommGrpc errorFromExternError:err];
+      reject(@"err_native", @"Error in native library", error);
+      return;
+  }
+
+  NSData* responseData =[[NSData alloc] initWithBytesNoCopy:response->data length:(NSUInteger)response->len freeWhenDone:true];
+  NSArray *responseArray = [DidcommGrpc arrayFromData:responseData];
+
+  resolve(responseArray);
+}
+
+RCT_REMAP_METHOD(verify,
+                 verifyWithRequest:(nonnull NSArray*)request
+                 withResolver:(RCTPromiseResolveBlock)resolve
+                 withRejecter:(RCTPromiseRejectBlock)reject)
+{
+  NSMutableData *requestData = [[NSMutableData alloc] initWithCapacity:request.count];
+  for (id item in request) {
+      uint a = [item unsignedCharValue];
+      [requestData appendBytes:&a length:1];
+  }
+
+  ByteBuffer req;
+  req.len = requestData.length;
+  req.data = (uint8_t *)[requestData bytes];
+  
+  ByteBuffer *response = (ByteBuffer*) malloc(sizeof(ByteBuffer));
+  ExternError *err = (ExternError*) malloc(sizeof(ExternError));
+
+  if (didcomm_verify(req, response, err) != 0) {
+      NSError *error = [DidcommGrpc errorFromExternError:err];
+      reject(@"err_native", @"Error in native library", error);
+      return;
+  }
+
+  NSData* responseData =[[NSData alloc] initWithBytesNoCopy:response->data length:(NSUInteger)response->len freeWhenDone:true];
+  NSArray *responseArray = [DidcommGrpc arrayFromData:responseData];
+
   resolve(responseArray);
 }
 
@@ -82,7 +149,6 @@ static NSString *const DMErrorDomain = @"DIDCommError";
     }
 
     NSError *result = [NSError errorWithDomain:DMErrorDomain code:error->code userInfo:userInfo];
-
     free(error);
 
     return result;
@@ -101,7 +167,8 @@ RCT_REMAP_METHOD(generate,
 {
   NSMutableData *requestData = [[NSMutableData alloc] initWithCapacity:request.count];
   for (id item in request) {
-      [requestData appendBytes:&item length:1];
+      uint a = [item unsignedCharValue];
+      [requestData appendBytes:&a length:1];
   }
   
   ByteBuffer req;
@@ -112,6 +179,36 @@ RCT_REMAP_METHOD(generate,
   ExternError *err = (ExternError*) malloc(sizeof(ExternError));
 
   if (didkey_generate(req, response, err) != 0) {
+      NSError *error = [DidcommGrpc errorFromExternError:err];
+      reject(@"err_native", @"Error in native library", error);
+      return;
+  }
+
+  NSData* responseData =[[NSData alloc] initWithBytesNoCopy:response->data length:(NSUInteger)response->len freeWhenDone:true];
+
+  NSArray *responseArray = [DidcommGrpc arrayFromData:responseData];
+  resolve(responseArray);
+}
+
+RCT_REMAP_METHOD(convert,
+                 convertWithRequest:(nonnull NSArray*)request
+                        withResolver:(RCTPromiseResolveBlock)resolve
+                        withRejecter:(RCTPromiseRejectBlock)reject)
+{
+  NSMutableData *requestData = [[NSMutableData alloc] initWithCapacity:request.count];
+  for (id item in request) {
+      uint a = [item unsignedCharValue];
+      [requestData appendBytes:&a length:1];
+  }
+  
+  ByteBuffer req;
+  req.len = requestData.length;
+  req.data = (uint8_t *)[requestData bytes];
+  
+  ByteBuffer *response = (ByteBuffer*) malloc(sizeof(ByteBuffer));
+  ExternError *err = (ExternError*) malloc(sizeof(ExternError));
+
+  if (didkey_convert(req, response, err) != 0) {
       NSError *error = [DidcommGrpc errorFromExternError:err];
       reject(@"err_native", @"Error in native library", error);
       return;
