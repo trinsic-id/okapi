@@ -14,6 +14,7 @@ hex = "0.4.2"
 getrandom = { version = "0.2", features = ["js"] }
 regex = "1"
 did-key = { path = "./did-key.rs" }
+jni = "0.18.0"
 
 [lib]
 name = "didcommgrpc"
