@@ -1,6 +1,6 @@
-use crate::proto::*;
-use jni::{objects::JClass, sys::jbyteArray};
-use jni::{JNIEnv};
+use crate::{proto::*, *};
+use ::jni::JNIEnv;
+use ::jni::{objects::JClass, sys::jbyteArray};
 
 #[no_mangle]
 pub extern "system" fn Java_didkey_generate(env: JNIEnv, _class: JClass, request: jbyteArray) -> jbyteArray {

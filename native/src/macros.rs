@@ -40,6 +40,7 @@ macro_rules! c_impl {
     };};
 }
 
+#[allow(unused_macros)]
 macro_rules! jni_impl {
     ($message:ty,$struct:ident,$func:ident,$env:expr,$req:expr) => {{
         let request = $env.convert_byte_array($req).unwrap();
