@@ -14,11 +14,17 @@ hex = "0.4.2"
 getrandom = { version = "0.2", features = ["js"] }
 regex = "1"
 did-key = { path = "./did-key.rs" }
-jni = "0.18"
+jni = { version = "0.18", optional = true }
 
 [lib]
 name = "didcommgrpc"
 crate-type = [ "lib", "cdylib", "staticlib" ]
+
+[features]
+default = []
+
+# Expose methods for use with JNI in native Java and Android applications
+jni_support = [ "jni" ]
 
 [build-dependencies]
 prost-build = "0.6"

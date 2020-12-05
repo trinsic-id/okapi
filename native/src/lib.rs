@@ -45,5 +45,7 @@ mod didcomm;
 mod didkey;
 #[cfg(not(target_arch = "wasm32"))]
 mod ffi;
+#[cfg(feature = "jni_support")]
+mod jni;
 #[cfg(test)]
 mod tests;
