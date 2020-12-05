@@ -8,13 +8,7 @@ public class NativeMethods {
     public static native byte[] didcomm_sign(byte[] request);
     public static native byte[] didcomm_verify(byte[] request);
 
-    private static native String hello(String name);
-
     static {
         System.loadLibrary("didcommgrpc");
-    }
-
-    public static void main(String[] args) {
-        System.out.println(NativeMethods.hello("Jace"));
     }
 }
