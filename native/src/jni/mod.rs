@@ -1,2 +1,2 @@
-pub mod didkey;
 pub mod didcomm;
+pub mod didkey;
