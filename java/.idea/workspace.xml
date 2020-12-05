@@ -2,29 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35cbd97a-3bf3-4880-95f3-19575e53d686" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/com_google_protobuf_protobuf_java_3_14_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/debug.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/java/META-INF/java.kotlin_module" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DIDComm/Messaging/Proto/API.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DIDComm/Messaging/Proto/BasicMsg.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DIDComm/Messaging/Proto/DIDComm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DIDComm/Messaging/Proto/Security.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DIDComm/Messaging/gRPC/DIDComm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DIDComm/Messaging/gRPC/DIDKey.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DIDComm/Messaging/gRPC/NativeMethods.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/DIDComm/Messaging/gRPC/DIDKeyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java.iml" beforeDir="false" afterPath="$PROJECT_DIR$/java.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/java/DIDComm/Messaging/gRPC/NativeMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/DIDComm/Messaging/gRPC/NativeMethods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DIDComm/Messaging/gRPC/NativeMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DIDComm/Messaging/gRPC/NativeMethods.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../native/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/../native/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../native/did-key.rs" beforeDir="false" afterPath="$PROJECT_DIR$/../native/did-key.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../native/src/ffi/didkey.rs" beforeDir="false" afterPath="$PROJECT_DIR$/../native/src/ffi/didkey.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proto/api.proto" beforeDir="false" afterPath="$PROJECT_DIR$/../proto/api.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proto/basic-message.proto" beforeDir="false" afterPath="$PROJECT_DIR$/../proto/basic-message.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proto/didcomm.proto" beforeDir="false" afterPath="$PROJECT_DIR$/../proto/didcomm.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proto/security.proto" beforeDir="false" afterPath="$PROJECT_DIR$/../proto/security.proto" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,34 +19,43 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/DIDComm/Messaging/gRPC/NativeMethods.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="20" selection-start-line="20" selection-end-line="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DIDComm/Messaging/gRPC/DIDComm.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/DIDComm/Messaging/gRPC/NativeMethods.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="180">
+                  <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/DIDComm/Messaging/gRPC/DIDComm.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="180">
+                  <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -90,15 +84,16 @@
         <option value="$PROJECT_DIR$/src/DIDComm/Messaging/Proto/BasicMsg.java" />
         <option value="$PROJECT_DIR$/src/DIDComm/Messaging/Proto/DIDComm.java" />
         <option value="$PROJECT_DIR$/src/DIDComm/Messaging/Proto/Security.java" />
+        <option value="$PROJECT_DIR$/src/DIDComm/Messaging/gRPC/DIDKeyTest.groovy" />
+        <option value="$PROJECT_DIR$/tests/DIDComm/Messaging/gRPC/DIDKeyTest.java" />
         <option value="$PROJECT_DIR$/src/DIDComm/Messaging/gRPC/NativeMethods.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-2241" />
-    <option name="y" value="291" />
-    <option name="width" value="1920" />
-    <option name="height" value="1057" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="23" />
+    <option name="width" value="1680" />
+    <option name="height" value="948" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -106,6 +101,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -135,7 +131,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -144,14 +139,25 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1607097638313" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1607206989501" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Groovy JUnit" value="groovy.util.GroovyTestCase" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="DIDComm.Messaging.gRPC" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+      <recent name="groovy.util.GroovyTestCase" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/DIDComm/Messaging" />
@@ -170,7 +176,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.NativeMethods">
+  <component name="RunManager" selected="JUnit.DIDKeyTest">
     <configuration name="DIDKey" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="DIDComm.Messaging.gRPC.DIDKey" />
       <module name="java" />
@@ -185,8 +191,58 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DIDKeyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DIDComm.Messaging.gRPC.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="DIDComm.Messaging.gRPC" />
+      <option name="MAIN_CLASS_NAME" value="DIDComm.Messaging.gRPC.DIDKeyTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DIDKeyTest.generate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DIDComm.Messaging.gRPC.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="DIDComm.Messaging.gRPC" />
+      <option name="MAIN_CLASS_NAME" value="DIDComm.Messaging.gRPC.DIDKeyTest" />
+      <option name="METHOD_NAME" value="generate" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DIDKeyTest.testGenerateKeyThrowsInvalidSeedSize" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DIDComm.Messaging.gRPC.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="DIDComm.Messaging.gRPC" />
+      <option name="MAIN_CLASS_NAME" value="DIDComm.Messaging.gRPC.DIDKeyTest" />
+      <option name="METHOD_NAME" value="testGenerateKeyThrowsInvalidSeedSize" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DIDKeyTest" />
+        <item itemvalue="JUnit.DIDKeyTest.testGenerateKeyThrowsInvalidSeedSize" />
+        <item itemvalue="JUnit.DIDKeyTest.generate" />
         <item itemvalue="Application.NativeMethods" />
         <item itemvalue="Application.DIDKey" />
       </list>
@@ -205,10 +261,43 @@
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="DIDKeyTest_generate - 2020.12.05 at 14h 19m 05s.xml">
+      <configuration name="DIDKeyTest.generate" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DIDKeyTest_testGenerateKeyThrowsInvalidSeedSize - 2020.12.05 at 14h 30m 40s.xml">
+      <configuration name="DIDKeyTest.testGenerateKeyThrowsInvalidSeedSize" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DIDKeyTest_testGenerateKeyThrowsInvalidSeedSize - 2020.12.05 at 14h 30m 50s.xml">
+      <configuration name="DIDKeyTest.testGenerateKeyThrowsInvalidSeedSize" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DIDKeyTest_testGenerateKeyThrowsInvalidSeedSize - 2020.12.05 at 14h 35m 29s.xml">
+      <configuration name="DIDKeyTest.testGenerateKeyThrowsInvalidSeedSize" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DIDKeyTest_testGenerateKeyThrowsInvalidSeedSize - 2020.12.05 at 14h 35m 49s.xml">
+      <configuration name="DIDKeyTest.testGenerateKeyThrowsInvalidSeedSize" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DIDKeyTest_testGenerateKeyThrowsInvalidSeedSize - 2020.12.05 at 14h 36m 16s.xml">
+      <configuration name="DIDKeyTest.testGenerateKeyThrowsInvalidSeedSize" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DIDKeyTest_testGenerateKeyThrowsInvalidSeedSize - 2020.12.05 at 14h 38m 19s.xml">
+      <configuration name="DIDKeyTest.testGenerateKeyThrowsInvalidSeedSize" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DIDKeyTest_testGenerateKeyThrowsInvalidSeedSize - 2020.12.05 at 14h 39m 41s.xml">
+      <configuration name="DIDKeyTest.testGenerateKeyThrowsInvalidSeedSize" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DIDKeyTest_testGenerateKeyThrowsInvalidSeedSize - 2020.12.05 at 14h 40m 01s.xml">
+      <configuration name="DIDKeyTest.testGenerateKeyThrowsInvalidSeedSize" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DIDKeyTest - 2020.12.05 at 14h 40m 37s.xml">
+      <configuration name="DIDKeyTest" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="-2191" y="171" width="1920" height="1057" extended-state="0" />
+    <frame x="0" y="23" width="1680" height="948" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25292864" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2954823" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -217,7 +306,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32964823" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.45181346" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2745327" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -259,21 +348,6 @@
             <element signature="e#12228#12229#0" expanded="true" />
             <element signature="e#12320#12321#0" expanded="true" />
             <element signature="e#12387#12388#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DIDComm_Messaging_gRPC_NativeMethods.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-98" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DIDComm/Messaging/gRPC/DIDKey.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -448,16 +522,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/DIDComm/Messaging/gRPC/DIDKeyTest.groovy" />
+    <entry file="file://$PROJECT_DIR$/tests/DIDComm/Messaging/gRPC/DIDKeyTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="24" column="9" lean-forward="true" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DIDComm/Messaging/gRPC/DIDKey.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DIDComm_Messaging_gRPC_NativeMethods.h">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/DIDComm/Messaging/gRPC/NativeMethods.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="180">
+          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DIDComm/Messaging/gRPC/DIDComm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
+        <state relative-caret-position="180">
           <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -523,6 +618,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
