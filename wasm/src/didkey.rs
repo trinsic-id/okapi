@@ -1,4 +1,4 @@
-use didcomm_grpc::{proto::*, DIDKey};
+use didcommgrpc::{proto::*, *};
 use js_sys::Uint8Array;
 use wasm_bindgen::prelude::*;
 

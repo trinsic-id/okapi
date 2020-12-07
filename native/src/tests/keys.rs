@@ -1,7 +1,6 @@
-use crate::{proto::*, DIDKey};
+use crate::{proto::*, *};
 use ffi_support::{ByteBuffer, ExternError};
 use fluid::prelude::*;
-
 
 #[theory]
 #[case(KeyType::X25519, 32)]

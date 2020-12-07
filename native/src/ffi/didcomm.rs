@@ -1,6 +1,4 @@
-use std::todo;
-
-use crate::{proto::*, DIDComm};
+use crate::{proto::*, *};
 use ffi_support::{ByteBuffer, ExternError};
 use jni::JNIEnv;
 use jni::{objects::JClass, sys::jbyteArray};
