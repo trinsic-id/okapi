@@ -26,7 +26,7 @@ impl From<Key> for DIDKey {
 
         match key.secret_key.is_empty() {
             true => DIDKey::from_public_key(key_type, key.public_key.as_slice()),
-            false => DIDKey::from_seed(key_type, key.secret_key.as_slice()),
+            false => DIDKey::new_from_seed(key_type, key.secret_key.as_slice()),
         }
     }
 }
@@ -45,7 +45,7 @@ impl crate::DIDKey {
     pub fn generate<'a>(request: &GenerateKeyRequest) -> Result<GenerateKeyResponse, Error<'a>> {
         let key_type = unwrap_or_return!(KeyType::from_i32(request.key_type), Error::InvalidField("key_type"));
 
-        let key: Key = DIDKey::from_seed(key_type.into(), request.seed.as_slice()).into();
+        let key: Key = DIDKey::new_from_seed(key_type.into(), request.seed.as_slice()).into();
 
         Ok(GenerateKeyResponse { key: Some(key.clone()) })
     }
