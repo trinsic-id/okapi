@@ -6,9 +6,11 @@ mod macros {
                 Ok(req) => $struct::$func(&req)
                     .map(|v| v.to_vec().as_slice().into())
                     .map_err(|e| JsValue::from_str(format!("error packing {:?}", e).as_str())),
-                Err(e) => Err(JsValue::from_str(format!("invalid request: {:?}", e).as_str())),
+                Err(e) => Err(JsValue::from_str(
+                    format!("invalid request: {:?}", e).as_str(),
+                )),
             }
-        }
+        };
     }
 }
 pub mod didcomm;

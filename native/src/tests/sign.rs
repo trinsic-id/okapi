@@ -1,4 +1,4 @@
-use crate::{proto::*, DIDComm};
+use crate::{proto::*, *};
 use fluid::prelude::*;
 
 #[theory]
