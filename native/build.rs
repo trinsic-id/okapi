@@ -6,6 +6,8 @@ extern crate prost_build;
 
 fn main() {
     Config::new()
+        .compile_well_known_types()
+        .type_attribute(".", "#[derive(::serde::Serialize)]")
         .out_dir(".")
         .compile_protos(
             &[
@@ -18,7 +20,7 @@ fn main() {
         )
         .unwrap();
 
-    copy("didcomm.messaging.rs", "./src/proto.rs").unwrap();
+    copy("didcomm.messaging.rs", "./src/proto/didcomm_messaging.rs").unwrap();
     remove_file("didcomm.messaging.rs").unwrap();
     remove_file("google.protobuf.rs").unwrap();
 }

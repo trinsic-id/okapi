@@ -1,4 +1,4 @@
-use crate::{proto::*, *};
+use crate::*;
 use did_key::{x25519::X25519Key, DIDKey};
 use fluid::prelude::*;
 

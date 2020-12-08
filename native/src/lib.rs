@@ -46,3 +46,11 @@ mod jni;
 pub mod proto;
 #[cfg(test)]
 mod tests;
+
+pub mod google {
+    pub mod protobuf {
+        pub use crate::proto::google_protobuf::*;
+    }
+}
+
+pub use proto::didcomm_messaging::*;
