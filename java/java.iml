@@ -5,10 +5,10 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/resources" type="java-resource" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="debug" level="project" />
     <orderEntry type="library" name="com.google.protobuf:protobuf-java:3.14.0" level="project" />
     <orderEntry type="module-library" scope="TEST">
       <library name="JUnit4">

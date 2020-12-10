@@ -22,6 +22,7 @@ public class DIDKeyTest {
 
         } catch (Exception e) {
             assertNotNull("Exception: " + e.getMessage(), null);
+            e.printStackTrace();
         }
     }
 
