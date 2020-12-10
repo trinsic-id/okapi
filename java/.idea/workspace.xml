@@ -7,22 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35cbd97a-3bf3-4880-95f3-19575e53d686" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Greeter/Client/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Greeter/Common/Keys.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Greeter/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Greeter/Server/Context.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Greeter/Server/Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/debug.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java.iml" beforeDir="false" afterPath="$PROJECT_DIR$/java.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DIDComm/Messaging/gRPC/NativeMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DIDComm/Messaging/gRPC/NativeMethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/DIDComm/Messaging/gRPC/DIDKeyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/DIDComm/Messaging/gRPC/DIDKeyTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../native/src/didkey/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/../native/src/didkey/mod.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../native/src/ffi/didcomm.rs" beforeDir="false" afterPath="$PROJECT_DIR$/../native/src/ffi/didcomm.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../native/src/jni/didcomm.rs" beforeDir="false" afterPath="$PROJECT_DIR$/../native/src/jni/didcomm.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../native/src/jni/didkey.rs" beforeDir="false" afterPath="$PROJECT_DIR$/../native/src/jni/didkey.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../native/src/proto.rs" beforeDir="false" afterPath="$PROJECT_DIR$/../native/src/proto.rs" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,8 +22,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/DIDComm/Messaging/gRPC/NativeMethods.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="19" column="69" selection-start-line="19" selection-start-column="69" selection-end-line="19" selection-end-column="69" />
+            <state relative-caret-position="344">
+              <caret line="32" column="59" lean-forward="true" selection-start-line="32" selection-start-column="59" selection-end-line="32" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -61,7 +47,7 @@
         <entry file="file://$PROJECT_DIR$/src/Greeter/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -118,8 +104,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-2132" />
-    <option name="y" value="93" />
+    <option name="x" value="-2152" />
+    <option name="y" value="49" />
     <option name="width" value="1409" />
     <option name="height" value="948" />
   </component>
@@ -135,24 +121,6 @@
             <path>
               <item name="java" type="b2602c69:ProjectViewProjectNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-              <item name="java_jar" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="java" type="b2602c69:ProjectViewProjectNode" />
@@ -176,7 +144,7 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1607632699036" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1607637808526" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Groovy JUnit" value="groovy.util.GroovyTestCase" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
@@ -342,8 +310,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2132" y="93" width="1409" height="948" extended-state="0" />
-    <editor active="true" />
+    <frame x="-2152" y="49" width="1409" height="948" extended-state="0" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29261157" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -599,7 +566,7 @@
     <entry file="file://$PROJECT_DIR$/src/Greeter/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -608,8 +575,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DIDComm/Messaging/gRPC/NativeMethods.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="19" column="69" selection-start-line="19" selection-start-column="69" selection-end-line="19" selection-end-column="69" />
+        <state relative-caret-position="344">
+          <caret line="32" column="59" lean-forward="true" selection-start-line="32" selection-start-column="59" selection-end-line="32" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
