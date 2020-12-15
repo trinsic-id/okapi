@@ -16,36 +16,50 @@ public class NativeMethods {
     static {
         String path = new File("").getAbsolutePath() + "/resources/";
         String filename = System.mapLibraryName("didcommgrpc");
-        System.out.println("Searching for " + filename);
-        System.out.println("FOUND OS: " + System.getProperty("os.name"));
 
 
         try {
+            //try loading it
             System.load(path + filename);
         } catch (UnsatisfiedLinkError linkError) {
             try {
-                InputStream inputStream = null;
-                OutputStream outputStream = null;
-                byte[] buffer = new byte[1024];
-                int read = -1;
-
-                File directory = new File(path);
-                if (!directory.exists()) directory.mkdir();
-
-                inputStream = NativeMethods.class.getResourceAsStream("/" + filename);
-                File fileOut = new File(path + filename);
-                outputStream = new FileOutputStream(fileOut);
-
-                while((read = inputStream.read(buffer)) != -1) {
-                    outputStream.write(buffer, 0, read);
-                }
-
-                System.load(fileOut.toString());
+               File fileOut = loadFromJar(path, filename);
+               System.load(fileOut.toString());
 
             } catch (Exception e) {
-                System.out.println("Could not load library: " + filename);
-                e.printStackTrace();
+                try {
+                    // if that fails, try loading it from library path. This is last resort for android
+                    System.loadLibrary("didcommgrpc");
+                } catch (Exception err) {
+                    System.out.println("Could not load library: " + filename);
+                    err.printStackTrace();
+                }
             }
         }
+    }
+
+    private static File loadFromJar(String path, String filename) throws Exception {
+        //if not available, load it from jar
+        InputStream inputStream = null;
+        OutputStream outputStream = null;
+        byte[] buffer = new byte[1024];
+        int read = -1;
+
+        File directory = new File(path);
+        if (!directory.exists()) directory.mkdir();
+
+        inputStream = NativeMethods.class.getResourceAsStream("/" + filename);
+        File fileOut = new File(path + filename);
+        outputStream = new FileOutputStream(fileOut);
+
+        while((read = inputStream.read(buffer)) != -1) {
+            outputStream.write(buffer, 0, read);
+        }
+        return fileOut;
+    }
+
+    // call this function in java code before using library in android
+    public static void initializeAndroid() {
+
     }
 }

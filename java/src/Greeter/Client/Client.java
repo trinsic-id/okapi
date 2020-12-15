@@ -22,7 +22,7 @@ public class Client {
     private String port;
 
     //This function simply sends a byte array to the server over http and returns the response as a byte array
-    private byte[] send(byte[] request) {
+    public byte[] send(byte[] request) {
         try {
             URL url = new URL("http://localhost:" + port + "/");
             HttpURLConnection conn = (HttpURLConnection)url.openConnection();
