@@ -1,9 +1,8 @@
 name: build-libs
 
 on:
-  pull_request:
-    branches:
-      - master
+  - workflow_dispatch
+  - pull_request
 
 jobs:
   build_windows:
@@ -13,7 +12,29 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
+        with:
+          submodules: 'true'
+      - name: Run build script
+        run: ../devops/Build.ps1 -Platform Windows -OutLocation ../libs/windows
+        working-directory: native
+        shell: pwsh
+      - name: Upload windows artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: lib-windows
+          path: ./libs/windows/*
+
+  build_linux:
+    name: Build for Linux
+    if: "! contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+        with:
+          submodules: 'true'
 
       - name: Run build script
-        run: ./devops/Build.ps1 -Platform Windows
-        shell: powershell
+        run: ../devops/Build.ps1 -Platform Linux -OutLocation ../libs/linux
+        shell: pwsh
+        working-directory: native
