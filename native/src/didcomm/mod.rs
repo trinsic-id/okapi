@@ -1,4 +1,4 @@
-use crate::{proto::*, *};
+use crate::{proto::didcomm_messaging::*, *};
 use did_key::{DIDKey, Payload};
 
 use self::xchacha::XChaCha;
