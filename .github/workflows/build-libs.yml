@@ -6,7 +6,7 @@ on:
 
 jobs:
   build_windows:
-    name: Build for Windows
+    name: Windows
     if: "! contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: windows-latest
     steps:
@@ -25,7 +25,7 @@ jobs:
           path: ./libs/windows/*
 
   build_linux:
-    name: Build for Linux
+    name: Linux
     if: "! contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: ubuntu-latest
     steps:
@@ -45,7 +45,7 @@ jobs:
           path: ./libs/linux/*
 
   build_macos:
-    name: Build for MacOS
+    name: MacOS
     if: "! contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: macos-latest
     steps:
@@ -65,7 +65,7 @@ jobs:
           path: ./libs/macos/*
 
   build_ios:
-    name: Build for iOS
+    name: iOS
     if: "! contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: macos-latest
     steps:
@@ -83,3 +83,23 @@ jobs:
         with:
           name: ios
           path: ./libs/ios/*
+
+  build_android:
+    name: Android
+    if: "! contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+        with:
+          submodules: 'true'
+
+      - name: Run build script
+        run: ../devops/Build.ps1 -Platform Android -OutLocation ../libs/android -AndroidNdkHome ~/Library/Developer/Xamarin/android-ndk/
+        shell: pwsh
+        working-directory: native
+      - name: Upload Android artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: android
+          path: ./libs/android/*
