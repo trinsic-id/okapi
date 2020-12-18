@@ -12,8 +12,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
+        with:
+          submodules: 'true'
       - name: Run build script
-        run: ../devops/Build.ps1 -Platform Windows -OutLocation ./libs/windows
+        run: ../devops/Build.ps1 -Platform Windows -OutLocation ../libs/windows
         working-directory: native
         shell: pwsh
       - name: Upload windows artifact
@@ -29,8 +31,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
+        with:
+          submodules: 'true'
 
       - name: Run build script
-        run: ../devops/Build.ps1 -Platform Linux -OutLocation ./libs/linux
+        run: ../devops/Build.ps1 -Platform Linux -OutLocation ../libs/linux
         shell: pwsh
         working-directory: native
