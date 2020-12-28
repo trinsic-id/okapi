@@ -33,7 +33,7 @@ switch ($Platform) {
         
         $AndroidNdkHome = Resolve-Path $AndroidNdkHome
 
-        mkdir ~/.NDK
+        mkdir -p ~/.NDK
 
         & (Resolve-Path "$AndroidNdkHome/build/tools/make_standalone_toolchain.py") --api 26 --arch arm64 --install-dir ~/.NDK/arm64;
         & (Resolve-Path "$AndroidNdkHome/build/tools/make_standalone_toolchain.py") --api 26 --arch arm --install-dir ~/.NDK/arm;
@@ -47,9 +47,9 @@ switch ($Platform) {
         cargo build --target armv7-linux-androideabi --release --features=jni_support
         cargo build --target i686-linux-android --release --features=jni_support
 
-        mkdir $OutLocation/arm64-v8a/
-        mkdir $OutLocation/armeabi-v7a/
-        mkdir $OutLocation/x86/
+        mkdir -p $OutLocation/arm64-v8a/
+        mkdir -p $OutLocation/armeabi-v7a/
+        mkdir -p $OutLocation/x86/
         Copy-Item -Path ./target/aarch64-linux-android/release/libdidcommgrpc.so -Destination $OutLocation/arm64-v8a/
         Copy-Item -Path ./target/armv7-linux-androideabi/release/libdidcommgrpc.so -Destination $OutLocation/armeabi-v7a/
         Copy-Item -Path ./target/i686-linux-android/release/libdidcommgrpc.so -Destination $OutLocation/x86/
