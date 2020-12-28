@@ -1,4 +1,4 @@
-use crate::{proto::*, *};
+use crate::*;
 use fluid::prelude::*;
 
 #[theory]

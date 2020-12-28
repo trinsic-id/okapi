@@ -1,0 +1,105 @@
+name: Build Platform Libraries
+
+on:
+  - workflow_dispatch
+  - pull_request
+
+jobs:
+  build_windows:
+    name: Windows
+    if: "! contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+        with:
+          submodules: 'true'
+      - name: Run build script
+        run: ../devops/Build.ps1 -Platform Windows -OutLocation ../libs/windows
+        working-directory: native
+        shell: pwsh
+      - name: Upload Windows artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: windows
+          path: ./libs/windows/*
+
+  build_linux:
+    name: Linux
+    if: "! contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+        with:
+          submodules: 'true'
+
+      - name: Run build script
+        run: ../devops/Build.ps1 -Platform Linux -OutLocation ../libs/linux
+        shell: pwsh
+        working-directory: native
+      - name: Upload Linux artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: linux
+          path: ./libs/linux/*
+
+  build_macos:
+    name: MacOS
+    if: "! contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+        with:
+          submodules: 'true'
+
+      - name: Run build script
+        run: ../devops/Build.ps1 -Platform MacOS -OutLocation ../libs/macos
+        shell: pwsh
+        working-directory: native
+      - name: Upload MacOS artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: macos
+          path: ./libs/macos/*
+
+  build_ios:
+    name: iOS
+    if: "! contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+        with:
+          submodules: 'true'
+
+      - name: Run build script
+        run: ../devops/Build.ps1 -Platform iOS -OutLocation ../libs/ios
+        shell: pwsh
+        working-directory: native
+      - name: Upload iOS artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ios
+          path: ./libs/ios/*
+
+  build_android:
+    name: Android
+    if: "! contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+        with:
+          submodules: 'true'
+
+      - name: Run build script
+        run: ../devops/Build.ps1 -Platform Android -OutLocation ../libs/android -AndroidNdkHome ~/Library/Developer/Xamarin/android-ndk/
+        shell: pwsh
+        working-directory: native
+      - name: Upload Android artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: android
+          path: ./libs/android/*

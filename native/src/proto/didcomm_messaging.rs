@@ -1,6 +1,7 @@
 // JWS
 
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize)]
 pub struct SignedMessage {
     #[prost(bytes, tag="1")]
     pub payload: std::vec::Vec<u8>,
@@ -8,6 +9,7 @@ pub struct SignedMessage {
     pub signatures: ::std::vec::Vec<Signature>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize)]
 pub struct Signature {
     #[prost(bytes, tag="1")]
     pub header: std::vec::Vec<u8>,
@@ -15,6 +17,7 @@ pub struct Signature {
     pub signature: std::vec::Vec<u8>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize)]
 pub struct SignatureHeader {
     #[prost(string, tag="1")]
     pub algorithm: std::string::String,
@@ -24,6 +27,7 @@ pub struct SignatureHeader {
 // JWE
 
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize)]
 pub struct EncryptedMessage {
     #[prost(bytes, tag="1")]
     pub iv: std::vec::Vec<u8>,
@@ -37,6 +41,7 @@ pub struct EncryptedMessage {
     pub recipients: ::std::vec::Vec<EncryptionRecipient>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize)]
 pub struct EncryptionHeader {
     #[prost(enumeration="EncryptionMode", tag="1")]
     pub mode: i32,
@@ -48,6 +53,7 @@ pub struct EncryptionHeader {
     pub sender_key_id: std::string::String,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize)]
 pub struct EncryptionRecipient {
     #[prost(message, optional, tag="1")]
     pub header: ::std::option::Option<EncryptionHeader>,
@@ -56,17 +62,20 @@ pub struct EncryptionRecipient {
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
+#[derive(::serde::Serialize)]
 pub enum EncryptionMode {
     Direct = 0,
     ContentEncryptionKey = 1,
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
+#[derive(::serde::Serialize)]
 pub enum EncryptionAlgorithm {
     Xchacha20poly1305 = 0,
     AesGcm = 1,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize)]
 pub struct CoreMessage {
     #[prost(string, tag="1")]
     pub id: std::string::String,
@@ -84,14 +93,17 @@ pub struct CoreMessage {
     pub expires: i64,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize)]
 pub struct NoOp {
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize)]
 pub struct BasicMessage {
     #[prost(string, tag="1")]
     pub text: std::string::String,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize)]
 pub struct GenerateKeyRequest {
     #[prost(bytes, tag="1")]
     pub seed: std::vec::Vec<u8>,
@@ -99,11 +111,13 @@ pub struct GenerateKeyRequest {
     pub key_type: i32,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize)]
 pub struct GenerateKeyResponse {
     #[prost(message, optional, tag="1")]
     pub key: ::std::option::Option<Key>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize)]
 pub struct ConvertKeyRequest {
     #[prost(message, optional, tag="1")]
     pub key: ::std::option::Option<Key>,
@@ -111,11 +125,13 @@ pub struct ConvertKeyRequest {
     pub target_type: i32,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize)]
 pub struct ConvertKeyResponse {
     #[prost(message, optional, tag="1")]
     pub key: ::std::option::Option<Key>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize)]
 pub struct SignRequest {
     #[prost(bytes, tag="1")]
     pub payload: std::vec::Vec<u8>,
@@ -125,11 +141,13 @@ pub struct SignRequest {
     pub append_to: ::std::option::Option<SignedMessage>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize)]
 pub struct SignResponse {
     #[prost(message, optional, tag="1")]
     pub message: ::std::option::Option<SignedMessage>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize)]
 pub struct VerifyRequest {
     #[prost(message, optional, tag="1")]
     pub message: ::std::option::Option<SignedMessage>,
@@ -137,11 +155,13 @@ pub struct VerifyRequest {
     pub key: ::std::option::Option<Key>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize)]
 pub struct VerifyResponse {
     #[prost(bool, tag="1")]
     pub is_valid: bool,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize)]
 pub struct PackRequest {
     #[prost(message, optional, tag="1")]
     pub sender_key: ::std::option::Option<Key>,
@@ -157,11 +177,13 @@ pub struct PackRequest {
     pub algorithm: i32,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize)]
 pub struct PackResponse {
     #[prost(message, optional, tag="1")]
     pub message: ::std::option::Option<EncryptedMessage>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize)]
 pub struct UnpackRequest {
     #[prost(message, optional, tag="1")]
     pub sender_key: ::std::option::Option<Key>,
@@ -171,21 +193,25 @@ pub struct UnpackRequest {
     pub message: ::std::option::Option<EncryptedMessage>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize)]
 pub struct UnpackResponse {
     #[prost(bytes, tag="1")]
     pub plaintext: std::vec::Vec<u8>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize)]
 pub struct GetDidDocumentRequest {
     #[prost(message, optional, tag="1")]
     pub key: ::std::option::Option<Key>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize)]
 pub struct GetDidDocumentResponse {
     #[prost(message, optional, tag="1")]
-    pub did_document: ::std::option::Option<::prost_types::Struct>,
+    pub did_document: ::std::option::Option<super::super::google::protobuf::Struct>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize)]
 pub struct Key {
     #[prost(string, tag="1")]
     pub key_id: std::string::String,
@@ -200,6 +226,7 @@ pub struct Key {
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
+#[derive(::serde::Serialize)]
 pub enum KeyType {
     X25519 = 0,
     P256 = 1,

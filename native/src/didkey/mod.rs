@@ -1,6 +1,6 @@
 use did_key::{DIDKey, DIDKeyType};
 
-use crate::{didcomm::Error, proto::*};
+use crate::{didcomm::Error, *};
 
 impl From<DIDKey> for Key {
     fn from(key: DIDKey) -> Self {
