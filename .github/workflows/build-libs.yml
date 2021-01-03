@@ -107,6 +107,7 @@ jobs:
   package_nuget:
     name: Package Nuget
     runs-on: ubuntu-latest
+    needs: build_windows
     steps:
       - name: Checkout
         uses: actions/checkout@v1
