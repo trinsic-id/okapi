@@ -119,7 +119,7 @@ jobs:
           path: ./libs
           
       - name: Create Nuget package
-        run: msbuild /t:pack /p:Configuration=Release
+        run: msbuild /t:restore,pack /p:Configuration=Release
         working-directory: ./dotnet/Library/DIDComm.Messaging.gRPC
 
       - name: Upload nuget artifact
