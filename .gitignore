@@ -369,3 +369,9 @@ native/.DS_Store
 .DS_Store
 
 native/out.h
+
+# Android Files:
+!/Android/didcommgrpc/src/main/jniLibs/x86/
+
+#Java
+/java/out
