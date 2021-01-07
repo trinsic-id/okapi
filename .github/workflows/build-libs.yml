@@ -103,3 +103,27 @@ jobs:
         with:
           name: android
           path: ./libs/android/*
+
+  package_nuget:
+    name: Package Nuget
+    runs-on: macos-latest
+    needs: [ build_windows, build_macos, build_linux, build_android, build_ios ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+        with:
+          submodules: 'true'
+
+      - uses: actions/download-artifact@v2
+        with:
+          path: ./libs
+          
+      - name: Create Nuget package
+        run: msbuild /t:restore,pack /p:Configuration=Release
+        working-directory: ./dotnet/Library/DIDComm.Messaging.gRPC
+
+      - name: Upload nuget artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: package-nuget
+          path: ./dotnet/Library/DIDComm.Messaging.gRPC/bin/Release/*.nupkg
