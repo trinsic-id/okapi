@@ -1,0 +1,10 @@
+#!/bin/bash
+cargo build --manifest-path=../native/Cargo.toml --features=jni_support --target aarch64-linux-android
+rm ./didcommgrpc/src/main/jniLibs/arm64-v8a/libdidcommgrpc.so
+cp ../native/target/aarch64-linux-android/debug/libdidcommgrpc.so ./didcommgrpc/src/main/jniLibs/arm64-v8a/libdidcommgrpc.so
+cargo build --manifest-path=../native/Cargo.toml --features=jni_support --target armv7-linux-androideabi
+rm ./didcommgrpc/src/main/jniLibs/armeabi-v7a/libdidcommgrpc.so
+cp ../native/target/armv7-linux-androideabi/debug/libdidcommgrpc.so ./didcommgrpc/src/main/jniLibs/armeabi-v7a/libdidcommgrpc.so
+cargo build --manifest-path=../native/Cargo.toml --features=jni_support --target i686-linux-android
+rm ./didcommgrpc/src/main/jniLibs/x86/libdidcommgrpc.so
+cp ../native/target/i686-linux-android/debug/libdidcommgrpc.so ./didcommgrpc/src/main/jniLibs/x86/libdidcommgrpc.so
