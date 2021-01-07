@@ -1,8 +1,8 @@
 use crate::*;
-use did_key::{x25519::X25519Key, DIDKey};
-use fluid::prelude::*;
-
+use did_key::{x25519::X25519KeyPair, DIDKey};
 use std::str::from_utf8;
+
+use fluid::prelude::*;
 
 #[theory]
 #[case(
@@ -52,8 +52,8 @@ fn encrypt_then_decrypt(alice_pk: &str, alice_sk: &str, bob_pk: &str, bob_sk: &s
 
 #[test]
 fn test_x25519_exchange() {
-    let alice = DIDKey::X25519(X25519Key::from_seed(vec![].as_slice()));
-    let bob = DIDKey::X25519(X25519Key::from_seed(vec![].as_slice()));
+    let alice = DIDKey::X25519(X25519KeyPair::from_seed(vec![].as_slice()));
+    let bob = DIDKey::X25519(X25519KeyPair::from_seed(vec![].as_slice()));
 
     let ex1 = alice.key_exchange(&bob);
     let ex2 = bob.key_exchange(&alice);
