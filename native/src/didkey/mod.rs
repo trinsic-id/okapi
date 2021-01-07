@@ -11,7 +11,11 @@ impl From<DIDKey> for Key {
                 DIDKey::X25519(_) => KeyType::X25519,
                 DIDKey::P256(_) => KeyType::P256,
                 DIDKey::Bls12381G1G2(_) => todo!(),
+<<<<<<< HEAD
                 _ => panic!("Key type not implemented"),
+=======
+                DIDKey::Secp256k1(_) => todo!(),
+>>>>>>> upstream/main
             } as i32,
             public_key: key.public_key(),
             secret_key: key.secret_key().map_or(vec![], |x| x),

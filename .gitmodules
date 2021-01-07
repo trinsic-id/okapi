@@ -1,3 +1,0 @@
-[submodule "native/did-key.rs"]
-	path = native/did-key.rs
-	url = https://github.com/trinsic-id/did-key.rs
