@@ -1,9 +1,8 @@
-use std::collections::HashMap;
+use std::{collections::HashMap, fmt::Formatter};
 
 use crate::proto::google_protobuf::{value::*, *};
 use serde::{
     de::{self, Error, SeqAccess, Visitor},
-    export,
     ser::{SerializeMap, SerializeSeq},
     Deserialize, Deserializer, Serialize, Serializer,
 };
@@ -67,7 +66,7 @@ impl<'de> Deserialize<'de> for Struct {
 impl<'de> Visitor<'de> for Struct {
     type Value = Struct;
 
-    fn expecting(&self, formatter: &mut export::Formatter) -> std::fmt::Result {
+    fn expecting(&self, formatter: &mut Formatter) -> std::fmt::Result {
         write!(formatter, "a map or `null`")
     }
 
@@ -88,7 +87,7 @@ impl<'de> Visitor<'de> for Struct {
 impl<'de> Visitor<'de> for Value {
     type Value = Value;
 
-    fn expecting(&self, formatter: &mut export::Formatter) -> std::fmt::Result {
+    fn expecting(&self, formatter: &mut Formatter) -> std::fmt::Result {
         write!(formatter, "unrecognized value")
     }
 
