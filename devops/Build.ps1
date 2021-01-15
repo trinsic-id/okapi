@@ -1,5 +1,7 @@
 param($Platform, $OutLocation, $AndroidNdkHome)
 
+$ErrorActionPreference = "Stop"
+
 if ($null -eq $Platform) { throw "Parameter -Platform must be specified." }
 if ($null -eq $OutLocation) { throw "Parameter -OutLocation must be specified." }
 
