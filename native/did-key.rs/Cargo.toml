@@ -1,0 +1,41 @@
+[package]
+name = "did-key"
+version = "0.0.3"
+authors = ["Tomislav Markovski <tomislav@trinsic.id>"]
+edition = "2018"
+license = "Apache-2.0"
+description = "Implementation of the did:key method"
+homepage = "https://github.com/trinsic-id/did-key.rs"
+repository = "https://github.com/trinsic-id/did-key.rs"
+readme = "README.md"
+
+[lib]
+crate-type = [ "lib", "cdylib", "staticlib" ]
+
+[dependencies]
+ed25519-dalek = "1.0.1"
+x25519-dalek = "1.1.0"
+curve25519-dalek = "3.0.0"
+bs58 = "0.3.1"
+sha2 = "0.8"
+getrandom = { version = "0.2", features = ["js"] }
+pairing-plus = "0.19"
+bbs = { version = "0.4.1", default-features = false }
+hkdf = "0.8"
+arrayref = "0.3"
+did_url = "0.1.0"
+serde = "1.0"
+serde_json = "1.0"
+base64 = "0.13"
+libsecp256k1 = "0.3.5"
+
+[dependencies.p256]
+version = "0.5.2"
+features = ["ecdsa", "ecdh"]
+
+[dev-dependencies]
+criterion = "0.3"
+
+[[bench]]
+name = "my_benchmark"
+harness = false
