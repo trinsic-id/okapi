@@ -114,21 +114,21 @@ pub struct GenerateKeyRequest {
 #[derive(::serde::Serialize)]
 pub struct GenerateKeyResponse {
     #[prost(message, optional, tag="1")]
-    pub key: ::std::option::Option<Key>,
+    pub key: ::std::option::Option<JsonWebKey>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 #[derive(::serde::Serialize)]
 pub struct ConvertKeyRequest {
     #[prost(message, optional, tag="1")]
-    pub key: ::std::option::Option<Key>,
-    #[prost(enumeration="KeyType", tag="2")]
+    pub key: ::std::option::Option<JsonWebKey>,
+    #[prost(enumeration="Crv", tag="2")]
     pub target_type: i32,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 #[derive(::serde::Serialize)]
 pub struct ConvertKeyResponse {
     #[prost(message, optional, tag="1")]
-    pub key: ::std::option::Option<Key>,
+    pub key: ::std::option::Option<JsonWebKey>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 #[derive(::serde::Serialize)]
@@ -136,7 +136,7 @@ pub struct SignRequest {
     #[prost(bytes, tag="1")]
     pub payload: std::vec::Vec<u8>,
     #[prost(message, optional, tag="2")]
-    pub key: ::std::option::Option<Key>,
+    pub key: ::std::option::Option<JsonWebKey>,
     #[prost(message, optional, tag="3")]
     pub append_to: ::std::option::Option<SignedMessage>,
 }
@@ -152,7 +152,7 @@ pub struct VerifyRequest {
     #[prost(message, optional, tag="1")]
     pub message: ::std::option::Option<SignedMessage>,
     #[prost(message, optional, tag="2")]
-    pub key: ::std::option::Option<Key>,
+    pub key: ::std::option::Option<JsonWebKey>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 #[derive(::serde::Serialize)]
@@ -164,9 +164,9 @@ pub struct VerifyResponse {
 #[derive(::serde::Serialize)]
 pub struct PackRequest {
     #[prost(message, optional, tag="1")]
-    pub sender_key: ::std::option::Option<Key>,
+    pub sender_key: ::std::option::Option<JsonWebKey>,
     #[prost(message, optional, tag="2")]
-    pub receiver_key: ::std::option::Option<Key>,
+    pub receiver_key: ::std::option::Option<JsonWebKey>,
     #[prost(bytes, tag="3")]
     pub associated_data: std::vec::Vec<u8>,
     #[prost(bytes, tag="4")]
@@ -186,9 +186,9 @@ pub struct PackResponse {
 #[derive(::serde::Serialize)]
 pub struct UnpackRequest {
     #[prost(message, optional, tag="1")]
-    pub sender_key: ::std::option::Option<Key>,
+    pub sender_key: ::std::option::Option<JsonWebKey>,
     #[prost(message, optional, tag="2")]
-    pub receiver_key: ::std::option::Option<Key>,
+    pub receiver_key: ::std::option::Option<JsonWebKey>,
     #[prost(message, optional, tag="3")]
     pub message: ::std::option::Option<EncryptedMessage>,
 }
@@ -202,7 +202,7 @@ pub struct UnpackResponse {
 #[derive(::serde::Serialize)]
 pub struct GetDidDocumentRequest {
     #[prost(message, optional, tag="1")]
-    pub key: ::std::option::Option<Key>,
+    pub key: ::std::option::Option<JsonWebKey>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 #[derive(::serde::Serialize)]
@@ -212,23 +212,40 @@ pub struct GetDidDocumentResponse {
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 #[derive(::serde::Serialize)]
-pub struct Key {
+pub struct JsonWebKey {
     #[prost(string, tag="1")]
     pub key_id: std::string::String,
-    #[prost(bytes, tag="2")]
-    pub public_key: std::vec::Vec<u8>,
-    #[prost(bytes, tag="3")]
-    pub secret_key: std::vec::Vec<u8>,
-    #[prost(enumeration="KeyType", tag="4")]
-    pub key_type: i32,
-    #[prost(string, tag="5")]
-    pub fingerprint: std::string::String,
+    /// public_key
+    #[prost(string, tag="2")]
+    pub x: std::string::String,
+    /// public_key
+    #[prost(string, tag="3")]
+    pub y: std::string::String,
+    /// secret_key
+    #[prost(string, tag="4")]
+    pub d: std::string::String,
+    /// key_type
+    #[prost(enumeration="Crv", tag="5")]
+    pub crv: i32,
+    /// should always be EC?
+    #[prost(enumeration="KeyType", tag="6")]
+    pub kty: i32,
+}
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[repr(i32)]
+#[derive(::serde::Serialize)]
+pub enum Crv {
+    Ed25519 = 0,
+    X25519 = 1,
+    P256 = 2,
+    Secp256k1 = 3,
+    Bls12381G1 = 4,
+    Bls12381G2 = 5,
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 #[derive(::serde::Serialize)]
 pub enum KeyType {
-    X25519 = 0,
-    P256 = 1,
-    Ed25519 = 2,
+    Okp = 0,
+    Ec = 1,
 }

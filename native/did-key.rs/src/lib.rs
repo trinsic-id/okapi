@@ -19,8 +19,8 @@ pub enum DIDKeyType {
     Ed25519,
     X25519,
     P256,
-    Bls12381G1G2,
     Secp256k1,
+    Bls12381G1G2,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -28,9 +28,9 @@ pub(crate) enum DIDKeyTypeInternal {
     Ed25519,
     X25519,
     P256,
+    Secp256k1,
     Bls12381G1,
     Bls12381G2,
-    Secp256k1,
 }
 
 pub enum Payload {

@@ -8,12 +8,13 @@ use fluid::prelude::*;
 fn test_sign_payload(secret_key: &str, payload: &str) {
     let request = SignRequest {
         payload: payload.as_bytes().to_vec(),
-        key: Some(Key {
-            key_id: "did:example:123".to_string(),
-            public_key: vec![],
-            secret_key: base58_decode!(secret_key),
-            key_type: KeyType::Ed25519.into(),
-            fingerprint: String::new(),
+        key: Some(JsonWebKey {
+            key_id: String::default(),
+            crv: Crv::Ed25519.into(),
+            d: base64::encode(bs58::decode(secret_key).into_vec().unwrap()),
+            x: String::from(""),
+            y: String::from(""),
+            kty: KeyType::Okp as i32,
         }),
         append_to: None,
     };
@@ -32,12 +33,13 @@ fn test_sign_payload(secret_key: &str, payload: &str) {
 fn test_sign_verify(secret_key: &str, public_key: &str, message: &str) {
     let request = SignRequest {
         payload: message.as_bytes().to_vec(),
-        key: Some(Key {
-            key_id: "did:example:123".to_string(),
-            public_key: vec![],
-            secret_key: base58_decode!(secret_key),
-            key_type: KeyType::Ed25519.into(),
-            fingerprint: String::new(),
+        key: Some(JsonWebKey {
+            key_id: String::default(),
+            crv: Crv::Ed25519.into(),
+            d: base64::encode(bs58::decode(secret_key).into_vec().unwrap()),
+            x: base64::encode(bs58::decode(public_key).into_vec().unwrap()),
+            y: String::from(""),
+            kty: KeyType::Okp as i32,
         }),
         append_to: None,
     };
@@ -50,19 +52,20 @@ fn test_sign_verify(secret_key: &str, public_key: &str, message: &str) {
     let signed_message = response.message.expect("message was empty");
 
     let verify_request = VerifyRequest {
-        key: Some(Key {
-            key_id: "did:example:123".to_string(),
-            public_key: base58_decode!(public_key),
-            secret_key: vec![],
-            key_type: KeyType::Ed25519.into(),
-            fingerprint: String::new(),
+        key: Some(JsonWebKey {
+            key_id: String::default(),
+            crv: Crv::Ed25519.into(),
+            d: base64::encode(bs58::decode(secret_key).into_vec().unwrap()),
+            x: base64::encode(bs58::decode(public_key).into_vec().unwrap()),
+            y: String::from(""),
+            kty: KeyType::Okp as i32,
         }),
         message: Some(signed_message.clone()),
     };
 
     let verify_response = match DIDComm::verify(&verify_request) {
         Ok(x) => x,
-        Err(_) => panic!("Erorr signing"),
+        Err(_) => panic!("Error signing"),
     };
 
     assert!(verify_response.is_valid);
