@@ -103,15 +103,15 @@ public final class BasicMsg {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return BasicMsg.internal_static_didcomm_messaging_BasicMessage_descriptor;
+      return DIDComm.Messaging.Proto.BasicMsg.internal_static_didcomm_messaging_BasicMessage_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return BasicMsg.internal_static_didcomm_messaging_BasicMessage_fieldAccessorTable
+      return DIDComm.Messaging.Proto.BasicMsg.internal_static_didcomm_messaging_BasicMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              BasicMsg.BasicMessage.class, BasicMsg.BasicMessage.Builder.class);
+              DIDComm.Messaging.Proto.BasicMsg.BasicMessage.class, DIDComm.Messaging.Proto.BasicMsg.BasicMessage.Builder.class);
     }
 
     public static final int TEXT_FIELD_NUMBER = 1;
@@ -191,10 +191,10 @@ public final class BasicMsg {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof BasicMsg.BasicMessage)) {
+      if (!(obj instanceof DIDComm.Messaging.Proto.BasicMsg.BasicMessage)) {
         return super.equals(obj);
       }
-      BasicMsg.BasicMessage other = (BasicMsg.BasicMessage) obj;
+      DIDComm.Messaging.Proto.BasicMsg.BasicMessage other = (DIDComm.Messaging.Proto.BasicMsg.BasicMessage) obj;
 
       if (!getText()
           .equals(other.getText())) return false;
@@ -216,69 +216,69 @@ public final class BasicMsg {
       return hash;
     }
 
-    public static BasicMsg.BasicMessage parseFrom(
+    public static DIDComm.Messaging.Proto.BasicMsg.BasicMessage parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static BasicMsg.BasicMessage parseFrom(
+    public static DIDComm.Messaging.Proto.BasicMsg.BasicMessage parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static BasicMsg.BasicMessage parseFrom(
+    public static DIDComm.Messaging.Proto.BasicMsg.BasicMessage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static BasicMsg.BasicMessage parseFrom(
+    public static DIDComm.Messaging.Proto.BasicMsg.BasicMessage parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static BasicMsg.BasicMessage parseFrom(byte[] data)
+    public static DIDComm.Messaging.Proto.BasicMsg.BasicMessage parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static BasicMsg.BasicMessage parseFrom(
+    public static DIDComm.Messaging.Proto.BasicMsg.BasicMessage parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static BasicMsg.BasicMessage parseFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.BasicMsg.BasicMessage parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static BasicMsg.BasicMessage parseFrom(
+    public static DIDComm.Messaging.Proto.BasicMsg.BasicMessage parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static BasicMsg.BasicMessage parseDelimitedFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.BasicMsg.BasicMessage parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static BasicMsg.BasicMessage parseDelimitedFrom(
+    public static DIDComm.Messaging.Proto.BasicMsg.BasicMessage parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static BasicMsg.BasicMessage parseFrom(
+    public static DIDComm.Messaging.Proto.BasicMsg.BasicMessage parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static BasicMsg.BasicMessage parseFrom(
+    public static DIDComm.Messaging.Proto.BasicMsg.BasicMessage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -291,7 +291,7 @@ public final class BasicMsg {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(BasicMsg.BasicMessage prototype) {
+    public static Builder newBuilder(DIDComm.Messaging.Proto.BasicMsg.BasicMessage prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -312,21 +312,21 @@ public final class BasicMsg {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:didcomm.messaging.BasicMessage)
-        BasicMsg.BasicMessageOrBuilder {
+        DIDComm.Messaging.Proto.BasicMsg.BasicMessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return BasicMsg.internal_static_didcomm_messaging_BasicMessage_descriptor;
+        return DIDComm.Messaging.Proto.BasicMsg.internal_static_didcomm_messaging_BasicMessage_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return BasicMsg.internal_static_didcomm_messaging_BasicMessage_fieldAccessorTable
+        return DIDComm.Messaging.Proto.BasicMsg.internal_static_didcomm_messaging_BasicMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                BasicMsg.BasicMessage.class, BasicMsg.BasicMessage.Builder.class);
+                DIDComm.Messaging.Proto.BasicMsg.BasicMessage.class, DIDComm.Messaging.Proto.BasicMsg.BasicMessage.Builder.class);
       }
 
-      // Construct using BasicMsg.BasicMessage.newBuilder()
+      // Construct using DIDComm.Messaging.Proto.BasicMsg.BasicMessage.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -352,17 +352,17 @@ public final class BasicMsg {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return BasicMsg.internal_static_didcomm_messaging_BasicMessage_descriptor;
+        return DIDComm.Messaging.Proto.BasicMsg.internal_static_didcomm_messaging_BasicMessage_descriptor;
       }
 
       @java.lang.Override
-      public BasicMsg.BasicMessage getDefaultInstanceForType() {
-        return BasicMsg.BasicMessage.getDefaultInstance();
+      public DIDComm.Messaging.Proto.BasicMsg.BasicMessage getDefaultInstanceForType() {
+        return DIDComm.Messaging.Proto.BasicMsg.BasicMessage.getDefaultInstance();
       }
 
       @java.lang.Override
-      public BasicMsg.BasicMessage build() {
-        BasicMsg.BasicMessage result = buildPartial();
+      public DIDComm.Messaging.Proto.BasicMsg.BasicMessage build() {
+        DIDComm.Messaging.Proto.BasicMsg.BasicMessage result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -370,8 +370,8 @@ public final class BasicMsg {
       }
 
       @java.lang.Override
-      public BasicMsg.BasicMessage buildPartial() {
-        BasicMsg.BasicMessage result = new BasicMsg.BasicMessage(this);
+      public DIDComm.Messaging.Proto.BasicMsg.BasicMessage buildPartial() {
+        DIDComm.Messaging.Proto.BasicMsg.BasicMessage result = new DIDComm.Messaging.Proto.BasicMsg.BasicMessage(this);
         result.text_ = text_;
         onBuilt();
         return result;
@@ -411,16 +411,16 @@ public final class BasicMsg {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof BasicMsg.BasicMessage) {
-          return mergeFrom((BasicMsg.BasicMessage)other);
+        if (other instanceof DIDComm.Messaging.Proto.BasicMsg.BasicMessage) {
+          return mergeFrom((DIDComm.Messaging.Proto.BasicMsg.BasicMessage)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(BasicMsg.BasicMessage other) {
-        if (other == BasicMsg.BasicMessage.getDefaultInstance()) return this;
+      public Builder mergeFrom(DIDComm.Messaging.Proto.BasicMsg.BasicMessage other) {
+        if (other == DIDComm.Messaging.Proto.BasicMsg.BasicMessage.getDefaultInstance()) return this;
         if (!other.getText().isEmpty()) {
           text_ = other.text_;
           onChanged();
@@ -440,11 +440,11 @@ public final class BasicMsg {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        BasicMsg.BasicMessage parsedMessage = null;
+        DIDComm.Messaging.Proto.BasicMsg.BasicMessage parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (BasicMsg.BasicMessage) e.getUnfinishedMessage();
+          parsedMessage = (DIDComm.Messaging.Proto.BasicMsg.BasicMessage) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -546,12 +546,12 @@ public final class BasicMsg {
     }
 
     // @@protoc_insertion_point(class_scope:didcomm.messaging.BasicMessage)
-    private static final BasicMsg.BasicMessage DEFAULT_INSTANCE;
+    private static final DIDComm.Messaging.Proto.BasicMsg.BasicMessage DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new BasicMsg.BasicMessage();
+      DEFAULT_INSTANCE = new DIDComm.Messaging.Proto.BasicMsg.BasicMessage();
     }
 
-    public static BasicMsg.BasicMessage getDefaultInstance() {
+    public static DIDComm.Messaging.Proto.BasicMsg.BasicMessage getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -576,7 +576,7 @@ public final class BasicMsg {
     }
 
     @java.lang.Override
-    public BasicMsg.BasicMessage getDefaultInstanceForType() {
+    public DIDComm.Messaging.Proto.BasicMsg.BasicMessage getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 

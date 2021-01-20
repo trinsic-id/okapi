@@ -96,7 +96,7 @@ public final class Security {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return Security.getDescriptor().getEnumTypes().get(0);
+      return DIDComm.Messaging.Proto.Security.getDescriptor().getEnumTypes().get(0);
     }
 
     private static final EncryptionMode[] VALUES = values();
@@ -204,7 +204,7 @@ public final class Security {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return Security.getDescriptor().getEnumTypes().get(1);
+      return DIDComm.Messaging.Proto.Security.getDescriptor().getEnumTypes().get(1);
     }
 
     private static final EncryptionAlgorithm[] VALUES = values();
@@ -243,12 +243,12 @@ public final class Security {
     /**
      * <code>repeated .didcomm.messaging.Signature signatures = 2;</code>
      */
-    java.util.List<Security.Signature>
+    java.util.List<DIDComm.Messaging.Proto.Security.Signature> 
         getSignaturesList();
     /**
      * <code>repeated .didcomm.messaging.Signature signatures = 2;</code>
      */
-    Security.Signature getSignatures(int index);
+    DIDComm.Messaging.Proto.Security.Signature getSignatures(int index);
     /**
      * <code>repeated .didcomm.messaging.Signature signatures = 2;</code>
      */
@@ -256,12 +256,12 @@ public final class Security {
     /**
      * <code>repeated .didcomm.messaging.Signature signatures = 2;</code>
      */
-    java.util.List<? extends Security.SignatureOrBuilder>
+    java.util.List<? extends DIDComm.Messaging.Proto.Security.SignatureOrBuilder> 
         getSignaturesOrBuilderList();
     /**
      * <code>repeated .didcomm.messaging.Signature signatures = 2;</code>
      */
-    Security.SignatureOrBuilder getSignaturesOrBuilder(
+    DIDComm.Messaging.Proto.Security.SignatureOrBuilder getSignaturesOrBuilder(
         int index);
   }
   /**
@@ -319,11 +319,11 @@ public final class Security {
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                signatures_ = new java.util.ArrayList<Security.Signature>();
+                signatures_ = new java.util.ArrayList<DIDComm.Messaging.Proto.Security.Signature>();
                 mutable_bitField0_ |= 0x00000001;
               }
               signatures_.add(
-                  input.readMessage(Security.Signature.parser(), extensionRegistry));
+                  input.readMessage(DIDComm.Messaging.Proto.Security.Signature.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -350,15 +350,15 @@ public final class Security {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Security.internal_static_didcomm_messaging_SignedMessage_descriptor;
+      return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_SignedMessage_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Security.internal_static_didcomm_messaging_SignedMessage_fieldAccessorTable
+      return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_SignedMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Security.SignedMessage.class, Security.SignedMessage.Builder.class);
+              DIDComm.Messaging.Proto.Security.SignedMessage.class, DIDComm.Messaging.Proto.Security.SignedMessage.Builder.class);
     }
 
     public static final int PAYLOAD_FIELD_NUMBER = 1;
@@ -373,19 +373,19 @@ public final class Security {
     }
 
     public static final int SIGNATURES_FIELD_NUMBER = 2;
-    private java.util.List<Security.Signature> signatures_;
+    private java.util.List<DIDComm.Messaging.Proto.Security.Signature> signatures_;
     /**
      * <code>repeated .didcomm.messaging.Signature signatures = 2;</code>
      */
     @java.lang.Override
-    public java.util.List<Security.Signature> getSignaturesList() {
+    public java.util.List<DIDComm.Messaging.Proto.Security.Signature> getSignaturesList() {
       return signatures_;
     }
     /**
      * <code>repeated .didcomm.messaging.Signature signatures = 2;</code>
      */
     @java.lang.Override
-    public java.util.List<? extends Security.SignatureOrBuilder>
+    public java.util.List<? extends DIDComm.Messaging.Proto.Security.SignatureOrBuilder> 
         getSignaturesOrBuilderList() {
       return signatures_;
     }
@@ -400,14 +400,14 @@ public final class Security {
      * <code>repeated .didcomm.messaging.Signature signatures = 2;</code>
      */
     @java.lang.Override
-    public Security.Signature getSignatures(int index) {
+    public DIDComm.Messaging.Proto.Security.Signature getSignatures(int index) {
       return signatures_.get(index);
     }
     /**
      * <code>repeated .didcomm.messaging.Signature signatures = 2;</code>
      */
     @java.lang.Override
-    public Security.SignatureOrBuilder getSignaturesOrBuilder(
+    public DIDComm.Messaging.Proto.Security.SignatureOrBuilder getSignaturesOrBuilder(
         int index) {
       return signatures_.get(index);
     }
@@ -459,10 +459,10 @@ public final class Security {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof Security.SignedMessage)) {
+      if (!(obj instanceof DIDComm.Messaging.Proto.Security.SignedMessage)) {
         return super.equals(obj);
       }
-      Security.SignedMessage other = (Security.SignedMessage) obj;
+      DIDComm.Messaging.Proto.Security.SignedMessage other = (DIDComm.Messaging.Proto.Security.SignedMessage) obj;
 
       if (!getPayload()
           .equals(other.getPayload())) return false;
@@ -490,69 +490,69 @@ public final class Security {
       return hash;
     }
 
-    public static Security.SignedMessage parseFrom(
+    public static DIDComm.Messaging.Proto.Security.SignedMessage parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Security.SignedMessage parseFrom(
+    public static DIDComm.Messaging.Proto.Security.SignedMessage parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Security.SignedMessage parseFrom(
+    public static DIDComm.Messaging.Proto.Security.SignedMessage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Security.SignedMessage parseFrom(
+    public static DIDComm.Messaging.Proto.Security.SignedMessage parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Security.SignedMessage parseFrom(byte[] data)
+    public static DIDComm.Messaging.Proto.Security.SignedMessage parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Security.SignedMessage parseFrom(
+    public static DIDComm.Messaging.Proto.Security.SignedMessage parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Security.SignedMessage parseFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.Security.SignedMessage parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Security.SignedMessage parseFrom(
+    public static DIDComm.Messaging.Proto.Security.SignedMessage parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Security.SignedMessage parseDelimitedFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.Security.SignedMessage parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static Security.SignedMessage parseDelimitedFrom(
+    public static DIDComm.Messaging.Proto.Security.SignedMessage parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Security.SignedMessage parseFrom(
+    public static DIDComm.Messaging.Proto.Security.SignedMessage parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Security.SignedMessage parseFrom(
+    public static DIDComm.Messaging.Proto.Security.SignedMessage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -565,7 +565,7 @@ public final class Security {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Security.SignedMessage prototype) {
+    public static Builder newBuilder(DIDComm.Messaging.Proto.Security.SignedMessage prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -586,21 +586,21 @@ public final class Security {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:didcomm.messaging.SignedMessage)
-        Security.SignedMessageOrBuilder {
+        DIDComm.Messaging.Proto.Security.SignedMessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Security.internal_static_didcomm_messaging_SignedMessage_descriptor;
+        return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_SignedMessage_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Security.internal_static_didcomm_messaging_SignedMessage_fieldAccessorTable
+        return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_SignedMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                Security.SignedMessage.class, Security.SignedMessage.Builder.class);
+                DIDComm.Messaging.Proto.Security.SignedMessage.class, DIDComm.Messaging.Proto.Security.SignedMessage.Builder.class);
       }
 
-      // Construct using Security.SignedMessage.newBuilder()
+      // Construct using DIDComm.Messaging.Proto.Security.SignedMessage.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -633,17 +633,17 @@ public final class Security {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Security.internal_static_didcomm_messaging_SignedMessage_descriptor;
+        return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_SignedMessage_descriptor;
       }
 
       @java.lang.Override
-      public Security.SignedMessage getDefaultInstanceForType() {
-        return Security.SignedMessage.getDefaultInstance();
+      public DIDComm.Messaging.Proto.Security.SignedMessage getDefaultInstanceForType() {
+        return DIDComm.Messaging.Proto.Security.SignedMessage.getDefaultInstance();
       }
 
       @java.lang.Override
-      public Security.SignedMessage build() {
-        Security.SignedMessage result = buildPartial();
+      public DIDComm.Messaging.Proto.Security.SignedMessage build() {
+        DIDComm.Messaging.Proto.Security.SignedMessage result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -651,8 +651,8 @@ public final class Security {
       }
 
       @java.lang.Override
-      public Security.SignedMessage buildPartial() {
-        Security.SignedMessage result = new Security.SignedMessage(this);
+      public DIDComm.Messaging.Proto.Security.SignedMessage buildPartial() {
+        DIDComm.Messaging.Proto.Security.SignedMessage result = new DIDComm.Messaging.Proto.Security.SignedMessage(this);
         int from_bitField0_ = bitField0_;
         result.payload_ = payload_;
         if (signaturesBuilder_ == null) {
@@ -702,16 +702,16 @@ public final class Security {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof Security.SignedMessage) {
-          return mergeFrom((Security.SignedMessage)other);
+        if (other instanceof DIDComm.Messaging.Proto.Security.SignedMessage) {
+          return mergeFrom((DIDComm.Messaging.Proto.Security.SignedMessage)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(Security.SignedMessage other) {
-        if (other == Security.SignedMessage.getDefaultInstance()) return this;
+      public Builder mergeFrom(DIDComm.Messaging.Proto.Security.SignedMessage other) {
+        if (other == DIDComm.Messaging.Proto.Security.SignedMessage.getDefaultInstance()) return this;
         if (other.getPayload() != com.google.protobuf.ByteString.EMPTY) {
           setPayload(other.getPayload());
         }
@@ -756,11 +756,11 @@ public final class Security {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        Security.SignedMessage parsedMessage = null;
+        DIDComm.Messaging.Proto.Security.SignedMessage parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (Security.SignedMessage) e.getUnfinishedMessage();
+          parsedMessage = (DIDComm.Messaging.Proto.Security.SignedMessage) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -805,22 +805,22 @@ public final class Security {
         return this;
       }
 
-      private java.util.List<Security.Signature> signatures_ =
+      private java.util.List<DIDComm.Messaging.Proto.Security.Signature> signatures_ =
         java.util.Collections.emptyList();
       private void ensureSignaturesIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
-          signatures_ = new java.util.ArrayList<Security.Signature>(signatures_);
+          signatures_ = new java.util.ArrayList<DIDComm.Messaging.Proto.Security.Signature>(signatures_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          Security.Signature, Security.Signature.Builder, Security.SignatureOrBuilder> signaturesBuilder_;
+          DIDComm.Messaging.Proto.Security.Signature, DIDComm.Messaging.Proto.Security.Signature.Builder, DIDComm.Messaging.Proto.Security.SignatureOrBuilder> signaturesBuilder_;
 
       /**
        * <code>repeated .didcomm.messaging.Signature signatures = 2;</code>
        */
-      public java.util.List<Security.Signature> getSignaturesList() {
+      public java.util.List<DIDComm.Messaging.Proto.Security.Signature> getSignaturesList() {
         if (signaturesBuilder_ == null) {
           return java.util.Collections.unmodifiableList(signatures_);
         } else {
@@ -840,7 +840,7 @@ public final class Security {
       /**
        * <code>repeated .didcomm.messaging.Signature signatures = 2;</code>
        */
-      public Security.Signature getSignatures(int index) {
+      public DIDComm.Messaging.Proto.Security.Signature getSignatures(int index) {
         if (signaturesBuilder_ == null) {
           return signatures_.get(index);
         } else {
@@ -851,7 +851,7 @@ public final class Security {
        * <code>repeated .didcomm.messaging.Signature signatures = 2;</code>
        */
       public Builder setSignatures(
-          int index, Security.Signature value) {
+          int index, DIDComm.Messaging.Proto.Security.Signature value) {
         if (signaturesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -868,7 +868,7 @@ public final class Security {
        * <code>repeated .didcomm.messaging.Signature signatures = 2;</code>
        */
       public Builder setSignatures(
-          int index, Security.Signature.Builder builderForValue) {
+          int index, DIDComm.Messaging.Proto.Security.Signature.Builder builderForValue) {
         if (signaturesBuilder_ == null) {
           ensureSignaturesIsMutable();
           signatures_.set(index, builderForValue.build());
@@ -881,7 +881,7 @@ public final class Security {
       /**
        * <code>repeated .didcomm.messaging.Signature signatures = 2;</code>
        */
-      public Builder addSignatures(Security.Signature value) {
+      public Builder addSignatures(DIDComm.Messaging.Proto.Security.Signature value) {
         if (signaturesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -898,7 +898,7 @@ public final class Security {
        * <code>repeated .didcomm.messaging.Signature signatures = 2;</code>
        */
       public Builder addSignatures(
-          int index, Security.Signature value) {
+          int index, DIDComm.Messaging.Proto.Security.Signature value) {
         if (signaturesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -915,7 +915,7 @@ public final class Security {
        * <code>repeated .didcomm.messaging.Signature signatures = 2;</code>
        */
       public Builder addSignatures(
-          Security.Signature.Builder builderForValue) {
+          DIDComm.Messaging.Proto.Security.Signature.Builder builderForValue) {
         if (signaturesBuilder_ == null) {
           ensureSignaturesIsMutable();
           signatures_.add(builderForValue.build());
@@ -929,7 +929,7 @@ public final class Security {
        * <code>repeated .didcomm.messaging.Signature signatures = 2;</code>
        */
       public Builder addSignatures(
-          int index, Security.Signature.Builder builderForValue) {
+          int index, DIDComm.Messaging.Proto.Security.Signature.Builder builderForValue) {
         if (signaturesBuilder_ == null) {
           ensureSignaturesIsMutable();
           signatures_.add(index, builderForValue.build());
@@ -943,7 +943,7 @@ public final class Security {
        * <code>repeated .didcomm.messaging.Signature signatures = 2;</code>
        */
       public Builder addAllSignatures(
-          java.lang.Iterable<? extends Security.Signature> values) {
+          java.lang.Iterable<? extends DIDComm.Messaging.Proto.Security.Signature> values) {
         if (signaturesBuilder_ == null) {
           ensureSignaturesIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -983,14 +983,14 @@ public final class Security {
       /**
        * <code>repeated .didcomm.messaging.Signature signatures = 2;</code>
        */
-      public Security.Signature.Builder getSignaturesBuilder(
+      public DIDComm.Messaging.Proto.Security.Signature.Builder getSignaturesBuilder(
           int index) {
         return getSignaturesFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .didcomm.messaging.Signature signatures = 2;</code>
        */
-      public Security.SignatureOrBuilder getSignaturesOrBuilder(
+      public DIDComm.Messaging.Proto.Security.SignatureOrBuilder getSignaturesOrBuilder(
           int index) {
         if (signaturesBuilder_ == null) {
           return signatures_.get(index);  } else {
@@ -1000,7 +1000,7 @@ public final class Security {
       /**
        * <code>repeated .didcomm.messaging.Signature signatures = 2;</code>
        */
-      public java.util.List<? extends Security.SignatureOrBuilder>
+      public java.util.List<? extends DIDComm.Messaging.Proto.Security.SignatureOrBuilder> 
            getSignaturesOrBuilderList() {
         if (signaturesBuilder_ != null) {
           return signaturesBuilder_.getMessageOrBuilderList();
@@ -1011,31 +1011,31 @@ public final class Security {
       /**
        * <code>repeated .didcomm.messaging.Signature signatures = 2;</code>
        */
-      public Security.Signature.Builder addSignaturesBuilder() {
+      public DIDComm.Messaging.Proto.Security.Signature.Builder addSignaturesBuilder() {
         return getSignaturesFieldBuilder().addBuilder(
-            Security.Signature.getDefaultInstance());
+            DIDComm.Messaging.Proto.Security.Signature.getDefaultInstance());
       }
       /**
        * <code>repeated .didcomm.messaging.Signature signatures = 2;</code>
        */
-      public Security.Signature.Builder addSignaturesBuilder(
+      public DIDComm.Messaging.Proto.Security.Signature.Builder addSignaturesBuilder(
           int index) {
         return getSignaturesFieldBuilder().addBuilder(
-            index, Security.Signature.getDefaultInstance());
+            index, DIDComm.Messaging.Proto.Security.Signature.getDefaultInstance());
       }
       /**
        * <code>repeated .didcomm.messaging.Signature signatures = 2;</code>
        */
-      public java.util.List<Security.Signature.Builder>
+      public java.util.List<DIDComm.Messaging.Proto.Security.Signature.Builder> 
            getSignaturesBuilderList() {
         return getSignaturesFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          Security.Signature, Security.Signature.Builder, Security.SignatureOrBuilder>
+          DIDComm.Messaging.Proto.Security.Signature, DIDComm.Messaging.Proto.Security.Signature.Builder, DIDComm.Messaging.Proto.Security.SignatureOrBuilder> 
           getSignaturesFieldBuilder() {
         if (signaturesBuilder_ == null) {
           signaturesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              Security.Signature, Security.Signature.Builder, Security.SignatureOrBuilder>(
+              DIDComm.Messaging.Proto.Security.Signature, DIDComm.Messaging.Proto.Security.Signature.Builder, DIDComm.Messaging.Proto.Security.SignatureOrBuilder>(
                   signatures_,
                   ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
@@ -1061,12 +1061,12 @@ public final class Security {
     }
 
     // @@protoc_insertion_point(class_scope:didcomm.messaging.SignedMessage)
-    private static final Security.SignedMessage DEFAULT_INSTANCE;
+    private static final DIDComm.Messaging.Proto.Security.SignedMessage DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new Security.SignedMessage();
+      DEFAULT_INSTANCE = new DIDComm.Messaging.Proto.Security.SignedMessage();
     }
 
-    public static Security.SignedMessage getDefaultInstance() {
+    public static DIDComm.Messaging.Proto.Security.SignedMessage getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1091,7 +1091,7 @@ public final class Security {
     }
 
     @java.lang.Override
-    public Security.SignedMessage getDefaultInstanceForType() {
+    public DIDComm.Messaging.Proto.Security.SignedMessage getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1191,15 +1191,15 @@ public final class Security {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Security.internal_static_didcomm_messaging_Signature_descriptor;
+      return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_Signature_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Security.internal_static_didcomm_messaging_Signature_fieldAccessorTable
+      return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_Signature_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Security.Signature.class, Security.Signature.Builder.class);
+              DIDComm.Messaging.Proto.Security.Signature.class, DIDComm.Messaging.Proto.Security.Signature.Builder.class);
     }
 
     public static final int HEADER_FIELD_NUMBER = 1;
@@ -1271,10 +1271,10 @@ public final class Security {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof Security.Signature)) {
+      if (!(obj instanceof DIDComm.Messaging.Proto.Security.Signature)) {
         return super.equals(obj);
       }
-      Security.Signature other = (Security.Signature) obj;
+      DIDComm.Messaging.Proto.Security.Signature other = (DIDComm.Messaging.Proto.Security.Signature) obj;
 
       if (!getHeader()
           .equals(other.getHeader())) return false;
@@ -1300,69 +1300,69 @@ public final class Security {
       return hash;
     }
 
-    public static Security.Signature parseFrom(
+    public static DIDComm.Messaging.Proto.Security.Signature parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Security.Signature parseFrom(
+    public static DIDComm.Messaging.Proto.Security.Signature parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Security.Signature parseFrom(
+    public static DIDComm.Messaging.Proto.Security.Signature parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Security.Signature parseFrom(
+    public static DIDComm.Messaging.Proto.Security.Signature parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Security.Signature parseFrom(byte[] data)
+    public static DIDComm.Messaging.Proto.Security.Signature parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Security.Signature parseFrom(
+    public static DIDComm.Messaging.Proto.Security.Signature parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Security.Signature parseFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.Security.Signature parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Security.Signature parseFrom(
+    public static DIDComm.Messaging.Proto.Security.Signature parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Security.Signature parseDelimitedFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.Security.Signature parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static Security.Signature parseDelimitedFrom(
+    public static DIDComm.Messaging.Proto.Security.Signature parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Security.Signature parseFrom(
+    public static DIDComm.Messaging.Proto.Security.Signature parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Security.Signature parseFrom(
+    public static DIDComm.Messaging.Proto.Security.Signature parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1375,7 +1375,7 @@ public final class Security {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Security.Signature prototype) {
+    public static Builder newBuilder(DIDComm.Messaging.Proto.Security.Signature prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1396,21 +1396,21 @@ public final class Security {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:didcomm.messaging.Signature)
-        Security.SignatureOrBuilder {
+        DIDComm.Messaging.Proto.Security.SignatureOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Security.internal_static_didcomm_messaging_Signature_descriptor;
+        return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_Signature_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Security.internal_static_didcomm_messaging_Signature_fieldAccessorTable
+        return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_Signature_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                Security.Signature.class, Security.Signature.Builder.class);
+                DIDComm.Messaging.Proto.Security.Signature.class, DIDComm.Messaging.Proto.Security.Signature.Builder.class);
       }
 
-      // Construct using Security.Signature.newBuilder()
+      // Construct using DIDComm.Messaging.Proto.Security.Signature.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1438,17 +1438,17 @@ public final class Security {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Security.internal_static_didcomm_messaging_Signature_descriptor;
+        return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_Signature_descriptor;
       }
 
       @java.lang.Override
-      public Security.Signature getDefaultInstanceForType() {
-        return Security.Signature.getDefaultInstance();
+      public DIDComm.Messaging.Proto.Security.Signature getDefaultInstanceForType() {
+        return DIDComm.Messaging.Proto.Security.Signature.getDefaultInstance();
       }
 
       @java.lang.Override
-      public Security.Signature build() {
-        Security.Signature result = buildPartial();
+      public DIDComm.Messaging.Proto.Security.Signature build() {
+        DIDComm.Messaging.Proto.Security.Signature result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1456,8 +1456,8 @@ public final class Security {
       }
 
       @java.lang.Override
-      public Security.Signature buildPartial() {
-        Security.Signature result = new Security.Signature(this);
+      public DIDComm.Messaging.Proto.Security.Signature buildPartial() {
+        DIDComm.Messaging.Proto.Security.Signature result = new DIDComm.Messaging.Proto.Security.Signature(this);
         result.header_ = header_;
         result.signature_ = signature_;
         onBuilt();
@@ -1498,16 +1498,16 @@ public final class Security {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof Security.Signature) {
-          return mergeFrom((Security.Signature)other);
+        if (other instanceof DIDComm.Messaging.Proto.Security.Signature) {
+          return mergeFrom((DIDComm.Messaging.Proto.Security.Signature)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(Security.Signature other) {
-        if (other == Security.Signature.getDefaultInstance()) return this;
+      public Builder mergeFrom(DIDComm.Messaging.Proto.Security.Signature other) {
+        if (other == DIDComm.Messaging.Proto.Security.Signature.getDefaultInstance()) return this;
         if (other.getHeader() != com.google.protobuf.ByteString.EMPTY) {
           setHeader(other.getHeader());
         }
@@ -1529,11 +1529,11 @@ public final class Security {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        Security.Signature parsedMessage = null;
+        DIDComm.Messaging.Proto.Security.Signature parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (Security.Signature) e.getUnfinishedMessage();
+          parsedMessage = (DIDComm.Messaging.Proto.Security.Signature) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1627,12 +1627,12 @@ public final class Security {
     }
 
     // @@protoc_insertion_point(class_scope:didcomm.messaging.Signature)
-    private static final Security.Signature DEFAULT_INSTANCE;
+    private static final DIDComm.Messaging.Proto.Security.Signature DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new Security.Signature();
+      DEFAULT_INSTANCE = new DIDComm.Messaging.Proto.Security.Signature();
     }
 
-    public static Security.Signature getDefaultInstance() {
+    public static DIDComm.Messaging.Proto.Security.Signature getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1657,7 +1657,7 @@ public final class Security {
     }
 
     @java.lang.Override
-    public Security.Signature getDefaultInstanceForType() {
+    public DIDComm.Messaging.Proto.Security.Signature getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1771,15 +1771,15 @@ public final class Security {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Security.internal_static_didcomm_messaging_SignatureHeader_descriptor;
+      return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_SignatureHeader_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Security.internal_static_didcomm_messaging_SignatureHeader_fieldAccessorTable
+      return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_SignatureHeader_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Security.SignatureHeader.class, Security.SignatureHeader.Builder.class);
+              DIDComm.Messaging.Proto.Security.SignatureHeader.class, DIDComm.Messaging.Proto.Security.SignatureHeader.Builder.class);
     }
 
     public static final int ALGORITHM_FIELD_NUMBER = 1;
@@ -1903,10 +1903,10 @@ public final class Security {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof Security.SignatureHeader)) {
+      if (!(obj instanceof DIDComm.Messaging.Proto.Security.SignatureHeader)) {
         return super.equals(obj);
       }
-      Security.SignatureHeader other = (Security.SignatureHeader) obj;
+      DIDComm.Messaging.Proto.Security.SignatureHeader other = (DIDComm.Messaging.Proto.Security.SignatureHeader) obj;
 
       if (!getAlgorithm()
           .equals(other.getAlgorithm())) return false;
@@ -1932,69 +1932,69 @@ public final class Security {
       return hash;
     }
 
-    public static Security.SignatureHeader parseFrom(
+    public static DIDComm.Messaging.Proto.Security.SignatureHeader parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Security.SignatureHeader parseFrom(
+    public static DIDComm.Messaging.Proto.Security.SignatureHeader parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Security.SignatureHeader parseFrom(
+    public static DIDComm.Messaging.Proto.Security.SignatureHeader parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Security.SignatureHeader parseFrom(
+    public static DIDComm.Messaging.Proto.Security.SignatureHeader parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Security.SignatureHeader parseFrom(byte[] data)
+    public static DIDComm.Messaging.Proto.Security.SignatureHeader parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Security.SignatureHeader parseFrom(
+    public static DIDComm.Messaging.Proto.Security.SignatureHeader parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Security.SignatureHeader parseFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.Security.SignatureHeader parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Security.SignatureHeader parseFrom(
+    public static DIDComm.Messaging.Proto.Security.SignatureHeader parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Security.SignatureHeader parseDelimitedFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.Security.SignatureHeader parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static Security.SignatureHeader parseDelimitedFrom(
+    public static DIDComm.Messaging.Proto.Security.SignatureHeader parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Security.SignatureHeader parseFrom(
+    public static DIDComm.Messaging.Proto.Security.SignatureHeader parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Security.SignatureHeader parseFrom(
+    public static DIDComm.Messaging.Proto.Security.SignatureHeader parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2007,7 +2007,7 @@ public final class Security {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Security.SignatureHeader prototype) {
+    public static Builder newBuilder(DIDComm.Messaging.Proto.Security.SignatureHeader prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -2028,21 +2028,21 @@ public final class Security {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:didcomm.messaging.SignatureHeader)
-        Security.SignatureHeaderOrBuilder {
+        DIDComm.Messaging.Proto.Security.SignatureHeaderOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Security.internal_static_didcomm_messaging_SignatureHeader_descriptor;
+        return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_SignatureHeader_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Security.internal_static_didcomm_messaging_SignatureHeader_fieldAccessorTable
+        return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_SignatureHeader_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                Security.SignatureHeader.class, Security.SignatureHeader.Builder.class);
+                DIDComm.Messaging.Proto.Security.SignatureHeader.class, DIDComm.Messaging.Proto.Security.SignatureHeader.Builder.class);
       }
 
-      // Construct using Security.SignatureHeader.newBuilder()
+      // Construct using DIDComm.Messaging.Proto.Security.SignatureHeader.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2070,17 +2070,17 @@ public final class Security {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Security.internal_static_didcomm_messaging_SignatureHeader_descriptor;
+        return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_SignatureHeader_descriptor;
       }
 
       @java.lang.Override
-      public Security.SignatureHeader getDefaultInstanceForType() {
-        return Security.SignatureHeader.getDefaultInstance();
+      public DIDComm.Messaging.Proto.Security.SignatureHeader getDefaultInstanceForType() {
+        return DIDComm.Messaging.Proto.Security.SignatureHeader.getDefaultInstance();
       }
 
       @java.lang.Override
-      public Security.SignatureHeader build() {
-        Security.SignatureHeader result = buildPartial();
+      public DIDComm.Messaging.Proto.Security.SignatureHeader build() {
+        DIDComm.Messaging.Proto.Security.SignatureHeader result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -2088,8 +2088,8 @@ public final class Security {
       }
 
       @java.lang.Override
-      public Security.SignatureHeader buildPartial() {
-        Security.SignatureHeader result = new Security.SignatureHeader(this);
+      public DIDComm.Messaging.Proto.Security.SignatureHeader buildPartial() {
+        DIDComm.Messaging.Proto.Security.SignatureHeader result = new DIDComm.Messaging.Proto.Security.SignatureHeader(this);
         result.algorithm_ = algorithm_;
         result.keyId_ = keyId_;
         onBuilt();
@@ -2130,16 +2130,16 @@ public final class Security {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof Security.SignatureHeader) {
-          return mergeFrom((Security.SignatureHeader)other);
+        if (other instanceof DIDComm.Messaging.Proto.Security.SignatureHeader) {
+          return mergeFrom((DIDComm.Messaging.Proto.Security.SignatureHeader)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(Security.SignatureHeader other) {
-        if (other == Security.SignatureHeader.getDefaultInstance()) return this;
+      public Builder mergeFrom(DIDComm.Messaging.Proto.Security.SignatureHeader other) {
+        if (other == DIDComm.Messaging.Proto.Security.SignatureHeader.getDefaultInstance()) return this;
         if (!other.getAlgorithm().isEmpty()) {
           algorithm_ = other.algorithm_;
           onChanged();
@@ -2163,11 +2163,11 @@ public final class Security {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        Security.SignatureHeader parsedMessage = null;
+        DIDComm.Messaging.Proto.Security.SignatureHeader parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (Security.SignatureHeader) e.getUnfinishedMessage();
+          parsedMessage = (DIDComm.Messaging.Proto.Security.SignatureHeader) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2345,12 +2345,12 @@ public final class Security {
     }
 
     // @@protoc_insertion_point(class_scope:didcomm.messaging.SignatureHeader)
-    private static final Security.SignatureHeader DEFAULT_INSTANCE;
+    private static final DIDComm.Messaging.Proto.Security.SignatureHeader DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new Security.SignatureHeader();
+      DEFAULT_INSTANCE = new DIDComm.Messaging.Proto.Security.SignatureHeader();
     }
 
-    public static Security.SignatureHeader getDefaultInstance() {
+    public static DIDComm.Messaging.Proto.Security.SignatureHeader getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2375,7 +2375,7 @@ public final class Security {
     }
 
     @java.lang.Override
-    public Security.SignatureHeader getDefaultInstanceForType() {
+    public DIDComm.Messaging.Proto.Security.SignatureHeader getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2412,12 +2412,12 @@ public final class Security {
     /**
      * <code>repeated .didcomm.messaging.EncryptionRecipient recipients = 5;</code>
      */
-    java.util.List<Security.EncryptionRecipient>
+    java.util.List<DIDComm.Messaging.Proto.Security.EncryptionRecipient> 
         getRecipientsList();
     /**
      * <code>repeated .didcomm.messaging.EncryptionRecipient recipients = 5;</code>
      */
-    Security.EncryptionRecipient getRecipients(int index);
+    DIDComm.Messaging.Proto.Security.EncryptionRecipient getRecipients(int index);
     /**
      * <code>repeated .didcomm.messaging.EncryptionRecipient recipients = 5;</code>
      */
@@ -2425,12 +2425,12 @@ public final class Security {
     /**
      * <code>repeated .didcomm.messaging.EncryptionRecipient recipients = 5;</code>
      */
-    java.util.List<? extends Security.EncryptionRecipientOrBuilder>
+    java.util.List<? extends DIDComm.Messaging.Proto.Security.EncryptionRecipientOrBuilder> 
         getRecipientsOrBuilderList();
     /**
      * <code>repeated .didcomm.messaging.EncryptionRecipient recipients = 5;</code>
      */
-    Security.EncryptionRecipientOrBuilder getRecipientsOrBuilder(
+    DIDComm.Messaging.Proto.Security.EncryptionRecipientOrBuilder getRecipientsOrBuilder(
         int index);
   }
   /**
@@ -2506,11 +2506,11 @@ public final class Security {
             }
             case 42: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                recipients_ = new java.util.ArrayList<Security.EncryptionRecipient>();
+                recipients_ = new java.util.ArrayList<DIDComm.Messaging.Proto.Security.EncryptionRecipient>();
                 mutable_bitField0_ |= 0x00000001;
               }
               recipients_.add(
-                  input.readMessage(Security.EncryptionRecipient.parser(), extensionRegistry));
+                  input.readMessage(DIDComm.Messaging.Proto.Security.EncryptionRecipient.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -2537,15 +2537,15 @@ public final class Security {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Security.internal_static_didcomm_messaging_EncryptedMessage_descriptor;
+      return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_EncryptedMessage_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Security.internal_static_didcomm_messaging_EncryptedMessage_fieldAccessorTable
+      return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_EncryptedMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Security.EncryptedMessage.class, Security.EncryptedMessage.Builder.class);
+              DIDComm.Messaging.Proto.Security.EncryptedMessage.class, DIDComm.Messaging.Proto.Security.EncryptedMessage.Builder.class);
     }
 
     public static final int IV_FIELD_NUMBER = 1;
@@ -2593,19 +2593,19 @@ public final class Security {
     }
 
     public static final int RECIPIENTS_FIELD_NUMBER = 5;
-    private java.util.List<Security.EncryptionRecipient> recipients_;
+    private java.util.List<DIDComm.Messaging.Proto.Security.EncryptionRecipient> recipients_;
     /**
      * <code>repeated .didcomm.messaging.EncryptionRecipient recipients = 5;</code>
      */
     @java.lang.Override
-    public java.util.List<Security.EncryptionRecipient> getRecipientsList() {
+    public java.util.List<DIDComm.Messaging.Proto.Security.EncryptionRecipient> getRecipientsList() {
       return recipients_;
     }
     /**
      * <code>repeated .didcomm.messaging.EncryptionRecipient recipients = 5;</code>
      */
     @java.lang.Override
-    public java.util.List<? extends Security.EncryptionRecipientOrBuilder>
+    public java.util.List<? extends DIDComm.Messaging.Proto.Security.EncryptionRecipientOrBuilder> 
         getRecipientsOrBuilderList() {
       return recipients_;
     }
@@ -2620,14 +2620,14 @@ public final class Security {
      * <code>repeated .didcomm.messaging.EncryptionRecipient recipients = 5;</code>
      */
     @java.lang.Override
-    public Security.EncryptionRecipient getRecipients(int index) {
+    public DIDComm.Messaging.Proto.Security.EncryptionRecipient getRecipients(int index) {
       return recipients_.get(index);
     }
     /**
      * <code>repeated .didcomm.messaging.EncryptionRecipient recipients = 5;</code>
      */
     @java.lang.Override
-    public Security.EncryptionRecipientOrBuilder getRecipientsOrBuilder(
+    public DIDComm.Messaging.Proto.Security.EncryptionRecipientOrBuilder getRecipientsOrBuilder(
         int index) {
       return recipients_.get(index);
     }
@@ -2700,10 +2700,10 @@ public final class Security {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof Security.EncryptedMessage)) {
+      if (!(obj instanceof DIDComm.Messaging.Proto.Security.EncryptedMessage)) {
         return super.equals(obj);
       }
-      Security.EncryptedMessage other = (Security.EncryptedMessage) obj;
+      DIDComm.Messaging.Proto.Security.EncryptedMessage other = (DIDComm.Messaging.Proto.Security.EncryptedMessage) obj;
 
       if (!getIv()
           .equals(other.getIv())) return false;
@@ -2743,69 +2743,69 @@ public final class Security {
       return hash;
     }
 
-    public static Security.EncryptedMessage parseFrom(
+    public static DIDComm.Messaging.Proto.Security.EncryptedMessage parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Security.EncryptedMessage parseFrom(
+    public static DIDComm.Messaging.Proto.Security.EncryptedMessage parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Security.EncryptedMessage parseFrom(
+    public static DIDComm.Messaging.Proto.Security.EncryptedMessage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Security.EncryptedMessage parseFrom(
+    public static DIDComm.Messaging.Proto.Security.EncryptedMessage parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Security.EncryptedMessage parseFrom(byte[] data)
+    public static DIDComm.Messaging.Proto.Security.EncryptedMessage parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Security.EncryptedMessage parseFrom(
+    public static DIDComm.Messaging.Proto.Security.EncryptedMessage parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Security.EncryptedMessage parseFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.Security.EncryptedMessage parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Security.EncryptedMessage parseFrom(
+    public static DIDComm.Messaging.Proto.Security.EncryptedMessage parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Security.EncryptedMessage parseDelimitedFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.Security.EncryptedMessage parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static Security.EncryptedMessage parseDelimitedFrom(
+    public static DIDComm.Messaging.Proto.Security.EncryptedMessage parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Security.EncryptedMessage parseFrom(
+    public static DIDComm.Messaging.Proto.Security.EncryptedMessage parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Security.EncryptedMessage parseFrom(
+    public static DIDComm.Messaging.Proto.Security.EncryptedMessage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2818,7 +2818,7 @@ public final class Security {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Security.EncryptedMessage prototype) {
+    public static Builder newBuilder(DIDComm.Messaging.Proto.Security.EncryptedMessage prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -2839,21 +2839,21 @@ public final class Security {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:didcomm.messaging.EncryptedMessage)
-        Security.EncryptedMessageOrBuilder {
+        DIDComm.Messaging.Proto.Security.EncryptedMessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Security.internal_static_didcomm_messaging_EncryptedMessage_descriptor;
+        return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_EncryptedMessage_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Security.internal_static_didcomm_messaging_EncryptedMessage_fieldAccessorTable
+        return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_EncryptedMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                Security.EncryptedMessage.class, Security.EncryptedMessage.Builder.class);
+                DIDComm.Messaging.Proto.Security.EncryptedMessage.class, DIDComm.Messaging.Proto.Security.EncryptedMessage.Builder.class);
       }
 
-      // Construct using Security.EncryptedMessage.newBuilder()
+      // Construct using DIDComm.Messaging.Proto.Security.EncryptedMessage.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2892,17 +2892,17 @@ public final class Security {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Security.internal_static_didcomm_messaging_EncryptedMessage_descriptor;
+        return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_EncryptedMessage_descriptor;
       }
 
       @java.lang.Override
-      public Security.EncryptedMessage getDefaultInstanceForType() {
-        return Security.EncryptedMessage.getDefaultInstance();
+      public DIDComm.Messaging.Proto.Security.EncryptedMessage getDefaultInstanceForType() {
+        return DIDComm.Messaging.Proto.Security.EncryptedMessage.getDefaultInstance();
       }
 
       @java.lang.Override
-      public Security.EncryptedMessage build() {
-        Security.EncryptedMessage result = buildPartial();
+      public DIDComm.Messaging.Proto.Security.EncryptedMessage build() {
+        DIDComm.Messaging.Proto.Security.EncryptedMessage result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -2910,8 +2910,8 @@ public final class Security {
       }
 
       @java.lang.Override
-      public Security.EncryptedMessage buildPartial() {
-        Security.EncryptedMessage result = new Security.EncryptedMessage(this);
+      public DIDComm.Messaging.Proto.Security.EncryptedMessage buildPartial() {
+        DIDComm.Messaging.Proto.Security.EncryptedMessage result = new DIDComm.Messaging.Proto.Security.EncryptedMessage(this);
         int from_bitField0_ = bitField0_;
         result.iv_ = iv_;
         result.aad_ = aad_;
@@ -2964,16 +2964,16 @@ public final class Security {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof Security.EncryptedMessage) {
-          return mergeFrom((Security.EncryptedMessage)other);
+        if (other instanceof DIDComm.Messaging.Proto.Security.EncryptedMessage) {
+          return mergeFrom((DIDComm.Messaging.Proto.Security.EncryptedMessage)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(Security.EncryptedMessage other) {
-        if (other == Security.EncryptedMessage.getDefaultInstance()) return this;
+      public Builder mergeFrom(DIDComm.Messaging.Proto.Security.EncryptedMessage other) {
+        if (other == DIDComm.Messaging.Proto.Security.EncryptedMessage.getDefaultInstance()) return this;
         if (other.getIv() != com.google.protobuf.ByteString.EMPTY) {
           setIv(other.getIv());
         }
@@ -3027,11 +3027,11 @@ public final class Security {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        Security.EncryptedMessage parsedMessage = null;
+        DIDComm.Messaging.Proto.Security.EncryptedMessage parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (Security.EncryptedMessage) e.getUnfinishedMessage();
+          parsedMessage = (DIDComm.Messaging.Proto.Security.EncryptedMessage) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3178,22 +3178,22 @@ public final class Security {
         return this;
       }
 
-      private java.util.List<Security.EncryptionRecipient> recipients_ =
+      private java.util.List<DIDComm.Messaging.Proto.Security.EncryptionRecipient> recipients_ =
         java.util.Collections.emptyList();
       private void ensureRecipientsIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
-          recipients_ = new java.util.ArrayList<Security.EncryptionRecipient>(recipients_);
+          recipients_ = new java.util.ArrayList<DIDComm.Messaging.Proto.Security.EncryptionRecipient>(recipients_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          Security.EncryptionRecipient, Security.EncryptionRecipient.Builder, Security.EncryptionRecipientOrBuilder> recipientsBuilder_;
+          DIDComm.Messaging.Proto.Security.EncryptionRecipient, DIDComm.Messaging.Proto.Security.EncryptionRecipient.Builder, DIDComm.Messaging.Proto.Security.EncryptionRecipientOrBuilder> recipientsBuilder_;
 
       /**
        * <code>repeated .didcomm.messaging.EncryptionRecipient recipients = 5;</code>
        */
-      public java.util.List<Security.EncryptionRecipient> getRecipientsList() {
+      public java.util.List<DIDComm.Messaging.Proto.Security.EncryptionRecipient> getRecipientsList() {
         if (recipientsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(recipients_);
         } else {
@@ -3213,7 +3213,7 @@ public final class Security {
       /**
        * <code>repeated .didcomm.messaging.EncryptionRecipient recipients = 5;</code>
        */
-      public Security.EncryptionRecipient getRecipients(int index) {
+      public DIDComm.Messaging.Proto.Security.EncryptionRecipient getRecipients(int index) {
         if (recipientsBuilder_ == null) {
           return recipients_.get(index);
         } else {
@@ -3224,7 +3224,7 @@ public final class Security {
        * <code>repeated .didcomm.messaging.EncryptionRecipient recipients = 5;</code>
        */
       public Builder setRecipients(
-          int index, Security.EncryptionRecipient value) {
+          int index, DIDComm.Messaging.Proto.Security.EncryptionRecipient value) {
         if (recipientsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3241,7 +3241,7 @@ public final class Security {
        * <code>repeated .didcomm.messaging.EncryptionRecipient recipients = 5;</code>
        */
       public Builder setRecipients(
-          int index, Security.EncryptionRecipient.Builder builderForValue) {
+          int index, DIDComm.Messaging.Proto.Security.EncryptionRecipient.Builder builderForValue) {
         if (recipientsBuilder_ == null) {
           ensureRecipientsIsMutable();
           recipients_.set(index, builderForValue.build());
@@ -3254,7 +3254,7 @@ public final class Security {
       /**
        * <code>repeated .didcomm.messaging.EncryptionRecipient recipients = 5;</code>
        */
-      public Builder addRecipients(Security.EncryptionRecipient value) {
+      public Builder addRecipients(DIDComm.Messaging.Proto.Security.EncryptionRecipient value) {
         if (recipientsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3271,7 +3271,7 @@ public final class Security {
        * <code>repeated .didcomm.messaging.EncryptionRecipient recipients = 5;</code>
        */
       public Builder addRecipients(
-          int index, Security.EncryptionRecipient value) {
+          int index, DIDComm.Messaging.Proto.Security.EncryptionRecipient value) {
         if (recipientsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3288,7 +3288,7 @@ public final class Security {
        * <code>repeated .didcomm.messaging.EncryptionRecipient recipients = 5;</code>
        */
       public Builder addRecipients(
-          Security.EncryptionRecipient.Builder builderForValue) {
+          DIDComm.Messaging.Proto.Security.EncryptionRecipient.Builder builderForValue) {
         if (recipientsBuilder_ == null) {
           ensureRecipientsIsMutable();
           recipients_.add(builderForValue.build());
@@ -3302,7 +3302,7 @@ public final class Security {
        * <code>repeated .didcomm.messaging.EncryptionRecipient recipients = 5;</code>
        */
       public Builder addRecipients(
-          int index, Security.EncryptionRecipient.Builder builderForValue) {
+          int index, DIDComm.Messaging.Proto.Security.EncryptionRecipient.Builder builderForValue) {
         if (recipientsBuilder_ == null) {
           ensureRecipientsIsMutable();
           recipients_.add(index, builderForValue.build());
@@ -3316,7 +3316,7 @@ public final class Security {
        * <code>repeated .didcomm.messaging.EncryptionRecipient recipients = 5;</code>
        */
       public Builder addAllRecipients(
-          java.lang.Iterable<? extends Security.EncryptionRecipient> values) {
+          java.lang.Iterable<? extends DIDComm.Messaging.Proto.Security.EncryptionRecipient> values) {
         if (recipientsBuilder_ == null) {
           ensureRecipientsIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -3356,14 +3356,14 @@ public final class Security {
       /**
        * <code>repeated .didcomm.messaging.EncryptionRecipient recipients = 5;</code>
        */
-      public Security.EncryptionRecipient.Builder getRecipientsBuilder(
+      public DIDComm.Messaging.Proto.Security.EncryptionRecipient.Builder getRecipientsBuilder(
           int index) {
         return getRecipientsFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .didcomm.messaging.EncryptionRecipient recipients = 5;</code>
        */
-      public Security.EncryptionRecipientOrBuilder getRecipientsOrBuilder(
+      public DIDComm.Messaging.Proto.Security.EncryptionRecipientOrBuilder getRecipientsOrBuilder(
           int index) {
         if (recipientsBuilder_ == null) {
           return recipients_.get(index);  } else {
@@ -3373,7 +3373,7 @@ public final class Security {
       /**
        * <code>repeated .didcomm.messaging.EncryptionRecipient recipients = 5;</code>
        */
-      public java.util.List<? extends Security.EncryptionRecipientOrBuilder>
+      public java.util.List<? extends DIDComm.Messaging.Proto.Security.EncryptionRecipientOrBuilder> 
            getRecipientsOrBuilderList() {
         if (recipientsBuilder_ != null) {
           return recipientsBuilder_.getMessageOrBuilderList();
@@ -3384,31 +3384,31 @@ public final class Security {
       /**
        * <code>repeated .didcomm.messaging.EncryptionRecipient recipients = 5;</code>
        */
-      public Security.EncryptionRecipient.Builder addRecipientsBuilder() {
+      public DIDComm.Messaging.Proto.Security.EncryptionRecipient.Builder addRecipientsBuilder() {
         return getRecipientsFieldBuilder().addBuilder(
-            Security.EncryptionRecipient.getDefaultInstance());
+            DIDComm.Messaging.Proto.Security.EncryptionRecipient.getDefaultInstance());
       }
       /**
        * <code>repeated .didcomm.messaging.EncryptionRecipient recipients = 5;</code>
        */
-      public Security.EncryptionRecipient.Builder addRecipientsBuilder(
+      public DIDComm.Messaging.Proto.Security.EncryptionRecipient.Builder addRecipientsBuilder(
           int index) {
         return getRecipientsFieldBuilder().addBuilder(
-            index, Security.EncryptionRecipient.getDefaultInstance());
+            index, DIDComm.Messaging.Proto.Security.EncryptionRecipient.getDefaultInstance());
       }
       /**
        * <code>repeated .didcomm.messaging.EncryptionRecipient recipients = 5;</code>
        */
-      public java.util.List<Security.EncryptionRecipient.Builder>
+      public java.util.List<DIDComm.Messaging.Proto.Security.EncryptionRecipient.Builder> 
            getRecipientsBuilderList() {
         return getRecipientsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          Security.EncryptionRecipient, Security.EncryptionRecipient.Builder, Security.EncryptionRecipientOrBuilder>
+          DIDComm.Messaging.Proto.Security.EncryptionRecipient, DIDComm.Messaging.Proto.Security.EncryptionRecipient.Builder, DIDComm.Messaging.Proto.Security.EncryptionRecipientOrBuilder> 
           getRecipientsFieldBuilder() {
         if (recipientsBuilder_ == null) {
           recipientsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              Security.EncryptionRecipient, Security.EncryptionRecipient.Builder, Security.EncryptionRecipientOrBuilder>(
+              DIDComm.Messaging.Proto.Security.EncryptionRecipient, DIDComm.Messaging.Proto.Security.EncryptionRecipient.Builder, DIDComm.Messaging.Proto.Security.EncryptionRecipientOrBuilder>(
                   recipients_,
                   ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
@@ -3434,12 +3434,12 @@ public final class Security {
     }
 
     // @@protoc_insertion_point(class_scope:didcomm.messaging.EncryptedMessage)
-    private static final Security.EncryptedMessage DEFAULT_INSTANCE;
+    private static final DIDComm.Messaging.Proto.Security.EncryptedMessage DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new Security.EncryptedMessage();
+      DEFAULT_INSTANCE = new DIDComm.Messaging.Proto.Security.EncryptedMessage();
     }
 
-    public static Security.EncryptedMessage getDefaultInstance() {
+    public static DIDComm.Messaging.Proto.Security.EncryptedMessage getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3464,7 +3464,7 @@ public final class Security {
     }
 
     @java.lang.Override
-    public Security.EncryptedMessage getDefaultInstanceForType() {
+    public DIDComm.Messaging.Proto.Security.EncryptedMessage getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3483,7 +3483,7 @@ public final class Security {
      * <code>.didcomm.messaging.EncryptionMode mode = 1 [json_name = "enc"];</code>
      * @return The mode.
      */
-    Security.EncryptionMode getMode();
+    DIDComm.Messaging.Proto.Security.EncryptionMode getMode();
 
     /**
      * <code>.didcomm.messaging.EncryptionAlgorithm algorithm = 2 [json_name = "alg"];</code>
@@ -3494,7 +3494,7 @@ public final class Security {
      * <code>.didcomm.messaging.EncryptionAlgorithm algorithm = 2 [json_name = "alg"];</code>
      * @return The algorithm.
      */
-    Security.EncryptionAlgorithm getAlgorithm();
+    DIDComm.Messaging.Proto.Security.EncryptionAlgorithm getAlgorithm();
 
     /**
      * <code>string key_id = 3 [json_name = "kid"];</code>
@@ -3614,15 +3614,15 @@ public final class Security {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Security.internal_static_didcomm_messaging_EncryptionHeader_descriptor;
+      return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_EncryptionHeader_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Security.internal_static_didcomm_messaging_EncryptionHeader_fieldAccessorTable
+      return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_EncryptionHeader_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Security.EncryptionHeader.class, Security.EncryptionHeader.Builder.class);
+              DIDComm.Messaging.Proto.Security.EncryptionHeader.class, DIDComm.Messaging.Proto.Security.EncryptionHeader.Builder.class);
     }
 
     public static final int MODE_FIELD_NUMBER = 1;
@@ -3638,10 +3638,10 @@ public final class Security {
      * <code>.didcomm.messaging.EncryptionMode mode = 1 [json_name = "enc"];</code>
      * @return The mode.
      */
-    @java.lang.Override public Security.EncryptionMode getMode() {
+    @java.lang.Override public DIDComm.Messaging.Proto.Security.EncryptionMode getMode() {
       @SuppressWarnings("deprecation")
-      Security.EncryptionMode result = Security.EncryptionMode.valueOf(mode_);
-      return result == null ? Security.EncryptionMode.UNRECOGNIZED : result;
+      DIDComm.Messaging.Proto.Security.EncryptionMode result = DIDComm.Messaging.Proto.Security.EncryptionMode.valueOf(mode_);
+      return result == null ? DIDComm.Messaging.Proto.Security.EncryptionMode.UNRECOGNIZED : result;
     }
 
     public static final int ALGORITHM_FIELD_NUMBER = 2;
@@ -3657,10 +3657,10 @@ public final class Security {
      * <code>.didcomm.messaging.EncryptionAlgorithm algorithm = 2 [json_name = "alg"];</code>
      * @return The algorithm.
      */
-    @java.lang.Override public Security.EncryptionAlgorithm getAlgorithm() {
+    @java.lang.Override public DIDComm.Messaging.Proto.Security.EncryptionAlgorithm getAlgorithm() {
       @SuppressWarnings("deprecation")
-      Security.EncryptionAlgorithm result = Security.EncryptionAlgorithm.valueOf(algorithm_);
-      return result == null ? Security.EncryptionAlgorithm.UNRECOGNIZED : result;
+      DIDComm.Messaging.Proto.Security.EncryptionAlgorithm result = DIDComm.Messaging.Proto.Security.EncryptionAlgorithm.valueOf(algorithm_);
+      return result == null ? DIDComm.Messaging.Proto.Security.EncryptionAlgorithm.UNRECOGNIZED : result;
     }
 
     public static final int KEY_ID_FIELD_NUMBER = 3;
@@ -3753,10 +3753,10 @@ public final class Security {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (mode_ != Security.EncryptionMode.direct.getNumber()) {
+      if (mode_ != DIDComm.Messaging.Proto.Security.EncryptionMode.direct.getNumber()) {
         output.writeEnum(1, mode_);
       }
-      if (algorithm_ != Security.EncryptionAlgorithm.xchacha20poly1305.getNumber()) {
+      if (algorithm_ != DIDComm.Messaging.Proto.Security.EncryptionAlgorithm.xchacha20poly1305.getNumber()) {
         output.writeEnum(2, algorithm_);
       }
       if (!getKeyIdBytes().isEmpty()) {
@@ -3774,11 +3774,11 @@ public final class Security {
       if (size != -1) return size;
 
       size = 0;
-      if (mode_ != Security.EncryptionMode.direct.getNumber()) {
+      if (mode_ != DIDComm.Messaging.Proto.Security.EncryptionMode.direct.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, mode_);
       }
-      if (algorithm_ != Security.EncryptionAlgorithm.xchacha20poly1305.getNumber()) {
+      if (algorithm_ != DIDComm.Messaging.Proto.Security.EncryptionAlgorithm.xchacha20poly1305.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(2, algorithm_);
       }
@@ -3798,10 +3798,10 @@ public final class Security {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof Security.EncryptionHeader)) {
+      if (!(obj instanceof DIDComm.Messaging.Proto.Security.EncryptionHeader)) {
         return super.equals(obj);
       }
-      Security.EncryptionHeader other = (Security.EncryptionHeader) obj;
+      DIDComm.Messaging.Proto.Security.EncryptionHeader other = (DIDComm.Messaging.Proto.Security.EncryptionHeader) obj;
 
       if (mode_ != other.mode_) return false;
       if (algorithm_ != other.algorithm_) return false;
@@ -3833,69 +3833,69 @@ public final class Security {
       return hash;
     }
 
-    public static Security.EncryptionHeader parseFrom(
+    public static DIDComm.Messaging.Proto.Security.EncryptionHeader parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Security.EncryptionHeader parseFrom(
+    public static DIDComm.Messaging.Proto.Security.EncryptionHeader parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Security.EncryptionHeader parseFrom(
+    public static DIDComm.Messaging.Proto.Security.EncryptionHeader parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Security.EncryptionHeader parseFrom(
+    public static DIDComm.Messaging.Proto.Security.EncryptionHeader parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Security.EncryptionHeader parseFrom(byte[] data)
+    public static DIDComm.Messaging.Proto.Security.EncryptionHeader parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Security.EncryptionHeader parseFrom(
+    public static DIDComm.Messaging.Proto.Security.EncryptionHeader parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Security.EncryptionHeader parseFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.Security.EncryptionHeader parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Security.EncryptionHeader parseFrom(
+    public static DIDComm.Messaging.Proto.Security.EncryptionHeader parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Security.EncryptionHeader parseDelimitedFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.Security.EncryptionHeader parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static Security.EncryptionHeader parseDelimitedFrom(
+    public static DIDComm.Messaging.Proto.Security.EncryptionHeader parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Security.EncryptionHeader parseFrom(
+    public static DIDComm.Messaging.Proto.Security.EncryptionHeader parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Security.EncryptionHeader parseFrom(
+    public static DIDComm.Messaging.Proto.Security.EncryptionHeader parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3908,7 +3908,7 @@ public final class Security {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Security.EncryptionHeader prototype) {
+    public static Builder newBuilder(DIDComm.Messaging.Proto.Security.EncryptionHeader prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -3929,21 +3929,21 @@ public final class Security {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:didcomm.messaging.EncryptionHeader)
-        Security.EncryptionHeaderOrBuilder {
+        DIDComm.Messaging.Proto.Security.EncryptionHeaderOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Security.internal_static_didcomm_messaging_EncryptionHeader_descriptor;
+        return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_EncryptionHeader_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Security.internal_static_didcomm_messaging_EncryptionHeader_fieldAccessorTable
+        return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_EncryptionHeader_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                Security.EncryptionHeader.class, Security.EncryptionHeader.Builder.class);
+                DIDComm.Messaging.Proto.Security.EncryptionHeader.class, DIDComm.Messaging.Proto.Security.EncryptionHeader.Builder.class);
       }
 
-      // Construct using Security.EncryptionHeader.newBuilder()
+      // Construct using DIDComm.Messaging.Proto.Security.EncryptionHeader.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3975,17 +3975,17 @@ public final class Security {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Security.internal_static_didcomm_messaging_EncryptionHeader_descriptor;
+        return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_EncryptionHeader_descriptor;
       }
 
       @java.lang.Override
-      public Security.EncryptionHeader getDefaultInstanceForType() {
-        return Security.EncryptionHeader.getDefaultInstance();
+      public DIDComm.Messaging.Proto.Security.EncryptionHeader getDefaultInstanceForType() {
+        return DIDComm.Messaging.Proto.Security.EncryptionHeader.getDefaultInstance();
       }
 
       @java.lang.Override
-      public Security.EncryptionHeader build() {
-        Security.EncryptionHeader result = buildPartial();
+      public DIDComm.Messaging.Proto.Security.EncryptionHeader build() {
+        DIDComm.Messaging.Proto.Security.EncryptionHeader result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -3993,8 +3993,8 @@ public final class Security {
       }
 
       @java.lang.Override
-      public Security.EncryptionHeader buildPartial() {
-        Security.EncryptionHeader result = new Security.EncryptionHeader(this);
+      public DIDComm.Messaging.Proto.Security.EncryptionHeader buildPartial() {
+        DIDComm.Messaging.Proto.Security.EncryptionHeader result = new DIDComm.Messaging.Proto.Security.EncryptionHeader(this);
         result.mode_ = mode_;
         result.algorithm_ = algorithm_;
         result.keyId_ = keyId_;
@@ -4037,16 +4037,16 @@ public final class Security {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof Security.EncryptionHeader) {
-          return mergeFrom((Security.EncryptionHeader)other);
+        if (other instanceof DIDComm.Messaging.Proto.Security.EncryptionHeader) {
+          return mergeFrom((DIDComm.Messaging.Proto.Security.EncryptionHeader)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(Security.EncryptionHeader other) {
-        if (other == Security.EncryptionHeader.getDefaultInstance()) return this;
+      public Builder mergeFrom(DIDComm.Messaging.Proto.Security.EncryptionHeader other) {
+        if (other == DIDComm.Messaging.Proto.Security.EncryptionHeader.getDefaultInstance()) return this;
         if (other.mode_ != 0) {
           setModeValue(other.getModeValue());
         }
@@ -4076,11 +4076,11 @@ public final class Security {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        Security.EncryptionHeader parsedMessage = null;
+        DIDComm.Messaging.Proto.Security.EncryptionHeader parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (Security.EncryptionHeader) e.getUnfinishedMessage();
+          parsedMessage = (DIDComm.Messaging.Proto.Security.EncryptionHeader) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -4114,17 +4114,17 @@ public final class Security {
        * @return The mode.
        */
       @java.lang.Override
-      public Security.EncryptionMode getMode() {
+      public DIDComm.Messaging.Proto.Security.EncryptionMode getMode() {
         @SuppressWarnings("deprecation")
-        Security.EncryptionMode result = Security.EncryptionMode.valueOf(mode_);
-        return result == null ? Security.EncryptionMode.UNRECOGNIZED : result;
+        DIDComm.Messaging.Proto.Security.EncryptionMode result = DIDComm.Messaging.Proto.Security.EncryptionMode.valueOf(mode_);
+        return result == null ? DIDComm.Messaging.Proto.Security.EncryptionMode.UNRECOGNIZED : result;
       }
       /**
        * <code>.didcomm.messaging.EncryptionMode mode = 1 [json_name = "enc"];</code>
        * @param value The mode to set.
        * @return This builder for chaining.
        */
-      public Builder setMode(Security.EncryptionMode value) {
+      public Builder setMode(DIDComm.Messaging.Proto.Security.EncryptionMode value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -4168,17 +4168,17 @@ public final class Security {
        * @return The algorithm.
        */
       @java.lang.Override
-      public Security.EncryptionAlgorithm getAlgorithm() {
+      public DIDComm.Messaging.Proto.Security.EncryptionAlgorithm getAlgorithm() {
         @SuppressWarnings("deprecation")
-        Security.EncryptionAlgorithm result = Security.EncryptionAlgorithm.valueOf(algorithm_);
-        return result == null ? Security.EncryptionAlgorithm.UNRECOGNIZED : result;
+        DIDComm.Messaging.Proto.Security.EncryptionAlgorithm result = DIDComm.Messaging.Proto.Security.EncryptionAlgorithm.valueOf(algorithm_);
+        return result == null ? DIDComm.Messaging.Proto.Security.EncryptionAlgorithm.UNRECOGNIZED : result;
       }
       /**
        * <code>.didcomm.messaging.EncryptionAlgorithm algorithm = 2 [json_name = "alg"];</code>
        * @param value The algorithm to set.
        * @return This builder for chaining.
        */
-      public Builder setAlgorithm(Security.EncryptionAlgorithm value) {
+      public Builder setAlgorithm(DIDComm.Messaging.Proto.Security.EncryptionAlgorithm value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -4366,12 +4366,12 @@ public final class Security {
     }
 
     // @@protoc_insertion_point(class_scope:didcomm.messaging.EncryptionHeader)
-    private static final Security.EncryptionHeader DEFAULT_INSTANCE;
+    private static final DIDComm.Messaging.Proto.Security.EncryptionHeader DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new Security.EncryptionHeader();
+      DEFAULT_INSTANCE = new DIDComm.Messaging.Proto.Security.EncryptionHeader();
     }
 
-    public static Security.EncryptionHeader getDefaultInstance() {
+    public static DIDComm.Messaging.Proto.Security.EncryptionHeader getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -4396,7 +4396,7 @@ public final class Security {
     }
 
     @java.lang.Override
-    public Security.EncryptionHeader getDefaultInstanceForType() {
+    public DIDComm.Messaging.Proto.Security.EncryptionHeader getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -4415,11 +4415,11 @@ public final class Security {
      * <code>.didcomm.messaging.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
      * @return The header.
      */
-    Security.EncryptionHeader getHeader();
+    DIDComm.Messaging.Proto.Security.EncryptionHeader getHeader();
     /**
      * <code>.didcomm.messaging.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
      */
-    Security.EncryptionHeaderOrBuilder getHeaderOrBuilder();
+    DIDComm.Messaging.Proto.Security.EncryptionHeaderOrBuilder getHeaderOrBuilder();
 
     /**
      * <code>bytes content_encryption_key = 2 [json_name = "cek"];</code>
@@ -4474,11 +4474,11 @@ public final class Security {
               done = true;
               break;
             case 10: {
-              Security.EncryptionHeader.Builder subBuilder = null;
+              DIDComm.Messaging.Proto.Security.EncryptionHeader.Builder subBuilder = null;
               if (header_ != null) {
                 subBuilder = header_.toBuilder();
               }
-              header_ = input.readMessage(Security.EncryptionHeader.parser(), extensionRegistry);
+              header_ = input.readMessage(DIDComm.Messaging.Proto.Security.EncryptionHeader.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(header_);
                 header_ = subBuilder.buildPartial();
@@ -4512,19 +4512,19 @@ public final class Security {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Security.internal_static_didcomm_messaging_EncryptionRecipient_descriptor;
+      return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_EncryptionRecipient_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Security.internal_static_didcomm_messaging_EncryptionRecipient_fieldAccessorTable
+      return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_EncryptionRecipient_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Security.EncryptionRecipient.class, Security.EncryptionRecipient.Builder.class);
+              DIDComm.Messaging.Proto.Security.EncryptionRecipient.class, DIDComm.Messaging.Proto.Security.EncryptionRecipient.Builder.class);
     }
 
     public static final int HEADER_FIELD_NUMBER = 1;
-    private Security.EncryptionHeader header_;
+    private DIDComm.Messaging.Proto.Security.EncryptionHeader header_;
     /**
      * <code>.didcomm.messaging.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
      * @return Whether the header field is set.
@@ -4538,14 +4538,14 @@ public final class Security {
      * @return The header.
      */
     @java.lang.Override
-    public Security.EncryptionHeader getHeader() {
-      return header_ == null ? Security.EncryptionHeader.getDefaultInstance() : header_;
+    public DIDComm.Messaging.Proto.Security.EncryptionHeader getHeader() {
+      return header_ == null ? DIDComm.Messaging.Proto.Security.EncryptionHeader.getDefaultInstance() : header_;
     }
     /**
      * <code>.didcomm.messaging.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
      */
     @java.lang.Override
-    public Security.EncryptionHeaderOrBuilder getHeaderOrBuilder() {
+    public DIDComm.Messaging.Proto.Security.EncryptionHeaderOrBuilder getHeaderOrBuilder() {
       return getHeader();
     }
 
@@ -4607,10 +4607,10 @@ public final class Security {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof Security.EncryptionRecipient)) {
+      if (!(obj instanceof DIDComm.Messaging.Proto.Security.EncryptionRecipient)) {
         return super.equals(obj);
       }
-      Security.EncryptionRecipient other = (Security.EncryptionRecipient) obj;
+      DIDComm.Messaging.Proto.Security.EncryptionRecipient other = (DIDComm.Messaging.Proto.Security.EncryptionRecipient) obj;
 
       if (hasHeader() != other.hasHeader()) return false;
       if (hasHeader()) {
@@ -4641,69 +4641,69 @@ public final class Security {
       return hash;
     }
 
-    public static Security.EncryptionRecipient parseFrom(
+    public static DIDComm.Messaging.Proto.Security.EncryptionRecipient parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Security.EncryptionRecipient parseFrom(
+    public static DIDComm.Messaging.Proto.Security.EncryptionRecipient parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Security.EncryptionRecipient parseFrom(
+    public static DIDComm.Messaging.Proto.Security.EncryptionRecipient parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Security.EncryptionRecipient parseFrom(
+    public static DIDComm.Messaging.Proto.Security.EncryptionRecipient parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Security.EncryptionRecipient parseFrom(byte[] data)
+    public static DIDComm.Messaging.Proto.Security.EncryptionRecipient parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Security.EncryptionRecipient parseFrom(
+    public static DIDComm.Messaging.Proto.Security.EncryptionRecipient parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Security.EncryptionRecipient parseFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.Security.EncryptionRecipient parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Security.EncryptionRecipient parseFrom(
+    public static DIDComm.Messaging.Proto.Security.EncryptionRecipient parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Security.EncryptionRecipient parseDelimitedFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.Security.EncryptionRecipient parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static Security.EncryptionRecipient parseDelimitedFrom(
+    public static DIDComm.Messaging.Proto.Security.EncryptionRecipient parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Security.EncryptionRecipient parseFrom(
+    public static DIDComm.Messaging.Proto.Security.EncryptionRecipient parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Security.EncryptionRecipient parseFrom(
+    public static DIDComm.Messaging.Proto.Security.EncryptionRecipient parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -4716,7 +4716,7 @@ public final class Security {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Security.EncryptionRecipient prototype) {
+    public static Builder newBuilder(DIDComm.Messaging.Proto.Security.EncryptionRecipient prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -4737,21 +4737,21 @@ public final class Security {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:didcomm.messaging.EncryptionRecipient)
-        Security.EncryptionRecipientOrBuilder {
+        DIDComm.Messaging.Proto.Security.EncryptionRecipientOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Security.internal_static_didcomm_messaging_EncryptionRecipient_descriptor;
+        return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_EncryptionRecipient_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Security.internal_static_didcomm_messaging_EncryptionRecipient_fieldAccessorTable
+        return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_EncryptionRecipient_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                Security.EncryptionRecipient.class, Security.EncryptionRecipient.Builder.class);
+                DIDComm.Messaging.Proto.Security.EncryptionRecipient.class, DIDComm.Messaging.Proto.Security.EncryptionRecipient.Builder.class);
       }
 
-      // Construct using Security.EncryptionRecipient.newBuilder()
+      // Construct using DIDComm.Messaging.Proto.Security.EncryptionRecipient.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -4783,17 +4783,17 @@ public final class Security {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Security.internal_static_didcomm_messaging_EncryptionRecipient_descriptor;
+        return DIDComm.Messaging.Proto.Security.internal_static_didcomm_messaging_EncryptionRecipient_descriptor;
       }
 
       @java.lang.Override
-      public Security.EncryptionRecipient getDefaultInstanceForType() {
-        return Security.EncryptionRecipient.getDefaultInstance();
+      public DIDComm.Messaging.Proto.Security.EncryptionRecipient getDefaultInstanceForType() {
+        return DIDComm.Messaging.Proto.Security.EncryptionRecipient.getDefaultInstance();
       }
 
       @java.lang.Override
-      public Security.EncryptionRecipient build() {
-        Security.EncryptionRecipient result = buildPartial();
+      public DIDComm.Messaging.Proto.Security.EncryptionRecipient build() {
+        DIDComm.Messaging.Proto.Security.EncryptionRecipient result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -4801,8 +4801,8 @@ public final class Security {
       }
 
       @java.lang.Override
-      public Security.EncryptionRecipient buildPartial() {
-        Security.EncryptionRecipient result = new Security.EncryptionRecipient(this);
+      public DIDComm.Messaging.Proto.Security.EncryptionRecipient buildPartial() {
+        DIDComm.Messaging.Proto.Security.EncryptionRecipient result = new DIDComm.Messaging.Proto.Security.EncryptionRecipient(this);
         if (headerBuilder_ == null) {
           result.header_ = header_;
         } else {
@@ -4847,16 +4847,16 @@ public final class Security {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof Security.EncryptionRecipient) {
-          return mergeFrom((Security.EncryptionRecipient)other);
+        if (other instanceof DIDComm.Messaging.Proto.Security.EncryptionRecipient) {
+          return mergeFrom((DIDComm.Messaging.Proto.Security.EncryptionRecipient)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(Security.EncryptionRecipient other) {
-        if (other == Security.EncryptionRecipient.getDefaultInstance()) return this;
+      public Builder mergeFrom(DIDComm.Messaging.Proto.Security.EncryptionRecipient other) {
+        if (other == DIDComm.Messaging.Proto.Security.EncryptionRecipient.getDefaultInstance()) return this;
         if (other.hasHeader()) {
           mergeHeader(other.getHeader());
         }
@@ -4878,11 +4878,11 @@ public final class Security {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        Security.EncryptionRecipient parsedMessage = null;
+        DIDComm.Messaging.Proto.Security.EncryptionRecipient parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (Security.EncryptionRecipient) e.getUnfinishedMessage();
+          parsedMessage = (DIDComm.Messaging.Proto.Security.EncryptionRecipient) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -4892,9 +4892,9 @@ public final class Security {
         return this;
       }
 
-      private Security.EncryptionHeader header_;
+      private DIDComm.Messaging.Proto.Security.EncryptionHeader header_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          Security.EncryptionHeader, Security.EncryptionHeader.Builder, Security.EncryptionHeaderOrBuilder> headerBuilder_;
+          DIDComm.Messaging.Proto.Security.EncryptionHeader, DIDComm.Messaging.Proto.Security.EncryptionHeader.Builder, DIDComm.Messaging.Proto.Security.EncryptionHeaderOrBuilder> headerBuilder_;
       /**
        * <code>.didcomm.messaging.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
        * @return Whether the header field is set.
@@ -4906,9 +4906,9 @@ public final class Security {
        * <code>.didcomm.messaging.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
        * @return The header.
        */
-      public Security.EncryptionHeader getHeader() {
+      public DIDComm.Messaging.Proto.Security.EncryptionHeader getHeader() {
         if (headerBuilder_ == null) {
-          return header_ == null ? Security.EncryptionHeader.getDefaultInstance() : header_;
+          return header_ == null ? DIDComm.Messaging.Proto.Security.EncryptionHeader.getDefaultInstance() : header_;
         } else {
           return headerBuilder_.getMessage();
         }
@@ -4916,7 +4916,7 @@ public final class Security {
       /**
        * <code>.didcomm.messaging.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
        */
-      public Builder setHeader(Security.EncryptionHeader value) {
+      public Builder setHeader(DIDComm.Messaging.Proto.Security.EncryptionHeader value) {
         if (headerBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4933,7 +4933,7 @@ public final class Security {
        * <code>.didcomm.messaging.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
        */
       public Builder setHeader(
-          Security.EncryptionHeader.Builder builderForValue) {
+          DIDComm.Messaging.Proto.Security.EncryptionHeader.Builder builderForValue) {
         if (headerBuilder_ == null) {
           header_ = builderForValue.build();
           onChanged();
@@ -4946,11 +4946,11 @@ public final class Security {
       /**
        * <code>.didcomm.messaging.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
        */
-      public Builder mergeHeader(Security.EncryptionHeader value) {
+      public Builder mergeHeader(DIDComm.Messaging.Proto.Security.EncryptionHeader value) {
         if (headerBuilder_ == null) {
           if (header_ != null) {
             header_ =
-              Security.EncryptionHeader.newBuilder(header_).mergeFrom(value).buildPartial();
+              DIDComm.Messaging.Proto.Security.EncryptionHeader.newBuilder(header_).mergeFrom(value).buildPartial();
           } else {
             header_ = value;
           }
@@ -4978,7 +4978,7 @@ public final class Security {
       /**
        * <code>.didcomm.messaging.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
        */
-      public Security.EncryptionHeader.Builder getHeaderBuilder() {
+      public DIDComm.Messaging.Proto.Security.EncryptionHeader.Builder getHeaderBuilder() {
         
         onChanged();
         return getHeaderFieldBuilder().getBuilder();
@@ -4986,23 +4986,23 @@ public final class Security {
       /**
        * <code>.didcomm.messaging.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
        */
-      public Security.EncryptionHeaderOrBuilder getHeaderOrBuilder() {
+      public DIDComm.Messaging.Proto.Security.EncryptionHeaderOrBuilder getHeaderOrBuilder() {
         if (headerBuilder_ != null) {
           return headerBuilder_.getMessageOrBuilder();
         } else {
           return header_ == null ?
-              Security.EncryptionHeader.getDefaultInstance() : header_;
+              DIDComm.Messaging.Proto.Security.EncryptionHeader.getDefaultInstance() : header_;
         }
       }
       /**
        * <code>.didcomm.messaging.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          Security.EncryptionHeader, Security.EncryptionHeader.Builder, Security.EncryptionHeaderOrBuilder>
+          DIDComm.Messaging.Proto.Security.EncryptionHeader, DIDComm.Messaging.Proto.Security.EncryptionHeader.Builder, DIDComm.Messaging.Proto.Security.EncryptionHeaderOrBuilder> 
           getHeaderFieldBuilder() {
         if (headerBuilder_ == null) {
           headerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              Security.EncryptionHeader, Security.EncryptionHeader.Builder, Security.EncryptionHeaderOrBuilder>(
+              DIDComm.Messaging.Proto.Security.EncryptionHeader, DIDComm.Messaging.Proto.Security.EncryptionHeader.Builder, DIDComm.Messaging.Proto.Security.EncryptionHeaderOrBuilder>(
                   getHeader(),
                   getParentForChildren(),
                   isClean());
@@ -5061,12 +5061,12 @@ public final class Security {
     }
 
     // @@protoc_insertion_point(class_scope:didcomm.messaging.EncryptionRecipient)
-    private static final Security.EncryptionRecipient DEFAULT_INSTANCE;
+    private static final DIDComm.Messaging.Proto.Security.EncryptionRecipient DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new Security.EncryptionRecipient();
+      DEFAULT_INSTANCE = new DIDComm.Messaging.Proto.Security.EncryptionRecipient();
     }
 
-    public static Security.EncryptionRecipient getDefaultInstance() {
+    public static DIDComm.Messaging.Proto.Security.EncryptionRecipient getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -5091,7 +5091,7 @@ public final class Security {
     }
 
     @java.lang.Override
-    public Security.EncryptionRecipient getDefaultInstanceForType() {
+    public DIDComm.Messaging.Proto.Security.EncryptionRecipient getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 

@@ -1,9 +1,7 @@
 package DIDComm.Messaging.gRPC;
-
-import DIDComm.Messaging.Proto.API;
+/*
 import org.junit.Test;
 
-import static DIDComm.Messaging.gRPC.DIDKey.Generate;
 import static org.junit.Assert.*;
 
 public class DIDKeyTest {
@@ -39,4 +37,4 @@ public class DIDKeyTest {
         assertTrue("Exception not thrown with invalid seed size", thrown);
     }
 
-}
+}*/
