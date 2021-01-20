@@ -238,9 +238,8 @@ pub enum Crv {
     Ed25519 = 0,
     X25519 = 1,
     P256 = 2,
-    Secp256k1 = 3,
-    Bls12381G1 = 4,
-    Bls12381G2 = 5,
+    Bls12381G2 = 3,
+    Secp256k1 = 4,
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]

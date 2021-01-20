@@ -25,7 +25,7 @@ impl From<DIDKey> for JsonWebKey {
                 DIDKey::Ed25519(_) => Crv::Ed25519,
                 DIDKey::X25519(_) => Crv::X25519,
                 DIDKey::P256(_) => Crv::P256,
-                DIDKey::Bls12381G1G2(_) => Crv::Bls12381G1,
+                DIDKey::Bls12381G1G2(_) => Crv::Bls12381G2,
                 DIDKey::Secp256k1(_) => Crv::Secp256k1,
             } as i32,
             kty: match key {
@@ -60,9 +60,8 @@ impl From<Crv> for DIDKeyType {
             Crv::Ed25519 => DIDKeyType::Ed25519,
             Crv::X25519 => DIDKeyType::X25519,
             Crv::P256 => DIDKeyType::P256,
+            Crv::Bls12381G2 => DIDKeyType::Bls12381G1G2,
             Crv::Secp256k1 => DIDKeyType::Secp256k1,
-            Crv::Bls12381G1 => DIDKeyType::Bls12381G1G2,
-            Crv::Bls12381G2 => DIDKeyType::Bls12381G1G2
         }
     }
 }
