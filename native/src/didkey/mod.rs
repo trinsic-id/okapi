@@ -9,16 +9,16 @@ impl From<DIDKey> for JsonWebKey {
             x: match key {
                 DIDKey::Ed25519(_) => base64::encode(&key.public_key()),
                 DIDKey::X25519(_) => base64::encode(&key.public_key()),
-                DIDKey::P256(_) => base64::encode(&key.public_key()[..key.public_key().len()/2]), //only need half of key?
+                DIDKey::P256(_) => base64::encode(&key.public_key()[..key.public_key().len() / 2]), //only need half of key?
                 DIDKey::Bls12381G1G2(_) => base64::encode(&key.public_key()),
-                DIDKey::Secp256k1(_) => base64::encode(&key.public_key()[..key.public_key().len()/2]), // need half
+                DIDKey::Secp256k1(_) => base64::encode(&key.public_key()[..key.public_key().len() / 2]), // need half
             },
             y: match key {
-                DIDKey::Ed25519(_) => "".to_string(), //should be blank?
-                DIDKey::X25519(_) => "".to_string(), // blank
-                DIDKey::P256(_) => base64::encode(&key.public_key()[key.public_key().len()/2..]), // need other half of key
-                DIDKey::Bls12381G1G2(_) => "".to_string(), // blank
-                DIDKey::Secp256k1(_) => base64::encode(&key.public_key()[key.public_key().len()/2..]), // other half of key
+                DIDKey::Ed25519(_) => "".to_string(),                                                    //should be blank?
+                DIDKey::X25519(_) => "".to_string(),                                                     // blank
+                DIDKey::P256(_) => base64::encode(&key.public_key()[key.public_key().len() / 2..]),      // need other half of key
+                DIDKey::Bls12381G1G2(_) => "".to_string(),                                               // blank
+                DIDKey::Secp256k1(_) => base64::encode(&key.public_key()[key.public_key().len() / 2..]), // other half of key
             },
             d: base64::encode(key.secret_key().map_or(vec![], |x| x)), // need base64
             crv: match key {
