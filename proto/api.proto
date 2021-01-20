@@ -12,7 +12,7 @@ import "google/protobuf/struct.proto";
 
 message GenerateKeyRequest {
     bytes seed = 1;
-    KeyType key_type = 2;
+    Crv key_type = 2;
 }
 message GenerateKeyResponse {
     JsonWebKey key = 1;
@@ -78,11 +78,11 @@ message GetDidDocumentResponse {
 
 message JsonWebKey {
     string key_id = 1                               [json_name="kid"];
-    string x = 2;              // public_key
-    string y = 3;              // public_key
-    string d = 4;              // secret_key
-    Crv crv = 5;          // key_type
-    KeyType kty = 6;      // should always be EC?
+    string x = 2;
+    string y = 3;
+    string d = 4;
+    Crv crv = 5;
+    KeyType kty = 6;
 }
 
 enum Crv {
