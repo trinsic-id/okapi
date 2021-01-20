@@ -15,37 +15,164 @@ public final class API {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
+   * Protobuf enum {@code didcomm.messaging.Crv}
+   */
+  public enum Crv
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>Ed25519 = 0;</code>
+     */
+    Ed25519(0),
+    /**
+     * <code>X25519 = 1;</code>
+     */
+    X25519(1),
+    /**
+     * <code>P256 = 2;</code>
+     */
+    P256(2),
+    /**
+     * <code>Bls12381_G2 = 3;</code>
+     */
+    Bls12381_G2(3),
+    /**
+     * <code>secp256k1 = 4;</code>
+     */
+    secp256k1(4),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>Ed25519 = 0;</code>
+     */
+    public static final int Ed25519_VALUE = 0;
+    /**
+     * <code>X25519 = 1;</code>
+     */
+    public static final int X25519_VALUE = 1;
+    /**
+     * <code>P256 = 2;</code>
+     */
+    public static final int P256_VALUE = 2;
+    /**
+     * <code>Bls12381_G2 = 3;</code>
+     */
+    public static final int Bls12381_G2_VALUE = 3;
+    /**
+     * <code>secp256k1 = 4;</code>
+     */
+    public static final int secp256k1_VALUE = 4;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static Crv valueOf(int value) {
+      return forNumber(value);
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
+    public static Crv forNumber(int value) {
+      switch (value) {
+        case 0: return Ed25519;
+        case 1: return X25519;
+        case 2: return P256;
+        case 3: return Bls12381_G2;
+        case 4: return secp256k1;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<Crv>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        Crv> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<Crv>() {
+            public Crv findValueByNumber(int number) {
+              return Crv.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return DIDComm.Messaging.Proto.API.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final Crv[] VALUES = values();
+
+    public static Crv valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private Crv(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:didcomm.messaging.Crv)
+  }
+
+  /**
    * Protobuf enum {@code didcomm.messaging.KeyType}
    */
   public enum KeyType
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>x25519 = 0;</code>
+     * <code>OKP = 0;</code>
      */
-    x25519(0),
+    OKP(0),
     /**
-     * <code>p256 = 1;</code>
+     * <code>EC = 1;</code>
      */
-    p256(1),
-    /**
-     * <code>ed25519 = 2;</code>
-     */
-    ed25519(2),
+    EC(1),
     UNRECOGNIZED(-1),
     ;
 
     /**
-     * <code>x25519 = 0;</code>
+     * <code>OKP = 0;</code>
      */
-    public static final int x25519_VALUE = 0;
+    public static final int OKP_VALUE = 0;
     /**
-     * <code>p256 = 1;</code>
+     * <code>EC = 1;</code>
      */
-    public static final int p256_VALUE = 1;
-    /**
-     * <code>ed25519 = 2;</code>
-     */
-    public static final int ed25519_VALUE = 2;
+    public static final int EC_VALUE = 1;
 
 
     public final int getNumber() {
@@ -72,9 +199,8 @@ public final class API {
      */
     public static KeyType forNumber(int value) {
       switch (value) {
-        case 0: return x25519;
-        case 1: return p256;
-        case 2: return ed25519;
+        case 0: return OKP;
+        case 1: return EC;
         default: return null;
       }
     }
@@ -105,7 +231,7 @@ public final class API {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return API.getDescriptor().getEnumTypes().get(0);
+      return DIDComm.Messaging.Proto.API.getDescriptor().getEnumTypes().get(1);
     }
 
     private static final KeyType[] VALUES = values();
@@ -142,15 +268,15 @@ public final class API {
     com.google.protobuf.ByteString getSeed();
 
     /**
-     * <code>.didcomm.messaging.KeyType key_type = 2;</code>
+     * <code>.didcomm.messaging.Crv key_type = 2;</code>
      * @return The enum numeric value on the wire for keyType.
      */
     int getKeyTypeValue();
     /**
-     * <code>.didcomm.messaging.KeyType key_type = 2;</code>
+     * <code>.didcomm.messaging.Crv key_type = 2;</code>
      * @return The keyType.
      */
-    API.KeyType getKeyType();
+    DIDComm.Messaging.Proto.API.Crv getKeyType();
   }
   /**
    * Protobuf type {@code didcomm.messaging.GenerateKeyRequest}
@@ -231,15 +357,15 @@ public final class API {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return API.internal_static_didcomm_messaging_GenerateKeyRequest_descriptor;
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_GenerateKeyRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return API.internal_static_didcomm_messaging_GenerateKeyRequest_fieldAccessorTable
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_GenerateKeyRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              API.GenerateKeyRequest.class, API.GenerateKeyRequest.Builder.class);
+              DIDComm.Messaging.Proto.API.GenerateKeyRequest.class, DIDComm.Messaging.Proto.API.GenerateKeyRequest.Builder.class);
     }
 
     public static final int SEED_FIELD_NUMBER = 1;
@@ -256,20 +382,20 @@ public final class API {
     public static final int KEY_TYPE_FIELD_NUMBER = 2;
     private int keyType_;
     /**
-     * <code>.didcomm.messaging.KeyType key_type = 2;</code>
+     * <code>.didcomm.messaging.Crv key_type = 2;</code>
      * @return The enum numeric value on the wire for keyType.
      */
     @java.lang.Override public int getKeyTypeValue() {
       return keyType_;
     }
     /**
-     * <code>.didcomm.messaging.KeyType key_type = 2;</code>
+     * <code>.didcomm.messaging.Crv key_type = 2;</code>
      * @return The keyType.
      */
-    @java.lang.Override public API.KeyType getKeyType() {
+    @java.lang.Override public DIDComm.Messaging.Proto.API.Crv getKeyType() {
       @SuppressWarnings("deprecation")
-      API.KeyType result = API.KeyType.valueOf(keyType_);
-      return result == null ? API.KeyType.UNRECOGNIZED : result;
+      DIDComm.Messaging.Proto.API.Crv result = DIDComm.Messaging.Proto.API.Crv.valueOf(keyType_);
+      return result == null ? DIDComm.Messaging.Proto.API.Crv.UNRECOGNIZED : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -289,7 +415,7 @@ public final class API {
       if (!seed_.isEmpty()) {
         output.writeBytes(1, seed_);
       }
-      if (keyType_ != API.KeyType.x25519.getNumber()) {
+      if (keyType_ != DIDComm.Messaging.Proto.API.Crv.Ed25519.getNumber()) {
         output.writeEnum(2, keyType_);
       }
       unknownFields.writeTo(output);
@@ -305,7 +431,7 @@ public final class API {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(1, seed_);
       }
-      if (keyType_ != API.KeyType.x25519.getNumber()) {
+      if (keyType_ != DIDComm.Messaging.Proto.API.Crv.Ed25519.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(2, keyType_);
       }
@@ -319,10 +445,10 @@ public final class API {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof API.GenerateKeyRequest)) {
+      if (!(obj instanceof DIDComm.Messaging.Proto.API.GenerateKeyRequest)) {
         return super.equals(obj);
       }
-      API.GenerateKeyRequest other = (API.GenerateKeyRequest) obj;
+      DIDComm.Messaging.Proto.API.GenerateKeyRequest other = (DIDComm.Messaging.Proto.API.GenerateKeyRequest) obj;
 
       if (!getSeed()
           .equals(other.getSeed())) return false;
@@ -347,69 +473,69 @@ public final class API {
       return hash;
     }
 
-    public static API.GenerateKeyRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.GenerateKeyRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.GenerateKeyRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.GenerateKeyRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.GenerateKeyRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.GenerateKeyRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.GenerateKeyRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.GenerateKeyRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.GenerateKeyRequest parseFrom(byte[] data)
+    public static DIDComm.Messaging.Proto.API.GenerateKeyRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.GenerateKeyRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.GenerateKeyRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.GenerateKeyRequest parseFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.GenerateKeyRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.GenerateKeyRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.GenerateKeyRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.GenerateKeyRequest parseDelimitedFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.GenerateKeyRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static API.GenerateKeyRequest parseDelimitedFrom(
+    public static DIDComm.Messaging.Proto.API.GenerateKeyRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.GenerateKeyRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.GenerateKeyRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.GenerateKeyRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.GenerateKeyRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -422,7 +548,7 @@ public final class API {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(API.GenerateKeyRequest prototype) {
+    public static Builder newBuilder(DIDComm.Messaging.Proto.API.GenerateKeyRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -443,21 +569,21 @@ public final class API {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:didcomm.messaging.GenerateKeyRequest)
-        API.GenerateKeyRequestOrBuilder {
+        DIDComm.Messaging.Proto.API.GenerateKeyRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return API.internal_static_didcomm_messaging_GenerateKeyRequest_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_GenerateKeyRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return API.internal_static_didcomm_messaging_GenerateKeyRequest_fieldAccessorTable
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_GenerateKeyRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                API.GenerateKeyRequest.class, API.GenerateKeyRequest.Builder.class);
+                DIDComm.Messaging.Proto.API.GenerateKeyRequest.class, DIDComm.Messaging.Proto.API.GenerateKeyRequest.Builder.class);
       }
 
-      // Construct using API.GenerateKeyRequest.newBuilder()
+      // Construct using DIDComm.Messaging.Proto.API.GenerateKeyRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -485,17 +611,17 @@ public final class API {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return API.internal_static_didcomm_messaging_GenerateKeyRequest_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_GenerateKeyRequest_descriptor;
       }
 
       @java.lang.Override
-      public API.GenerateKeyRequest getDefaultInstanceForType() {
-        return API.GenerateKeyRequest.getDefaultInstance();
+      public DIDComm.Messaging.Proto.API.GenerateKeyRequest getDefaultInstanceForType() {
+        return DIDComm.Messaging.Proto.API.GenerateKeyRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public API.GenerateKeyRequest build() {
-        API.GenerateKeyRequest result = buildPartial();
+      public DIDComm.Messaging.Proto.API.GenerateKeyRequest build() {
+        DIDComm.Messaging.Proto.API.GenerateKeyRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -503,8 +629,8 @@ public final class API {
       }
 
       @java.lang.Override
-      public API.GenerateKeyRequest buildPartial() {
-        API.GenerateKeyRequest result = new API.GenerateKeyRequest(this);
+      public DIDComm.Messaging.Proto.API.GenerateKeyRequest buildPartial() {
+        DIDComm.Messaging.Proto.API.GenerateKeyRequest result = new DIDComm.Messaging.Proto.API.GenerateKeyRequest(this);
         result.seed_ = seed_;
         result.keyType_ = keyType_;
         onBuilt();
@@ -545,16 +671,16 @@ public final class API {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof API.GenerateKeyRequest) {
-          return mergeFrom((API.GenerateKeyRequest)other);
+        if (other instanceof DIDComm.Messaging.Proto.API.GenerateKeyRequest) {
+          return mergeFrom((DIDComm.Messaging.Proto.API.GenerateKeyRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(API.GenerateKeyRequest other) {
-        if (other == API.GenerateKeyRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(DIDComm.Messaging.Proto.API.GenerateKeyRequest other) {
+        if (other == DIDComm.Messaging.Proto.API.GenerateKeyRequest.getDefaultInstance()) return this;
         if (other.getSeed() != com.google.protobuf.ByteString.EMPTY) {
           setSeed(other.getSeed());
         }
@@ -576,11 +702,11 @@ public final class API {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        API.GenerateKeyRequest parsedMessage = null;
+        DIDComm.Messaging.Proto.API.GenerateKeyRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (API.GenerateKeyRequest) e.getUnfinishedMessage();
+          parsedMessage = (DIDComm.Messaging.Proto.API.GenerateKeyRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -626,14 +752,14 @@ public final class API {
 
       private int keyType_ = 0;
       /**
-       * <code>.didcomm.messaging.KeyType key_type = 2;</code>
+       * <code>.didcomm.messaging.Crv key_type = 2;</code>
        * @return The enum numeric value on the wire for keyType.
        */
       @java.lang.Override public int getKeyTypeValue() {
         return keyType_;
       }
       /**
-       * <code>.didcomm.messaging.KeyType key_type = 2;</code>
+       * <code>.didcomm.messaging.Crv key_type = 2;</code>
        * @param value The enum numeric value on the wire for keyType to set.
        * @return This builder for chaining.
        */
@@ -644,21 +770,21 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.KeyType key_type = 2;</code>
+       * <code>.didcomm.messaging.Crv key_type = 2;</code>
        * @return The keyType.
        */
       @java.lang.Override
-      public API.KeyType getKeyType() {
+      public DIDComm.Messaging.Proto.API.Crv getKeyType() {
         @SuppressWarnings("deprecation")
-        API.KeyType result = API.KeyType.valueOf(keyType_);
-        return result == null ? API.KeyType.UNRECOGNIZED : result;
+        DIDComm.Messaging.Proto.API.Crv result = DIDComm.Messaging.Proto.API.Crv.valueOf(keyType_);
+        return result == null ? DIDComm.Messaging.Proto.API.Crv.UNRECOGNIZED : result;
       }
       /**
-       * <code>.didcomm.messaging.KeyType key_type = 2;</code>
+       * <code>.didcomm.messaging.Crv key_type = 2;</code>
        * @param value The keyType to set.
        * @return This builder for chaining.
        */
-      public Builder setKeyType(API.KeyType value) {
+      public Builder setKeyType(DIDComm.Messaging.Proto.API.Crv value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -668,7 +794,7 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.KeyType key_type = 2;</code>
+       * <code>.didcomm.messaging.Crv key_type = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearKeyType() {
@@ -694,12 +820,12 @@ public final class API {
     }
 
     // @@protoc_insertion_point(class_scope:didcomm.messaging.GenerateKeyRequest)
-    private static final API.GenerateKeyRequest DEFAULT_INSTANCE;
+    private static final DIDComm.Messaging.Proto.API.GenerateKeyRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new API.GenerateKeyRequest();
+      DEFAULT_INSTANCE = new DIDComm.Messaging.Proto.API.GenerateKeyRequest();
     }
 
-    public static API.GenerateKeyRequest getDefaultInstance() {
+    public static DIDComm.Messaging.Proto.API.GenerateKeyRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -724,7 +850,7 @@ public final class API {
     }
 
     @java.lang.Override
-    public API.GenerateKeyRequest getDefaultInstanceForType() {
+    public DIDComm.Messaging.Proto.API.GenerateKeyRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -735,19 +861,19 @@ public final class API {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.didcomm.messaging.Key key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
      * @return Whether the key field is set.
      */
     boolean hasKey();
     /**
-     * <code>.didcomm.messaging.Key key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
      * @return The key.
      */
-    API.Key getKey();
+    DIDComm.Messaging.Proto.API.JsonWebKey getKey();
     /**
-     * <code>.didcomm.messaging.Key key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
      */
-    API.KeyOrBuilder getKeyOrBuilder();
+    DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getKeyOrBuilder();
   }
   /**
    * Protobuf type {@code didcomm.messaging.GenerateKeyResponse}
@@ -795,11 +921,11 @@ public final class API {
               done = true;
               break;
             case 10: {
-              API.Key.Builder subBuilder = null;
+              DIDComm.Messaging.Proto.API.JsonWebKey.Builder subBuilder = null;
               if (key_ != null) {
                 subBuilder = key_.toBuilder();
               }
-              key_ = input.readMessage(API.Key.parser(), extensionRegistry);
+              key_ = input.readMessage(DIDComm.Messaging.Proto.API.JsonWebKey.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(key_);
                 key_ = subBuilder.buildPartial();
@@ -828,21 +954,21 @@ public final class API {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return API.internal_static_didcomm_messaging_GenerateKeyResponse_descriptor;
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_GenerateKeyResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return API.internal_static_didcomm_messaging_GenerateKeyResponse_fieldAccessorTable
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_GenerateKeyResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              API.GenerateKeyResponse.class, API.GenerateKeyResponse.Builder.class);
+              DIDComm.Messaging.Proto.API.GenerateKeyResponse.class, DIDComm.Messaging.Proto.API.GenerateKeyResponse.Builder.class);
     }
 
     public static final int KEY_FIELD_NUMBER = 1;
-    private API.Key key_;
+    private DIDComm.Messaging.Proto.API.JsonWebKey key_;
     /**
-     * <code>.didcomm.messaging.Key key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
      * @return Whether the key field is set.
      */
     @java.lang.Override
@@ -850,18 +976,18 @@ public final class API {
       return key_ != null;
     }
     /**
-     * <code>.didcomm.messaging.Key key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
      * @return The key.
      */
     @java.lang.Override
-    public API.Key getKey() {
-      return key_ == null ? API.Key.getDefaultInstance() : key_;
+    public DIDComm.Messaging.Proto.API.JsonWebKey getKey() {
+      return key_ == null ? DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : key_;
     }
     /**
-     * <code>.didcomm.messaging.Key key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
      */
     @java.lang.Override
-    public API.KeyOrBuilder getKeyOrBuilder() {
+    public DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getKeyOrBuilder() {
       return getKey();
     }
 
@@ -905,10 +1031,10 @@ public final class API {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof API.GenerateKeyResponse)) {
+      if (!(obj instanceof DIDComm.Messaging.Proto.API.GenerateKeyResponse)) {
         return super.equals(obj);
       }
-      API.GenerateKeyResponse other = (API.GenerateKeyResponse) obj;
+      DIDComm.Messaging.Proto.API.GenerateKeyResponse other = (DIDComm.Messaging.Proto.API.GenerateKeyResponse) obj;
 
       if (hasKey() != other.hasKey()) return false;
       if (hasKey()) {
@@ -935,69 +1061,69 @@ public final class API {
       return hash;
     }
 
-    public static API.GenerateKeyResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.GenerateKeyResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.GenerateKeyResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.GenerateKeyResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.GenerateKeyResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.GenerateKeyResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.GenerateKeyResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.GenerateKeyResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.GenerateKeyResponse parseFrom(byte[] data)
+    public static DIDComm.Messaging.Proto.API.GenerateKeyResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.GenerateKeyResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.GenerateKeyResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.GenerateKeyResponse parseFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.GenerateKeyResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.GenerateKeyResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.GenerateKeyResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.GenerateKeyResponse parseDelimitedFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.GenerateKeyResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static API.GenerateKeyResponse parseDelimitedFrom(
+    public static DIDComm.Messaging.Proto.API.GenerateKeyResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.GenerateKeyResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.GenerateKeyResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.GenerateKeyResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.GenerateKeyResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1010,7 +1136,7 @@ public final class API {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(API.GenerateKeyResponse prototype) {
+    public static Builder newBuilder(DIDComm.Messaging.Proto.API.GenerateKeyResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1031,21 +1157,21 @@ public final class API {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:didcomm.messaging.GenerateKeyResponse)
-        API.GenerateKeyResponseOrBuilder {
+        DIDComm.Messaging.Proto.API.GenerateKeyResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return API.internal_static_didcomm_messaging_GenerateKeyResponse_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_GenerateKeyResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return API.internal_static_didcomm_messaging_GenerateKeyResponse_fieldAccessorTable
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_GenerateKeyResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                API.GenerateKeyResponse.class, API.GenerateKeyResponse.Builder.class);
+                DIDComm.Messaging.Proto.API.GenerateKeyResponse.class, DIDComm.Messaging.Proto.API.GenerateKeyResponse.Builder.class);
       }
 
-      // Construct using API.GenerateKeyResponse.newBuilder()
+      // Construct using DIDComm.Messaging.Proto.API.GenerateKeyResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1075,17 +1201,17 @@ public final class API {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return API.internal_static_didcomm_messaging_GenerateKeyResponse_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_GenerateKeyResponse_descriptor;
       }
 
       @java.lang.Override
-      public API.GenerateKeyResponse getDefaultInstanceForType() {
-        return API.GenerateKeyResponse.getDefaultInstance();
+      public DIDComm.Messaging.Proto.API.GenerateKeyResponse getDefaultInstanceForType() {
+        return DIDComm.Messaging.Proto.API.GenerateKeyResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public API.GenerateKeyResponse build() {
-        API.GenerateKeyResponse result = buildPartial();
+      public DIDComm.Messaging.Proto.API.GenerateKeyResponse build() {
+        DIDComm.Messaging.Proto.API.GenerateKeyResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1093,8 +1219,8 @@ public final class API {
       }
 
       @java.lang.Override
-      public API.GenerateKeyResponse buildPartial() {
-        API.GenerateKeyResponse result = new API.GenerateKeyResponse(this);
+      public DIDComm.Messaging.Proto.API.GenerateKeyResponse buildPartial() {
+        DIDComm.Messaging.Proto.API.GenerateKeyResponse result = new DIDComm.Messaging.Proto.API.GenerateKeyResponse(this);
         if (keyBuilder_ == null) {
           result.key_ = key_;
         } else {
@@ -1138,16 +1264,16 @@ public final class API {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof API.GenerateKeyResponse) {
-          return mergeFrom((API.GenerateKeyResponse)other);
+        if (other instanceof DIDComm.Messaging.Proto.API.GenerateKeyResponse) {
+          return mergeFrom((DIDComm.Messaging.Proto.API.GenerateKeyResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(API.GenerateKeyResponse other) {
-        if (other == API.GenerateKeyResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(DIDComm.Messaging.Proto.API.GenerateKeyResponse other) {
+        if (other == DIDComm.Messaging.Proto.API.GenerateKeyResponse.getDefaultInstance()) return this;
         if (other.hasKey()) {
           mergeKey(other.getKey());
         }
@@ -1166,11 +1292,11 @@ public final class API {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        API.GenerateKeyResponse parsedMessage = null;
+        DIDComm.Messaging.Proto.API.GenerateKeyResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (API.GenerateKeyResponse) e.getUnfinishedMessage();
+          parsedMessage = (DIDComm.Messaging.Proto.API.GenerateKeyResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1180,31 +1306,31 @@ public final class API {
         return this;
       }
 
-      private API.Key key_;
+      private DIDComm.Messaging.Proto.API.JsonWebKey key_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          API.Key, API.Key.Builder, API.KeyOrBuilder> keyBuilder_;
+          DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder> keyBuilder_;
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        * @return Whether the key field is set.
        */
       public boolean hasKey() {
         return keyBuilder_ != null || key_ != null;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        * @return The key.
        */
-      public API.Key getKey() {
+      public DIDComm.Messaging.Proto.API.JsonWebKey getKey() {
         if (keyBuilder_ == null) {
-          return key_ == null ? API.Key.getDefaultInstance() : key_;
+          return key_ == null ? DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : key_;
         } else {
           return keyBuilder_.getMessage();
         }
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
-      public Builder setKey(API.Key value) {
+      public Builder setKey(DIDComm.Messaging.Proto.API.JsonWebKey value) {
         if (keyBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1218,10 +1344,10 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
       public Builder setKey(
-          API.Key.Builder builderForValue) {
+          DIDComm.Messaging.Proto.API.JsonWebKey.Builder builderForValue) {
         if (keyBuilder_ == null) {
           key_ = builderForValue.build();
           onChanged();
@@ -1232,13 +1358,13 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
-      public Builder mergeKey(API.Key value) {
+      public Builder mergeKey(DIDComm.Messaging.Proto.API.JsonWebKey value) {
         if (keyBuilder_ == null) {
           if (key_ != null) {
             key_ =
-              API.Key.newBuilder(key_).mergeFrom(value).buildPartial();
+              DIDComm.Messaging.Proto.API.JsonWebKey.newBuilder(key_).mergeFrom(value).buildPartial();
           } else {
             key_ = value;
           }
@@ -1250,7 +1376,7 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
       public Builder clearKey() {
         if (keyBuilder_ == null) {
@@ -1264,33 +1390,33 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
-      public API.Key.Builder getKeyBuilder() {
+      public DIDComm.Messaging.Proto.API.JsonWebKey.Builder getKeyBuilder() {
         
         onChanged();
         return getKeyFieldBuilder().getBuilder();
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
-      public API.KeyOrBuilder getKeyOrBuilder() {
+      public DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getKeyOrBuilder() {
         if (keyBuilder_ != null) {
           return keyBuilder_.getMessageOrBuilder();
         } else {
           return key_ == null ?
-              API.Key.getDefaultInstance() : key_;
+              DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : key_;
         }
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          API.Key, API.Key.Builder, API.KeyOrBuilder>
+          DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder> 
           getKeyFieldBuilder() {
         if (keyBuilder_ == null) {
           keyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              API.Key, API.Key.Builder, API.KeyOrBuilder>(
+              DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder>(
                   getKey(),
                   getParentForChildren(),
                   isClean());
@@ -1315,12 +1441,12 @@ public final class API {
     }
 
     // @@protoc_insertion_point(class_scope:didcomm.messaging.GenerateKeyResponse)
-    private static final API.GenerateKeyResponse DEFAULT_INSTANCE;
+    private static final DIDComm.Messaging.Proto.API.GenerateKeyResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new API.GenerateKeyResponse();
+      DEFAULT_INSTANCE = new DIDComm.Messaging.Proto.API.GenerateKeyResponse();
     }
 
-    public static API.GenerateKeyResponse getDefaultInstance() {
+    public static DIDComm.Messaging.Proto.API.GenerateKeyResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1345,7 +1471,7 @@ public final class API {
     }
 
     @java.lang.Override
-    public API.GenerateKeyResponse getDefaultInstanceForType() {
+    public DIDComm.Messaging.Proto.API.GenerateKeyResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1356,30 +1482,30 @@ public final class API {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.didcomm.messaging.Key key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
      * @return Whether the key field is set.
      */
     boolean hasKey();
     /**
-     * <code>.didcomm.messaging.Key key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
      * @return The key.
      */
-    API.Key getKey();
+    DIDComm.Messaging.Proto.API.JsonWebKey getKey();
     /**
-     * <code>.didcomm.messaging.Key key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
      */
-    API.KeyOrBuilder getKeyOrBuilder();
+    DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getKeyOrBuilder();
 
     /**
-     * <code>.didcomm.messaging.KeyType target_type = 2;</code>
+     * <code>.didcomm.messaging.Crv target_type = 2;</code>
      * @return The enum numeric value on the wire for targetType.
      */
     int getTargetTypeValue();
     /**
-     * <code>.didcomm.messaging.KeyType target_type = 2;</code>
+     * <code>.didcomm.messaging.Crv target_type = 2;</code>
      * @return The targetType.
      */
-    API.KeyType getTargetType();
+    DIDComm.Messaging.Proto.API.Crv getTargetType();
   }
   /**
    * Protobuf type {@code didcomm.messaging.ConvertKeyRequest}
@@ -1428,11 +1554,11 @@ public final class API {
               done = true;
               break;
             case 10: {
-              API.Key.Builder subBuilder = null;
+              DIDComm.Messaging.Proto.API.JsonWebKey.Builder subBuilder = null;
               if (key_ != null) {
                 subBuilder = key_.toBuilder();
               }
-              key_ = input.readMessage(API.Key.parser(), extensionRegistry);
+              key_ = input.readMessage(DIDComm.Messaging.Proto.API.JsonWebKey.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(key_);
                 key_ = subBuilder.buildPartial();
@@ -1467,21 +1593,21 @@ public final class API {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return API.internal_static_didcomm_messaging_ConvertKeyRequest_descriptor;
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_ConvertKeyRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return API.internal_static_didcomm_messaging_ConvertKeyRequest_fieldAccessorTable
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_ConvertKeyRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              API.ConvertKeyRequest.class, API.ConvertKeyRequest.Builder.class);
+              DIDComm.Messaging.Proto.API.ConvertKeyRequest.class, DIDComm.Messaging.Proto.API.ConvertKeyRequest.Builder.class);
     }
 
     public static final int KEY_FIELD_NUMBER = 1;
-    private API.Key key_;
+    private DIDComm.Messaging.Proto.API.JsonWebKey key_;
     /**
-     * <code>.didcomm.messaging.Key key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
      * @return Whether the key field is set.
      */
     @java.lang.Override
@@ -1489,38 +1615,38 @@ public final class API {
       return key_ != null;
     }
     /**
-     * <code>.didcomm.messaging.Key key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
      * @return The key.
      */
     @java.lang.Override
-    public API.Key getKey() {
-      return key_ == null ? API.Key.getDefaultInstance() : key_;
+    public DIDComm.Messaging.Proto.API.JsonWebKey getKey() {
+      return key_ == null ? DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : key_;
     }
     /**
-     * <code>.didcomm.messaging.Key key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
      */
     @java.lang.Override
-    public API.KeyOrBuilder getKeyOrBuilder() {
+    public DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getKeyOrBuilder() {
       return getKey();
     }
 
     public static final int TARGET_TYPE_FIELD_NUMBER = 2;
     private int targetType_;
     /**
-     * <code>.didcomm.messaging.KeyType target_type = 2;</code>
+     * <code>.didcomm.messaging.Crv target_type = 2;</code>
      * @return The enum numeric value on the wire for targetType.
      */
     @java.lang.Override public int getTargetTypeValue() {
       return targetType_;
     }
     /**
-     * <code>.didcomm.messaging.KeyType target_type = 2;</code>
+     * <code>.didcomm.messaging.Crv target_type = 2;</code>
      * @return The targetType.
      */
-    @java.lang.Override public API.KeyType getTargetType() {
+    @java.lang.Override public DIDComm.Messaging.Proto.API.Crv getTargetType() {
       @SuppressWarnings("deprecation")
-      API.KeyType result = API.KeyType.valueOf(targetType_);
-      return result == null ? API.KeyType.UNRECOGNIZED : result;
+      DIDComm.Messaging.Proto.API.Crv result = DIDComm.Messaging.Proto.API.Crv.valueOf(targetType_);
+      return result == null ? DIDComm.Messaging.Proto.API.Crv.UNRECOGNIZED : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1540,7 +1666,7 @@ public final class API {
       if (key_ != null) {
         output.writeMessage(1, getKey());
       }
-      if (targetType_ != API.KeyType.x25519.getNumber()) {
+      if (targetType_ != DIDComm.Messaging.Proto.API.Crv.Ed25519.getNumber()) {
         output.writeEnum(2, targetType_);
       }
       unknownFields.writeTo(output);
@@ -1556,7 +1682,7 @@ public final class API {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getKey());
       }
-      if (targetType_ != API.KeyType.x25519.getNumber()) {
+      if (targetType_ != DIDComm.Messaging.Proto.API.Crv.Ed25519.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(2, targetType_);
       }
@@ -1570,10 +1696,10 @@ public final class API {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof API.ConvertKeyRequest)) {
+      if (!(obj instanceof DIDComm.Messaging.Proto.API.ConvertKeyRequest)) {
         return super.equals(obj);
       }
-      API.ConvertKeyRequest other = (API.ConvertKeyRequest) obj;
+      DIDComm.Messaging.Proto.API.ConvertKeyRequest other = (DIDComm.Messaging.Proto.API.ConvertKeyRequest) obj;
 
       if (hasKey() != other.hasKey()) return false;
       if (hasKey()) {
@@ -1603,69 +1729,69 @@ public final class API {
       return hash;
     }
 
-    public static API.ConvertKeyRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.ConvertKeyRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.ConvertKeyRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.ConvertKeyRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.ConvertKeyRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.ConvertKeyRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.ConvertKeyRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.ConvertKeyRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.ConvertKeyRequest parseFrom(byte[] data)
+    public static DIDComm.Messaging.Proto.API.ConvertKeyRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.ConvertKeyRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.ConvertKeyRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.ConvertKeyRequest parseFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.ConvertKeyRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.ConvertKeyRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.ConvertKeyRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.ConvertKeyRequest parseDelimitedFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.ConvertKeyRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static API.ConvertKeyRequest parseDelimitedFrom(
+    public static DIDComm.Messaging.Proto.API.ConvertKeyRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.ConvertKeyRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.ConvertKeyRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.ConvertKeyRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.ConvertKeyRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1678,7 +1804,7 @@ public final class API {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(API.ConvertKeyRequest prototype) {
+    public static Builder newBuilder(DIDComm.Messaging.Proto.API.ConvertKeyRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1699,21 +1825,21 @@ public final class API {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:didcomm.messaging.ConvertKeyRequest)
-        API.ConvertKeyRequestOrBuilder {
+        DIDComm.Messaging.Proto.API.ConvertKeyRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return API.internal_static_didcomm_messaging_ConvertKeyRequest_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_ConvertKeyRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return API.internal_static_didcomm_messaging_ConvertKeyRequest_fieldAccessorTable
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_ConvertKeyRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                API.ConvertKeyRequest.class, API.ConvertKeyRequest.Builder.class);
+                DIDComm.Messaging.Proto.API.ConvertKeyRequest.class, DIDComm.Messaging.Proto.API.ConvertKeyRequest.Builder.class);
       }
 
-      // Construct using API.ConvertKeyRequest.newBuilder()
+      // Construct using DIDComm.Messaging.Proto.API.ConvertKeyRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1745,17 +1871,17 @@ public final class API {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return API.internal_static_didcomm_messaging_ConvertKeyRequest_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_ConvertKeyRequest_descriptor;
       }
 
       @java.lang.Override
-      public API.ConvertKeyRequest getDefaultInstanceForType() {
-        return API.ConvertKeyRequest.getDefaultInstance();
+      public DIDComm.Messaging.Proto.API.ConvertKeyRequest getDefaultInstanceForType() {
+        return DIDComm.Messaging.Proto.API.ConvertKeyRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public API.ConvertKeyRequest build() {
-        API.ConvertKeyRequest result = buildPartial();
+      public DIDComm.Messaging.Proto.API.ConvertKeyRequest build() {
+        DIDComm.Messaging.Proto.API.ConvertKeyRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1763,8 +1889,8 @@ public final class API {
       }
 
       @java.lang.Override
-      public API.ConvertKeyRequest buildPartial() {
-        API.ConvertKeyRequest result = new API.ConvertKeyRequest(this);
+      public DIDComm.Messaging.Proto.API.ConvertKeyRequest buildPartial() {
+        DIDComm.Messaging.Proto.API.ConvertKeyRequest result = new DIDComm.Messaging.Proto.API.ConvertKeyRequest(this);
         if (keyBuilder_ == null) {
           result.key_ = key_;
         } else {
@@ -1809,16 +1935,16 @@ public final class API {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof API.ConvertKeyRequest) {
-          return mergeFrom((API.ConvertKeyRequest)other);
+        if (other instanceof DIDComm.Messaging.Proto.API.ConvertKeyRequest) {
+          return mergeFrom((DIDComm.Messaging.Proto.API.ConvertKeyRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(API.ConvertKeyRequest other) {
-        if (other == API.ConvertKeyRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(DIDComm.Messaging.Proto.API.ConvertKeyRequest other) {
+        if (other == DIDComm.Messaging.Proto.API.ConvertKeyRequest.getDefaultInstance()) return this;
         if (other.hasKey()) {
           mergeKey(other.getKey());
         }
@@ -1840,11 +1966,11 @@ public final class API {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        API.ConvertKeyRequest parsedMessage = null;
+        DIDComm.Messaging.Proto.API.ConvertKeyRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (API.ConvertKeyRequest) e.getUnfinishedMessage();
+          parsedMessage = (DIDComm.Messaging.Proto.API.ConvertKeyRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1854,31 +1980,31 @@ public final class API {
         return this;
       }
 
-      private API.Key key_;
+      private DIDComm.Messaging.Proto.API.JsonWebKey key_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          API.Key, API.Key.Builder, API.KeyOrBuilder> keyBuilder_;
+          DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder> keyBuilder_;
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        * @return Whether the key field is set.
        */
       public boolean hasKey() {
         return keyBuilder_ != null || key_ != null;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        * @return The key.
        */
-      public API.Key getKey() {
+      public DIDComm.Messaging.Proto.API.JsonWebKey getKey() {
         if (keyBuilder_ == null) {
-          return key_ == null ? API.Key.getDefaultInstance() : key_;
+          return key_ == null ? DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : key_;
         } else {
           return keyBuilder_.getMessage();
         }
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
-      public Builder setKey(API.Key value) {
+      public Builder setKey(DIDComm.Messaging.Proto.API.JsonWebKey value) {
         if (keyBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1892,10 +2018,10 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
       public Builder setKey(
-          API.Key.Builder builderForValue) {
+          DIDComm.Messaging.Proto.API.JsonWebKey.Builder builderForValue) {
         if (keyBuilder_ == null) {
           key_ = builderForValue.build();
           onChanged();
@@ -1906,13 +2032,13 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
-      public Builder mergeKey(API.Key value) {
+      public Builder mergeKey(DIDComm.Messaging.Proto.API.JsonWebKey value) {
         if (keyBuilder_ == null) {
           if (key_ != null) {
             key_ =
-              API.Key.newBuilder(key_).mergeFrom(value).buildPartial();
+              DIDComm.Messaging.Proto.API.JsonWebKey.newBuilder(key_).mergeFrom(value).buildPartial();
           } else {
             key_ = value;
           }
@@ -1924,7 +2050,7 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
       public Builder clearKey() {
         if (keyBuilder_ == null) {
@@ -1938,33 +2064,33 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
-      public API.Key.Builder getKeyBuilder() {
+      public DIDComm.Messaging.Proto.API.JsonWebKey.Builder getKeyBuilder() {
         
         onChanged();
         return getKeyFieldBuilder().getBuilder();
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
-      public API.KeyOrBuilder getKeyOrBuilder() {
+      public DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getKeyOrBuilder() {
         if (keyBuilder_ != null) {
           return keyBuilder_.getMessageOrBuilder();
         } else {
           return key_ == null ?
-              API.Key.getDefaultInstance() : key_;
+              DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : key_;
         }
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          API.Key, API.Key.Builder, API.KeyOrBuilder>
+          DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder> 
           getKeyFieldBuilder() {
         if (keyBuilder_ == null) {
           keyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              API.Key, API.Key.Builder, API.KeyOrBuilder>(
+              DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder>(
                   getKey(),
                   getParentForChildren(),
                   isClean());
@@ -1975,14 +2101,14 @@ public final class API {
 
       private int targetType_ = 0;
       /**
-       * <code>.didcomm.messaging.KeyType target_type = 2;</code>
+       * <code>.didcomm.messaging.Crv target_type = 2;</code>
        * @return The enum numeric value on the wire for targetType.
        */
       @java.lang.Override public int getTargetTypeValue() {
         return targetType_;
       }
       /**
-       * <code>.didcomm.messaging.KeyType target_type = 2;</code>
+       * <code>.didcomm.messaging.Crv target_type = 2;</code>
        * @param value The enum numeric value on the wire for targetType to set.
        * @return This builder for chaining.
        */
@@ -1993,21 +2119,21 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.KeyType target_type = 2;</code>
+       * <code>.didcomm.messaging.Crv target_type = 2;</code>
        * @return The targetType.
        */
       @java.lang.Override
-      public API.KeyType getTargetType() {
+      public DIDComm.Messaging.Proto.API.Crv getTargetType() {
         @SuppressWarnings("deprecation")
-        API.KeyType result = API.KeyType.valueOf(targetType_);
-        return result == null ? API.KeyType.UNRECOGNIZED : result;
+        DIDComm.Messaging.Proto.API.Crv result = DIDComm.Messaging.Proto.API.Crv.valueOf(targetType_);
+        return result == null ? DIDComm.Messaging.Proto.API.Crv.UNRECOGNIZED : result;
       }
       /**
-       * <code>.didcomm.messaging.KeyType target_type = 2;</code>
+       * <code>.didcomm.messaging.Crv target_type = 2;</code>
        * @param value The targetType to set.
        * @return This builder for chaining.
        */
-      public Builder setTargetType(API.KeyType value) {
+      public Builder setTargetType(DIDComm.Messaging.Proto.API.Crv value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -2017,7 +2143,7 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.KeyType target_type = 2;</code>
+       * <code>.didcomm.messaging.Crv target_type = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearTargetType() {
@@ -2043,12 +2169,12 @@ public final class API {
     }
 
     // @@protoc_insertion_point(class_scope:didcomm.messaging.ConvertKeyRequest)
-    private static final API.ConvertKeyRequest DEFAULT_INSTANCE;
+    private static final DIDComm.Messaging.Proto.API.ConvertKeyRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new API.ConvertKeyRequest();
+      DEFAULT_INSTANCE = new DIDComm.Messaging.Proto.API.ConvertKeyRequest();
     }
 
-    public static API.ConvertKeyRequest getDefaultInstance() {
+    public static DIDComm.Messaging.Proto.API.ConvertKeyRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2073,7 +2199,7 @@ public final class API {
     }
 
     @java.lang.Override
-    public API.ConvertKeyRequest getDefaultInstanceForType() {
+    public DIDComm.Messaging.Proto.API.ConvertKeyRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2084,19 +2210,19 @@ public final class API {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.didcomm.messaging.Key key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
      * @return Whether the key field is set.
      */
     boolean hasKey();
     /**
-     * <code>.didcomm.messaging.Key key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
      * @return The key.
      */
-    API.Key getKey();
+    DIDComm.Messaging.Proto.API.JsonWebKey getKey();
     /**
-     * <code>.didcomm.messaging.Key key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
      */
-    API.KeyOrBuilder getKeyOrBuilder();
+    DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getKeyOrBuilder();
   }
   /**
    * Protobuf type {@code didcomm.messaging.ConvertKeyResponse}
@@ -2144,11 +2270,11 @@ public final class API {
               done = true;
               break;
             case 10: {
-              API.Key.Builder subBuilder = null;
+              DIDComm.Messaging.Proto.API.JsonWebKey.Builder subBuilder = null;
               if (key_ != null) {
                 subBuilder = key_.toBuilder();
               }
-              key_ = input.readMessage(API.Key.parser(), extensionRegistry);
+              key_ = input.readMessage(DIDComm.Messaging.Proto.API.JsonWebKey.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(key_);
                 key_ = subBuilder.buildPartial();
@@ -2177,21 +2303,21 @@ public final class API {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return API.internal_static_didcomm_messaging_ConvertKeyResponse_descriptor;
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_ConvertKeyResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return API.internal_static_didcomm_messaging_ConvertKeyResponse_fieldAccessorTable
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_ConvertKeyResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              API.ConvertKeyResponse.class, API.ConvertKeyResponse.Builder.class);
+              DIDComm.Messaging.Proto.API.ConvertKeyResponse.class, DIDComm.Messaging.Proto.API.ConvertKeyResponse.Builder.class);
     }
 
     public static final int KEY_FIELD_NUMBER = 1;
-    private API.Key key_;
+    private DIDComm.Messaging.Proto.API.JsonWebKey key_;
     /**
-     * <code>.didcomm.messaging.Key key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
      * @return Whether the key field is set.
      */
     @java.lang.Override
@@ -2199,18 +2325,18 @@ public final class API {
       return key_ != null;
     }
     /**
-     * <code>.didcomm.messaging.Key key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
      * @return The key.
      */
     @java.lang.Override
-    public API.Key getKey() {
-      return key_ == null ? API.Key.getDefaultInstance() : key_;
+    public DIDComm.Messaging.Proto.API.JsonWebKey getKey() {
+      return key_ == null ? DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : key_;
     }
     /**
-     * <code>.didcomm.messaging.Key key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
      */
     @java.lang.Override
-    public API.KeyOrBuilder getKeyOrBuilder() {
+    public DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getKeyOrBuilder() {
       return getKey();
     }
 
@@ -2254,10 +2380,10 @@ public final class API {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof API.ConvertKeyResponse)) {
+      if (!(obj instanceof DIDComm.Messaging.Proto.API.ConvertKeyResponse)) {
         return super.equals(obj);
       }
-      API.ConvertKeyResponse other = (API.ConvertKeyResponse) obj;
+      DIDComm.Messaging.Proto.API.ConvertKeyResponse other = (DIDComm.Messaging.Proto.API.ConvertKeyResponse) obj;
 
       if (hasKey() != other.hasKey()) return false;
       if (hasKey()) {
@@ -2284,69 +2410,69 @@ public final class API {
       return hash;
     }
 
-    public static API.ConvertKeyResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.ConvertKeyResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.ConvertKeyResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.ConvertKeyResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.ConvertKeyResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.ConvertKeyResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.ConvertKeyResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.ConvertKeyResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.ConvertKeyResponse parseFrom(byte[] data)
+    public static DIDComm.Messaging.Proto.API.ConvertKeyResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.ConvertKeyResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.ConvertKeyResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.ConvertKeyResponse parseFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.ConvertKeyResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.ConvertKeyResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.ConvertKeyResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.ConvertKeyResponse parseDelimitedFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.ConvertKeyResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static API.ConvertKeyResponse parseDelimitedFrom(
+    public static DIDComm.Messaging.Proto.API.ConvertKeyResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.ConvertKeyResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.ConvertKeyResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.ConvertKeyResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.ConvertKeyResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2359,7 +2485,7 @@ public final class API {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(API.ConvertKeyResponse prototype) {
+    public static Builder newBuilder(DIDComm.Messaging.Proto.API.ConvertKeyResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -2380,21 +2506,21 @@ public final class API {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:didcomm.messaging.ConvertKeyResponse)
-        API.ConvertKeyResponseOrBuilder {
+        DIDComm.Messaging.Proto.API.ConvertKeyResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return API.internal_static_didcomm_messaging_ConvertKeyResponse_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_ConvertKeyResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return API.internal_static_didcomm_messaging_ConvertKeyResponse_fieldAccessorTable
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_ConvertKeyResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                API.ConvertKeyResponse.class, API.ConvertKeyResponse.Builder.class);
+                DIDComm.Messaging.Proto.API.ConvertKeyResponse.class, DIDComm.Messaging.Proto.API.ConvertKeyResponse.Builder.class);
       }
 
-      // Construct using API.ConvertKeyResponse.newBuilder()
+      // Construct using DIDComm.Messaging.Proto.API.ConvertKeyResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2424,17 +2550,17 @@ public final class API {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return API.internal_static_didcomm_messaging_ConvertKeyResponse_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_ConvertKeyResponse_descriptor;
       }
 
       @java.lang.Override
-      public API.ConvertKeyResponse getDefaultInstanceForType() {
-        return API.ConvertKeyResponse.getDefaultInstance();
+      public DIDComm.Messaging.Proto.API.ConvertKeyResponse getDefaultInstanceForType() {
+        return DIDComm.Messaging.Proto.API.ConvertKeyResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public API.ConvertKeyResponse build() {
-        API.ConvertKeyResponse result = buildPartial();
+      public DIDComm.Messaging.Proto.API.ConvertKeyResponse build() {
+        DIDComm.Messaging.Proto.API.ConvertKeyResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -2442,8 +2568,8 @@ public final class API {
       }
 
       @java.lang.Override
-      public API.ConvertKeyResponse buildPartial() {
-        API.ConvertKeyResponse result = new API.ConvertKeyResponse(this);
+      public DIDComm.Messaging.Proto.API.ConvertKeyResponse buildPartial() {
+        DIDComm.Messaging.Proto.API.ConvertKeyResponse result = new DIDComm.Messaging.Proto.API.ConvertKeyResponse(this);
         if (keyBuilder_ == null) {
           result.key_ = key_;
         } else {
@@ -2487,16 +2613,16 @@ public final class API {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof API.ConvertKeyResponse) {
-          return mergeFrom((API.ConvertKeyResponse)other);
+        if (other instanceof DIDComm.Messaging.Proto.API.ConvertKeyResponse) {
+          return mergeFrom((DIDComm.Messaging.Proto.API.ConvertKeyResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(API.ConvertKeyResponse other) {
-        if (other == API.ConvertKeyResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(DIDComm.Messaging.Proto.API.ConvertKeyResponse other) {
+        if (other == DIDComm.Messaging.Proto.API.ConvertKeyResponse.getDefaultInstance()) return this;
         if (other.hasKey()) {
           mergeKey(other.getKey());
         }
@@ -2515,11 +2641,11 @@ public final class API {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        API.ConvertKeyResponse parsedMessage = null;
+        DIDComm.Messaging.Proto.API.ConvertKeyResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (API.ConvertKeyResponse) e.getUnfinishedMessage();
+          parsedMessage = (DIDComm.Messaging.Proto.API.ConvertKeyResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2529,31 +2655,31 @@ public final class API {
         return this;
       }
 
-      private API.Key key_;
+      private DIDComm.Messaging.Proto.API.JsonWebKey key_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          API.Key, API.Key.Builder, API.KeyOrBuilder> keyBuilder_;
+          DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder> keyBuilder_;
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        * @return Whether the key field is set.
        */
       public boolean hasKey() {
         return keyBuilder_ != null || key_ != null;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        * @return The key.
        */
-      public API.Key getKey() {
+      public DIDComm.Messaging.Proto.API.JsonWebKey getKey() {
         if (keyBuilder_ == null) {
-          return key_ == null ? API.Key.getDefaultInstance() : key_;
+          return key_ == null ? DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : key_;
         } else {
           return keyBuilder_.getMessage();
         }
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
-      public Builder setKey(API.Key value) {
+      public Builder setKey(DIDComm.Messaging.Proto.API.JsonWebKey value) {
         if (keyBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2567,10 +2693,10 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
       public Builder setKey(
-          API.Key.Builder builderForValue) {
+          DIDComm.Messaging.Proto.API.JsonWebKey.Builder builderForValue) {
         if (keyBuilder_ == null) {
           key_ = builderForValue.build();
           onChanged();
@@ -2581,13 +2707,13 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
-      public Builder mergeKey(API.Key value) {
+      public Builder mergeKey(DIDComm.Messaging.Proto.API.JsonWebKey value) {
         if (keyBuilder_ == null) {
           if (key_ != null) {
             key_ =
-              API.Key.newBuilder(key_).mergeFrom(value).buildPartial();
+              DIDComm.Messaging.Proto.API.JsonWebKey.newBuilder(key_).mergeFrom(value).buildPartial();
           } else {
             key_ = value;
           }
@@ -2599,7 +2725,7 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
       public Builder clearKey() {
         if (keyBuilder_ == null) {
@@ -2613,33 +2739,33 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
-      public API.Key.Builder getKeyBuilder() {
+      public DIDComm.Messaging.Proto.API.JsonWebKey.Builder getKeyBuilder() {
         
         onChanged();
         return getKeyFieldBuilder().getBuilder();
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
-      public API.KeyOrBuilder getKeyOrBuilder() {
+      public DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getKeyOrBuilder() {
         if (keyBuilder_ != null) {
           return keyBuilder_.getMessageOrBuilder();
         } else {
           return key_ == null ?
-              API.Key.getDefaultInstance() : key_;
+              DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : key_;
         }
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          API.Key, API.Key.Builder, API.KeyOrBuilder>
+          DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder> 
           getKeyFieldBuilder() {
         if (keyBuilder_ == null) {
           keyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              API.Key, API.Key.Builder, API.KeyOrBuilder>(
+              DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder>(
                   getKey(),
                   getParentForChildren(),
                   isClean());
@@ -2664,12 +2790,12 @@ public final class API {
     }
 
     // @@protoc_insertion_point(class_scope:didcomm.messaging.ConvertKeyResponse)
-    private static final API.ConvertKeyResponse DEFAULT_INSTANCE;
+    private static final DIDComm.Messaging.Proto.API.ConvertKeyResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new API.ConvertKeyResponse();
+      DEFAULT_INSTANCE = new DIDComm.Messaging.Proto.API.ConvertKeyResponse();
     }
 
-    public static API.ConvertKeyResponse getDefaultInstance() {
+    public static DIDComm.Messaging.Proto.API.ConvertKeyResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2694,7 +2820,7 @@ public final class API {
     }
 
     @java.lang.Override
-    public API.ConvertKeyResponse getDefaultInstanceForType() {
+    public DIDComm.Messaging.Proto.API.ConvertKeyResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2711,19 +2837,19 @@ public final class API {
     com.google.protobuf.ByteString getPayload();
 
     /**
-     * <code>.didcomm.messaging.Key key = 2;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
      * @return Whether the key field is set.
      */
     boolean hasKey();
     /**
-     * <code>.didcomm.messaging.Key key = 2;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
      * @return The key.
      */
-    API.Key getKey();
+    DIDComm.Messaging.Proto.API.JsonWebKey getKey();
     /**
-     * <code>.didcomm.messaging.Key key = 2;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
      */
-    API.KeyOrBuilder getKeyOrBuilder();
+    DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getKeyOrBuilder();
 
     /**
      * <code>.didcomm.messaging.SignedMessage append_to = 3;</code>
@@ -2734,11 +2860,11 @@ public final class API {
      * <code>.didcomm.messaging.SignedMessage append_to = 3;</code>
      * @return The appendTo.
      */
-    Security.SignedMessage getAppendTo();
+    DIDComm.Messaging.Proto.Security.SignedMessage getAppendTo();
     /**
      * <code>.didcomm.messaging.SignedMessage append_to = 3;</code>
      */
-    Security.SignedMessageOrBuilder getAppendToOrBuilder();
+    DIDComm.Messaging.Proto.Security.SignedMessageOrBuilder getAppendToOrBuilder();
   }
   /**
    * Protobuf type {@code didcomm.messaging.SignRequest}
@@ -2792,11 +2918,11 @@ public final class API {
               break;
             }
             case 18: {
-              API.Key.Builder subBuilder = null;
+              DIDComm.Messaging.Proto.API.JsonWebKey.Builder subBuilder = null;
               if (key_ != null) {
                 subBuilder = key_.toBuilder();
               }
-              key_ = input.readMessage(API.Key.parser(), extensionRegistry);
+              key_ = input.readMessage(DIDComm.Messaging.Proto.API.JsonWebKey.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(key_);
                 key_ = subBuilder.buildPartial();
@@ -2805,11 +2931,11 @@ public final class API {
               break;
             }
             case 26: {
-              Security.SignedMessage.Builder subBuilder = null;
+              DIDComm.Messaging.Proto.Security.SignedMessage.Builder subBuilder = null;
               if (appendTo_ != null) {
                 subBuilder = appendTo_.toBuilder();
               }
-              appendTo_ = input.readMessage(Security.SignedMessage.parser(), extensionRegistry);
+              appendTo_ = input.readMessage(DIDComm.Messaging.Proto.Security.SignedMessage.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(appendTo_);
                 appendTo_ = subBuilder.buildPartial();
@@ -2838,15 +2964,15 @@ public final class API {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return API.internal_static_didcomm_messaging_SignRequest_descriptor;
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_SignRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return API.internal_static_didcomm_messaging_SignRequest_fieldAccessorTable
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_SignRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              API.SignRequest.class, API.SignRequest.Builder.class);
+              DIDComm.Messaging.Proto.API.SignRequest.class, DIDComm.Messaging.Proto.API.SignRequest.Builder.class);
     }
 
     public static final int PAYLOAD_FIELD_NUMBER = 1;
@@ -2861,9 +2987,9 @@ public final class API {
     }
 
     public static final int KEY_FIELD_NUMBER = 2;
-    private API.Key key_;
+    private DIDComm.Messaging.Proto.API.JsonWebKey key_;
     /**
-     * <code>.didcomm.messaging.Key key = 2;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
      * @return Whether the key field is set.
      */
     @java.lang.Override
@@ -2871,23 +2997,23 @@ public final class API {
       return key_ != null;
     }
     /**
-     * <code>.didcomm.messaging.Key key = 2;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
      * @return The key.
      */
     @java.lang.Override
-    public API.Key getKey() {
-      return key_ == null ? API.Key.getDefaultInstance() : key_;
+    public DIDComm.Messaging.Proto.API.JsonWebKey getKey() {
+      return key_ == null ? DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : key_;
     }
     /**
-     * <code>.didcomm.messaging.Key key = 2;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
      */
     @java.lang.Override
-    public API.KeyOrBuilder getKeyOrBuilder() {
+    public DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getKeyOrBuilder() {
       return getKey();
     }
 
     public static final int APPEND_TO_FIELD_NUMBER = 3;
-    private Security.SignedMessage appendTo_;
+    private DIDComm.Messaging.Proto.Security.SignedMessage appendTo_;
     /**
      * <code>.didcomm.messaging.SignedMessage append_to = 3;</code>
      * @return Whether the appendTo field is set.
@@ -2901,14 +3027,14 @@ public final class API {
      * @return The appendTo.
      */
     @java.lang.Override
-    public Security.SignedMessage getAppendTo() {
-      return appendTo_ == null ? Security.SignedMessage.getDefaultInstance() : appendTo_;
+    public DIDComm.Messaging.Proto.Security.SignedMessage getAppendTo() {
+      return appendTo_ == null ? DIDComm.Messaging.Proto.Security.SignedMessage.getDefaultInstance() : appendTo_;
     }
     /**
      * <code>.didcomm.messaging.SignedMessage append_to = 3;</code>
      */
     @java.lang.Override
-    public Security.SignedMessageOrBuilder getAppendToOrBuilder() {
+    public DIDComm.Messaging.Proto.Security.SignedMessageOrBuilder getAppendToOrBuilder() {
       return getAppendTo();
     }
 
@@ -2966,10 +3092,10 @@ public final class API {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof API.SignRequest)) {
+      if (!(obj instanceof DIDComm.Messaging.Proto.API.SignRequest)) {
         return super.equals(obj);
       }
-      API.SignRequest other = (API.SignRequest) obj;
+      DIDComm.Messaging.Proto.API.SignRequest other = (DIDComm.Messaging.Proto.API.SignRequest) obj;
 
       if (!getPayload()
           .equals(other.getPayload())) return false;
@@ -3009,69 +3135,69 @@ public final class API {
       return hash;
     }
 
-    public static API.SignRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.SignRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.SignRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.SignRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.SignRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.SignRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.SignRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.SignRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.SignRequest parseFrom(byte[] data)
+    public static DIDComm.Messaging.Proto.API.SignRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.SignRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.SignRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.SignRequest parseFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.SignRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.SignRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.SignRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.SignRequest parseDelimitedFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.SignRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static API.SignRequest parseDelimitedFrom(
+    public static DIDComm.Messaging.Proto.API.SignRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.SignRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.SignRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.SignRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.SignRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3084,7 +3210,7 @@ public final class API {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(API.SignRequest prototype) {
+    public static Builder newBuilder(DIDComm.Messaging.Proto.API.SignRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -3105,21 +3231,21 @@ public final class API {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:didcomm.messaging.SignRequest)
-        API.SignRequestOrBuilder {
+        DIDComm.Messaging.Proto.API.SignRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return API.internal_static_didcomm_messaging_SignRequest_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_SignRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return API.internal_static_didcomm_messaging_SignRequest_fieldAccessorTable
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_SignRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                API.SignRequest.class, API.SignRequest.Builder.class);
+                DIDComm.Messaging.Proto.API.SignRequest.class, DIDComm.Messaging.Proto.API.SignRequest.Builder.class);
       }
 
-      // Construct using API.SignRequest.newBuilder()
+      // Construct using DIDComm.Messaging.Proto.API.SignRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3157,17 +3283,17 @@ public final class API {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return API.internal_static_didcomm_messaging_SignRequest_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_SignRequest_descriptor;
       }
 
       @java.lang.Override
-      public API.SignRequest getDefaultInstanceForType() {
-        return API.SignRequest.getDefaultInstance();
+      public DIDComm.Messaging.Proto.API.SignRequest getDefaultInstanceForType() {
+        return DIDComm.Messaging.Proto.API.SignRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public API.SignRequest build() {
-        API.SignRequest result = buildPartial();
+      public DIDComm.Messaging.Proto.API.SignRequest build() {
+        DIDComm.Messaging.Proto.API.SignRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -3175,8 +3301,8 @@ public final class API {
       }
 
       @java.lang.Override
-      public API.SignRequest buildPartial() {
-        API.SignRequest result = new API.SignRequest(this);
+      public DIDComm.Messaging.Proto.API.SignRequest buildPartial() {
+        DIDComm.Messaging.Proto.API.SignRequest result = new DIDComm.Messaging.Proto.API.SignRequest(this);
         result.payload_ = payload_;
         if (keyBuilder_ == null) {
           result.key_ = key_;
@@ -3226,16 +3352,16 @@ public final class API {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof API.SignRequest) {
-          return mergeFrom((API.SignRequest)other);
+        if (other instanceof DIDComm.Messaging.Proto.API.SignRequest) {
+          return mergeFrom((DIDComm.Messaging.Proto.API.SignRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(API.SignRequest other) {
-        if (other == API.SignRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(DIDComm.Messaging.Proto.API.SignRequest other) {
+        if (other == DIDComm.Messaging.Proto.API.SignRequest.getDefaultInstance()) return this;
         if (other.getPayload() != com.google.protobuf.ByteString.EMPTY) {
           setPayload(other.getPayload());
         }
@@ -3260,11 +3386,11 @@ public final class API {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        API.SignRequest parsedMessage = null;
+        DIDComm.Messaging.Proto.API.SignRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (API.SignRequest) e.getUnfinishedMessage();
+          parsedMessage = (DIDComm.Messaging.Proto.API.SignRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3308,31 +3434,31 @@ public final class API {
         return this;
       }
 
-      private API.Key key_;
+      private DIDComm.Messaging.Proto.API.JsonWebKey key_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          API.Key, API.Key.Builder, API.KeyOrBuilder> keyBuilder_;
+          DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder> keyBuilder_;
       /**
-       * <code>.didcomm.messaging.Key key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
        * @return Whether the key field is set.
        */
       public boolean hasKey() {
         return keyBuilder_ != null || key_ != null;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
        * @return The key.
        */
-      public API.Key getKey() {
+      public DIDComm.Messaging.Proto.API.JsonWebKey getKey() {
         if (keyBuilder_ == null) {
-          return key_ == null ? API.Key.getDefaultInstance() : key_;
+          return key_ == null ? DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : key_;
         } else {
           return keyBuilder_.getMessage();
         }
       }
       /**
-       * <code>.didcomm.messaging.Key key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
        */
-      public Builder setKey(API.Key value) {
+      public Builder setKey(DIDComm.Messaging.Proto.API.JsonWebKey value) {
         if (keyBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3346,10 +3472,10 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
        */
       public Builder setKey(
-          API.Key.Builder builderForValue) {
+          DIDComm.Messaging.Proto.API.JsonWebKey.Builder builderForValue) {
         if (keyBuilder_ == null) {
           key_ = builderForValue.build();
           onChanged();
@@ -3360,13 +3486,13 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
        */
-      public Builder mergeKey(API.Key value) {
+      public Builder mergeKey(DIDComm.Messaging.Proto.API.JsonWebKey value) {
         if (keyBuilder_ == null) {
           if (key_ != null) {
             key_ =
-              API.Key.newBuilder(key_).mergeFrom(value).buildPartial();
+              DIDComm.Messaging.Proto.API.JsonWebKey.newBuilder(key_).mergeFrom(value).buildPartial();
           } else {
             key_ = value;
           }
@@ -3378,7 +3504,7 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
        */
       public Builder clearKey() {
         if (keyBuilder_ == null) {
@@ -3392,33 +3518,33 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
        */
-      public API.Key.Builder getKeyBuilder() {
+      public DIDComm.Messaging.Proto.API.JsonWebKey.Builder getKeyBuilder() {
         
         onChanged();
         return getKeyFieldBuilder().getBuilder();
       }
       /**
-       * <code>.didcomm.messaging.Key key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
        */
-      public API.KeyOrBuilder getKeyOrBuilder() {
+      public DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getKeyOrBuilder() {
         if (keyBuilder_ != null) {
           return keyBuilder_.getMessageOrBuilder();
         } else {
           return key_ == null ?
-              API.Key.getDefaultInstance() : key_;
+              DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : key_;
         }
       }
       /**
-       * <code>.didcomm.messaging.Key key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          API.Key, API.Key.Builder, API.KeyOrBuilder>
+          DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder> 
           getKeyFieldBuilder() {
         if (keyBuilder_ == null) {
           keyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              API.Key, API.Key.Builder, API.KeyOrBuilder>(
+              DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder>(
                   getKey(),
                   getParentForChildren(),
                   isClean());
@@ -3427,9 +3553,9 @@ public final class API {
         return keyBuilder_;
       }
 
-      private Security.SignedMessage appendTo_;
+      private DIDComm.Messaging.Proto.Security.SignedMessage appendTo_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          Security.SignedMessage, Security.SignedMessage.Builder, Security.SignedMessageOrBuilder> appendToBuilder_;
+          DIDComm.Messaging.Proto.Security.SignedMessage, DIDComm.Messaging.Proto.Security.SignedMessage.Builder, DIDComm.Messaging.Proto.Security.SignedMessageOrBuilder> appendToBuilder_;
       /**
        * <code>.didcomm.messaging.SignedMessage append_to = 3;</code>
        * @return Whether the appendTo field is set.
@@ -3441,9 +3567,9 @@ public final class API {
        * <code>.didcomm.messaging.SignedMessage append_to = 3;</code>
        * @return The appendTo.
        */
-      public Security.SignedMessage getAppendTo() {
+      public DIDComm.Messaging.Proto.Security.SignedMessage getAppendTo() {
         if (appendToBuilder_ == null) {
-          return appendTo_ == null ? Security.SignedMessage.getDefaultInstance() : appendTo_;
+          return appendTo_ == null ? DIDComm.Messaging.Proto.Security.SignedMessage.getDefaultInstance() : appendTo_;
         } else {
           return appendToBuilder_.getMessage();
         }
@@ -3451,7 +3577,7 @@ public final class API {
       /**
        * <code>.didcomm.messaging.SignedMessage append_to = 3;</code>
        */
-      public Builder setAppendTo(Security.SignedMessage value) {
+      public Builder setAppendTo(DIDComm.Messaging.Proto.Security.SignedMessage value) {
         if (appendToBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3468,7 +3594,7 @@ public final class API {
        * <code>.didcomm.messaging.SignedMessage append_to = 3;</code>
        */
       public Builder setAppendTo(
-          Security.SignedMessage.Builder builderForValue) {
+          DIDComm.Messaging.Proto.Security.SignedMessage.Builder builderForValue) {
         if (appendToBuilder_ == null) {
           appendTo_ = builderForValue.build();
           onChanged();
@@ -3481,11 +3607,11 @@ public final class API {
       /**
        * <code>.didcomm.messaging.SignedMessage append_to = 3;</code>
        */
-      public Builder mergeAppendTo(Security.SignedMessage value) {
+      public Builder mergeAppendTo(DIDComm.Messaging.Proto.Security.SignedMessage value) {
         if (appendToBuilder_ == null) {
           if (appendTo_ != null) {
             appendTo_ =
-              Security.SignedMessage.newBuilder(appendTo_).mergeFrom(value).buildPartial();
+              DIDComm.Messaging.Proto.Security.SignedMessage.newBuilder(appendTo_).mergeFrom(value).buildPartial();
           } else {
             appendTo_ = value;
           }
@@ -3513,7 +3639,7 @@ public final class API {
       /**
        * <code>.didcomm.messaging.SignedMessage append_to = 3;</code>
        */
-      public Security.SignedMessage.Builder getAppendToBuilder() {
+      public DIDComm.Messaging.Proto.Security.SignedMessage.Builder getAppendToBuilder() {
         
         onChanged();
         return getAppendToFieldBuilder().getBuilder();
@@ -3521,23 +3647,23 @@ public final class API {
       /**
        * <code>.didcomm.messaging.SignedMessage append_to = 3;</code>
        */
-      public Security.SignedMessageOrBuilder getAppendToOrBuilder() {
+      public DIDComm.Messaging.Proto.Security.SignedMessageOrBuilder getAppendToOrBuilder() {
         if (appendToBuilder_ != null) {
           return appendToBuilder_.getMessageOrBuilder();
         } else {
           return appendTo_ == null ?
-              Security.SignedMessage.getDefaultInstance() : appendTo_;
+              DIDComm.Messaging.Proto.Security.SignedMessage.getDefaultInstance() : appendTo_;
         }
       }
       /**
        * <code>.didcomm.messaging.SignedMessage append_to = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          Security.SignedMessage, Security.SignedMessage.Builder, Security.SignedMessageOrBuilder>
+          DIDComm.Messaging.Proto.Security.SignedMessage, DIDComm.Messaging.Proto.Security.SignedMessage.Builder, DIDComm.Messaging.Proto.Security.SignedMessageOrBuilder> 
           getAppendToFieldBuilder() {
         if (appendToBuilder_ == null) {
           appendToBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              Security.SignedMessage, Security.SignedMessage.Builder, Security.SignedMessageOrBuilder>(
+              DIDComm.Messaging.Proto.Security.SignedMessage, DIDComm.Messaging.Proto.Security.SignedMessage.Builder, DIDComm.Messaging.Proto.Security.SignedMessageOrBuilder>(
                   getAppendTo(),
                   getParentForChildren(),
                   isClean());
@@ -3562,12 +3688,12 @@ public final class API {
     }
 
     // @@protoc_insertion_point(class_scope:didcomm.messaging.SignRequest)
-    private static final API.SignRequest DEFAULT_INSTANCE;
+    private static final DIDComm.Messaging.Proto.API.SignRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new API.SignRequest();
+      DEFAULT_INSTANCE = new DIDComm.Messaging.Proto.API.SignRequest();
     }
 
-    public static API.SignRequest getDefaultInstance() {
+    public static DIDComm.Messaging.Proto.API.SignRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3592,7 +3718,7 @@ public final class API {
     }
 
     @java.lang.Override
-    public API.SignRequest getDefaultInstanceForType() {
+    public DIDComm.Messaging.Proto.API.SignRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3611,11 +3737,11 @@ public final class API {
      * <code>.didcomm.messaging.SignedMessage message = 1;</code>
      * @return The message.
      */
-    Security.SignedMessage getMessage();
+    DIDComm.Messaging.Proto.Security.SignedMessage getMessage();
     /**
      * <code>.didcomm.messaging.SignedMessage message = 1;</code>
      */
-    Security.SignedMessageOrBuilder getMessageOrBuilder();
+    DIDComm.Messaging.Proto.Security.SignedMessageOrBuilder getMessageOrBuilder();
   }
   /**
    * Protobuf type {@code didcomm.messaging.SignResponse}
@@ -3663,11 +3789,11 @@ public final class API {
               done = true;
               break;
             case 10: {
-              Security.SignedMessage.Builder subBuilder = null;
+              DIDComm.Messaging.Proto.Security.SignedMessage.Builder subBuilder = null;
               if (message_ != null) {
                 subBuilder = message_.toBuilder();
               }
-              message_ = input.readMessage(Security.SignedMessage.parser(), extensionRegistry);
+              message_ = input.readMessage(DIDComm.Messaging.Proto.Security.SignedMessage.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(message_);
                 message_ = subBuilder.buildPartial();
@@ -3696,19 +3822,19 @@ public final class API {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return API.internal_static_didcomm_messaging_SignResponse_descriptor;
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_SignResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return API.internal_static_didcomm_messaging_SignResponse_fieldAccessorTable
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_SignResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              API.SignResponse.class, API.SignResponse.Builder.class);
+              DIDComm.Messaging.Proto.API.SignResponse.class, DIDComm.Messaging.Proto.API.SignResponse.Builder.class);
     }
 
     public static final int MESSAGE_FIELD_NUMBER = 1;
-    private Security.SignedMessage message_;
+    private DIDComm.Messaging.Proto.Security.SignedMessage message_;
     /**
      * <code>.didcomm.messaging.SignedMessage message = 1;</code>
      * @return Whether the message field is set.
@@ -3722,14 +3848,14 @@ public final class API {
      * @return The message.
      */
     @java.lang.Override
-    public Security.SignedMessage getMessage() {
-      return message_ == null ? Security.SignedMessage.getDefaultInstance() : message_;
+    public DIDComm.Messaging.Proto.Security.SignedMessage getMessage() {
+      return message_ == null ? DIDComm.Messaging.Proto.Security.SignedMessage.getDefaultInstance() : message_;
     }
     /**
      * <code>.didcomm.messaging.SignedMessage message = 1;</code>
      */
     @java.lang.Override
-    public Security.SignedMessageOrBuilder getMessageOrBuilder() {
+    public DIDComm.Messaging.Proto.Security.SignedMessageOrBuilder getMessageOrBuilder() {
       return getMessage();
     }
 
@@ -3773,10 +3899,10 @@ public final class API {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof API.SignResponse)) {
+      if (!(obj instanceof DIDComm.Messaging.Proto.API.SignResponse)) {
         return super.equals(obj);
       }
-      API.SignResponse other = (API.SignResponse) obj;
+      DIDComm.Messaging.Proto.API.SignResponse other = (DIDComm.Messaging.Proto.API.SignResponse) obj;
 
       if (hasMessage() != other.hasMessage()) return false;
       if (hasMessage()) {
@@ -3803,69 +3929,69 @@ public final class API {
       return hash;
     }
 
-    public static API.SignResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.SignResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.SignResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.SignResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.SignResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.SignResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.SignResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.SignResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.SignResponse parseFrom(byte[] data)
+    public static DIDComm.Messaging.Proto.API.SignResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.SignResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.SignResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.SignResponse parseFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.SignResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.SignResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.SignResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.SignResponse parseDelimitedFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.SignResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static API.SignResponse parseDelimitedFrom(
+    public static DIDComm.Messaging.Proto.API.SignResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.SignResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.SignResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.SignResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.SignResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3878,7 +4004,7 @@ public final class API {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(API.SignResponse prototype) {
+    public static Builder newBuilder(DIDComm.Messaging.Proto.API.SignResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -3899,21 +4025,21 @@ public final class API {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:didcomm.messaging.SignResponse)
-        API.SignResponseOrBuilder {
+        DIDComm.Messaging.Proto.API.SignResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return API.internal_static_didcomm_messaging_SignResponse_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_SignResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return API.internal_static_didcomm_messaging_SignResponse_fieldAccessorTable
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_SignResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                API.SignResponse.class, API.SignResponse.Builder.class);
+                DIDComm.Messaging.Proto.API.SignResponse.class, DIDComm.Messaging.Proto.API.SignResponse.Builder.class);
       }
 
-      // Construct using API.SignResponse.newBuilder()
+      // Construct using DIDComm.Messaging.Proto.API.SignResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3943,17 +4069,17 @@ public final class API {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return API.internal_static_didcomm_messaging_SignResponse_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_SignResponse_descriptor;
       }
 
       @java.lang.Override
-      public API.SignResponse getDefaultInstanceForType() {
-        return API.SignResponse.getDefaultInstance();
+      public DIDComm.Messaging.Proto.API.SignResponse getDefaultInstanceForType() {
+        return DIDComm.Messaging.Proto.API.SignResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public API.SignResponse build() {
-        API.SignResponse result = buildPartial();
+      public DIDComm.Messaging.Proto.API.SignResponse build() {
+        DIDComm.Messaging.Proto.API.SignResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -3961,8 +4087,8 @@ public final class API {
       }
 
       @java.lang.Override
-      public API.SignResponse buildPartial() {
-        API.SignResponse result = new API.SignResponse(this);
+      public DIDComm.Messaging.Proto.API.SignResponse buildPartial() {
+        DIDComm.Messaging.Proto.API.SignResponse result = new DIDComm.Messaging.Proto.API.SignResponse(this);
         if (messageBuilder_ == null) {
           result.message_ = message_;
         } else {
@@ -4006,16 +4132,16 @@ public final class API {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof API.SignResponse) {
-          return mergeFrom((API.SignResponse)other);
+        if (other instanceof DIDComm.Messaging.Proto.API.SignResponse) {
+          return mergeFrom((DIDComm.Messaging.Proto.API.SignResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(API.SignResponse other) {
-        if (other == API.SignResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(DIDComm.Messaging.Proto.API.SignResponse other) {
+        if (other == DIDComm.Messaging.Proto.API.SignResponse.getDefaultInstance()) return this;
         if (other.hasMessage()) {
           mergeMessage(other.getMessage());
         }
@@ -4034,11 +4160,11 @@ public final class API {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        API.SignResponse parsedMessage = null;
+        DIDComm.Messaging.Proto.API.SignResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (API.SignResponse) e.getUnfinishedMessage();
+          parsedMessage = (DIDComm.Messaging.Proto.API.SignResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -4048,9 +4174,9 @@ public final class API {
         return this;
       }
 
-      private Security.SignedMessage message_;
+      private DIDComm.Messaging.Proto.Security.SignedMessage message_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          Security.SignedMessage, Security.SignedMessage.Builder, Security.SignedMessageOrBuilder> messageBuilder_;
+          DIDComm.Messaging.Proto.Security.SignedMessage, DIDComm.Messaging.Proto.Security.SignedMessage.Builder, DIDComm.Messaging.Proto.Security.SignedMessageOrBuilder> messageBuilder_;
       /**
        * <code>.didcomm.messaging.SignedMessage message = 1;</code>
        * @return Whether the message field is set.
@@ -4062,9 +4188,9 @@ public final class API {
        * <code>.didcomm.messaging.SignedMessage message = 1;</code>
        * @return The message.
        */
-      public Security.SignedMessage getMessage() {
+      public DIDComm.Messaging.Proto.Security.SignedMessage getMessage() {
         if (messageBuilder_ == null) {
-          return message_ == null ? Security.SignedMessage.getDefaultInstance() : message_;
+          return message_ == null ? DIDComm.Messaging.Proto.Security.SignedMessage.getDefaultInstance() : message_;
         } else {
           return messageBuilder_.getMessage();
         }
@@ -4072,7 +4198,7 @@ public final class API {
       /**
        * <code>.didcomm.messaging.SignedMessage message = 1;</code>
        */
-      public Builder setMessage(Security.SignedMessage value) {
+      public Builder setMessage(DIDComm.Messaging.Proto.Security.SignedMessage value) {
         if (messageBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4089,7 +4215,7 @@ public final class API {
        * <code>.didcomm.messaging.SignedMessage message = 1;</code>
        */
       public Builder setMessage(
-          Security.SignedMessage.Builder builderForValue) {
+          DIDComm.Messaging.Proto.Security.SignedMessage.Builder builderForValue) {
         if (messageBuilder_ == null) {
           message_ = builderForValue.build();
           onChanged();
@@ -4102,11 +4228,11 @@ public final class API {
       /**
        * <code>.didcomm.messaging.SignedMessage message = 1;</code>
        */
-      public Builder mergeMessage(Security.SignedMessage value) {
+      public Builder mergeMessage(DIDComm.Messaging.Proto.Security.SignedMessage value) {
         if (messageBuilder_ == null) {
           if (message_ != null) {
             message_ =
-              Security.SignedMessage.newBuilder(message_).mergeFrom(value).buildPartial();
+              DIDComm.Messaging.Proto.Security.SignedMessage.newBuilder(message_).mergeFrom(value).buildPartial();
           } else {
             message_ = value;
           }
@@ -4134,7 +4260,7 @@ public final class API {
       /**
        * <code>.didcomm.messaging.SignedMessage message = 1;</code>
        */
-      public Security.SignedMessage.Builder getMessageBuilder() {
+      public DIDComm.Messaging.Proto.Security.SignedMessage.Builder getMessageBuilder() {
         
         onChanged();
         return getMessageFieldBuilder().getBuilder();
@@ -4142,23 +4268,23 @@ public final class API {
       /**
        * <code>.didcomm.messaging.SignedMessage message = 1;</code>
        */
-      public Security.SignedMessageOrBuilder getMessageOrBuilder() {
+      public DIDComm.Messaging.Proto.Security.SignedMessageOrBuilder getMessageOrBuilder() {
         if (messageBuilder_ != null) {
           return messageBuilder_.getMessageOrBuilder();
         } else {
           return message_ == null ?
-              Security.SignedMessage.getDefaultInstance() : message_;
+              DIDComm.Messaging.Proto.Security.SignedMessage.getDefaultInstance() : message_;
         }
       }
       /**
        * <code>.didcomm.messaging.SignedMessage message = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          Security.SignedMessage, Security.SignedMessage.Builder, Security.SignedMessageOrBuilder>
+          DIDComm.Messaging.Proto.Security.SignedMessage, DIDComm.Messaging.Proto.Security.SignedMessage.Builder, DIDComm.Messaging.Proto.Security.SignedMessageOrBuilder> 
           getMessageFieldBuilder() {
         if (messageBuilder_ == null) {
           messageBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              Security.SignedMessage, Security.SignedMessage.Builder, Security.SignedMessageOrBuilder>(
+              DIDComm.Messaging.Proto.Security.SignedMessage, DIDComm.Messaging.Proto.Security.SignedMessage.Builder, DIDComm.Messaging.Proto.Security.SignedMessageOrBuilder>(
                   getMessage(),
                   getParentForChildren(),
                   isClean());
@@ -4183,12 +4309,12 @@ public final class API {
     }
 
     // @@protoc_insertion_point(class_scope:didcomm.messaging.SignResponse)
-    private static final API.SignResponse DEFAULT_INSTANCE;
+    private static final DIDComm.Messaging.Proto.API.SignResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new API.SignResponse();
+      DEFAULT_INSTANCE = new DIDComm.Messaging.Proto.API.SignResponse();
     }
 
-    public static API.SignResponse getDefaultInstance() {
+    public static DIDComm.Messaging.Proto.API.SignResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -4213,7 +4339,7 @@ public final class API {
     }
 
     @java.lang.Override
-    public API.SignResponse getDefaultInstanceForType() {
+    public DIDComm.Messaging.Proto.API.SignResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -4232,26 +4358,26 @@ public final class API {
      * <code>.didcomm.messaging.SignedMessage message = 1;</code>
      * @return The message.
      */
-    Security.SignedMessage getMessage();
+    DIDComm.Messaging.Proto.Security.SignedMessage getMessage();
     /**
      * <code>.didcomm.messaging.SignedMessage message = 1;</code>
      */
-    Security.SignedMessageOrBuilder getMessageOrBuilder();
+    DIDComm.Messaging.Proto.Security.SignedMessageOrBuilder getMessageOrBuilder();
 
     /**
-     * <code>.didcomm.messaging.Key key = 2;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
      * @return Whether the key field is set.
      */
     boolean hasKey();
     /**
-     * <code>.didcomm.messaging.Key key = 2;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
      * @return The key.
      */
-    API.Key getKey();
+    DIDComm.Messaging.Proto.API.JsonWebKey getKey();
     /**
-     * <code>.didcomm.messaging.Key key = 2;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
      */
-    API.KeyOrBuilder getKeyOrBuilder();
+    DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getKeyOrBuilder();
   }
   /**
    * Protobuf type {@code didcomm.messaging.VerifyRequest}
@@ -4299,11 +4425,11 @@ public final class API {
               done = true;
               break;
             case 10: {
-              Security.SignedMessage.Builder subBuilder = null;
+              DIDComm.Messaging.Proto.Security.SignedMessage.Builder subBuilder = null;
               if (message_ != null) {
                 subBuilder = message_.toBuilder();
               }
-              message_ = input.readMessage(Security.SignedMessage.parser(), extensionRegistry);
+              message_ = input.readMessage(DIDComm.Messaging.Proto.Security.SignedMessage.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(message_);
                 message_ = subBuilder.buildPartial();
@@ -4312,11 +4438,11 @@ public final class API {
               break;
             }
             case 18: {
-              API.Key.Builder subBuilder = null;
+              DIDComm.Messaging.Proto.API.JsonWebKey.Builder subBuilder = null;
               if (key_ != null) {
                 subBuilder = key_.toBuilder();
               }
-              key_ = input.readMessage(API.Key.parser(), extensionRegistry);
+              key_ = input.readMessage(DIDComm.Messaging.Proto.API.JsonWebKey.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(key_);
                 key_ = subBuilder.buildPartial();
@@ -4345,19 +4471,19 @@ public final class API {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return API.internal_static_didcomm_messaging_VerifyRequest_descriptor;
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_VerifyRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return API.internal_static_didcomm_messaging_VerifyRequest_fieldAccessorTable
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_VerifyRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              API.VerifyRequest.class, API.VerifyRequest.Builder.class);
+              DIDComm.Messaging.Proto.API.VerifyRequest.class, DIDComm.Messaging.Proto.API.VerifyRequest.Builder.class);
     }
 
     public static final int MESSAGE_FIELD_NUMBER = 1;
-    private Security.SignedMessage message_;
+    private DIDComm.Messaging.Proto.Security.SignedMessage message_;
     /**
      * <code>.didcomm.messaging.SignedMessage message = 1;</code>
      * @return Whether the message field is set.
@@ -4371,21 +4497,21 @@ public final class API {
      * @return The message.
      */
     @java.lang.Override
-    public Security.SignedMessage getMessage() {
-      return message_ == null ? Security.SignedMessage.getDefaultInstance() : message_;
+    public DIDComm.Messaging.Proto.Security.SignedMessage getMessage() {
+      return message_ == null ? DIDComm.Messaging.Proto.Security.SignedMessage.getDefaultInstance() : message_;
     }
     /**
      * <code>.didcomm.messaging.SignedMessage message = 1;</code>
      */
     @java.lang.Override
-    public Security.SignedMessageOrBuilder getMessageOrBuilder() {
+    public DIDComm.Messaging.Proto.Security.SignedMessageOrBuilder getMessageOrBuilder() {
       return getMessage();
     }
 
     public static final int KEY_FIELD_NUMBER = 2;
-    private API.Key key_;
+    private DIDComm.Messaging.Proto.API.JsonWebKey key_;
     /**
-     * <code>.didcomm.messaging.Key key = 2;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
      * @return Whether the key field is set.
      */
     @java.lang.Override
@@ -4393,18 +4519,18 @@ public final class API {
       return key_ != null;
     }
     /**
-     * <code>.didcomm.messaging.Key key = 2;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
      * @return The key.
      */
     @java.lang.Override
-    public API.Key getKey() {
-      return key_ == null ? API.Key.getDefaultInstance() : key_;
+    public DIDComm.Messaging.Proto.API.JsonWebKey getKey() {
+      return key_ == null ? DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : key_;
     }
     /**
-     * <code>.didcomm.messaging.Key key = 2;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
      */
     @java.lang.Override
-    public API.KeyOrBuilder getKeyOrBuilder() {
+    public DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getKeyOrBuilder() {
       return getKey();
     }
 
@@ -4455,10 +4581,10 @@ public final class API {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof API.VerifyRequest)) {
+      if (!(obj instanceof DIDComm.Messaging.Proto.API.VerifyRequest)) {
         return super.equals(obj);
       }
-      API.VerifyRequest other = (API.VerifyRequest) obj;
+      DIDComm.Messaging.Proto.API.VerifyRequest other = (DIDComm.Messaging.Proto.API.VerifyRequest) obj;
 
       if (hasMessage() != other.hasMessage()) return false;
       if (hasMessage()) {
@@ -4494,69 +4620,69 @@ public final class API {
       return hash;
     }
 
-    public static API.VerifyRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.VerifyRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.VerifyRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.VerifyRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.VerifyRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.VerifyRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.VerifyRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.VerifyRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.VerifyRequest parseFrom(byte[] data)
+    public static DIDComm.Messaging.Proto.API.VerifyRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.VerifyRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.VerifyRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.VerifyRequest parseFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.VerifyRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.VerifyRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.VerifyRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.VerifyRequest parseDelimitedFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.VerifyRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static API.VerifyRequest parseDelimitedFrom(
+    public static DIDComm.Messaging.Proto.API.VerifyRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.VerifyRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.VerifyRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.VerifyRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.VerifyRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -4569,7 +4695,7 @@ public final class API {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(API.VerifyRequest prototype) {
+    public static Builder newBuilder(DIDComm.Messaging.Proto.API.VerifyRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -4590,21 +4716,21 @@ public final class API {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:didcomm.messaging.VerifyRequest)
-        API.VerifyRequestOrBuilder {
+        DIDComm.Messaging.Proto.API.VerifyRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return API.internal_static_didcomm_messaging_VerifyRequest_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_VerifyRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return API.internal_static_didcomm_messaging_VerifyRequest_fieldAccessorTable
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_VerifyRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                API.VerifyRequest.class, API.VerifyRequest.Builder.class);
+                DIDComm.Messaging.Proto.API.VerifyRequest.class, DIDComm.Messaging.Proto.API.VerifyRequest.Builder.class);
       }
 
-      // Construct using API.VerifyRequest.newBuilder()
+      // Construct using DIDComm.Messaging.Proto.API.VerifyRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -4640,17 +4766,17 @@ public final class API {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return API.internal_static_didcomm_messaging_VerifyRequest_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_VerifyRequest_descriptor;
       }
 
       @java.lang.Override
-      public API.VerifyRequest getDefaultInstanceForType() {
-        return API.VerifyRequest.getDefaultInstance();
+      public DIDComm.Messaging.Proto.API.VerifyRequest getDefaultInstanceForType() {
+        return DIDComm.Messaging.Proto.API.VerifyRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public API.VerifyRequest build() {
-        API.VerifyRequest result = buildPartial();
+      public DIDComm.Messaging.Proto.API.VerifyRequest build() {
+        DIDComm.Messaging.Proto.API.VerifyRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -4658,8 +4784,8 @@ public final class API {
       }
 
       @java.lang.Override
-      public API.VerifyRequest buildPartial() {
-        API.VerifyRequest result = new API.VerifyRequest(this);
+      public DIDComm.Messaging.Proto.API.VerifyRequest buildPartial() {
+        DIDComm.Messaging.Proto.API.VerifyRequest result = new DIDComm.Messaging.Proto.API.VerifyRequest(this);
         if (messageBuilder_ == null) {
           result.message_ = message_;
         } else {
@@ -4708,16 +4834,16 @@ public final class API {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof API.VerifyRequest) {
-          return mergeFrom((API.VerifyRequest)other);
+        if (other instanceof DIDComm.Messaging.Proto.API.VerifyRequest) {
+          return mergeFrom((DIDComm.Messaging.Proto.API.VerifyRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(API.VerifyRequest other) {
-        if (other == API.VerifyRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(DIDComm.Messaging.Proto.API.VerifyRequest other) {
+        if (other == DIDComm.Messaging.Proto.API.VerifyRequest.getDefaultInstance()) return this;
         if (other.hasMessage()) {
           mergeMessage(other.getMessage());
         }
@@ -4739,11 +4865,11 @@ public final class API {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        API.VerifyRequest parsedMessage = null;
+        DIDComm.Messaging.Proto.API.VerifyRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (API.VerifyRequest) e.getUnfinishedMessage();
+          parsedMessage = (DIDComm.Messaging.Proto.API.VerifyRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -4753,9 +4879,9 @@ public final class API {
         return this;
       }
 
-      private Security.SignedMessage message_;
+      private DIDComm.Messaging.Proto.Security.SignedMessage message_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          Security.SignedMessage, Security.SignedMessage.Builder, Security.SignedMessageOrBuilder> messageBuilder_;
+          DIDComm.Messaging.Proto.Security.SignedMessage, DIDComm.Messaging.Proto.Security.SignedMessage.Builder, DIDComm.Messaging.Proto.Security.SignedMessageOrBuilder> messageBuilder_;
       /**
        * <code>.didcomm.messaging.SignedMessage message = 1;</code>
        * @return Whether the message field is set.
@@ -4767,9 +4893,9 @@ public final class API {
        * <code>.didcomm.messaging.SignedMessage message = 1;</code>
        * @return The message.
        */
-      public Security.SignedMessage getMessage() {
+      public DIDComm.Messaging.Proto.Security.SignedMessage getMessage() {
         if (messageBuilder_ == null) {
-          return message_ == null ? Security.SignedMessage.getDefaultInstance() : message_;
+          return message_ == null ? DIDComm.Messaging.Proto.Security.SignedMessage.getDefaultInstance() : message_;
         } else {
           return messageBuilder_.getMessage();
         }
@@ -4777,7 +4903,7 @@ public final class API {
       /**
        * <code>.didcomm.messaging.SignedMessage message = 1;</code>
        */
-      public Builder setMessage(Security.SignedMessage value) {
+      public Builder setMessage(DIDComm.Messaging.Proto.Security.SignedMessage value) {
         if (messageBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4794,7 +4920,7 @@ public final class API {
        * <code>.didcomm.messaging.SignedMessage message = 1;</code>
        */
       public Builder setMessage(
-          Security.SignedMessage.Builder builderForValue) {
+          DIDComm.Messaging.Proto.Security.SignedMessage.Builder builderForValue) {
         if (messageBuilder_ == null) {
           message_ = builderForValue.build();
           onChanged();
@@ -4807,11 +4933,11 @@ public final class API {
       /**
        * <code>.didcomm.messaging.SignedMessage message = 1;</code>
        */
-      public Builder mergeMessage(Security.SignedMessage value) {
+      public Builder mergeMessage(DIDComm.Messaging.Proto.Security.SignedMessage value) {
         if (messageBuilder_ == null) {
           if (message_ != null) {
             message_ =
-              Security.SignedMessage.newBuilder(message_).mergeFrom(value).buildPartial();
+              DIDComm.Messaging.Proto.Security.SignedMessage.newBuilder(message_).mergeFrom(value).buildPartial();
           } else {
             message_ = value;
           }
@@ -4839,7 +4965,7 @@ public final class API {
       /**
        * <code>.didcomm.messaging.SignedMessage message = 1;</code>
        */
-      public Security.SignedMessage.Builder getMessageBuilder() {
+      public DIDComm.Messaging.Proto.Security.SignedMessage.Builder getMessageBuilder() {
         
         onChanged();
         return getMessageFieldBuilder().getBuilder();
@@ -4847,23 +4973,23 @@ public final class API {
       /**
        * <code>.didcomm.messaging.SignedMessage message = 1;</code>
        */
-      public Security.SignedMessageOrBuilder getMessageOrBuilder() {
+      public DIDComm.Messaging.Proto.Security.SignedMessageOrBuilder getMessageOrBuilder() {
         if (messageBuilder_ != null) {
           return messageBuilder_.getMessageOrBuilder();
         } else {
           return message_ == null ?
-              Security.SignedMessage.getDefaultInstance() : message_;
+              DIDComm.Messaging.Proto.Security.SignedMessage.getDefaultInstance() : message_;
         }
       }
       /**
        * <code>.didcomm.messaging.SignedMessage message = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          Security.SignedMessage, Security.SignedMessage.Builder, Security.SignedMessageOrBuilder>
+          DIDComm.Messaging.Proto.Security.SignedMessage, DIDComm.Messaging.Proto.Security.SignedMessage.Builder, DIDComm.Messaging.Proto.Security.SignedMessageOrBuilder> 
           getMessageFieldBuilder() {
         if (messageBuilder_ == null) {
           messageBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              Security.SignedMessage, Security.SignedMessage.Builder, Security.SignedMessageOrBuilder>(
+              DIDComm.Messaging.Proto.Security.SignedMessage, DIDComm.Messaging.Proto.Security.SignedMessage.Builder, DIDComm.Messaging.Proto.Security.SignedMessageOrBuilder>(
                   getMessage(),
                   getParentForChildren(),
                   isClean());
@@ -4872,31 +4998,31 @@ public final class API {
         return messageBuilder_;
       }
 
-      private API.Key key_;
+      private DIDComm.Messaging.Proto.API.JsonWebKey key_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          API.Key, API.Key.Builder, API.KeyOrBuilder> keyBuilder_;
+          DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder> keyBuilder_;
       /**
-       * <code>.didcomm.messaging.Key key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
        * @return Whether the key field is set.
        */
       public boolean hasKey() {
         return keyBuilder_ != null || key_ != null;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
        * @return The key.
        */
-      public API.Key getKey() {
+      public DIDComm.Messaging.Proto.API.JsonWebKey getKey() {
         if (keyBuilder_ == null) {
-          return key_ == null ? API.Key.getDefaultInstance() : key_;
+          return key_ == null ? DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : key_;
         } else {
           return keyBuilder_.getMessage();
         }
       }
       /**
-       * <code>.didcomm.messaging.Key key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
        */
-      public Builder setKey(API.Key value) {
+      public Builder setKey(DIDComm.Messaging.Proto.API.JsonWebKey value) {
         if (keyBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4910,10 +5036,10 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
        */
       public Builder setKey(
-          API.Key.Builder builderForValue) {
+          DIDComm.Messaging.Proto.API.JsonWebKey.Builder builderForValue) {
         if (keyBuilder_ == null) {
           key_ = builderForValue.build();
           onChanged();
@@ -4924,13 +5050,13 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
        */
-      public Builder mergeKey(API.Key value) {
+      public Builder mergeKey(DIDComm.Messaging.Proto.API.JsonWebKey value) {
         if (keyBuilder_ == null) {
           if (key_ != null) {
             key_ =
-              API.Key.newBuilder(key_).mergeFrom(value).buildPartial();
+              DIDComm.Messaging.Proto.API.JsonWebKey.newBuilder(key_).mergeFrom(value).buildPartial();
           } else {
             key_ = value;
           }
@@ -4942,7 +5068,7 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
        */
       public Builder clearKey() {
         if (keyBuilder_ == null) {
@@ -4956,33 +5082,33 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
        */
-      public API.Key.Builder getKeyBuilder() {
+      public DIDComm.Messaging.Proto.API.JsonWebKey.Builder getKeyBuilder() {
         
         onChanged();
         return getKeyFieldBuilder().getBuilder();
       }
       /**
-       * <code>.didcomm.messaging.Key key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
        */
-      public API.KeyOrBuilder getKeyOrBuilder() {
+      public DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getKeyOrBuilder() {
         if (keyBuilder_ != null) {
           return keyBuilder_.getMessageOrBuilder();
         } else {
           return key_ == null ?
-              API.Key.getDefaultInstance() : key_;
+              DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : key_;
         }
       }
       /**
-       * <code>.didcomm.messaging.Key key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          API.Key, API.Key.Builder, API.KeyOrBuilder>
+          DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder> 
           getKeyFieldBuilder() {
         if (keyBuilder_ == null) {
           keyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              API.Key, API.Key.Builder, API.KeyOrBuilder>(
+              DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder>(
                   getKey(),
                   getParentForChildren(),
                   isClean());
@@ -5007,12 +5133,12 @@ public final class API {
     }
 
     // @@protoc_insertion_point(class_scope:didcomm.messaging.VerifyRequest)
-    private static final API.VerifyRequest DEFAULT_INSTANCE;
+    private static final DIDComm.Messaging.Proto.API.VerifyRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new API.VerifyRequest();
+      DEFAULT_INSTANCE = new DIDComm.Messaging.Proto.API.VerifyRequest();
     }
 
-    public static API.VerifyRequest getDefaultInstance() {
+    public static DIDComm.Messaging.Proto.API.VerifyRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -5037,7 +5163,7 @@ public final class API {
     }
 
     @java.lang.Override
-    public API.VerifyRequest getDefaultInstanceForType() {
+    public DIDComm.Messaging.Proto.API.VerifyRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -5124,15 +5250,15 @@ public final class API {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return API.internal_static_didcomm_messaging_VerifyResponse_descriptor;
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_VerifyResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return API.internal_static_didcomm_messaging_VerifyResponse_fieldAccessorTable
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_VerifyResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              API.VerifyResponse.class, API.VerifyResponse.Builder.class);
+              DIDComm.Messaging.Proto.API.VerifyResponse.class, DIDComm.Messaging.Proto.API.VerifyResponse.Builder.class);
     }
 
     public static final int IS_VALID_FIELD_NUMBER = 1;
@@ -5186,10 +5312,10 @@ public final class API {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof API.VerifyResponse)) {
+      if (!(obj instanceof DIDComm.Messaging.Proto.API.VerifyResponse)) {
         return super.equals(obj);
       }
-      API.VerifyResponse other = (API.VerifyResponse) obj;
+      DIDComm.Messaging.Proto.API.VerifyResponse other = (DIDComm.Messaging.Proto.API.VerifyResponse) obj;
 
       if (getIsValid()
           != other.getIsValid()) return false;
@@ -5212,69 +5338,69 @@ public final class API {
       return hash;
     }
 
-    public static API.VerifyResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.VerifyResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.VerifyResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.VerifyResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.VerifyResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.VerifyResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.VerifyResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.VerifyResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.VerifyResponse parseFrom(byte[] data)
+    public static DIDComm.Messaging.Proto.API.VerifyResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.VerifyResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.VerifyResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.VerifyResponse parseFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.VerifyResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.VerifyResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.VerifyResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.VerifyResponse parseDelimitedFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.VerifyResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static API.VerifyResponse parseDelimitedFrom(
+    public static DIDComm.Messaging.Proto.API.VerifyResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.VerifyResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.VerifyResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.VerifyResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.VerifyResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -5287,7 +5413,7 @@ public final class API {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(API.VerifyResponse prototype) {
+    public static Builder newBuilder(DIDComm.Messaging.Proto.API.VerifyResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -5308,21 +5434,21 @@ public final class API {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:didcomm.messaging.VerifyResponse)
-        API.VerifyResponseOrBuilder {
+        DIDComm.Messaging.Proto.API.VerifyResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return API.internal_static_didcomm_messaging_VerifyResponse_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_VerifyResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return API.internal_static_didcomm_messaging_VerifyResponse_fieldAccessorTable
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_VerifyResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                API.VerifyResponse.class, API.VerifyResponse.Builder.class);
+                DIDComm.Messaging.Proto.API.VerifyResponse.class, DIDComm.Messaging.Proto.API.VerifyResponse.Builder.class);
       }
 
-      // Construct using API.VerifyResponse.newBuilder()
+      // Construct using DIDComm.Messaging.Proto.API.VerifyResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -5348,17 +5474,17 @@ public final class API {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return API.internal_static_didcomm_messaging_VerifyResponse_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_VerifyResponse_descriptor;
       }
 
       @java.lang.Override
-      public API.VerifyResponse getDefaultInstanceForType() {
-        return API.VerifyResponse.getDefaultInstance();
+      public DIDComm.Messaging.Proto.API.VerifyResponse getDefaultInstanceForType() {
+        return DIDComm.Messaging.Proto.API.VerifyResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public API.VerifyResponse build() {
-        API.VerifyResponse result = buildPartial();
+      public DIDComm.Messaging.Proto.API.VerifyResponse build() {
+        DIDComm.Messaging.Proto.API.VerifyResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -5366,8 +5492,8 @@ public final class API {
       }
 
       @java.lang.Override
-      public API.VerifyResponse buildPartial() {
-        API.VerifyResponse result = new API.VerifyResponse(this);
+      public DIDComm.Messaging.Proto.API.VerifyResponse buildPartial() {
+        DIDComm.Messaging.Proto.API.VerifyResponse result = new DIDComm.Messaging.Proto.API.VerifyResponse(this);
         result.isValid_ = isValid_;
         onBuilt();
         return result;
@@ -5407,16 +5533,16 @@ public final class API {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof API.VerifyResponse) {
-          return mergeFrom((API.VerifyResponse)other);
+        if (other instanceof DIDComm.Messaging.Proto.API.VerifyResponse) {
+          return mergeFrom((DIDComm.Messaging.Proto.API.VerifyResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(API.VerifyResponse other) {
-        if (other == API.VerifyResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(DIDComm.Messaging.Proto.API.VerifyResponse other) {
+        if (other == DIDComm.Messaging.Proto.API.VerifyResponse.getDefaultInstance()) return this;
         if (other.getIsValid() != false) {
           setIsValid(other.getIsValid());
         }
@@ -5435,11 +5561,11 @@ public final class API {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        API.VerifyResponse parsedMessage = null;
+        DIDComm.Messaging.Proto.API.VerifyResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (API.VerifyResponse) e.getUnfinishedMessage();
+          parsedMessage = (DIDComm.Messaging.Proto.API.VerifyResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -5496,12 +5622,12 @@ public final class API {
     }
 
     // @@protoc_insertion_point(class_scope:didcomm.messaging.VerifyResponse)
-    private static final API.VerifyResponse DEFAULT_INSTANCE;
+    private static final DIDComm.Messaging.Proto.API.VerifyResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new API.VerifyResponse();
+      DEFAULT_INSTANCE = new DIDComm.Messaging.Proto.API.VerifyResponse();
     }
 
-    public static API.VerifyResponse getDefaultInstance() {
+    public static DIDComm.Messaging.Proto.API.VerifyResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -5526,7 +5652,7 @@ public final class API {
     }
 
     @java.lang.Override
-    public API.VerifyResponse getDefaultInstanceForType() {
+    public DIDComm.Messaging.Proto.API.VerifyResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -5537,34 +5663,34 @@ public final class API {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.didcomm.messaging.Key sender_key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
      * @return Whether the senderKey field is set.
      */
     boolean hasSenderKey();
     /**
-     * <code>.didcomm.messaging.Key sender_key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
      * @return The senderKey.
      */
-    API.Key getSenderKey();
+    DIDComm.Messaging.Proto.API.JsonWebKey getSenderKey();
     /**
-     * <code>.didcomm.messaging.Key sender_key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
      */
-    API.KeyOrBuilder getSenderKeyOrBuilder();
+    DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getSenderKeyOrBuilder();
 
     /**
-     * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+     * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
      * @return Whether the receiverKey field is set.
      */
     boolean hasReceiverKey();
     /**
-     * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+     * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
      * @return The receiverKey.
      */
-    API.Key getReceiverKey();
+    DIDComm.Messaging.Proto.API.JsonWebKey getReceiverKey();
     /**
-     * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+     * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
      */
-    API.KeyOrBuilder getReceiverKeyOrBuilder();
+    DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getReceiverKeyOrBuilder();
 
     /**
      * <code>bytes associated_data = 3;</code>
@@ -5587,7 +5713,7 @@ public final class API {
      * <code>.didcomm.messaging.EncryptionMode mode = 5;</code>
      * @return The mode.
      */
-    Security.EncryptionMode getMode();
+    DIDComm.Messaging.Proto.Security.EncryptionMode getMode();
 
     /**
      * <code>.didcomm.messaging.EncryptionAlgorithm algorithm = 6;</code>
@@ -5598,7 +5724,7 @@ public final class API {
      * <code>.didcomm.messaging.EncryptionAlgorithm algorithm = 6;</code>
      * @return The algorithm.
      */
-    Security.EncryptionAlgorithm getAlgorithm();
+    DIDComm.Messaging.Proto.Security.EncryptionAlgorithm getAlgorithm();
   }
   /**
    * Protobuf type {@code didcomm.messaging.PackRequest}
@@ -5650,11 +5776,11 @@ public final class API {
               done = true;
               break;
             case 10: {
-              API.Key.Builder subBuilder = null;
+              DIDComm.Messaging.Proto.API.JsonWebKey.Builder subBuilder = null;
               if (senderKey_ != null) {
                 subBuilder = senderKey_.toBuilder();
               }
-              senderKey_ = input.readMessage(API.Key.parser(), extensionRegistry);
+              senderKey_ = input.readMessage(DIDComm.Messaging.Proto.API.JsonWebKey.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(senderKey_);
                 senderKey_ = subBuilder.buildPartial();
@@ -5663,11 +5789,11 @@ public final class API {
               break;
             }
             case 18: {
-              API.Key.Builder subBuilder = null;
+              DIDComm.Messaging.Proto.API.JsonWebKey.Builder subBuilder = null;
               if (receiverKey_ != null) {
                 subBuilder = receiverKey_.toBuilder();
               }
-              receiverKey_ = input.readMessage(API.Key.parser(), extensionRegistry);
+              receiverKey_ = input.readMessage(DIDComm.Messaging.Proto.API.JsonWebKey.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(receiverKey_);
                 receiverKey_ = subBuilder.buildPartial();
@@ -5718,21 +5844,21 @@ public final class API {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return API.internal_static_didcomm_messaging_PackRequest_descriptor;
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_PackRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return API.internal_static_didcomm_messaging_PackRequest_fieldAccessorTable
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_PackRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              API.PackRequest.class, API.PackRequest.Builder.class);
+              DIDComm.Messaging.Proto.API.PackRequest.class, DIDComm.Messaging.Proto.API.PackRequest.Builder.class);
     }
 
     public static final int SENDER_KEY_FIELD_NUMBER = 1;
-    private API.Key senderKey_;
+    private DIDComm.Messaging.Proto.API.JsonWebKey senderKey_;
     /**
-     * <code>.didcomm.messaging.Key sender_key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
      * @return Whether the senderKey field is set.
      */
     @java.lang.Override
@@ -5740,25 +5866,25 @@ public final class API {
       return senderKey_ != null;
     }
     /**
-     * <code>.didcomm.messaging.Key sender_key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
      * @return The senderKey.
      */
     @java.lang.Override
-    public API.Key getSenderKey() {
-      return senderKey_ == null ? API.Key.getDefaultInstance() : senderKey_;
+    public DIDComm.Messaging.Proto.API.JsonWebKey getSenderKey() {
+      return senderKey_ == null ? DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : senderKey_;
     }
     /**
-     * <code>.didcomm.messaging.Key sender_key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
      */
     @java.lang.Override
-    public API.KeyOrBuilder getSenderKeyOrBuilder() {
+    public DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getSenderKeyOrBuilder() {
       return getSenderKey();
     }
 
     public static final int RECEIVER_KEY_FIELD_NUMBER = 2;
-    private API.Key receiverKey_;
+    private DIDComm.Messaging.Proto.API.JsonWebKey receiverKey_;
     /**
-     * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+     * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
      * @return Whether the receiverKey field is set.
      */
     @java.lang.Override
@@ -5766,18 +5892,18 @@ public final class API {
       return receiverKey_ != null;
     }
     /**
-     * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+     * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
      * @return The receiverKey.
      */
     @java.lang.Override
-    public API.Key getReceiverKey() {
-      return receiverKey_ == null ? API.Key.getDefaultInstance() : receiverKey_;
+    public DIDComm.Messaging.Proto.API.JsonWebKey getReceiverKey() {
+      return receiverKey_ == null ? DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : receiverKey_;
     }
     /**
-     * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+     * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
      */
     @java.lang.Override
-    public API.KeyOrBuilder getReceiverKeyOrBuilder() {
+    public DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getReceiverKeyOrBuilder() {
       return getReceiverKey();
     }
 
@@ -5816,10 +5942,10 @@ public final class API {
      * <code>.didcomm.messaging.EncryptionMode mode = 5;</code>
      * @return The mode.
      */
-    @java.lang.Override public Security.EncryptionMode getMode() {
+    @java.lang.Override public DIDComm.Messaging.Proto.Security.EncryptionMode getMode() {
       @SuppressWarnings("deprecation")
-      Security.EncryptionMode result = Security.EncryptionMode.valueOf(mode_);
-      return result == null ? Security.EncryptionMode.UNRECOGNIZED : result;
+      DIDComm.Messaging.Proto.Security.EncryptionMode result = DIDComm.Messaging.Proto.Security.EncryptionMode.valueOf(mode_);
+      return result == null ? DIDComm.Messaging.Proto.Security.EncryptionMode.UNRECOGNIZED : result;
     }
 
     public static final int ALGORITHM_FIELD_NUMBER = 6;
@@ -5835,10 +5961,10 @@ public final class API {
      * <code>.didcomm.messaging.EncryptionAlgorithm algorithm = 6;</code>
      * @return The algorithm.
      */
-    @java.lang.Override public Security.EncryptionAlgorithm getAlgorithm() {
+    @java.lang.Override public DIDComm.Messaging.Proto.Security.EncryptionAlgorithm getAlgorithm() {
       @SuppressWarnings("deprecation")
-      Security.EncryptionAlgorithm result = Security.EncryptionAlgorithm.valueOf(algorithm_);
-      return result == null ? Security.EncryptionAlgorithm.UNRECOGNIZED : result;
+      DIDComm.Messaging.Proto.Security.EncryptionAlgorithm result = DIDComm.Messaging.Proto.Security.EncryptionAlgorithm.valueOf(algorithm_);
+      return result == null ? DIDComm.Messaging.Proto.Security.EncryptionAlgorithm.UNRECOGNIZED : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -5867,10 +5993,10 @@ public final class API {
       if (!plaintext_.isEmpty()) {
         output.writeBytes(4, plaintext_);
       }
-      if (mode_ != Security.EncryptionMode.direct.getNumber()) {
+      if (mode_ != DIDComm.Messaging.Proto.Security.EncryptionMode.direct.getNumber()) {
         output.writeEnum(5, mode_);
       }
-      if (algorithm_ != Security.EncryptionAlgorithm.xchacha20poly1305.getNumber()) {
+      if (algorithm_ != DIDComm.Messaging.Proto.Security.EncryptionAlgorithm.xchacha20poly1305.getNumber()) {
         output.writeEnum(6, algorithm_);
       }
       unknownFields.writeTo(output);
@@ -5898,11 +6024,11 @@ public final class API {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(4, plaintext_);
       }
-      if (mode_ != Security.EncryptionMode.direct.getNumber()) {
+      if (mode_ != DIDComm.Messaging.Proto.Security.EncryptionMode.direct.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(5, mode_);
       }
-      if (algorithm_ != Security.EncryptionAlgorithm.xchacha20poly1305.getNumber()) {
+      if (algorithm_ != DIDComm.Messaging.Proto.Security.EncryptionAlgorithm.xchacha20poly1305.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(6, algorithm_);
       }
@@ -5916,10 +6042,10 @@ public final class API {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof API.PackRequest)) {
+      if (!(obj instanceof DIDComm.Messaging.Proto.API.PackRequest)) {
         return super.equals(obj);
       }
-      API.PackRequest other = (API.PackRequest) obj;
+      DIDComm.Messaging.Proto.API.PackRequest other = (DIDComm.Messaging.Proto.API.PackRequest) obj;
 
       if (hasSenderKey() != other.hasSenderKey()) return false;
       if (hasSenderKey()) {
@@ -5969,69 +6095,69 @@ public final class API {
       return hash;
     }
 
-    public static API.PackRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.PackRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.PackRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.PackRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.PackRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.PackRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.PackRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.PackRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.PackRequest parseFrom(byte[] data)
+    public static DIDComm.Messaging.Proto.API.PackRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.PackRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.PackRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.PackRequest parseFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.PackRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.PackRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.PackRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.PackRequest parseDelimitedFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.PackRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static API.PackRequest parseDelimitedFrom(
+    public static DIDComm.Messaging.Proto.API.PackRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.PackRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.PackRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.PackRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.PackRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -6044,7 +6170,7 @@ public final class API {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(API.PackRequest prototype) {
+    public static Builder newBuilder(DIDComm.Messaging.Proto.API.PackRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -6065,21 +6191,21 @@ public final class API {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:didcomm.messaging.PackRequest)
-        API.PackRequestOrBuilder {
+        DIDComm.Messaging.Proto.API.PackRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return API.internal_static_didcomm_messaging_PackRequest_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_PackRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return API.internal_static_didcomm_messaging_PackRequest_fieldAccessorTable
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_PackRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                API.PackRequest.class, API.PackRequest.Builder.class);
+                DIDComm.Messaging.Proto.API.PackRequest.class, DIDComm.Messaging.Proto.API.PackRequest.Builder.class);
       }
 
-      // Construct using API.PackRequest.newBuilder()
+      // Construct using DIDComm.Messaging.Proto.API.PackRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -6123,17 +6249,17 @@ public final class API {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return API.internal_static_didcomm_messaging_PackRequest_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_PackRequest_descriptor;
       }
 
       @java.lang.Override
-      public API.PackRequest getDefaultInstanceForType() {
-        return API.PackRequest.getDefaultInstance();
+      public DIDComm.Messaging.Proto.API.PackRequest getDefaultInstanceForType() {
+        return DIDComm.Messaging.Proto.API.PackRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public API.PackRequest build() {
-        API.PackRequest result = buildPartial();
+      public DIDComm.Messaging.Proto.API.PackRequest build() {
+        DIDComm.Messaging.Proto.API.PackRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -6141,8 +6267,8 @@ public final class API {
       }
 
       @java.lang.Override
-      public API.PackRequest buildPartial() {
-        API.PackRequest result = new API.PackRequest(this);
+      public DIDComm.Messaging.Proto.API.PackRequest buildPartial() {
+        DIDComm.Messaging.Proto.API.PackRequest result = new DIDComm.Messaging.Proto.API.PackRequest(this);
         if (senderKeyBuilder_ == null) {
           result.senderKey_ = senderKey_;
         } else {
@@ -6195,16 +6321,16 @@ public final class API {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof API.PackRequest) {
-          return mergeFrom((API.PackRequest)other);
+        if (other instanceof DIDComm.Messaging.Proto.API.PackRequest) {
+          return mergeFrom((DIDComm.Messaging.Proto.API.PackRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(API.PackRequest other) {
-        if (other == API.PackRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(DIDComm.Messaging.Proto.API.PackRequest other) {
+        if (other == DIDComm.Messaging.Proto.API.PackRequest.getDefaultInstance()) return this;
         if (other.hasSenderKey()) {
           mergeSenderKey(other.getSenderKey());
         }
@@ -6238,11 +6364,11 @@ public final class API {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        API.PackRequest parsedMessage = null;
+        DIDComm.Messaging.Proto.API.PackRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (API.PackRequest) e.getUnfinishedMessage();
+          parsedMessage = (DIDComm.Messaging.Proto.API.PackRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -6252,31 +6378,31 @@ public final class API {
         return this;
       }
 
-      private API.Key senderKey_;
+      private DIDComm.Messaging.Proto.API.JsonWebKey senderKey_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          API.Key, API.Key.Builder, API.KeyOrBuilder> senderKeyBuilder_;
+          DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder> senderKeyBuilder_;
       /**
-       * <code>.didcomm.messaging.Key sender_key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
        * @return Whether the senderKey field is set.
        */
       public boolean hasSenderKey() {
         return senderKeyBuilder_ != null || senderKey_ != null;
       }
       /**
-       * <code>.didcomm.messaging.Key sender_key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
        * @return The senderKey.
        */
-      public API.Key getSenderKey() {
+      public DIDComm.Messaging.Proto.API.JsonWebKey getSenderKey() {
         if (senderKeyBuilder_ == null) {
-          return senderKey_ == null ? API.Key.getDefaultInstance() : senderKey_;
+          return senderKey_ == null ? DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : senderKey_;
         } else {
           return senderKeyBuilder_.getMessage();
         }
       }
       /**
-       * <code>.didcomm.messaging.Key sender_key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
        */
-      public Builder setSenderKey(API.Key value) {
+      public Builder setSenderKey(DIDComm.Messaging.Proto.API.JsonWebKey value) {
         if (senderKeyBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -6290,10 +6416,10 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key sender_key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
        */
       public Builder setSenderKey(
-          API.Key.Builder builderForValue) {
+          DIDComm.Messaging.Proto.API.JsonWebKey.Builder builderForValue) {
         if (senderKeyBuilder_ == null) {
           senderKey_ = builderForValue.build();
           onChanged();
@@ -6304,13 +6430,13 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key sender_key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
        */
-      public Builder mergeSenderKey(API.Key value) {
+      public Builder mergeSenderKey(DIDComm.Messaging.Proto.API.JsonWebKey value) {
         if (senderKeyBuilder_ == null) {
           if (senderKey_ != null) {
             senderKey_ =
-              API.Key.newBuilder(senderKey_).mergeFrom(value).buildPartial();
+              DIDComm.Messaging.Proto.API.JsonWebKey.newBuilder(senderKey_).mergeFrom(value).buildPartial();
           } else {
             senderKey_ = value;
           }
@@ -6322,7 +6448,7 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key sender_key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
        */
       public Builder clearSenderKey() {
         if (senderKeyBuilder_ == null) {
@@ -6336,33 +6462,33 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key sender_key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
        */
-      public API.Key.Builder getSenderKeyBuilder() {
+      public DIDComm.Messaging.Proto.API.JsonWebKey.Builder getSenderKeyBuilder() {
         
         onChanged();
         return getSenderKeyFieldBuilder().getBuilder();
       }
       /**
-       * <code>.didcomm.messaging.Key sender_key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
        */
-      public API.KeyOrBuilder getSenderKeyOrBuilder() {
+      public DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getSenderKeyOrBuilder() {
         if (senderKeyBuilder_ != null) {
           return senderKeyBuilder_.getMessageOrBuilder();
         } else {
           return senderKey_ == null ?
-              API.Key.getDefaultInstance() : senderKey_;
+              DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : senderKey_;
         }
       }
       /**
-       * <code>.didcomm.messaging.Key sender_key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          API.Key, API.Key.Builder, API.KeyOrBuilder>
+          DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder> 
           getSenderKeyFieldBuilder() {
         if (senderKeyBuilder_ == null) {
           senderKeyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              API.Key, API.Key.Builder, API.KeyOrBuilder>(
+              DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder>(
                   getSenderKey(),
                   getParentForChildren(),
                   isClean());
@@ -6371,31 +6497,31 @@ public final class API {
         return senderKeyBuilder_;
       }
 
-      private API.Key receiverKey_;
+      private DIDComm.Messaging.Proto.API.JsonWebKey receiverKey_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          API.Key, API.Key.Builder, API.KeyOrBuilder> receiverKeyBuilder_;
+          DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder> receiverKeyBuilder_;
       /**
-       * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
        * @return Whether the receiverKey field is set.
        */
       public boolean hasReceiverKey() {
         return receiverKeyBuilder_ != null || receiverKey_ != null;
       }
       /**
-       * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
        * @return The receiverKey.
        */
-      public API.Key getReceiverKey() {
+      public DIDComm.Messaging.Proto.API.JsonWebKey getReceiverKey() {
         if (receiverKeyBuilder_ == null) {
-          return receiverKey_ == null ? API.Key.getDefaultInstance() : receiverKey_;
+          return receiverKey_ == null ? DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : receiverKey_;
         } else {
           return receiverKeyBuilder_.getMessage();
         }
       }
       /**
-       * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
        */
-      public Builder setReceiverKey(API.Key value) {
+      public Builder setReceiverKey(DIDComm.Messaging.Proto.API.JsonWebKey value) {
         if (receiverKeyBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -6409,10 +6535,10 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
        */
       public Builder setReceiverKey(
-          API.Key.Builder builderForValue) {
+          DIDComm.Messaging.Proto.API.JsonWebKey.Builder builderForValue) {
         if (receiverKeyBuilder_ == null) {
           receiverKey_ = builderForValue.build();
           onChanged();
@@ -6423,13 +6549,13 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
        */
-      public Builder mergeReceiverKey(API.Key value) {
+      public Builder mergeReceiverKey(DIDComm.Messaging.Proto.API.JsonWebKey value) {
         if (receiverKeyBuilder_ == null) {
           if (receiverKey_ != null) {
             receiverKey_ =
-              API.Key.newBuilder(receiverKey_).mergeFrom(value).buildPartial();
+              DIDComm.Messaging.Proto.API.JsonWebKey.newBuilder(receiverKey_).mergeFrom(value).buildPartial();
           } else {
             receiverKey_ = value;
           }
@@ -6441,7 +6567,7 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
        */
       public Builder clearReceiverKey() {
         if (receiverKeyBuilder_ == null) {
@@ -6455,33 +6581,33 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
        */
-      public API.Key.Builder getReceiverKeyBuilder() {
+      public DIDComm.Messaging.Proto.API.JsonWebKey.Builder getReceiverKeyBuilder() {
         
         onChanged();
         return getReceiverKeyFieldBuilder().getBuilder();
       }
       /**
-       * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
        */
-      public API.KeyOrBuilder getReceiverKeyOrBuilder() {
+      public DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getReceiverKeyOrBuilder() {
         if (receiverKeyBuilder_ != null) {
           return receiverKeyBuilder_.getMessageOrBuilder();
         } else {
           return receiverKey_ == null ?
-              API.Key.getDefaultInstance() : receiverKey_;
+              DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : receiverKey_;
         }
       }
       /**
-       * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          API.Key, API.Key.Builder, API.KeyOrBuilder>
+          DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder> 
           getReceiverKeyFieldBuilder() {
         if (receiverKeyBuilder_ == null) {
           receiverKeyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              API.Key, API.Key.Builder, API.KeyOrBuilder>(
+              DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder>(
                   getReceiverKey(),
                   getParentForChildren(),
                   isClean());
@@ -6582,17 +6708,17 @@ public final class API {
        * @return The mode.
        */
       @java.lang.Override
-      public Security.EncryptionMode getMode() {
+      public DIDComm.Messaging.Proto.Security.EncryptionMode getMode() {
         @SuppressWarnings("deprecation")
-        Security.EncryptionMode result = Security.EncryptionMode.valueOf(mode_);
-        return result == null ? Security.EncryptionMode.UNRECOGNIZED : result;
+        DIDComm.Messaging.Proto.Security.EncryptionMode result = DIDComm.Messaging.Proto.Security.EncryptionMode.valueOf(mode_);
+        return result == null ? DIDComm.Messaging.Proto.Security.EncryptionMode.UNRECOGNIZED : result;
       }
       /**
        * <code>.didcomm.messaging.EncryptionMode mode = 5;</code>
        * @param value The mode to set.
        * @return This builder for chaining.
        */
-      public Builder setMode(Security.EncryptionMode value) {
+      public Builder setMode(DIDComm.Messaging.Proto.Security.EncryptionMode value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -6636,17 +6762,17 @@ public final class API {
        * @return The algorithm.
        */
       @java.lang.Override
-      public Security.EncryptionAlgorithm getAlgorithm() {
+      public DIDComm.Messaging.Proto.Security.EncryptionAlgorithm getAlgorithm() {
         @SuppressWarnings("deprecation")
-        Security.EncryptionAlgorithm result = Security.EncryptionAlgorithm.valueOf(algorithm_);
-        return result == null ? Security.EncryptionAlgorithm.UNRECOGNIZED : result;
+        DIDComm.Messaging.Proto.Security.EncryptionAlgorithm result = DIDComm.Messaging.Proto.Security.EncryptionAlgorithm.valueOf(algorithm_);
+        return result == null ? DIDComm.Messaging.Proto.Security.EncryptionAlgorithm.UNRECOGNIZED : result;
       }
       /**
        * <code>.didcomm.messaging.EncryptionAlgorithm algorithm = 6;</code>
        * @param value The algorithm to set.
        * @return This builder for chaining.
        */
-      public Builder setAlgorithm(Security.EncryptionAlgorithm value) {
+      public Builder setAlgorithm(DIDComm.Messaging.Proto.Security.EncryptionAlgorithm value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -6682,12 +6808,12 @@ public final class API {
     }
 
     // @@protoc_insertion_point(class_scope:didcomm.messaging.PackRequest)
-    private static final API.PackRequest DEFAULT_INSTANCE;
+    private static final DIDComm.Messaging.Proto.API.PackRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new API.PackRequest();
+      DEFAULT_INSTANCE = new DIDComm.Messaging.Proto.API.PackRequest();
     }
 
-    public static API.PackRequest getDefaultInstance() {
+    public static DIDComm.Messaging.Proto.API.PackRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -6712,7 +6838,7 @@ public final class API {
     }
 
     @java.lang.Override
-    public API.PackRequest getDefaultInstanceForType() {
+    public DIDComm.Messaging.Proto.API.PackRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -6731,11 +6857,11 @@ public final class API {
      * <code>.didcomm.messaging.EncryptedMessage message = 1;</code>
      * @return The message.
      */
-    Security.EncryptedMessage getMessage();
+    DIDComm.Messaging.Proto.Security.EncryptedMessage getMessage();
     /**
      * <code>.didcomm.messaging.EncryptedMessage message = 1;</code>
      */
-    Security.EncryptedMessageOrBuilder getMessageOrBuilder();
+    DIDComm.Messaging.Proto.Security.EncryptedMessageOrBuilder getMessageOrBuilder();
   }
   /**
    * Protobuf type {@code didcomm.messaging.PackResponse}
@@ -6783,11 +6909,11 @@ public final class API {
               done = true;
               break;
             case 10: {
-              Security.EncryptedMessage.Builder subBuilder = null;
+              DIDComm.Messaging.Proto.Security.EncryptedMessage.Builder subBuilder = null;
               if (message_ != null) {
                 subBuilder = message_.toBuilder();
               }
-              message_ = input.readMessage(Security.EncryptedMessage.parser(), extensionRegistry);
+              message_ = input.readMessage(DIDComm.Messaging.Proto.Security.EncryptedMessage.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(message_);
                 message_ = subBuilder.buildPartial();
@@ -6816,19 +6942,19 @@ public final class API {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return API.internal_static_didcomm_messaging_PackResponse_descriptor;
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_PackResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return API.internal_static_didcomm_messaging_PackResponse_fieldAccessorTable
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_PackResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              API.PackResponse.class, API.PackResponse.Builder.class);
+              DIDComm.Messaging.Proto.API.PackResponse.class, DIDComm.Messaging.Proto.API.PackResponse.Builder.class);
     }
 
     public static final int MESSAGE_FIELD_NUMBER = 1;
-    private Security.EncryptedMessage message_;
+    private DIDComm.Messaging.Proto.Security.EncryptedMessage message_;
     /**
      * <code>.didcomm.messaging.EncryptedMessage message = 1;</code>
      * @return Whether the message field is set.
@@ -6842,14 +6968,14 @@ public final class API {
      * @return The message.
      */
     @java.lang.Override
-    public Security.EncryptedMessage getMessage() {
-      return message_ == null ? Security.EncryptedMessage.getDefaultInstance() : message_;
+    public DIDComm.Messaging.Proto.Security.EncryptedMessage getMessage() {
+      return message_ == null ? DIDComm.Messaging.Proto.Security.EncryptedMessage.getDefaultInstance() : message_;
     }
     /**
      * <code>.didcomm.messaging.EncryptedMessage message = 1;</code>
      */
     @java.lang.Override
-    public Security.EncryptedMessageOrBuilder getMessageOrBuilder() {
+    public DIDComm.Messaging.Proto.Security.EncryptedMessageOrBuilder getMessageOrBuilder() {
       return getMessage();
     }
 
@@ -6893,10 +7019,10 @@ public final class API {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof API.PackResponse)) {
+      if (!(obj instanceof DIDComm.Messaging.Proto.API.PackResponse)) {
         return super.equals(obj);
       }
-      API.PackResponse other = (API.PackResponse) obj;
+      DIDComm.Messaging.Proto.API.PackResponse other = (DIDComm.Messaging.Proto.API.PackResponse) obj;
 
       if (hasMessage() != other.hasMessage()) return false;
       if (hasMessage()) {
@@ -6923,69 +7049,69 @@ public final class API {
       return hash;
     }
 
-    public static API.PackResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.PackResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.PackResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.PackResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.PackResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.PackResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.PackResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.PackResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.PackResponse parseFrom(byte[] data)
+    public static DIDComm.Messaging.Proto.API.PackResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.PackResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.PackResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.PackResponse parseFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.PackResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.PackResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.PackResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.PackResponse parseDelimitedFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.PackResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static API.PackResponse parseDelimitedFrom(
+    public static DIDComm.Messaging.Proto.API.PackResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.PackResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.PackResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.PackResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.PackResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -6998,7 +7124,7 @@ public final class API {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(API.PackResponse prototype) {
+    public static Builder newBuilder(DIDComm.Messaging.Proto.API.PackResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -7019,21 +7145,21 @@ public final class API {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:didcomm.messaging.PackResponse)
-        API.PackResponseOrBuilder {
+        DIDComm.Messaging.Proto.API.PackResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return API.internal_static_didcomm_messaging_PackResponse_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_PackResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return API.internal_static_didcomm_messaging_PackResponse_fieldAccessorTable
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_PackResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                API.PackResponse.class, API.PackResponse.Builder.class);
+                DIDComm.Messaging.Proto.API.PackResponse.class, DIDComm.Messaging.Proto.API.PackResponse.Builder.class);
       }
 
-      // Construct using API.PackResponse.newBuilder()
+      // Construct using DIDComm.Messaging.Proto.API.PackResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -7063,17 +7189,17 @@ public final class API {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return API.internal_static_didcomm_messaging_PackResponse_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_PackResponse_descriptor;
       }
 
       @java.lang.Override
-      public API.PackResponse getDefaultInstanceForType() {
-        return API.PackResponse.getDefaultInstance();
+      public DIDComm.Messaging.Proto.API.PackResponse getDefaultInstanceForType() {
+        return DIDComm.Messaging.Proto.API.PackResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public API.PackResponse build() {
-        API.PackResponse result = buildPartial();
+      public DIDComm.Messaging.Proto.API.PackResponse build() {
+        DIDComm.Messaging.Proto.API.PackResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -7081,8 +7207,8 @@ public final class API {
       }
 
       @java.lang.Override
-      public API.PackResponse buildPartial() {
-        API.PackResponse result = new API.PackResponse(this);
+      public DIDComm.Messaging.Proto.API.PackResponse buildPartial() {
+        DIDComm.Messaging.Proto.API.PackResponse result = new DIDComm.Messaging.Proto.API.PackResponse(this);
         if (messageBuilder_ == null) {
           result.message_ = message_;
         } else {
@@ -7126,16 +7252,16 @@ public final class API {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof API.PackResponse) {
-          return mergeFrom((API.PackResponse)other);
+        if (other instanceof DIDComm.Messaging.Proto.API.PackResponse) {
+          return mergeFrom((DIDComm.Messaging.Proto.API.PackResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(API.PackResponse other) {
-        if (other == API.PackResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(DIDComm.Messaging.Proto.API.PackResponse other) {
+        if (other == DIDComm.Messaging.Proto.API.PackResponse.getDefaultInstance()) return this;
         if (other.hasMessage()) {
           mergeMessage(other.getMessage());
         }
@@ -7154,11 +7280,11 @@ public final class API {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        API.PackResponse parsedMessage = null;
+        DIDComm.Messaging.Proto.API.PackResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (API.PackResponse) e.getUnfinishedMessage();
+          parsedMessage = (DIDComm.Messaging.Proto.API.PackResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -7168,9 +7294,9 @@ public final class API {
         return this;
       }
 
-      private Security.EncryptedMessage message_;
+      private DIDComm.Messaging.Proto.Security.EncryptedMessage message_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          Security.EncryptedMessage, Security.EncryptedMessage.Builder, Security.EncryptedMessageOrBuilder> messageBuilder_;
+          DIDComm.Messaging.Proto.Security.EncryptedMessage, DIDComm.Messaging.Proto.Security.EncryptedMessage.Builder, DIDComm.Messaging.Proto.Security.EncryptedMessageOrBuilder> messageBuilder_;
       /**
        * <code>.didcomm.messaging.EncryptedMessage message = 1;</code>
        * @return Whether the message field is set.
@@ -7182,9 +7308,9 @@ public final class API {
        * <code>.didcomm.messaging.EncryptedMessage message = 1;</code>
        * @return The message.
        */
-      public Security.EncryptedMessage getMessage() {
+      public DIDComm.Messaging.Proto.Security.EncryptedMessage getMessage() {
         if (messageBuilder_ == null) {
-          return message_ == null ? Security.EncryptedMessage.getDefaultInstance() : message_;
+          return message_ == null ? DIDComm.Messaging.Proto.Security.EncryptedMessage.getDefaultInstance() : message_;
         } else {
           return messageBuilder_.getMessage();
         }
@@ -7192,7 +7318,7 @@ public final class API {
       /**
        * <code>.didcomm.messaging.EncryptedMessage message = 1;</code>
        */
-      public Builder setMessage(Security.EncryptedMessage value) {
+      public Builder setMessage(DIDComm.Messaging.Proto.Security.EncryptedMessage value) {
         if (messageBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -7209,7 +7335,7 @@ public final class API {
        * <code>.didcomm.messaging.EncryptedMessage message = 1;</code>
        */
       public Builder setMessage(
-          Security.EncryptedMessage.Builder builderForValue) {
+          DIDComm.Messaging.Proto.Security.EncryptedMessage.Builder builderForValue) {
         if (messageBuilder_ == null) {
           message_ = builderForValue.build();
           onChanged();
@@ -7222,11 +7348,11 @@ public final class API {
       /**
        * <code>.didcomm.messaging.EncryptedMessage message = 1;</code>
        */
-      public Builder mergeMessage(Security.EncryptedMessage value) {
+      public Builder mergeMessage(DIDComm.Messaging.Proto.Security.EncryptedMessage value) {
         if (messageBuilder_ == null) {
           if (message_ != null) {
             message_ =
-              Security.EncryptedMessage.newBuilder(message_).mergeFrom(value).buildPartial();
+              DIDComm.Messaging.Proto.Security.EncryptedMessage.newBuilder(message_).mergeFrom(value).buildPartial();
           } else {
             message_ = value;
           }
@@ -7254,7 +7380,7 @@ public final class API {
       /**
        * <code>.didcomm.messaging.EncryptedMessage message = 1;</code>
        */
-      public Security.EncryptedMessage.Builder getMessageBuilder() {
+      public DIDComm.Messaging.Proto.Security.EncryptedMessage.Builder getMessageBuilder() {
         
         onChanged();
         return getMessageFieldBuilder().getBuilder();
@@ -7262,23 +7388,23 @@ public final class API {
       /**
        * <code>.didcomm.messaging.EncryptedMessage message = 1;</code>
        */
-      public Security.EncryptedMessageOrBuilder getMessageOrBuilder() {
+      public DIDComm.Messaging.Proto.Security.EncryptedMessageOrBuilder getMessageOrBuilder() {
         if (messageBuilder_ != null) {
           return messageBuilder_.getMessageOrBuilder();
         } else {
           return message_ == null ?
-              Security.EncryptedMessage.getDefaultInstance() : message_;
+              DIDComm.Messaging.Proto.Security.EncryptedMessage.getDefaultInstance() : message_;
         }
       }
       /**
        * <code>.didcomm.messaging.EncryptedMessage message = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          Security.EncryptedMessage, Security.EncryptedMessage.Builder, Security.EncryptedMessageOrBuilder>
+          DIDComm.Messaging.Proto.Security.EncryptedMessage, DIDComm.Messaging.Proto.Security.EncryptedMessage.Builder, DIDComm.Messaging.Proto.Security.EncryptedMessageOrBuilder> 
           getMessageFieldBuilder() {
         if (messageBuilder_ == null) {
           messageBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              Security.EncryptedMessage, Security.EncryptedMessage.Builder, Security.EncryptedMessageOrBuilder>(
+              DIDComm.Messaging.Proto.Security.EncryptedMessage, DIDComm.Messaging.Proto.Security.EncryptedMessage.Builder, DIDComm.Messaging.Proto.Security.EncryptedMessageOrBuilder>(
                   getMessage(),
                   getParentForChildren(),
                   isClean());
@@ -7303,12 +7429,12 @@ public final class API {
     }
 
     // @@protoc_insertion_point(class_scope:didcomm.messaging.PackResponse)
-    private static final API.PackResponse DEFAULT_INSTANCE;
+    private static final DIDComm.Messaging.Proto.API.PackResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new API.PackResponse();
+      DEFAULT_INSTANCE = new DIDComm.Messaging.Proto.API.PackResponse();
     }
 
-    public static API.PackResponse getDefaultInstance() {
+    public static DIDComm.Messaging.Proto.API.PackResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -7333,7 +7459,7 @@ public final class API {
     }
 
     @java.lang.Override
-    public API.PackResponse getDefaultInstanceForType() {
+    public DIDComm.Messaging.Proto.API.PackResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -7344,34 +7470,34 @@ public final class API {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.didcomm.messaging.Key sender_key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
      * @return Whether the senderKey field is set.
      */
     boolean hasSenderKey();
     /**
-     * <code>.didcomm.messaging.Key sender_key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
      * @return The senderKey.
      */
-    API.Key getSenderKey();
+    DIDComm.Messaging.Proto.API.JsonWebKey getSenderKey();
     /**
-     * <code>.didcomm.messaging.Key sender_key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
      */
-    API.KeyOrBuilder getSenderKeyOrBuilder();
+    DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getSenderKeyOrBuilder();
 
     /**
-     * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+     * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
      * @return Whether the receiverKey field is set.
      */
     boolean hasReceiverKey();
     /**
-     * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+     * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
      * @return The receiverKey.
      */
-    API.Key getReceiverKey();
+    DIDComm.Messaging.Proto.API.JsonWebKey getReceiverKey();
     /**
-     * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+     * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
      */
-    API.KeyOrBuilder getReceiverKeyOrBuilder();
+    DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getReceiverKeyOrBuilder();
 
     /**
      * <code>.didcomm.messaging.EncryptedMessage message = 3;</code>
@@ -7382,11 +7508,11 @@ public final class API {
      * <code>.didcomm.messaging.EncryptedMessage message = 3;</code>
      * @return The message.
      */
-    Security.EncryptedMessage getMessage();
+    DIDComm.Messaging.Proto.Security.EncryptedMessage getMessage();
     /**
      * <code>.didcomm.messaging.EncryptedMessage message = 3;</code>
      */
-    Security.EncryptedMessageOrBuilder getMessageOrBuilder();
+    DIDComm.Messaging.Proto.Security.EncryptedMessageOrBuilder getMessageOrBuilder();
   }
   /**
    * Protobuf type {@code didcomm.messaging.UnpackRequest}
@@ -7434,11 +7560,11 @@ public final class API {
               done = true;
               break;
             case 10: {
-              API.Key.Builder subBuilder = null;
+              DIDComm.Messaging.Proto.API.JsonWebKey.Builder subBuilder = null;
               if (senderKey_ != null) {
                 subBuilder = senderKey_.toBuilder();
               }
-              senderKey_ = input.readMessage(API.Key.parser(), extensionRegistry);
+              senderKey_ = input.readMessage(DIDComm.Messaging.Proto.API.JsonWebKey.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(senderKey_);
                 senderKey_ = subBuilder.buildPartial();
@@ -7447,11 +7573,11 @@ public final class API {
               break;
             }
             case 18: {
-              API.Key.Builder subBuilder = null;
+              DIDComm.Messaging.Proto.API.JsonWebKey.Builder subBuilder = null;
               if (receiverKey_ != null) {
                 subBuilder = receiverKey_.toBuilder();
               }
-              receiverKey_ = input.readMessage(API.Key.parser(), extensionRegistry);
+              receiverKey_ = input.readMessage(DIDComm.Messaging.Proto.API.JsonWebKey.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(receiverKey_);
                 receiverKey_ = subBuilder.buildPartial();
@@ -7460,11 +7586,11 @@ public final class API {
               break;
             }
             case 26: {
-              Security.EncryptedMessage.Builder subBuilder = null;
+              DIDComm.Messaging.Proto.Security.EncryptedMessage.Builder subBuilder = null;
               if (message_ != null) {
                 subBuilder = message_.toBuilder();
               }
-              message_ = input.readMessage(Security.EncryptedMessage.parser(), extensionRegistry);
+              message_ = input.readMessage(DIDComm.Messaging.Proto.Security.EncryptedMessage.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(message_);
                 message_ = subBuilder.buildPartial();
@@ -7493,21 +7619,21 @@ public final class API {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return API.internal_static_didcomm_messaging_UnpackRequest_descriptor;
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_UnpackRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return API.internal_static_didcomm_messaging_UnpackRequest_fieldAccessorTable
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_UnpackRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              API.UnpackRequest.class, API.UnpackRequest.Builder.class);
+              DIDComm.Messaging.Proto.API.UnpackRequest.class, DIDComm.Messaging.Proto.API.UnpackRequest.Builder.class);
     }
 
     public static final int SENDER_KEY_FIELD_NUMBER = 1;
-    private API.Key senderKey_;
+    private DIDComm.Messaging.Proto.API.JsonWebKey senderKey_;
     /**
-     * <code>.didcomm.messaging.Key sender_key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
      * @return Whether the senderKey field is set.
      */
     @java.lang.Override
@@ -7515,25 +7641,25 @@ public final class API {
       return senderKey_ != null;
     }
     /**
-     * <code>.didcomm.messaging.Key sender_key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
      * @return The senderKey.
      */
     @java.lang.Override
-    public API.Key getSenderKey() {
-      return senderKey_ == null ? API.Key.getDefaultInstance() : senderKey_;
+    public DIDComm.Messaging.Proto.API.JsonWebKey getSenderKey() {
+      return senderKey_ == null ? DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : senderKey_;
     }
     /**
-     * <code>.didcomm.messaging.Key sender_key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
      */
     @java.lang.Override
-    public API.KeyOrBuilder getSenderKeyOrBuilder() {
+    public DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getSenderKeyOrBuilder() {
       return getSenderKey();
     }
 
     public static final int RECEIVER_KEY_FIELD_NUMBER = 2;
-    private API.Key receiverKey_;
+    private DIDComm.Messaging.Proto.API.JsonWebKey receiverKey_;
     /**
-     * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+     * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
      * @return Whether the receiverKey field is set.
      */
     @java.lang.Override
@@ -7541,23 +7667,23 @@ public final class API {
       return receiverKey_ != null;
     }
     /**
-     * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+     * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
      * @return The receiverKey.
      */
     @java.lang.Override
-    public API.Key getReceiverKey() {
-      return receiverKey_ == null ? API.Key.getDefaultInstance() : receiverKey_;
+    public DIDComm.Messaging.Proto.API.JsonWebKey getReceiverKey() {
+      return receiverKey_ == null ? DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : receiverKey_;
     }
     /**
-     * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+     * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
      */
     @java.lang.Override
-    public API.KeyOrBuilder getReceiverKeyOrBuilder() {
+    public DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getReceiverKeyOrBuilder() {
       return getReceiverKey();
     }
 
     public static final int MESSAGE_FIELD_NUMBER = 3;
-    private Security.EncryptedMessage message_;
+    private DIDComm.Messaging.Proto.Security.EncryptedMessage message_;
     /**
      * <code>.didcomm.messaging.EncryptedMessage message = 3;</code>
      * @return Whether the message field is set.
@@ -7571,14 +7697,14 @@ public final class API {
      * @return The message.
      */
     @java.lang.Override
-    public Security.EncryptedMessage getMessage() {
-      return message_ == null ? Security.EncryptedMessage.getDefaultInstance() : message_;
+    public DIDComm.Messaging.Proto.Security.EncryptedMessage getMessage() {
+      return message_ == null ? DIDComm.Messaging.Proto.Security.EncryptedMessage.getDefaultInstance() : message_;
     }
     /**
      * <code>.didcomm.messaging.EncryptedMessage message = 3;</code>
      */
     @java.lang.Override
-    public Security.EncryptedMessageOrBuilder getMessageOrBuilder() {
+    public DIDComm.Messaging.Proto.Security.EncryptedMessageOrBuilder getMessageOrBuilder() {
       return getMessage();
     }
 
@@ -7636,10 +7762,10 @@ public final class API {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof API.UnpackRequest)) {
+      if (!(obj instanceof DIDComm.Messaging.Proto.API.UnpackRequest)) {
         return super.equals(obj);
       }
-      API.UnpackRequest other = (API.UnpackRequest) obj;
+      DIDComm.Messaging.Proto.API.UnpackRequest other = (DIDComm.Messaging.Proto.API.UnpackRequest) obj;
 
       if (hasSenderKey() != other.hasSenderKey()) return false;
       if (hasSenderKey()) {
@@ -7684,69 +7810,69 @@ public final class API {
       return hash;
     }
 
-    public static API.UnpackRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.UnpackRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.UnpackRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.UnpackRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.UnpackRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.UnpackRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.UnpackRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.UnpackRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.UnpackRequest parseFrom(byte[] data)
+    public static DIDComm.Messaging.Proto.API.UnpackRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.UnpackRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.UnpackRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.UnpackRequest parseFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.UnpackRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.UnpackRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.UnpackRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.UnpackRequest parseDelimitedFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.UnpackRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static API.UnpackRequest parseDelimitedFrom(
+    public static DIDComm.Messaging.Proto.API.UnpackRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.UnpackRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.UnpackRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.UnpackRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.UnpackRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -7759,7 +7885,7 @@ public final class API {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(API.UnpackRequest prototype) {
+    public static Builder newBuilder(DIDComm.Messaging.Proto.API.UnpackRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -7780,21 +7906,21 @@ public final class API {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:didcomm.messaging.UnpackRequest)
-        API.UnpackRequestOrBuilder {
+        DIDComm.Messaging.Proto.API.UnpackRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return API.internal_static_didcomm_messaging_UnpackRequest_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_UnpackRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return API.internal_static_didcomm_messaging_UnpackRequest_fieldAccessorTable
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_UnpackRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                API.UnpackRequest.class, API.UnpackRequest.Builder.class);
+                DIDComm.Messaging.Proto.API.UnpackRequest.class, DIDComm.Messaging.Proto.API.UnpackRequest.Builder.class);
       }
 
-      // Construct using API.UnpackRequest.newBuilder()
+      // Construct using DIDComm.Messaging.Proto.API.UnpackRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -7836,17 +7962,17 @@ public final class API {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return API.internal_static_didcomm_messaging_UnpackRequest_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_UnpackRequest_descriptor;
       }
 
       @java.lang.Override
-      public API.UnpackRequest getDefaultInstanceForType() {
-        return API.UnpackRequest.getDefaultInstance();
+      public DIDComm.Messaging.Proto.API.UnpackRequest getDefaultInstanceForType() {
+        return DIDComm.Messaging.Proto.API.UnpackRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public API.UnpackRequest build() {
-        API.UnpackRequest result = buildPartial();
+      public DIDComm.Messaging.Proto.API.UnpackRequest build() {
+        DIDComm.Messaging.Proto.API.UnpackRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -7854,8 +7980,8 @@ public final class API {
       }
 
       @java.lang.Override
-      public API.UnpackRequest buildPartial() {
-        API.UnpackRequest result = new API.UnpackRequest(this);
+      public DIDComm.Messaging.Proto.API.UnpackRequest buildPartial() {
+        DIDComm.Messaging.Proto.API.UnpackRequest result = new DIDComm.Messaging.Proto.API.UnpackRequest(this);
         if (senderKeyBuilder_ == null) {
           result.senderKey_ = senderKey_;
         } else {
@@ -7909,16 +8035,16 @@ public final class API {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof API.UnpackRequest) {
-          return mergeFrom((API.UnpackRequest)other);
+        if (other instanceof DIDComm.Messaging.Proto.API.UnpackRequest) {
+          return mergeFrom((DIDComm.Messaging.Proto.API.UnpackRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(API.UnpackRequest other) {
-        if (other == API.UnpackRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(DIDComm.Messaging.Proto.API.UnpackRequest other) {
+        if (other == DIDComm.Messaging.Proto.API.UnpackRequest.getDefaultInstance()) return this;
         if (other.hasSenderKey()) {
           mergeSenderKey(other.getSenderKey());
         }
@@ -7943,11 +8069,11 @@ public final class API {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        API.UnpackRequest parsedMessage = null;
+        DIDComm.Messaging.Proto.API.UnpackRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (API.UnpackRequest) e.getUnfinishedMessage();
+          parsedMessage = (DIDComm.Messaging.Proto.API.UnpackRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -7957,31 +8083,31 @@ public final class API {
         return this;
       }
 
-      private API.Key senderKey_;
+      private DIDComm.Messaging.Proto.API.JsonWebKey senderKey_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          API.Key, API.Key.Builder, API.KeyOrBuilder> senderKeyBuilder_;
+          DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder> senderKeyBuilder_;
       /**
-       * <code>.didcomm.messaging.Key sender_key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
        * @return Whether the senderKey field is set.
        */
       public boolean hasSenderKey() {
         return senderKeyBuilder_ != null || senderKey_ != null;
       }
       /**
-       * <code>.didcomm.messaging.Key sender_key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
        * @return The senderKey.
        */
-      public API.Key getSenderKey() {
+      public DIDComm.Messaging.Proto.API.JsonWebKey getSenderKey() {
         if (senderKeyBuilder_ == null) {
-          return senderKey_ == null ? API.Key.getDefaultInstance() : senderKey_;
+          return senderKey_ == null ? DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : senderKey_;
         } else {
           return senderKeyBuilder_.getMessage();
         }
       }
       /**
-       * <code>.didcomm.messaging.Key sender_key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
        */
-      public Builder setSenderKey(API.Key value) {
+      public Builder setSenderKey(DIDComm.Messaging.Proto.API.JsonWebKey value) {
         if (senderKeyBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -7995,10 +8121,10 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key sender_key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
        */
       public Builder setSenderKey(
-          API.Key.Builder builderForValue) {
+          DIDComm.Messaging.Proto.API.JsonWebKey.Builder builderForValue) {
         if (senderKeyBuilder_ == null) {
           senderKey_ = builderForValue.build();
           onChanged();
@@ -8009,13 +8135,13 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key sender_key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
        */
-      public Builder mergeSenderKey(API.Key value) {
+      public Builder mergeSenderKey(DIDComm.Messaging.Proto.API.JsonWebKey value) {
         if (senderKeyBuilder_ == null) {
           if (senderKey_ != null) {
             senderKey_ =
-              API.Key.newBuilder(senderKey_).mergeFrom(value).buildPartial();
+              DIDComm.Messaging.Proto.API.JsonWebKey.newBuilder(senderKey_).mergeFrom(value).buildPartial();
           } else {
             senderKey_ = value;
           }
@@ -8027,7 +8153,7 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key sender_key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
        */
       public Builder clearSenderKey() {
         if (senderKeyBuilder_ == null) {
@@ -8041,33 +8167,33 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key sender_key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
        */
-      public API.Key.Builder getSenderKeyBuilder() {
+      public DIDComm.Messaging.Proto.API.JsonWebKey.Builder getSenderKeyBuilder() {
         
         onChanged();
         return getSenderKeyFieldBuilder().getBuilder();
       }
       /**
-       * <code>.didcomm.messaging.Key sender_key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
        */
-      public API.KeyOrBuilder getSenderKeyOrBuilder() {
+      public DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getSenderKeyOrBuilder() {
         if (senderKeyBuilder_ != null) {
           return senderKeyBuilder_.getMessageOrBuilder();
         } else {
           return senderKey_ == null ?
-              API.Key.getDefaultInstance() : senderKey_;
+              DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : senderKey_;
         }
       }
       /**
-       * <code>.didcomm.messaging.Key sender_key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey sender_key = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          API.Key, API.Key.Builder, API.KeyOrBuilder>
+          DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder> 
           getSenderKeyFieldBuilder() {
         if (senderKeyBuilder_ == null) {
           senderKeyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              API.Key, API.Key.Builder, API.KeyOrBuilder>(
+              DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder>(
                   getSenderKey(),
                   getParentForChildren(),
                   isClean());
@@ -8076,31 +8202,31 @@ public final class API {
         return senderKeyBuilder_;
       }
 
-      private API.Key receiverKey_;
+      private DIDComm.Messaging.Proto.API.JsonWebKey receiverKey_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          API.Key, API.Key.Builder, API.KeyOrBuilder> receiverKeyBuilder_;
+          DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder> receiverKeyBuilder_;
       /**
-       * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
        * @return Whether the receiverKey field is set.
        */
       public boolean hasReceiverKey() {
         return receiverKeyBuilder_ != null || receiverKey_ != null;
       }
       /**
-       * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
        * @return The receiverKey.
        */
-      public API.Key getReceiverKey() {
+      public DIDComm.Messaging.Proto.API.JsonWebKey getReceiverKey() {
         if (receiverKeyBuilder_ == null) {
-          return receiverKey_ == null ? API.Key.getDefaultInstance() : receiverKey_;
+          return receiverKey_ == null ? DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : receiverKey_;
         } else {
           return receiverKeyBuilder_.getMessage();
         }
       }
       /**
-       * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
        */
-      public Builder setReceiverKey(API.Key value) {
+      public Builder setReceiverKey(DIDComm.Messaging.Proto.API.JsonWebKey value) {
         if (receiverKeyBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -8114,10 +8240,10 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
        */
       public Builder setReceiverKey(
-          API.Key.Builder builderForValue) {
+          DIDComm.Messaging.Proto.API.JsonWebKey.Builder builderForValue) {
         if (receiverKeyBuilder_ == null) {
           receiverKey_ = builderForValue.build();
           onChanged();
@@ -8128,13 +8254,13 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
        */
-      public Builder mergeReceiverKey(API.Key value) {
+      public Builder mergeReceiverKey(DIDComm.Messaging.Proto.API.JsonWebKey value) {
         if (receiverKeyBuilder_ == null) {
           if (receiverKey_ != null) {
             receiverKey_ =
-              API.Key.newBuilder(receiverKey_).mergeFrom(value).buildPartial();
+              DIDComm.Messaging.Proto.API.JsonWebKey.newBuilder(receiverKey_).mergeFrom(value).buildPartial();
           } else {
             receiverKey_ = value;
           }
@@ -8146,7 +8272,7 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
        */
       public Builder clearReceiverKey() {
         if (receiverKeyBuilder_ == null) {
@@ -8160,33 +8286,33 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
        */
-      public API.Key.Builder getReceiverKeyBuilder() {
+      public DIDComm.Messaging.Proto.API.JsonWebKey.Builder getReceiverKeyBuilder() {
         
         onChanged();
         return getReceiverKeyFieldBuilder().getBuilder();
       }
       /**
-       * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
        */
-      public API.KeyOrBuilder getReceiverKeyOrBuilder() {
+      public DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getReceiverKeyOrBuilder() {
         if (receiverKeyBuilder_ != null) {
           return receiverKeyBuilder_.getMessageOrBuilder();
         } else {
           return receiverKey_ == null ?
-              API.Key.getDefaultInstance() : receiverKey_;
+              DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : receiverKey_;
         }
       }
       /**
-       * <code>.didcomm.messaging.Key receiver_key = 2;</code>
+       * <code>.didcomm.messaging.JsonWebKey receiver_key = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          API.Key, API.Key.Builder, API.KeyOrBuilder>
+          DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder> 
           getReceiverKeyFieldBuilder() {
         if (receiverKeyBuilder_ == null) {
           receiverKeyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              API.Key, API.Key.Builder, API.KeyOrBuilder>(
+              DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder>(
                   getReceiverKey(),
                   getParentForChildren(),
                   isClean());
@@ -8195,9 +8321,9 @@ public final class API {
         return receiverKeyBuilder_;
       }
 
-      private Security.EncryptedMessage message_;
+      private DIDComm.Messaging.Proto.Security.EncryptedMessage message_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          Security.EncryptedMessage, Security.EncryptedMessage.Builder, Security.EncryptedMessageOrBuilder> messageBuilder_;
+          DIDComm.Messaging.Proto.Security.EncryptedMessage, DIDComm.Messaging.Proto.Security.EncryptedMessage.Builder, DIDComm.Messaging.Proto.Security.EncryptedMessageOrBuilder> messageBuilder_;
       /**
        * <code>.didcomm.messaging.EncryptedMessage message = 3;</code>
        * @return Whether the message field is set.
@@ -8209,9 +8335,9 @@ public final class API {
        * <code>.didcomm.messaging.EncryptedMessage message = 3;</code>
        * @return The message.
        */
-      public Security.EncryptedMessage getMessage() {
+      public DIDComm.Messaging.Proto.Security.EncryptedMessage getMessage() {
         if (messageBuilder_ == null) {
-          return message_ == null ? Security.EncryptedMessage.getDefaultInstance() : message_;
+          return message_ == null ? DIDComm.Messaging.Proto.Security.EncryptedMessage.getDefaultInstance() : message_;
         } else {
           return messageBuilder_.getMessage();
         }
@@ -8219,7 +8345,7 @@ public final class API {
       /**
        * <code>.didcomm.messaging.EncryptedMessage message = 3;</code>
        */
-      public Builder setMessage(Security.EncryptedMessage value) {
+      public Builder setMessage(DIDComm.Messaging.Proto.Security.EncryptedMessage value) {
         if (messageBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -8236,7 +8362,7 @@ public final class API {
        * <code>.didcomm.messaging.EncryptedMessage message = 3;</code>
        */
       public Builder setMessage(
-          Security.EncryptedMessage.Builder builderForValue) {
+          DIDComm.Messaging.Proto.Security.EncryptedMessage.Builder builderForValue) {
         if (messageBuilder_ == null) {
           message_ = builderForValue.build();
           onChanged();
@@ -8249,11 +8375,11 @@ public final class API {
       /**
        * <code>.didcomm.messaging.EncryptedMessage message = 3;</code>
        */
-      public Builder mergeMessage(Security.EncryptedMessage value) {
+      public Builder mergeMessage(DIDComm.Messaging.Proto.Security.EncryptedMessage value) {
         if (messageBuilder_ == null) {
           if (message_ != null) {
             message_ =
-              Security.EncryptedMessage.newBuilder(message_).mergeFrom(value).buildPartial();
+              DIDComm.Messaging.Proto.Security.EncryptedMessage.newBuilder(message_).mergeFrom(value).buildPartial();
           } else {
             message_ = value;
           }
@@ -8281,7 +8407,7 @@ public final class API {
       /**
        * <code>.didcomm.messaging.EncryptedMessage message = 3;</code>
        */
-      public Security.EncryptedMessage.Builder getMessageBuilder() {
+      public DIDComm.Messaging.Proto.Security.EncryptedMessage.Builder getMessageBuilder() {
         
         onChanged();
         return getMessageFieldBuilder().getBuilder();
@@ -8289,23 +8415,23 @@ public final class API {
       /**
        * <code>.didcomm.messaging.EncryptedMessage message = 3;</code>
        */
-      public Security.EncryptedMessageOrBuilder getMessageOrBuilder() {
+      public DIDComm.Messaging.Proto.Security.EncryptedMessageOrBuilder getMessageOrBuilder() {
         if (messageBuilder_ != null) {
           return messageBuilder_.getMessageOrBuilder();
         } else {
           return message_ == null ?
-              Security.EncryptedMessage.getDefaultInstance() : message_;
+              DIDComm.Messaging.Proto.Security.EncryptedMessage.getDefaultInstance() : message_;
         }
       }
       /**
        * <code>.didcomm.messaging.EncryptedMessage message = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          Security.EncryptedMessage, Security.EncryptedMessage.Builder, Security.EncryptedMessageOrBuilder>
+          DIDComm.Messaging.Proto.Security.EncryptedMessage, DIDComm.Messaging.Proto.Security.EncryptedMessage.Builder, DIDComm.Messaging.Proto.Security.EncryptedMessageOrBuilder> 
           getMessageFieldBuilder() {
         if (messageBuilder_ == null) {
           messageBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              Security.EncryptedMessage, Security.EncryptedMessage.Builder, Security.EncryptedMessageOrBuilder>(
+              DIDComm.Messaging.Proto.Security.EncryptedMessage, DIDComm.Messaging.Proto.Security.EncryptedMessage.Builder, DIDComm.Messaging.Proto.Security.EncryptedMessageOrBuilder>(
                   getMessage(),
                   getParentForChildren(),
                   isClean());
@@ -8330,12 +8456,12 @@ public final class API {
     }
 
     // @@protoc_insertion_point(class_scope:didcomm.messaging.UnpackRequest)
-    private static final API.UnpackRequest DEFAULT_INSTANCE;
+    private static final DIDComm.Messaging.Proto.API.UnpackRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new API.UnpackRequest();
+      DEFAULT_INSTANCE = new DIDComm.Messaging.Proto.API.UnpackRequest();
     }
 
-    public static API.UnpackRequest getDefaultInstance() {
+    public static DIDComm.Messaging.Proto.API.UnpackRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -8360,7 +8486,7 @@ public final class API {
     }
 
     @java.lang.Override
-    public API.UnpackRequest getDefaultInstanceForType() {
+    public DIDComm.Messaging.Proto.API.UnpackRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -8448,15 +8574,15 @@ public final class API {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return API.internal_static_didcomm_messaging_UnpackResponse_descriptor;
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_UnpackResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return API.internal_static_didcomm_messaging_UnpackResponse_fieldAccessorTable
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_UnpackResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              API.UnpackResponse.class, API.UnpackResponse.Builder.class);
+              DIDComm.Messaging.Proto.API.UnpackResponse.class, DIDComm.Messaging.Proto.API.UnpackResponse.Builder.class);
     }
 
     public static final int PLAINTEXT_FIELD_NUMBER = 1;
@@ -8510,10 +8636,10 @@ public final class API {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof API.UnpackResponse)) {
+      if (!(obj instanceof DIDComm.Messaging.Proto.API.UnpackResponse)) {
         return super.equals(obj);
       }
-      API.UnpackResponse other = (API.UnpackResponse) obj;
+      DIDComm.Messaging.Proto.API.UnpackResponse other = (DIDComm.Messaging.Proto.API.UnpackResponse) obj;
 
       if (!getPlaintext()
           .equals(other.getPlaintext())) return false;
@@ -8535,69 +8661,69 @@ public final class API {
       return hash;
     }
 
-    public static API.UnpackResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.UnpackResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.UnpackResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.UnpackResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.UnpackResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.UnpackResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.UnpackResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.UnpackResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.UnpackResponse parseFrom(byte[] data)
+    public static DIDComm.Messaging.Proto.API.UnpackResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.UnpackResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.UnpackResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.UnpackResponse parseFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.UnpackResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.UnpackResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.UnpackResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.UnpackResponse parseDelimitedFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.UnpackResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static API.UnpackResponse parseDelimitedFrom(
+    public static DIDComm.Messaging.Proto.API.UnpackResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.UnpackResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.UnpackResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.UnpackResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.UnpackResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -8610,7 +8736,7 @@ public final class API {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(API.UnpackResponse prototype) {
+    public static Builder newBuilder(DIDComm.Messaging.Proto.API.UnpackResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -8631,21 +8757,21 @@ public final class API {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:didcomm.messaging.UnpackResponse)
-        API.UnpackResponseOrBuilder {
+        DIDComm.Messaging.Proto.API.UnpackResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return API.internal_static_didcomm_messaging_UnpackResponse_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_UnpackResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return API.internal_static_didcomm_messaging_UnpackResponse_fieldAccessorTable
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_UnpackResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                API.UnpackResponse.class, API.UnpackResponse.Builder.class);
+                DIDComm.Messaging.Proto.API.UnpackResponse.class, DIDComm.Messaging.Proto.API.UnpackResponse.Builder.class);
       }
 
-      // Construct using API.UnpackResponse.newBuilder()
+      // Construct using DIDComm.Messaging.Proto.API.UnpackResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -8671,17 +8797,17 @@ public final class API {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return API.internal_static_didcomm_messaging_UnpackResponse_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_UnpackResponse_descriptor;
       }
 
       @java.lang.Override
-      public API.UnpackResponse getDefaultInstanceForType() {
-        return API.UnpackResponse.getDefaultInstance();
+      public DIDComm.Messaging.Proto.API.UnpackResponse getDefaultInstanceForType() {
+        return DIDComm.Messaging.Proto.API.UnpackResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public API.UnpackResponse build() {
-        API.UnpackResponse result = buildPartial();
+      public DIDComm.Messaging.Proto.API.UnpackResponse build() {
+        DIDComm.Messaging.Proto.API.UnpackResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -8689,8 +8815,8 @@ public final class API {
       }
 
       @java.lang.Override
-      public API.UnpackResponse buildPartial() {
-        API.UnpackResponse result = new API.UnpackResponse(this);
+      public DIDComm.Messaging.Proto.API.UnpackResponse buildPartial() {
+        DIDComm.Messaging.Proto.API.UnpackResponse result = new DIDComm.Messaging.Proto.API.UnpackResponse(this);
         result.plaintext_ = plaintext_;
         onBuilt();
         return result;
@@ -8730,16 +8856,16 @@ public final class API {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof API.UnpackResponse) {
-          return mergeFrom((API.UnpackResponse)other);
+        if (other instanceof DIDComm.Messaging.Proto.API.UnpackResponse) {
+          return mergeFrom((DIDComm.Messaging.Proto.API.UnpackResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(API.UnpackResponse other) {
-        if (other == API.UnpackResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(DIDComm.Messaging.Proto.API.UnpackResponse other) {
+        if (other == DIDComm.Messaging.Proto.API.UnpackResponse.getDefaultInstance()) return this;
         if (other.getPlaintext() != com.google.protobuf.ByteString.EMPTY) {
           setPlaintext(other.getPlaintext());
         }
@@ -8758,11 +8884,11 @@ public final class API {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        API.UnpackResponse parsedMessage = null;
+        DIDComm.Messaging.Proto.API.UnpackResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (API.UnpackResponse) e.getUnfinishedMessage();
+          parsedMessage = (DIDComm.Messaging.Proto.API.UnpackResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -8822,12 +8948,12 @@ public final class API {
     }
 
     // @@protoc_insertion_point(class_scope:didcomm.messaging.UnpackResponse)
-    private static final API.UnpackResponse DEFAULT_INSTANCE;
+    private static final DIDComm.Messaging.Proto.API.UnpackResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new API.UnpackResponse();
+      DEFAULT_INSTANCE = new DIDComm.Messaging.Proto.API.UnpackResponse();
     }
 
-    public static API.UnpackResponse getDefaultInstance() {
+    public static DIDComm.Messaging.Proto.API.UnpackResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -8852,7 +8978,7 @@ public final class API {
     }
 
     @java.lang.Override
-    public API.UnpackResponse getDefaultInstanceForType() {
+    public DIDComm.Messaging.Proto.API.UnpackResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -8863,19 +8989,19 @@ public final class API {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.didcomm.messaging.Key key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
      * @return Whether the key field is set.
      */
     boolean hasKey();
     /**
-     * <code>.didcomm.messaging.Key key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
      * @return The key.
      */
-    API.Key getKey();
+    DIDComm.Messaging.Proto.API.JsonWebKey getKey();
     /**
-     * <code>.didcomm.messaging.Key key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
      */
-    API.KeyOrBuilder getKeyOrBuilder();
+    DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getKeyOrBuilder();
   }
   /**
    * Protobuf type {@code didcomm.messaging.GetDidDocumentRequest}
@@ -8923,11 +9049,11 @@ public final class API {
               done = true;
               break;
             case 10: {
-              API.Key.Builder subBuilder = null;
+              DIDComm.Messaging.Proto.API.JsonWebKey.Builder subBuilder = null;
               if (key_ != null) {
                 subBuilder = key_.toBuilder();
               }
-              key_ = input.readMessage(API.Key.parser(), extensionRegistry);
+              key_ = input.readMessage(DIDComm.Messaging.Proto.API.JsonWebKey.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(key_);
                 key_ = subBuilder.buildPartial();
@@ -8956,21 +9082,21 @@ public final class API {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return API.internal_static_didcomm_messaging_GetDidDocumentRequest_descriptor;
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_GetDidDocumentRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return API.internal_static_didcomm_messaging_GetDidDocumentRequest_fieldAccessorTable
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_GetDidDocumentRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              API.GetDidDocumentRequest.class, API.GetDidDocumentRequest.Builder.class);
+              DIDComm.Messaging.Proto.API.GetDidDocumentRequest.class, DIDComm.Messaging.Proto.API.GetDidDocumentRequest.Builder.class);
     }
 
     public static final int KEY_FIELD_NUMBER = 1;
-    private API.Key key_;
+    private DIDComm.Messaging.Proto.API.JsonWebKey key_;
     /**
-     * <code>.didcomm.messaging.Key key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
      * @return Whether the key field is set.
      */
     @java.lang.Override
@@ -8978,18 +9104,18 @@ public final class API {
       return key_ != null;
     }
     /**
-     * <code>.didcomm.messaging.Key key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
      * @return The key.
      */
     @java.lang.Override
-    public API.Key getKey() {
-      return key_ == null ? API.Key.getDefaultInstance() : key_;
+    public DIDComm.Messaging.Proto.API.JsonWebKey getKey() {
+      return key_ == null ? DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : key_;
     }
     /**
-     * <code>.didcomm.messaging.Key key = 1;</code>
+     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
      */
     @java.lang.Override
-    public API.KeyOrBuilder getKeyOrBuilder() {
+    public DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getKeyOrBuilder() {
       return getKey();
     }
 
@@ -9033,10 +9159,10 @@ public final class API {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof API.GetDidDocumentRequest)) {
+      if (!(obj instanceof DIDComm.Messaging.Proto.API.GetDidDocumentRequest)) {
         return super.equals(obj);
       }
-      API.GetDidDocumentRequest other = (API.GetDidDocumentRequest) obj;
+      DIDComm.Messaging.Proto.API.GetDidDocumentRequest other = (DIDComm.Messaging.Proto.API.GetDidDocumentRequest) obj;
 
       if (hasKey() != other.hasKey()) return false;
       if (hasKey()) {
@@ -9063,69 +9189,69 @@ public final class API {
       return hash;
     }
 
-    public static API.GetDidDocumentRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.GetDidDocumentRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.GetDidDocumentRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.GetDidDocumentRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.GetDidDocumentRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.GetDidDocumentRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.GetDidDocumentRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.GetDidDocumentRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.GetDidDocumentRequest parseFrom(byte[] data)
+    public static DIDComm.Messaging.Proto.API.GetDidDocumentRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.GetDidDocumentRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.GetDidDocumentRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.GetDidDocumentRequest parseFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.GetDidDocumentRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.GetDidDocumentRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.GetDidDocumentRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.GetDidDocumentRequest parseDelimitedFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.GetDidDocumentRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static API.GetDidDocumentRequest parseDelimitedFrom(
+    public static DIDComm.Messaging.Proto.API.GetDidDocumentRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.GetDidDocumentRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.GetDidDocumentRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.GetDidDocumentRequest parseFrom(
+    public static DIDComm.Messaging.Proto.API.GetDidDocumentRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -9138,7 +9264,7 @@ public final class API {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(API.GetDidDocumentRequest prototype) {
+    public static Builder newBuilder(DIDComm.Messaging.Proto.API.GetDidDocumentRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -9159,21 +9285,21 @@ public final class API {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:didcomm.messaging.GetDidDocumentRequest)
-        API.GetDidDocumentRequestOrBuilder {
+        DIDComm.Messaging.Proto.API.GetDidDocumentRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return API.internal_static_didcomm_messaging_GetDidDocumentRequest_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_GetDidDocumentRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return API.internal_static_didcomm_messaging_GetDidDocumentRequest_fieldAccessorTable
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_GetDidDocumentRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                API.GetDidDocumentRequest.class, API.GetDidDocumentRequest.Builder.class);
+                DIDComm.Messaging.Proto.API.GetDidDocumentRequest.class, DIDComm.Messaging.Proto.API.GetDidDocumentRequest.Builder.class);
       }
 
-      // Construct using API.GetDidDocumentRequest.newBuilder()
+      // Construct using DIDComm.Messaging.Proto.API.GetDidDocumentRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -9203,17 +9329,17 @@ public final class API {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return API.internal_static_didcomm_messaging_GetDidDocumentRequest_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_GetDidDocumentRequest_descriptor;
       }
 
       @java.lang.Override
-      public API.GetDidDocumentRequest getDefaultInstanceForType() {
-        return API.GetDidDocumentRequest.getDefaultInstance();
+      public DIDComm.Messaging.Proto.API.GetDidDocumentRequest getDefaultInstanceForType() {
+        return DIDComm.Messaging.Proto.API.GetDidDocumentRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public API.GetDidDocumentRequest build() {
-        API.GetDidDocumentRequest result = buildPartial();
+      public DIDComm.Messaging.Proto.API.GetDidDocumentRequest build() {
+        DIDComm.Messaging.Proto.API.GetDidDocumentRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -9221,8 +9347,8 @@ public final class API {
       }
 
       @java.lang.Override
-      public API.GetDidDocumentRequest buildPartial() {
-        API.GetDidDocumentRequest result = new API.GetDidDocumentRequest(this);
+      public DIDComm.Messaging.Proto.API.GetDidDocumentRequest buildPartial() {
+        DIDComm.Messaging.Proto.API.GetDidDocumentRequest result = new DIDComm.Messaging.Proto.API.GetDidDocumentRequest(this);
         if (keyBuilder_ == null) {
           result.key_ = key_;
         } else {
@@ -9266,16 +9392,16 @@ public final class API {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof API.GetDidDocumentRequest) {
-          return mergeFrom((API.GetDidDocumentRequest)other);
+        if (other instanceof DIDComm.Messaging.Proto.API.GetDidDocumentRequest) {
+          return mergeFrom((DIDComm.Messaging.Proto.API.GetDidDocumentRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(API.GetDidDocumentRequest other) {
-        if (other == API.GetDidDocumentRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(DIDComm.Messaging.Proto.API.GetDidDocumentRequest other) {
+        if (other == DIDComm.Messaging.Proto.API.GetDidDocumentRequest.getDefaultInstance()) return this;
         if (other.hasKey()) {
           mergeKey(other.getKey());
         }
@@ -9294,11 +9420,11 @@ public final class API {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        API.GetDidDocumentRequest parsedMessage = null;
+        DIDComm.Messaging.Proto.API.GetDidDocumentRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (API.GetDidDocumentRequest) e.getUnfinishedMessage();
+          parsedMessage = (DIDComm.Messaging.Proto.API.GetDidDocumentRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -9308,31 +9434,31 @@ public final class API {
         return this;
       }
 
-      private API.Key key_;
+      private DIDComm.Messaging.Proto.API.JsonWebKey key_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          API.Key, API.Key.Builder, API.KeyOrBuilder> keyBuilder_;
+          DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder> keyBuilder_;
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        * @return Whether the key field is set.
        */
       public boolean hasKey() {
         return keyBuilder_ != null || key_ != null;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        * @return The key.
        */
-      public API.Key getKey() {
+      public DIDComm.Messaging.Proto.API.JsonWebKey getKey() {
         if (keyBuilder_ == null) {
-          return key_ == null ? API.Key.getDefaultInstance() : key_;
+          return key_ == null ? DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : key_;
         } else {
           return keyBuilder_.getMessage();
         }
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
-      public Builder setKey(API.Key value) {
+      public Builder setKey(DIDComm.Messaging.Proto.API.JsonWebKey value) {
         if (keyBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -9346,10 +9472,10 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
       public Builder setKey(
-          API.Key.Builder builderForValue) {
+          DIDComm.Messaging.Proto.API.JsonWebKey.Builder builderForValue) {
         if (keyBuilder_ == null) {
           key_ = builderForValue.build();
           onChanged();
@@ -9360,13 +9486,13 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
-      public Builder mergeKey(API.Key value) {
+      public Builder mergeKey(DIDComm.Messaging.Proto.API.JsonWebKey value) {
         if (keyBuilder_ == null) {
           if (key_ != null) {
             key_ =
-              API.Key.newBuilder(key_).mergeFrom(value).buildPartial();
+              DIDComm.Messaging.Proto.API.JsonWebKey.newBuilder(key_).mergeFrom(value).buildPartial();
           } else {
             key_ = value;
           }
@@ -9378,7 +9504,7 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
       public Builder clearKey() {
         if (keyBuilder_ == null) {
@@ -9392,33 +9518,33 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
-      public API.Key.Builder getKeyBuilder() {
+      public DIDComm.Messaging.Proto.API.JsonWebKey.Builder getKeyBuilder() {
         
         onChanged();
         return getKeyFieldBuilder().getBuilder();
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
-      public API.KeyOrBuilder getKeyOrBuilder() {
+      public DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getKeyOrBuilder() {
         if (keyBuilder_ != null) {
           return keyBuilder_.getMessageOrBuilder();
         } else {
           return key_ == null ?
-              API.Key.getDefaultInstance() : key_;
+              DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : key_;
         }
       }
       /**
-       * <code>.didcomm.messaging.Key key = 1;</code>
+       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          API.Key, API.Key.Builder, API.KeyOrBuilder>
+          DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder> 
           getKeyFieldBuilder() {
         if (keyBuilder_ == null) {
           keyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              API.Key, API.Key.Builder, API.KeyOrBuilder>(
+              DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder>(
                   getKey(),
                   getParentForChildren(),
                   isClean());
@@ -9443,12 +9569,12 @@ public final class API {
     }
 
     // @@protoc_insertion_point(class_scope:didcomm.messaging.GetDidDocumentRequest)
-    private static final API.GetDidDocumentRequest DEFAULT_INSTANCE;
+    private static final DIDComm.Messaging.Proto.API.GetDidDocumentRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new API.GetDidDocumentRequest();
+      DEFAULT_INSTANCE = new DIDComm.Messaging.Proto.API.GetDidDocumentRequest();
     }
 
-    public static API.GetDidDocumentRequest getDefaultInstance() {
+    public static DIDComm.Messaging.Proto.API.GetDidDocumentRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -9473,7 +9599,7 @@ public final class API {
     }
 
     @java.lang.Override
-    public API.GetDidDocumentRequest getDefaultInstanceForType() {
+    public DIDComm.Messaging.Proto.API.GetDidDocumentRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -9577,15 +9703,15 @@ public final class API {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return API.internal_static_didcomm_messaging_GetDidDocumentResponse_descriptor;
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_GetDidDocumentResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return API.internal_static_didcomm_messaging_GetDidDocumentResponse_fieldAccessorTable
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_GetDidDocumentResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              API.GetDidDocumentResponse.class, API.GetDidDocumentResponse.Builder.class);
+              DIDComm.Messaging.Proto.API.GetDidDocumentResponse.class, DIDComm.Messaging.Proto.API.GetDidDocumentResponse.Builder.class);
     }
 
     public static final int DID_DOCUMENT_FIELD_NUMBER = 1;
@@ -9654,10 +9780,10 @@ public final class API {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof API.GetDidDocumentResponse)) {
+      if (!(obj instanceof DIDComm.Messaging.Proto.API.GetDidDocumentResponse)) {
         return super.equals(obj);
       }
-      API.GetDidDocumentResponse other = (API.GetDidDocumentResponse) obj;
+      DIDComm.Messaging.Proto.API.GetDidDocumentResponse other = (DIDComm.Messaging.Proto.API.GetDidDocumentResponse) obj;
 
       if (hasDidDocument() != other.hasDidDocument()) return false;
       if (hasDidDocument()) {
@@ -9684,69 +9810,69 @@ public final class API {
       return hash;
     }
 
-    public static API.GetDidDocumentResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.GetDidDocumentResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.GetDidDocumentResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.GetDidDocumentResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.GetDidDocumentResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.GetDidDocumentResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.GetDidDocumentResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.GetDidDocumentResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.GetDidDocumentResponse parseFrom(byte[] data)
+    public static DIDComm.Messaging.Proto.API.GetDidDocumentResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.GetDidDocumentResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.GetDidDocumentResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.GetDidDocumentResponse parseFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.GetDidDocumentResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.GetDidDocumentResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.GetDidDocumentResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.GetDidDocumentResponse parseDelimitedFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.GetDidDocumentResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static API.GetDidDocumentResponse parseDelimitedFrom(
+    public static DIDComm.Messaging.Proto.API.GetDidDocumentResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.GetDidDocumentResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.GetDidDocumentResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.GetDidDocumentResponse parseFrom(
+    public static DIDComm.Messaging.Proto.API.GetDidDocumentResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -9759,7 +9885,7 @@ public final class API {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(API.GetDidDocumentResponse prototype) {
+    public static Builder newBuilder(DIDComm.Messaging.Proto.API.GetDidDocumentResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -9780,21 +9906,21 @@ public final class API {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:didcomm.messaging.GetDidDocumentResponse)
-        API.GetDidDocumentResponseOrBuilder {
+        DIDComm.Messaging.Proto.API.GetDidDocumentResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return API.internal_static_didcomm_messaging_GetDidDocumentResponse_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_GetDidDocumentResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return API.internal_static_didcomm_messaging_GetDidDocumentResponse_fieldAccessorTable
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_GetDidDocumentResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                API.GetDidDocumentResponse.class, API.GetDidDocumentResponse.Builder.class);
+                DIDComm.Messaging.Proto.API.GetDidDocumentResponse.class, DIDComm.Messaging.Proto.API.GetDidDocumentResponse.Builder.class);
       }
 
-      // Construct using API.GetDidDocumentResponse.newBuilder()
+      // Construct using DIDComm.Messaging.Proto.API.GetDidDocumentResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -9824,17 +9950,17 @@ public final class API {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return API.internal_static_didcomm_messaging_GetDidDocumentResponse_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_GetDidDocumentResponse_descriptor;
       }
 
       @java.lang.Override
-      public API.GetDidDocumentResponse getDefaultInstanceForType() {
-        return API.GetDidDocumentResponse.getDefaultInstance();
+      public DIDComm.Messaging.Proto.API.GetDidDocumentResponse getDefaultInstanceForType() {
+        return DIDComm.Messaging.Proto.API.GetDidDocumentResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public API.GetDidDocumentResponse build() {
-        API.GetDidDocumentResponse result = buildPartial();
+      public DIDComm.Messaging.Proto.API.GetDidDocumentResponse build() {
+        DIDComm.Messaging.Proto.API.GetDidDocumentResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -9842,8 +9968,8 @@ public final class API {
       }
 
       @java.lang.Override
-      public API.GetDidDocumentResponse buildPartial() {
-        API.GetDidDocumentResponse result = new API.GetDidDocumentResponse(this);
+      public DIDComm.Messaging.Proto.API.GetDidDocumentResponse buildPartial() {
+        DIDComm.Messaging.Proto.API.GetDidDocumentResponse result = new DIDComm.Messaging.Proto.API.GetDidDocumentResponse(this);
         if (didDocumentBuilder_ == null) {
           result.didDocument_ = didDocument_;
         } else {
@@ -9887,16 +10013,16 @@ public final class API {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof API.GetDidDocumentResponse) {
-          return mergeFrom((API.GetDidDocumentResponse)other);
+        if (other instanceof DIDComm.Messaging.Proto.API.GetDidDocumentResponse) {
+          return mergeFrom((DIDComm.Messaging.Proto.API.GetDidDocumentResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(API.GetDidDocumentResponse other) {
-        if (other == API.GetDidDocumentResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(DIDComm.Messaging.Proto.API.GetDidDocumentResponse other) {
+        if (other == DIDComm.Messaging.Proto.API.GetDidDocumentResponse.getDefaultInstance()) return this;
         if (other.hasDidDocument()) {
           mergeDidDocument(other.getDidDocument());
         }
@@ -9915,11 +10041,11 @@ public final class API {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        API.GetDidDocumentResponse parsedMessage = null;
+        DIDComm.Messaging.Proto.API.GetDidDocumentResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (API.GetDidDocumentResponse) e.getUnfinishedMessage();
+          parsedMessage = (DIDComm.Messaging.Proto.API.GetDidDocumentResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -10064,12 +10190,12 @@ public final class API {
     }
 
     // @@protoc_insertion_point(class_scope:didcomm.messaging.GetDidDocumentResponse)
-    private static final API.GetDidDocumentResponse DEFAULT_INSTANCE;
+    private static final DIDComm.Messaging.Proto.API.GetDidDocumentResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new API.GetDidDocumentResponse();
+      DEFAULT_INSTANCE = new DIDComm.Messaging.Proto.API.GetDidDocumentResponse();
     }
 
-    public static API.GetDidDocumentResponse getDefaultInstance() {
+    public static DIDComm.Messaging.Proto.API.GetDidDocumentResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -10094,14 +10220,14 @@ public final class API {
     }
 
     @java.lang.Override
-    public API.GetDidDocumentResponse getDefaultInstanceForType() {
+    public DIDComm.Messaging.Proto.API.GetDidDocumentResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface KeyOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:didcomm.messaging.Key)
+  public interface JsonWebKeyOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:didcomm.messaging.JsonWebKey)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -10117,65 +10243,113 @@ public final class API {
         getKeyIdBytes();
 
     /**
-     * <code>bytes public_key = 2;</code>
-     * @return The publicKey.
+     * <pre>
+     * public_key
+     * </pre>
+     *
+     * <code>string x = 2;</code>
+     * @return The x.
      */
-    com.google.protobuf.ByteString getPublicKey();
-
+    java.lang.String getX();
     /**
-     * <code>bytes secret_key = 3;</code>
-     * @return The secretKey.
-     */
-    com.google.protobuf.ByteString getSecretKey();
-
-    /**
-     * <code>.didcomm.messaging.KeyType key_type = 4;</code>
-     * @return The enum numeric value on the wire for keyType.
-     */
-    int getKeyTypeValue();
-    /**
-     * <code>.didcomm.messaging.KeyType key_type = 4;</code>
-     * @return The keyType.
-     */
-    API.KeyType getKeyType();
-
-    /**
-     * <code>string fingerprint = 5;</code>
-     * @return The fingerprint.
-     */
-    java.lang.String getFingerprint();
-    /**
-     * <code>string fingerprint = 5;</code>
-     * @return The bytes for fingerprint.
+     * <pre>
+     * public_key
+     * </pre>
+     *
+     * <code>string x = 2;</code>
+     * @return The bytes for x.
      */
     com.google.protobuf.ByteString
-        getFingerprintBytes();
+        getXBytes();
+
+    /**
+     * <pre>
+     * public_key
+     * </pre>
+     *
+     * <code>string y = 3;</code>
+     * @return The y.
+     */
+    java.lang.String getY();
+    /**
+     * <pre>
+     * public_key
+     * </pre>
+     *
+     * <code>string y = 3;</code>
+     * @return The bytes for y.
+     */
+    com.google.protobuf.ByteString
+        getYBytes();
+
+    /**
+     * <pre>
+     * secret_key
+     * </pre>
+     *
+     * <code>string d = 4;</code>
+     * @return The d.
+     */
+    java.lang.String getD();
+    /**
+     * <pre>
+     * secret_key
+     * </pre>
+     *
+     * <code>string d = 4;</code>
+     * @return The bytes for d.
+     */
+    com.google.protobuf.ByteString
+        getDBytes();
+
+    /**
+     * <code>.didcomm.messaging.Crv crv = 5;</code>
+     * @return The enum numeric value on the wire for crv.
+     */
+    int getCrvValue();
+    /**
+     * <code>.didcomm.messaging.Crv crv = 5;</code>
+     * @return The crv.
+     */
+    DIDComm.Messaging.Proto.API.Crv getCrv();
+
+    /**
+     * <code>.didcomm.messaging.KeyType kty = 6;</code>
+     * @return The enum numeric value on the wire for kty.
+     */
+    int getKtyValue();
+    /**
+     * <code>.didcomm.messaging.KeyType kty = 6;</code>
+     * @return The kty.
+     */
+    DIDComm.Messaging.Proto.API.KeyType getKty();
   }
   /**
-   * Protobuf type {@code didcomm.messaging.Key}
+   * Protobuf type {@code didcomm.messaging.JsonWebKey}
    */
-  public static final class Key extends
+  public static final class JsonWebKey extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:didcomm.messaging.Key)
-      KeyOrBuilder {
+      // @@protoc_insertion_point(message_implements:didcomm.messaging.JsonWebKey)
+      JsonWebKeyOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Key.newBuilder() to construct.
-    private Key(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use JsonWebKey.newBuilder() to construct.
+    private JsonWebKey(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Key() {
+    private JsonWebKey() {
       keyId_ = "";
-      publicKey_ = com.google.protobuf.ByteString.EMPTY;
-      secretKey_ = com.google.protobuf.ByteString.EMPTY;
-      keyType_ = 0;
-      fingerprint_ = "";
+      x_ = "";
+      y_ = "";
+      d_ = "";
+      crv_ = 0;
+      kty_ = 0;
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new Key();
+      return new JsonWebKey();
     }
 
     @java.lang.Override
@@ -10183,7 +10357,7 @@ public final class API {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Key(
+    private JsonWebKey(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -10208,25 +10382,33 @@ public final class API {
               break;
             }
             case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              publicKey_ = input.readBytes();
+              x_ = s;
               break;
             }
             case 26: {
-
-              secretKey_ = input.readBytes();
-              break;
-            }
-            case 32: {
-              int rawValue = input.readEnum();
-
-              keyType_ = rawValue;
-              break;
-            }
-            case 42: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              fingerprint_ = s;
+              y_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              d_ = s;
+              break;
+            }
+            case 40: {
+              int rawValue = input.readEnum();
+
+              crv_ = rawValue;
+              break;
+            }
+            case 48: {
+              int rawValue = input.readEnum();
+
+              kty_ = rawValue;
               break;
             }
             default: {
@@ -10250,15 +10432,15 @@ public final class API {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return API.internal_static_didcomm_messaging_Key_descriptor;
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_JsonWebKey_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return API.internal_static_didcomm_messaging_Key_fieldAccessorTable
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_JsonWebKey_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              API.Key.class, API.Key.Builder.class);
+              DIDComm.Messaging.Proto.API.JsonWebKey.class, DIDComm.Messaging.Proto.API.JsonWebKey.Builder.class);
     }
 
     public static final int KEY_ID_FIELD_NUMBER = 1;
@@ -10299,83 +10481,180 @@ public final class API {
       }
     }
 
-    public static final int PUBLIC_KEY_FIELD_NUMBER = 2;
-    private com.google.protobuf.ByteString publicKey_;
+    public static final int X_FIELD_NUMBER = 2;
+    private volatile java.lang.Object x_;
     /**
-     * <code>bytes public_key = 2;</code>
-     * @return The publicKey.
+     * <pre>
+     * public_key
+     * </pre>
+     *
+     * <code>string x = 2;</code>
+     * @return The x.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString getPublicKey() {
-      return publicKey_;
-    }
-
-    public static final int SECRET_KEY_FIELD_NUMBER = 3;
-    private com.google.protobuf.ByteString secretKey_;
-    /**
-     * <code>bytes secret_key = 3;</code>
-     * @return The secretKey.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString getSecretKey() {
-      return secretKey_;
-    }
-
-    public static final int KEY_TYPE_FIELD_NUMBER = 4;
-    private int keyType_;
-    /**
-     * <code>.didcomm.messaging.KeyType key_type = 4;</code>
-     * @return The enum numeric value on the wire for keyType.
-     */
-    @java.lang.Override public int getKeyTypeValue() {
-      return keyType_;
-    }
-    /**
-     * <code>.didcomm.messaging.KeyType key_type = 4;</code>
-     * @return The keyType.
-     */
-    @java.lang.Override public API.KeyType getKeyType() {
-      @SuppressWarnings("deprecation")
-      API.KeyType result = API.KeyType.valueOf(keyType_);
-      return result == null ? API.KeyType.UNRECOGNIZED : result;
-    }
-
-    public static final int FINGERPRINT_FIELD_NUMBER = 5;
-    private volatile java.lang.Object fingerprint_;
-    /**
-     * <code>string fingerprint = 5;</code>
-     * @return The fingerprint.
-     */
-    @java.lang.Override
-    public java.lang.String getFingerprint() {
-      java.lang.Object ref = fingerprint_;
+    public java.lang.String getX() {
+      java.lang.Object ref = x_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        fingerprint_ = s;
+        x_ = s;
         return s;
       }
     }
     /**
-     * <code>string fingerprint = 5;</code>
-     * @return The bytes for fingerprint.
+     * <pre>
+     * public_key
+     * </pre>
+     *
+     * <code>string x = 2;</code>
+     * @return The bytes for x.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getFingerprintBytes() {
-      java.lang.Object ref = fingerprint_;
+        getXBytes() {
+      java.lang.Object ref = x_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        fingerprint_ = b;
+        x_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
+    }
+
+    public static final int Y_FIELD_NUMBER = 3;
+    private volatile java.lang.Object y_;
+    /**
+     * <pre>
+     * public_key
+     * </pre>
+     *
+     * <code>string y = 3;</code>
+     * @return The y.
+     */
+    @java.lang.Override
+    public java.lang.String getY() {
+      java.lang.Object ref = y_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        y_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * public_key
+     * </pre>
+     *
+     * <code>string y = 3;</code>
+     * @return The bytes for y.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getYBytes() {
+      java.lang.Object ref = y_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        y_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int D_FIELD_NUMBER = 4;
+    private volatile java.lang.Object d_;
+    /**
+     * <pre>
+     * secret_key
+     * </pre>
+     *
+     * <code>string d = 4;</code>
+     * @return The d.
+     */
+    @java.lang.Override
+    public java.lang.String getD() {
+      java.lang.Object ref = d_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        d_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * secret_key
+     * </pre>
+     *
+     * <code>string d = 4;</code>
+     * @return The bytes for d.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDBytes() {
+      java.lang.Object ref = d_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        d_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CRV_FIELD_NUMBER = 5;
+    private int crv_;
+    /**
+     * <code>.didcomm.messaging.Crv crv = 5;</code>
+     * @return The enum numeric value on the wire for crv.
+     */
+    @java.lang.Override public int getCrvValue() {
+      return crv_;
+    }
+    /**
+     * <code>.didcomm.messaging.Crv crv = 5;</code>
+     * @return The crv.
+     */
+    @java.lang.Override public DIDComm.Messaging.Proto.API.Crv getCrv() {
+      @SuppressWarnings("deprecation")
+      DIDComm.Messaging.Proto.API.Crv result = DIDComm.Messaging.Proto.API.Crv.valueOf(crv_);
+      return result == null ? DIDComm.Messaging.Proto.API.Crv.UNRECOGNIZED : result;
+    }
+
+    public static final int KTY_FIELD_NUMBER = 6;
+    private int kty_;
+    /**
+     * <code>.didcomm.messaging.KeyType kty = 6;</code>
+     * @return The enum numeric value on the wire for kty.
+     */
+    @java.lang.Override public int getKtyValue() {
+      return kty_;
+    }
+    /**
+     * <code>.didcomm.messaging.KeyType kty = 6;</code>
+     * @return The kty.
+     */
+    @java.lang.Override public DIDComm.Messaging.Proto.API.KeyType getKty() {
+      @SuppressWarnings("deprecation")
+      DIDComm.Messaging.Proto.API.KeyType result = DIDComm.Messaging.Proto.API.KeyType.valueOf(kty_);
+      return result == null ? DIDComm.Messaging.Proto.API.KeyType.UNRECOGNIZED : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -10395,17 +10674,20 @@ public final class API {
       if (!getKeyIdBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, keyId_);
       }
-      if (!publicKey_.isEmpty()) {
-        output.writeBytes(2, publicKey_);
+      if (!getXBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, x_);
       }
-      if (!secretKey_.isEmpty()) {
-        output.writeBytes(3, secretKey_);
+      if (!getYBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, y_);
       }
-      if (keyType_ != API.KeyType.x25519.getNumber()) {
-        output.writeEnum(4, keyType_);
+      if (!getDBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, d_);
       }
-      if (!getFingerprintBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, fingerprint_);
+      if (crv_ != DIDComm.Messaging.Proto.API.Crv.Ed25519.getNumber()) {
+        output.writeEnum(5, crv_);
+      }
+      if (kty_ != DIDComm.Messaging.Proto.API.KeyType.OKP.getNumber()) {
+        output.writeEnum(6, kty_);
       }
       unknownFields.writeTo(output);
     }
@@ -10419,20 +10701,22 @@ public final class API {
       if (!getKeyIdBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, keyId_);
       }
-      if (!publicKey_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, publicKey_);
+      if (!getXBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, x_);
       }
-      if (!secretKey_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, secretKey_);
+      if (!getYBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, y_);
       }
-      if (keyType_ != API.KeyType.x25519.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(4, keyType_);
+      if (!getDBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, d_);
       }
-      if (!getFingerprintBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, fingerprint_);
+      if (crv_ != DIDComm.Messaging.Proto.API.Crv.Ed25519.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(5, crv_);
+      }
+      if (kty_ != DIDComm.Messaging.Proto.API.KeyType.OKP.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(6, kty_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -10444,20 +10728,21 @@ public final class API {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof API.Key)) {
+      if (!(obj instanceof DIDComm.Messaging.Proto.API.JsonWebKey)) {
         return super.equals(obj);
       }
-      API.Key other = (API.Key) obj;
+      DIDComm.Messaging.Proto.API.JsonWebKey other = (DIDComm.Messaging.Proto.API.JsonWebKey) obj;
 
       if (!getKeyId()
           .equals(other.getKeyId())) return false;
-      if (!getPublicKey()
-          .equals(other.getPublicKey())) return false;
-      if (!getSecretKey()
-          .equals(other.getSecretKey())) return false;
-      if (keyType_ != other.keyType_) return false;
-      if (!getFingerprint()
-          .equals(other.getFingerprint())) return false;
+      if (!getX()
+          .equals(other.getX())) return false;
+      if (!getY()
+          .equals(other.getY())) return false;
+      if (!getD()
+          .equals(other.getD())) return false;
+      if (crv_ != other.crv_) return false;
+      if (kty_ != other.kty_) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -10471,82 +10756,84 @@ public final class API {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + KEY_ID_FIELD_NUMBER;
       hash = (53 * hash) + getKeyId().hashCode();
-      hash = (37 * hash) + PUBLIC_KEY_FIELD_NUMBER;
-      hash = (53 * hash) + getPublicKey().hashCode();
-      hash = (37 * hash) + SECRET_KEY_FIELD_NUMBER;
-      hash = (53 * hash) + getSecretKey().hashCode();
-      hash = (37 * hash) + KEY_TYPE_FIELD_NUMBER;
-      hash = (53 * hash) + keyType_;
-      hash = (37 * hash) + FINGERPRINT_FIELD_NUMBER;
-      hash = (53 * hash) + getFingerprint().hashCode();
+      hash = (37 * hash) + X_FIELD_NUMBER;
+      hash = (53 * hash) + getX().hashCode();
+      hash = (37 * hash) + Y_FIELD_NUMBER;
+      hash = (53 * hash) + getY().hashCode();
+      hash = (37 * hash) + D_FIELD_NUMBER;
+      hash = (53 * hash) + getD().hashCode();
+      hash = (37 * hash) + CRV_FIELD_NUMBER;
+      hash = (53 * hash) + crv_;
+      hash = (37 * hash) + KTY_FIELD_NUMBER;
+      hash = (53 * hash) + kty_;
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static API.Key parseFrom(
+    public static DIDComm.Messaging.Proto.API.JsonWebKey parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.Key parseFrom(
+    public static DIDComm.Messaging.Proto.API.JsonWebKey parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.Key parseFrom(
+    public static DIDComm.Messaging.Proto.API.JsonWebKey parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.Key parseFrom(
+    public static DIDComm.Messaging.Proto.API.JsonWebKey parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.Key parseFrom(byte[] data)
+    public static DIDComm.Messaging.Proto.API.JsonWebKey parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static API.Key parseFrom(
+    public static DIDComm.Messaging.Proto.API.JsonWebKey parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static API.Key parseFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.JsonWebKey parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.Key parseFrom(
+    public static DIDComm.Messaging.Proto.API.JsonWebKey parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.Key parseDelimitedFrom(java.io.InputStream input)
+    public static DIDComm.Messaging.Proto.API.JsonWebKey parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static API.Key parseDelimitedFrom(
+    public static DIDComm.Messaging.Proto.API.JsonWebKey parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static API.Key parseFrom(
+    public static DIDComm.Messaging.Proto.API.JsonWebKey parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static API.Key parseFrom(
+    public static DIDComm.Messaging.Proto.API.JsonWebKey parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -10559,7 +10846,7 @@ public final class API {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(API.Key prototype) {
+    public static Builder newBuilder(DIDComm.Messaging.Proto.API.JsonWebKey prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -10575,26 +10862,26 @@ public final class API {
       return builder;
     }
     /**
-     * Protobuf type {@code didcomm.messaging.Key}
+     * Protobuf type {@code didcomm.messaging.JsonWebKey}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:didcomm.messaging.Key)
-        API.KeyOrBuilder {
+        // @@protoc_insertion_point(builder_implements:didcomm.messaging.JsonWebKey)
+        DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return API.internal_static_didcomm_messaging_Key_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_JsonWebKey_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return API.internal_static_didcomm_messaging_Key_fieldAccessorTable
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_JsonWebKey_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                API.Key.class, API.Key.Builder.class);
+                DIDComm.Messaging.Proto.API.JsonWebKey.class, DIDComm.Messaging.Proto.API.JsonWebKey.Builder.class);
       }
 
-      // Construct using API.Key.newBuilder()
+      // Construct using DIDComm.Messaging.Proto.API.JsonWebKey.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -10614,13 +10901,15 @@ public final class API {
         super.clear();
         keyId_ = "";
 
-        publicKey_ = com.google.protobuf.ByteString.EMPTY;
+        x_ = "";
 
-        secretKey_ = com.google.protobuf.ByteString.EMPTY;
+        y_ = "";
 
-        keyType_ = 0;
+        d_ = "";
 
-        fingerprint_ = "";
+        crv_ = 0;
+
+        kty_ = 0;
 
         return this;
       }
@@ -10628,17 +10917,17 @@ public final class API {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return API.internal_static_didcomm_messaging_Key_descriptor;
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_JsonWebKey_descriptor;
       }
 
       @java.lang.Override
-      public API.Key getDefaultInstanceForType() {
-        return API.Key.getDefaultInstance();
+      public DIDComm.Messaging.Proto.API.JsonWebKey getDefaultInstanceForType() {
+        return DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance();
       }
 
       @java.lang.Override
-      public API.Key build() {
-        API.Key result = buildPartial();
+      public DIDComm.Messaging.Proto.API.JsonWebKey build() {
+        DIDComm.Messaging.Proto.API.JsonWebKey result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -10646,13 +10935,14 @@ public final class API {
       }
 
       @java.lang.Override
-      public API.Key buildPartial() {
-        API.Key result = new API.Key(this);
+      public DIDComm.Messaging.Proto.API.JsonWebKey buildPartial() {
+        DIDComm.Messaging.Proto.API.JsonWebKey result = new DIDComm.Messaging.Proto.API.JsonWebKey(this);
         result.keyId_ = keyId_;
-        result.publicKey_ = publicKey_;
-        result.secretKey_ = secretKey_;
-        result.keyType_ = keyType_;
-        result.fingerprint_ = fingerprint_;
+        result.x_ = x_;
+        result.y_ = y_;
+        result.d_ = d_;
+        result.crv_ = crv_;
+        result.kty_ = kty_;
         onBuilt();
         return result;
       }
@@ -10691,32 +10981,37 @@ public final class API {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof API.Key) {
-          return mergeFrom((API.Key)other);
+        if (other instanceof DIDComm.Messaging.Proto.API.JsonWebKey) {
+          return mergeFrom((DIDComm.Messaging.Proto.API.JsonWebKey)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(API.Key other) {
-        if (other == API.Key.getDefaultInstance()) return this;
+      public Builder mergeFrom(DIDComm.Messaging.Proto.API.JsonWebKey other) {
+        if (other == DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance()) return this;
         if (!other.getKeyId().isEmpty()) {
           keyId_ = other.keyId_;
           onChanged();
         }
-        if (other.getPublicKey() != com.google.protobuf.ByteString.EMPTY) {
-          setPublicKey(other.getPublicKey());
-        }
-        if (other.getSecretKey() != com.google.protobuf.ByteString.EMPTY) {
-          setSecretKey(other.getSecretKey());
-        }
-        if (other.keyType_ != 0) {
-          setKeyTypeValue(other.getKeyTypeValue());
-        }
-        if (!other.getFingerprint().isEmpty()) {
-          fingerprint_ = other.fingerprint_;
+        if (!other.getX().isEmpty()) {
+          x_ = other.x_;
           onChanged();
+        }
+        if (!other.getY().isEmpty()) {
+          y_ = other.y_;
+          onChanged();
+        }
+        if (!other.getD().isEmpty()) {
+          d_ = other.d_;
+          onChanged();
+        }
+        if (other.crv_ != 0) {
+          setCrvValue(other.getCrvValue());
+        }
+        if (other.kty_ != 0) {
+          setKtyValue(other.getKtyValue());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -10733,11 +11028,11 @@ public final class API {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        API.Key parsedMessage = null;
+        DIDComm.Messaging.Proto.API.JsonWebKey parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (API.Key) e.getUnfinishedMessage();
+          parsedMessage = (DIDComm.Messaging.Proto.API.JsonWebKey) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -10823,200 +11118,398 @@ public final class API {
         return this;
       }
 
-      private com.google.protobuf.ByteString publicKey_ = com.google.protobuf.ByteString.EMPTY;
+      private java.lang.Object x_ = "";
       /**
-       * <code>bytes public_key = 2;</code>
-       * @return The publicKey.
+       * <pre>
+       * public_key
+       * </pre>
+       *
+       * <code>string x = 2;</code>
+       * @return The x.
        */
-      @java.lang.Override
-      public com.google.protobuf.ByteString getPublicKey() {
-        return publicKey_;
-      }
-      /**
-       * <code>bytes public_key = 2;</code>
-       * @param value The publicKey to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPublicKey(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        publicKey_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bytes public_key = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPublicKey() {
-        
-        publicKey_ = getDefaultInstance().getPublicKey();
-        onChanged();
-        return this;
-      }
-
-      private com.google.protobuf.ByteString secretKey_ = com.google.protobuf.ByteString.EMPTY;
-      /**
-       * <code>bytes secret_key = 3;</code>
-       * @return The secretKey.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString getSecretKey() {
-        return secretKey_;
-      }
-      /**
-       * <code>bytes secret_key = 3;</code>
-       * @param value The secretKey to set.
-       * @return This builder for chaining.
-       */
-      public Builder setSecretKey(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        secretKey_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bytes secret_key = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearSecretKey() {
-        
-        secretKey_ = getDefaultInstance().getSecretKey();
-        onChanged();
-        return this;
-      }
-
-      private int keyType_ = 0;
-      /**
-       * <code>.didcomm.messaging.KeyType key_type = 4;</code>
-       * @return The enum numeric value on the wire for keyType.
-       */
-      @java.lang.Override public int getKeyTypeValue() {
-        return keyType_;
-      }
-      /**
-       * <code>.didcomm.messaging.KeyType key_type = 4;</code>
-       * @param value The enum numeric value on the wire for keyType to set.
-       * @return This builder for chaining.
-       */
-      public Builder setKeyTypeValue(int value) {
-        
-        keyType_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.didcomm.messaging.KeyType key_type = 4;</code>
-       * @return The keyType.
-       */
-      @java.lang.Override
-      public API.KeyType getKeyType() {
-        @SuppressWarnings("deprecation")
-        API.KeyType result = API.KeyType.valueOf(keyType_);
-        return result == null ? API.KeyType.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.didcomm.messaging.KeyType key_type = 4;</code>
-       * @param value The keyType to set.
-       * @return This builder for chaining.
-       */
-      public Builder setKeyType(API.KeyType value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        keyType_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.didcomm.messaging.KeyType key_type = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearKeyType() {
-        
-        keyType_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object fingerprint_ = "";
-      /**
-       * <code>string fingerprint = 5;</code>
-       * @return The fingerprint.
-       */
-      public java.lang.String getFingerprint() {
-        java.lang.Object ref = fingerprint_;
+      public java.lang.String getX() {
+        java.lang.Object ref = x_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          fingerprint_ = s;
+          x_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string fingerprint = 5;</code>
-       * @return The bytes for fingerprint.
+       * <pre>
+       * public_key
+       * </pre>
+       *
+       * <code>string x = 2;</code>
+       * @return The bytes for x.
        */
       public com.google.protobuf.ByteString
-          getFingerprintBytes() {
-        java.lang.Object ref = fingerprint_;
+          getXBytes() {
+        java.lang.Object ref = x_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          fingerprint_ = b;
+          x_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string fingerprint = 5;</code>
-       * @param value The fingerprint to set.
+       * <pre>
+       * public_key
+       * </pre>
+       *
+       * <code>string x = 2;</code>
+       * @param value The x to set.
        * @return This builder for chaining.
        */
-      public Builder setFingerprint(
+      public Builder setX(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        fingerprint_ = value;
+        x_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string fingerprint = 5;</code>
+       * <pre>
+       * public_key
+       * </pre>
+       *
+       * <code>string x = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearFingerprint() {
+      public Builder clearX() {
         
-        fingerprint_ = getDefaultInstance().getFingerprint();
+        x_ = getDefaultInstance().getX();
         onChanged();
         return this;
       }
       /**
-       * <code>string fingerprint = 5;</code>
-       * @param value The bytes for fingerprint to set.
+       * <pre>
+       * public_key
+       * </pre>
+       *
+       * <code>string x = 2;</code>
+       * @param value The bytes for x to set.
        * @return This builder for chaining.
        */
-      public Builder setFingerprintBytes(
+      public Builder setXBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        fingerprint_ = value;
+        x_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object y_ = "";
+      /**
+       * <pre>
+       * public_key
+       * </pre>
+       *
+       * <code>string y = 3;</code>
+       * @return The y.
+       */
+      public java.lang.String getY() {
+        java.lang.Object ref = y_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          y_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * public_key
+       * </pre>
+       *
+       * <code>string y = 3;</code>
+       * @return The bytes for y.
+       */
+      public com.google.protobuf.ByteString
+          getYBytes() {
+        java.lang.Object ref = y_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          y_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * public_key
+       * </pre>
+       *
+       * <code>string y = 3;</code>
+       * @param value The y to set.
+       * @return This builder for chaining.
+       */
+      public Builder setY(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        y_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * public_key
+       * </pre>
+       *
+       * <code>string y = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearY() {
+        
+        y_ = getDefaultInstance().getY();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * public_key
+       * </pre>
+       *
+       * <code>string y = 3;</code>
+       * @param value The bytes for y to set.
+       * @return This builder for chaining.
+       */
+      public Builder setYBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        y_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object d_ = "";
+      /**
+       * <pre>
+       * secret_key
+       * </pre>
+       *
+       * <code>string d = 4;</code>
+       * @return The d.
+       */
+      public java.lang.String getD() {
+        java.lang.Object ref = d_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          d_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * secret_key
+       * </pre>
+       *
+       * <code>string d = 4;</code>
+       * @return The bytes for d.
+       */
+      public com.google.protobuf.ByteString
+          getDBytes() {
+        java.lang.Object ref = d_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          d_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * secret_key
+       * </pre>
+       *
+       * <code>string d = 4;</code>
+       * @param value The d to set.
+       * @return This builder for chaining.
+       */
+      public Builder setD(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        d_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * secret_key
+       * </pre>
+       *
+       * <code>string d = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearD() {
+        
+        d_ = getDefaultInstance().getD();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * secret_key
+       * </pre>
+       *
+       * <code>string d = 4;</code>
+       * @param value The bytes for d to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        d_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int crv_ = 0;
+      /**
+       * <code>.didcomm.messaging.Crv crv = 5;</code>
+       * @return The enum numeric value on the wire for crv.
+       */
+      @java.lang.Override public int getCrvValue() {
+        return crv_;
+      }
+      /**
+       * <code>.didcomm.messaging.Crv crv = 5;</code>
+       * @param value The enum numeric value on the wire for crv to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCrvValue(int value) {
+        
+        crv_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.didcomm.messaging.Crv crv = 5;</code>
+       * @return The crv.
+       */
+      @java.lang.Override
+      public DIDComm.Messaging.Proto.API.Crv getCrv() {
+        @SuppressWarnings("deprecation")
+        DIDComm.Messaging.Proto.API.Crv result = DIDComm.Messaging.Proto.API.Crv.valueOf(crv_);
+        return result == null ? DIDComm.Messaging.Proto.API.Crv.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.didcomm.messaging.Crv crv = 5;</code>
+       * @param value The crv to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCrv(DIDComm.Messaging.Proto.API.Crv value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        crv_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.didcomm.messaging.Crv crv = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCrv() {
+        
+        crv_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int kty_ = 0;
+      /**
+       * <code>.didcomm.messaging.KeyType kty = 6;</code>
+       * @return The enum numeric value on the wire for kty.
+       */
+      @java.lang.Override public int getKtyValue() {
+        return kty_;
+      }
+      /**
+       * <code>.didcomm.messaging.KeyType kty = 6;</code>
+       * @param value The enum numeric value on the wire for kty to set.
+       * @return This builder for chaining.
+       */
+      public Builder setKtyValue(int value) {
+        
+        kty_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.didcomm.messaging.KeyType kty = 6;</code>
+       * @return The kty.
+       */
+      @java.lang.Override
+      public DIDComm.Messaging.Proto.API.KeyType getKty() {
+        @SuppressWarnings("deprecation")
+        DIDComm.Messaging.Proto.API.KeyType result = DIDComm.Messaging.Proto.API.KeyType.valueOf(kty_);
+        return result == null ? DIDComm.Messaging.Proto.API.KeyType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.didcomm.messaging.KeyType kty = 6;</code>
+       * @param value The kty to set.
+       * @return This builder for chaining.
+       */
+      public Builder setKty(DIDComm.Messaging.Proto.API.KeyType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        kty_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.didcomm.messaging.KeyType kty = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearKty() {
+        
+        kty_ = 0;
         onChanged();
         return this;
       }
@@ -11033,41 +11526,41 @@ public final class API {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:didcomm.messaging.Key)
+      // @@protoc_insertion_point(builder_scope:didcomm.messaging.JsonWebKey)
     }
 
-    // @@protoc_insertion_point(class_scope:didcomm.messaging.Key)
-    private static final API.Key DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:didcomm.messaging.JsonWebKey)
+    private static final DIDComm.Messaging.Proto.API.JsonWebKey DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new API.Key();
+      DEFAULT_INSTANCE = new DIDComm.Messaging.Proto.API.JsonWebKey();
     }
 
-    public static API.Key getDefaultInstance() {
+    public static DIDComm.Messaging.Proto.API.JsonWebKey getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Key>
-        PARSER = new com.google.protobuf.AbstractParser<Key>() {
+    private static final com.google.protobuf.Parser<JsonWebKey>
+        PARSER = new com.google.protobuf.AbstractParser<JsonWebKey>() {
       @java.lang.Override
-      public Key parsePartialFrom(
+      public JsonWebKey parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Key(input, extensionRegistry);
+        return new JsonWebKey(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Key> parser() {
+    public static com.google.protobuf.Parser<JsonWebKey> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Key> getParserForType() {
+    public com.google.protobuf.Parser<JsonWebKey> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public API.Key getDefaultInstanceForType() {
+    public DIDComm.Messaging.Proto.API.JsonWebKey getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -11144,10 +11637,10 @@ public final class API {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_didcomm_messaging_GetDidDocumentResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_didcomm_messaging_Key_descriptor;
+    internal_static_didcomm_messaging_JsonWebKey_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_didcomm_messaging_Key_fieldAccessorTable;
+      internal_static_didcomm_messaging_JsonWebKey_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -11158,52 +11651,55 @@ public final class API {
   static {
     java.lang.String[] descriptorData = {
       "\n\tapi.proto\022\021didcomm.messaging\032\016security" +
-      ".proto\032\034google/protobuf/struct.proto\"P\n\022" +
-      "GenerateKeyRequest\022\014\n\004seed\030\001 \001(\014\022,\n\010key_" +
-      "type\030\002 \001(\0162\032.didcomm.messaging.KeyType\":" +
-      "\n\023GenerateKeyResponse\022#\n\003key\030\001 \001(\0132\026.did" +
-      "comm.messaging.Key\"i\n\021ConvertKeyRequest\022" +
-      "#\n\003key\030\001 \001(\0132\026.didcomm.messaging.Key\022/\n\013" +
-      "target_type\030\002 \001(\0162\032.didcomm.messaging.Ke" +
-      "yType\"9\n\022ConvertKeyResponse\022#\n\003key\030\001 \001(\013" +
-      "2\026.didcomm.messaging.Key\"x\n\013SignRequest\022" +
-      "\017\n\007payload\030\001 \001(\014\022#\n\003key\030\002 \001(\0132\026.didcomm." +
-      "messaging.Key\0223\n\tappend_to\030\003 \001(\0132 .didco" +
-      "mm.messaging.SignedMessage\"A\n\014SignRespon" +
-      "se\0221\n\007message\030\001 \001(\0132 .didcomm.messaging." +
-      "SignedMessage\"g\n\rVerifyRequest\0221\n\007messag" +
-      "e\030\001 \001(\0132 .didcomm.messaging.SignedMessag" +
-      "e\022#\n\003key\030\002 \001(\0132\026.didcomm.messaging.Key\"\"" +
-      "\n\016VerifyResponse\022\020\n\010is_valid\030\001 \001(\010\"\377\001\n\013P" +
-      "ackRequest\022*\n\nsender_key\030\001 \001(\0132\026.didcomm" +
-      ".messaging.Key\022,\n\014receiver_key\030\002 \001(\0132\026.d" +
-      "idcomm.messaging.Key\022\027\n\017associated_data\030" +
-      "\003 \001(\014\022\021\n\tplaintext\030\004 \001(\014\022/\n\004mode\030\005 \001(\0162!" +
-      ".didcomm.messaging.EncryptionMode\0229\n\talg" +
-      "orithm\030\006 \001(\0162&.didcomm.messaging.Encrypt" +
-      "ionAlgorithm\"D\n\014PackResponse\0224\n\007message\030" +
-      "\001 \001(\0132#.didcomm.messaging.EncryptedMessa" +
-      "ge\"\237\001\n\rUnpackRequest\022*\n\nsender_key\030\001 \001(\013" +
-      "2\026.didcomm.messaging.Key\022,\n\014receiver_key" +
-      "\030\002 \001(\0132\026.didcomm.messaging.Key\0224\n\007messag" +
-      "e\030\003 \001(\0132#.didcomm.messaging.EncryptedMes" +
-      "sage\"#\n\016UnpackResponse\022\021\n\tplaintext\030\001 \001(" +
-      "\014\"<\n\025GetDidDocumentRequest\022#\n\003key\030\001 \001(\0132" +
-      "\026.didcomm.messaging.Key\"G\n\026GetDidDocumen" +
-      "tResponse\022-\n\014did_document\030\001 \001(\0132\027.google" +
-      ".protobuf.Struct\"\205\001\n\003Key\022\023\n\006key_id\030\001 \001(\t" +
-      "R\003kid\022\022\n\npublic_key\030\002 \001(\014\022\022\n\nsecret_key\030" +
-      "\003 \001(\014\022,\n\010key_type\030\004 \001(\0162\032.didcomm.messag" +
-      "ing.KeyType\022\023\n\013fingerprint\030\005 \001(\t*,\n\007KeyT" +
-      "ype\022\n\n\006x25519\020\000\022\010\n\004p256\020\001\022\013\n\007ed25519\020\002BI" +
-      "\n\027DIDComm.Messaging.ProtoB\003APIZ\025didcomm." +
-      "org/messaging\252\002\021DIDComm.Messagingb\006proto" +
-      "3"
+      ".proto\032\034google/protobuf/struct.proto\"L\n\022" +
+      "GenerateKeyRequest\022\014\n\004seed\030\001 \001(\014\022(\n\010key_" +
+      "type\030\002 \001(\0162\026.didcomm.messaging.Crv\"A\n\023Ge" +
+      "nerateKeyResponse\022*\n\003key\030\001 \001(\0132\035.didcomm" +
+      ".messaging.JsonWebKey\"l\n\021ConvertKeyReque" +
+      "st\022*\n\003key\030\001 \001(\0132\035.didcomm.messaging.Json" +
+      "WebKey\022+\n\013target_type\030\002 \001(\0162\026.didcomm.me" +
+      "ssaging.Crv\"@\n\022ConvertKeyResponse\022*\n\003key" +
+      "\030\001 \001(\0132\035.didcomm.messaging.JsonWebKey\"\177\n" +
+      "\013SignRequest\022\017\n\007payload\030\001 \001(\014\022*\n\003key\030\002 \001" +
+      "(\0132\035.didcomm.messaging.JsonWebKey\0223\n\tapp" +
+      "end_to\030\003 \001(\0132 .didcomm.messaging.SignedM" +
+      "essage\"A\n\014SignResponse\0221\n\007message\030\001 \001(\0132" +
+      " .didcomm.messaging.SignedMessage\"n\n\rVer" +
+      "ifyRequest\0221\n\007message\030\001 \001(\0132 .didcomm.me" +
+      "ssaging.SignedMessage\022*\n\003key\030\002 \001(\0132\035.did" +
+      "comm.messaging.JsonWebKey\"\"\n\016VerifyRespo" +
+      "nse\022\020\n\010is_valid\030\001 \001(\010\"\215\002\n\013PackRequest\0221\n" +
+      "\nsender_key\030\001 \001(\0132\035.didcomm.messaging.Js" +
+      "onWebKey\0223\n\014receiver_key\030\002 \001(\0132\035.didcomm" +
+      ".messaging.JsonWebKey\022\027\n\017associated_data" +
+      "\030\003 \001(\014\022\021\n\tplaintext\030\004 \001(\014\022/\n\004mode\030\005 \001(\0162" +
+      "!.didcomm.messaging.EncryptionMode\0229\n\tal" +
+      "gorithm\030\006 \001(\0162&.didcomm.messaging.Encryp" +
+      "tionAlgorithm\"D\n\014PackResponse\0224\n\007message" +
+      "\030\001 \001(\0132#.didcomm.messaging.EncryptedMess" +
+      "age\"\255\001\n\rUnpackRequest\0221\n\nsender_key\030\001 \001(" +
+      "\0132\035.didcomm.messaging.JsonWebKey\0223\n\014rece" +
+      "iver_key\030\002 \001(\0132\035.didcomm.messaging.JsonW" +
+      "ebKey\0224\n\007message\030\003 \001(\0132#.didcomm.messagi" +
+      "ng.EncryptedMessage\"#\n\016UnpackResponse\022\021\n" +
+      "\tplaintext\030\001 \001(\014\"C\n\025GetDidDocumentReques" +
+      "t\022*\n\003key\030\001 \001(\0132\035.didcomm.messaging.JsonW" +
+      "ebKey\"G\n\026GetDidDocumentResponse\022-\n\014did_d" +
+      "ocument\030\001 \001(\0132\027.google.protobuf.Struct\"\220" +
+      "\001\n\nJsonWebKey\022\023\n\006key_id\030\001 \001(\tR\003kid\022\t\n\001x\030" +
+      "\002 \001(\t\022\t\n\001y\030\003 \001(\t\022\t\n\001d\030\004 \001(\t\022#\n\003crv\030\005 \001(\016" +
+      "2\026.didcomm.messaging.Crv\022\'\n\003kty\030\006 \001(\0162\032." +
+      "didcomm.messaging.KeyType*H\n\003Crv\022\013\n\007Ed25" +
+      "519\020\000\022\n\n\006X25519\020\001\022\010\n\004P256\020\002\022\017\n\013Bls12381_" +
+      "G2\020\003\022\r\n\tsecp256k1\020\004*\032\n\007KeyType\022\007\n\003OKP\020\000\022" +
+      "\006\n\002EC\020\001BI\n\027DIDComm.Messaging.ProtoB\003APIZ" +
+      "\025didcomm.org/messaging\252\002\021DIDComm.Messagi" +
+      "ngb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          Security.getDescriptor(),
+          DIDComm.Messaging.Proto.Security.getDescriptor(),
           com.google.protobuf.StructProto.getDescriptor(),
         });
     internal_static_didcomm_messaging_GenerateKeyRequest_descriptor =
@@ -11290,13 +11786,13 @@ public final class API {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_didcomm_messaging_GetDidDocumentResponse_descriptor,
         new java.lang.String[] { "DidDocument", });
-    internal_static_didcomm_messaging_Key_descriptor =
+    internal_static_didcomm_messaging_JsonWebKey_descriptor =
       getDescriptor().getMessageTypes().get(14);
-    internal_static_didcomm_messaging_Key_fieldAccessorTable = new
+    internal_static_didcomm_messaging_JsonWebKey_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_didcomm_messaging_Key_descriptor,
-        new java.lang.String[] { "KeyId", "PublicKey", "SecretKey", "KeyType", "Fingerprint", });
-    Security.getDescriptor();
+        internal_static_didcomm_messaging_JsonWebKey_descriptor,
+        new java.lang.String[] { "KeyId", "X", "Y", "D", "Crv", "Kty", });
+    DIDComm.Messaging.Proto.Security.getDescriptor();
     com.google.protobuf.StructProto.getDescriptor();
   }
 

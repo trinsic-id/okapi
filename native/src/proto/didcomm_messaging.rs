@@ -107,7 +107,7 @@ pub struct BasicMessage {
 pub struct GenerateKeyRequest {
     #[prost(bytes, tag="1")]
     pub seed: std::vec::Vec<u8>,
-    #[prost(enumeration="KeyType", tag="2")]
+    #[prost(enumeration="Crv", tag="2")]
     pub key_type: i32,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]

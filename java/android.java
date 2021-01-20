@@ -7,9 +7,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import DIDComm.Messaging.Proto.API;
-import DIDComm.Messaging.Proto.BasicMsg;
-import DIDComm.Messaging.Proto.Security;
 import DIDComm.Messaging.gRPC.DIDComm;
 import Greeter.Common.Keys;
 
