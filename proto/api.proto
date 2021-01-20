@@ -89,9 +89,8 @@ enum Crv {
   Ed25519 = 0;
   X25519 = 1;
   P256 = 2;
-  secp256k1 = 3;
-  Bls12381_G1 = 4;
-  Bls12381_G2 = 5;
+  Bls12381_G2 = 3;
+  secp256k1 = 4;
 }
 
 enum KeyType {
