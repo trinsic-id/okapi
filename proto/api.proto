@@ -12,22 +12,22 @@ import "google/protobuf/struct.proto";
 
 message GenerateKeyRequest {
     bytes seed = 1;
-    KeyType key_type = 2;
+    Crv key_type = 2;
 }
 message GenerateKeyResponse {
-    Key key = 1;
+    JsonWebKey key = 1;
 }
 message ConvertKeyRequest {
-    Key key = 1;
-    KeyType target_type = 2;
+    JsonWebKey key = 1;
+    Crv target_type = 2;
 }
 message ConvertKeyResponse {
-    Key key = 1;
+    JsonWebKey key = 1;
 }
 
 message SignRequest {
     bytes payload = 1;
-    Key key = 2;
+    JsonWebKey key = 2;
     SignedMessage append_to = 3;
 }
 
@@ -37,7 +37,7 @@ message SignResponse {
 
 message VerifyRequest {
     SignedMessage message = 1;
-    Key key = 2;
+    JsonWebKey key = 2;
 }
 
 message VerifyResponse {
@@ -45,8 +45,8 @@ message VerifyResponse {
 }
 
 message PackRequest {
-    Key sender_key = 1;
-    Key receiver_key = 2;
+    JsonWebKey sender_key = 1;
+    JsonWebKey receiver_key = 2;
     bytes associated_data = 3;
     bytes plaintext = 4;
     EncryptionMode mode = 5;
@@ -58,8 +58,8 @@ message PackResponse {
 }
 
 message UnpackRequest {
-    Key sender_key = 1;
-    Key receiver_key = 2;
+    JsonWebKey sender_key = 1;
+    JsonWebKey receiver_key = 2;
 
     EncryptedMessage message = 3;
 }
@@ -69,22 +69,31 @@ message UnpackResponse {
 }
 
 message GetDidDocumentRequest {
-    Key key = 1;
+    JsonWebKey key = 1;
 }
 
 message GetDidDocumentResponse {
     google.protobuf.Struct did_document = 1;
 }
 
-message Key {
+message JsonWebKey {
     string key_id = 1                               [json_name="kid"];
-    bytes public_key = 2;
-    bytes secret_key = 3;
-    KeyType key_type = 4;
-    string fingerprint = 5;
+    string x = 2;              // public_key
+    string y = 3;              // public_key
+    string d = 4;              // secret_key
+    Crv crv = 5;
+    KeyType kty = 6;
 }
+
+enum Crv {
+  Ed25519 = 0;
+  X25519 = 1;
+  P256 = 2;
+  Bls12381_G2 = 3;
+  secp256k1 = 4;
+}
+
 enum KeyType {
-    x25519 = 0;
-    p256 = 1;
-    ed25519 = 2;
+  OKP = 0;
+  EC = 1;
 }
