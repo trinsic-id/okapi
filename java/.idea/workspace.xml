@@ -7,16 +7,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35cbd97a-3bf3-4880-95f3-19575e53d686" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/junit_junit_4_13_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android.java" beforeDir="false" afterPath="$PROJECT_DIR$/android.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/libdidcommgrpc.dylib" beforeDir="false" afterPath="$PROJECT_DIR$/resources/libdidcommgrpc.dylib" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DIDComm/Messaging/Proto/API.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DIDComm/Messaging/Proto/BasicMsg.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DIDComm/Messaging/Proto/DIDComm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DIDComm/Messaging/Proto/Security.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Greeter/Common/Keys.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Greeter/Common/Keys.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java.iml" beforeDir="false" afterPath="$PROJECT_DIR$/java.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/DIDComm/Messaging/gRPC/DIDKeyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/DIDComm/Messaging/gRPC/DIDKeyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../proto/api.proto" beforeDir="false" afterPath="$PROJECT_DIR$/../proto/api.proto" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,6 +172,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1609440681921" />
@@ -209,7 +206,7 @@
       <recent name="DIDComm.Messaging.gRPC" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.All in java">
     <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Greeter.Client.Client" />
       <module name="java" />
@@ -249,15 +246,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in java" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -277,29 +280,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DIDKeyTest.testGenerateKeyNoSeed" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="java" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="DIDComm.Messaging.Proto.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="DIDComm.Messaging.gRPC" />
-      <option name="MAIN_CLASS_NAME" value="DIDComm.Messaging.gRPC.DIDKeyTest" />
-      <option name="METHOD_NAME" value="testGenerateKeyNoSeed" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in java" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server" />
         <item itemvalue="JUnit.DIDKeyTest" />
-        <item itemvalue="JUnit.DIDKeyTest.testGenerateKeyNoSeed" />
       </list>
     </recent_temporary>
   </component>
@@ -315,6 +302,7 @@
       <option name="presentableId" value="Default" />
       <updated>1607030446726</updated>
       <workItem from="1611178126496" duration="6065000" />
+      <workItem from="1611187491594" duration="791000" />
     </task>
     <servers />
   </component>
