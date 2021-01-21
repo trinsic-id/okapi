@@ -5,7 +5,7 @@ package didcomm.messaging;
 option csharp_namespace = "DIDComm.Messaging";
 option go_package = "didcomm.org/messaging";
 option java_package = "DIDComm.Messaging.Proto";
-option java_outer_classname="DIDComm";
+option java_outer_classname="DIDCommProto";
 
 import "security.proto";
 
