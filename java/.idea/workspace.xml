@@ -7,11 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35cbd97a-3bf3-4880-95f3-19575e53d686" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../dotnet/Tests/DIDComm.Messaging.Tests/KeyTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../dotnet/Tests/DIDComm.Messaging.Tests/KeyTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Greeter/Common/Keys.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Greeter/Common/Keys.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,6 +242,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="All in java" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="java" />
       <option name="PACKAGE_NAME" value="" />
@@ -293,6 +300,7 @@
       <workItem from="1611178126496" duration="6065000" />
       <workItem from="1611187491594" duration="791000" />
       <workItem from="1611328524097" duration="364000" />
+      <workItem from="1611328894909" duration="2097000" />
     </task>
     <servers />
   </component>

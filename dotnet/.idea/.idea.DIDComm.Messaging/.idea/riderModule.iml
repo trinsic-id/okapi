@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="RIDER_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.8.0/build/netcoreapp2.1" />
+    <content url="file://$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.3/build/netcoreapp2.1/xunit.runner.reporters.netcoreapp10.dll" />
+    <content url="file://$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.3/build/netcoreapp2.1/xunit.runner.utility.netcoreapp10.dll" />
+    <content url="file://$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.3/build/netcoreapp2.1/xunit.runner.visualstudio.dotnetcore.testadapter.dll" />
+    <content url="file://$MODULE_DIR$/../.." />
+    <content url="file://$MODULE_DIR$/../../../libs/android/arm64-v8a/libdidcommgrpc.so" />
+    <content url="file://$MODULE_DIR$/../../../libs/android/armeabi-v7a/libdidcommgrpc.so" />
+    <content url="file://$MODULE_DIR$/../../../libs/android/x86/libdidcommgrpc.so" />
+    <content url="file://$MODULE_DIR$/../../../libs/ios/libdidcommgrpc.a" />
+    <content url="file://$MODULE_DIR$/../../../libs/linux/libdidcommgrpc.so" />
+    <content url="file://$MODULE_DIR$/../../../libs/macos/libdidcommgrpc.dylib" />
+    <content url="file://$MODULE_DIR$/../../../libs/windows/didcommgrpc.dll" />
+    <content url="file://$MODULE_DIR$/../../../proto/api.proto" />
+    <content url="file://$MODULE_DIR$/../../../proto/basic-message.proto" />
+    <content url="file://$MODULE_DIR$/../../../proto/didcomm.proto" />
+    <content url="file://$MODULE_DIR$/../../../proto/security.proto" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
