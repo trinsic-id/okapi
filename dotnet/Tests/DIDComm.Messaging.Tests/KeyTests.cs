@@ -27,6 +27,7 @@ namespace DIDComm.Messaging.Tests
             System.Convert.FromBase64String(response.Key.D).Should().NotBeNull().And.HaveCount(32);
         }
 
+        
         [Fact(DisplayName = "Generate new key throws for invalid key type")]
         public void TestGenerateKeyThrowsInvalidSeedSize()
         {
@@ -37,6 +38,7 @@ namespace DIDComm.Messaging.Tests
                 })
             );
         }
+      
 
         [Theory(DisplayName = "Generate new key from seed")]
         [InlineData(Crv.Ed25519, "4f66b355aa7b0980ff901f2295b9c562ac3061be4df86703eb28c612faae6578", "6fioC1zcDPyPEL19pXRS2E4iJ46zH7xP6uSgAaPdwDrx")]
