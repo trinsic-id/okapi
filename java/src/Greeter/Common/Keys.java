@@ -14,6 +14,11 @@ public class Keys {
             API.GenerateKeyRequest keyRequest = API.GenerateKeyRequest.newBuilder().setKeyType(API.Crv.secp256k1).build();
             alice = DIDKey.Generate(keyRequest).getKey();
             bob = DIDKey.Generate(keyRequest).getKey();
+
+            System.out.println("Alice's Key:");
+            System.out.println(alice.toString());
+            System.out.println("Bob's Key:");
+            System.out.println(bob.toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
