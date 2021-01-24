@@ -11,8 +11,8 @@ export class GenerateKeyRequest extends jspb.Message {
   getSeed_asB64(): string;
   setSeed(value: Uint8Array | string): void;
 
-  getKeyType(): KeyTypeMap[keyof KeyTypeMap];
-  setKeyType(value: KeyTypeMap[keyof KeyTypeMap]): void;
+  getKeyType(): CrvMap[keyof CrvMap];
+  setKeyType(value: CrvMap[keyof CrvMap]): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GenerateKeyRequest.AsObject;
@@ -27,15 +27,15 @@ export class GenerateKeyRequest extends jspb.Message {
 export namespace GenerateKeyRequest {
   export type AsObject = {
     seed: Uint8Array | string,
-    keyType: KeyTypeMap[keyof KeyTypeMap],
+    keyType: CrvMap[keyof CrvMap],
   }
 }
 
 export class GenerateKeyResponse extends jspb.Message {
   hasKey(): boolean;
   clearKey(): void;
-  getKey(): Key | undefined;
-  setKey(value?: Key): void;
+  getKey(): JsonWebKey | undefined;
+  setKey(value?: JsonWebKey): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GenerateKeyResponse.AsObject;
@@ -49,18 +49,18 @@ export class GenerateKeyResponse extends jspb.Message {
 
 export namespace GenerateKeyResponse {
   export type AsObject = {
-    key?: Key.AsObject,
+    key?: JsonWebKey.AsObject,
   }
 }
 
 export class ConvertKeyRequest extends jspb.Message {
   hasKey(): boolean;
   clearKey(): void;
-  getKey(): Key | undefined;
-  setKey(value?: Key): void;
+  getKey(): JsonWebKey | undefined;
+  setKey(value?: JsonWebKey): void;
 
-  getTargetType(): KeyTypeMap[keyof KeyTypeMap];
-  setTargetType(value: KeyTypeMap[keyof KeyTypeMap]): void;
+  getTargetType(): CrvMap[keyof CrvMap];
+  setTargetType(value: CrvMap[keyof CrvMap]): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ConvertKeyRequest.AsObject;
@@ -74,16 +74,16 @@ export class ConvertKeyRequest extends jspb.Message {
 
 export namespace ConvertKeyRequest {
   export type AsObject = {
-    key?: Key.AsObject,
-    targetType: KeyTypeMap[keyof KeyTypeMap],
+    key?: JsonWebKey.AsObject,
+    targetType: CrvMap[keyof CrvMap],
   }
 }
 
 export class ConvertKeyResponse extends jspb.Message {
   hasKey(): boolean;
   clearKey(): void;
-  getKey(): Key | undefined;
-  setKey(value?: Key): void;
+  getKey(): JsonWebKey | undefined;
+  setKey(value?: JsonWebKey): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ConvertKeyResponse.AsObject;
@@ -97,7 +97,7 @@ export class ConvertKeyResponse extends jspb.Message {
 
 export namespace ConvertKeyResponse {
   export type AsObject = {
-    key?: Key.AsObject,
+    key?: JsonWebKey.AsObject,
   }
 }
 
@@ -109,8 +109,8 @@ export class SignRequest extends jspb.Message {
 
   hasKey(): boolean;
   clearKey(): void;
-  getKey(): Key | undefined;
-  setKey(value?: Key): void;
+  getKey(): JsonWebKey | undefined;
+  setKey(value?: JsonWebKey): void;
 
   hasAppendTo(): boolean;
   clearAppendTo(): void;
@@ -130,7 +130,7 @@ export class SignRequest extends jspb.Message {
 export namespace SignRequest {
   export type AsObject = {
     payload: Uint8Array | string,
-    key?: Key.AsObject,
+    key?: JsonWebKey.AsObject,
     appendTo?: security_pb.SignedMessage.AsObject,
   }
 }
@@ -165,8 +165,8 @@ export class VerifyRequest extends jspb.Message {
 
   hasKey(): boolean;
   clearKey(): void;
-  getKey(): Key | undefined;
-  setKey(value?: Key): void;
+  getKey(): JsonWebKey | undefined;
+  setKey(value?: JsonWebKey): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): VerifyRequest.AsObject;
@@ -181,7 +181,7 @@ export class VerifyRequest extends jspb.Message {
 export namespace VerifyRequest {
   export type AsObject = {
     message?: security_pb.SignedMessage.AsObject,
-    key?: Key.AsObject,
+    key?: JsonWebKey.AsObject,
   }
 }
 
@@ -208,13 +208,13 @@ export namespace VerifyResponse {
 export class PackRequest extends jspb.Message {
   hasSenderKey(): boolean;
   clearSenderKey(): void;
-  getSenderKey(): Key | undefined;
-  setSenderKey(value?: Key): void;
+  getSenderKey(): JsonWebKey | undefined;
+  setSenderKey(value?: JsonWebKey): void;
 
   hasReceiverKey(): boolean;
   clearReceiverKey(): void;
-  getReceiverKey(): Key | undefined;
-  setReceiverKey(value?: Key): void;
+  getReceiverKey(): JsonWebKey | undefined;
+  setReceiverKey(value?: JsonWebKey): void;
 
   getAssociatedData(): Uint8Array | string;
   getAssociatedData_asU8(): Uint8Array;
@@ -244,8 +244,8 @@ export class PackRequest extends jspb.Message {
 
 export namespace PackRequest {
   export type AsObject = {
-    senderKey?: Key.AsObject,
-    receiverKey?: Key.AsObject,
+    senderKey?: JsonWebKey.AsObject,
+    receiverKey?: JsonWebKey.AsObject,
     associatedData: Uint8Array | string,
     plaintext: Uint8Array | string,
     mode: security_pb.EncryptionModeMap[keyof security_pb.EncryptionModeMap],
@@ -278,13 +278,13 @@ export namespace PackResponse {
 export class UnpackRequest extends jspb.Message {
   hasSenderKey(): boolean;
   clearSenderKey(): void;
-  getSenderKey(): Key | undefined;
-  setSenderKey(value?: Key): void;
+  getSenderKey(): JsonWebKey | undefined;
+  setSenderKey(value?: JsonWebKey): void;
 
   hasReceiverKey(): boolean;
   clearReceiverKey(): void;
-  getReceiverKey(): Key | undefined;
-  setReceiverKey(value?: Key): void;
+  getReceiverKey(): JsonWebKey | undefined;
+  setReceiverKey(value?: JsonWebKey): void;
 
   hasMessage(): boolean;
   clearMessage(): void;
@@ -303,8 +303,8 @@ export class UnpackRequest extends jspb.Message {
 
 export namespace UnpackRequest {
   export type AsObject = {
-    senderKey?: Key.AsObject,
-    receiverKey?: Key.AsObject,
+    senderKey?: JsonWebKey.AsObject,
+    receiverKey?: JsonWebKey.AsObject,
     message?: security_pb.EncryptedMessage.AsObject,
   }
 }
@@ -334,8 +334,8 @@ export namespace UnpackResponse {
 export class GetDidDocumentRequest extends jspb.Message {
   hasKey(): boolean;
   clearKey(): void;
-  getKey(): Key | undefined;
-  setKey(value?: Key): void;
+  getKey(): JsonWebKey | undefined;
+  setKey(value?: JsonWebKey): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetDidDocumentRequest.AsObject;
@@ -349,7 +349,7 @@ export class GetDidDocumentRequest extends jspb.Message {
 
 export namespace GetDidDocumentRequest {
   export type AsObject = {
-    key?: Key.AsObject,
+    key?: JsonWebKey.AsObject,
   }
 }
 
@@ -375,50 +375,59 @@ export namespace GetDidDocumentResponse {
   }
 }
 
-export class Key extends jspb.Message {
+export class JsonWebKey extends jspb.Message {
   getKeyId(): string;
   setKeyId(value: string): void;
 
-  getPublicKey(): Uint8Array | string;
-  getPublicKey_asU8(): Uint8Array;
-  getPublicKey_asB64(): string;
-  setPublicKey(value: Uint8Array | string): void;
+  getX(): string;
+  setX(value: string): void;
 
-  getSecretKey(): Uint8Array | string;
-  getSecretKey_asU8(): Uint8Array;
-  getSecretKey_asB64(): string;
-  setSecretKey(value: Uint8Array | string): void;
+  getY(): string;
+  setY(value: string): void;
 
-  getKeyType(): KeyTypeMap[keyof KeyTypeMap];
-  setKeyType(value: KeyTypeMap[keyof KeyTypeMap]): void;
+  getD(): string;
+  setD(value: string): void;
 
-  getFingerprint(): string;
-  setFingerprint(value: string): void;
+  getCrv(): CrvMap[keyof CrvMap];
+  setCrv(value: CrvMap[keyof CrvMap]): void;
+
+  getKty(): KeyTypeMap[keyof KeyTypeMap];
+  setKty(value: KeyTypeMap[keyof KeyTypeMap]): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Key.AsObject;
-  static toObject(includeInstance: boolean, msg: Key): Key.AsObject;
+  toObject(includeInstance?: boolean): JsonWebKey.AsObject;
+  static toObject(includeInstance: boolean, msg: JsonWebKey): JsonWebKey.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: Key, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Key;
-  static deserializeBinaryFromReader(message: Key, reader: jspb.BinaryReader): Key;
+  static serializeBinaryToWriter(message: JsonWebKey, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): JsonWebKey;
+  static deserializeBinaryFromReader(message: JsonWebKey, reader: jspb.BinaryReader): JsonWebKey;
 }
 
-export namespace Key {
+export namespace JsonWebKey {
   export type AsObject = {
     keyId: string,
-    publicKey: Uint8Array | string,
-    secretKey: Uint8Array | string,
-    keyType: KeyTypeMap[keyof KeyTypeMap],
-    fingerprint: string,
+    x: string,
+    y: string,
+    d: string,
+    crv: CrvMap[keyof CrvMap],
+    kty: KeyTypeMap[keyof KeyTypeMap],
   }
 }
 
+export interface CrvMap {
+  ED25519: 0;
+  X25519: 1;
+  P256: 2;
+  BLS12381_G2: 3;
+  SECP256K1: 4;
+}
+
+export const Crv: CrvMap;
+
 export interface KeyTypeMap {
-  X25519: 0;
-  P256: 1;
-  ED25519: 2;
+  OKP: 0;
+  EC: 1;
 }
 
 export const KeyType: KeyTypeMap;
