@@ -375,3 +375,6 @@ native/out.h
 
 #Java
 /java/out
+/Android/.idea
+/Android/app/local.properties
+/java/.idea
