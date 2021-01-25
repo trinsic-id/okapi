@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { DIDKey, GenerateKeyRequest, Crv, KeyType } from 'react-native-didcomm-grpc';
+import { DIDKey, GenerateKeyRequest, Crv } from 'react-native-didcomm-grpc';
 
 export default function App() {
   const [result, setResult] = React.useState<string | undefined>();
 
   React.useEffect(() => {
     let request = new GenerateKeyRequest();
-    request.setKeyType(KeyType.OKP);
-    request.setCrv(Crv.ED25519);
+    request.setKeyType(Crv.BLS12381_G2);
 
     DIDKey.generate(request)
       .then((response) => {
