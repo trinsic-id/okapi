@@ -7,7 +7,7 @@ export default function App() {
 
   React.useEffect(() => {
     let request = new GenerateKeyRequest();
-    request.setKeyType(Crv.BLS12381_G2);
+    request.setKeyType(Crv.SECP256K1);
 
     DIDKey.generate(request)
       .then((response) => {
