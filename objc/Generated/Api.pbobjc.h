@@ -28,12 +28,37 @@
 CF_EXTERN_C_BEGIN
 
 @class EncryptedMessage;
-@class Key;
+@class GPBStruct;
+@class JsonWebKey;
 @class SignedMessage;
 GPB_ENUM_FWD_DECLARE(EncryptionAlgorithm);
 GPB_ENUM_FWD_DECLARE(EncryptionMode);
 
 NS_ASSUME_NONNULL_BEGIN
+
+#pragma mark - Enum Crv
+
+typedef GPB_ENUM(Crv) {
+  /**
+   * Value used if any message's field encounters a value that is not defined
+   * by this enum. The message will also have C functions to get/set the rawValue
+   * of the field.
+   **/
+  Crv_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
+  Crv_Ed25519 = 0,
+  Crv_X25519 = 1,
+  Crv_P256 = 2,
+  Crv_Bls12381G2 = 3,
+  Crv_Secp256K1 = 4,
+};
+
+GPBEnumDescriptor *Crv_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL Crv_IsValidValue(int32_t value);
 
 #pragma mark - Enum KeyType
 
@@ -44,9 +69,8 @@ typedef GPB_ENUM(KeyType) {
    * of the field.
    **/
   KeyType_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
-  KeyType_X25519 = 0,
-  KeyType_P256 = 1,
-  KeyType_Ed25519 = 2,
+  KeyType_Okp = 0,
+  KeyType_Ec = 1,
 };
 
 GPBEnumDescriptor *KeyType_EnumDescriptor(void);
@@ -83,7 +107,7 @@ GPB_FINAL @interface GenerateKeyRequest : GPBMessage
 
 @property(nonatomic, readwrite, copy, null_resettable) NSData *seed;
 
-@property(nonatomic, readwrite) KeyType keyType;
+@property(nonatomic, readwrite) Crv keyType;
 
 @end
 
@@ -107,7 +131,7 @@ typedef GPB_ENUM(GenerateKeyResponse_FieldNumber) {
 
 GPB_FINAL @interface GenerateKeyResponse : GPBMessage
 
-@property(nonatomic, readwrite, strong, null_resettable) Key *key;
+@property(nonatomic, readwrite, strong, null_resettable) JsonWebKey *key;
 /** Test to see if @c key has been set. */
 @property(nonatomic, readwrite) BOOL hasKey;
 
@@ -122,11 +146,11 @@ typedef GPB_ENUM(ConvertKeyRequest_FieldNumber) {
 
 GPB_FINAL @interface ConvertKeyRequest : GPBMessage
 
-@property(nonatomic, readwrite, strong, null_resettable) Key *key;
+@property(nonatomic, readwrite, strong, null_resettable) JsonWebKey *key;
 /** Test to see if @c key has been set. */
 @property(nonatomic, readwrite) BOOL hasKey;
 
-@property(nonatomic, readwrite) KeyType targetType;
+@property(nonatomic, readwrite) Crv targetType;
 
 @end
 
@@ -150,7 +174,7 @@ typedef GPB_ENUM(ConvertKeyResponse_FieldNumber) {
 
 GPB_FINAL @interface ConvertKeyResponse : GPBMessage
 
-@property(nonatomic, readwrite, strong, null_resettable) Key *key;
+@property(nonatomic, readwrite, strong, null_resettable) JsonWebKey *key;
 /** Test to see if @c key has been set. */
 @property(nonatomic, readwrite) BOOL hasKey;
 
@@ -168,7 +192,7 @@ GPB_FINAL @interface SignRequest : GPBMessage
 
 @property(nonatomic, readwrite, copy, null_resettable) NSData *payload;
 
-@property(nonatomic, readwrite, strong, null_resettable) Key *key;
+@property(nonatomic, readwrite, strong, null_resettable) JsonWebKey *key;
 /** Test to see if @c key has been set. */
 @property(nonatomic, readwrite) BOOL hasKey;
 
@@ -205,7 +229,7 @@ GPB_FINAL @interface VerifyRequest : GPBMessage
 /** Test to see if @c message has been set. */
 @property(nonatomic, readwrite) BOOL hasMessage;
 
-@property(nonatomic, readwrite, strong, null_resettable) Key *key;
+@property(nonatomic, readwrite, strong, null_resettable) JsonWebKey *key;
 /** Test to see if @c key has been set. */
 @property(nonatomic, readwrite) BOOL hasKey;
 
@@ -236,11 +260,11 @@ typedef GPB_ENUM(PackRequest_FieldNumber) {
 
 GPB_FINAL @interface PackRequest : GPBMessage
 
-@property(nonatomic, readwrite, strong, null_resettable) Key *senderKey;
+@property(nonatomic, readwrite, strong, null_resettable) JsonWebKey *senderKey;
 /** Test to see if @c senderKey has been set. */
 @property(nonatomic, readwrite) BOOL hasSenderKey;
 
-@property(nonatomic, readwrite, strong, null_resettable) Key *receiverKey;
+@property(nonatomic, readwrite, strong, null_resettable) JsonWebKey *receiverKey;
 /** Test to see if @c receiverKey has been set. */
 @property(nonatomic, readwrite) BOOL hasReceiverKey;
 
@@ -302,11 +326,11 @@ typedef GPB_ENUM(UnpackRequest_FieldNumber) {
 
 GPB_FINAL @interface UnpackRequest : GPBMessage
 
-@property(nonatomic, readwrite, strong, null_resettable) Key *senderKey;
+@property(nonatomic, readwrite, strong, null_resettable) JsonWebKey *senderKey;
 /** Test to see if @c senderKey has been set. */
 @property(nonatomic, readwrite) BOOL hasSenderKey;
 
-@property(nonatomic, readwrite, strong, null_resettable) Key *receiverKey;
+@property(nonatomic, readwrite, strong, null_resettable) JsonWebKey *receiverKey;
 /** Test to see if @c receiverKey has been set. */
 @property(nonatomic, readwrite) BOOL hasReceiverKey;
 
@@ -328,41 +352,87 @@ GPB_FINAL @interface UnpackResponse : GPBMessage
 
 @end
 
-#pragma mark - Key
+#pragma mark - GetDidDocumentRequest
 
-typedef GPB_ENUM(Key_FieldNumber) {
-  Key_FieldNumber_KeyId = 1,
-  Key_FieldNumber_PublicKey = 2,
-  Key_FieldNumber_SecretKey = 3,
-  Key_FieldNumber_KeyType = 4,
-  Key_FieldNumber_Fingerprint = 5,
+typedef GPB_ENUM(GetDidDocumentRequest_FieldNumber) {
+  GetDidDocumentRequest_FieldNumber_Key = 1,
 };
 
-GPB_FINAL @interface Key : GPBMessage
+GPB_FINAL @interface GetDidDocumentRequest : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) JsonWebKey *key;
+/** Test to see if @c key has been set. */
+@property(nonatomic, readwrite) BOOL hasKey;
+
+@end
+
+#pragma mark - GetDidDocumentResponse
+
+typedef GPB_ENUM(GetDidDocumentResponse_FieldNumber) {
+  GetDidDocumentResponse_FieldNumber_DidDocument = 1,
+};
+
+GPB_FINAL @interface GetDidDocumentResponse : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) GPBStruct *didDocument;
+/** Test to see if @c didDocument has been set. */
+@property(nonatomic, readwrite) BOOL hasDidDocument;
+
+@end
+
+#pragma mark - JsonWebKey
+
+typedef GPB_ENUM(JsonWebKey_FieldNumber) {
+  JsonWebKey_FieldNumber_KeyId = 1,
+  JsonWebKey_FieldNumber_X = 2,
+  JsonWebKey_FieldNumber_Y = 3,
+  JsonWebKey_FieldNumber_D = 4,
+  JsonWebKey_FieldNumber_Crv = 5,
+  JsonWebKey_FieldNumber_Kty = 6,
+};
+
+GPB_FINAL @interface JsonWebKey : GPBMessage
 
 @property(nonatomic, readwrite, copy, null_resettable) NSString *keyId;
 
-@property(nonatomic, readwrite, copy, null_resettable) NSData *publicKey;
+/** public_key */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *x;
 
-@property(nonatomic, readwrite, copy, null_resettable) NSData *secretKey;
+/** public_key */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *y;
 
-@property(nonatomic, readwrite) KeyType keyType;
+/** secret_key */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *d;
 
-@property(nonatomic, readwrite, copy, null_resettable) NSString *fingerprint;
+@property(nonatomic, readwrite) Crv crv;
+
+@property(nonatomic, readwrite) KeyType kty;
 
 @end
 
 /**
- * Fetches the raw value of a @c Key's @c keyType property, even
+ * Fetches the raw value of a @c JsonWebKey's @c crv property, even
  * if the value was not defined by the enum at the time the code was generated.
  **/
-int32_t Key_KeyType_RawValue(Key *message);
+int32_t JsonWebKey_Crv_RawValue(JsonWebKey *message);
 /**
- * Sets the raw value of an @c Key's @c keyType property, allowing
+ * Sets the raw value of an @c JsonWebKey's @c crv property, allowing
  * it to be set to a value that was not defined by the enum at the time the code
  * was generated.
  **/
-void SetKey_KeyType_RawValue(Key *message, int32_t value);
+void SetJsonWebKey_Crv_RawValue(JsonWebKey *message, int32_t value);
+
+/**
+ * Fetches the raw value of a @c JsonWebKey's @c kty property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t JsonWebKey_Kty_RawValue(JsonWebKey *message);
+/**
+ * Sets the raw value of an @c JsonWebKey's @c kty property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetJsonWebKey_Kty_RawValue(JsonWebKey *message, int32_t value);
 
 NS_ASSUME_NONNULL_END
 
