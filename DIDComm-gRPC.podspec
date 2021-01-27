@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "DIDComm-gRPC"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "DIDComm gRPC extension"
   s.description  = <<-DESC
   DIDComm extensions using gRPC and Protobuf definitions

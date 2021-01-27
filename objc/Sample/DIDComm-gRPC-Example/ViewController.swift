@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         
         let keyRequest = GenerateKeyRequest()
         keyRequest.keyType = .ed25519
-        
+
         let keyResponse = try! DIDKey.generate(keyRequest)
         
         let message = BasicMessage()
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
             
             print(signedMessage.description)
         } catch {
-            print("Couldn't sign")
+            print("Couldn't sign the message")
         }
     }
 }

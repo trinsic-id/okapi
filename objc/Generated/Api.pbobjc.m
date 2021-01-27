@@ -28,7 +28,8 @@
 // static values in struct initializers.
 // We don't use [Foo class] because it is not a static value.
 GPBObjCClassDeclaration(EncryptedMessage);
-GPBObjCClassDeclaration(Key);
+GPBObjCClassDeclaration(GPBStruct);
+GPBObjCClassDeclaration(JsonWebKey);
 GPBObjCClassDeclaration(SignedMessage);
 
 #pragma mark - ApiRoot
@@ -54,26 +55,67 @@ static GPBFileDescriptor *ApiRoot_FileDescriptor(void) {
   return descriptor;
 }
 
+#pragma mark - Enum Crv
+
+GPBEnumDescriptor *Crv_EnumDescriptor(void) {
+  static _Atomic(GPBEnumDescriptor*) descriptor = nil;
+  if (!descriptor) {
+    static const char *valueNames =
+        "Ed25519\000X25519\000P256\000Bls12381G2\000Secp256K1"
+        "\000";
+    static const int32_t values[] = {
+        Crv_Ed25519,
+        Crv_X25519,
+        Crv_P256,
+        Crv_Bls12381G2,
+        Crv_Secp256K1,
+    };
+    static const char *extraTextFormatInfo = "\003\000\007\000\003\010\202\000\004\'\"\000";
+    GPBEnumDescriptor *worker =
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(Crv)
+                                       valueNames:valueNames
+                                           values:values
+                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
+                                     enumVerifier:Crv_IsValidValue
+                              extraTextFormatInfo:extraTextFormatInfo];
+    GPBEnumDescriptor *expected = nil;
+    if (!atomic_compare_exchange_strong(&descriptor, &expected, worker)) {
+      [worker release];
+    }
+  }
+  return descriptor;
+}
+
+BOOL Crv_IsValidValue(int32_t value__) {
+  switch (value__) {
+    case Crv_Ed25519:
+    case Crv_X25519:
+    case Crv_P256:
+    case Crv_Bls12381G2:
+    case Crv_Secp256K1:
+      return YES;
+    default:
+      return NO;
+  }
+}
+
 #pragma mark - Enum KeyType
 
 GPBEnumDescriptor *KeyType_EnumDescriptor(void) {
   static _Atomic(GPBEnumDescriptor*) descriptor = nil;
   if (!descriptor) {
     static const char *valueNames =
-        "X25519\000P256\000Ed25519\000";
+        "Okp\000Ec\000";
     static const int32_t values[] = {
-        KeyType_X25519,
-        KeyType_P256,
-        KeyType_Ed25519,
+        KeyType_Okp,
+        KeyType_Ec,
     };
-    static const char *extraTextFormatInfo = "\003\000&\000\001$\000\002\'\000";
     GPBEnumDescriptor *worker =
         [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(KeyType)
                                        valueNames:valueNames
                                            values:values
                                             count:(uint32_t)(sizeof(values) / sizeof(int32_t))
-                                     enumVerifier:KeyType_IsValidValue
-                              extraTextFormatInfo:extraTextFormatInfo];
+                                     enumVerifier:KeyType_IsValidValue];
     GPBEnumDescriptor *expected = nil;
     if (!atomic_compare_exchange_strong(&descriptor, &expected, worker)) {
       [worker release];
@@ -84,9 +126,8 @@ GPBEnumDescriptor *KeyType_EnumDescriptor(void) {
 
 BOOL KeyType_IsValidValue(int32_t value__) {
   switch (value__) {
-    case KeyType_X25519:
-    case KeyType_P256:
-    case KeyType_Ed25519:
+    case KeyType_Okp:
+    case KeyType_Ec:
       return YES;
     default:
       return NO;
@@ -102,7 +143,7 @@ BOOL KeyType_IsValidValue(int32_t value__) {
 
 typedef struct GenerateKeyRequest__storage_ {
   uint32_t _has_storage_[1];
-  KeyType keyType;
+  Crv keyType;
   NSData *seed;
 } GenerateKeyRequest__storage_;
 
@@ -123,7 +164,7 @@ typedef struct GenerateKeyRequest__storage_ {
       },
       {
         .name = "keyType",
-        .dataTypeSpecific.enumDescFunc = KeyType_EnumDescriptor,
+        .dataTypeSpecific.enumDescFunc = Crv_EnumDescriptor,
         .number = GenerateKeyRequest_FieldNumber_KeyType,
         .hasIndex = 1,
         .offset = (uint32_t)offsetof(GenerateKeyRequest__storage_, keyType),
@@ -169,7 +210,7 @@ void SetGenerateKeyRequest_KeyType_RawValue(GenerateKeyRequest *message, int32_t
 
 typedef struct GenerateKeyResponse__storage_ {
   uint32_t _has_storage_[1];
-  Key *key;
+  JsonWebKey *key;
 } GenerateKeyResponse__storage_;
 
 // This method is threadsafe because it is initially called
@@ -180,7 +221,7 @@ typedef struct GenerateKeyResponse__storage_ {
     static GPBMessageFieldDescription fields[] = {
       {
         .name = "key",
-        .dataTypeSpecific.clazz = GPBObjCClass(Key),
+        .dataTypeSpecific.clazz = GPBObjCClass(JsonWebKey),
         .number = GenerateKeyResponse_FieldNumber_Key,
         .hasIndex = 0,
         .offset = (uint32_t)offsetof(GenerateKeyResponse__storage_, key),
@@ -215,8 +256,8 @@ typedef struct GenerateKeyResponse__storage_ {
 
 typedef struct ConvertKeyRequest__storage_ {
   uint32_t _has_storage_[1];
-  KeyType targetType;
-  Key *key;
+  Crv targetType;
+  JsonWebKey *key;
 } ConvertKeyRequest__storage_;
 
 // This method is threadsafe because it is initially called
@@ -227,7 +268,7 @@ typedef struct ConvertKeyRequest__storage_ {
     static GPBMessageFieldDescription fields[] = {
       {
         .name = "key",
-        .dataTypeSpecific.clazz = GPBObjCClass(Key),
+        .dataTypeSpecific.clazz = GPBObjCClass(JsonWebKey),
         .number = ConvertKeyRequest_FieldNumber_Key,
         .hasIndex = 0,
         .offset = (uint32_t)offsetof(ConvertKeyRequest__storage_, key),
@@ -236,7 +277,7 @@ typedef struct ConvertKeyRequest__storage_ {
       },
       {
         .name = "targetType",
-        .dataTypeSpecific.enumDescFunc = KeyType_EnumDescriptor,
+        .dataTypeSpecific.enumDescFunc = Crv_EnumDescriptor,
         .number = ConvertKeyRequest_FieldNumber_TargetType,
         .hasIndex = 1,
         .offset = (uint32_t)offsetof(ConvertKeyRequest__storage_, targetType),
@@ -282,7 +323,7 @@ void SetConvertKeyRequest_TargetType_RawValue(ConvertKeyRequest *message, int32_
 
 typedef struct ConvertKeyResponse__storage_ {
   uint32_t _has_storage_[1];
-  Key *key;
+  JsonWebKey *key;
 } ConvertKeyResponse__storage_;
 
 // This method is threadsafe because it is initially called
@@ -293,7 +334,7 @@ typedef struct ConvertKeyResponse__storage_ {
     static GPBMessageFieldDescription fields[] = {
       {
         .name = "key",
-        .dataTypeSpecific.clazz = GPBObjCClass(Key),
+        .dataTypeSpecific.clazz = GPBObjCClass(JsonWebKey),
         .number = ConvertKeyResponse_FieldNumber_Key,
         .hasIndex = 0,
         .offset = (uint32_t)offsetof(ConvertKeyResponse__storage_, key),
@@ -330,7 +371,7 @@ typedef struct ConvertKeyResponse__storage_ {
 typedef struct SignRequest__storage_ {
   uint32_t _has_storage_[1];
   NSData *payload;
-  Key *key;
+  JsonWebKey *key;
   SignedMessage *appendTo;
 } SignRequest__storage_;
 
@@ -351,7 +392,7 @@ typedef struct SignRequest__storage_ {
       },
       {
         .name = "key",
-        .dataTypeSpecific.clazz = GPBObjCClass(Key),
+        .dataTypeSpecific.clazz = GPBObjCClass(JsonWebKey),
         .number = SignRequest_FieldNumber_Key,
         .hasIndex = 1,
         .offset = (uint32_t)offsetof(SignRequest__storage_, key),
@@ -441,7 +482,7 @@ typedef struct SignResponse__storage_ {
 typedef struct VerifyRequest__storage_ {
   uint32_t _has_storage_[1];
   SignedMessage *message;
-  Key *key;
+  JsonWebKey *key;
 } VerifyRequest__storage_;
 
 // This method is threadsafe because it is initially called
@@ -461,7 +502,7 @@ typedef struct VerifyRequest__storage_ {
       },
       {
         .name = "key",
-        .dataTypeSpecific.clazz = GPBObjCClass(Key),
+        .dataTypeSpecific.clazz = GPBObjCClass(JsonWebKey),
         .number = VerifyRequest_FieldNumber_Key,
         .hasIndex = 1,
         .offset = (uint32_t)offsetof(VerifyRequest__storage_, key),
@@ -546,8 +587,8 @@ typedef struct PackRequest__storage_ {
   uint32_t _has_storage_[1];
   EncryptionMode mode;
   EncryptionAlgorithm algorithm;
-  Key *senderKey;
-  Key *receiverKey;
+  JsonWebKey *senderKey;
+  JsonWebKey *receiverKey;
   NSData *associatedData;
   NSData *plaintext;
 } PackRequest__storage_;
@@ -560,7 +601,7 @@ typedef struct PackRequest__storage_ {
     static GPBMessageFieldDescription fields[] = {
       {
         .name = "senderKey",
-        .dataTypeSpecific.clazz = GPBObjCClass(Key),
+        .dataTypeSpecific.clazz = GPBObjCClass(JsonWebKey),
         .number = PackRequest_FieldNumber_SenderKey,
         .hasIndex = 0,
         .offset = (uint32_t)offsetof(PackRequest__storage_, senderKey),
@@ -569,7 +610,7 @@ typedef struct PackRequest__storage_ {
       },
       {
         .name = "receiverKey",
-        .dataTypeSpecific.clazz = GPBObjCClass(Key),
+        .dataTypeSpecific.clazz = GPBObjCClass(JsonWebKey),
         .number = PackRequest_FieldNumber_ReceiverKey,
         .hasIndex = 1,
         .offset = (uint32_t)offsetof(PackRequest__storage_, receiverKey),
@@ -710,8 +751,8 @@ typedef struct PackResponse__storage_ {
 
 typedef struct UnpackRequest__storage_ {
   uint32_t _has_storage_[1];
-  Key *senderKey;
-  Key *receiverKey;
+  JsonWebKey *senderKey;
+  JsonWebKey *receiverKey;
   EncryptedMessage *message;
 } UnpackRequest__storage_;
 
@@ -723,7 +764,7 @@ typedef struct UnpackRequest__storage_ {
     static GPBMessageFieldDescription fields[] = {
       {
         .name = "senderKey",
-        .dataTypeSpecific.clazz = GPBObjCClass(Key),
+        .dataTypeSpecific.clazz = GPBObjCClass(JsonWebKey),
         .number = UnpackRequest_FieldNumber_SenderKey,
         .hasIndex = 0,
         .offset = (uint32_t)offsetof(UnpackRequest__storage_, senderKey),
@@ -732,7 +773,7 @@ typedef struct UnpackRequest__storage_ {
       },
       {
         .name = "receiverKey",
-        .dataTypeSpecific.clazz = GPBObjCClass(Key),
+        .dataTypeSpecific.clazz = GPBObjCClass(JsonWebKey),
         .number = UnpackRequest_FieldNumber_ReceiverKey,
         .hasIndex = 1,
         .offset = (uint32_t)offsetof(UnpackRequest__storage_, receiverKey),
@@ -812,24 +853,16 @@ typedef struct UnpackResponse__storage_ {
 
 @end
 
-#pragma mark - Key
+#pragma mark - GetDidDocumentRequest
 
-@implementation Key
+@implementation GetDidDocumentRequest
 
-@dynamic keyId;
-@dynamic publicKey;
-@dynamic secretKey;
-@dynamic keyType;
-@dynamic fingerprint;
+@dynamic hasKey, key;
 
-typedef struct Key__storage_ {
+typedef struct GetDidDocumentRequest__storage_ {
   uint32_t _has_storage_[1];
-  KeyType keyType;
-  NSString *keyId;
-  NSData *publicKey;
-  NSData *secretKey;
-  NSString *fingerprint;
-} Key__storage_;
+  JsonWebKey *key;
+} GetDidDocumentRequest__storage_;
 
 // This method is threadsafe because it is initially called
 // in +initialize for each subclass.
@@ -838,58 +871,22 @@ typedef struct Key__storage_ {
   if (!descriptor) {
     static GPBMessageFieldDescription fields[] = {
       {
-        .name = "keyId",
-        .dataTypeSpecific.clazz = Nil,
-        .number = Key_FieldNumber_KeyId,
+        .name = "key",
+        .dataTypeSpecific.clazz = GPBObjCClass(JsonWebKey),
+        .number = GetDidDocumentRequest_FieldNumber_Key,
         .hasIndex = 0,
-        .offset = (uint32_t)offsetof(Key__storage_, keyId),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
-        .dataType = GPBDataTypeString,
-      },
-      {
-        .name = "publicKey",
-        .dataTypeSpecific.clazz = Nil,
-        .number = Key_FieldNumber_PublicKey,
-        .hasIndex = 1,
-        .offset = (uint32_t)offsetof(Key__storage_, publicKey),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
-        .dataType = GPBDataTypeBytes,
-      },
-      {
-        .name = "secretKey",
-        .dataTypeSpecific.clazz = Nil,
-        .number = Key_FieldNumber_SecretKey,
-        .hasIndex = 2,
-        .offset = (uint32_t)offsetof(Key__storage_, secretKey),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
-        .dataType = GPBDataTypeBytes,
-      },
-      {
-        .name = "keyType",
-        .dataTypeSpecific.enumDescFunc = KeyType_EnumDescriptor,
-        .number = Key_FieldNumber_KeyType,
-        .hasIndex = 3,
-        .offset = (uint32_t)offsetof(Key__storage_, keyType),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor | GPBFieldClearHasIvarOnZero),
-        .dataType = GPBDataTypeEnum,
-      },
-      {
-        .name = "fingerprint",
-        .dataTypeSpecific.clazz = Nil,
-        .number = Key_FieldNumber_Fingerprint,
-        .hasIndex = 4,
-        .offset = (uint32_t)offsetof(Key__storage_, fingerprint),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
-        .dataType = GPBDataTypeString,
+        .offset = (uint32_t)offsetof(GetDidDocumentRequest__storage_, key),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
       },
     };
     GPBDescriptor *localDescriptor =
-        [GPBDescriptor allocDescriptorForClass:[Key class]
+        [GPBDescriptor allocDescriptorForClass:[GetDidDocumentRequest class]
                                      rootClass:[ApiRoot class]
                                           file:ApiRoot_FileDescriptor()
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
-                                   storageSize:sizeof(Key__storage_)
+                                   storageSize:sizeof(GetDidDocumentRequest__storage_)
                                          flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown)];
     #if defined(DEBUG) && DEBUG
       NSAssert(descriptor == nil, @"Startup recursed!");
@@ -901,15 +898,172 @@ typedef struct Key__storage_ {
 
 @end
 
-int32_t Key_KeyType_RawValue(Key *message) {
-  GPBDescriptor *descriptor = [Key descriptor];
-  GPBFieldDescriptor *field = [descriptor fieldWithNumber:Key_FieldNumber_KeyType];
+#pragma mark - GetDidDocumentResponse
+
+@implementation GetDidDocumentResponse
+
+@dynamic hasDidDocument, didDocument;
+
+typedef struct GetDidDocumentResponse__storage_ {
+  uint32_t _has_storage_[1];
+  GPBStruct *didDocument;
+} GetDidDocumentResponse__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "didDocument",
+        .dataTypeSpecific.clazz = GPBObjCClass(GPBStruct),
+        .number = GetDidDocumentResponse_FieldNumber_DidDocument,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(GetDidDocumentResponse__storage_, didDocument),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[GetDidDocumentResponse class]
+                                     rootClass:[ApiRoot class]
+                                          file:ApiRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(GetDidDocumentResponse__storage_)
+                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown)];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - JsonWebKey
+
+@implementation JsonWebKey
+
+@dynamic keyId;
+@dynamic x;
+@dynamic y;
+@dynamic d;
+@dynamic crv;
+@dynamic kty;
+
+typedef struct JsonWebKey__storage_ {
+  uint32_t _has_storage_[1];
+  Crv crv;
+  KeyType kty;
+  NSString *keyId;
+  NSString *x;
+  NSString *y;
+  NSString *d;
+} JsonWebKey__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "keyId",
+        .dataTypeSpecific.clazz = Nil,
+        .number = JsonWebKey_FieldNumber_KeyId,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(JsonWebKey__storage_, keyId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "x",
+        .dataTypeSpecific.clazz = Nil,
+        .number = JsonWebKey_FieldNumber_X,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(JsonWebKey__storage_, x),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "y",
+        .dataTypeSpecific.clazz = Nil,
+        .number = JsonWebKey_FieldNumber_Y,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(JsonWebKey__storage_, y),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "d",
+        .dataTypeSpecific.clazz = Nil,
+        .number = JsonWebKey_FieldNumber_D,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(JsonWebKey__storage_, d),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "crv",
+        .dataTypeSpecific.enumDescFunc = Crv_EnumDescriptor,
+        .number = JsonWebKey_FieldNumber_Crv,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(JsonWebKey__storage_, crv),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeEnum,
+      },
+      {
+        .name = "kty",
+        .dataTypeSpecific.enumDescFunc = KeyType_EnumDescriptor,
+        .number = JsonWebKey_FieldNumber_Kty,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(JsonWebKey__storage_, kty),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeEnum,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[JsonWebKey class]
+                                     rootClass:[ApiRoot class]
+                                          file:ApiRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(JsonWebKey__storage_)
+                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown)];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+int32_t JsonWebKey_Crv_RawValue(JsonWebKey *message) {
+  GPBDescriptor *descriptor = [JsonWebKey descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:JsonWebKey_FieldNumber_Crv];
   return GPBGetMessageRawEnumField(message, field);
 }
 
-void SetKey_KeyType_RawValue(Key *message, int32_t value) {
-  GPBDescriptor *descriptor = [Key descriptor];
-  GPBFieldDescriptor *field = [descriptor fieldWithNumber:Key_FieldNumber_KeyType];
+void SetJsonWebKey_Crv_RawValue(JsonWebKey *message, int32_t value) {
+  GPBDescriptor *descriptor = [JsonWebKey descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:JsonWebKey_FieldNumber_Crv];
+  GPBSetMessageRawEnumField(message, field, value);
+}
+
+int32_t JsonWebKey_Kty_RawValue(JsonWebKey *message) {
+  GPBDescriptor *descriptor = [JsonWebKey descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:JsonWebKey_FieldNumber_Kty];
+  return GPBGetMessageRawEnumField(message, field);
+}
+
+void SetJsonWebKey_Kty_RawValue(JsonWebKey *message, int32_t value) {
+  GPBDescriptor *descriptor = [JsonWebKey descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:JsonWebKey_FieldNumber_Kty];
   GPBSetMessageRawEnumField(message, field, value);
 }
 
