@@ -20,7 +20,7 @@
     "!**/__mocks__"
   ],
   "dependencies": {
-    "didcomm-proto": "../../wasm/packages/didcomm-proto/didcomm-proto-1.0.1.tgz"
+    "didcomm-proto": "../../wasm/packages/didcomm-proto/"
   },
   "scripts": {
     "test": "jest",

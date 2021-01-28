@@ -351,12 +351,12 @@ PODS:
   - BoringSSL-GRPC/Interface (0.0.14)
   - CocoaAsyncSocket (7.6.5)
   - CocoaLibEvent (1.0.0)
-  - DIDComm-gRPC (0.0.2):
-    - DIDComm-gRPC/Messages (= 0.0.2)
-    - DIDComm-gRPC/Services (= 0.0.2)
-  - DIDComm-gRPC/Messages (0.0.2):
+  - DIDComm-gRPC (0.0.3):
+    - DIDComm-gRPC/Messages (= 0.0.3)
+    - DIDComm-gRPC/Services (= 0.0.3)
+  - DIDComm-gRPC/Messages (0.0.3):
     - Protobuf
-  - DIDComm-gRPC/Services (0.0.2):
+  - DIDComm-gRPC/Services (0.0.3):
     - DIDComm-gRPC/Messages
     - gRPC-ProtoRPC
   - DoubleConversion (1.1.6)
@@ -826,7 +826,7 @@ SPEC CHECKSUMS:
   BoringSSL-GRPC: 63bef04e04730659f5125c3f27d72df324f68f59
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   CocoaLibEvent: 2fab71b8bd46dd33ddb959f7928ec5909f838e3f
-  DIDComm-gRPC: 0690b054f33c31d83777908ac3522f01a1b01347
+  DIDComm-gRPC: 95aaa4f1eb10536734b8e85d1ae8da4cf3506ca4
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
   FBLazyVector: 4aab18c93cd9546e4bfed752b4084585eca8b245
   FBReactNativeSpec: 5465d51ccfeecb7faa12f9ae0024f2044ce4044e
