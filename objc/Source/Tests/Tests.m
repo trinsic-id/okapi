@@ -27,20 +27,20 @@
 
 - (void)testGenerateKey {
     GenerateKeyRequest* request = [GenerateKeyRequest message];
-    request.keyType = KeyType_P256;
+    request.keyType = Crv_P256;
     
     NSError* error;
     GenerateKeyResponse* response = [DIDKey generate:request withError:&error];
     
     XCTAssertNotNil(response);
     XCTAssertNotNil(response.key);
-    XCTAssertTrue(response.key.publicKey.length > 0);
-    XCTAssertTrue(response.key.keyType == KeyType_P256);
+    XCTAssertTrue(response.key.x.length > 0);
+    XCTAssertTrue(response.key.crv == Crv_P256);
 }
 
 - (void)testSignDemo {
     GenerateKeyRequest *keyRequest = [GenerateKeyRequest message];
-    keyRequest.keyType = KeyType_Ed25519;
+    keyRequest.keyType = Crv_P256;
     
     NSError* error;
     GenerateKeyResponse *keyResponse = [DIDKey generate:keyRequest withError:&error];
