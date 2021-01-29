@@ -20,11 +20,12 @@ var google_protobuf_struct_pb = require('google-protobuf/google/protobuf/struct_
 goog.object.extend(proto, google_protobuf_struct_pb);
 goog.exportSymbol('proto.didcomm.messaging.ConvertKeyRequest', null, global);
 goog.exportSymbol('proto.didcomm.messaging.ConvertKeyResponse', null, global);
+goog.exportSymbol('proto.didcomm.messaging.Crv', null, global);
 goog.exportSymbol('proto.didcomm.messaging.GenerateKeyRequest', null, global);
 goog.exportSymbol('proto.didcomm.messaging.GenerateKeyResponse', null, global);
 goog.exportSymbol('proto.didcomm.messaging.GetDidDocumentRequest', null, global);
 goog.exportSymbol('proto.didcomm.messaging.GetDidDocumentResponse', null, global);
-goog.exportSymbol('proto.didcomm.messaging.Key', null, global);
+goog.exportSymbol('proto.didcomm.messaging.JsonWebKey', null, global);
 goog.exportSymbol('proto.didcomm.messaging.KeyType', null, global);
 goog.exportSymbol('proto.didcomm.messaging.PackRequest', null, global);
 goog.exportSymbol('proto.didcomm.messaging.PackResponse', null, global);
@@ -338,16 +339,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.didcomm.messaging.Key = function(opt_data) {
+proto.didcomm.messaging.JsonWebKey = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.didcomm.messaging.Key, jspb.Message);
+goog.inherits(proto.didcomm.messaging.JsonWebKey, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.didcomm.messaging.Key.displayName = 'proto.didcomm.messaging.Key';
+  proto.didcomm.messaging.JsonWebKey.displayName = 'proto.didcomm.messaging.JsonWebKey';
 }
 
 
@@ -424,7 +425,7 @@ proto.didcomm.messaging.GenerateKeyRequest.deserializeBinaryFromReader = functio
       msg.setSeed(value);
       break;
     case 2:
-      var value = /** @type {!proto.didcomm.messaging.KeyType} */ (reader.readEnum());
+      var value = /** @type {!proto.didcomm.messaging.Crv} */ (reader.readEnum());
       msg.setKeyType(value);
       break;
     default:
@@ -516,16 +517,16 @@ proto.didcomm.messaging.GenerateKeyRequest.prototype.setSeed = function(value) {
 
 
 /**
- * optional KeyType key_type = 2;
- * @return {!proto.didcomm.messaging.KeyType}
+ * optional Crv key_type = 2;
+ * @return {!proto.didcomm.messaging.Crv}
  */
 proto.didcomm.messaging.GenerateKeyRequest.prototype.getKeyType = function() {
-  return /** @type {!proto.didcomm.messaging.KeyType} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+  return /** @type {!proto.didcomm.messaging.Crv} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /**
- * @param {!proto.didcomm.messaging.KeyType} value
+ * @param {!proto.didcomm.messaging.Crv} value
  * @return {!proto.didcomm.messaging.GenerateKeyRequest} returns this
  */
 proto.didcomm.messaging.GenerateKeyRequest.prototype.setKeyType = function(value) {
@@ -565,7 +566,7 @@ proto.didcomm.messaging.GenerateKeyResponse.prototype.toObject = function(opt_in
  */
 proto.didcomm.messaging.GenerateKeyResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    key: (f = msg.getKey()) && proto.didcomm.messaging.Key.toObject(includeInstance, f)
+    key: (f = msg.getKey()) && proto.didcomm.messaging.JsonWebKey.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -603,8 +604,8 @@ proto.didcomm.messaging.GenerateKeyResponse.deserializeBinaryFromReader = functi
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new proto.didcomm.messaging.Key;
-      reader.readMessage(value,proto.didcomm.messaging.Key.deserializeBinaryFromReader);
+      var value = new proto.didcomm.messaging.JsonWebKey;
+      reader.readMessage(value,proto.didcomm.messaging.JsonWebKey.deserializeBinaryFromReader);
       msg.setKey(value);
       break;
     default:
@@ -641,24 +642,24 @@ proto.didcomm.messaging.GenerateKeyResponse.serializeBinaryToWriter = function(m
     writer.writeMessage(
       1,
       f,
-      proto.didcomm.messaging.Key.serializeBinaryToWriter
+      proto.didcomm.messaging.JsonWebKey.serializeBinaryToWriter
     );
   }
 };
 
 
 /**
- * optional Key key = 1;
- * @return {?proto.didcomm.messaging.Key}
+ * optional JsonWebKey key = 1;
+ * @return {?proto.didcomm.messaging.JsonWebKey}
  */
 proto.didcomm.messaging.GenerateKeyResponse.prototype.getKey = function() {
-  return /** @type{?proto.didcomm.messaging.Key} */ (
-    jspb.Message.getWrapperField(this, proto.didcomm.messaging.Key, 1));
+  return /** @type{?proto.didcomm.messaging.JsonWebKey} */ (
+    jspb.Message.getWrapperField(this, proto.didcomm.messaging.JsonWebKey, 1));
 };
 
 
 /**
- * @param {?proto.didcomm.messaging.Key|undefined} value
+ * @param {?proto.didcomm.messaging.JsonWebKey|undefined} value
  * @return {!proto.didcomm.messaging.GenerateKeyResponse} returns this
 */
 proto.didcomm.messaging.GenerateKeyResponse.prototype.setKey = function(value) {
@@ -716,7 +717,7 @@ proto.didcomm.messaging.ConvertKeyRequest.prototype.toObject = function(opt_incl
  */
 proto.didcomm.messaging.ConvertKeyRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    key: (f = msg.getKey()) && proto.didcomm.messaging.Key.toObject(includeInstance, f),
+    key: (f = msg.getKey()) && proto.didcomm.messaging.JsonWebKey.toObject(includeInstance, f),
     targetType: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
@@ -755,12 +756,12 @@ proto.didcomm.messaging.ConvertKeyRequest.deserializeBinaryFromReader = function
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new proto.didcomm.messaging.Key;
-      reader.readMessage(value,proto.didcomm.messaging.Key.deserializeBinaryFromReader);
+      var value = new proto.didcomm.messaging.JsonWebKey;
+      reader.readMessage(value,proto.didcomm.messaging.JsonWebKey.deserializeBinaryFromReader);
       msg.setKey(value);
       break;
     case 2:
-      var value = /** @type {!proto.didcomm.messaging.KeyType} */ (reader.readEnum());
+      var value = /** @type {!proto.didcomm.messaging.Crv} */ (reader.readEnum());
       msg.setTargetType(value);
       break;
     default:
@@ -797,7 +798,7 @@ proto.didcomm.messaging.ConvertKeyRequest.serializeBinaryToWriter = function(mes
     writer.writeMessage(
       1,
       f,
-      proto.didcomm.messaging.Key.serializeBinaryToWriter
+      proto.didcomm.messaging.JsonWebKey.serializeBinaryToWriter
     );
   }
   f = message.getTargetType();
@@ -811,17 +812,17 @@ proto.didcomm.messaging.ConvertKeyRequest.serializeBinaryToWriter = function(mes
 
 
 /**
- * optional Key key = 1;
- * @return {?proto.didcomm.messaging.Key}
+ * optional JsonWebKey key = 1;
+ * @return {?proto.didcomm.messaging.JsonWebKey}
  */
 proto.didcomm.messaging.ConvertKeyRequest.prototype.getKey = function() {
-  return /** @type{?proto.didcomm.messaging.Key} */ (
-    jspb.Message.getWrapperField(this, proto.didcomm.messaging.Key, 1));
+  return /** @type{?proto.didcomm.messaging.JsonWebKey} */ (
+    jspb.Message.getWrapperField(this, proto.didcomm.messaging.JsonWebKey, 1));
 };
 
 
 /**
- * @param {?proto.didcomm.messaging.Key|undefined} value
+ * @param {?proto.didcomm.messaging.JsonWebKey|undefined} value
  * @return {!proto.didcomm.messaging.ConvertKeyRequest} returns this
 */
 proto.didcomm.messaging.ConvertKeyRequest.prototype.setKey = function(value) {
@@ -848,16 +849,16 @@ proto.didcomm.messaging.ConvertKeyRequest.prototype.hasKey = function() {
 
 
 /**
- * optional KeyType target_type = 2;
- * @return {!proto.didcomm.messaging.KeyType}
+ * optional Crv target_type = 2;
+ * @return {!proto.didcomm.messaging.Crv}
  */
 proto.didcomm.messaging.ConvertKeyRequest.prototype.getTargetType = function() {
-  return /** @type {!proto.didcomm.messaging.KeyType} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+  return /** @type {!proto.didcomm.messaging.Crv} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /**
- * @param {!proto.didcomm.messaging.KeyType} value
+ * @param {!proto.didcomm.messaging.Crv} value
  * @return {!proto.didcomm.messaging.ConvertKeyRequest} returns this
  */
 proto.didcomm.messaging.ConvertKeyRequest.prototype.setTargetType = function(value) {
@@ -897,7 +898,7 @@ proto.didcomm.messaging.ConvertKeyResponse.prototype.toObject = function(opt_inc
  */
 proto.didcomm.messaging.ConvertKeyResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    key: (f = msg.getKey()) && proto.didcomm.messaging.Key.toObject(includeInstance, f)
+    key: (f = msg.getKey()) && proto.didcomm.messaging.JsonWebKey.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -935,8 +936,8 @@ proto.didcomm.messaging.ConvertKeyResponse.deserializeBinaryFromReader = functio
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new proto.didcomm.messaging.Key;
-      reader.readMessage(value,proto.didcomm.messaging.Key.deserializeBinaryFromReader);
+      var value = new proto.didcomm.messaging.JsonWebKey;
+      reader.readMessage(value,proto.didcomm.messaging.JsonWebKey.deserializeBinaryFromReader);
       msg.setKey(value);
       break;
     default:
@@ -973,24 +974,24 @@ proto.didcomm.messaging.ConvertKeyResponse.serializeBinaryToWriter = function(me
     writer.writeMessage(
       1,
       f,
-      proto.didcomm.messaging.Key.serializeBinaryToWriter
+      proto.didcomm.messaging.JsonWebKey.serializeBinaryToWriter
     );
   }
 };
 
 
 /**
- * optional Key key = 1;
- * @return {?proto.didcomm.messaging.Key}
+ * optional JsonWebKey key = 1;
+ * @return {?proto.didcomm.messaging.JsonWebKey}
  */
 proto.didcomm.messaging.ConvertKeyResponse.prototype.getKey = function() {
-  return /** @type{?proto.didcomm.messaging.Key} */ (
-    jspb.Message.getWrapperField(this, proto.didcomm.messaging.Key, 1));
+  return /** @type{?proto.didcomm.messaging.JsonWebKey} */ (
+    jspb.Message.getWrapperField(this, proto.didcomm.messaging.JsonWebKey, 1));
 };
 
 
 /**
- * @param {?proto.didcomm.messaging.Key|undefined} value
+ * @param {?proto.didcomm.messaging.JsonWebKey|undefined} value
  * @return {!proto.didcomm.messaging.ConvertKeyResponse} returns this
 */
 proto.didcomm.messaging.ConvertKeyResponse.prototype.setKey = function(value) {
@@ -1049,7 +1050,7 @@ proto.didcomm.messaging.SignRequest.prototype.toObject = function(opt_includeIns
 proto.didcomm.messaging.SignRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     payload: msg.getPayload_asB64(),
-    key: (f = msg.getKey()) && proto.didcomm.messaging.Key.toObject(includeInstance, f),
+    key: (f = msg.getKey()) && proto.didcomm.messaging.JsonWebKey.toObject(includeInstance, f),
     appendTo: (f = msg.getAppendTo()) && security_pb.SignedMessage.toObject(includeInstance, f)
   };
 
@@ -1092,8 +1093,8 @@ proto.didcomm.messaging.SignRequest.deserializeBinaryFromReader = function(msg, 
       msg.setPayload(value);
       break;
     case 2:
-      var value = new proto.didcomm.messaging.Key;
-      reader.readMessage(value,proto.didcomm.messaging.Key.deserializeBinaryFromReader);
+      var value = new proto.didcomm.messaging.JsonWebKey;
+      reader.readMessage(value,proto.didcomm.messaging.JsonWebKey.deserializeBinaryFromReader);
       msg.setKey(value);
       break;
     case 3:
@@ -1142,7 +1143,7 @@ proto.didcomm.messaging.SignRequest.serializeBinaryToWriter = function(message, 
     writer.writeMessage(
       2,
       f,
-      proto.didcomm.messaging.Key.serializeBinaryToWriter
+      proto.didcomm.messaging.JsonWebKey.serializeBinaryToWriter
     );
   }
   f = message.getAppendTo();
@@ -1199,17 +1200,17 @@ proto.didcomm.messaging.SignRequest.prototype.setPayload = function(value) {
 
 
 /**
- * optional Key key = 2;
- * @return {?proto.didcomm.messaging.Key}
+ * optional JsonWebKey key = 2;
+ * @return {?proto.didcomm.messaging.JsonWebKey}
  */
 proto.didcomm.messaging.SignRequest.prototype.getKey = function() {
-  return /** @type{?proto.didcomm.messaging.Key} */ (
-    jspb.Message.getWrapperField(this, proto.didcomm.messaging.Key, 2));
+  return /** @type{?proto.didcomm.messaging.JsonWebKey} */ (
+    jspb.Message.getWrapperField(this, proto.didcomm.messaging.JsonWebKey, 2));
 };
 
 
 /**
- * @param {?proto.didcomm.messaging.Key|undefined} value
+ * @param {?proto.didcomm.messaging.JsonWebKey|undefined} value
  * @return {!proto.didcomm.messaging.SignRequest} returns this
 */
 proto.didcomm.messaging.SignRequest.prototype.setKey = function(value) {
@@ -1456,7 +1457,7 @@ proto.didcomm.messaging.VerifyRequest.prototype.toObject = function(opt_includeI
 proto.didcomm.messaging.VerifyRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     message: (f = msg.getMessage()) && security_pb.SignedMessage.toObject(includeInstance, f),
-    key: (f = msg.getKey()) && proto.didcomm.messaging.Key.toObject(includeInstance, f)
+    key: (f = msg.getKey()) && proto.didcomm.messaging.JsonWebKey.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1499,8 +1500,8 @@ proto.didcomm.messaging.VerifyRequest.deserializeBinaryFromReader = function(msg
       msg.setMessage(value);
       break;
     case 2:
-      var value = new proto.didcomm.messaging.Key;
-      reader.readMessage(value,proto.didcomm.messaging.Key.deserializeBinaryFromReader);
+      var value = new proto.didcomm.messaging.JsonWebKey;
+      reader.readMessage(value,proto.didcomm.messaging.JsonWebKey.deserializeBinaryFromReader);
       msg.setKey(value);
       break;
     default:
@@ -1545,7 +1546,7 @@ proto.didcomm.messaging.VerifyRequest.serializeBinaryToWriter = function(message
     writer.writeMessage(
       2,
       f,
-      proto.didcomm.messaging.Key.serializeBinaryToWriter
+      proto.didcomm.messaging.JsonWebKey.serializeBinaryToWriter
     );
   }
 };
@@ -1589,17 +1590,17 @@ proto.didcomm.messaging.VerifyRequest.prototype.hasMessage = function() {
 
 
 /**
- * optional Key key = 2;
- * @return {?proto.didcomm.messaging.Key}
+ * optional JsonWebKey key = 2;
+ * @return {?proto.didcomm.messaging.JsonWebKey}
  */
 proto.didcomm.messaging.VerifyRequest.prototype.getKey = function() {
-  return /** @type{?proto.didcomm.messaging.Key} */ (
-    jspb.Message.getWrapperField(this, proto.didcomm.messaging.Key, 2));
+  return /** @type{?proto.didcomm.messaging.JsonWebKey} */ (
+    jspb.Message.getWrapperField(this, proto.didcomm.messaging.JsonWebKey, 2));
 };
 
 
 /**
- * @param {?proto.didcomm.messaging.Key|undefined} value
+ * @param {?proto.didcomm.messaging.JsonWebKey|undefined} value
  * @return {!proto.didcomm.messaging.VerifyRequest} returns this
 */
 proto.didcomm.messaging.VerifyRequest.prototype.setKey = function(value) {
@@ -1787,8 +1788,8 @@ proto.didcomm.messaging.PackRequest.prototype.toObject = function(opt_includeIns
  */
 proto.didcomm.messaging.PackRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    senderKey: (f = msg.getSenderKey()) && proto.didcomm.messaging.Key.toObject(includeInstance, f),
-    receiverKey: (f = msg.getReceiverKey()) && proto.didcomm.messaging.Key.toObject(includeInstance, f),
+    senderKey: (f = msg.getSenderKey()) && proto.didcomm.messaging.JsonWebKey.toObject(includeInstance, f),
+    receiverKey: (f = msg.getReceiverKey()) && proto.didcomm.messaging.JsonWebKey.toObject(includeInstance, f),
     associatedData: msg.getAssociatedData_asB64(),
     plaintext: msg.getPlaintext_asB64(),
     mode: jspb.Message.getFieldWithDefault(msg, 5, 0),
@@ -1830,13 +1831,13 @@ proto.didcomm.messaging.PackRequest.deserializeBinaryFromReader = function(msg, 
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new proto.didcomm.messaging.Key;
-      reader.readMessage(value,proto.didcomm.messaging.Key.deserializeBinaryFromReader);
+      var value = new proto.didcomm.messaging.JsonWebKey;
+      reader.readMessage(value,proto.didcomm.messaging.JsonWebKey.deserializeBinaryFromReader);
       msg.setSenderKey(value);
       break;
     case 2:
-      var value = new proto.didcomm.messaging.Key;
-      reader.readMessage(value,proto.didcomm.messaging.Key.deserializeBinaryFromReader);
+      var value = new proto.didcomm.messaging.JsonWebKey;
+      reader.readMessage(value,proto.didcomm.messaging.JsonWebKey.deserializeBinaryFromReader);
       msg.setReceiverKey(value);
       break;
     case 3:
@@ -1889,7 +1890,7 @@ proto.didcomm.messaging.PackRequest.serializeBinaryToWriter = function(message, 
     writer.writeMessage(
       1,
       f,
-      proto.didcomm.messaging.Key.serializeBinaryToWriter
+      proto.didcomm.messaging.JsonWebKey.serializeBinaryToWriter
     );
   }
   f = message.getReceiverKey();
@@ -1897,7 +1898,7 @@ proto.didcomm.messaging.PackRequest.serializeBinaryToWriter = function(message, 
     writer.writeMessage(
       2,
       f,
-      proto.didcomm.messaging.Key.serializeBinaryToWriter
+      proto.didcomm.messaging.JsonWebKey.serializeBinaryToWriter
     );
   }
   f = message.getAssociatedData_asU8();
@@ -1932,17 +1933,17 @@ proto.didcomm.messaging.PackRequest.serializeBinaryToWriter = function(message, 
 
 
 /**
- * optional Key sender_key = 1;
- * @return {?proto.didcomm.messaging.Key}
+ * optional JsonWebKey sender_key = 1;
+ * @return {?proto.didcomm.messaging.JsonWebKey}
  */
 proto.didcomm.messaging.PackRequest.prototype.getSenderKey = function() {
-  return /** @type{?proto.didcomm.messaging.Key} */ (
-    jspb.Message.getWrapperField(this, proto.didcomm.messaging.Key, 1));
+  return /** @type{?proto.didcomm.messaging.JsonWebKey} */ (
+    jspb.Message.getWrapperField(this, proto.didcomm.messaging.JsonWebKey, 1));
 };
 
 
 /**
- * @param {?proto.didcomm.messaging.Key|undefined} value
+ * @param {?proto.didcomm.messaging.JsonWebKey|undefined} value
  * @return {!proto.didcomm.messaging.PackRequest} returns this
 */
 proto.didcomm.messaging.PackRequest.prototype.setSenderKey = function(value) {
@@ -1969,17 +1970,17 @@ proto.didcomm.messaging.PackRequest.prototype.hasSenderKey = function() {
 
 
 /**
- * optional Key receiver_key = 2;
- * @return {?proto.didcomm.messaging.Key}
+ * optional JsonWebKey receiver_key = 2;
+ * @return {?proto.didcomm.messaging.JsonWebKey}
  */
 proto.didcomm.messaging.PackRequest.prototype.getReceiverKey = function() {
-  return /** @type{?proto.didcomm.messaging.Key} */ (
-    jspb.Message.getWrapperField(this, proto.didcomm.messaging.Key, 2));
+  return /** @type{?proto.didcomm.messaging.JsonWebKey} */ (
+    jspb.Message.getWrapperField(this, proto.didcomm.messaging.JsonWebKey, 2));
 };
 
 
 /**
- * @param {?proto.didcomm.messaging.Key|undefined} value
+ * @param {?proto.didcomm.messaging.JsonWebKey|undefined} value
  * @return {!proto.didcomm.messaging.PackRequest} returns this
 */
 proto.didcomm.messaging.PackRequest.prototype.setReceiverKey = function(value) {
@@ -2308,8 +2309,8 @@ proto.didcomm.messaging.UnpackRequest.prototype.toObject = function(opt_includeI
  */
 proto.didcomm.messaging.UnpackRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    senderKey: (f = msg.getSenderKey()) && proto.didcomm.messaging.Key.toObject(includeInstance, f),
-    receiverKey: (f = msg.getReceiverKey()) && proto.didcomm.messaging.Key.toObject(includeInstance, f),
+    senderKey: (f = msg.getSenderKey()) && proto.didcomm.messaging.JsonWebKey.toObject(includeInstance, f),
+    receiverKey: (f = msg.getReceiverKey()) && proto.didcomm.messaging.JsonWebKey.toObject(includeInstance, f),
     message: (f = msg.getMessage()) && security_pb.EncryptedMessage.toObject(includeInstance, f)
   };
 
@@ -2348,13 +2349,13 @@ proto.didcomm.messaging.UnpackRequest.deserializeBinaryFromReader = function(msg
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new proto.didcomm.messaging.Key;
-      reader.readMessage(value,proto.didcomm.messaging.Key.deserializeBinaryFromReader);
+      var value = new proto.didcomm.messaging.JsonWebKey;
+      reader.readMessage(value,proto.didcomm.messaging.JsonWebKey.deserializeBinaryFromReader);
       msg.setSenderKey(value);
       break;
     case 2:
-      var value = new proto.didcomm.messaging.Key;
-      reader.readMessage(value,proto.didcomm.messaging.Key.deserializeBinaryFromReader);
+      var value = new proto.didcomm.messaging.JsonWebKey;
+      reader.readMessage(value,proto.didcomm.messaging.JsonWebKey.deserializeBinaryFromReader);
       msg.setReceiverKey(value);
       break;
     case 3:
@@ -2396,7 +2397,7 @@ proto.didcomm.messaging.UnpackRequest.serializeBinaryToWriter = function(message
     writer.writeMessage(
       1,
       f,
-      proto.didcomm.messaging.Key.serializeBinaryToWriter
+      proto.didcomm.messaging.JsonWebKey.serializeBinaryToWriter
     );
   }
   f = message.getReceiverKey();
@@ -2404,7 +2405,7 @@ proto.didcomm.messaging.UnpackRequest.serializeBinaryToWriter = function(message
     writer.writeMessage(
       2,
       f,
-      proto.didcomm.messaging.Key.serializeBinaryToWriter
+      proto.didcomm.messaging.JsonWebKey.serializeBinaryToWriter
     );
   }
   f = message.getMessage();
@@ -2419,17 +2420,17 @@ proto.didcomm.messaging.UnpackRequest.serializeBinaryToWriter = function(message
 
 
 /**
- * optional Key sender_key = 1;
- * @return {?proto.didcomm.messaging.Key}
+ * optional JsonWebKey sender_key = 1;
+ * @return {?proto.didcomm.messaging.JsonWebKey}
  */
 proto.didcomm.messaging.UnpackRequest.prototype.getSenderKey = function() {
-  return /** @type{?proto.didcomm.messaging.Key} */ (
-    jspb.Message.getWrapperField(this, proto.didcomm.messaging.Key, 1));
+  return /** @type{?proto.didcomm.messaging.JsonWebKey} */ (
+    jspb.Message.getWrapperField(this, proto.didcomm.messaging.JsonWebKey, 1));
 };
 
 
 /**
- * @param {?proto.didcomm.messaging.Key|undefined} value
+ * @param {?proto.didcomm.messaging.JsonWebKey|undefined} value
  * @return {!proto.didcomm.messaging.UnpackRequest} returns this
 */
 proto.didcomm.messaging.UnpackRequest.prototype.setSenderKey = function(value) {
@@ -2456,17 +2457,17 @@ proto.didcomm.messaging.UnpackRequest.prototype.hasSenderKey = function() {
 
 
 /**
- * optional Key receiver_key = 2;
- * @return {?proto.didcomm.messaging.Key}
+ * optional JsonWebKey receiver_key = 2;
+ * @return {?proto.didcomm.messaging.JsonWebKey}
  */
 proto.didcomm.messaging.UnpackRequest.prototype.getReceiverKey = function() {
-  return /** @type{?proto.didcomm.messaging.Key} */ (
-    jspb.Message.getWrapperField(this, proto.didcomm.messaging.Key, 2));
+  return /** @type{?proto.didcomm.messaging.JsonWebKey} */ (
+    jspb.Message.getWrapperField(this, proto.didcomm.messaging.JsonWebKey, 2));
 };
 
 
 /**
- * @param {?proto.didcomm.messaging.Key|undefined} value
+ * @param {?proto.didcomm.messaging.JsonWebKey|undefined} value
  * @return {!proto.didcomm.messaging.UnpackRequest} returns this
 */
 proto.didcomm.messaging.UnpackRequest.prototype.setReceiverKey = function(value) {
@@ -2715,7 +2716,7 @@ proto.didcomm.messaging.GetDidDocumentRequest.prototype.toObject = function(opt_
  */
 proto.didcomm.messaging.GetDidDocumentRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    key: (f = msg.getKey()) && proto.didcomm.messaging.Key.toObject(includeInstance, f)
+    key: (f = msg.getKey()) && proto.didcomm.messaging.JsonWebKey.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2753,8 +2754,8 @@ proto.didcomm.messaging.GetDidDocumentRequest.deserializeBinaryFromReader = func
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new proto.didcomm.messaging.Key;
-      reader.readMessage(value,proto.didcomm.messaging.Key.deserializeBinaryFromReader);
+      var value = new proto.didcomm.messaging.JsonWebKey;
+      reader.readMessage(value,proto.didcomm.messaging.JsonWebKey.deserializeBinaryFromReader);
       msg.setKey(value);
       break;
     default:
@@ -2791,24 +2792,24 @@ proto.didcomm.messaging.GetDidDocumentRequest.serializeBinaryToWriter = function
     writer.writeMessage(
       1,
       f,
-      proto.didcomm.messaging.Key.serializeBinaryToWriter
+      proto.didcomm.messaging.JsonWebKey.serializeBinaryToWriter
     );
   }
 };
 
 
 /**
- * optional Key key = 1;
- * @return {?proto.didcomm.messaging.Key}
+ * optional JsonWebKey key = 1;
+ * @return {?proto.didcomm.messaging.JsonWebKey}
  */
 proto.didcomm.messaging.GetDidDocumentRequest.prototype.getKey = function() {
-  return /** @type{?proto.didcomm.messaging.Key} */ (
-    jspb.Message.getWrapperField(this, proto.didcomm.messaging.Key, 1));
+  return /** @type{?proto.didcomm.messaging.JsonWebKey} */ (
+    jspb.Message.getWrapperField(this, proto.didcomm.messaging.JsonWebKey, 1));
 };
 
 
 /**
- * @param {?proto.didcomm.messaging.Key|undefined} value
+ * @param {?proto.didcomm.messaging.JsonWebKey|undefined} value
  * @return {!proto.didcomm.messaging.GetDidDocumentRequest} returns this
 */
 proto.didcomm.messaging.GetDidDocumentRequest.prototype.setKey = function(value) {
@@ -3001,8 +3002,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.didcomm.messaging.Key.prototype.toObject = function(opt_includeInstance) {
-  return proto.didcomm.messaging.Key.toObject(opt_includeInstance, this);
+proto.didcomm.messaging.JsonWebKey.prototype.toObject = function(opt_includeInstance) {
+  return proto.didcomm.messaging.JsonWebKey.toObject(opt_includeInstance, this);
 };
 
 
@@ -3011,17 +3012,18 @@ proto.didcomm.messaging.Key.prototype.toObject = function(opt_includeInstance) {
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.didcomm.messaging.Key} msg The msg instance to transform.
+ * @param {!proto.didcomm.messaging.JsonWebKey} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.didcomm.messaging.Key.toObject = function(includeInstance, msg) {
+proto.didcomm.messaging.JsonWebKey.toObject = function(includeInstance, msg) {
   var f, obj = {
     keyId: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    publicKey: msg.getPublicKey_asB64(),
-    secretKey: msg.getSecretKey_asB64(),
-    keyType: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    fingerprint: jspb.Message.getFieldWithDefault(msg, 5, "")
+    x: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    y: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    d: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    crv: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    kty: jspb.Message.getFieldWithDefault(msg, 6, 0)
   };
 
   if (includeInstance) {
@@ -3035,23 +3037,23 @@ proto.didcomm.messaging.Key.toObject = function(includeInstance, msg) {
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.didcomm.messaging.Key}
+ * @return {!proto.didcomm.messaging.JsonWebKey}
  */
-proto.didcomm.messaging.Key.deserializeBinary = function(bytes) {
+proto.didcomm.messaging.JsonWebKey.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.didcomm.messaging.Key;
-  return proto.didcomm.messaging.Key.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.didcomm.messaging.JsonWebKey;
+  return proto.didcomm.messaging.JsonWebKey.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.didcomm.messaging.Key} msg The message object to deserialize into.
+ * @param {!proto.didcomm.messaging.JsonWebKey} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.didcomm.messaging.Key}
+ * @return {!proto.didcomm.messaging.JsonWebKey}
  */
-proto.didcomm.messaging.Key.deserializeBinaryFromReader = function(msg, reader) {
+proto.didcomm.messaging.JsonWebKey.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -3063,20 +3065,24 @@ proto.didcomm.messaging.Key.deserializeBinaryFromReader = function(msg, reader) 
       msg.setKeyId(value);
       break;
     case 2:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setPublicKey(value);
+      var value = /** @type {string} */ (reader.readString());
+      msg.setX(value);
       break;
     case 3:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setSecretKey(value);
+      var value = /** @type {string} */ (reader.readString());
+      msg.setY(value);
       break;
     case 4:
-      var value = /** @type {!proto.didcomm.messaging.KeyType} */ (reader.readEnum());
-      msg.setKeyType(value);
+      var value = /** @type {string} */ (reader.readString());
+      msg.setD(value);
       break;
     case 5:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setFingerprint(value);
+      var value = /** @type {!proto.didcomm.messaging.Crv} */ (reader.readEnum());
+      msg.setCrv(value);
+      break;
+    case 6:
+      var value = /** @type {!proto.didcomm.messaging.KeyType} */ (reader.readEnum());
+      msg.setKty(value);
       break;
     default:
       reader.skipField();
@@ -3091,9 +3097,9 @@ proto.didcomm.messaging.Key.deserializeBinaryFromReader = function(msg, reader) 
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.didcomm.messaging.Key.prototype.serializeBinary = function() {
+proto.didcomm.messaging.JsonWebKey.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.didcomm.messaging.Key.serializeBinaryToWriter(this, writer);
+  proto.didcomm.messaging.JsonWebKey.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -3101,11 +3107,11 @@ proto.didcomm.messaging.Key.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.didcomm.messaging.Key} message
+ * @param {!proto.didcomm.messaging.JsonWebKey} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.didcomm.messaging.Key.serializeBinaryToWriter = function(message, writer) {
+proto.didcomm.messaging.JsonWebKey.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getKeyId();
   if (f.length > 0) {
@@ -3114,31 +3120,38 @@ proto.didcomm.messaging.Key.serializeBinaryToWriter = function(message, writer) 
       f
     );
   }
-  f = message.getPublicKey_asU8();
+  f = message.getX();
   if (f.length > 0) {
-    writer.writeBytes(
+    writer.writeString(
       2,
       f
     );
   }
-  f = message.getSecretKey_asU8();
+  f = message.getY();
   if (f.length > 0) {
-    writer.writeBytes(
+    writer.writeString(
       3,
       f
     );
   }
-  f = message.getKeyType();
-  if (f !== 0.0) {
-    writer.writeEnum(
+  f = message.getD();
+  if (f.length > 0) {
+    writer.writeString(
       4,
       f
     );
   }
-  f = message.getFingerprint();
-  if (f.length > 0) {
-    writer.writeString(
+  f = message.getCrv();
+  if (f !== 0.0) {
+    writer.writeEnum(
       5,
+      f
+    );
+  }
+  f = message.getKty();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      6,
       f
     );
   }
@@ -3149,147 +3162,127 @@ proto.didcomm.messaging.Key.serializeBinaryToWriter = function(message, writer) 
  * optional string key_id = 1;
  * @return {string}
  */
-proto.didcomm.messaging.Key.prototype.getKeyId = function() {
+proto.didcomm.messaging.JsonWebKey.prototype.getKeyId = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.didcomm.messaging.Key} returns this
+ * @return {!proto.didcomm.messaging.JsonWebKey} returns this
  */
-proto.didcomm.messaging.Key.prototype.setKeyId = function(value) {
+proto.didcomm.messaging.JsonWebKey.prototype.setKeyId = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
 /**
- * optional bytes public_key = 2;
- * @return {!(string|Uint8Array)}
- */
-proto.didcomm.messaging.Key.prototype.getPublicKey = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
-
-/**
- * optional bytes public_key = 2;
- * This is a type-conversion wrapper around `getPublicKey()`
+ * optional string x = 2;
  * @return {string}
  */
-proto.didcomm.messaging.Key.prototype.getPublicKey_asB64 = function() {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getPublicKey()));
-};
-
-
-/**
- * optional bytes public_key = 2;
- * Note that Uint8Array is not supported on all browsers.
- * @see http://caniuse.com/Uint8Array
- * This is a type-conversion wrapper around `getPublicKey()`
- * @return {!Uint8Array}
- */
-proto.didcomm.messaging.Key.prototype.getPublicKey_asU8 = function() {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getPublicKey()));
-};
-
-
-/**
- * @param {!(string|Uint8Array)} value
- * @return {!proto.didcomm.messaging.Key} returns this
- */
-proto.didcomm.messaging.Key.prototype.setPublicKey = function(value) {
-  return jspb.Message.setProto3BytesField(this, 2, value);
-};
-
-
-/**
- * optional bytes secret_key = 3;
- * @return {!(string|Uint8Array)}
- */
-proto.didcomm.messaging.Key.prototype.getSecretKey = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
-};
-
-
-/**
- * optional bytes secret_key = 3;
- * This is a type-conversion wrapper around `getSecretKey()`
- * @return {string}
- */
-proto.didcomm.messaging.Key.prototype.getSecretKey_asB64 = function() {
-  return /** @type {string} */ (jspb.Message.bytesAsB64(
-      this.getSecretKey()));
-};
-
-
-/**
- * optional bytes secret_key = 3;
- * Note that Uint8Array is not supported on all browsers.
- * @see http://caniuse.com/Uint8Array
- * This is a type-conversion wrapper around `getSecretKey()`
- * @return {!Uint8Array}
- */
-proto.didcomm.messaging.Key.prototype.getSecretKey_asU8 = function() {
-  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
-      this.getSecretKey()));
-};
-
-
-/**
- * @param {!(string|Uint8Array)} value
- * @return {!proto.didcomm.messaging.Key} returns this
- */
-proto.didcomm.messaging.Key.prototype.setSecretKey = function(value) {
-  return jspb.Message.setProto3BytesField(this, 3, value);
-};
-
-
-/**
- * optional KeyType key_type = 4;
- * @return {!proto.didcomm.messaging.KeyType}
- */
-proto.didcomm.messaging.Key.prototype.getKeyType = function() {
-  return /** @type {!proto.didcomm.messaging.KeyType} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
-};
-
-
-/**
- * @param {!proto.didcomm.messaging.KeyType} value
- * @return {!proto.didcomm.messaging.Key} returns this
- */
-proto.didcomm.messaging.Key.prototype.setKeyType = function(value) {
-  return jspb.Message.setProto3EnumField(this, 4, value);
-};
-
-
-/**
- * optional string fingerprint = 5;
- * @return {string}
- */
-proto.didcomm.messaging.Key.prototype.getFingerprint = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+proto.didcomm.messaging.JsonWebKey.prototype.getX = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.didcomm.messaging.Key} returns this
+ * @return {!proto.didcomm.messaging.JsonWebKey} returns this
  */
-proto.didcomm.messaging.Key.prototype.setFingerprint = function(value) {
-  return jspb.Message.setProto3StringField(this, 5, value);
+proto.didcomm.messaging.JsonWebKey.prototype.setX = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string y = 3;
+ * @return {string}
+ */
+proto.didcomm.messaging.JsonWebKey.prototype.getY = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.didcomm.messaging.JsonWebKey} returns this
+ */
+proto.didcomm.messaging.JsonWebKey.prototype.setY = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string d = 4;
+ * @return {string}
+ */
+proto.didcomm.messaging.JsonWebKey.prototype.getD = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.didcomm.messaging.JsonWebKey} returns this
+ */
+proto.didcomm.messaging.JsonWebKey.prototype.setD = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional Crv crv = 5;
+ * @return {!proto.didcomm.messaging.Crv}
+ */
+proto.didcomm.messaging.JsonWebKey.prototype.getCrv = function() {
+  return /** @type {!proto.didcomm.messaging.Crv} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/**
+ * @param {!proto.didcomm.messaging.Crv} value
+ * @return {!proto.didcomm.messaging.JsonWebKey} returns this
+ */
+proto.didcomm.messaging.JsonWebKey.prototype.setCrv = function(value) {
+  return jspb.Message.setProto3EnumField(this, 5, value);
+};
+
+
+/**
+ * optional KeyType kty = 6;
+ * @return {!proto.didcomm.messaging.KeyType}
+ */
+proto.didcomm.messaging.JsonWebKey.prototype.getKty = function() {
+  return /** @type {!proto.didcomm.messaging.KeyType} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+};
+
+
+/**
+ * @param {!proto.didcomm.messaging.KeyType} value
+ * @return {!proto.didcomm.messaging.JsonWebKey} returns this
+ */
+proto.didcomm.messaging.JsonWebKey.prototype.setKty = function(value) {
+  return jspb.Message.setProto3EnumField(this, 6, value);
 };
 
 
 /**
  * @enum {number}
  */
+proto.didcomm.messaging.Crv = {
+  ED25519: 0,
+  X25519: 1,
+  P256: 2,
+  BLS12381_G2: 3,
+  SECP256K1: 4
+};
+
+/**
+ * @enum {number}
+ */
 proto.didcomm.messaging.KeyType = {
-  X25519: 0,
-  P256: 1,
-  ED25519: 2
+  OKP: 0,
+  EC: 1
 };
 
 goog.object.extend(exports, proto.didcomm.messaging);
