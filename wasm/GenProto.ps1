@@ -13,4 +13,3 @@ Invoke-Expression "$GRPC_TOOLS_NODE_PROTOC --js_out=import_style=commonjs,binary
 
 # TypeScript definitions
 Invoke-Expression "$GRPC_TOOLS_NODE_PROTOC --js_out=import_style=commonjs,binary:$OUTPUT_DIR --plugin=protoc-gen-ts=$PROTOC_GEN_TS_PATH --ts_out=service=grpc-node:$OUTPUT_DIR -I $PROTO_DIR $PROTO_DIR/*.proto"
-
