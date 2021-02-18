@@ -54,7 +54,6 @@ impl From<JsonWebKey> for DIDKey {
     }
 }
 
-
 fn didkeytype_from_string(key_type: &String) -> DIDKeyType {
     match &key_type[..] {
         "Ed25519" => DIDKeyType::Ed25519,
@@ -65,7 +64,6 @@ fn didkeytype_from_string(key_type: &String) -> DIDKeyType {
         _ => panic!("Unrecognized crv type"),
     }
 }
-
 
 impl crate::DIDKey {
     pub fn generate<'a>(request: &GenerateKeyRequest) -> Result<GenerateKeyResponse, Error<'a>> {
