@@ -10,11 +10,11 @@ fn test_sign_payload(secret_key: &str, payload: &str) {
         payload: payload.as_bytes().to_vec(),
         key: Some(JsonWebKey {
             key_id: String::default(),
-            crv: Crv::Ed25519.into(),
+            crv: String::from("Ed25519"),
             d: base64::encode(bs58::decode(secret_key).into_vec().unwrap()),
             x: String::from(""),
             y: String::from(""),
-            kty: KeyType::Okp as i32,
+            kty: String::from("Okp"),
         }),
         append_to: None,
     };
@@ -35,11 +35,11 @@ fn test_sign_verify(secret_key: &str, public_key: &str, message: &str) {
         payload: message.as_bytes().to_vec(),
         key: Some(JsonWebKey {
             key_id: String::default(),
-            crv: Crv::Ed25519.into(),
+            crv: String::from("Ed25519"),
             d: base64::encode(bs58::decode(secret_key).into_vec().unwrap()),
             x: base64::encode(bs58::decode(public_key).into_vec().unwrap()),
             y: String::from(""),
-            kty: KeyType::Okp as i32,
+            kty: String::from("Okp"),
         }),
         append_to: None,
     };
@@ -54,11 +54,11 @@ fn test_sign_verify(secret_key: &str, public_key: &str, message: &str) {
     let verify_request = VerifyRequest {
         key: Some(JsonWebKey {
             key_id: String::default(),
-            crv: Crv::Ed25519.into(),
+            crv: String::from("Ed25519"),
             d: base64::encode(bs58::decode(secret_key).into_vec().unwrap()),
             x: base64::encode(bs58::decode(public_key).into_vec().unwrap()),
             y: String::from(""),
-            kty: KeyType::Okp as i32,
+            kty: String::from("Okp"),
         }),
         message: Some(signed_message.clone()),
     };

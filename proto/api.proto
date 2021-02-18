@@ -12,14 +12,14 @@ import "google/protobuf/struct.proto";
 
 message GenerateKeyRequest {
     bytes seed = 1;
-    Crv key_type = 2;
+    string key_type = 2;
 }
 message GenerateKeyResponse {
     JsonWebKey key = 1;
 }
 message ConvertKeyRequest {
     JsonWebKey key = 1;
-    Crv target_type = 2;
+    string target_type = 2;
 }
 message ConvertKeyResponse {
     JsonWebKey key = 1;
@@ -81,19 +81,6 @@ message JsonWebKey {
     string x = 2;              // public_key
     string y = 3;              // public_key
     string d = 4;              // secret_key
-    Crv crv = 5;
-    KeyType kty = 6;
-}
-
-enum Crv {
-  Ed25519 = 0;
-  X25519 = 1;
-  P256 = 2;
-  Bls12381_G2 = 3;
-  secp256k1 = 4;
-}
-
-enum KeyType {
-  OKP = 0;
-  EC = 1;
+    string crv = 5;
+    string kty = 6;
 }

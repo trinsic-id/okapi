@@ -64,10 +64,10 @@ fn test_x25519_exchange() {
 fn key_from(pk: &str, sk: &str) -> JsonWebKey {
     JsonWebKey {
         key_id: String::default(),
-        crv: Crv::X25519.into(),
+        crv: String::from("X25519"),
         d: base64::encode(bs58::decode(sk).into_vec().unwrap()),
         x: base64::encode(bs58::decode(pk).into_vec().unwrap()),
         y: String::from(""),
-        kty: KeyType::Okp.into(),
+        kty: String::from("Okp"),
     }
 }
