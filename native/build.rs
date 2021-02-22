@@ -7,7 +7,7 @@ extern crate prost_build;
 fn main() {
     Config::new()
         .compile_well_known_types()
-        .type_attribute(".", "#[derive(::serde::Serialize)]")
+        .type_attribute(".", "#[derive(::serde::Serialize, ::serde::Deserialize)]")
         .out_dir(".")
         .compile_protos(
             &[
