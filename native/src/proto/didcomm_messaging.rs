@@ -113,8 +113,10 @@ pub struct GenerateKeyRequest {
 #[derive(Clone, PartialEq, ::prost::Message)]
 #[derive(::serde::Serialize)]
 pub struct GenerateKeyResponse {
-    #[prost(message, optional, tag="1")]
-    pub key: ::std::option::Option<JsonWebKey>,
+    #[prost(message, repeated, tag="1")]
+    pub key: ::std::vec::Vec<JsonWebKey>,
+    #[prost(message, optional, tag="2")]
+    pub did_document: ::std::option::Option<super::super::google::protobuf::Struct>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 #[derive(::serde::Serialize)]

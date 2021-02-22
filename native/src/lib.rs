@@ -1,3 +1,4 @@
+#![feature(impl_trait_in_bindings)]
 #[macro_use]
 extern crate ffi_support;
 

@@ -15,7 +15,8 @@ message GenerateKeyRequest {
     Crv key_type = 2;
 }
 message GenerateKeyResponse {
-    JsonWebKey key = 1;
+    repeated JsonWebKey key = 1;
+    google.protobuf.Struct did_document = 2;
 }
 message ConvertKeyRequest {
     JsonWebKey key = 1;
