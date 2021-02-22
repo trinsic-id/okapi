@@ -139,7 +139,9 @@ impl DIDComm {
         let did_key: KeyPair = key.into();
         let valid = did_key.verify(Payload::Buffer(message.payload), &signature.signature);
 
-        Ok(VerifyResponse { is_valid: valid.map_or_else(|_| false, |_| true) })
+        Ok(VerifyResponse {
+            is_valid: valid.map_or_else(|_| false, |_| true),
+        })
     }
 }
 

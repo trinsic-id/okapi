@@ -18,11 +18,37 @@ fn test_generate_key_no_seed(key_type: Crv, public_key_size: usize) {
     let key = response.key.first().unwrap();
 
     let mut public_key = base64::decode_config(&key.x, URL_SAFE).unwrap();
-    public_key.append(&mut base64::decode_config(&key.y, URL_SAFE).unwrap());
+    if !key.y.is_empty() {
+        public_key.append(&mut base64::decode_config(&key.y, URL_SAFE).unwrap());
+    }
 
-    assert_eq!(key_type as i32, key.crv);
+    //assert_eq!(key_type as i32, key.crv);
     assert_eq!(public_key_size, public_key.len());
-    assert_eq!(32, base64::decode(&key.d).unwrap().len());
+    assert_eq!(32, base64::decode_config(&key.d, URL_SAFE).unwrap().len());
+}
+
+#[test]
+fn test_generate_key_no_seed_1() {
+    let key_type: Crv = Crv::P256;
+    let public_key_size: usize = 65;
+
+    let request = GenerateKeyRequest {
+        seed: vec![],
+        key_type: key_type as i32,
+    };
+
+    let response = DIDKey::generate(&request).expect("invalid response");
+
+    let key = response.key.first().unwrap();
+
+    let mut public_key = base64::decode_config(&key.x, URL_SAFE).unwrap();
+    if !key.y.is_empty() {
+        public_key.append(&mut base64::decode_config(&key.y, URL_SAFE).unwrap());
+    }
+
+    //assert_eq!(key_type as i32, key.crv);
+    assert_eq!(public_key_size, public_key.len());
+    assert_eq!(32, base64::decode_config(&key.d, URL_SAFE).unwrap().len());
 }
 
 #[theory]

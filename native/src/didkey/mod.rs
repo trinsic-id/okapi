@@ -1,5 +1,4 @@
 use did_key::*;
-use std::{convert::TryInto, todo};
 
 use crate::{didcomm::Error, proto::google_protobuf::Struct, *};
 
@@ -15,7 +14,7 @@ impl From<VerificationMethod> for JsonWebKey {
                     key_id: vm.id,
                     ..Default::default()
                 },
-            }
+            };
         } else {
             return match vm.public_key.unwrap() {
                 KeyFormat::Base58(_) | KeyFormat::Multibase(_) => todo!(),
@@ -26,7 +25,7 @@ impl From<VerificationMethod> for JsonWebKey {
                     key_id: vm.id,
                     ..Default::default()
                 },
-            }
+            };
         }
     }
 }
@@ -37,7 +36,9 @@ impl From<JsonWebKey> for KeyPair {
 
         let private_key = base64::decode(key.d).unwrap();
         let mut public_key = base64::decode(key.x).unwrap();
-        public_key.append(&mut base64::decode(key.y).unwrap());
+        if !key.y.is_empty() {
+            public_key.append(&mut base64::decode(key.y).unwrap());
+        }
 
         match private_key.is_empty() {
             true => match key_type {
