@@ -1,5 +1,5 @@
 use crate::{proto::didcomm_messaging::*, *};
-use did_key::{DIDKey, KeyPair, Payload};
+use did_key::*;
 
 use self::xchacha::XChaCha;
 
