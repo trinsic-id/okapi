@@ -1,5 +1,5 @@
 use crate::{proto::didcomm_messaging::*, *};
-use did_key::{DIDKey, Payload};
+use did_key::{DIDKey, KeyPair, Payload};
 
 use self::xchacha::XChaCha;
 
@@ -35,7 +35,7 @@ impl DIDComm {
         let receiver_key = unwrap_or_return!(request.receiver_key, Error::MissingField("receiver_key"));
         let sender_key = unwrap_or_return!(request.sender_key, Error::MissingField("sender_key"));
 
-        let sender_did_key: DIDKey = sender_key.clone().into();
+        let sender_did_key: KeyPair = sender_key.clone().into();
         let enc_key = sender_did_key.key_exchange(&receiver_key.clone().into());
 
         let mut nonce = [0u8; 24];
@@ -81,7 +81,7 @@ impl DIDComm {
 
         let enc_key = match enc_mode {
             EncryptionMode::Direct => {
-                let rec_did_key: DIDKey = receiver_key.into();
+                let rec_did_key: KeyPair = receiver_key.into();
                 rec_did_key.key_exchange(&sender_key.into())
             }
             _ => return Err(Error::UnsupportedAlgorithm),
@@ -106,7 +106,7 @@ impl DIDComm {
     pub fn sign<'a>(request: &SignRequest) -> Result<SignResponse, Error<'a>> {
         let key = unwrap_or_return!(&request.key, Error::MissingField("key not found"));
 
-        let did_key: DIDKey = key.clone().into();
+        let did_key: KeyPair = key.clone().into();
         let signature = did_key.sign(Payload::Buffer(request.payload.clone()));
 
         Ok(SignResponse {
@@ -136,10 +136,10 @@ impl DIDComm {
             return Err(Error::Message("supplied key id doesn't match signature header"));
         }
 
-        let did_key: DIDKey = key.into();
+        let did_key: KeyPair = key.into();
         let valid = did_key.verify(Payload::Buffer(message.payload), &signature.signature);
 
-        Ok(VerifyResponse { is_valid: valid })
+        Ok(VerifyResponse { is_valid: valid.map_or_else(|_| false, |_| true) })
     }
 }
 

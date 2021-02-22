@@ -1,0 +1,3 @@
+[submodule "did-key.rs"]
+	path = did-key.rs
+	url = git@github.com:trinsic-id/did-key.rs.git

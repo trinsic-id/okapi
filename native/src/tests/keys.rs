@@ -1,4 +1,5 @@
 use crate::*;
+use base64::{decode_config, URL_SAFE};
 use ffi_support::{ByteBuffer, ExternError};
 use fluid::prelude::*;
 
@@ -14,14 +15,14 @@ fn test_generate_key_no_seed(key_type: Crv, public_key_size: usize) {
 
     let response = DIDKey::generate(&request).expect("invalid response");
 
-    let key = response.key.expect("Missing key");
+    let key = response.key.first().unwrap();
 
-    let mut public_key = base64::decode(key.x).unwrap();
-    public_key.append(&mut base64::decode(key.y).unwrap());
+    let mut public_key = base64::decode_config(&key.x, URL_SAFE).unwrap();
+    public_key.append(&mut base64::decode_config(&key.y, URL_SAFE).unwrap());
 
     assert_eq!(key_type as i32, key.crv);
     assert_eq!(public_key_size, public_key.len());
-    assert_eq!(32, base64::decode(key.d).unwrap().len());
+    assert_eq!(32, base64::decode(&key.d).unwrap().len());
 }
 
 #[theory]
@@ -118,36 +119,56 @@ fn test_generate_key_with_seed(key_type: Crv, seed: &str, public_key: &str) {
     };
 
     let response = DIDKey::generate(&request).expect("invalid response");
-    let key = response.key.expect("Missing key");
+    let key = response.key.first().unwrap();
 
     //assert_eq!(key.key_type, key_type.into());
-    assert_eq!(public_key, bs58::encode(base64::decode(&key.x).unwrap()).into_string());
-    assert_eq!(32, base64::decode(key.x + &key.y).unwrap().len());
-    assert_eq!(32, base64::decode(&key.d).unwrap().len());
+    let decoded_public_key = base64::decode_config(&key.x, URL_SAFE).unwrap();
+    assert_eq!(public_key, bs58::encode(decoded_public_key).into_string());
+    assert_eq!(32, base64::decode_config(&key.d, URL_SAFE).unwrap().len());
 }
 
-#[theory]
-#[case("6fioC1zcDPyPEL19pXRS2E4iJ46zH7xP6uSgAaPdwDrx", "FxfdY3DCQxVZddKGAtSjZdFW9bCCW7oRwZn1NFJ2Tbg2")]
-#[case("9j1mZuDTFSsrP8xwS4iyJwi22GZEsGFe2nutDB25R4jY", "Ff8nD7Zgm8ZNhBZcmHTqrfg2FRf6tU6Ki5BDmA9gtrRm")]
-#[case("CTDAH3MW8Dorz6XpLHtwTXgAfkkXBbRVSJy4aXyj13CR", "GkMFTHJ2DuwfsSiJ1eKpcNBqYau9i5VW5qXiy2po4tqJ")]
-#[case("2E9xcBvRVRGAgnySqpNzW6JoYjnjtt2BtqDSPEdsWNjk", "ELMGmTD43y15v6YaD3kfM5oF5xHnpv9eiNkZoNQxWunh")]
-#[case("6JmFgRnWVTUi4vVZAd4aNpZKfP8LenvQGk1q1uM34ajq", "AgEcgKRLDXS1puWdz3o2uyAuFZXRMGLi2widbZ1G7MLv")]
-fn convert_ed_to_montgomery(ed_key: &str, montgomery_key: &str) {
-    let request = ConvertKeyRequest {
-        key: Some(JsonWebKey {
-            key_id: String::default(),
-            crv: Crv::Ed25519.into(),
-            d: String::from(""),
-            x: base64::encode(bs58::decode(ed_key).into_vec().unwrap()),
-            y: String::from(""),
-            kty: KeyType::Okp as i32,
-        }),
-        target_type: Crv::X25519.into(),
+#[test]
+fn test_generate_key_with_seed_1() {
+    let key_type: Crv = Crv::X25519;
+    let seed: &str = "8a5bbcf88345b143f6021334ed495bfb29629c8629684e257f6a2836c7d2d53f";
+    let public_key = "yyDzHfQa9HQNdGiLQuhPorPYZMwjmLQkQefRvKYbnK3".to_string();
+
+    let request = GenerateKeyRequest {
+        seed: hex::decode(seed).expect("invalid hex string"),
+        key_type: key_type.into(),
     };
 
-    let response = DIDKey::convert(&request).expect("invalid response");
-    let key = response.key.expect("Missing key");
+    let response = DIDKey::generate(&request).expect("invalid response");
+    let key = response.key.first().unwrap();
 
-    assert_eq!(32, base64::decode(&key.x).unwrap().len());
-    assert_eq!(montgomery_key, bs58::encode(base64::decode(&key.x).unwrap()).into_string());
+    //assert_eq!(key.key_type, key_type.into());
+    let decoded_public_key = base64::decode_config(&key.x, URL_SAFE).unwrap();
+    assert_eq!(public_key, bs58::encode(decoded_public_key).into_string());
+    assert_eq!(32, base64::decode_config(&key.d, URL_SAFE).unwrap().len());
 }
+
+// #[theory]
+// #[case("6fioC1zcDPyPEL19pXRS2E4iJ46zH7xP6uSgAaPdwDrx", "FxfdY3DCQxVZddKGAtSjZdFW9bCCW7oRwZn1NFJ2Tbg2")]
+// #[case("9j1mZuDTFSsrP8xwS4iyJwi22GZEsGFe2nutDB25R4jY", "Ff8nD7Zgm8ZNhBZcmHTqrfg2FRf6tU6Ki5BDmA9gtrRm")]
+// #[case("CTDAH3MW8Dorz6XpLHtwTXgAfkkXBbRVSJy4aXyj13CR", "GkMFTHJ2DuwfsSiJ1eKpcNBqYau9i5VW5qXiy2po4tqJ")]
+// #[case("2E9xcBvRVRGAgnySqpNzW6JoYjnjtt2BtqDSPEdsWNjk", "ELMGmTD43y15v6YaD3kfM5oF5xHnpv9eiNkZoNQxWunh")]
+// #[case("6JmFgRnWVTUi4vVZAd4aNpZKfP8LenvQGk1q1uM34ajq", "AgEcgKRLDXS1puWdz3o2uyAuFZXRMGLi2widbZ1G7MLv")]
+// fn convert_ed_to_montgomery(ed_key: &str, montgomery_key: &str) {
+//     let request = ConvertKeyRequest {
+//         key: Some(JsonWebKey {
+//             key_id: String::default(),
+//             crv: Crv::Ed25519.into(),
+//             d: String::from(""),
+//             x: base64::encode(bs58::decode(ed_key).into_vec().unwrap()),
+//             y: String::from(""),
+//             kty: KeyType::Okp as i32,
+//         }),
+//         target_type: Crv::X25519.into(),
+//     };
+
+//     let response = DIDKey::convert(&request).expect("invalid response");
+//     let key = response.key.expect("Missing key");
+
+//     assert_eq!(32, base64::decode(&key.x).unwrap().len());
+//     assert_eq!(montgomery_key, bs58::encode(base64::decode(&key.x).unwrap()).into_string());
+// }
