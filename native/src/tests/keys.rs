@@ -1,5 +1,5 @@
 use crate::*;
-use base64::{decode_config, URL_SAFE};
+use base64::URL_SAFE;
 use ffi_support::{ByteBuffer, ExternError};
 use fluid::prelude::*;
 
