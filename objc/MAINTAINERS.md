@@ -21,7 +21,7 @@ After this, open `DIDComm-gRPC.xcworkspace` with Xcode. You should be able to co
 ## Updating a new version of the Podspec
 
 - Ensure the project can be built locally
-- Update the `libs/ios/didcommgrpc.a` file with latest build (you can get one from CI artifacts or build one locally)
+- Update the `libs/ios/didcommgrpc.a` file with latest build (you can get one from CI artifacts or build one locally). This file will be used from this location in the Podspec bundle.
 - Edit the version in the `DIDComm-gRPC.podspec` file
 - Release new Pod version by [following the instructions](https://guides.cocoapods.org/making/making-a-cocoapod.html)
 
