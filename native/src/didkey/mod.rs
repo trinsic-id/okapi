@@ -11,7 +11,7 @@ impl From<VerificationMethod> for JsonWebKey {
                     x: jwk.x.map_or(String::default(), |x| x),
                     y: jwk.y.map_or(String::default(), |x| x),
                     d: jwk.d.map_or(String::default(), |x| x),
-                    key_id: vm.id,
+                    kid: vm.id,
                     ..Default::default()
                 },
             };
@@ -22,7 +22,7 @@ impl From<VerificationMethod> for JsonWebKey {
                     x: jwk.x.map_or(String::default(), |x| x),
                     y: jwk.y.map_or(String::default(), |x| x),
                     d: jwk.d.map_or(String::default(), |x| x),
-                    key_id: vm.id,
+                    kid: vm.id,
                     ..Default::default()
                 },
             };
@@ -32,20 +32,18 @@ impl From<VerificationMethod> for JsonWebKey {
 
 impl From<JsonWebKey> for KeyPair {
     fn from(key: JsonWebKey) -> Self {
-        let key_type: Crv = Crv::from_i32(key.crv).expect("invalid code");
-
         let private_key = if !key.d.is_empty() { Some(base64::decode(key.d).unwrap()) } else { None };
         let mut public_key = base64::decode(key.x).unwrap();
         if !key.y.is_empty() {
             public_key.append(&mut base64::decode(key.y).unwrap());
         }
 
-        match key_type {
-            Crv::Ed25519 => from_existing_key::<Ed25519KeyPair>(public_key.as_slice(), private_key.as_ref().map(|x| x.as_slice())),
-            Crv::X25519 => from_existing_key::<X25519KeyPair>(public_key.as_slice(), private_key.as_ref().map(|x| x.as_slice())),
-            Crv::P256 => from_existing_key::<P256KeyPair>(public_key.as_slice(), private_key.as_ref().map(|x| x.as_slice())),
-            Crv::Bls12381G2 => from_existing_key::<Bls12381KeyPair>(public_key.as_slice(), private_key.as_ref().map(|x| x.as_slice())),
-            Crv::Secp256k1 => from_existing_key::<Secp256k1KeyPair>(public_key.as_slice(), private_key.as_ref().map(|x| x.as_slice())),
+        match key.crv.to_lowercase().as_str() {
+            "ed25519" => from_existing_key::<Ed25519KeyPair>(public_key.as_slice(), private_key.as_ref().map(|x| x.as_slice())),
+            "x25519" => from_existing_key::<X25519KeyPair>(public_key.as_slice(), private_key.as_ref().map(|x| x.as_slice())),
+            "p-256" => from_existing_key::<P256KeyPair>(public_key.as_slice(), private_key.as_ref().map(|x| x.as_slice())),
+            "secp256k1" => from_existing_key::<Secp256k1KeyPair>(public_key.as_slice(), private_key.as_ref().map(|x| x.as_slice())),
+            _ => unimplemented!("unsupported key type"),
         }
     }
 }
@@ -59,14 +57,14 @@ impl From<Document> for Struct {
 
 impl crate::DIDKey {
     pub fn generate<'a>(request: &GenerateKeyRequest) -> Result<GenerateKeyResponse, Error<'a>> {
-        let key_type: Crv = unwrap_or_return!(Crv::from_i32(request.key_type), Error::InvalidField("key_type"));
+        let key_type = unwrap_or_return!(KeyType::from_i32(request.key_type), Error::InvalidField("key_type"));
 
         let did_key = match key_type {
-            Crv::Ed25519 => generate::<Ed25519KeyPair>(Some(request.seed.as_slice())),
-            Crv::X25519 => generate::<X25519KeyPair>(Some(request.seed.as_slice())),
-            Crv::P256 => generate::<P256KeyPair>(Some(request.seed.as_slice())),
-            Crv::Bls12381G2 => generate::<Bls12381KeyPair>(Some(request.seed.as_slice())),
-            Crv::Secp256k1 => generate::<Secp256k1KeyPair>(Some(request.seed.as_slice())),
+            KeyType::Ed25519 => generate::<Ed25519KeyPair>(Some(request.seed.as_slice())),
+            KeyType::X25519 => generate::<X25519KeyPair>(Some(request.seed.as_slice())),
+            KeyType::P256 => generate::<P256KeyPair>(Some(request.seed.as_slice())),
+            KeyType::Bls12381G1g2 => generate::<Bls12381KeyPair>(Some(request.seed.as_slice())),
+            KeyType::Secp256k1 => generate::<Secp256k1KeyPair>(Some(request.seed.as_slice())),
         };
         let did_document = did_key.get_did_document(CONFIG_JOSE_PRIVATE);
         let jwk_keys: Vec<JsonWebKey> = did_document.verification_method.iter().map(|x| x.to_owned().into()).collect();

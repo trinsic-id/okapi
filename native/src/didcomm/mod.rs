@@ -59,8 +59,8 @@ impl DIDComm {
                     header: Some(EncryptionHeader {
                         mode: EncryptionMode::Direct.into(),
                         algorithm: EncryptionAlgorithm::Xchacha20poly1305.into(),
-                        key_id: receiver_key.key_id.clone(),
-                        sender_key_id: sender_key.key_id.clone(),
+                        key_id: receiver_key.kid,
+                        sender_key_id: sender_key.kid,
                     }),
                     content_encryption_key: vec![],
                 }],
@@ -116,7 +116,7 @@ impl DIDComm {
                     signature: signature,
                     header: SignatureHeader {
                         algorithm: String::from("Ed25519"),
-                        key_id: key.key_id.clone(),
+                        key_id: key.kid.clone(),
                     }
                     .to_vec(),
                 }],
@@ -132,7 +132,7 @@ impl DIDComm {
         let signature = unwrap_or_return!(message.signatures.first(), Error::MissingField("signature is required"));
         let header: SignatureHeader = map_or_return!(SignatureHeader::from_vec(&signature.header), Error::InvalidRequest);
 
-        if header.key_id != key.key_id {
+        if header.key_id != key.kid {
             return Err(Error::Message("supplied key id doesn't match signature header"));
         }
 
