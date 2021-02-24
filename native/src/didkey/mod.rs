@@ -11,6 +11,7 @@ impl From<VerificationMethod> for JsonWebKey {
                     x: jwk.x.map_or(String::default(), |x| x),
                     y: jwk.y.map_or(String::default(), |x| x),
                     d: jwk.d.map_or(String::default(), |x| x),
+                    crv: jwk.curve,
                     kid: vm.id,
                     ..Default::default()
                 },
@@ -22,6 +23,7 @@ impl From<VerificationMethod> for JsonWebKey {
                     x: jwk.x.map_or(String::default(), |x| x),
                     y: jwk.y.map_or(String::default(), |x| x),
                     d: jwk.d.map_or(String::default(), |x| x),
+                    crv: jwk.curve,
                     kid: vm.id,
                     ..Default::default()
                 },
