@@ -1,3 +1,4 @@
+use base64::URL_SAFE;
 use did_key::*;
 
 use crate::{didcomm::Error, proto::google_protobuf::Struct, *};
@@ -12,6 +13,8 @@ impl From<VerificationMethod> for JsonWebKey {
                     y: jwk.y.map_or(String::default(), |x| x),
                     d: jwk.d.map_or(String::default(), |x| x),
                     kid: vm.id,
+                    crv: jwk.curve,
+                    kty: jwk.key_type,
                     ..Default::default()
                 },
             };
@@ -23,6 +26,8 @@ impl From<VerificationMethod> for JsonWebKey {
                     y: jwk.y.map_or(String::default(), |x| x),
                     d: jwk.d.map_or(String::default(), |x| x),
                     kid: vm.id,
+                    crv: jwk.curve,
+                    kty: jwk.key_type,
                     ..Default::default()
                 },
             };
@@ -32,10 +37,10 @@ impl From<VerificationMethod> for JsonWebKey {
 
 impl From<JsonWebKey> for KeyPair {
     fn from(key: JsonWebKey) -> Self {
-        let private_key = if !key.d.is_empty() { Some(base64::decode(key.d).unwrap()) } else { None };
-        let mut public_key = base64::decode(key.x).unwrap();
+        let private_key = if !key.d.is_empty() { Some(base64::decode_config(key.d, URL_SAFE).unwrap()) } else { None };
+        let mut public_key = base64::decode_config(key.x, URL_SAFE).unwrap();
         if !key.y.is_empty() {
-            public_key.append(&mut base64::decode(key.y).unwrap());
+            public_key.append(&mut base64::decode_config(key.y, URL_SAFE).unwrap());
         }
 
         match key.crv.to_lowercase().as_str() {

@@ -1,5 +1,7 @@
 package Greeter;
 
+import DIDComm.Messaging.Proto.API;
+import DIDComm.Messaging.gRPC.DIDComm;
 import Greeter.Client.Client;
 import Greeter.Server.Server;
 

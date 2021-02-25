@@ -93,3 +93,11 @@ message JsonWebKey {
     string crv = 5;
     string kty = 6;
 }
+
+message ResolveRequest {
+    string did = 1;
+}
+
+message ResolveResponse {
+    string diddoc = 1;
+}

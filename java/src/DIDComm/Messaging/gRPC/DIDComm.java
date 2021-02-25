@@ -19,4 +19,8 @@ public class DIDComm {
     public static API.VerifyResponse Verify(API.VerifyRequest request) throws InvalidProtocolBufferException {
         return API.VerifyResponse.parseFrom(NativeMethods.didcomm_verify(request.toByteArray()));
     }
+
+    public static API.ResolveResponse Resolve(API.ResolveRequest request) throws InvalidProtocolBufferException {
+        return API.ResolveResponse.parseFrom(NativeMethods.didcomm_resolve(request.toByteArray()));
+    }
 }

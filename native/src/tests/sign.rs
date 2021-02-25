@@ -1,4 +1,5 @@
 use crate::*;
+use base64::{URL_SAFE_NO_PAD, encode_config};
 use fluid::prelude::*;
 
 #[theory]
@@ -10,7 +11,7 @@ fn test_sign_payload(secret_key: &str, payload: &str) {
         payload: payload.as_bytes().to_vec(),
         key: Some(JsonWebKey {
             crv: String::from("Ed25519"),
-            d: base64::encode(bs58::decode(secret_key).into_vec().unwrap()),
+            d: base64::encode_config(bs58::decode(secret_key).into_vec().unwrap(), URL_SAFE_NO_PAD),
             x: String::from(""),
             y: String::from(""),
             kty: String::from("Okp"),
@@ -35,8 +36,8 @@ fn test_sign_verify(secret_key: &str, public_key: &str, message: &str) {
         payload: message.as_bytes().to_vec(),
         key: Some(JsonWebKey {
             crv: String::from("Ed25519"),
-            d: base64::encode(bs58::decode(secret_key).into_vec().unwrap()),
-            x: base64::encode(bs58::decode(public_key).into_vec().unwrap()),
+            d: base64::encode_config(bs58::decode(secret_key).into_vec().unwrap(), URL_SAFE_NO_PAD),
+            x: base64::encode_config(bs58::decode(public_key).into_vec().unwrap(), URL_SAFE_NO_PAD),
             y: String::from(""),
             kty: String::from("Okp"),
             ..Default::default()
@@ -54,8 +55,8 @@ fn test_sign_verify(secret_key: &str, public_key: &str, message: &str) {
     let verify_request = VerifyRequest {
         key: Some(JsonWebKey {
             crv: String::from("Ed25519"),
-            d: base64::encode(bs58::decode(secret_key).into_vec().unwrap()),
-            x: base64::encode(bs58::decode(public_key).into_vec().unwrap()),
+            d: base64::encode_config(bs58::decode(secret_key).into_vec().unwrap(), URL_SAFE_NO_PAD),
+            x: base64::encode_config(bs58::decode(public_key).into_vec().unwrap(), URL_SAFE_NO_PAD),
             y: String::from(""),
             kty: String::from("Okp"),
             ..Default::default()

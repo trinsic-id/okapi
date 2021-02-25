@@ -26,6 +26,14 @@ pub enum Error<'a> {
 }
 
 impl DIDComm {
+    pub fn resolve<'a>(did: &ResolveRequest) -> Result<ResolveResponse, Error<'a>> {
+        let keypair : KeyPair = resolve(&did.did).unwrap();
+        let doc = serde_json::to_string_pretty(&keypair.get_did_document(CONFIG_JOSE_PUBLIC)).unwrap();
+        Ok(ResolveResponse {
+            diddoc: String::from(doc)
+        })
+    }
+
     pub fn pack<'a>(request: &PackRequest) -> Result<PackResponse, Error<'a>> {
         let request = request.clone();
 

@@ -1,5 +1,5 @@
 use crate::*;
-use base64::URL_SAFE;
+use base64::{URL_SAFE, URL_SAFE_NO_PAD};
 use ffi_support::{ByteBuffer, ExternError};
 use fluid::prelude::*;
 
@@ -40,9 +40,9 @@ fn test_generate_key_no_seed_1() {
     let response = DIDKey::generate(&request).expect("invalid response");
     let key = response.key.first().unwrap();
 
-    let mut public_key = base64::decode_config(&key.x, URL_SAFE).unwrap();
+    let mut public_key = base64::decode_config(&key.x, URL_SAFE_NO_PAD).unwrap();
     if !key.y.is_empty() {
-        public_key.append(&mut base64::decode_config(&key.y, URL_SAFE).unwrap());
+        public_key.append(&mut base64::decode_config(&key.y, URL_SAFE_NO_PAD).unwrap());
     }
 
     //assert_eq!(key_type as i32, key.crv);
@@ -85,6 +85,16 @@ fn test_ffi_generate_key_no_seed(key_type: KeyType) {
 
 //     assert!(key.map_or(false, |_| true));
 // }
+
+#[test]
+fn test_resolve() {
+    let request = ResolveRequest {
+        did: String::from("did:key:z6Mkk7yqnGF3YwTrLpqrW6PGsKci7dNqh1CjnvMbzrMerSeL#z6Mkk7yqnGF3YwTrLpqrW6PGsKci7dNqh1CjnvMbzrMerSeL"),
+    };
+
+    let res = DIDComm::resolve(&request).unwrap();
+    assert_eq!(res.diddoc, "{\n  \"@context\": \"https://www.w3.org/ns/did/v1\",\n  \"id\": \"did:key:z6Mkk7yqnGF3YwTrLpqrW6PGsKci7dNqh1CjnvMbzrMerSeL\",\n  \"assertionMethod\": [\n    \"did:key:z6Mkk7yqnGF3YwTrLpqrW6PGsKci7dNqh1CjnvMbzrMerSeL#z6Mkk7yqnGF3YwTrLpqrW6PGsKci7dNqh1CjnvMbzrMerSeL\"\n  ],\n  \"authentication\": [\n    \"did:key:z6Mkk7yqnGF3YwTrLpqrW6PGsKci7dNqh1CjnvMbzrMerSeL#z6Mkk7yqnGF3YwTrLpqrW6PGsKci7dNqh1CjnvMbzrMerSeL\"\n  ],\n  \"capabilityDelegation\": [\n    \"did:key:z6Mkk7yqnGF3YwTrLpqrW6PGsKci7dNqh1CjnvMbzrMerSeL#z6Mkk7yqnGF3YwTrLpqrW6PGsKci7dNqh1CjnvMbzrMerSeL\"\n  ],\n  \"capabilityInvocation\": [\n    \"did:key:z6Mkk7yqnGF3YwTrLpqrW6PGsKci7dNqh1CjnvMbzrMerSeL#z6Mkk7yqnGF3YwTrLpqrW6PGsKci7dNqh1CjnvMbzrMerSeL\"\n  ],\n  \"keyAgreement\": [\n    \"did:key:z6Mkk7yqnGF3YwTrLpqrW6PGsKci7dNqh1CjnvMbzrMerSeL#z6LSrdqo4M24WRDJj1h2hXxgtDTyzjjKCiyapYVgrhwZAySn\"\n  ],\n  \"verificationMethod\": [\n    {\n      \"id\": \"did:key:z6Mkk7yqnGF3YwTrLpqrW6PGsKci7dNqh1CjnvMbzrMerSeL#z6Mkk7yqnGF3YwTrLpqrW6PGsKci7dNqh1CjnvMbzrMerSeL\",\n      \"type\": \"JsonWebKey2020\",\n      \"controller\": \"did:key:z6Mkk7yqnGF3YwTrLpqrW6PGsKci7dNqh1CjnvMbzrMerSeL\",\n      \"publicKeyJwk\": {\n        \"kty\": \"OKP\",\n        \"crv\": \"Ed25519\",\n        \"x\": \"VDXDwuGKVq91zxU6q7__jLDUq8_C5cuxECgd-1feFTE\"\n      }\n    },\n    {\n      \"id\": \"did:key:z6Mkk7yqnGF3YwTrLpqrW6PGsKci7dNqh1CjnvMbzrMerSeL#z6LSrdqo4M24WRDJj1h2hXxgtDTyzjjKCiyapYVgrhwZAySn\",\n      \"type\": \"OKP\",\n      \"controller\": \"did:key:z6Mkk7yqnGF3YwTrLpqrW6PGsKci7dNqh1CjnvMbzrMerSeL\",\n      \"publicKeyJwk\": {\n        \"kty\": \"OKP\",\n        \"crv\": \"X25519\",\n        \"x\": \"3kY9jl1by7pLzgJktUH-e9H6fihdVUb00-sTzkfmIl8\"\n      }\n    }\n  ]\n}");
+}
 
 #[theory]
 #[case(

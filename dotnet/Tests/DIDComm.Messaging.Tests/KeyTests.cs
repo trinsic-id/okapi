@@ -12,7 +12,7 @@ namespace DIDComm.Messaging.Tests
         [Fact(DisplayName = "Generate new key with empty seed")]
         public void TestGenerateKeyNoSeed()
         {
-            var response = DIDKey.Generate(new GenerateKeyRequest { KeyType = Crv.Ed25519 });
+            var response = DIDKey.Generate(new GenerateKeyRequest { KeyType = "Ed25519" });
             byte[] x = System.Convert.FromBase64String(response.Key.X);
             byte[] y = System.Convert.FromBase64String(response.Key.Y);
             byte[] publicKey = new byte[x.Length + y.Length];
@@ -22,7 +22,7 @@ namespace DIDComm.Messaging.Tests
 
             response.Should().NotBeNull();
             response.Key.Should().NotBeNull();
-            response.Key.Crv.Should().Be(Crv.Ed25519);
+            response.Key.Crv.Should().Be("Ed25519");
             publicKey.Should().NotBeNull().And.HaveCount(32);
             System.Convert.FromBase64String(response.Key.D).Should().NotBeNull().And.HaveCount(32);
         }
@@ -34,16 +34,16 @@ namespace DIDComm.Messaging.Tests
             Assert.Throws<DIDCommException>(() =>
                 _ = DIDKey.Generate(new GenerateKeyRequest
                 {
-                    KeyType = (Crv)(-1)
+                    KeyType = "not key type"
                 })
             );
         }
       
 
         [Theory(DisplayName = "Generate new key from seed")]
-        [InlineData(Crv.Ed25519, "4f66b355aa7b0980ff901f2295b9c562ac3061be4df86703eb28c612faae6578", "6fioC1zcDPyPEL19pXRS2E4iJ46zH7xP6uSgAaPdwDrx")]
-        [InlineData(Crv.X25519, "9b29d42b38ddd52ed39c0ff70b39572a6eb9b3cac201918dc6d6a84b4c88d2a5", "3EK9AYXoUV4Unn5AjvYY39hyK91n7gg4ExC8rKKSUQXJ")]
-        public void TestGenerateKeyFromSeed(Crv keyType, string seed, string publicKey)
+        [InlineData("Ed25519", "4f66b355aa7b0980ff901f2295b9c562ac3061be4df86703eb28c612faae6578", "6fioC1zcDPyPEL19pXRS2E4iJ46zH7xP6uSgAaPdwDrx")]
+        [InlineData("X25519", "9b29d42b38ddd52ed39c0ff70b39572a6eb9b3cac201918dc6d6a84b4c88d2a5", "3EK9AYXoUV4Unn5AjvYY39hyK91n7gg4ExC8rKKSUQXJ")]
+        public void TestGenerateKeyFromSeed(string keyType, string seed, string publicKey)
         {
             var response = DIDKey.Generate(new GenerateKeyRequest
             {
