@@ -9,7 +9,7 @@ namespace DIDComm.Messaging.Tests
 {
     public class KeyTests
     {
-        private string base64toBase64Url(String base64url)
+        private static string base64toBase64Url(String base64url)
         {
             var base64 = base64url.Replace('_', '/').Replace('-', '+');
             switch (base64url.Length % 4)

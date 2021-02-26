@@ -8,8 +8,8 @@ describe("Generate key tests", () => {
 
     var actual = DIDKey.generate(request);
 
-    expect(actual.getKey()).to.be.not.null;
-    expect(actual.getKey().getKeyType()).to.be.eq(KeyType.P256);
+    expect(actual.getKeyList()[0]).to.be.not.null;
+    expect(actual.getKeyList()[0].getCrv()).to.be.eq("P-256");
   });
 
   it("should generate key with random seed (ed25519)", () => {
@@ -18,10 +18,10 @@ describe("Generate key tests", () => {
 
     var actual = DIDKey.generate(request);
 
-    expect(actual.getKey()).to.be.not.null;
-    expect(actual.getKey().getKeyType()).to.be.eq(KeyType.ED25519);
-    expect(actual.getKey().getPublicKey()).not.null;
-    expect(actual.getKey().getSecretKey()).not.null;
+    expect(actual.getKeyList()[0]).to.be.not.null;
+    expect(actual.getKeyList()[0].getCrv()).to.be.eq("Ed25519");
+    expect(actual.getKeyList()[0].getX()).not.null;
+    expect(actual.getKeyList()[0].getD()).not.null;
   });
 
   it("should generate key with no seed (x25519)", () => {
@@ -30,10 +30,10 @@ describe("Generate key tests", () => {
 
     var actual = DIDKey.generate(request);
 
-    expect(actual.getKey()).to.be.not.null;
-    expect(actual.getKey().getKeyType()).to.equal(KeyType.X25519);
-    expect(actual.getKey().getPublicKey()).not.null;
-    expect(actual.getKey().getSecretKey()).not.null;
+    expect(actual.getKeyList()[0]).to.be.not.null;
+    expect(actual.getKeyList()[0].getCrv()).to.equal("X25519");
+    expect(actual.getKeyList()[0].getX()).not.null;
+    expect(actual.getKeyList()[0].getD()).not.null;
   });
 
   it("throws on incorrect input for key type", () => {
