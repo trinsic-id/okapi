@@ -68,7 +68,7 @@ impl crate::DIDKey {
             KeyType::Bls12381G1g2 => generate::<Bls12381KeyPair>(Some(request.seed.as_slice())),
             KeyType::Secp256k1 => generate::<Secp256k1KeyPair>(Some(request.seed.as_slice())),
         };
-        let did_document = did_key.get_did_document(CONFIG_JOSE_PRIVATE);
+        let did_document = did_key.get_did_document(CONFIG_LD_PRIVATE);
         let jwk_keys: Vec<JsonWebKey> = did_document.verification_method.iter().map(|x| x.to_owned().into()).collect();
 
         Ok(GenerateKeyResponse {
