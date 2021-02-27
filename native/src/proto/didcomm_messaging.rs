@@ -206,6 +206,18 @@ pub struct JsonWebKey {
     #[prost(string, tag = "6")]
     pub kty: std::string::String,
 }
+#[derive(Clone, PartialEq, ::prost::Message, ::serde::Serialize, ::serde::Deserialize)]
+pub struct ResolveRequest {
+    #[prost(string, tag = "1")]
+    pub did: std::string::String,
+}
+#[derive(Clone, PartialEq, ::prost::Message, ::serde::Serialize, ::serde::Deserialize)]
+pub struct ResolveResponse {
+    #[prost(message, optional, tag = "1")]
+    pub did_document: ::std::option::Option<super::super::google::protobuf::Struct>,
+    #[prost(message, repeated, tag = "2")]
+    pub keys: ::std::vec::Vec<JsonWebKey>,
+}
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 #[derive(::serde::Serialize, ::serde::Deserialize)]

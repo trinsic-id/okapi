@@ -19,13 +19,13 @@ describe("Sign and verify demo", () => {
     // Sign payload
     let signRequest = new SignRequest();
     signRequest.setPayload(payload);
-    signRequest.setKey(keyResponse.getKey());
+    signRequest.setKey(keyResponse.getKeyList()[0]);
 
     let signResponse = DIDComm.sign(signRequest);
 
     // Verify payload
     let verifyRequest = new VerifyRequest();
-    verifyRequest.setKey(keyResponse.getKey());
+    verifyRequest.setKey(keyResponse.getKeyList()[0]);
     verifyRequest.setMessage(signResponse.getMessage());
 
     let verifyResponse = DIDComm.verify(verifyRequest);

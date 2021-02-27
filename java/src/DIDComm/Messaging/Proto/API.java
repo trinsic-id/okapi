@@ -15,9 +15,9 @@ public final class API {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
-   * Protobuf enum {@code didcomm.messaging.Crv}
+   * Protobuf enum {@code didcomm.messaging.KeyType}
    */
-  public enum Crv
+  public enum KeyType
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
      * <code>Ed25519 = 0;</code>
@@ -32,13 +32,13 @@ public final class API {
      */
     P256(2),
     /**
-     * <code>Bls12381_G2 = 3;</code>
+     * <code>Bls12381G1G2 = 3;</code>
      */
-    Bls12381_G2(3),
+    Bls12381G1G2(3),
     /**
-     * <code>secp256k1 = 4;</code>
+     * <code>Secp256k1 = 4;</code>
      */
-    secp256k1(4),
+    Secp256k1(4),
     UNRECOGNIZED(-1),
     ;
 
@@ -55,124 +55,13 @@ public final class API {
      */
     public static final int P256_VALUE = 2;
     /**
-     * <code>Bls12381_G2 = 3;</code>
+     * <code>Bls12381G1G2 = 3;</code>
      */
-    public static final int Bls12381_G2_VALUE = 3;
+    public static final int Bls12381G1G2_VALUE = 3;
     /**
-     * <code>secp256k1 = 4;</code>
+     * <code>Secp256k1 = 4;</code>
      */
-    public static final int secp256k1_VALUE = 4;
-
-
-    public final int getNumber() {
-      if (this == UNRECOGNIZED) {
-        throw new java.lang.IllegalArgumentException(
-            "Can't get the number of an unknown enum value.");
-      }
-      return value;
-    }
-
-    /**
-     * @param value The numeric wire value of the corresponding enum entry.
-     * @return The enum associated with the given numeric wire value.
-     * @deprecated Use {@link #forNumber(int)} instead.
-     */
-    @java.lang.Deprecated
-    public static Crv valueOf(int value) {
-      return forNumber(value);
-    }
-
-    /**
-     * @param value The numeric wire value of the corresponding enum entry.
-     * @return The enum associated with the given numeric wire value.
-     */
-    public static Crv forNumber(int value) {
-      switch (value) {
-        case 0: return Ed25519;
-        case 1: return X25519;
-        case 2: return P256;
-        case 3: return Bls12381_G2;
-        case 4: return secp256k1;
-        default: return null;
-      }
-    }
-
-    public static com.google.protobuf.Internal.EnumLiteMap<Crv>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        Crv> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<Crv>() {
-            public Crv findValueByNumber(int number) {
-              return Crv.forNumber(number);
-            }
-          };
-
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
-      if (this == UNRECOGNIZED) {
-        throw new java.lang.IllegalStateException(
-            "Can't get the descriptor of an unrecognized enum value.");
-      }
-      return getDescriptor().getValues().get(ordinal());
-    }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
-      return getDescriptor();
-    }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return DIDComm.Messaging.Proto.API.getDescriptor().getEnumTypes().get(0);
-    }
-
-    private static final Crv[] VALUES = values();
-
-    public static Crv valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-      if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
-      }
-      if (desc.getIndex() == -1) {
-        return UNRECOGNIZED;
-      }
-      return VALUES[desc.getIndex()];
-    }
-
-    private final int value;
-
-    private Crv(int value) {
-      this.value = value;
-    }
-
-    // @@protoc_insertion_point(enum_scope:didcomm.messaging.Crv)
-  }
-
-  /**
-   * Protobuf enum {@code didcomm.messaging.KeyType}
-   */
-  public enum KeyType
-      implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>OKP = 0;</code>
-     */
-    OKP(0),
-    /**
-     * <code>EC = 1;</code>
-     */
-    EC(1),
-    UNRECOGNIZED(-1),
-    ;
-
-    /**
-     * <code>OKP = 0;</code>
-     */
-    public static final int OKP_VALUE = 0;
-    /**
-     * <code>EC = 1;</code>
-     */
-    public static final int EC_VALUE = 1;
+    public static final int Secp256k1_VALUE = 4;
 
 
     public final int getNumber() {
@@ -199,8 +88,11 @@ public final class API {
      */
     public static KeyType forNumber(int value) {
       switch (value) {
-        case 0: return OKP;
-        case 1: return EC;
+        case 0: return Ed25519;
+        case 1: return X25519;
+        case 2: return P256;
+        case 3: return Bls12381G1G2;
+        case 4: return Secp256k1;
         default: return null;
       }
     }
@@ -231,7 +123,7 @@ public final class API {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return DIDComm.Messaging.Proto.API.getDescriptor().getEnumTypes().get(1);
+      return DIDComm.Messaging.Proto.API.getDescriptor().getEnumTypes().get(0);
     }
 
     private static final KeyType[] VALUES = values();
@@ -268,15 +160,15 @@ public final class API {
     com.google.protobuf.ByteString getSeed();
 
     /**
-     * <code>.didcomm.messaging.Crv key_type = 2;</code>
+     * <code>.didcomm.messaging.KeyType key_type = 2;</code>
      * @return The enum numeric value on the wire for keyType.
      */
     int getKeyTypeValue();
     /**
-     * <code>.didcomm.messaging.Crv key_type = 2;</code>
+     * <code>.didcomm.messaging.KeyType key_type = 2;</code>
      * @return The keyType.
      */
-    DIDComm.Messaging.Proto.API.Crv getKeyType();
+    DIDComm.Messaging.Proto.API.KeyType getKeyType();
   }
   /**
    * Protobuf type {@code didcomm.messaging.GenerateKeyRequest}
@@ -382,20 +274,20 @@ public final class API {
     public static final int KEY_TYPE_FIELD_NUMBER = 2;
     private int keyType_;
     /**
-     * <code>.didcomm.messaging.Crv key_type = 2;</code>
+     * <code>.didcomm.messaging.KeyType key_type = 2;</code>
      * @return The enum numeric value on the wire for keyType.
      */
     @java.lang.Override public int getKeyTypeValue() {
       return keyType_;
     }
     /**
-     * <code>.didcomm.messaging.Crv key_type = 2;</code>
+     * <code>.didcomm.messaging.KeyType key_type = 2;</code>
      * @return The keyType.
      */
-    @java.lang.Override public DIDComm.Messaging.Proto.API.Crv getKeyType() {
+    @java.lang.Override public DIDComm.Messaging.Proto.API.KeyType getKeyType() {
       @SuppressWarnings("deprecation")
-      DIDComm.Messaging.Proto.API.Crv result = DIDComm.Messaging.Proto.API.Crv.valueOf(keyType_);
-      return result == null ? DIDComm.Messaging.Proto.API.Crv.UNRECOGNIZED : result;
+      DIDComm.Messaging.Proto.API.KeyType result = DIDComm.Messaging.Proto.API.KeyType.valueOf(keyType_);
+      return result == null ? DIDComm.Messaging.Proto.API.KeyType.UNRECOGNIZED : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -415,7 +307,7 @@ public final class API {
       if (!seed_.isEmpty()) {
         output.writeBytes(1, seed_);
       }
-      if (keyType_ != DIDComm.Messaging.Proto.API.Crv.Ed25519.getNumber()) {
+      if (keyType_ != DIDComm.Messaging.Proto.API.KeyType.Ed25519.getNumber()) {
         output.writeEnum(2, keyType_);
       }
       unknownFields.writeTo(output);
@@ -431,7 +323,7 @@ public final class API {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(1, seed_);
       }
-      if (keyType_ != DIDComm.Messaging.Proto.API.Crv.Ed25519.getNumber()) {
+      if (keyType_ != DIDComm.Messaging.Proto.API.KeyType.Ed25519.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(2, keyType_);
       }
@@ -752,14 +644,14 @@ public final class API {
 
       private int keyType_ = 0;
       /**
-       * <code>.didcomm.messaging.Crv key_type = 2;</code>
+       * <code>.didcomm.messaging.KeyType key_type = 2;</code>
        * @return The enum numeric value on the wire for keyType.
        */
       @java.lang.Override public int getKeyTypeValue() {
         return keyType_;
       }
       /**
-       * <code>.didcomm.messaging.Crv key_type = 2;</code>
+       * <code>.didcomm.messaging.KeyType key_type = 2;</code>
        * @param value The enum numeric value on the wire for keyType to set.
        * @return This builder for chaining.
        */
@@ -770,21 +662,21 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Crv key_type = 2;</code>
+       * <code>.didcomm.messaging.KeyType key_type = 2;</code>
        * @return The keyType.
        */
       @java.lang.Override
-      public DIDComm.Messaging.Proto.API.Crv getKeyType() {
+      public DIDComm.Messaging.Proto.API.KeyType getKeyType() {
         @SuppressWarnings("deprecation")
-        DIDComm.Messaging.Proto.API.Crv result = DIDComm.Messaging.Proto.API.Crv.valueOf(keyType_);
-        return result == null ? DIDComm.Messaging.Proto.API.Crv.UNRECOGNIZED : result;
+        DIDComm.Messaging.Proto.API.KeyType result = DIDComm.Messaging.Proto.API.KeyType.valueOf(keyType_);
+        return result == null ? DIDComm.Messaging.Proto.API.KeyType.UNRECOGNIZED : result;
       }
       /**
-       * <code>.didcomm.messaging.Crv key_type = 2;</code>
+       * <code>.didcomm.messaging.KeyType key_type = 2;</code>
        * @param value The keyType to set.
        * @return This builder for chaining.
        */
-      public Builder setKeyType(DIDComm.Messaging.Proto.API.Crv value) {
+      public Builder setKeyType(DIDComm.Messaging.Proto.API.KeyType value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -794,7 +686,7 @@ public final class API {
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Crv key_type = 2;</code>
+       * <code>.didcomm.messaging.KeyType key_type = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearKeyType() {
@@ -861,19 +753,43 @@ public final class API {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
-     * @return Whether the key field is set.
+     * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
      */
-    boolean hasKey();
+    java.util.List<DIDComm.Messaging.Proto.API.JsonWebKey> 
+        getKeyList();
     /**
-     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
-     * @return The key.
+     * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
      */
-    DIDComm.Messaging.Proto.API.JsonWebKey getKey();
+    DIDComm.Messaging.Proto.API.JsonWebKey getKey(int index);
     /**
-     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
+     * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
      */
-    DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getKeyOrBuilder();
+    int getKeyCount();
+    /**
+     * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
+     */
+    java.util.List<? extends DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder> 
+        getKeyOrBuilderList();
+    /**
+     * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
+     */
+    DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getKeyOrBuilder(
+        int index);
+
+    /**
+     * <code>.google.protobuf.Struct did_document = 2;</code>
+     * @return Whether the didDocument field is set.
+     */
+    boolean hasDidDocument();
+    /**
+     * <code>.google.protobuf.Struct did_document = 2;</code>
+     * @return The didDocument.
+     */
+    com.google.protobuf.Struct getDidDocument();
+    /**
+     * <code>.google.protobuf.Struct did_document = 2;</code>
+     */
+    com.google.protobuf.StructOrBuilder getDidDocumentOrBuilder();
   }
   /**
    * Protobuf type {@code didcomm.messaging.GenerateKeyResponse}
@@ -888,6 +804,7 @@ public final class API {
       super(builder);
     }
     private GenerateKeyResponse() {
+      key_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -910,6 +827,7 @@ public final class API {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -921,14 +839,23 @@ public final class API {
               done = true;
               break;
             case 10: {
-              DIDComm.Messaging.Proto.API.JsonWebKey.Builder subBuilder = null;
-              if (key_ != null) {
-                subBuilder = key_.toBuilder();
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                key_ = new java.util.ArrayList<DIDComm.Messaging.Proto.API.JsonWebKey>();
+                mutable_bitField0_ |= 0x00000001;
               }
-              key_ = input.readMessage(DIDComm.Messaging.Proto.API.JsonWebKey.parser(), extensionRegistry);
+              key_.add(
+                  input.readMessage(DIDComm.Messaging.Proto.API.JsonWebKey.parser(), extensionRegistry));
+              break;
+            }
+            case 18: {
+              com.google.protobuf.Struct.Builder subBuilder = null;
+              if (didDocument_ != null) {
+                subBuilder = didDocument_.toBuilder();
+              }
+              didDocument_ = input.readMessage(com.google.protobuf.Struct.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(key_);
-                key_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(didDocument_);
+                didDocument_ = subBuilder.buildPartial();
               }
 
               break;
@@ -948,6 +875,9 @@ public final class API {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          key_ = java.util.Collections.unmodifiableList(key_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -966,29 +896,69 @@ public final class API {
     }
 
     public static final int KEY_FIELD_NUMBER = 1;
-    private DIDComm.Messaging.Proto.API.JsonWebKey key_;
+    private java.util.List<DIDComm.Messaging.Proto.API.JsonWebKey> key_;
     /**
-     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
-     * @return Whether the key field is set.
+     * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
      */
     @java.lang.Override
-    public boolean hasKey() {
-      return key_ != null;
+    public java.util.List<DIDComm.Messaging.Proto.API.JsonWebKey> getKeyList() {
+      return key_;
     }
     /**
-     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
-     * @return The key.
+     * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
      */
     @java.lang.Override
-    public DIDComm.Messaging.Proto.API.JsonWebKey getKey() {
-      return key_ == null ? DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : key_;
+    public java.util.List<? extends DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder> 
+        getKeyOrBuilderList() {
+      return key_;
     }
     /**
-     * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
+     * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
      */
     @java.lang.Override
-    public DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getKeyOrBuilder() {
-      return getKey();
+    public int getKeyCount() {
+      return key_.size();
+    }
+    /**
+     * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
+     */
+    @java.lang.Override
+    public DIDComm.Messaging.Proto.API.JsonWebKey getKey(int index) {
+      return key_.get(index);
+    }
+    /**
+     * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
+     */
+    @java.lang.Override
+    public DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getKeyOrBuilder(
+        int index) {
+      return key_.get(index);
+    }
+
+    public static final int DID_DOCUMENT_FIELD_NUMBER = 2;
+    private com.google.protobuf.Struct didDocument_;
+    /**
+     * <code>.google.protobuf.Struct did_document = 2;</code>
+     * @return Whether the didDocument field is set.
+     */
+    @java.lang.Override
+    public boolean hasDidDocument() {
+      return didDocument_ != null;
+    }
+    /**
+     * <code>.google.protobuf.Struct did_document = 2;</code>
+     * @return The didDocument.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Struct getDidDocument() {
+      return didDocument_ == null ? com.google.protobuf.Struct.getDefaultInstance() : didDocument_;
+    }
+    /**
+     * <code>.google.protobuf.Struct did_document = 2;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.StructOrBuilder getDidDocumentOrBuilder() {
+      return getDidDocument();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1005,8 +975,11 @@ public final class API {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (key_ != null) {
-        output.writeMessage(1, getKey());
+      for (int i = 0; i < key_.size(); i++) {
+        output.writeMessage(1, key_.get(i));
+      }
+      if (didDocument_ != null) {
+        output.writeMessage(2, getDidDocument());
       }
       unknownFields.writeTo(output);
     }
@@ -1017,9 +990,13 @@ public final class API {
       if (size != -1) return size;
 
       size = 0;
-      if (key_ != null) {
+      for (int i = 0; i < key_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getKey());
+          .computeMessageSize(1, key_.get(i));
+      }
+      if (didDocument_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getDidDocument());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1036,10 +1013,12 @@ public final class API {
       }
       DIDComm.Messaging.Proto.API.GenerateKeyResponse other = (DIDComm.Messaging.Proto.API.GenerateKeyResponse) obj;
 
-      if (hasKey() != other.hasKey()) return false;
-      if (hasKey()) {
-        if (!getKey()
-            .equals(other.getKey())) return false;
+      if (!getKeyList()
+          .equals(other.getKeyList())) return false;
+      if (hasDidDocument() != other.hasDidDocument()) return false;
+      if (hasDidDocument()) {
+        if (!getDidDocument()
+            .equals(other.getDidDocument())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -1052,9 +1031,13 @@ public final class API {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasKey()) {
+      if (getKeyCount() > 0) {
         hash = (37 * hash) + KEY_FIELD_NUMBER;
-        hash = (53 * hash) + getKey().hashCode();
+        hash = (53 * hash) + getKeyList().hashCode();
+      }
+      if (hasDidDocument()) {
+        hash = (37 * hash) + DID_DOCUMENT_FIELD_NUMBER;
+        hash = (53 * hash) + getDidDocument().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -1184,16 +1167,23 @@ public final class API {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
+          getKeyFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
         if (keyBuilder_ == null) {
-          key_ = null;
+          key_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          key_ = null;
-          keyBuilder_ = null;
+          keyBuilder_.clear();
+        }
+        if (didDocumentBuilder_ == null) {
+          didDocument_ = null;
+        } else {
+          didDocument_ = null;
+          didDocumentBuilder_ = null;
         }
         return this;
       }
@@ -1221,10 +1211,20 @@ public final class API {
       @java.lang.Override
       public DIDComm.Messaging.Proto.API.GenerateKeyResponse buildPartial() {
         DIDComm.Messaging.Proto.API.GenerateKeyResponse result = new DIDComm.Messaging.Proto.API.GenerateKeyResponse(this);
+        int from_bitField0_ = bitField0_;
         if (keyBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            key_ = java.util.Collections.unmodifiableList(key_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
           result.key_ = key_;
         } else {
           result.key_ = keyBuilder_.build();
+        }
+        if (didDocumentBuilder_ == null) {
+          result.didDocument_ = didDocument_;
+        } else {
+          result.didDocument_ = didDocumentBuilder_.build();
         }
         onBuilt();
         return result;
@@ -1274,8 +1274,34 @@ public final class API {
 
       public Builder mergeFrom(DIDComm.Messaging.Proto.API.GenerateKeyResponse other) {
         if (other == DIDComm.Messaging.Proto.API.GenerateKeyResponse.getDefaultInstance()) return this;
-        if (other.hasKey()) {
-          mergeKey(other.getKey());
+        if (keyBuilder_ == null) {
+          if (!other.key_.isEmpty()) {
+            if (key_.isEmpty()) {
+              key_ = other.key_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureKeyIsMutable();
+              key_.addAll(other.key_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.key_.isEmpty()) {
+            if (keyBuilder_.isEmpty()) {
+              keyBuilder_.dispose();
+              keyBuilder_ = null;
+              key_ = other.key_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              keyBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getKeyFieldBuilder() : null;
+            } else {
+              keyBuilder_.addAllMessages(other.key_);
+            }
+          }
+        }
+        if (other.hasDidDocument()) {
+          mergeDidDocument(other.getDidDocument());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1305,124 +1331,365 @@ public final class API {
         }
         return this;
       }
+      private int bitField0_;
 
-      private DIDComm.Messaging.Proto.API.JsonWebKey key_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder> keyBuilder_;
-      /**
-       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
-       * @return Whether the key field is set.
-       */
-      public boolean hasKey() {
-        return keyBuilder_ != null || key_ != null;
+      private java.util.List<DIDComm.Messaging.Proto.API.JsonWebKey> key_ =
+        java.util.Collections.emptyList();
+      private void ensureKeyIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          key_ = new java.util.ArrayList<DIDComm.Messaging.Proto.API.JsonWebKey>(key_);
+          bitField0_ |= 0x00000001;
+         }
       }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder> keyBuilder_;
+
       /**
-       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
-       * @return The key.
+       * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
        */
-      public DIDComm.Messaging.Proto.API.JsonWebKey getKey() {
+      public java.util.List<DIDComm.Messaging.Proto.API.JsonWebKey> getKeyList() {
         if (keyBuilder_ == null) {
-          return key_ == null ? DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : key_;
+          return java.util.Collections.unmodifiableList(key_);
         } else {
-          return keyBuilder_.getMessage();
+          return keyBuilder_.getMessageList();
         }
       }
       /**
-       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
+       * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
        */
-      public Builder setKey(DIDComm.Messaging.Proto.API.JsonWebKey value) {
+      public int getKeyCount() {
+        if (keyBuilder_ == null) {
+          return key_.size();
+        } else {
+          return keyBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
+       */
+      public DIDComm.Messaging.Proto.API.JsonWebKey getKey(int index) {
+        if (keyBuilder_ == null) {
+          return key_.get(index);
+        } else {
+          return keyBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
+       */
+      public Builder setKey(
+          int index, DIDComm.Messaging.Proto.API.JsonWebKey value) {
         if (keyBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          key_ = value;
+          ensureKeyIsMutable();
+          key_.set(index, value);
           onChanged();
         } else {
-          keyBuilder_.setMessage(value);
+          keyBuilder_.setMessage(index, value);
         }
-
         return this;
       }
       /**
-       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
+       * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
        */
       public Builder setKey(
+          int index, DIDComm.Messaging.Proto.API.JsonWebKey.Builder builderForValue) {
+        if (keyBuilder_ == null) {
+          ensureKeyIsMutable();
+          key_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          keyBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
+       */
+      public Builder addKey(DIDComm.Messaging.Proto.API.JsonWebKey value) {
+        if (keyBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureKeyIsMutable();
+          key_.add(value);
+          onChanged();
+        } else {
+          keyBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
+       */
+      public Builder addKey(
+          int index, DIDComm.Messaging.Proto.API.JsonWebKey value) {
+        if (keyBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureKeyIsMutable();
+          key_.add(index, value);
+          onChanged();
+        } else {
+          keyBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
+       */
+      public Builder addKey(
           DIDComm.Messaging.Proto.API.JsonWebKey.Builder builderForValue) {
         if (keyBuilder_ == null) {
-          key_ = builderForValue.build();
+          ensureKeyIsMutable();
+          key_.add(builderForValue.build());
           onChanged();
         } else {
-          keyBuilder_.setMessage(builderForValue.build());
+          keyBuilder_.addMessage(builderForValue.build());
         }
-
         return this;
       }
       /**
-       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
+       * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
        */
-      public Builder mergeKey(DIDComm.Messaging.Proto.API.JsonWebKey value) {
+      public Builder addKey(
+          int index, DIDComm.Messaging.Proto.API.JsonWebKey.Builder builderForValue) {
         if (keyBuilder_ == null) {
-          if (key_ != null) {
-            key_ =
-              DIDComm.Messaging.Proto.API.JsonWebKey.newBuilder(key_).mergeFrom(value).buildPartial();
-          } else {
-            key_ = value;
-          }
+          ensureKeyIsMutable();
+          key_.add(index, builderForValue.build());
           onChanged();
         } else {
-          keyBuilder_.mergeFrom(value);
+          keyBuilder_.addMessage(index, builderForValue.build());
         }
-
         return this;
       }
       /**
-       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
+       * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
+       */
+      public Builder addAllKey(
+          java.lang.Iterable<? extends DIDComm.Messaging.Proto.API.JsonWebKey> values) {
+        if (keyBuilder_ == null) {
+          ensureKeyIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, key_);
+          onChanged();
+        } else {
+          keyBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
        */
       public Builder clearKey() {
         if (keyBuilder_ == null) {
-          key_ = null;
+          key_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          key_ = null;
-          keyBuilder_ = null;
+          keyBuilder_.clear();
         }
-
         return this;
       }
       /**
-       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
+       * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
        */
-      public DIDComm.Messaging.Proto.API.JsonWebKey.Builder getKeyBuilder() {
-        
-        onChanged();
-        return getKeyFieldBuilder().getBuilder();
+      public Builder removeKey(int index) {
+        if (keyBuilder_ == null) {
+          ensureKeyIsMutable();
+          key_.remove(index);
+          onChanged();
+        } else {
+          keyBuilder_.remove(index);
+        }
+        return this;
       }
       /**
-       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
+       * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
        */
-      public DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getKeyOrBuilder() {
-        if (keyBuilder_ != null) {
-          return keyBuilder_.getMessageOrBuilder();
-        } else {
-          return key_ == null ?
-              DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance() : key_;
+      public DIDComm.Messaging.Proto.API.JsonWebKey.Builder getKeyBuilder(
+          int index) {
+        return getKeyFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
+       */
+      public DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getKeyOrBuilder(
+          int index) {
+        if (keyBuilder_ == null) {
+          return key_.get(index);  } else {
+          return keyBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>.didcomm.messaging.JsonWebKey key = 1;</code>
+       * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      public java.util.List<? extends DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder> 
+           getKeyOrBuilderList() {
+        if (keyBuilder_ != null) {
+          return keyBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(key_);
+        }
+      }
+      /**
+       * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
+       */
+      public DIDComm.Messaging.Proto.API.JsonWebKey.Builder addKeyBuilder() {
+        return getKeyFieldBuilder().addBuilder(
+            DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
+       */
+      public DIDComm.Messaging.Proto.API.JsonWebKey.Builder addKeyBuilder(
+          int index) {
+        return getKeyFieldBuilder().addBuilder(
+            index, DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .didcomm.messaging.JsonWebKey key = 1;</code>
+       */
+      public java.util.List<DIDComm.Messaging.Proto.API.JsonWebKey.Builder> 
+           getKeyBuilderList() {
+        return getKeyFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder> 
           getKeyFieldBuilder() {
         if (keyBuilder_ == null) {
-          keyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          keyBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               DIDComm.Messaging.Proto.API.JsonWebKey, DIDComm.Messaging.Proto.API.JsonWebKey.Builder, DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder>(
-                  getKey(),
+                  key_,
+                  ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
           key_ = null;
         }
         return keyBuilder_;
+      }
+
+      private com.google.protobuf.Struct didDocument_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder> didDocumentBuilder_;
+      /**
+       * <code>.google.protobuf.Struct did_document = 2;</code>
+       * @return Whether the didDocument field is set.
+       */
+      public boolean hasDidDocument() {
+        return didDocumentBuilder_ != null || didDocument_ != null;
+      }
+      /**
+       * <code>.google.protobuf.Struct did_document = 2;</code>
+       * @return The didDocument.
+       */
+      public com.google.protobuf.Struct getDidDocument() {
+        if (didDocumentBuilder_ == null) {
+          return didDocument_ == null ? com.google.protobuf.Struct.getDefaultInstance() : didDocument_;
+        } else {
+          return didDocumentBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.google.protobuf.Struct did_document = 2;</code>
+       */
+      public Builder setDidDocument(com.google.protobuf.Struct value) {
+        if (didDocumentBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          didDocument_ = value;
+          onChanged();
+        } else {
+          didDocumentBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Struct did_document = 2;</code>
+       */
+      public Builder setDidDocument(
+          com.google.protobuf.Struct.Builder builderForValue) {
+        if (didDocumentBuilder_ == null) {
+          didDocument_ = builderForValue.build();
+          onChanged();
+        } else {
+          didDocumentBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Struct did_document = 2;</code>
+       */
+      public Builder mergeDidDocument(com.google.protobuf.Struct value) {
+        if (didDocumentBuilder_ == null) {
+          if (didDocument_ != null) {
+            didDocument_ =
+              com.google.protobuf.Struct.newBuilder(didDocument_).mergeFrom(value).buildPartial();
+          } else {
+            didDocument_ = value;
+          }
+          onChanged();
+        } else {
+          didDocumentBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Struct did_document = 2;</code>
+       */
+      public Builder clearDidDocument() {
+        if (didDocumentBuilder_ == null) {
+          didDocument_ = null;
+          onChanged();
+        } else {
+          didDocument_ = null;
+          didDocumentBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Struct did_document = 2;</code>
+       */
+      public com.google.protobuf.Struct.Builder getDidDocumentBuilder() {
+        
+        onChanged();
+        return getDidDocumentFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.google.protobuf.Struct did_document = 2;</code>
+       */
+      public com.google.protobuf.StructOrBuilder getDidDocumentOrBuilder() {
+        if (didDocumentBuilder_ != null) {
+          return didDocumentBuilder_.getMessageOrBuilder();
+        } else {
+          return didDocument_ == null ?
+              com.google.protobuf.Struct.getDefaultInstance() : didDocument_;
+        }
+      }
+      /**
+       * <code>.google.protobuf.Struct did_document = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder> 
+          getDidDocumentFieldBuilder() {
+        if (didDocumentBuilder_ == null) {
+          didDocumentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder>(
+                  getDidDocument(),
+                  getParentForChildren(),
+                  isClean());
+          didDocument_ = null;
+        }
+        return didDocumentBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -1497,15 +1764,16 @@ public final class API {
     DIDComm.Messaging.Proto.API.JsonWebKeyOrBuilder getKeyOrBuilder();
 
     /**
-     * <code>.didcomm.messaging.Crv target_type = 2;</code>
-     * @return The enum numeric value on the wire for targetType.
-     */
-    int getTargetTypeValue();
-    /**
-     * <code>.didcomm.messaging.Crv target_type = 2;</code>
+     * <code>string target_type = 2;</code>
      * @return The targetType.
      */
-    DIDComm.Messaging.Proto.API.Crv getTargetType();
+    java.lang.String getTargetType();
+    /**
+     * <code>string target_type = 2;</code>
+     * @return The bytes for targetType.
+     */
+    com.google.protobuf.ByteString
+        getTargetTypeBytes();
   }
   /**
    * Protobuf type {@code didcomm.messaging.ConvertKeyRequest}
@@ -1520,7 +1788,7 @@ public final class API {
       super(builder);
     }
     private ConvertKeyRequest() {
-      targetType_ = 0;
+      targetType_ = "";
     }
 
     @java.lang.Override
@@ -1566,10 +1834,10 @@ public final class API {
 
               break;
             }
-            case 16: {
-              int rawValue = input.readEnum();
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              targetType_ = rawValue;
+              targetType_ = s;
               break;
             }
             default: {
@@ -1631,22 +1899,41 @@ public final class API {
     }
 
     public static final int TARGET_TYPE_FIELD_NUMBER = 2;
-    private int targetType_;
+    private volatile java.lang.Object targetType_;
     /**
-     * <code>.didcomm.messaging.Crv target_type = 2;</code>
-     * @return The enum numeric value on the wire for targetType.
-     */
-    @java.lang.Override public int getTargetTypeValue() {
-      return targetType_;
-    }
-    /**
-     * <code>.didcomm.messaging.Crv target_type = 2;</code>
+     * <code>string target_type = 2;</code>
      * @return The targetType.
      */
-    @java.lang.Override public DIDComm.Messaging.Proto.API.Crv getTargetType() {
-      @SuppressWarnings("deprecation")
-      DIDComm.Messaging.Proto.API.Crv result = DIDComm.Messaging.Proto.API.Crv.valueOf(targetType_);
-      return result == null ? DIDComm.Messaging.Proto.API.Crv.UNRECOGNIZED : result;
+    @java.lang.Override
+    public java.lang.String getTargetType() {
+      java.lang.Object ref = targetType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        targetType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string target_type = 2;</code>
+     * @return The bytes for targetType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTargetTypeBytes() {
+      java.lang.Object ref = targetType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        targetType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1666,8 +1953,8 @@ public final class API {
       if (key_ != null) {
         output.writeMessage(1, getKey());
       }
-      if (targetType_ != DIDComm.Messaging.Proto.API.Crv.Ed25519.getNumber()) {
-        output.writeEnum(2, targetType_);
+      if (!getTargetTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, targetType_);
       }
       unknownFields.writeTo(output);
     }
@@ -1682,9 +1969,8 @@ public final class API {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getKey());
       }
-      if (targetType_ != DIDComm.Messaging.Proto.API.Crv.Ed25519.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(2, targetType_);
+      if (!getTargetTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, targetType_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1706,7 +1992,8 @@ public final class API {
         if (!getKey()
             .equals(other.getKey())) return false;
       }
-      if (targetType_ != other.targetType_) return false;
+      if (!getTargetType()
+          .equals(other.getTargetType())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1723,7 +2010,7 @@ public final class API {
         hash = (53 * hash) + getKey().hashCode();
       }
       hash = (37 * hash) + TARGET_TYPE_FIELD_NUMBER;
-      hash = (53 * hash) + targetType_;
+      hash = (53 * hash) + getTargetType().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1863,7 +2150,7 @@ public final class API {
           key_ = null;
           keyBuilder_ = null;
         }
-        targetType_ = 0;
+        targetType_ = "";
 
         return this;
       }
@@ -1948,8 +2235,9 @@ public final class API {
         if (other.hasKey()) {
           mergeKey(other.getKey());
         }
-        if (other.targetType_ != 0) {
-          setTargetTypeValue(other.getTargetTypeValue());
+        if (!other.getTargetType().isEmpty()) {
+          targetType_ = other.targetType_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -2099,56 +2387,78 @@ public final class API {
         return keyBuilder_;
       }
 
-      private int targetType_ = 0;
+      private java.lang.Object targetType_ = "";
       /**
-       * <code>.didcomm.messaging.Crv target_type = 2;</code>
-       * @return The enum numeric value on the wire for targetType.
+       * <code>string target_type = 2;</code>
+       * @return The targetType.
        */
-      @java.lang.Override public int getTargetTypeValue() {
-        return targetType_;
+      public java.lang.String getTargetType() {
+        java.lang.Object ref = targetType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          targetType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>.didcomm.messaging.Crv target_type = 2;</code>
-       * @param value The enum numeric value on the wire for targetType to set.
+       * <code>string target_type = 2;</code>
+       * @return The bytes for targetType.
+       */
+      public com.google.protobuf.ByteString
+          getTargetTypeBytes() {
+        java.lang.Object ref = targetType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          targetType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string target_type = 2;</code>
+       * @param value The targetType to set.
        * @return This builder for chaining.
        */
-      public Builder setTargetTypeValue(int value) {
-        
+      public Builder setTargetType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
         targetType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Crv target_type = 2;</code>
-       * @return The targetType.
-       */
-      @java.lang.Override
-      public DIDComm.Messaging.Proto.API.Crv getTargetType() {
-        @SuppressWarnings("deprecation")
-        DIDComm.Messaging.Proto.API.Crv result = DIDComm.Messaging.Proto.API.Crv.valueOf(targetType_);
-        return result == null ? DIDComm.Messaging.Proto.API.Crv.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.didcomm.messaging.Crv target_type = 2;</code>
-       * @param value The targetType to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTargetType(DIDComm.Messaging.Proto.API.Crv value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        targetType_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.didcomm.messaging.Crv target_type = 2;</code>
+       * <code>string target_type = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearTargetType() {
         
-        targetType_ = 0;
+        targetType_ = getDefaultInstance().getTargetType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string target_type = 2;</code>
+       * @param value The bytes for targetType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTargetTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        targetType_ = value;
         onChanged();
         return this;
       }
@@ -10231,16 +10541,16 @@ public final class API {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string key_id = 1 [json_name = "kid"];</code>
-     * @return The keyId.
+     * <code>string kid = 1;</code>
+     * @return The kid.
      */
-    java.lang.String getKeyId();
+    java.lang.String getKid();
     /**
-     * <code>string key_id = 1 [json_name = "kid"];</code>
-     * @return The bytes for keyId.
+     * <code>string kid = 1;</code>
+     * @return The bytes for kid.
      */
     com.google.protobuf.ByteString
-        getKeyIdBytes();
+        getKidBytes();
 
     /**
      * <pre>
@@ -10303,26 +10613,28 @@ public final class API {
         getDBytes();
 
     /**
-     * <code>.didcomm.messaging.Crv crv = 5;</code>
-     * @return The enum numeric value on the wire for crv.
-     */
-    int getCrvValue();
-    /**
-     * <code>.didcomm.messaging.Crv crv = 5;</code>
+     * <code>string crv = 5;</code>
      * @return The crv.
      */
-    DIDComm.Messaging.Proto.API.Crv getCrv();
+    java.lang.String getCrv();
+    /**
+     * <code>string crv = 5;</code>
+     * @return The bytes for crv.
+     */
+    com.google.protobuf.ByteString
+        getCrvBytes();
 
     /**
-     * <code>.didcomm.messaging.KeyType kty = 6;</code>
-     * @return The enum numeric value on the wire for kty.
-     */
-    int getKtyValue();
-    /**
-     * <code>.didcomm.messaging.KeyType kty = 6;</code>
+     * <code>string kty = 6;</code>
      * @return The kty.
      */
-    DIDComm.Messaging.Proto.API.KeyType getKty();
+    java.lang.String getKty();
+    /**
+     * <code>string kty = 6;</code>
+     * @return The bytes for kty.
+     */
+    com.google.protobuf.ByteString
+        getKtyBytes();
   }
   /**
    * Protobuf type {@code didcomm.messaging.JsonWebKey}
@@ -10337,12 +10649,12 @@ public final class API {
       super(builder);
     }
     private JsonWebKey() {
-      keyId_ = "";
+      kid_ = "";
       x_ = "";
       y_ = "";
       d_ = "";
-      crv_ = 0;
-      kty_ = 0;
+      crv_ = "";
+      kty_ = "";
     }
 
     @java.lang.Override
@@ -10378,7 +10690,7 @@ public final class API {
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              keyId_ = s;
+              kid_ = s;
               break;
             }
             case 18: {
@@ -10399,16 +10711,16 @@ public final class API {
               d_ = s;
               break;
             }
-            case 40: {
-              int rawValue = input.readEnum();
+            case 42: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              crv_ = rawValue;
+              crv_ = s;
               break;
             }
-            case 48: {
-              int rawValue = input.readEnum();
+            case 50: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              kty_ = rawValue;
+              kty_ = s;
               break;
             }
             default: {
@@ -10443,38 +10755,38 @@ public final class API {
               DIDComm.Messaging.Proto.API.JsonWebKey.class, DIDComm.Messaging.Proto.API.JsonWebKey.Builder.class);
     }
 
-    public static final int KEY_ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object keyId_;
+    public static final int KID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object kid_;
     /**
-     * <code>string key_id = 1 [json_name = "kid"];</code>
-     * @return The keyId.
+     * <code>string kid = 1;</code>
+     * @return The kid.
      */
     @java.lang.Override
-    public java.lang.String getKeyId() {
-      java.lang.Object ref = keyId_;
+    public java.lang.String getKid() {
+      java.lang.Object ref = kid_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        keyId_ = s;
+        kid_ = s;
         return s;
       }
     }
     /**
-     * <code>string key_id = 1 [json_name = "kid"];</code>
-     * @return The bytes for keyId.
+     * <code>string kid = 1;</code>
+     * @return The bytes for kid.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getKeyIdBytes() {
-      java.lang.Object ref = keyId_;
+        getKidBytes() {
+      java.lang.Object ref = kid_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        keyId_ = b;
+        kid_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -10620,41 +10932,79 @@ public final class API {
     }
 
     public static final int CRV_FIELD_NUMBER = 5;
-    private int crv_;
+    private volatile java.lang.Object crv_;
     /**
-     * <code>.didcomm.messaging.Crv crv = 5;</code>
-     * @return The enum numeric value on the wire for crv.
-     */
-    @java.lang.Override public int getCrvValue() {
-      return crv_;
-    }
-    /**
-     * <code>.didcomm.messaging.Crv crv = 5;</code>
+     * <code>string crv = 5;</code>
      * @return The crv.
      */
-    @java.lang.Override public DIDComm.Messaging.Proto.API.Crv getCrv() {
-      @SuppressWarnings("deprecation")
-      DIDComm.Messaging.Proto.API.Crv result = DIDComm.Messaging.Proto.API.Crv.valueOf(crv_);
-      return result == null ? DIDComm.Messaging.Proto.API.Crv.UNRECOGNIZED : result;
+    @java.lang.Override
+    public java.lang.String getCrv() {
+      java.lang.Object ref = crv_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        crv_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string crv = 5;</code>
+     * @return The bytes for crv.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getCrvBytes() {
+      java.lang.Object ref = crv_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        crv_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     public static final int KTY_FIELD_NUMBER = 6;
-    private int kty_;
+    private volatile java.lang.Object kty_;
     /**
-     * <code>.didcomm.messaging.KeyType kty = 6;</code>
-     * @return The enum numeric value on the wire for kty.
-     */
-    @java.lang.Override public int getKtyValue() {
-      return kty_;
-    }
-    /**
-     * <code>.didcomm.messaging.KeyType kty = 6;</code>
+     * <code>string kty = 6;</code>
      * @return The kty.
      */
-    @java.lang.Override public DIDComm.Messaging.Proto.API.KeyType getKty() {
-      @SuppressWarnings("deprecation")
-      DIDComm.Messaging.Proto.API.KeyType result = DIDComm.Messaging.Proto.API.KeyType.valueOf(kty_);
-      return result == null ? DIDComm.Messaging.Proto.API.KeyType.UNRECOGNIZED : result;
+    @java.lang.Override
+    public java.lang.String getKty() {
+      java.lang.Object ref = kty_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        kty_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string kty = 6;</code>
+     * @return The bytes for kty.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getKtyBytes() {
+      java.lang.Object ref = kty_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        kty_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -10671,8 +11021,8 @@ public final class API {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getKeyIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, keyId_);
+      if (!getKidBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, kid_);
       }
       if (!getXBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, x_);
@@ -10683,11 +11033,11 @@ public final class API {
       if (!getDBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, d_);
       }
-      if (crv_ != DIDComm.Messaging.Proto.API.Crv.Ed25519.getNumber()) {
-        output.writeEnum(5, crv_);
+      if (!getCrvBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, crv_);
       }
-      if (kty_ != DIDComm.Messaging.Proto.API.KeyType.OKP.getNumber()) {
-        output.writeEnum(6, kty_);
+      if (!getKtyBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, kty_);
       }
       unknownFields.writeTo(output);
     }
@@ -10698,8 +11048,8 @@ public final class API {
       if (size != -1) return size;
 
       size = 0;
-      if (!getKeyIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, keyId_);
+      if (!getKidBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, kid_);
       }
       if (!getXBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, x_);
@@ -10710,13 +11060,11 @@ public final class API {
       if (!getDBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, d_);
       }
-      if (crv_ != DIDComm.Messaging.Proto.API.Crv.Ed25519.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(5, crv_);
+      if (!getCrvBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, crv_);
       }
-      if (kty_ != DIDComm.Messaging.Proto.API.KeyType.OKP.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(6, kty_);
+      if (!getKtyBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, kty_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -10733,16 +11081,18 @@ public final class API {
       }
       DIDComm.Messaging.Proto.API.JsonWebKey other = (DIDComm.Messaging.Proto.API.JsonWebKey) obj;
 
-      if (!getKeyId()
-          .equals(other.getKeyId())) return false;
+      if (!getKid()
+          .equals(other.getKid())) return false;
       if (!getX()
           .equals(other.getX())) return false;
       if (!getY()
           .equals(other.getY())) return false;
       if (!getD()
           .equals(other.getD())) return false;
-      if (crv_ != other.crv_) return false;
-      if (kty_ != other.kty_) return false;
+      if (!getCrv()
+          .equals(other.getCrv())) return false;
+      if (!getKty()
+          .equals(other.getKty())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -10754,8 +11104,8 @@ public final class API {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + KEY_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getKeyId().hashCode();
+      hash = (37 * hash) + KID_FIELD_NUMBER;
+      hash = (53 * hash) + getKid().hashCode();
       hash = (37 * hash) + X_FIELD_NUMBER;
       hash = (53 * hash) + getX().hashCode();
       hash = (37 * hash) + Y_FIELD_NUMBER;
@@ -10763,9 +11113,9 @@ public final class API {
       hash = (37 * hash) + D_FIELD_NUMBER;
       hash = (53 * hash) + getD().hashCode();
       hash = (37 * hash) + CRV_FIELD_NUMBER;
-      hash = (53 * hash) + crv_;
+      hash = (53 * hash) + getCrv().hashCode();
       hash = (37 * hash) + KTY_FIELD_NUMBER;
-      hash = (53 * hash) + kty_;
+      hash = (53 * hash) + getKty().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -10899,7 +11249,7 @@ public final class API {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        keyId_ = "";
+        kid_ = "";
 
         x_ = "";
 
@@ -10907,9 +11257,9 @@ public final class API {
 
         d_ = "";
 
-        crv_ = 0;
+        crv_ = "";
 
-        kty_ = 0;
+        kty_ = "";
 
         return this;
       }
@@ -10937,7 +11287,7 @@ public final class API {
       @java.lang.Override
       public DIDComm.Messaging.Proto.API.JsonWebKey buildPartial() {
         DIDComm.Messaging.Proto.API.JsonWebKey result = new DIDComm.Messaging.Proto.API.JsonWebKey(this);
-        result.keyId_ = keyId_;
+        result.kid_ = kid_;
         result.x_ = x_;
         result.y_ = y_;
         result.d_ = d_;
@@ -10991,8 +11341,8 @@ public final class API {
 
       public Builder mergeFrom(DIDComm.Messaging.Proto.API.JsonWebKey other) {
         if (other == DIDComm.Messaging.Proto.API.JsonWebKey.getDefaultInstance()) return this;
-        if (!other.getKeyId().isEmpty()) {
-          keyId_ = other.keyId_;
+        if (!other.getKid().isEmpty()) {
+          kid_ = other.kid_;
           onChanged();
         }
         if (!other.getX().isEmpty()) {
@@ -11007,11 +11357,13 @@ public final class API {
           d_ = other.d_;
           onChanged();
         }
-        if (other.crv_ != 0) {
-          setCrvValue(other.getCrvValue());
+        if (!other.getCrv().isEmpty()) {
+          crv_ = other.crv_;
+          onChanged();
         }
-        if (other.kty_ != 0) {
-          setKtyValue(other.getKtyValue());
+        if (!other.getKty().isEmpty()) {
+          kty_ = other.kty_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -11042,78 +11394,78 @@ public final class API {
         return this;
       }
 
-      private java.lang.Object keyId_ = "";
+      private java.lang.Object kid_ = "";
       /**
-       * <code>string key_id = 1 [json_name = "kid"];</code>
-       * @return The keyId.
+       * <code>string kid = 1;</code>
+       * @return The kid.
        */
-      public java.lang.String getKeyId() {
-        java.lang.Object ref = keyId_;
+      public java.lang.String getKid() {
+        java.lang.Object ref = kid_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          keyId_ = s;
+          kid_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string key_id = 1 [json_name = "kid"];</code>
-       * @return The bytes for keyId.
+       * <code>string kid = 1;</code>
+       * @return The bytes for kid.
        */
       public com.google.protobuf.ByteString
-          getKeyIdBytes() {
-        java.lang.Object ref = keyId_;
+          getKidBytes() {
+        java.lang.Object ref = kid_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          keyId_ = b;
+          kid_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string key_id = 1 [json_name = "kid"];</code>
-       * @param value The keyId to set.
+       * <code>string kid = 1;</code>
+       * @param value The kid to set.
        * @return This builder for chaining.
        */
-      public Builder setKeyId(
+      public Builder setKid(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        keyId_ = value;
+        kid_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string key_id = 1 [json_name = "kid"];</code>
+       * <code>string kid = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearKeyId() {
+      public Builder clearKid() {
         
-        keyId_ = getDefaultInstance().getKeyId();
+        kid_ = getDefaultInstance().getKid();
         onChanged();
         return this;
       }
       /**
-       * <code>string key_id = 1 [json_name = "kid"];</code>
-       * @param value The bytes for keyId to set.
+       * <code>string kid = 1;</code>
+       * @param value The bytes for kid to set.
        * @return This builder for chaining.
        */
-      public Builder setKeyIdBytes(
+      public Builder setKidBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        keyId_ = value;
+        kid_ = value;
         onChanged();
         return this;
       }
@@ -11406,110 +11758,154 @@ public final class API {
         return this;
       }
 
-      private int crv_ = 0;
+      private java.lang.Object crv_ = "";
       /**
-       * <code>.didcomm.messaging.Crv crv = 5;</code>
-       * @return The enum numeric value on the wire for crv.
+       * <code>string crv = 5;</code>
+       * @return The crv.
        */
-      @java.lang.Override public int getCrvValue() {
-        return crv_;
+      public java.lang.String getCrv() {
+        java.lang.Object ref = crv_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          crv_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>.didcomm.messaging.Crv crv = 5;</code>
-       * @param value The enum numeric value on the wire for crv to set.
+       * <code>string crv = 5;</code>
+       * @return The bytes for crv.
+       */
+      public com.google.protobuf.ByteString
+          getCrvBytes() {
+        java.lang.Object ref = crv_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          crv_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string crv = 5;</code>
+       * @param value The crv to set.
        * @return This builder for chaining.
        */
-      public Builder setCrvValue(int value) {
-        
+      public Builder setCrv(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
         crv_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>.didcomm.messaging.Crv crv = 5;</code>
-       * @return The crv.
-       */
-      @java.lang.Override
-      public DIDComm.Messaging.Proto.API.Crv getCrv() {
-        @SuppressWarnings("deprecation")
-        DIDComm.Messaging.Proto.API.Crv result = DIDComm.Messaging.Proto.API.Crv.valueOf(crv_);
-        return result == null ? DIDComm.Messaging.Proto.API.Crv.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.didcomm.messaging.Crv crv = 5;</code>
-       * @param value The crv to set.
-       * @return This builder for chaining.
-       */
-      public Builder setCrv(DIDComm.Messaging.Proto.API.Crv value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        crv_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.didcomm.messaging.Crv crv = 5;</code>
+       * <code>string crv = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearCrv() {
         
-        crv_ = 0;
+        crv_ = getDefaultInstance().getCrv();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string crv = 5;</code>
+       * @param value The bytes for crv to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCrvBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        crv_ = value;
         onChanged();
         return this;
       }
 
-      private int kty_ = 0;
+      private java.lang.Object kty_ = "";
       /**
-       * <code>.didcomm.messaging.KeyType kty = 6;</code>
-       * @return The enum numeric value on the wire for kty.
+       * <code>string kty = 6;</code>
+       * @return The kty.
        */
-      @java.lang.Override public int getKtyValue() {
-        return kty_;
+      public java.lang.String getKty() {
+        java.lang.Object ref = kty_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          kty_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>.didcomm.messaging.KeyType kty = 6;</code>
-       * @param value The enum numeric value on the wire for kty to set.
+       * <code>string kty = 6;</code>
+       * @return The bytes for kty.
+       */
+      public com.google.protobuf.ByteString
+          getKtyBytes() {
+        java.lang.Object ref = kty_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          kty_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string kty = 6;</code>
+       * @param value The kty to set.
        * @return This builder for chaining.
        */
-      public Builder setKtyValue(int value) {
-        
+      public Builder setKty(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
         kty_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>.didcomm.messaging.KeyType kty = 6;</code>
-       * @return The kty.
-       */
-      @java.lang.Override
-      public DIDComm.Messaging.Proto.API.KeyType getKty() {
-        @SuppressWarnings("deprecation")
-        DIDComm.Messaging.Proto.API.KeyType result = DIDComm.Messaging.Proto.API.KeyType.valueOf(kty_);
-        return result == null ? DIDComm.Messaging.Proto.API.KeyType.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.didcomm.messaging.KeyType kty = 6;</code>
-       * @param value The kty to set.
-       * @return This builder for chaining.
-       */
-      public Builder setKty(DIDComm.Messaging.Proto.API.KeyType value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        kty_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.didcomm.messaging.KeyType kty = 6;</code>
+       * <code>string kty = 6;</code>
        * @return This builder for chaining.
        */
       public Builder clearKty() {
         
-        kty_ = 0;
+        kty_ = getDefaultInstance().getKty();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string kty = 6;</code>
+       * @param value The bytes for kty to set.
+       * @return This builder for chaining.
+       */
+      public Builder setKtyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        kty_ = value;
         onChanged();
         return this;
       }
@@ -11561,6 +11957,1142 @@ public final class API {
 
     @java.lang.Override
     public DIDComm.Messaging.Proto.API.JsonWebKey getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ResolveRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:didcomm.messaging.ResolveRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string did = 1;</code>
+     * @return The did.
+     */
+    java.lang.String getDid();
+    /**
+     * <code>string did = 1;</code>
+     * @return The bytes for did.
+     */
+    com.google.protobuf.ByteString
+        getDidBytes();
+  }
+  /**
+   * Protobuf type {@code didcomm.messaging.ResolveRequest}
+   */
+  public static final class ResolveRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:didcomm.messaging.ResolveRequest)
+      ResolveRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ResolveRequest.newBuilder() to construct.
+    private ResolveRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ResolveRequest() {
+      did_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ResolveRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ResolveRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              did_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_ResolveRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_ResolveRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              DIDComm.Messaging.Proto.API.ResolveRequest.class, DIDComm.Messaging.Proto.API.ResolveRequest.Builder.class);
+    }
+
+    public static final int DID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object did_;
+    /**
+     * <code>string did = 1;</code>
+     * @return The did.
+     */
+    @java.lang.Override
+    public java.lang.String getDid() {
+      java.lang.Object ref = did_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        did_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string did = 1;</code>
+     * @return The bytes for did.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDidBytes() {
+      java.lang.Object ref = did_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        did_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getDidBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, did_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getDidBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, did_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof DIDComm.Messaging.Proto.API.ResolveRequest)) {
+        return super.equals(obj);
+      }
+      DIDComm.Messaging.Proto.API.ResolveRequest other = (DIDComm.Messaging.Proto.API.ResolveRequest) obj;
+
+      if (!getDid()
+          .equals(other.getDid())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + DID_FIELD_NUMBER;
+      hash = (53 * hash) + getDid().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static DIDComm.Messaging.Proto.API.ResolveRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static DIDComm.Messaging.Proto.API.ResolveRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static DIDComm.Messaging.Proto.API.ResolveRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static DIDComm.Messaging.Proto.API.ResolveRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static DIDComm.Messaging.Proto.API.ResolveRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static DIDComm.Messaging.Proto.API.ResolveRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static DIDComm.Messaging.Proto.API.ResolveRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static DIDComm.Messaging.Proto.API.ResolveRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static DIDComm.Messaging.Proto.API.ResolveRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static DIDComm.Messaging.Proto.API.ResolveRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static DIDComm.Messaging.Proto.API.ResolveRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static DIDComm.Messaging.Proto.API.ResolveRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(DIDComm.Messaging.Proto.API.ResolveRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code didcomm.messaging.ResolveRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:didcomm.messaging.ResolveRequest)
+        DIDComm.Messaging.Proto.API.ResolveRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_ResolveRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_ResolveRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                DIDComm.Messaging.Proto.API.ResolveRequest.class, DIDComm.Messaging.Proto.API.ResolveRequest.Builder.class);
+      }
+
+      // Construct using DIDComm.Messaging.Proto.API.ResolveRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        did_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_ResolveRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public DIDComm.Messaging.Proto.API.ResolveRequest getDefaultInstanceForType() {
+        return DIDComm.Messaging.Proto.API.ResolveRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public DIDComm.Messaging.Proto.API.ResolveRequest build() {
+        DIDComm.Messaging.Proto.API.ResolveRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public DIDComm.Messaging.Proto.API.ResolveRequest buildPartial() {
+        DIDComm.Messaging.Proto.API.ResolveRequest result = new DIDComm.Messaging.Proto.API.ResolveRequest(this);
+        result.did_ = did_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof DIDComm.Messaging.Proto.API.ResolveRequest) {
+          return mergeFrom((DIDComm.Messaging.Proto.API.ResolveRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(DIDComm.Messaging.Proto.API.ResolveRequest other) {
+        if (other == DIDComm.Messaging.Proto.API.ResolveRequest.getDefaultInstance()) return this;
+        if (!other.getDid().isEmpty()) {
+          did_ = other.did_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        DIDComm.Messaging.Proto.API.ResolveRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (DIDComm.Messaging.Proto.API.ResolveRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object did_ = "";
+      /**
+       * <code>string did = 1;</code>
+       * @return The did.
+       */
+      public java.lang.String getDid() {
+        java.lang.Object ref = did_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          did_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string did = 1;</code>
+       * @return The bytes for did.
+       */
+      public com.google.protobuf.ByteString
+          getDidBytes() {
+        java.lang.Object ref = did_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          did_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string did = 1;</code>
+       * @param value The did to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDid(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        did_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string did = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDid() {
+        
+        did_ = getDefaultInstance().getDid();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string did = 1;</code>
+       * @param value The bytes for did to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDidBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        did_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:didcomm.messaging.ResolveRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:didcomm.messaging.ResolveRequest)
+    private static final DIDComm.Messaging.Proto.API.ResolveRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new DIDComm.Messaging.Proto.API.ResolveRequest();
+    }
+
+    public static DIDComm.Messaging.Proto.API.ResolveRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ResolveRequest>
+        PARSER = new com.google.protobuf.AbstractParser<ResolveRequest>() {
+      @java.lang.Override
+      public ResolveRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ResolveRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ResolveRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ResolveRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public DIDComm.Messaging.Proto.API.ResolveRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ResolveResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:didcomm.messaging.ResolveResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string diddoc = 1;</code>
+     * @return The diddoc.
+     */
+    java.lang.String getDiddoc();
+    /**
+     * <code>string diddoc = 1;</code>
+     * @return The bytes for diddoc.
+     */
+    com.google.protobuf.ByteString
+        getDiddocBytes();
+  }
+  /**
+   * Protobuf type {@code didcomm.messaging.ResolveResponse}
+   */
+  public static final class ResolveResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:didcomm.messaging.ResolveResponse)
+      ResolveResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ResolveResponse.newBuilder() to construct.
+    private ResolveResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ResolveResponse() {
+      diddoc_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ResolveResponse();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ResolveResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              diddoc_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_ResolveResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_ResolveResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              DIDComm.Messaging.Proto.API.ResolveResponse.class, DIDComm.Messaging.Proto.API.ResolveResponse.Builder.class);
+    }
+
+    public static final int DIDDOC_FIELD_NUMBER = 1;
+    private volatile java.lang.Object diddoc_;
+    /**
+     * <code>string diddoc = 1;</code>
+     * @return The diddoc.
+     */
+    @java.lang.Override
+    public java.lang.String getDiddoc() {
+      java.lang.Object ref = diddoc_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        diddoc_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string diddoc = 1;</code>
+     * @return The bytes for diddoc.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDiddocBytes() {
+      java.lang.Object ref = diddoc_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        diddoc_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getDiddocBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, diddoc_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getDiddocBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, diddoc_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof DIDComm.Messaging.Proto.API.ResolveResponse)) {
+        return super.equals(obj);
+      }
+      DIDComm.Messaging.Proto.API.ResolveResponse other = (DIDComm.Messaging.Proto.API.ResolveResponse) obj;
+
+      if (!getDiddoc()
+          .equals(other.getDiddoc())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + DIDDOC_FIELD_NUMBER;
+      hash = (53 * hash) + getDiddoc().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static DIDComm.Messaging.Proto.API.ResolveResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static DIDComm.Messaging.Proto.API.ResolveResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static DIDComm.Messaging.Proto.API.ResolveResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static DIDComm.Messaging.Proto.API.ResolveResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static DIDComm.Messaging.Proto.API.ResolveResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static DIDComm.Messaging.Proto.API.ResolveResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static DIDComm.Messaging.Proto.API.ResolveResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static DIDComm.Messaging.Proto.API.ResolveResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static DIDComm.Messaging.Proto.API.ResolveResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static DIDComm.Messaging.Proto.API.ResolveResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static DIDComm.Messaging.Proto.API.ResolveResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static DIDComm.Messaging.Proto.API.ResolveResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(DIDComm.Messaging.Proto.API.ResolveResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code didcomm.messaging.ResolveResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:didcomm.messaging.ResolveResponse)
+        DIDComm.Messaging.Proto.API.ResolveResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_ResolveResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_ResolveResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                DIDComm.Messaging.Proto.API.ResolveResponse.class, DIDComm.Messaging.Proto.API.ResolveResponse.Builder.class);
+      }
+
+      // Construct using DIDComm.Messaging.Proto.API.ResolveResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        diddoc_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return DIDComm.Messaging.Proto.API.internal_static_didcomm_messaging_ResolveResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public DIDComm.Messaging.Proto.API.ResolveResponse getDefaultInstanceForType() {
+        return DIDComm.Messaging.Proto.API.ResolveResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public DIDComm.Messaging.Proto.API.ResolveResponse build() {
+        DIDComm.Messaging.Proto.API.ResolveResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public DIDComm.Messaging.Proto.API.ResolveResponse buildPartial() {
+        DIDComm.Messaging.Proto.API.ResolveResponse result = new DIDComm.Messaging.Proto.API.ResolveResponse(this);
+        result.diddoc_ = diddoc_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof DIDComm.Messaging.Proto.API.ResolveResponse) {
+          return mergeFrom((DIDComm.Messaging.Proto.API.ResolveResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(DIDComm.Messaging.Proto.API.ResolveResponse other) {
+        if (other == DIDComm.Messaging.Proto.API.ResolveResponse.getDefaultInstance()) return this;
+        if (!other.getDiddoc().isEmpty()) {
+          diddoc_ = other.diddoc_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        DIDComm.Messaging.Proto.API.ResolveResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (DIDComm.Messaging.Proto.API.ResolveResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object diddoc_ = "";
+      /**
+       * <code>string diddoc = 1;</code>
+       * @return The diddoc.
+       */
+      public java.lang.String getDiddoc() {
+        java.lang.Object ref = diddoc_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          diddoc_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string diddoc = 1;</code>
+       * @return The bytes for diddoc.
+       */
+      public com.google.protobuf.ByteString
+          getDiddocBytes() {
+        java.lang.Object ref = diddoc_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          diddoc_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string diddoc = 1;</code>
+       * @param value The diddoc to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDiddoc(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        diddoc_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string diddoc = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDiddoc() {
+        
+        diddoc_ = getDefaultInstance().getDiddoc();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string diddoc = 1;</code>
+       * @param value The bytes for diddoc to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDiddocBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        diddoc_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:didcomm.messaging.ResolveResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:didcomm.messaging.ResolveResponse)
+    private static final DIDComm.Messaging.Proto.API.ResolveResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new DIDComm.Messaging.Proto.API.ResolveResponse();
+    }
+
+    public static DIDComm.Messaging.Proto.API.ResolveResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ResolveResponse>
+        PARSER = new com.google.protobuf.AbstractParser<ResolveResponse>() {
+      @java.lang.Override
+      public ResolveResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ResolveResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ResolveResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ResolveResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public DIDComm.Messaging.Proto.API.ResolveResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -11641,6 +13173,16 @@ public final class API {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_didcomm_messaging_JsonWebKey_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_didcomm_messaging_ResolveRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_didcomm_messaging_ResolveRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_didcomm_messaging_ResolveResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_didcomm_messaging_ResolveResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -11651,50 +13193,50 @@ public final class API {
   static {
     java.lang.String[] descriptorData = {
       "\n\tapi.proto\022\021didcomm.messaging\032\016security" +
-      ".proto\032\034google/protobuf/struct.proto\"L\n\022" +
-      "GenerateKeyRequest\022\014\n\004seed\030\001 \001(\014\022(\n\010key_" +
-      "type\030\002 \001(\0162\026.didcomm.messaging.Crv\"A\n\023Ge" +
-      "nerateKeyResponse\022*\n\003key\030\001 \001(\0132\035.didcomm" +
-      ".messaging.JsonWebKey\"l\n\021ConvertKeyReque" +
-      "st\022*\n\003key\030\001 \001(\0132\035.didcomm.messaging.Json" +
-      "WebKey\022+\n\013target_type\030\002 \001(\0162\026.didcomm.me" +
-      "ssaging.Crv\"@\n\022ConvertKeyResponse\022*\n\003key" +
-      "\030\001 \001(\0132\035.didcomm.messaging.JsonWebKey\"\177\n" +
-      "\013SignRequest\022\017\n\007payload\030\001 \001(\014\022*\n\003key\030\002 \001" +
-      "(\0132\035.didcomm.messaging.JsonWebKey\0223\n\tapp" +
-      "end_to\030\003 \001(\0132 .didcomm.messaging.SignedM" +
-      "essage\"A\n\014SignResponse\0221\n\007message\030\001 \001(\0132" +
-      " .didcomm.messaging.SignedMessage\"n\n\rVer" +
-      "ifyRequest\0221\n\007message\030\001 \001(\0132 .didcomm.me" +
-      "ssaging.SignedMessage\022*\n\003key\030\002 \001(\0132\035.did" +
-      "comm.messaging.JsonWebKey\"\"\n\016VerifyRespo" +
-      "nse\022\020\n\010is_valid\030\001 \001(\010\"\215\002\n\013PackRequest\0221\n" +
-      "\nsender_key\030\001 \001(\0132\035.didcomm.messaging.Js" +
-      "onWebKey\0223\n\014receiver_key\030\002 \001(\0132\035.didcomm" +
-      ".messaging.JsonWebKey\022\027\n\017associated_data" +
-      "\030\003 \001(\014\022\021\n\tplaintext\030\004 \001(\014\022/\n\004mode\030\005 \001(\0162" +
-      "!.didcomm.messaging.EncryptionMode\0229\n\tal" +
-      "gorithm\030\006 \001(\0162&.didcomm.messaging.Encryp" +
-      "tionAlgorithm\"D\n\014PackResponse\0224\n\007message" +
-      "\030\001 \001(\0132#.didcomm.messaging.EncryptedMess" +
-      "age\"\255\001\n\rUnpackRequest\0221\n\nsender_key\030\001 \001(" +
-      "\0132\035.didcomm.messaging.JsonWebKey\0223\n\014rece" +
-      "iver_key\030\002 \001(\0132\035.didcomm.messaging.JsonW" +
-      "ebKey\0224\n\007message\030\003 \001(\0132#.didcomm.messagi" +
-      "ng.EncryptedMessage\"#\n\016UnpackResponse\022\021\n" +
-      "\tplaintext\030\001 \001(\014\"C\n\025GetDidDocumentReques" +
-      "t\022*\n\003key\030\001 \001(\0132\035.didcomm.messaging.JsonW" +
-      "ebKey\"G\n\026GetDidDocumentResponse\022-\n\014did_d" +
-      "ocument\030\001 \001(\0132\027.google.protobuf.Struct\"\220" +
-      "\001\n\nJsonWebKey\022\023\n\006key_id\030\001 \001(\tR\003kid\022\t\n\001x\030" +
-      "\002 \001(\t\022\t\n\001y\030\003 \001(\t\022\t\n\001d\030\004 \001(\t\022#\n\003crv\030\005 \001(\016" +
-      "2\026.didcomm.messaging.Crv\022\'\n\003kty\030\006 \001(\0162\032." +
-      "didcomm.messaging.KeyType*H\n\003Crv\022\013\n\007Ed25" +
-      "519\020\000\022\n\n\006X25519\020\001\022\010\n\004P256\020\002\022\017\n\013Bls12381_" +
-      "G2\020\003\022\r\n\tsecp256k1\020\004*\032\n\007KeyType\022\007\n\003OKP\020\000\022" +
-      "\006\n\002EC\020\001BI\n\027DIDComm.Messaging.ProtoB\003APIZ" +
-      "\025didcomm.org/messaging\252\002\021DIDComm.Messagi" +
-      "ngb\006proto3"
+      ".proto\032\034google/protobuf/struct.proto\"P\n\022" +
+      "GenerateKeyRequest\022\014\n\004seed\030\001 \001(\014\022,\n\010key_" +
+      "type\030\002 \001(\0162\032.didcomm.messaging.KeyType\"p" +
+      "\n\023GenerateKeyResponse\022*\n\003key\030\001 \003(\0132\035.did" +
+      "comm.messaging.JsonWebKey\022-\n\014did_documen" +
+      "t\030\002 \001(\0132\027.google.protobuf.Struct\"T\n\021Conv" +
+      "ertKeyRequest\022*\n\003key\030\001 \001(\0132\035.didcomm.mes" +
+      "saging.JsonWebKey\022\023\n\013target_type\030\002 \001(\t\"@" +
+      "\n\022ConvertKeyResponse\022*\n\003key\030\001 \001(\0132\035.didc" +
+      "omm.messaging.JsonWebKey\"\177\n\013SignRequest\022" +
+      "\017\n\007payload\030\001 \001(\014\022*\n\003key\030\002 \001(\0132\035.didcomm." +
+      "messaging.JsonWebKey\0223\n\tappend_to\030\003 \001(\0132" +
+      " .didcomm.messaging.SignedMessage\"A\n\014Sig" +
+      "nResponse\0221\n\007message\030\001 \001(\0132 .didcomm.mes" +
+      "saging.SignedMessage\"n\n\rVerifyRequest\0221\n" +
+      "\007message\030\001 \001(\0132 .didcomm.messaging.Signe" +
+      "dMessage\022*\n\003key\030\002 \001(\0132\035.didcomm.messagin" +
+      "g.JsonWebKey\"\"\n\016VerifyResponse\022\020\n\010is_val" +
+      "id\030\001 \001(\010\"\215\002\n\013PackRequest\0221\n\nsender_key\030\001" +
+      " \001(\0132\035.didcomm.messaging.JsonWebKey\0223\n\014r" +
+      "eceiver_key\030\002 \001(\0132\035.didcomm.messaging.Js" +
+      "onWebKey\022\027\n\017associated_data\030\003 \001(\014\022\021\n\tpla" +
+      "intext\030\004 \001(\014\022/\n\004mode\030\005 \001(\0162!.didcomm.mes" +
+      "saging.EncryptionMode\0229\n\talgorithm\030\006 \001(\016" +
+      "2&.didcomm.messaging.EncryptionAlgorithm" +
+      "\"D\n\014PackResponse\0224\n\007message\030\001 \001(\0132#.didc" +
+      "omm.messaging.EncryptedMessage\"\255\001\n\rUnpac" +
+      "kRequest\0221\n\nsender_key\030\001 \001(\0132\035.didcomm.m" +
+      "essaging.JsonWebKey\0223\n\014receiver_key\030\002 \001(" +
+      "\0132\035.didcomm.messaging.JsonWebKey\0224\n\007mess" +
+      "age\030\003 \001(\0132#.didcomm.messaging.EncryptedM" +
+      "essage\"#\n\016UnpackResponse\022\021\n\tplaintext\030\001 " +
+      "\001(\014\"C\n\025GetDidDocumentRequest\022*\n\003key\030\001 \001(" +
+      "\0132\035.didcomm.messaging.JsonWebKey\"G\n\026GetD" +
+      "idDocumentResponse\022-\n\014did_document\030\001 \001(\013" +
+      "2\027.google.protobuf.Struct\"T\n\nJsonWebKey\022" +
+      "\013\n\003kid\030\001 \001(\t\022\t\n\001x\030\002 \001(\t\022\t\n\001y\030\003 \001(\t\022\t\n\001d\030" +
+      "\004 \001(\t\022\013\n\003crv\030\005 \001(\t\022\013\n\003kty\030\006 \001(\t\"\035\n\016Resol" +
+      "veRequest\022\013\n\003did\030\001 \001(\t\"!\n\017ResolveRespons" +
+      "e\022\016\n\006diddoc\030\001 \001(\t*M\n\007KeyType\022\013\n\007Ed25519\020" +
+      "\000\022\n\n\006X25519\020\001\022\010\n\004P256\020\002\022\020\n\014Bls12381G1G2\020" +
+      "\003\022\r\n\tSecp256k1\020\004BI\n\027DIDComm.Messaging.Pr" +
+      "otoB\003APIZ\025didcomm.org/messaging\252\002\021DIDCom" +
+      "m.Messagingb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -11713,7 +13255,7 @@ public final class API {
     internal_static_didcomm_messaging_GenerateKeyResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_didcomm_messaging_GenerateKeyResponse_descriptor,
-        new java.lang.String[] { "Key", });
+        new java.lang.String[] { "Key", "DidDocument", });
     internal_static_didcomm_messaging_ConvertKeyRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_didcomm_messaging_ConvertKeyRequest_fieldAccessorTable = new
@@ -11791,7 +13333,19 @@ public final class API {
     internal_static_didcomm_messaging_JsonWebKey_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_didcomm_messaging_JsonWebKey_descriptor,
-        new java.lang.String[] { "KeyId", "X", "Y", "D", "Crv", "Kty", });
+        new java.lang.String[] { "Kid", "X", "Y", "D", "Crv", "Kty", });
+    internal_static_didcomm_messaging_ResolveRequest_descriptor =
+      getDescriptor().getMessageTypes().get(15);
+    internal_static_didcomm_messaging_ResolveRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_didcomm_messaging_ResolveRequest_descriptor,
+        new java.lang.String[] { "Did", });
+    internal_static_didcomm_messaging_ResolveResponse_descriptor =
+      getDescriptor().getMessageTypes().get(16);
+    internal_static_didcomm_messaging_ResolveResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_didcomm_messaging_ResolveResponse_descriptor,
+        new java.lang.String[] { "Diddoc", });
     DIDComm.Messaging.Proto.Security.getDescriptor();
     com.google.protobuf.StructProto.getDescriptor();
   }

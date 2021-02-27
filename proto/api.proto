@@ -93,3 +93,12 @@ message JsonWebKey {
     string crv = 5;
     string kty = 6;
 }
+
+message ResolveRequest {
+    string did = 1;
+}
+
+message ResolveResponse {
+    google.protobuf.Struct did_document = 1;
+    repeated JsonWebKey keys = 2;
+}

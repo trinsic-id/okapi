@@ -1,4 +1,4 @@
-use crate::{proto::*, *};
+use crate::*;
 use ::jni::JNIEnv;
 use ::jni::{objects::JClass, sys::jbyteArray};
 

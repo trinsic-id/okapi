@@ -1,4 +1,5 @@
 use crate::*;
+use base64::URL_SAFE_NO_PAD;
 use did_key::*;
 use std::str::from_utf8;
 
@@ -97,8 +98,8 @@ fn test_x25519_exchange() {
 fn key_from(pk: &str, sk: &str) -> JsonWebKey {
     JsonWebKey {
         crv: String::from("X25519"),
-        d: base64::encode(bs58::decode(sk).into_vec().unwrap()),
-        x: base64::encode(bs58::decode(pk).into_vec().unwrap()),
+        d: base64::encode_config(bs58::decode(sk).into_vec().unwrap(), URL_SAFE_NO_PAD),
+        x: base64::encode_config(bs58::decode(pk).into_vec().unwrap(), URL_SAFE_NO_PAD),
         y: String::from(""),
         kty: String::from("Okp"),
         ..Default::default()

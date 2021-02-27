@@ -21,3 +21,8 @@ pub fn didcomm_sign(request: Uint8Array) -> Result<Uint8Array, JsValue> {
 pub fn didcomm_verify(request: Uint8Array) -> Result<Uint8Array, JsValue> {
     impl_invoke!(VerifyRequest, DIDComm, verify, request)
 }
+
+#[wasm_bindgen]
+pub fn didcomm_resolve(request: Uint8Array) -> Result<Uint8Array, JsValue> {
+    impl_invoke!(ResolveRequest, DIDComm, resolve, request)
+}
