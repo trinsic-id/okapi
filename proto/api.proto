@@ -99,5 +99,6 @@ message ResolveRequest {
 }
 
 message ResolveResponse {
-    string diddoc = 1;
+    google.protobuf.Struct did_document = 1;
+    repeated JsonWebKey keys = 2;
 }

@@ -1,5 +1,5 @@
 use crate::*;
-use base64::{URL_SAFE_NO_PAD, encode_config};
+use base64::{encode_config, URL_SAFE_NO_PAD};
 use fluid::prelude::*;
 
 #[theory]

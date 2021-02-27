@@ -44,14 +44,14 @@ namespace DIDComm.Messaging.Tests
         [Fact(DisplayName = "Generate new key throws for invalid key type")]
         public void TestGenerateKeyThrowsInvalidSeedSize()
         {
-            /*Assert.Throws<DIDCommException>(() =>
+            Assert.Throws<DIDCommException>(() =>
                 _ = DIDKey.Generate(new GenerateKeyRequest
                 {
-                    //No key type is given
+                    KeyType = (KeyType)(-1)
                 })
-            ); */
+            ); 
         }
-      
+
 
         [Theory(DisplayName = "Generate new key from seed")]
         [InlineData(KeyType.Ed25519, "Ed25519", "4f66b355aa7b0980ff901f2295b9c562ac3061be4df86703eb28c612faae6578", "6fioC1zcDPyPEL19pXRS2E4iJ46zH7xP6uSgAaPdwDrx")]

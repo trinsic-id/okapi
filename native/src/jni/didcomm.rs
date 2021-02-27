@@ -21,8 +21,3 @@ pub extern "system" fn Java_DIDComm_Messaging_gRPC_NativeMethods_didcomm_1sign(e
 pub extern "system" fn Java_DIDComm_Messaging_gRPC_NativeMethods_didcomm_1verify(env: JNIEnv, _class: JClass, request: jbyteArray) -> jbyteArray {
     jni_impl!(VerifyRequest, DIDComm, verify, env, request)
 }
-
-#[no_mangle]
-pub extern "system" fn Java_DIDComm_Messaging_gRPC_NativeMethods_didcomm_1resolve(env: JNIEnv, _class: JClass, request: jbyteArray) -> jbyteArray {
-    jni_impl!(ResolveRequest, DIDComm, resolve, env, request)
-}

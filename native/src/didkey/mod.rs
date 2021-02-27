@@ -14,7 +14,6 @@ impl From<VerificationMethod> for JsonWebKey {
                     d: jwk.d.map_or(String::default(), |x| x),
                     crv: jwk.curve,
                     kid: vm.id,
-                    crv: jwk.curve,
                     kty: jwk.key_type,
                     ..Default::default()
                 },
@@ -28,7 +27,6 @@ impl From<VerificationMethod> for JsonWebKey {
                     d: jwk.d.map_or(String::default(), |x| x),
                     crv: jwk.curve,
                     kid: vm.id,
-                    crv: jwk.curve,
                     kty: jwk.key_type,
                     ..Default::default()
                 },
@@ -39,7 +37,11 @@ impl From<VerificationMethod> for JsonWebKey {
 
 impl From<JsonWebKey> for KeyPair {
     fn from(key: JsonWebKey) -> Self {
-        let private_key = if !key.d.is_empty() { Some(base64::decode_config(key.d, URL_SAFE).unwrap()) } else { None };
+        let private_key = if !key.d.is_empty() {
+            Some(base64::decode_config(key.d, URL_SAFE).unwrap())
+        } else {
+            None
+        };
         let mut public_key = base64::decode_config(key.x, URL_SAFE).unwrap();
         if !key.y.is_empty() {
             public_key.append(&mut base64::decode_config(key.y, URL_SAFE).unwrap());
@@ -83,6 +85,22 @@ impl crate::DIDKey {
         Ok(GenerateKeyResponse {
             key: jwk_keys.clone(),
             did_document: Some(did_document.into()),
+        })
+    }
+
+    pub fn resolve<'a>(did: &ResolveRequest) -> Result<ResolveResponse, Error<'a>> {
+        let keypair: KeyPair = resolve(&did.did).unwrap();
+
+        let did_document = keypair.get_did_document(CONFIG_LD_PUBLIC);
+        let jwk_keys: Vec<JsonWebKey> = keypair
+            .get_verification_methods(CONFIG_JOSE_PUBLIC, did_document.id.as_str())
+            .iter()
+            .map(|x| x.to_owned().into())
+            .collect();
+
+        Ok(ResolveResponse {
+            did_document: Some(did_document.into()),
+            keys: jwk_keys,
         })
     }
 }

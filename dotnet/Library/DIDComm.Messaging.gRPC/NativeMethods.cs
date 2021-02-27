@@ -31,7 +31,7 @@ namespace DIDComm.Messaging
         internal static extern int didkey_generate(ByteBuffer request, out ByteBuffer response, out ExternError error);
 
         [DllImport(LibraryName, CharSet = CharSet.Auto, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-        internal static extern int didkey_convert(ByteBuffer request, out ByteBuffer response, out ExternError error);
+        internal static extern int didkey_resolve(ByteBuffer request, out ByteBuffer response, out ExternError error);
 
         #endregion
 

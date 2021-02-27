@@ -20,9 +20,3 @@ pub extern "C" fn didcomm_sign(request: ByteBuffer, response: &mut ByteBuffer, e
 pub extern "C" fn didcomm_verify(request: ByteBuffer, response: &mut ByteBuffer, err: &mut ExternError) -> i32 {
     c_impl!(VerifyRequest, DIDComm, verify, request, response, err)
 }
-
-
-#[no_mangle]
-pub extern "C" fn didcomm_resolve(request: ByteBuffer, response: &mut ByteBuffer, err: &mut ExternError) -> i32 {
-    c_impl!(ResolveRequest, DIDComm, resolve, request, response, err)
-}

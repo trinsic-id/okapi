@@ -7,6 +7,11 @@ pub extern "system" fn Java_DIDComm_Messaging_gRPC_NativeMethods_didkey_1generat
     jni_impl!(GenerateKeyRequest, DIDKey, generate, env, request)
 }
 
+#[no_mangle]
+pub extern "system" fn Java_DIDComm_Messaging_gRPC_NativeMethods_didkey_1resolve(env: JNIEnv, _class: JClass, request: jbyteArray) -> jbyteArray {
+    jni_impl!(ResolveRequest, DIDKey, resolve, env, request)
+}
+
 // #[no_mangle]
 // pub extern "system" fn Java_DIDComm_Messaging_gRPC_NativeMethods_didkey_1convert(env: JNIEnv, _class: JClass, request: jbyteArray) -> jbyteArray {
 //     jni_impl!(ConvertKeyRequest, DIDKey, convert, env, request)

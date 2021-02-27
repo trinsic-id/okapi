@@ -15,12 +15,12 @@ extern "C" {
 JNIEXPORT jbyteArray JNICALL Java_DIDComm_Messaging_gRPC_NativeMethods_didkey_1generate
   (JNIEnv *, jclass, jbyteArray);
 
-/*
+  /*
  * Class:     DIDComm_Messaging_gRPC_NativeMethods
- * Method:    didkey_convert
+ * Method:    didkey_resolve
  * Signature: ([B)[B
  */
-JNIEXPORT jbyteArray JNICALL Java_DIDComm_Messaging_gRPC_NativeMethods_didkey_1convert
+JNIEXPORT jbyteArray JNICALL Java_DIDComm_Messaging_gRPC_NativeMethods_didkey_1resolve
   (JNIEnv *, jclass, jbyteArray);
 
 /*
