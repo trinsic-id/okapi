@@ -12,6 +12,7 @@ impl From<VerificationMethod> for JsonWebKey {
                     x: jwk.x.map_or(String::default(), |x| x),
                     y: jwk.y.map_or(String::default(), |x| x),
                     d: jwk.d.map_or(String::default(), |x| x),
+                    crv: jwk.curve,
                     kid: vm.id,
                     crv: jwk.curve,
                     kty: jwk.key_type,
@@ -25,6 +26,7 @@ impl From<VerificationMethod> for JsonWebKey {
                     x: jwk.x.map_or(String::default(), |x| x),
                     y: jwk.y.map_or(String::default(), |x| x),
                     d: jwk.d.map_or(String::default(), |x| x),
+                    crv: jwk.curve,
                     kid: vm.id,
                     crv: jwk.curve,
                     kty: jwk.key_type,
@@ -71,8 +73,12 @@ impl crate::DIDKey {
             KeyType::Bls12381G1g2 => generate::<Bls12381KeyPair>(Some(request.seed.as_slice())),
             KeyType::Secp256k1 => generate::<Secp256k1KeyPair>(Some(request.seed.as_slice())),
         };
-        let did_document = did_key.get_did_document(CONFIG_JOSE_PRIVATE);
-        let jwk_keys: Vec<JsonWebKey> = did_document.verification_method.iter().map(|x| x.to_owned().into()).collect();
+        let did_document = did_key.get_did_document(CONFIG_LD_PRIVATE);
+        let jwk_keys: Vec<JsonWebKey> = did_key
+            .get_verification_methods(CONFIG_JOSE_PRIVATE, did_document.id.as_str())
+            .iter()
+            .map(|x| x.to_owned().into())
+            .collect();
 
         Ok(GenerateKeyResponse {
             key: jwk_keys.clone(),
@@ -85,7 +91,7 @@ impl crate::DIDKey {
 mod test {
     use did_key::*;
 
-    use crate::JsonWebKey;
+    use crate::{GenerateKeyRequest, JsonWebKey, KeyType};
 
     #[test]
     fn verification_method_to_jwk() {
@@ -107,5 +113,17 @@ mod test {
         let jwk: JsonWebKey = vm.into();
 
         assert_eq!(jwk.x, "123");
+    }
+
+    #[test]
+    fn test_did_document() {
+        let key = crate::DIDKey::generate(&GenerateKeyRequest {
+            key_type: KeyType::Ed25519 as i32,
+            ..Default::default()
+        })
+        .unwrap();
+
+        let document = key.did_document;
+        let methods = key.key;
     }
 }
