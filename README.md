@@ -2,6 +2,8 @@
 
 Implementation and message definition for extending DIDComm Messaging v2 using binary protocol (protobuf) and HTTP/2 transport (gRPC).
 
+[![Build Platform Libraries](https://github.com/trinsic-id/didcomm-v2/actions/workflows/build-libs.yml/badge.svg)](https://github.com/trinsic-id/didcomm-v2/actions/workflows/build-libs.yml)
+
 ## Table of Contents
 
 - [Motivation](#motivation)
