@@ -11,8 +11,8 @@ export class GenerateKeyRequest extends jspb.Message {
   getSeed_asB64(): string;
   setSeed(value: Uint8Array | string): void;
 
-  getKeyType(): CrvMap[keyof CrvMap];
-  setKeyType(value: CrvMap[keyof CrvMap]): void;
+  getKeyType(): KeyTypeMap[keyof KeyTypeMap];
+  setKeyType(value: KeyTypeMap[keyof KeyTypeMap]): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GenerateKeyRequest.AsObject;
@@ -27,15 +27,20 @@ export class GenerateKeyRequest extends jspb.Message {
 export namespace GenerateKeyRequest {
   export type AsObject = {
     seed: Uint8Array | string,
-    keyType: CrvMap[keyof CrvMap],
+    keyType: KeyTypeMap[keyof KeyTypeMap],
   }
 }
 
 export class GenerateKeyResponse extends jspb.Message {
-  hasKey(): boolean;
-  clearKey(): void;
-  getKey(): JsonWebKey | undefined;
-  setKey(value?: JsonWebKey): void;
+  clearKeyList(): void;
+  getKeyList(): Array<JsonWebKey>;
+  setKeyList(value: Array<JsonWebKey>): void;
+  addKey(value?: JsonWebKey, index?: number): JsonWebKey;
+
+  hasDidDocument(): boolean;
+  clearDidDocument(): void;
+  getDidDocument(): google_protobuf_struct_pb.Struct | undefined;
+  setDidDocument(value?: google_protobuf_struct_pb.Struct): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GenerateKeyResponse.AsObject;
@@ -49,7 +54,8 @@ export class GenerateKeyResponse extends jspb.Message {
 
 export namespace GenerateKeyResponse {
   export type AsObject = {
-    key?: JsonWebKey.AsObject,
+    keyList: Array<JsonWebKey.AsObject>,
+    didDocument?: google_protobuf_struct_pb.Struct.AsObject,
   }
 }
 
@@ -59,8 +65,8 @@ export class ConvertKeyRequest extends jspb.Message {
   getKey(): JsonWebKey | undefined;
   setKey(value?: JsonWebKey): void;
 
-  getTargetType(): CrvMap[keyof CrvMap];
-  setTargetType(value: CrvMap[keyof CrvMap]): void;
+  getTargetType(): string;
+  setTargetType(value: string): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ConvertKeyRequest.AsObject;
@@ -75,7 +81,7 @@ export class ConvertKeyRequest extends jspb.Message {
 export namespace ConvertKeyRequest {
   export type AsObject = {
     key?: JsonWebKey.AsObject,
-    targetType: CrvMap[keyof CrvMap],
+    targetType: string,
   }
 }
 
@@ -376,8 +382,8 @@ export namespace GetDidDocumentResponse {
 }
 
 export class JsonWebKey extends jspb.Message {
-  getKeyId(): string;
-  setKeyId(value: string): void;
+  getKid(): string;
+  setKid(value: string): void;
 
   getX(): string;
   setX(value: string): void;
@@ -388,11 +394,11 @@ export class JsonWebKey extends jspb.Message {
   getD(): string;
   setD(value: string): void;
 
-  getCrv(): CrvMap[keyof CrvMap];
-  setCrv(value: CrvMap[keyof CrvMap]): void;
+  getCrv(): string;
+  setCrv(value: string): void;
 
-  getKty(): KeyTypeMap[keyof KeyTypeMap];
-  setKty(value: KeyTypeMap[keyof KeyTypeMap]): void;
+  getKty(): string;
+  setKty(value: string): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): JsonWebKey.AsObject;
@@ -406,28 +412,61 @@ export class JsonWebKey extends jspb.Message {
 
 export namespace JsonWebKey {
   export type AsObject = {
-    keyId: string,
+    kid: string,
     x: string,
     y: string,
     d: string,
-    crv: CrvMap[keyof CrvMap],
-    kty: KeyTypeMap[keyof KeyTypeMap],
+    crv: string,
+    kty: string,
   }
 }
 
-export interface CrvMap {
+export class ResolveRequest extends jspb.Message {
+  getDid(): string;
+  setDid(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ResolveRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: ResolveRequest): ResolveRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: ResolveRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ResolveRequest;
+  static deserializeBinaryFromReader(message: ResolveRequest, reader: jspb.BinaryReader): ResolveRequest;
+}
+
+export namespace ResolveRequest {
+  export type AsObject = {
+    did: string,
+  }
+}
+
+export class ResolveResponse extends jspb.Message {
+  getDiddoc(): string;
+  setDiddoc(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ResolveResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: ResolveResponse): ResolveResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: ResolveResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ResolveResponse;
+  static deserializeBinaryFromReader(message: ResolveResponse, reader: jspb.BinaryReader): ResolveResponse;
+}
+
+export namespace ResolveResponse {
+  export type AsObject = {
+    diddoc: string,
+  }
+}
+
+export interface KeyTypeMap {
   ED25519: 0;
   X25519: 1;
   P256: 2;
-  BLS12381_G2: 3;
+  BLS12381G1G2: 3;
   SECP256K1: 4;
-}
-
-export const Crv: CrvMap;
-
-export interface KeyTypeMap {
-  OKP: 0;
-  EC: 1;
 }
 
 export const KeyType: KeyTypeMap;

@@ -8,7 +8,7 @@ public class DIDKey {
         return API.GenerateKeyResponse.parseFrom(NativeMethods.didkey_generate(request.toByteArray()));
     }
 
-    public static API.ConvertKeyResponse Convert(API.ConvertKeyRequest request) throws InvalidProtocolBufferException {
-        return API.ConvertKeyResponse.parseFrom(NativeMethods.didkey_convert(request.toByteArray()));
+    public static API.ResolveResponse Resolve(API.ResolveRequest request) throws InvalidProtocolBufferException {
+        return API.ResolveResponse.parseFrom(NativeMethods.didkey_resolve(request.toByteArray()));
     }
 }

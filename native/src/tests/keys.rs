@@ -1,5 +1,5 @@
 use crate::*;
-use base64::URL_SAFE;
+use base64::{URL_SAFE, URL_SAFE_NO_PAD};
 use ffi_support::{ByteBuffer, ExternError};
 use fluid::prelude::*;
 
@@ -40,9 +40,9 @@ fn test_generate_key_no_seed_1() {
     let response = DIDKey::generate(&request).expect("invalid response");
     let key = response.key.first().unwrap();
 
-    let mut public_key = base64::decode_config(&key.x, URL_SAFE).unwrap();
+    let mut public_key = base64::decode_config(&key.x, URL_SAFE_NO_PAD).unwrap();
     if !key.y.is_empty() {
-        public_key.append(&mut base64::decode_config(&key.y, URL_SAFE).unwrap());
+        public_key.append(&mut base64::decode_config(&key.y, URL_SAFE_NO_PAD).unwrap());
     }
 
     //assert_eq!(key_type as i32, key.crv);
@@ -85,6 +85,16 @@ fn test_ffi_generate_key_no_seed(key_type: KeyType) {
 
 //     assert!(key.map_or(false, |_| true));
 // }
+
+#[test]
+fn test_resolve() {
+    let request = ResolveRequest {
+        did: String::from("did:key:z6Mkk7yqnGF3YwTrLpqrW6PGsKci7dNqh1CjnvMbzrMerSeL#z6Mkk7yqnGF3YwTrLpqrW6PGsKci7dNqh1CjnvMbzrMerSeL"),
+    };
+
+    let res = DIDKey::resolve(&request);
+    assert!(matches!(res, Ok(_)))
+}
 
 #[theory]
 #[case(

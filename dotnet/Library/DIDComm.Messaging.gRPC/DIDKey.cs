@@ -10,7 +10,7 @@
         public static GenerateKeyResponse Generate(GenerateKeyRequest request) =>
             DIDComm.Call<GenerateKeyRequest, GenerateKeyResponse>(request, NativeMethods.didkey_generate);
 
-        public static ConvertKeyResponse Convert(ConvertKeyRequest request) =>
-            DIDComm.Call<ConvertKeyRequest, ConvertKeyResponse>(request, NativeMethods.didkey_convert);
+        public static ResolveResponse Resolve(ResolveRequest request) =>
+            DIDComm.Call<ResolveRequest, ResolveResponse>(request, NativeMethods.didkey_resolve);
     }
 }
