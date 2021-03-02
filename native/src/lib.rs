@@ -8,6 +8,7 @@ use prost::{DecodeError, Message};
 
 pub struct DIDComm {}
 pub struct DIDKey {}
+pub struct LdProofs {}
 
 pub trait MessageFormatter {
     fn to_vec(&self) -> Vec<u8>;
@@ -43,6 +44,7 @@ mod didkey;
 mod ffi;
 #[cfg(not(target_arch = "wasm32"))]
 mod jni;
+mod ldproofs;
 pub mod proto;
 #[cfg(test)]
 mod tests;

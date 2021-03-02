@@ -54,5 +54,16 @@ namespace DIDComm.Messaging
         internal static extern int didcomm_verify(ByteBuffer request, out ByteBuffer response, out ExternError error);
 
         #endregion
+
+
+        #region Ld Proofs
+
+        [DllImport(LibraryName, CharSet = CharSet.Auto, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+        internal static extern int ldproofs_create_proof(ByteBuffer request, out ByteBuffer response, out ExternError error);
+
+        [DllImport(LibraryName, CharSet = CharSet.Auto, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+        internal static extern int ldproofs_verify_proof(ByteBuffer request, out ByteBuffer response, out ExternError error);
+
+        #endregion
     }
 }
