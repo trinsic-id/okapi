@@ -102,3 +102,37 @@ message ResolveResponse {
     google.protobuf.Struct did_document = 1;
     repeated JsonWebKey keys = 2;
 }
+
+// ld-proofs
+
+enum LdSuite {
+    JcsEd25519Signature2020 = 0;
+}
+
+message CreateProofRequest {
+    // The input JSON document that will be used
+    // to create the LD Proof
+    google.protobuf.Struct document = 1;
+
+    // Proof purpose that will be used in the proof
+    string proof_purpose = 2;
+
+    // The signer of the proof. This field must include
+    // the 'kid' in full URI format.
+    // Example:
+    //  did:example:alice#key-1
+    JsonWebKey key = 3;
+
+    // The LD Suite to use to produce this proof
+    LdSuite suite = 4;
+}
+
+message CreateProofResponse {
+    google.protobuf.Struct signed_document = 1;
+}
+
+message VerifyProofRequest {
+}
+
+message VerifyProofResponse {
+}
