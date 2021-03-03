@@ -1,6 +1,3 @@
-use std::collections::HashMap;
-
-use chrono::prelude::*;
 use did_key::*;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
@@ -14,65 +11,69 @@ const SIGNATURE_NAME: &str = "JcsEd25519Signature2020";
 #[derive(Debug, Clone, Serialize, Deserialize)]
 struct JcsEd25519Signature2020 {
     #[serde(flatten)]
-    data: crate::google::protobuf::Struct,
+    data: Value,
     proof: LinkedDataProof,
 }
 
 #[derive(Serialize, Deserialize, Clone, Default, Debug)]
 struct LinkedDataProof {
-    #[serde(rename = "proofPurpose")]
-    proof_purpose: String,
-    #[serde(rename = "verificationMethod")]
+    #[serde(rename = "verificationMethod", default = "String::default")]
     verification_method: String,
-    #[serde(rename = "type")]
+    #[serde(rename = "type", default = "String::default")]
     type_name: String,
-    created: String,
     #[serde(rename = "signatureValue", skip_serializing_if = "Option::is_none")]
     signature_value: Option<String>,
+    #[serde(flatten)]
+    additional_data: Value,
 }
 
 impl crate::LdProofs {
     pub fn create_proof<'a>(request: &CreateProofRequest) -> Result<CreateProofResponse, Error<'a>> {
         let key = request.key.clone().unwrap();
+        let mut unsigned_document: JcsEd25519Signature2020 = request.document.as_ref().unwrap().into();
 
         // create a proof that will be appended into the original document
         // with individual values filled in from the input request
-        let mut proof = LinkedDataProof {
-            type_name: SIGNATURE_NAME.to_string(),
-            verification_method: key.kid,
-            proof_purpose: request.proof_purpose.to_string(),
-            created: Utc::now().to_string(),
-            ..Default::default()
-        };
+        unsigned_document.proof.type_name = SIGNATURE_NAME.to_string();
 
-        let mut signature_doc = JcsEd25519Signature2020 {
-            data: request.document.clone().unwrap(),
-            proof: proof.clone(),
-        };
+        // if the verification method is not set, try to fill it with the key id
+        if String::is_empty(&unsigned_document.proof.verification_method) {
+            unsigned_document.proof.verification_method = key.kid;
+        }
 
         // create a did_key from the JWK to use the signing capabilities
         let did_key = did_key::KeyPair::try_from(request.key.clone().unwrap()).unwrap();
 
         // sign the payload
-        let data = serde_jcs::to_vec(&signature_doc).unwrap();
+        let data = serde_jcs::to_vec(&unsigned_document).unwrap();
         let hashed = Sha256::digest(data.as_slice());
         let hashed_slice = hashed.as_slice();
         let signature = did_key.sign(Payload::Buffer(hashed_slice.to_vec()));
 
         // create the signature value and append it to the previously created proof
-        proof.signature_value = Some(::bs58::encode(signature).into_string());
-        signature_doc.proof = proof;
-
-        // serialize and deserialize to get the value into Struct
-        let serialized = serde_json::to_vec(&signature_doc).unwrap();
+        unsigned_document.proof.signature_value = Some(::bs58::encode(signature).into_string());
 
         Ok(CreateProofResponse {
-            signed_document: serde_json::from_slice(&serialized).unwrap(),
+            signed_document: Some(unsigned_document.into()),
         })
     }
 
-    pub fn verify_proof<'a>(request: &VerifyProofRequest) -> Result<VerifyProofResponse, Error<'a>> {
+    pub fn verify_proof<'a>(_request: &VerifyProofRequest) -> Result<VerifyProofResponse, Error<'a>> {
         todo!()
+    }
+}
+
+impl From<&Struct> for JcsEd25519Signature2020 {
+    fn from(graph: &Struct) -> Self {
+        let serialized = serde_json::to_vec(graph).unwrap();
+        serde_json::from_slice(serialized.as_slice()).unwrap()
+    }
+}
+
+impl From<JcsEd25519Signature2020> for Struct {
+    fn from(graph: JcsEd25519Signature2020) -> Self {
+        let serialized = serde_json::to_vec(&graph).unwrap();
+        serde_json::from_slice(serialized.as_slice()).unwrap()
     }
 }
 
@@ -98,13 +99,17 @@ mod test {
             r#"{
                 "@context": "https://schema.org",
                 "firstName": "Alice",
-                "lastName": "Wonderland"
+                "lastName": "Wonderland",
+                "proof": {
+                    "proofPurpose": "assertionMethod",
+                    "created": "2021-03-01T20:21:34Z",
+                    "capabilityChain": [ "https://example.com/caps/1" ]
+                }
             }"#,
         )
         .unwrap();
 
         let request = CreateProofRequest {
-            proof_purpose: "assertionMethod".into(),
             key: Some(jwk),
             suite: LdSuite::JcsEd25519Signature2020 as i32,
             document: Some(input),
