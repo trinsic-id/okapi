@@ -249,12 +249,11 @@ pub struct ResolveResponse {
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 pub struct CreateProofRequest {
     /// The input JSON document that will be used
-    /// to create the LD Proof
+    /// to create the LD Proof. This document must
+    /// also contain a "proof" object, with the desired
+    /// values filled in.
     #[prost(message, optional, tag="1")]
     pub document: ::std::option::Option<super::super::google::protobuf::Struct>,
-    /// Proof purpose that will be used in the proof
-    #[prost(string, tag="2")]
-    pub proof_purpose: std::string::String,
     /// The signer of the proof. This field must include
     /// the 'kid' in full URI format.
     /// Example:
