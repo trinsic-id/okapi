@@ -103,6 +103,14 @@ message ResolveResponse {
     repeated JsonWebKey keys = 2;
 }
 
+message ResolveKeyRequest {
+    string did_uri = 1;
+}
+
+message ResolveKeyResponse {
+    JsonWebKey key = 1;
+}
+
 // ld-proofs
 
 enum LdSuite {
