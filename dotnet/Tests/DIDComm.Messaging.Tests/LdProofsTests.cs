@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using FluentAssertions;
 using Google.Protobuf;
 using Google.Protobuf.WellKnownTypes;
@@ -15,7 +16,11 @@ namespace DIDComm.Messaging.Tests
             var capbility = new JObject
             {
                 { "@context", "https://w3id.org/security/v2" },
-                { "target", "urn:trinsic:wallets:noop" }
+                { "target", "urn:trinsic:wallets:noop" },
+                { "proof", new JObject
+                {
+                    { "created", DateTime.UtcNow.ToString("s") }
+                } }
             };
 
             var key = DIDKey.Generate(new GenerateKeyRequest { KeyType = KeyType.Ed25519 });
@@ -25,7 +30,6 @@ namespace DIDComm.Messaging.Tests
             {
                 Key = signingKey,
                 Document = capbility.ToStruct(),
-                ProofPurpose = "capabilityInvocation",
                 Suite = LdSuite.JcsEd25519Signature2020
             });
 
