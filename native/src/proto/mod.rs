@@ -267,9 +267,7 @@ pub mod tests {
         );
         map.insert("not sure what this is".to_string(), Value { kind: None });
 
-        let a = Struct { fields: map };
-
-        a
+        Struct { fields: map }
     }
 }
 

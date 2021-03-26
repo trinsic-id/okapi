@@ -6,7 +6,7 @@ use crate::{didcomm::Error, proto::google_protobuf::Struct, *};
 impl From<VerificationMethod> for JsonWebKey {
     fn from(vm: VerificationMethod) -> Self {
         if vm.private_key.is_some() {
-            return match vm.private_key.unwrap() {
+            match vm.private_key.unwrap() {
                 KeyFormat::Base58(_) | KeyFormat::Multibase(_) => todo!(),
                 KeyFormat::JWK(jwk) => JsonWebKey {
                     x: jwk.x.map_or(String::default(), |x| x),
@@ -15,11 +15,10 @@ impl From<VerificationMethod> for JsonWebKey {
                     crv: jwk.curve,
                     kid: vm.id,
                     kty: jwk.key_type,
-                    ..Default::default()
                 },
-            };
+            }
         } else {
-            return match vm.public_key.unwrap() {
+            match vm.public_key.unwrap() {
                 KeyFormat::Base58(_) | KeyFormat::Multibase(_) => todo!(),
                 KeyFormat::JWK(jwk) => JsonWebKey {
                     x: jwk.x.map_or(String::default(), |x| x),
@@ -28,9 +27,8 @@ impl From<VerificationMethod> for JsonWebKey {
                     crv: jwk.curve,
                     kid: vm.id,
                     kty: jwk.key_type,
-                    ..Default::default()
                 },
-            };
+            }
         }
     }
 }
@@ -48,10 +46,10 @@ impl From<JsonWebKey> for KeyPair {
         }
 
         match key.crv.to_lowercase().as_str() {
-            "ed25519" => from_existing_key::<Ed25519KeyPair>(public_key.as_slice(), private_key.as_ref().map(|x| x.as_slice())),
-            "x25519" => from_existing_key::<X25519KeyPair>(public_key.as_slice(), private_key.as_ref().map(|x| x.as_slice())),
-            "p-256" => from_existing_key::<P256KeyPair>(public_key.as_slice(), private_key.as_ref().map(|x| x.as_slice())),
-            "secp256k1" => from_existing_key::<Secp256k1KeyPair>(public_key.as_slice(), private_key.as_ref().map(|x| x.as_slice())),
+            "ed25519" => from_existing_key::<Ed25519KeyPair>(public_key.as_slice(), private_key.as_deref()),
+            "x25519" => from_existing_key::<X25519KeyPair>(public_key.as_slice(), private_key.as_deref()),
+            "p-256" => from_existing_key::<P256KeyPair>(public_key.as_slice(), private_key.as_deref()),
+            "secp256k1" => from_existing_key::<Secp256k1KeyPair>(public_key.as_slice(), private_key.as_deref()),
             _ => unimplemented!("unsupported key type"),
         }
     }
@@ -83,7 +81,7 @@ impl crate::DIDKey {
             .collect();
 
         Ok(GenerateKeyResponse {
-            key: jwk_keys.clone(),
+            key: jwk_keys,
             did_document: Some(did_document.into()),
         })
     }
