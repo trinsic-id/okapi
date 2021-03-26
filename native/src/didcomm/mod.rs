@@ -53,8 +53,8 @@ impl DIDComm {
             message: Some(EncryptedMessage {
                 ciphertext: result.ciphertext.clone(),
                 iv: nonce.to_vec(),
-                aad: aad.clone(),
-                tag: result.tag.clone(),
+                aad,
+                tag: result.tag,
                 recipients: vec![EncryptionRecipient {
                     header: Some(EncryptionHeader {
                         mode: EncryptionMode::Direct.into(),
@@ -98,8 +98,8 @@ impl DIDComm {
         };
 
         match result {
-            Ok(x) => Ok(UnpackResponse { plaintext: x.clone() }),
-            Err(_) => return Err(Error::UnsupportedAlgorithm),
+            Ok(x) => Ok(UnpackResponse { plaintext: x }),
+            Err(_) => Err(Error::UnsupportedAlgorithm),
         }
     }
 
@@ -113,7 +113,7 @@ impl DIDComm {
             message: Some(SignedMessage {
                 payload: request.payload.clone(),
                 signatures: vec![Signature {
-                    signature: signature,
+                    signature,
                     header: SignatureHeader {
                         algorithm: String::from("Ed25519"),
                         key_id: key.kid.clone(),
