@@ -10,6 +10,7 @@ pub struct DIDComm {}
 pub struct DIDKey {}
 pub struct LdProofs {}
 
+#[allow(clippy::ptr_arg)]
 pub trait MessageFormatter {
     fn to_vec(&self) -> Vec<u8>;
     fn from_vec<T>(data: &Vec<u8>) -> Result<T, DecodeError>
