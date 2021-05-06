@@ -3,6 +3,10 @@
   "private": true,
   "scripts": {
     "start": "npm install && npx lerna exec npm install",
+    "build:proto": "pwsh ./Generate-Proto.ps1",
+    "build:wasm": "npm run build:proto && npm run build:wasm:node && npm run build:wasm:copy",
+    "build:wasm:node": "wasm-pack build --target nodejs",
+    "build:wasm:copy": "cp pkg/didcommgrpc* packages/didcomm-grpc-node/src",
     "build": "npx lerna exec npm run build",
     "test": "npx lerna run test --stream"
   },
