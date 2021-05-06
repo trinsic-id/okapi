@@ -25,6 +25,5 @@ jobs:
         with:
           submodules: 'recursive'
           token: ${{ secrets.ACCESS_TOKEN }}
-      - run: npm install -g wasm-pack
       - run: npm run start
       - run: npm run build
