@@ -1,3 +1,9 @@
+### Requirements
+
+- Node.js
+- [Rust](https://www.rust-lang.org/tools/install)
+- [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/)
+
 ### Build all packages
 
 From this directory, run:
