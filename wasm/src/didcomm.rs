@@ -1,4 +1,4 @@
-use didcommgrpc::{proto::*, *};
+use didcommgrpc::*;
 use js_sys::Uint8Array;
 use wasm_bindgen::prelude::*;
 
@@ -20,9 +20,4 @@ pub fn didcomm_sign(request: Uint8Array) -> Result<Uint8Array, JsValue> {
 #[wasm_bindgen]
 pub fn didcomm_verify(request: Uint8Array) -> Result<Uint8Array, JsValue> {
     impl_invoke!(VerifyRequest, DIDComm, verify, request)
-}
-
-#[wasm_bindgen]
-pub fn didcomm_resolve(request: Uint8Array) -> Result<Uint8Array, JsValue> {
-    impl_invoke!(ResolveRequest, DIDComm, resolve, request)
 }
