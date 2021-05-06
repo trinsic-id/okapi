@@ -1,0 +1,30 @@
+name: "Web Assembly: Build, Test"
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      packageVersion:
+        description: "Package Version"
+        required: true
+        default: "1.0.0"
+
+jobs:
+  rust:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./wasm
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          submodules: 'recursive'
+          token: ${{ secrets.ACCESS_TOKEN }}
+      - run: npm install -g wasm-pack
+      - run: npm run start
+      - run: npm run build
