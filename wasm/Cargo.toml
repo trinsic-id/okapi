@@ -5,7 +5,7 @@ authors = ["Tomislav Markovski <tomislav@trinsic.id>"]
 edition = "2018"
 
 [lib]
-name = "didcommgrpc_wasm"
+name = "didcommgrpc"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
