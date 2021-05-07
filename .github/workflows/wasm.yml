@@ -15,8 +15,8 @@ on:
         default: "1.0.0"
 
 jobs:
-  rust:
-    runs-on: windows-latest
+  wasm:
+    runs-on: macos-latest
     defaults:
       run:
         working-directory: ./wasm
