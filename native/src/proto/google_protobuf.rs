@@ -9,7 +9,7 @@
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Struct {
     /// Unordered map of dynamically typed values.
-    #[prost(map = "string, message", tag = "1")]
+    #[prost(map="string, message", tag="1")]
     pub fields: ::std::collections::HashMap<std::string::String, Value>,
 }
 /// `Value` represents a dynamically typed value which can be either
@@ -21,7 +21,7 @@ pub struct Struct {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Value {
     /// The kind of value.
-    #[prost(oneof = "value::Kind", tags = "1, 2, 3, 4, 5, 6")]
+    #[prost(oneof="value::Kind", tags="1, 2, 3, 4, 5, 6")]
     pub kind: ::std::option::Option<value::Kind>,
 }
 pub mod value {
@@ -29,22 +29,22 @@ pub mod value {
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Kind {
         /// Represents a null value.
-        #[prost(enumeration = "super::NullValue", tag = "1")]
+        #[prost(enumeration="super::NullValue", tag="1")]
         NullValue(i32),
         /// Represents a double value.
-        #[prost(double, tag = "2")]
+        #[prost(double, tag="2")]
         NumberValue(f64),
         /// Represents a string value.
-        #[prost(string, tag = "3")]
+        #[prost(string, tag="3")]
         StringValue(std::string::String),
         /// Represents a boolean value.
-        #[prost(bool, tag = "4")]
+        #[prost(bool, tag="4")]
         BoolValue(bool),
         /// Represents a structured value.
-        #[prost(message, tag = "5")]
+        #[prost(message, tag="5")]
         StructValue(super::Struct),
         /// Represents a repeated `Value`.
-        #[prost(message, tag = "6")]
+        #[prost(message, tag="6")]
         ListValue(super::ListValue),
     }
 }
@@ -54,7 +54,7 @@ pub mod value {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListValue {
     /// Repeated field of dynamically typed values.
-    #[prost(message, repeated, tag = "1")]
+    #[prost(message, repeated, tag="1")]
     pub values: ::std::vec::Vec<Value>,
 }
 /// `NullValue` is a singleton enumeration to represent the null value for the

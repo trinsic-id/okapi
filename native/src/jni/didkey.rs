@@ -1,3 +1,4 @@
+use crate::proto::okapi_keys::*;
 use crate::*;
 use ::jni::JNIEnv;
 use ::jni::{objects::JClass, sys::jbyteArray};

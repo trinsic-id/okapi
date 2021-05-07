@@ -1,7 +1,10 @@
 use base64::URL_SAFE;
 use did_key::*;
 
-use crate::{didcomm::Error, proto::google_protobuf::Struct, *};
+use crate::{
+    didcomm::Error,
+    proto::{google_protobuf::Struct, okapi_keys::*},
+};
 
 impl From<VerificationMethod> for JsonWebKey {
     fn from(vm: VerificationMethod) -> Self {
@@ -107,7 +110,7 @@ impl crate::DIDKey {
 mod test {
     use did_key::*;
 
-    use crate::{GenerateKeyRequest, JsonWebKey, KeyType};
+    use crate::proto::okapi_keys::*;
 
     #[test]
     fn verification_method_to_jwk() {
