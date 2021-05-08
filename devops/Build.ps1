@@ -8,17 +8,17 @@ if ($null -eq $OutLocation) { throw "Parameter -OutLocation must be specified." 
 switch ($Platform) {
     Windows {
         cargo build --release
-        Copy-Item -Path .\target\release\didcommgrpc.dll -Destination $OutLocation
+        Copy-Item -Path .\target\release\okapi.dll -Destination $OutLocation
         break
     }
     Linux {
         cargo build --release
-        Copy-Item -Path .\target\release\libdidcommgrpc.so -Destination $OutLocation
+        Copy-Item -Path .\target\release\libokapi.so -Destination $OutLocation
         break
     }
     MacOS {
         cargo build --release
-        Copy-Item -Path .\target\release\libdidcommgrpc.dylib -Destination $OutLocation
+        Copy-Item -Path .\target\release\libokapi.dylib -Destination $OutLocation
         break
     }
     iOS {
@@ -27,7 +27,7 @@ switch ($Platform) {
         cargo install cargo-lipo
         rustup target install x86_64-apple-ios aarch64-apple-ios
         cargo lipo --release
-        Copy-Item -Path "./target/universal/release/libdidcommgrpc.a" -Destination $OutLocation/
+        Copy-Item -Path "./target/universal/release/libokapi.a" -Destination $OutLocation/
         break
     }
     Android {
@@ -52,9 +52,9 @@ switch ($Platform) {
         mkdir -p $OutLocation/arm64-v8a/
         mkdir -p $OutLocation/armeabi-v7a/
         mkdir -p $OutLocation/x86/
-        Copy-Item -Path ./target/aarch64-linux-android/release/libdidcommgrpc.so -Destination $OutLocation/arm64-v8a/
-        Copy-Item -Path ./target/armv7-linux-androideabi/release/libdidcommgrpc.so -Destination $OutLocation/armeabi-v7a/
-        Copy-Item -Path ./target/i686-linux-android/release/libdidcommgrpc.so -Destination $OutLocation/x86/
+        Copy-Item -Path ./target/aarch64-linux-android/release/libokapi.so -Destination $OutLocation/arm64-v8a/
+        Copy-Item -Path ./target/armv7-linux-androideabi/release/libokapi.so -Destination $OutLocation/armeabi-v7a/
+        Copy-Item -Path ./target/i686-linux-android/release/libokapi.so -Destination $OutLocation/x86/
         break
     }
 }

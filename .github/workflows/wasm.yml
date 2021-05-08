@@ -16,7 +16,7 @@ on:
 
 jobs:
   wasm:
-    runs-on: macos-latest
+    runs-on: windows-latest
     defaults:
       run:
         working-directory: ./wasm
