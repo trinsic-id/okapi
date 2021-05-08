@@ -1,7 +1,7 @@
 import { GreeterService } from "./server";
 
 import { Server, ServerCredentials } from "grpc";
-import { DIDCommEncryptedService } from "didcomm-grpc";
+import { DIDCommEncryptedService } from "okapi";
 
 const server: Server = new Server({
   "grpc.max_receive_message_length": -1,

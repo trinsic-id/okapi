@@ -5,7 +5,7 @@ import {
   EncryptedMessage,
   PackRequest,
   UnpackRequest,
-} from "didcomm-grpc";
+} from "okapi";
 import PromptSync from "prompt-sync";
 import { Alice, Bob } from "../keys";
 

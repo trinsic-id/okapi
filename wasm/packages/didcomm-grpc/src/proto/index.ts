@@ -1,1 +1,0 @@
-export * from "./didcomm_grpc_pb";

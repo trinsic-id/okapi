@@ -56,4 +56,6 @@ pub mod google {
     }
 }
 
-pub use proto::didcomm_messaging::*;
+pub mod pbmse {
+    pub use crate::proto::pbmse::*;
+}

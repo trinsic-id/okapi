@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+package okapi.transport;
+
+option csharp_namespace = "Okapi.Transport";
+option go_package = "github.com/trinsic-id/okapi/transport";
+option java_package = "Okapi.Transport";
+option java_outer_classname="API";
+
+import "keys.proto";
+import "pbmse/pbmse.proto";
+
+message SignRequest {
+    bytes payload = 1;
+    okapi.keys.JsonWebKey key = 2;
+    pbmse.SignedMessage append_to = 3;
+}
+
+message SignResponse {
+    pbmse.SignedMessage message = 1;
+}
+
+message VerifyRequest {
+    pbmse.SignedMessage message = 1;
+    okapi.keys.JsonWebKey key = 2;
+}
+
+message VerifyResponse {
+    bool is_valid = 1;
+}
+
+message PackRequest {
+    okapi.keys.JsonWebKey sender_key = 1;
+    okapi.keys.JsonWebKey receiver_key = 2;
+    bytes associated_data = 3;
+    bytes plaintext = 4;
+    pbmse.EncryptionMode mode = 5;
+    pbmse.EncryptionAlgorithm algorithm = 6;
+}
+
+message PackResponse {
+    pbmse.EncryptedMessage message = 1;
+}
+
+message UnpackRequest {
+    okapi.keys.JsonWebKey sender_key = 1;
+    okapi.keys.JsonWebKey receiver_key = 2;
+
+    pbmse.EncryptedMessage message = 3;
+}
+
+message UnpackResponse {
+   bytes plaintext = 1;
+}
+
+message CoreMessage {
+    string id = 1;
+    string type = 2;
+    bytes body = 3;
+    repeated string to = 4;
+    string from = 5;
+    int64 created = 6 [json_name="created_time"];
+    int64 expires = 7 [json_name="expires_time"];
+}
+
+service DIDCommPlain {
+    rpc Unary(CoreMessage)                                    returns (CoreMessage);
+    rpc ServerStreaming(CoreMessage)                          returns (stream CoreMessage);
+    rpc ClientStreaming(stream CoreMessage)                   returns (CoreMessage);
+    rpc BidirectionalStreaming(stream CoreMessage)            returns (stream CoreMessage);
+}
+
+service DIDCommEncrypted {
+    rpc Unary(pbmse.EncryptedMessage)                         returns (pbmse.EncryptedMessage);
+    rpc ServerStreaming(pbmse.EncryptedMessage)               returns (stream pbmse.EncryptedMessage);
+    rpc ClientStreaming(stream pbmse.EncryptedMessage)        returns (pbmse.EncryptedMessage);
+    rpc BidirectionalStreaming(stream pbmse.EncryptedMessage) returns (stream pbmse.EncryptedMessage);
+}
+
+service DIDCommSimplex {
+    rpc Simplex(pbmse.EncryptedMessage)                       returns (NoOp);
+}
+
+message NoOp {}

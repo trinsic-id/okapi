@@ -1,4 +1,8 @@
-use crate::*;
+use crate::{
+    pbmse::*,
+    proto::{keys::*, transport::*},
+    *,
+};
 use base64::URL_SAFE_NO_PAD;
 use did_key::*;
 use std::str::from_utf8;

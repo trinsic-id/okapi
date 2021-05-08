@@ -15,8 +15,8 @@ on:
         default: "1.0.0"
 
 jobs:
-  rust:
-    runs-on: ubuntu-latest
+  wasm:
+    runs-on: windows-latest
     defaults:
       run:
         working-directory: ./wasm
@@ -27,3 +27,4 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
       - run: npm run start
       - run: npm run build
+      - run: npm run test

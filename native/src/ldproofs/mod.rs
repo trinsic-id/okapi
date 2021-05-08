@@ -4,7 +4,7 @@ use serde_json::Value;
 use sha2::{Digest, Sha256};
 use std::convert::TryFrom;
 
-use crate::{didcomm::Error, proto::google_protobuf::Struct, *};
+use crate::{didcomm::Error, proto::google_protobuf::Struct, proto::okapi_proofs::*};
 
 const SIGNATURE_NAME: &str = "JcsEd25519Signature2020";
 
@@ -81,7 +81,9 @@ impl From<JcsEd25519Signature2020> for Struct {
 mod test {
     use did_key::*;
 
-    use crate::{proto::google_protobuf::Struct, CreateProofRequest, JsonWebKey, LdProofs, LdSuite};
+    use crate::proto::keys::JsonWebKey;
+    use crate::proto::proofs::{CreateProofRequest, LdSuite};
+    use crate::{proto::google_protobuf::Struct, LdProofs};
 
     #[test]
     fn test_jcs_signature() {
