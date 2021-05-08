@@ -1,4 +1,4 @@
-import { JsonWebKey, KeyType } from "didcomm-grpc";
+import { JsonWebKey, KeyType } from "okapi";
 import bs58 from "bs58";
 
 const aliceKeyId =

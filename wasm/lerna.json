@@ -1,6 +1,6 @@
 {
   "packages": [
-    "packages/didcomm-*"
+    "packages/okapi*"
   ],
   "version": "0.0.0"
 }
