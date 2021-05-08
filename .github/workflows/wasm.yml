@@ -27,3 +27,4 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
       - run: npm run start
       - run: npm run build
+      - run: npm run test
