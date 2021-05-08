@@ -12,7 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "google-protobuf": "^3.14.0"
+    "google-protobuf": "^3.14.0",
+    "grpc": "^1.24.9"
   },
   "devDependencies": {
     "@types/chai": "^4.2.14",
