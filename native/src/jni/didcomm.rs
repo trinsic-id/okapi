@@ -1,4 +1,4 @@
-use crate::{didcomm::*, proto::okapi_transport::*, *};
+use crate::{proto::transport::*, *};
 use ::jni::JNIEnv;
 use ::jni::{objects::JClass, sys::jbyteArray};
 

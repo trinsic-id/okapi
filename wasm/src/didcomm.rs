@@ -1,5 +1,5 @@
-use didcommgrpc::*;
 use js_sys::Uint8Array;
+use okapi::{proto::transport::*, DIDComm, MessageFormatter};
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]

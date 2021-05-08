@@ -1,5 +1,5 @@
 [package]
-name = "didcomm-grpc"
+name = "okapi"
 version = "0.1.0"
 authors = ["Tomislav Markovski <tomislav@trinsic.id>"]
 edition = "2018"
@@ -23,7 +23,7 @@ sha2 = { version = "0.9", default-features = false }
 bs58 = "0.3.1"
 
 [lib]
-name = "didcommgrpc"
+name = "okapi"
 crate-type = [ "lib", "cdylib", "staticlib" ]
 
 [build-dependencies]

@@ -142,7 +142,7 @@ mod test {
         })
         .unwrap();
 
-        let document = key.did_document;
-        let methods = key.key;
+        let _document = key.did_document;
+        let _methods = key.key;
     }
 }
