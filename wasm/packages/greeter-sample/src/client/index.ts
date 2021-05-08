@@ -1,4 +1,4 @@
-import { grpc, DIDCommEncryptedClient } from "didcomm-grpc";
+import { grpc, DIDCommEncryptedClient } from "okapi";
 import { Alice } from "../keys";
 import sendServerStreaming from "./stream";
 import sendUnary from "./unary";

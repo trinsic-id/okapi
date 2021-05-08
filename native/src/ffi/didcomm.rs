@@ -1,4 +1,4 @@
-use crate::*;
+use crate::{proto::transport::*, *};
 use ffi_support::{ByteBuffer, ExternError};
 
 #[no_mangle]

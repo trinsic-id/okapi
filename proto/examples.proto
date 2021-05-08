@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package okapi.examples;
+
+option csharp_namespace = "Okapi.Examples";
+option go_package = "github.com/trinsic-id/okapi/examples";
+option java_package = "Okapi.Examples";
+option java_outer_classname="BasicMsg";
+
+message BasicMessage {
+    string text = 1;
+}

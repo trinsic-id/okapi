@@ -1,4 +1,4 @@
-use crate::{proto::didcomm_messaging::*, *};
+use crate::{proto::okapi_transport::*, proto::pbmse::*, DIDComm, MessageFormatter};
 use did_key::*;
 
 use self::xchacha::XChaCha;

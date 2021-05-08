@@ -1,4 +1,4 @@
-use crate::*;
+use crate::{proto::keys::*, *};
 use base64::{URL_SAFE, URL_SAFE_NO_PAD};
 use ffi_support::{ByteBuffer, ExternError};
 use fluid::prelude::*;
