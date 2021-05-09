@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace DIDComm.Messaging
+namespace Okapi
 {
     [StructLayout(LayoutKind.Sequential)]
     internal struct ExternError

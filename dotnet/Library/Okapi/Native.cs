@@ -3,17 +3,33 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Text;
+using Google.Protobuf;
 
-namespace DIDComm.Messaging
+namespace Okapi
 {
-    [SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "Names must match C callable methods")]
-    internal class NativeMethods
+    internal class Native
     {
 #if __IOS__
         internal const string LibraryName = "__Internal";
 #else
-        internal const string LibraryName = "didcommgrpc";
+        internal const string LibraryName = "okapi";
 #endif
+
+        internal delegate int NativeMethod(ByteBuffer request, out ByteBuffer response, out ExternError error);
+
+        internal static TResponse Call<TRequest, TResponse>(TRequest request, NativeMethod nativeMethod)
+            where TRequest : IMessage
+            where TResponse : IMessage, new()
+        {
+            using var memory = new UnmanagedMemory();
+
+            var code = nativeMethod(memory.ToByteBuffer(request.ToByteArray()), out var response, out var error);
+            memory.ThrowOnError(error);
+
+            var res = new TResponse();
+            res.MergeFrom(memory.ToArray(response));
+            return res;
+        }
 
         #region Resources
 

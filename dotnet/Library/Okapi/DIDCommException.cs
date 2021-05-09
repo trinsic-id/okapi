@@ -1,7 +1,9 @@
-﻿namespace DIDComm.Messaging
+﻿using System;
+
+namespace Okapi
 {
-    [System.Serializable]
-    public class DIDCommException : System.Exception
+    [Serializable]
+    public class DIDCommException : Exception
     {
         public int Code { get; }
         public DIDCommException() { }
@@ -10,7 +12,7 @@
             Code = code;
         }
         public DIDCommException(string message) : base(message) { }
-        public DIDCommException(string message, System.Exception inner) : base(message, inner) { }
+        public DIDCommException(string message, Exception inner) : base(message, inner) { }
         protected DIDCommException(
             System.Runtime.Serialization.SerializationInfo info,
             System.Runtime.Serialization.StreamingContext context) : base(info, context) { }

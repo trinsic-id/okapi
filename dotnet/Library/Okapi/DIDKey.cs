@@ -1,4 +1,4 @@
-﻿namespace DIDComm.Messaging
+﻿namespace Okapi.Keys
 {
     public class DIDKey
     {
@@ -8,9 +8,9 @@
         /// <param name="request"></param>
         /// <returns></returns>
         public static GenerateKeyResponse Generate(GenerateKeyRequest request) =>
-            DIDComm.Call<GenerateKeyRequest, GenerateKeyResponse>(request, NativeMethods.didkey_generate);
+            Native.Call<GenerateKeyRequest, GenerateKeyResponse>(request, Native.didkey_generate);
 
         public static ResolveResponse Resolve(ResolveRequest request) =>
-            DIDComm.Call<ResolveRequest, ResolveResponse>(request, NativeMethods.didkey_resolve);
+            Native.Call<ResolveRequest, ResolveResponse>(request, Native.didkey_resolve);
     }
 }

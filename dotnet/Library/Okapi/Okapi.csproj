@@ -1,0 +1,71 @@
+<Project Sdk="MSBuild.Sdk.Extras/3.0.22">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.1;xamarinios10</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <SkipNativeLibsCopy>false</SkipNativeLibsCopy>
+    <Protobuf_ToolsOs Condition="'$([MSBuild]::IsOsPlatform(OSX))'">macosx</Protobuf_ToolsOs>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.15.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Grpc" Version="2.35.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.35.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\libs\macos\libokapi.dylib" PackagePath="native/macos/libokapi.dylib" Pack="true" Visible="false" />
+    <None Include="..\..\..\libs\ios\libokapi.a" PackagePath="native/ios/libokapi.a" Pack="true" Visible="false" />
+    <None Include="..\..\..\libs\linux\libokapi.so" PackagePath="native/linux/libokapi.so" Pack="true" Visible="false" />
+    <None Include="..\..\..\libs\windows\okapi.dll" PackagePath="native/windows/okapi.dll" Pack="true" Visible="false" />
+    <None Include="..\..\..\libs\android\arm64-v8a\libokapi.so" PackagePath="native/android/arm64-v8a/libokapi.so" Pack="true" Visible="false" />
+    <None Include="..\..\..\libs\android\armeabi-v7a\libokapi.so" PackagePath="native/android/armeabi-v7a/libokapi.so" Pack="true" Visible="false" />
+    <None Include="..\..\..\libs\android\x86\libokapi.so" PackagePath="native/android/x86/libokapi.so" Pack="true" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="..\..\..\proto\keys.proto" Link="Protobuf/keys.proto" />
+    <Protobuf Include="..\..\..\proto\transport.proto" Link="Protobuf/transport.proto" />
+    <Protobuf Include="..\..\..\proto\proofs.proto" Link="Protobuf/proofs.proto" />
+    <Protobuf Include="..\..\..\proto\pbmse\pbmse.proto" Link="Protobuf/pbmse/pbmse.proto" />
+    <Protobuf Include="..\..\..\proto\examples.proto" Link="Protobuf/examples.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="build\netstandard2.1\Okapi.targets" Pack="true" PackagePath="build/netstandard2.1" Visible="false" />
+    <Content Include="build\xamarinios10\Okapi.targets" Pack="true" PackagePath="build/xamarinios10" Visible="false" />
+    <Content Include="build\MonoAndroid10\Okapi.targets" Pack="true" PackagePath="build/MonoAndroid10" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="build\netstandard2.1\Okapi.targets" Visible="false" />
+    <None Update="build\xamarinios10\Okapi.targets" Visible="false" />
+    <None Update="build\MonoAndroid10\Okapi.targets" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(SkipNativeLibsCopy)' != 'true'">
+    <Content Include="..\..\..\libs\windows\okapi.dll" Condition="'$([MSBuild]::IsOsPlatform(Windows))'">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Link>okapi.dll</Link>
+      <Visible>false</Visible>
+      <Pack>false</Pack>
+    </Content>
+    <Content Include="..\..\..\libs\linux\libokapi.so" Condition="'$([MSBuild]::IsOsPlatform(Linux))'">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Link>libokapi.so</Link>
+      <Visible>false</Visible>
+      <Pack>false</Pack>
+    </Content>
+    <Content Include="..\..\..\libs\macos\libokapi.dylib" Condition="'$([MSBuild]::IsOsPlatform(OSX))'">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Link>libokapi.dylib</Link>
+      <Visible>false</Visible>
+      <Pack>false</Pack>
+    </Content>
+  </ItemGroup>
+
+</Project>

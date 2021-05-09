@@ -2,7 +2,7 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <ItemGroup>
-    <NativeReference Include="$(MSBuildThisFileDirectory)..\..\native\ios\libdidcommgrpc.a">
+    <NativeReference Include="$(MSBuildThisFileDirectory)..\..\native\ios\libokapi.a">
       <Kind>Static</Kind>
       <ForceLoad>True</ForceLoad>
     </NativeReference>

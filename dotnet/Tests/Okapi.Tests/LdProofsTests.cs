@@ -4,9 +4,11 @@ using FluentAssertions;
 using Google.Protobuf;
 using Google.Protobuf.WellKnownTypes;
 using Newtonsoft.Json.Linq;
+using Okapi.Keys;
+using Okapi.Proofs;
 using Xunit;
 
-namespace DIDComm.Messaging.Tests
+namespace Okapi.Tests
 {
     public class LdProofsTests
     {
