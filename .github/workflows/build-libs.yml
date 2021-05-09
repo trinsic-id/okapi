@@ -117,13 +117,13 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           path: ./libs
-          
+
       - name: Create Nuget package
         run: msbuild /t:restore,pack /p:Configuration=Release
-        working-directory: ./dotnet/Library/DIDComm.Messaging.gRPC
+        working-directory: ./dotnet/Library/Okapi
 
       - name: Upload nuget artifact
         uses: actions/upload-artifact@v2
         with:
           name: package-nuget
-          path: ./dotnet/Library/DIDComm.Messaging.gRPC/bin/Release/*.nupkg
+          path: ./dotnet/Library/Okapi/bin/Release/*.nupkg
