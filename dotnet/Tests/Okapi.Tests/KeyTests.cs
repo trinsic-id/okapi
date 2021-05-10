@@ -3,9 +3,10 @@ using System.Linq;
 using FluentAssertions;
 using Google.Protobuf;
 using Multiformats.Base;
+using Okapi.Keys;
 using Xunit;
 
-namespace DIDComm.Messaging.Tests
+namespace Okapi.Tests
 {
     public class KeyTests
     {

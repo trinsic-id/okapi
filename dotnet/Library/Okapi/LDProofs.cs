@@ -1,4 +1,6 @@
-namespace DIDComm.Messaging
+using Okapi.Transport;
+
+namespace Okapi.Proofs
 {
     public class LDProofs
     {
@@ -8,9 +10,9 @@ namespace DIDComm.Messaging
         /// <param name="request"></param>
         /// <returns></returns>
         public static CreateProofResponse CreateProof(CreateProofRequest request) =>
-            DIDComm.Call<CreateProofRequest, CreateProofResponse>(request, NativeMethods.ldproofs_create_proof);
+            Native.Call<CreateProofRequest, CreateProofResponse>(request, Native.ldproofs_create_proof);
 
         public static VerifyProofResponse VerifyProof(VerifyProofRequest request) =>
-            DIDComm.Call<VerifyProofRequest, VerifyProofResponse>(request, NativeMethods.ldproofs_verify_proof);
+            Native.Call<VerifyProofRequest, VerifyProofResponse>(request, Native.ldproofs_verify_proof);
     }
 }

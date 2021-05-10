@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.InteropServices;
 
-namespace DIDComm.Messaging
+namespace Okapi
 {
     /// <summary>
     /// Provides unmanaged memory context will automatic allocation and deallocation of pointers
@@ -21,7 +21,7 @@ namespace DIDComm.Messaging
 
         /// <summary>
         /// Creates a <see cref="ByteBuffer"/> from a <see cref="byte[]"/> by allocating unmanaged memory handle
-        /// and assignin that pointer to the byte buffer. When this instance is disposed, the unmanaged memory handle 
+        /// and assignin that pointer to the byte buffer. When this instance is disposed, the unmanaged memory handle
         /// will be freed.
         /// </summary>
         /// <param name="buffer">The buffer.</param>
@@ -68,7 +68,7 @@ namespace DIDComm.Messaging
         /// <summary>
         /// Throws <see cref="BbsException"/> if the error code isn't successful. Additionally,
         /// if erorr contains a string message, the FFI string will be freed when this instance is disposed
-        /// by invoking <see cref="NativeMethods.bbs_string_free(IntPtr)"/>
+        /// by invoking <see cref="Native.bbs_string_free(IntPtr)"/>
         /// </summary>
         /// <param name="error">The error.</param>
         internal void ThrowOnError(ExternError error)
@@ -100,12 +100,12 @@ namespace DIDComm.Messaging
 
                 foreach (var buffer in UnmanagedByteBuffers)
                 {
-                    NativeMethods.didcomm_byte_buffer_free(buffer);
+                    Native.didcomm_byte_buffer_free(buffer);
                 }
 
                 foreach (var strPtr in UnmanagedStrings)
                 {
-                    NativeMethods.didcomm_string_free(strPtr);
+                    Native.didcomm_string_free(strPtr);
                 }
 
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
