@@ -151,5 +151,7 @@ jobs:
       - run: |
           foreach ($item in get-childitem ./nuget -recurse | select-object FullName | where { $_.FullName.EndsWith("nupkg") })
           {
-            dotnet nuget push $item --api-key ${{ secrets.NUGET_API_KEY }}
+            echo $item
+            nuget push $item -ApiKey "${{ secrets.NUGET_API_KEY }}" -Source https://api.nuget.org/v3/index.json
           }
+        shell: pwsh
