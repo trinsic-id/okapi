@@ -1,0 +1,20 @@
+name: Test Env
+
+on:
+  workflow_dispatch:
+  pull_request:
+  release:
+    types: [published, prereleased]
+
+jobs:
+  set_here:
+    runs-on: windows-latest
+    steps:
+      - run: echo "MY_VARIABLE=hello" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
+        shell: pwsh
+
+  use_here:
+    runs-on: windows-latest
+    needs: [set_here]
+    steps:
+      - run: echo ${{ env.MY_VARIABLE }}
