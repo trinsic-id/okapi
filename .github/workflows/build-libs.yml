@@ -148,3 +148,18 @@ jobs:
           path: |
             ./dotnet/Library/Okapi/bin/Release/*.nupkg
             ./dotnet/Library/Okapi/bin/Release/*.snupkg
+
+  publish_nuget:
+    runs-on: windows-latest
+    needs: [package_nuget]
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          path: ./nuget
+      - run: |
+          foreach ($item in get-childitem ./nuget -recurse | select-object FullName | where { $_.FullName.EndsWith("nupkg") })
+          {
+            dotnet nuget push $item --api-key ${NUGET_API_KEY}
+          }
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
