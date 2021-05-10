@@ -109,7 +109,7 @@ jobs:
   package_nuget:
     name: Package Nuget
     runs-on: macos-latest
-    needs: [build_windows, build_macos, build_linux, build_android, build_ios]
+    needs: [build_windows, build_linux, build_macos, build_android, build_ios]
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -119,21 +119,40 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           path: ./libs
-
       - run: |
           $packageVersion = node -p -e "require('./package.json').version"
           $manualVersion = "${{ github.event.release.tag_name }}"
-          [xml]$projectFile = Get-Content ./dotnet/Directory.Build.props
-          $projectFile.Project.PropertyGroup[0].Version = if ($manualVersion) { $manualVersion } else { $packageVersion }
-          $projectFile.Save("./dotnet/Directory.Build.props")
+          $version = if ($manualVersion) { $manualVersion } else { $packageVersion }
+          $version = $version.TrimStart("v")
+
+          echo "PACKAGE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
         shell: pwsh
 
       - name: Create Nuget package
-        run: msbuild /t:restore,pack /p:Configuration=Release
+        run: msbuild /t:restore,pack /p:Configuration=Release /p:PackageVersion=$env:PACKAGE_VERSION
+        shell: pwsh
         working-directory: ./dotnet/Library/Okapi
 
       - name: Upload nuget artifact
         uses: actions/upload-artifact@v2
         with:
           name: package-nuget
-          path: ./dotnet/Library/Okapi/bin/Release/*.nupkg
+          path: |
+            ./dotnet/Library/Okapi/bin/Release/*.nupkg
+            ./dotnet/Library/Okapi/bin/Release/*.snupkg
+
+  publish_nuget:
+    name: Publish Nuget
+    if: github.event_name == 'release' && github.event.action == 'published' && github.release.draft == false && github.release.prerelease == false
+    runs-on: windows-latest
+    needs: [package_nuget]
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          path: ./nuget
+      - run: |
+          foreach ($item in get-childitem ./nuget -recurse | select-object FullName | where { $_.FullName.EndsWith("nupkg") })
+          {
+            nuget push $item.FullName -ApiKey "${{ secrets.NUGET_API_KEY }}" -Source https://api.nuget.org/v3/index.json
+          }
+        shell: pwsh
