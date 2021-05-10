@@ -6,9 +6,6 @@ on:
   release:
     types: [published, prereleased]
 
-env:
-  MY_VARIABLE: "howdie"
-
 jobs:
   set_here:
     runs-on: windows-latest
@@ -23,4 +20,4 @@ jobs:
       - run: echo $env:MY_VARIABLE
         shell: pwsh
         env:
-          MY_VARIABLE: ${{ env.MY_VARIABLE }}
+          MY_VARIABLE: ${{ jobs.set_here.steps[*].env.MY_VARIABLE }}
