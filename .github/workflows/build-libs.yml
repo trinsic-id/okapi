@@ -1,8 +1,10 @@
 name: Build Platform Libraries
 
 on:
-  - workflow_dispatch
-  - pull_request
+  workflow_dispatch:
+  pull_request:
+  release:
+    types: [published, prereleased]
 
 jobs:
   build_windows:
@@ -13,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
         with:
-          submodules: 'true'
+          submodules: "true"
       - name: Run build script
         run: ../devops/Build.ps1 -Platform Windows -OutLocation ../libs/windows
         working-directory: native
@@ -32,7 +34,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
         with:
-          submodules: 'true'
+          submodules: "true"
 
       - name: Run build script
         run: ../devops/Build.ps1 -Platform Linux -OutLocation ../libs/linux
@@ -52,7 +54,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
         with:
-          submodules: 'true'
+          submodules: "true"
 
       - name: Run build script
         run: ../devops/Build.ps1 -Platform MacOS -OutLocation ../libs/macos
@@ -72,7 +74,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
         with:
-          submodules: 'true'
+          submodules: "true"
 
       - name: Run build script
         run: ../devops/Build.ps1 -Platform iOS -OutLocation ../libs/ios
@@ -92,7 +94,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
         with:
-          submodules: 'true'
+          submodules: "true"
 
       - name: Run build script
         run: ../devops/Build.ps1 -Platform Android -OutLocation ../libs/android -AndroidNdkHome ~/Library/Developer/Xamarin/android-ndk/
@@ -107,16 +109,23 @@ jobs:
   package_nuget:
     name: Package Nuget
     runs-on: macos-latest
-    needs: [ build_windows, build_macos, build_linux, build_android, build_ios ]
+    needs: [build_windows, build_macos, build_linux, build_android, build_ios]
     steps:
       - name: Checkout
         uses: actions/checkout@v1
         with:
-          submodules: 'true'
+          submodules: "true"
 
       - uses: actions/download-artifact@v2
         with:
           path: ./libs
+
+      - run: |
+          $packageVersion = node -p -e "require('./package.json').version"
+          $manualVersion = "${{ github.event.release.tag_name }}"
+          [xml]$projectFile = Get-Content ./dotnet/Directory.Build.props
+          $projectFile.Project.PropertyGroup[0].Version = if ($manualVersion) { $manualVersion } else { $packageVersion }
+          $projectFile.Save("./dotnet/Directory.Build.props")
 
       - name: Create Nuget package
         run: msbuild /t:restore,pack /p:Configuration=Release
