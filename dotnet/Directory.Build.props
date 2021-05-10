@@ -1,0 +1,25 @@
+<Project>
+  <!-- Set common properties regarding assembly information and nuget packages -->
+  <PropertyGroup>
+    <Authors>Trinsic Engineering Team</Authors>
+    <Company>Trinsic</Company>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/trinsic-id/okapi</PackageProjectUrl>
+    <PackageTags>BBS+ Ursa ZKP</PackageTags>
+    <Product>Okapi</Product>
+    <RepositoryUrl>https://github.com/trinsic-id/okapi.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Version>1.0.0</Version>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+  <!-- Common compile parameters -->
+  <PropertyGroup>
+    <!-- We use full (Windows PDBs) until cross platform support for source link will get better -->
+    <DebugType>full</DebugType>
+    <LangVersion>latest</LangVersion>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <Nullable>disable</Nullable>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+</Project>
