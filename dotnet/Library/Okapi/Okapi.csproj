@@ -1,6 +1,7 @@
 <Project Sdk="MSBuild.Sdk.Extras/3.0.22">
 
   <PropertyGroup>
+    <PackageId>Okapi.Net</PackageId>
     <TargetFrameworks>netstandard2.1;xamarinios10</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <SkipNativeLibsCopy>false</SkipNativeLibsCopy>
