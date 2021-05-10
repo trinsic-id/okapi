@@ -7,6 +7,15 @@ on:
     types: [published, prereleased]
 
 jobs:
+  make_version:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v1
+      - run: |
+          $packageVersion = node -p -e "require('./package.json').version"
+          $manualVersion = "${{ github.event.release.tag_name }}"
+          $version = if ($manualVersion) { $manualVersion } else { $packageVersion }
+          echo "PACKAGE_VERSION=$version" >> $GITHUB_ENV
   build_windows:
     name: Windows
     if: "! contains(github.event.head_commit.message, '[skip ci]')"
@@ -109,7 +118,7 @@ jobs:
   package_nuget:
     name: Package Nuget
     runs-on: macos-latest
-    needs: [build_windows, build_macos, build_linux, build_android, build_ios]
+    needs: [build_windows, build_macos, build_linux, build_android, build_ios, make_version]
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -121,10 +130,10 @@ jobs:
           path: ./libs
 
       - run: |
-          $packageVersion = node -p -e "require('./package.json').version"
-          $manualVersion = "${{ github.event.release.tag_name }}"
+          $version = ${{ env.PACKAGE_VERSION }}
+          echo "PACKAGE_VERSION=$version" >> $GITHUB_ENV
           [xml]$projectFile = Get-Content ./dotnet/Directory.Build.props
-          $projectFile.Project.PropertyGroup[0].Version = if ($manualVersion) { $manualVersion } else { $packageVersion }
+          $projectFile.Project.PropertyGroup[0].Version = $version.TrimStart("v")
           $projectFile.Save("./dotnet/Directory.Build.props")
         shell: pwsh
 
@@ -136,4 +145,6 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: package-nuget
-          path: ./dotnet/Library/Okapi/bin/Release/*.nupkg
+          path: |
+            ./dotnet/Library/Okapi/bin/Release/*.nupkg
+            ./dotnet/Library/Okapi/bin/Release/*.snupkg
