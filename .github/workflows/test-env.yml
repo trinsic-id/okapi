@@ -19,3 +19,5 @@ jobs:
     steps:
       - run: echo $env:MY_VARIABLE
         shell: pwsh
+        env:
+          MY_VARIABLE: ${{ env.MY_VARIABLE }}
