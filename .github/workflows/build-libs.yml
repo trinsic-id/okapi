@@ -123,14 +123,15 @@ jobs:
           $packageVersion = node -p -e "require('./package.json').version"
           $manualVersion = "${{ github.event.release.tag_name }}"
           $version = if ($manualVersion) { $manualVersion } else { $packageVersion }
-          $env:PACKAGE_VERSION = $version.TrimStart("v")
+          $version = $version.TrimStart("v")
+
+          echo "PACKAGE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
         shell: pwsh
 
       - name: Create Nuget package
-        run: msbuild /t:restore,pack /p:Configuration=Release /p:PackageVersion=$PACKAGE_VERSION
+        run: msbuild /t:restore,pack /p:Configuration=Release /p:PackageVersion=${env:PACKAGE_VERSION}
+        shell: pwsh
         working-directory: ./dotnet/Library/Okapi
-        env:
-          PACKAGE_VERSION: ${{ env.PACKAGE_VERSION }}
 
       - name: Upload nuget artifact
         uses: actions/upload-artifact@v2
