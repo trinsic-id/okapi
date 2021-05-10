@@ -17,4 +17,5 @@ jobs:
     runs-on: windows-latest
     needs: [set_here]
     steps:
-      - run: echo ${{ env.MY_VARIABLE }}
+      - run: echo $env:MY_VARIABLE
+        shell: pwsh
