@@ -144,7 +144,11 @@ jobs:
 
   publish_nuget:
     name: Publish Nuget
-    if: github.event_name == 'release' && github.event.action == 'published' && github.release.draft == false && github.release.prerelease == false
+    if: |
+      github.event_name == 'release' &&
+      github.event.action == 'published' &&
+      github.release.draft == false &&
+      github.release.prerelease == false
     runs-on: windows-latest
     needs: [package_nuget]
     steps:

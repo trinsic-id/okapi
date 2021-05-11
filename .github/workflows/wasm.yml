@@ -16,6 +16,7 @@ on:
 
 jobs:
   wasm:
+    name: Build Okapi for Web Assembly
     runs-on: windows-latest
     defaults:
       run:
