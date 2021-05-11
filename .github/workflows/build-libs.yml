@@ -119,7 +119,8 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           path: ./libs
-      - run: |
+      - name: Generate Package Version
+        run: |
           $packageVersion = node -p -e "require('./package.json').version"
           $manualVersion = "${{ github.event.release.tag_name }}"
           $version = if ($manualVersion) { $manualVersion } else { $packageVersion }
@@ -150,9 +151,10 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           path: ./nuget
-      - run: |
+      - name: Push packages to Nuget
+        run: |
           foreach ($item in get-childitem ./nuget -recurse | select-object FullName | where { $_.FullName.EndsWith("nupkg") })
           {
-            nuget push $item.FullName -ApiKey "${{ secrets.NUGET_API_KEY }}" -Source https://api.nuget.org/v3/index.json
+            nuget push $item.FullName -ApiKey "${{ secrets.NUGET_API_KEY }}" -Source https://api.nuget.org/v3/index.json -SkipDuplicate
           }
         shell: pwsh
