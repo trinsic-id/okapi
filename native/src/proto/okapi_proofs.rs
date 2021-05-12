@@ -1,4 +1,5 @@
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub struct CreateProofRequest {
     /// The input JSON document that will be used
     /// to create the LD Proof. This document must
@@ -17,18 +18,22 @@ pub struct CreateProofRequest {
     pub suite: i32,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub struct CreateProofResponse {
     #[prost(message, optional, tag="1")]
     pub signed_document: ::std::option::Option<super::super::google::protobuf::Struct>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub struct VerifyProofRequest {
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub struct VerifyProofResponse {
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub enum LdSuite {
     JcsEd25519Signature2020 = 0,
 }

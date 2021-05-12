@@ -1,6 +1,7 @@
 /// JWS
 /// Protocol buffer message signing and encryption
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub struct SignedMessage {
     #[prost(bytes, tag="1")]
     pub payload: std::vec::Vec<u8>,
@@ -8,6 +9,7 @@ pub struct SignedMessage {
     pub signatures: ::std::vec::Vec<Signature>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub struct Signature {
     #[prost(bytes, tag="1")]
     pub header: std::vec::Vec<u8>,
@@ -15,6 +17,7 @@ pub struct Signature {
     pub signature: std::vec::Vec<u8>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub struct SignatureHeader {
     #[prost(string, tag="1")]
     pub algorithm: std::string::String,
@@ -24,6 +27,7 @@ pub struct SignatureHeader {
 // JWE
 
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub struct EncryptedMessage {
     #[prost(bytes, tag="1")]
     pub iv: std::vec::Vec<u8>,
@@ -37,6 +41,7 @@ pub struct EncryptedMessage {
     pub recipients: ::std::vec::Vec<EncryptionRecipient>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub struct EncryptionHeader {
     #[prost(enumeration="EncryptionMode", tag="1")]
     pub mode: i32,
@@ -48,6 +53,7 @@ pub struct EncryptionHeader {
     pub sender_key_id: std::string::String,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub struct EncryptionRecipient {
     #[prost(message, optional, tag="1")]
     pub header: ::std::option::Option<EncryptionHeader>,
@@ -56,12 +62,14 @@ pub struct EncryptionRecipient {
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub enum EncryptionMode {
     Direct = 0,
     ContentEncryptionKey = 1,
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub enum EncryptionAlgorithm {
     Xchacha20poly1305 = 0,
     AesGcm = 1,
