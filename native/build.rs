@@ -5,9 +5,13 @@ use prost_build::Config;
 extern crate prost_build;
 
 fn main() {
+    // Build all protos with support for 'serde'
+    // except the well known types, which have
+    // custom serialization implemented separately
     Config::new()
         .compile_well_known_types()
-        //.type_attribute(".", "#[derive(::serde::Serialize, ::serde::Deserialize)]")
+        .type_attribute(".okapi", "#[derive(::serde::Serialize, ::serde::Deserialize)]")
+        .type_attribute(".pbmse", "#[derive(::serde::Serialize, ::serde::Deserialize)]")
         .out_dir(".")
         .compile_protos(
             &[

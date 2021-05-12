@@ -1,4 +1,5 @@
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub struct GenerateKeyRequest {
     #[prost(bytes, tag="1")]
     pub seed: std::vec::Vec<u8>,
@@ -6,6 +7,7 @@ pub struct GenerateKeyRequest {
     pub key_type: i32,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub struct GenerateKeyResponse {
     #[prost(message, repeated, tag="1")]
     pub key: ::std::vec::Vec<JsonWebKey>,
@@ -13,11 +15,13 @@ pub struct GenerateKeyResponse {
     pub did_document: ::std::option::Option<super::super::google::protobuf::Struct>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub struct ResolveRequest {
     #[prost(string, tag="1")]
     pub did: std::string::String,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub struct ResolveResponse {
     #[prost(message, optional, tag="1")]
     pub did_document: ::std::option::Option<super::super::google::protobuf::Struct>,
@@ -25,6 +29,7 @@ pub struct ResolveResponse {
     pub keys: ::std::vec::Vec<JsonWebKey>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub struct JsonWebKey {
     #[prost(string, tag="1")]
     pub kid: std::string::String,
@@ -44,6 +49,7 @@ pub struct JsonWebKey {
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub enum KeyType {
     Ed25519 = 0,
     X25519 = 1,
