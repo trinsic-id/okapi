@@ -1,4 +1,5 @@
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub struct SignRequest {
     #[prost(bytes, tag="1")]
     pub payload: std::vec::Vec<u8>,
@@ -8,11 +9,13 @@ pub struct SignRequest {
     pub append_to: ::std::option::Option<super::super::pbmse::SignedMessage>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub struct SignResponse {
     #[prost(message, optional, tag="1")]
     pub message: ::std::option::Option<super::super::pbmse::SignedMessage>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub struct VerifyRequest {
     #[prost(message, optional, tag="1")]
     pub message: ::std::option::Option<super::super::pbmse::SignedMessage>,
@@ -20,11 +23,13 @@ pub struct VerifyRequest {
     pub key: ::std::option::Option<super::keys::JsonWebKey>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub struct VerifyResponse {
     #[prost(bool, tag="1")]
     pub is_valid: bool,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub struct PackRequest {
     #[prost(message, optional, tag="1")]
     pub sender_key: ::std::option::Option<super::keys::JsonWebKey>,
@@ -40,11 +45,13 @@ pub struct PackRequest {
     pub algorithm: i32,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub struct PackResponse {
     #[prost(message, optional, tag="1")]
     pub message: ::std::option::Option<super::super::pbmse::EncryptedMessage>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub struct UnpackRequest {
     #[prost(message, optional, tag="1")]
     pub sender_key: ::std::option::Option<super::keys::JsonWebKey>,
@@ -54,11 +61,13 @@ pub struct UnpackRequest {
     pub message: ::std::option::Option<super::super::pbmse::EncryptedMessage>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub struct UnpackResponse {
     #[prost(bytes, tag="1")]
     pub plaintext: std::vec::Vec<u8>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub struct CoreMessage {
     #[prost(string, tag="1")]
     pub id: std::string::String,
@@ -76,5 +85,6 @@ pub struct CoreMessage {
     pub expires: i64,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
 pub struct NoOp {
 }
