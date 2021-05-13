@@ -71,7 +71,8 @@ jobs:
           security create-keychain -p $env:TMP_PASS build.keychain
           security default-keychain -s build.keychain
           security unlock-keychain -p $env:TMP_PASS build.keychain
-          security import certificate.p12 -k build.keychain -P $MACOS_CERTIFICATE_PWD -T /usr/bin/codesign
+          security list-keychains -s build.keychain
+          security import certificate.p12 -k build.keychain -P $env:MACOS_CERTIFICATE_PWD -T /usr/bin/codesign
           security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k $env:TMP_PASS build.keychain
           /usr/bin/codesign --force -s AEFB3DDA9FD6A31D3DD4D7A9398A59FDDA874DCC libokapy.dylib -v
         shell: pwsh
