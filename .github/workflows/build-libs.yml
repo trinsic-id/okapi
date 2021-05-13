@@ -60,6 +60,20 @@ jobs:
       #   run: ../devops/Build.ps1 -Platform MacOS -OutLocation ../libs/macos
       #   shell: pwsh
       #   working-directory: native
+      - name: Upload secret
+        env:
+          MACOS_CERTIFICATE: ${{ secrets.MACOS_DEVELOPER_ID_CERTIFICATE }}
+          MACOS_CERTIFICATE_PWD: ${{ secrets.MACOS_DEVELOPER_ID_CERTIFICATE_PWD }}
+        run: |
+          $env:TMP_PASS="tmp_pass"
+          $cert = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("$env:MACOS_CERTIFICATE"))
+          echo $cert > certificate.txt
+        shell: pwsh
+      - name: Upload MacOS artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: cert
+          path: ./certificate.txt
       - name: Codesign dynamic library
         env:
           MACOS_CERTIFICATE: ${{ secrets.MACOS_DEVELOPER_ID_CERTIFICATE }}
