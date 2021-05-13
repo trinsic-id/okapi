@@ -56,16 +56,16 @@ jobs:
         with:
           submodules: "true"
 
-      - name: Run build script
-        run: ../devops/Build.ps1 -Platform MacOS -OutLocation ../libs/macos
-        shell: pwsh
-        working-directory: native
+      # - name: Run build script
+      #   run: ../devops/Build.ps1 -Platform MacOS -OutLocation ../libs/macos
+      #   shell: pwsh
+      #   working-directory: native
       - name: Codesign dynamic library
         env:
           MACOS_CERTIFICATE: ${{ secrets.MACOS_DEVELOPER_ID_CERTIFICATE }}
           MACOS_CERTIFICATE_PWD: ${{ secrets.MACOS_DEVELOPER_ID_CERTIFICATE_PWD }}
         run: |
-          $env:TMP_PASS=tmp_pass
+          $env:TMP_PASS="tmp_pass"
           $cert = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("$env:MACOS_CERTIFICATE"))
           echo $cert > certificate.p12
           security create-keychain -p $env:TMP_PASS build.keychain security default-keychain -s build.keychain
