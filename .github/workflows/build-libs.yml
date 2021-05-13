@@ -66,7 +66,7 @@ jobs:
           MACOS_CERTIFICATE_PWD: ${{ secrets.MACOS_DEVELOPER_ID_CERTIFICATE_PWD }}
         run: |
           export TMP_PASS=tmp_pass
-          echo $MACOS_CERTIFICATE | base64 —-decode > certificate.p12
+          base64 —-decode $MACOS_CERTIFICATE > certificate.p12
           security create-keychain -p $TMP_PASS build.keychain security default-keychain -s build.keychain
           security unlock-keychain -p $TMP_PASS build.keychain
           security import certificate.p12 -k build.keychain -P $MACOS_CERTIFICATE_PWD -T /usr/bin/codesign
