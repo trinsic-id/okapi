@@ -5,8 +5,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "npx tsc -p . & npm run copy",
-    "copy": "npx copyfiles -u 1 ./src/proto/**/*.js ./src/proto/**/*.d.ts ./dist/",
+    "build": "npx tsc -p . && npm run copy",
+    "copy": "npx copyfiles -u 1 ./src/proto/** ./dist/",
     "test": "echo 'no tests'"
   },
   "author": "",
