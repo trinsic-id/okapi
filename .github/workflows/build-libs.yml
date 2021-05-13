@@ -68,7 +68,8 @@ jobs:
           $env:TMP_PASS="tmp_pass"
           $cert = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("$env:MACOS_CERTIFICATE"))
           echo $cert > certificate.p12
-          security create-keychain -p $env:TMP_PASS build.keychain security default-keychain -s build.keychain
+          security create-keychain -p $env:TMP_PASS build.keychain
+          security default-keychain -s build.keychain
           security unlock-keychain -p $env:TMP_PASS build.keychain
           security import certificate.p12 -k build.keychain -P $MACOS_CERTIFICATE_PWD -T /usr/bin/codesign
           security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k $env:TMP_PASS build.keychain
