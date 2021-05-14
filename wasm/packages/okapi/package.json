@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "npx tsc -p . & npm run copy",
-    "copy": "npx copyfiles -u 1 ./src/proto/* ./dist/",
+    "copy": "npx copyfiles -u 1 ./src/native/okapi_wasm* ./dist/",
     "test": "ts-mocha --color src/**/*.spec.ts"
   },
   "author": "",

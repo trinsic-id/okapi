@@ -1,4 +1,4 @@
-import { default as native } from "okapi-node";
+import { default as native } from "./native";
 import * as proto from "okapi-proto";
 export * as grpc from "grpc";
 export * from "okapi-proto";
