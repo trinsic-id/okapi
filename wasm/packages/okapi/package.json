@@ -15,7 +15,6 @@
     "@types/bs58": "^4.0.1",
     "base64url": "^3.0.1",
     "bs58": "^4.0.1",
-    "okapi-node": "file:../okapi-node",
     "okapi-proto": "file:../okapi-proto",
     "google-protobuf": "^3.14.0-rc.3",
     "grpc": "^1.24.4",
