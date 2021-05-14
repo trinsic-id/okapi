@@ -1,7 +1,7 @@
 import { default as native } from "./native";
-import * as proto from "okapi-proto";
+import * as proto from "@trinsic/okapi-proto";
 export * as grpc from "grpc";
-export * from "okapi-proto";
+export * from "@trinsic/okapi-proto";
 
 export class DIDKey {
   static generate(
