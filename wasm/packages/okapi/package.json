@@ -1,6 +1,6 @@
 {
   "name": "@trinsic/okapi",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,14 +12,14 @@
   "author": "Tomislav Markovski",
   "license": "ISC",
   "dependencies": {
+    "@trinsic/okapi-proto": "^0.0.3",
     "@types/bs58": "^4.0.1",
     "base64url": "^3.0.1",
     "bs58": "^4.0.1",
     "google-protobuf": "^3.14.0-rc.3",
     "grpc": "^1.24.4",
     "i": "^0.3.6",
-    "npm": "^7.6.0",
-    "@trinsic/okapi-proto": "^0.0.1"
+    "npm": "^7.6.0"
   },
   "devDependencies": {
     "@types/chai": "^4.2.14",
