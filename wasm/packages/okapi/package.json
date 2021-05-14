@@ -1,5 +1,5 @@
 {
-  "name": "okapi",
+  "name": "@trinsic/okapi",
   "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
@@ -9,7 +9,7 @@
     "copy": "npx copyfiles -u 1 ./src/native/okapi_wasm* ./dist/",
     "test": "ts-mocha --color src/**/*.spec.ts"
   },
-  "author": "",
+  "author": "Tomislav Markovski",
   "license": "ISC",
   "dependencies": {
     "@types/bs58": "^4.0.1",
@@ -19,7 +19,7 @@
     "grpc": "^1.24.4",
     "i": "^0.3.6",
     "npm": "^7.6.0",
-    "okapi-proto": "file:../okapi-proto"
+    "@trinsic/okapi-proto": "^0.0.1"
   },
   "devDependencies": {
     "@types/chai": "^4.2.14",

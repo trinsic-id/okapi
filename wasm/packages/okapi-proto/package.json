@@ -1,5 +1,5 @@
 {
-  "name": "okapi-proto",
+  "name": "@trinsic/okapi-proto",
   "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
@@ -9,7 +9,7 @@
     "copy": "npx copyfiles -u 1 ./src/proto/** ./dist/ && npx copyfiles -u 1 ./src/proto/pbmse/* ./dist/",
     "test": "echo 'no tests'"
   },
-  "author": "",
+  "author": "Tomislav Markovski",
   "license": "ISC",
   "dependencies": {
     "google-protobuf": "^3.14.0",
