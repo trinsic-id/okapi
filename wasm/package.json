@@ -6,7 +6,7 @@
     "build:wasm": "npm run build:proto && npm run build:wasm:node && npm run build:wasm:copy",
     "build:proto": "pwsh ./Generate-Proto.ps1",
     "build:wasm:node": "wasm-pack build --target nodejs",
-    "build:wasm:copy": "cp pkg/okapi* packages/okapi-node/src",
+    "build:wasm:copy": "cp pkg/okapi* packages/okapi/src/native",
     "build": "npm run build:wasm && npx lerna exec npm run build",
     "test": "npx lerna run test --stream"
   },
