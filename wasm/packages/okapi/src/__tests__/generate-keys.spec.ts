@@ -1,7 +1,16 @@
 import { expect } from "chai";
 import { GenerateKeyRequest, DIDKey, KeyType } from "../index";
+import {default as native } from "../native";
 
 describe("Generate key tests", () => {
+  it("should generate key using native call", () => {
+    let request = Buffer.from([16, 2]);
+
+    var actual = native.didkey_generate(request);
+
+    expect(actual).property("length").to.be.greaterThan(0);
+  });
+
   it("should encode generate key request (p256)", () => {
     let request = new GenerateKeyRequest();
     request.setKeyType(KeyType.P256);

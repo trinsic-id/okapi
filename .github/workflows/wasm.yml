@@ -29,3 +29,5 @@ jobs:
       - run: npm run start
       - run: npm run build
       - run: npm run test
+
+# lerna publish '0.0.5' --no-git-tag-version --yes

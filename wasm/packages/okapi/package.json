@@ -1,22 +1,21 @@
 {
-  "name": "okapi",
-  "version": "1.0.0",
+  "name": "@trinsic/okapi",
+  "version": "0.0.5",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "npx tsc -p . & npm run copy",
-    "copy": "npx copyfiles -u 1 ./src/proto/* ./dist/",
+    "copy": "npx copyfiles -u 1 ./src/native/okapi_wasm* ./dist/",
     "test": "ts-mocha --color src/**/*.spec.ts"
   },
-  "author": "",
+  "author": "Tomislav Markovski",
   "license": "ISC",
   "dependencies": {
+    "@trinsic/okapi-proto": "^0.0.5",
     "@types/bs58": "^4.0.1",
     "base64url": "^3.0.1",
     "bs58": "^4.0.1",
-    "okapi-node": "file:../okapi-node",
-    "okapi-proto": "file:../okapi-proto",
     "google-protobuf": "^3.14.0-rc.3",
     "grpc": "^1.24.4",
     "i": "^0.3.6",
@@ -33,5 +32,10 @@
     "mocha": "^8.2.1",
     "ts-mocha": "^8.0.0",
     "typescript": "^4.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trinsic-id/okapi.git",
+    "directory": "packages/okapi"
   }
 }
