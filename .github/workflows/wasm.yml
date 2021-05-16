@@ -13,6 +13,8 @@ on:
         description: "Package Version"
         required: true
         default: "1.0.0"
+  release:
+    types: [published, prereleased]
 
 jobs:
   build_test:
