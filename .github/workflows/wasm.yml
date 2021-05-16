@@ -13,10 +13,12 @@ on:
         description: "Package Version"
         required: true
         default: "1.0.0"
+  release:
+    types: [published, prereleased]
 
 jobs:
-  wasm:
-    name: Build Okapi for Web Assembly
+  build_test:
+    name: Build for Web Assembly
     runs-on: windows-latest
     defaults:
       run:
@@ -30,4 +32,35 @@ jobs:
       - run: npm run build
       - run: npm run test
 
-# lerna publish '0.0.5' --no-git-tag-version --yes
+  publish_npm:
+    name: Publish packages to NPM
+    if: |
+      github.event_name == 'release' &&
+      github.event.action == 'published' &&
+      github.release.draft == false &&
+      github.release.prerelease == false
+    runs-on: windows-latest
+    needs: [build_test]
+    defaults:
+      run:
+        working-directory: ./wasm
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          submodules: 'recursive'
+          token: ${{ secrets.ACCESS_TOKEN }}
+      - run: npm run start
+      - run: npm run build
+      - name: Generate Package Version
+        run: |
+          $packageVersion = node -p -e "require('./package.json').version"
+          $manualVersion = "${{ github.event.release.tag_name }}"
+          $version = if ($manualVersion) { $manualVersion } else { $packageVersion }
+          $version = $version.TrimStart("v")
+
+          echo "PACKAGE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
+        working-directory: ./
+        shell: pwsh
+      - run: npx lerna publish '$env:PACKAGE_VERSION' --no-git-tag-version --yes
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
