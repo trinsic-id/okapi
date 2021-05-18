@@ -145,7 +145,7 @@ jobs:
         shell: pwsh
 
       - name: Create Nuget package
-        run: msbuild /t:restore,pack /p:Configuration=Release /p:PackageVersion=$env:PACKAGE_VERSION
+        run: msbuild /t:restore,pack /p:SkipNativeLibsCopy=true /p:Configuration=Release /p:PackageVersion=$env:PACKAGE_VERSION
         shell: pwsh
         working-directory: ./dotnet/Library/Okapi
 
