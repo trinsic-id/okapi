@@ -12,6 +12,8 @@
 
 .DS_Store
 
+libs/
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
