@@ -4,6 +4,12 @@
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "browser": {
+    "index.js": "dist/index.web.js"
+  },
+  "files": [
+    "dist/*"
+  ],
   "scripts": {
     "build": "npx tsc -p . & npm run copy",
     "copy": "npx copyfiles -u 1 ./src/native/okapi_wasm* ./dist/",
@@ -26,6 +32,7 @@
     "@types/google-protobuf": "^3.7.4",
     "@types/mocha": "^8.0.3",
     "@types/node": "^14.14.7",
+    "@wasm-tool/rollup-plugin-rust": "^1.0.6",
     "chai": "^4.2.0",
     "copyfiles": "^2.4.0",
     "jest": "^26.6.3",
