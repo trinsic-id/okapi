@@ -11,8 +11,7 @@
     "dist/*"
   ],
   "scripts": {
-    "build": "npx tsc -p . & npm run copy",
-    "copy": "npx copyfiles -u 1 ./src/native/okapi_wasm* ./dist/",
+    "build": "npx tsc -p .",
     "test": "ts-mocha --color src/**/*.spec.ts"
   },
   "author": "Tomislav Markovski",

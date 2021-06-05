@@ -140,38 +140,84 @@ module.exports.__wbindgen_string_new = function(arg0, arg1) {
     return addHeapObject(ret);
 };
 
-module.exports.__wbg_getRandomValues_57e4008f45f0e105 = function() { return handleError(function (arg0, arg1) {
+module.exports.__wbg_getRandomValues_98117e9a7e993920 = function() { return handleError(function (arg0, arg1) {
     getObject(arg0).getRandomValues(getObject(arg1));
 }, arguments) };
 
-module.exports.__wbg_randomFillSync_d90848a552cbd666 = function() { return handleError(function (arg0, arg1, arg2) {
+module.exports.__wbg_randomFillSync_64cc7d048f228ca8 = function() { return handleError(function (arg0, arg1, arg2) {
     getObject(arg0).randomFillSync(getArrayU8FromWasm0(arg1, arg2));
 }, arguments) };
 
-module.exports.__wbg_self_f865985e662246aa = function() { return handleError(function () {
-    var ret = self.self;
-    return addHeapObject(ret);
-}, arguments) };
-
-module.exports.__wbg_static_accessor_MODULE_39947eb3fe77895f = function() {
-    var ret = module;
+module.exports.__wbg_process_2f24d6544ea7b200 = function(arg0) {
+    var ret = getObject(arg0).process;
     return addHeapObject(ret);
 };
 
-module.exports.__wbg_require_c59851dfa0dc7e78 = function() { return handleError(function (arg0, arg1, arg2) {
-    var ret = getObject(arg0).require(getStringFromWasm0(arg1, arg2));
+module.exports.__wbindgen_is_object = function(arg0) {
+    const val = getObject(arg0);
+    var ret = typeof(val) === 'object' && val !== null;
+    return ret;
+};
+
+module.exports.__wbg_versions_6164651e75405d4a = function(arg0) {
+    var ret = getObject(arg0).versions;
+    return addHeapObject(ret);
+};
+
+module.exports.__wbg_node_4b517d861cbcb3bc = function(arg0) {
+    var ret = getObject(arg0).node;
+    return addHeapObject(ret);
+};
+
+module.exports.__wbg_modulerequire_3440a4bcf44437db = function() { return handleError(function (arg0, arg1) {
+    var ret = module.require(getStringFromWasm0(arg0, arg1));
     return addHeapObject(ret);
 }, arguments) };
 
-module.exports.__wbg_crypto_bfb05100db79193b = function(arg0) {
+module.exports.__wbg_crypto_98fc271021c7d2ad = function(arg0) {
     var ret = getObject(arg0).crypto;
     return addHeapObject(ret);
 };
 
-module.exports.__wbg_msCrypto_f6dddc6ae048b7e2 = function(arg0) {
+module.exports.__wbg_msCrypto_a2cdb043d2bfe57f = function(arg0) {
     var ret = getObject(arg0).msCrypto;
     return addHeapObject(ret);
 };
+
+module.exports.__wbg_call_ba36642bd901572b = function() { return handleError(function (arg0, arg1) {
+    var ret = getObject(arg0).call(getObject(arg1));
+    return addHeapObject(ret);
+}, arguments) };
+
+module.exports.__wbindgen_object_clone_ref = function(arg0) {
+    var ret = getObject(arg0);
+    return addHeapObject(ret);
+};
+
+module.exports.__wbg_newnoargs_9fdd8f3961dd1bee = function(arg0, arg1) {
+    var ret = new Function(getStringFromWasm0(arg0, arg1));
+    return addHeapObject(ret);
+};
+
+module.exports.__wbg_self_bb69a836a72ec6e9 = function() { return handleError(function () {
+    var ret = self.self;
+    return addHeapObject(ret);
+}, arguments) };
+
+module.exports.__wbg_window_3304fc4b414c9693 = function() { return handleError(function () {
+    var ret = window.window;
+    return addHeapObject(ret);
+}, arguments) };
+
+module.exports.__wbg_globalThis_e0d21cabc6630763 = function() { return handleError(function () {
+    var ret = globalThis.globalThis;
+    return addHeapObject(ret);
+}, arguments) };
+
+module.exports.__wbg_global_8463719227271676 = function() { return handleError(function () {
+    var ret = global.global;
+    return addHeapObject(ret);
+}, arguments) };
 
 module.exports.__wbindgen_is_undefined = function(arg0) {
     var ret = getObject(arg0) === undefined;
@@ -210,6 +256,11 @@ module.exports.__wbg_newwithlength_a8d1dbcbe703a5c6 = function(arg0) {
 module.exports.__wbg_subarray_901ede8318da52a6 = function(arg0, arg1, arg2) {
     var ret = getObject(arg0).subarray(arg1 >>> 0, arg2 >>> 0);
     return addHeapObject(ret);
+};
+
+module.exports.__wbindgen_is_string = function(arg0) {
+    var ret = typeof(getObject(arg0)) === 'string';
+    return ret;
 };
 
 module.exports.__wbindgen_throw = function(arg0, arg1) {
