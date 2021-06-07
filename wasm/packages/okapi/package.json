@@ -17,9 +17,9 @@
   "author": "Tomislav Markovski",
   "license": "ISC",
   "dependencies": {
-    "@trinsic/okapi-node": "file:../okapi-node",
-    "@trinsic/okapi-proto": "file:../okapi-proto",
-    "@trinsic/okapi-web": "file:../okapi-web",
+    "@trinsic/okapi-node": "0.0.5",
+    "@trinsic/okapi-proto": "0.0.5",
+    "@trinsic/okapi-web": "0.0.5",
     "@types/bs58": "^4.0.1",
     "base64url": "^3.0.1",
     "bs58": "^4.0.1",
