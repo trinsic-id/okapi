@@ -32,8 +32,9 @@ jobs:
         with:
           version: 'latest'
       - run: |
-        rustup toolchain uninstall stable && rustup toolchain install stable
-        rustup toolchain install --target wasm32-unknown-unknown stable
+          rustup toolchain uninstall stable
+          rustup toolchain install stable
+          rustup toolchain install stable --target wasm32-unknown-unknown
       - run: npm run start
       - run: npm run build
       - run: npm run test
@@ -45,7 +46,7 @@ jobs:
       github.event.action == 'published' &&
       github.release.draft == false &&
       github.release.prerelease == false
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     needs: [build_test]
     defaults:
       run:
@@ -60,8 +61,9 @@ jobs:
         with:
           version: 'latest'
       - run: |
-        rustup toolchain uninstall stable && rustup toolchain install stable
-        rustup toolchain install --target wasm32-unknown-unknown stable
+          rustup toolchain uninstall stable
+          rustup toolchain install stable
+          rustup toolchain install stable --target wasm32-unknown-unknown
       - run: npm run start
       - run: npm run build
       - name: Generate Package Version
