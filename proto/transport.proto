@@ -62,23 +62,3 @@ message CoreMessage {
     int64 created = 6 [json_name="created_time"];
     int64 expires = 7 [json_name="expires_time"];
 }
-
-service DIDCommPlain {
-    rpc Unary(CoreMessage)                                    returns (CoreMessage);
-    rpc ServerStreaming(CoreMessage)                          returns (stream CoreMessage);
-    rpc ClientStreaming(stream CoreMessage)                   returns (CoreMessage);
-    rpc BidirectionalStreaming(stream CoreMessage)            returns (stream CoreMessage);
-}
-
-service DIDCommEncrypted {
-    rpc Unary(pbmse.EncryptedMessage)                         returns (pbmse.EncryptedMessage);
-    rpc ServerStreaming(pbmse.EncryptedMessage)               returns (stream pbmse.EncryptedMessage);
-    rpc ClientStreaming(stream pbmse.EncryptedMessage)        returns (pbmse.EncryptedMessage);
-    rpc BidirectionalStreaming(stream pbmse.EncryptedMessage) returns (stream pbmse.EncryptedMessage);
-}
-
-service DIDCommSimplex {
-    rpc Simplex(pbmse.EncryptedMessage)                       returns (NoOp);
-}
-
-message NoOp {}

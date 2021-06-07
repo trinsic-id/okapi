@@ -24,7 +24,7 @@
     "build": "npm run build:wasm && npm run build:copy",
     "build:wasm": "wasm-pack build --target nodejs",
     "build:copy": "copyfiles -u 3 ../../pkg/okapi* lib/ && rimraf ../../pkg/",
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "echo 'No Tests'"
   },
   "devDependencies": {
     "copyfiles": "^2.4.1",
