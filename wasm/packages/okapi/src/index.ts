@@ -1,6 +1,5 @@
-import { default as native } from "./native";
+import * as native from "@trinsic/okapi-node";
 import * as proto from "@trinsic/okapi-proto";
-export * as grpc from "grpc";
 export * from "@trinsic/okapi-proto";
 
 export class DIDKey {

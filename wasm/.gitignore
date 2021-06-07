@@ -1,2 +1,7 @@
 !packages/*
 dist/
+
+packages/okapi/lib
+packages/okapi-proto/lib
+packages/okapi-node/lib
+packages/okapi-web/lib

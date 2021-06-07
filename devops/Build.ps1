@@ -8,21 +8,27 @@ if ($null -eq $OutLocation) { throw "Parameter -OutLocation must be specified." 
 switch ($Platform) {
     Windows {
         cargo build --release
+
+        mkdir -p $OutLocation
         Copy-Item -Path .\target\release\okapi.dll -Destination $OutLocation
         break
     }
     Linux {
         cargo build --release
+
+        mkdir -p $OutLocation
         Copy-Item -Path .\target\release\libokapi.so -Destination $OutLocation
         break
     }
     MacOS {
         cargo build --release
+
+        mkdir -p $OutLocation
         Copy-Item -Path .\target\release\libokapi.dylib -Destination $OutLocation
         break
     }
     iOS {
-        mkdir $OutLocation/
+        mkdir -p $OutLocation/
 
         cargo install cargo-lipo
         rustup target install x86_64-apple-ios aarch64-apple-ios
@@ -32,7 +38,7 @@ switch ($Platform) {
     }
     Android {
         if ($null -eq $AndroidNdkHome) { throw "Parameter -AndroidNdkHome must be specified." }
-        
+
         $AndroidNdkHome = Resolve-Path $AndroidNdkHome
 
         mkdir -p ~/.NDK
@@ -44,7 +50,7 @@ switch ($Platform) {
         Get-Content "../devops/android-cargo-config" | Out-File "~/.cargo/config"
 
         rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-android
-        
+
         cargo build --target aarch64-linux-android --release
         cargo build --target armv7-linux-androideabi --release
         cargo build --target i686-linux-android --release
