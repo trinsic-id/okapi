@@ -19,6 +19,7 @@
   "dependencies": {
     "@trinsic/okapi-node": "file:../okapi-node",
     "@trinsic/okapi-proto": "file:../okapi-proto",
+    "@trinsic/okapi-web": "file:../okapi-web",
     "@types/bs58": "^4.0.1",
     "base64url": "^3.0.1",
     "bs58": "^4.0.1",
@@ -39,7 +40,8 @@
     "mocha": "^8.2.1",
     "nightwatch": "^1.6.4",
     "ts-mocha": "^8.0.0",
-    "typescript": "^4.0.5"
+    "typescript": "^4.0.5",
+    "webpack-cli": "^4.7.0"
   },
   "repository": {
     "type": "git",

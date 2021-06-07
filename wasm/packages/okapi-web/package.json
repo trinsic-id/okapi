@@ -1,0 +1,36 @@
+{
+  "name": "@trinsic/okapi-web",
+  "version": "0.0.5",
+  "description": "> TODO: description",
+  "author": "Tomislav Markovski <tomislav@trinsic.id>",
+  "homepage": "https://github.com/trinsic-id/okapi#readme",
+  "license": "ISC",
+  "main": "lib/okapi_wasm.js",
+  "types": "lib/okapi_wasm.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trinsic-id/okapi.git"
+  },
+  "scripts": {
+    "build": "npm run build:wasm && npm run build:copy",
+    "build:wasm": "wasm-pack build --target web",
+    "build:copy": "copyfiles -u 3 ../../pkg/okapi* lib/ && rimraf ../../pkg/",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "devDependencies": {
+    "copyfiles": "^2.4.1",
+    "rimraf": "^2.7.1"
+  },
+  "bugs": {
+    "url": "https://github.com/trinsic-id/okapi/issues"
+  }
+}
