@@ -13,6 +13,7 @@
     "@trinsic/okapi": "1.0.0-preview.12"
   },
   "devDependencies": {
+    "http-server": "^0.12.3",
     "webpack": "^5.38.1",
     "webpack-cli": "^4.7.1"
   }
