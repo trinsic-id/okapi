@@ -1,12 +1,12 @@
-import { DIDKey, GenerateKeyRequest, KeyType } from "@trinsic/okapi";
+import { DIDKey, KeyType, GenerateKeyRequest } from "@trinsic/okapi";
 
-function generateKey() {
+async function generateKey() {
     var request = new GenerateKeyRequest();
     request.setKeyType(KeyType.BLS12381G1G2);
 
     var response = await DIDKey.generate(request);
 
-    console.log(response.toObject());
+    console.log(response.getDidDocument().toJavaScript());
 }
 
 generateKey();

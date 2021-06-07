@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "webpack build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tomislav Markovski",
   "license": "ISC",
   "dependencies": {
-    "@trinsic/okapi": "^1.0.0-preview.11"
+    "@trinsic/okapi": "1.0.0-preview.12"
   },
   "devDependencies": {
     "webpack": "^5.38.1",
