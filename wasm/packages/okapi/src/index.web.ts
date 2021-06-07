@@ -6,6 +6,7 @@ let initalized = false;
 async function initialize() {
   if (!initalized) {
     await init();
+    initalized = true;
   }
 }
 

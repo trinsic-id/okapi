@@ -2,9 +2,9 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "start": "npm install && npx lerna exec npm install",
+    "start": "npm install && npx lerna bootstrap",
     "build:proto": "pwsh ./Generate-Proto.ps1",
-    "build": "npm run build:wasm && npx lerna exec npm run build",
+    "build": "npx lerna exec npm run build",
     "test": "npx lerna run test --stream"
   },
   "devDependencies": {
