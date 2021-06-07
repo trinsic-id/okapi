@@ -1,0 +1,18 @@
+{
+  "name": "node-sample",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tomislav Markovski",
+  "license": "ISC",
+  "dependencies": {
+    "@trinsic/okapi": "^1.0.0-preview.11"
+  },
+  "devDependencies": {
+    "@types/google-protobuf": "^3.15.2"
+  }
+}
