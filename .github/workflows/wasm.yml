@@ -19,7 +19,7 @@ on:
 jobs:
   build_test:
     name: Build for Web Assembly
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     defaults:
       run:
         working-directory: ./wasm
@@ -28,6 +28,9 @@ jobs:
         with:
           submodules: 'recursive'
           token: ${{ secrets.ACCESS_TOKEN }}
+      - uses: jetli/wasm-pack-action@v0.3.0
+        with:
+          version: 'latest'
       - run: npm run start
       - run: npm run build
       - run: npm run test
@@ -50,6 +53,9 @@ jobs:
         with:
           submodules: 'recursive'
           token: ${{ secrets.ACCESS_TOKEN }}
+      - uses: jetli/wasm-pack-action@v0.3.0
+        with:
+          version: 'latest'
       - run: npm run start
       - run: npm run build
       - name: Generate Package Version
