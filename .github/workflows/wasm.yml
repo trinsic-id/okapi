@@ -31,6 +31,9 @@ jobs:
       - uses: jetli/wasm-pack-action@v0.3.0
         with:
           version: 'latest'
+      - run: |
+        rustup toolchain uninstall stable && rustup toolchain install stable
+        rustup toolchain install --target wasm32-unknown-unknown stable
       - run: npm run start
       - run: npm run build
       - run: npm run test
@@ -56,6 +59,9 @@ jobs:
       - uses: jetli/wasm-pack-action@v0.3.0
         with:
           version: 'latest'
+      - run: |
+        rustup toolchain uninstall stable && rustup toolchain install stable
+        rustup toolchain install --target wasm32-unknown-unknown stable
       - run: npm run start
       - run: npm run build
       - name: Generate Package Version
