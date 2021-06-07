@@ -2,17 +2,17 @@
   "name": "@trinsic/okapi-proto",
   "version": "1.0.0-preview.12",
   "description": "",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "directories": {
-    "lib": "dist"
+    "lib": "lib"
   },
   "files": [
-    "dist/*"
+    "lib/*"
   ],
   "scripts": {
     "build": "npx tsc -p . && npm run copy",
-    "copy": "npx copyfiles -u 1 ./src/proto/** ./dist/ && npx copyfiles -u 1 ./src/proto/pbmse/* ./dist/",
+    "copy": "npx copyfiles -u 1 ./src/proto/** ./lib/ && npx copyfiles -u 1 ./src/proto/pbmse/* ./lib/",
     "test": "echo 'no tests'"
   },
   "author": "Tomislav Markovski",
