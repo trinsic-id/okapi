@@ -1,10 +1,17 @@
-### Requirements
+# Okapi for JavaScript
+
+## Samples
+
+- [Okapi for Node.js](examples/node-sample/)
+- [Okapi for Browser w/ Webpack](examples/browser-sample/)
+
+## Requirements
 
 - Node.js
 - [Rust](https://www.rust-lang.org/tools/install)
 - [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/)
 
-### Build all packages
+## Build Packages
 
 From this directory, run:
 
@@ -13,22 +20,14 @@ npm run start
 npm run build
 ```
 
-### Build new WASM artifact
-
-This will generate new files in `pkg` folder. Copy all `.js`, `.ts` and `.wasm` files into `packages/didcomm-grpc-node/src` to update the definitions and builds.
-
-```
-wasm-pack build --target nodejs
-```
-
-### Run tests
+## Run tests
 
 ```
 npm run test
 ```
 
-### Generate updated protobuf types
+## Generate updated protobuf types
 
 ```powershell
-./GenProto.ps1
+./Generate-Proto.ps1
 ```

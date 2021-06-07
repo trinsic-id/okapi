@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import { GenerateKeyRequest, DIDKey, KeyType } from "../index";
-import {default as native } from "../native";
+import {default as native } from "@trinsic/okapi-node";
 
 describe("Generate key tests", () => {
   it("should generate key using native call", () => {

@@ -84,7 +84,3 @@ pub struct CoreMessage {
     #[prost(int64, tag="7")]
     pub expires: i64,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
-#[derive(::serde::Serialize, ::serde::Deserialize)]
-pub struct NoOp {
-}
