@@ -10,6 +10,8 @@
 		69EA340B026FEE81ED340121 /* libPods-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E96A3EA9A8B03239CAC7B0F /* libPods-Tests.a */; };
 		859F2A4440AB615E4ADBFD10 /* libPods-Okapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D3DF8BA6149458B5E551484 /* libPods-Okapi.a */; };
 		A027D263266FA77E00EE595F /* libokapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A027D262266FA77E00EE595F /* libokapi.a */; };
+		A027D266266FD18900EE595F /* LdProofs.m in Sources */ = {isa = PBXBuildFile; fileRef = A027D265266FD18900EE595F /* LdProofs.m */; };
+		A027D267266FD4C100EE595F /* LdProofs.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A027D264266FD18900EE595F /* LdProofs.h */; };
 		A02AA994255B50CE00E8068D /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = A02AA993255B50CE00E8068D /* Tests.m */; };
 		A02AA996255B50CE00E8068D /* libOkapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A02AA980255B505800E8068D /* libOkapi.a */; };
 		A02AA9BC255B56E300E8068D /* DIDComm.m in Sources */ = {isa = PBXBuildFile; fileRef = A02AA9BB255B56E300E8068D /* DIDComm.m */; };
@@ -37,6 +39,7 @@
 			dstSubfolderSpec = 16;
 			files = (
 				A02AA9BF255B577F00E8068D /* DIDComm.h in CopyFiles */,
+				A027D267266FD4C100EE595F /* LdProofs.h in CopyFiles */,
 				A0A2B912256ADBEE00D74B4A /* DIDKey.h in CopyFiles */,
 				A0A2B915256ADC0200D74B4A /* NativeFunc.h in CopyFiles */,
 			);
@@ -52,6 +55,8 @@
 		8C5C054A93B909223957C500 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		9E96A3EA9A8B03239CAC7B0F /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A027D262266FA77E00EE595F /* libokapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libokapi.a; path = ../../libs/ios/libokapi.a; sourceTree = "<group>"; };
+		A027D264266FD18900EE595F /* LdProofs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LdProofs.h; sourceTree = "<group>"; };
+		A027D265266FD18900EE595F /* LdProofs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LdProofs.m; sourceTree = "<group>"; };
 		A02AA980255B505800E8068D /* libOkapi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOkapi.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A02AA991255B50CE00E8068D /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A02AA993255B50CE00E8068D /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
@@ -134,6 +139,8 @@
 				A02AA9BB255B56E300E8068D /* DIDComm.m */,
 				A0A2B90D256ADB3000D74B4A /* DIDKey.h */,
 				A0A2B90E256ADB3000D74B4A /* DIDKey.m */,
+				A027D264266FD18900EE595F /* LdProofs.h */,
+				A027D265266FD18900EE595F /* LdProofs.m */,
 			);
 			path = Okapi;
 			sourceTree = "<group>";
@@ -303,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A02AA9BC255B56E300E8068D /* DIDComm.m in Sources */,
+				A027D266266FD18900EE595F /* LdProofs.m in Sources */,
 				A0A2B90F256ADB3000D74B4A /* DIDKey.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

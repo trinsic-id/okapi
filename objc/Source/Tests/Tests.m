@@ -8,9 +8,12 @@
 #import <XCTest/XCTest.h>
 #import <Okapi/DIDComm.h>
 #import <Okapi/DIDKey.h>
+#import <Okapi/LdProofs.h>
 #import <Okapi-Proto/Keys.pbobjc.h>
 #import <Okapi-Proto/Transport.pbobjc.h>
 #import <Foundation/Foundation.h>
+#import <Protobuf/GPBMessage.h>
+#import <Protobuf/GPBStruct.pbobjc.h>
 
 @interface Tests : XCTestCase
 
@@ -60,5 +63,10 @@
     
     XCTAssertTrue(verifyResponse.isValid);
 }
+
+//- (void)testCreateProof {
+//    CreateProofRequest *request = [CreateProofRequest message];
+//    request.document = [GPBStruct message];
+//}
 
 @end

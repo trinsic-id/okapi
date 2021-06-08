@@ -36,4 +36,8 @@ int32_t didcomm_sign(ByteBuffer request, ByteBuffer * _Nullable response, Extern
 
 int32_t didcomm_verify(ByteBuffer request, ByteBuffer * _Nullable response, ExternError * _Nullable err);
 
+int32_t ldproofs_create_proof(ByteBuffer request, ByteBuffer * _Nullable response, ExternError * _Nullable err);
+
+int32_t ldproofs_verify_proof(ByteBuffer request, ByteBuffer * _Nullable response, ExternError * _Nullable err);
+
 #endif /* NativeFunc_h */

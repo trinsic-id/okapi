@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Okapi"
-  s.version      = "0.0.3"
+  s.version      = "1.0.0-preview.14"
   s.summary      = "Okapi Identity Tools"
   s.description  = <<-DESC
   Tools for working with decentralized identity
