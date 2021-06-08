@@ -455,7 +455,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-RxLibrary\"",
 					"${PROJECT_DIR}/../../libs/ios",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -479,7 +479,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-RxLibrary\"",
 					"${PROJECT_DIR}/../../libs",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
