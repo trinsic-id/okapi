@@ -34,7 +34,7 @@
     return [GenerateKeyResponse parseFromData:responseData error:error];
 }
 
-+ (ConvertKeyResponse *)convert:(ConvertKeyRequest *)request
++ (ResolveResponse *)resolve:(ResolveRequest *)request
                       withError:(NSError *_Nullable*_Nullable)error;
 {
     NSData* requestData = request.data;
@@ -46,14 +46,14 @@
     ByteBuffer *response = (ByteBuffer*) malloc(sizeof(ByteBuffer));
     ExternError *err = (ExternError*) malloc(sizeof(ExternError));
 
-    if (didkey_convert(req, response, err) != 0) {
+    if (didkey_resolve(req, response, err) != 0) {
         *error = [self errorFromExternError:err];
         return nil;
     }
     
     NSData* responseData =[[NSData alloc] initWithBytesNoCopy:response->data length:(NSUInteger)response->len freeWhenDone:true];
     
-    return [ConvertKeyResponse parseFromData:responseData error:error];
+    return [ResolveResponse parseFromData:responseData error:error];
 }
 
 static NSString *const DMErrorDomain = @"DIDCommError";

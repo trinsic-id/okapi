@@ -6,9 +6,10 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <DIDComm-gRPC/DIDComm.h>
-#import <DIDComm-gRPC/DIDKey.h>
-#import <DIDComm-Proto/Api.pbobjc.h>
+#import <Okapi/DIDComm.h>
+#import <Okapi/DIDKey.h>
+#import <Okapi-Proto/Keys.pbobjc.h>
+#import <Okapi-Proto/Transport.pbobjc.h>
 #import <Foundation/Foundation.h>
 
 @interface Tests : XCTestCase
@@ -27,32 +28,32 @@
 
 - (void)testGenerateKey {
     GenerateKeyRequest* request = [GenerateKeyRequest message];
-    request.keyType = Crv_P256;
+    request.keyType = KeyType_P256;
     
     NSError* error;
     GenerateKeyResponse* response = [DIDKey generate:request withError:&error];
-    
+
     XCTAssertNotNil(response);
-    XCTAssertNotNil(response.key);
-    XCTAssertTrue(response.key.x.length > 0);
-    XCTAssertTrue(response.key.crv == Crv_P256);
+    XCTAssertNotNil(response.keyArray[0]);
+    XCTAssertTrue(response.keyArray[0].x.length > 0);
+    // XCTAssertEqual(response.keyArray[0].crv, @"P-256");
 }
 
 - (void)testSignDemo {
     GenerateKeyRequest *keyRequest = [GenerateKeyRequest message];
-    keyRequest.keyType = Crv_P256;
+    keyRequest.keyType = KeyType_P256;
     
     NSError* error;
     GenerateKeyResponse *keyResponse = [DIDKey generate:keyRequest withError:&error];
     
     SignRequest *signRequest = [SignRequest message];
-    signRequest.key = keyResponse.key;
+    signRequest.key = keyResponse.keyArray[0];
     signRequest.payload = [@"secret message" dataUsingEncoding:NSUTF8StringEncoding];
     
     SignResponse *signResponse = [DIDComm sign:signRequest withError:&error];
     
     VerifyRequest *verifyRequest = [VerifyRequest message];
-    verifyRequest.key = keyResponse.key;
+    verifyRequest.key = keyResponse.keyArray[0];
     verifyRequest.message = signResponse.message;
     
     VerifyResponse *verifyResponse = [DIDComm verify:verifyRequest withError:&error];

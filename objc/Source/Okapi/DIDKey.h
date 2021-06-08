@@ -6,18 +6,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Api.pbobjc.h"
-#import "Security.pbobjc.h"
-#import "BasicMessage.pbobjc.h"
-#import "Didcomm.pbobjc.h"
-#import "Didcomm.pbrpc.h"
+#import "Keys.pbobjc.h"
 
 @interface DIDKey : NSObject
 
 + (GenerateKeyResponse *_Nullable)generate:(GenerateKeyRequest *_Nonnull)request
                                  withError:(NSError *_Nullable*_Nullable)error;
 
-+ (ConvertKeyResponse *_Nullable)convert:(ConvertKeyRequest *_Nonnull)request
++ (ResolveResponse *_Nullable)resolve:(ResolveRequest *_Nonnull)request
                                withError:(NSError *_Nullable*_Nullable)error;
 
 @end

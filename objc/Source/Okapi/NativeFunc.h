@@ -26,7 +26,7 @@ void didcomm_byte_buffer_free(ByteBuffer data);
 
 int32_t didkey_generate(ByteBuffer request, ByteBuffer * _Nullable response, ExternError * _Nullable err);
 
-int32_t didkey_convert(ByteBuffer request, ByteBuffer * _Nullable response, ExternError * _Nullable err);
+int32_t didkey_resolve(ByteBuffer request, ByteBuffer * _Nullable response, ExternError * _Nullable err);
 
 int32_t didcomm_pack(ByteBuffer request, ByteBuffer * _Nullable response, ExternError * _Nullable err);
 

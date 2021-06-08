@@ -6,11 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Api.pbobjc.h"
-#import "Security.pbobjc.h"
-#import "BasicMessage.pbobjc.h"
-#import "Didcomm.pbobjc.h"
-#import "Didcomm.pbrpc.h"
+#import "Transport.pbobjc.h"
 
 @interface DIDComm : NSObject
 
