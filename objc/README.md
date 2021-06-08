@@ -3,7 +3,7 @@
 To use this library, add the following dependency to your `Podfile`
 
 ```
-pod 'DIDComm-gRPC'
+pod 'Okapi'
 ```
 
 See instructions on [using CocoaPods](https://guides.cocoapods.org/using/using-cocoapods.html) for iOS
@@ -13,8 +13,8 @@ See instructions on [using CocoaPods](https://guides.cocoapods.org/using/using-c
 To use the library with Swift, you need import the library headers in your bridging header file.
 
 ```c
-#import <DIDComm-gRPC/DIDComm.h>
-#import <DIDComm-gRPC/DIDKey.h>
+#import <Okapi/DIDComm.h>
+#import <Okapi/DIDKey.h>
 ```
 
 [Check the example](Sample/DIDComm-gRPC-Example) folder for sample usage or read the [official documentation](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift) for working with bridging header files in Swift.
@@ -48,4 +48,10 @@ do {
 } catch {
     print("Couldn't sign message")
 }
+```
+
+## Running the unit tests
+
+```
+xcodebuild -workspace ./Okapi.xcworkspace/ -scheme Tests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.5' test
 ```
