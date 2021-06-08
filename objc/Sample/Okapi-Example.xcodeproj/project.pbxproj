@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		75DC181B056E0E9471069864 /* libPods-Okapi-Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE8F9A80C7557CDB4ABF7803 /* libPods-Okapi-Example.a */; };
 		A09D9CC1255C4F58007A2203 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09D9CC0255C4F58007A2203 /* AppDelegate.swift */; };
 		A09D9CC3255C4F58007A2203 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09D9CC2255C4F58007A2203 /* SceneDelegate.swift */; };
 		A09D9CC5255C4F58007A2203 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09D9CC4255C4F58007A2203 /* ViewController.swift */; };
 		A09D9CC8255C4F58007A2203 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A09D9CC6255C4F58007A2203 /* Main.storyboard */; };
 		A09D9CCA255C4F5A007A2203 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A09D9CC9255C4F5A007A2203 /* Assets.xcassets */; };
 		A09D9CCD255C4F5A007A2203 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A09D9CCB255C4F5A007A2203 /* LaunchScreen.storyboard */; };
-		C819E28F265AEB6B67E97F27 /* libPods-DIDComm-gRPC-Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E9655970DE4901DF7B82BD /* libPods-DIDComm-gRPC-Example.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5DF35EA126C9CF4D49D3E8C7 /* Pods-DIDComm-gRPC-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DIDComm-gRPC-Example.debug.xcconfig"; path = "Target Support Files/Pods-DIDComm-gRPC-Example/Pods-DIDComm-gRPC-Example.debug.xcconfig"; sourceTree = "<group>"; };
+		8246BB6D6C539AC38B04C0D8 /* Pods-Okapi-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Okapi-Example.release.xcconfig"; path = "Target Support Files/Pods-Okapi-Example/Pods-Okapi-Example.release.xcconfig"; sourceTree = "<group>"; };
 		A08BF357255C559800096CCE /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
-		A09D9CBD255C4F58007A2203 /* DIDComm-gRPC-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DIDComm-gRPC-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09D9CBD255C4F58007A2203 /* Okapi-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Okapi-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A09D9CC0255C4F58007A2203 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A09D9CC2255C4F58007A2203 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A09D9CC4255C4F58007A2203 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -27,8 +27,8 @@
 		A09D9CC9255C4F5A007A2203 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A09D9CCC255C4F5A007A2203 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A09D9CCE255C4F5A007A2203 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BD5508077361DEC50CDF81E6 /* Pods-DIDComm-gRPC-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DIDComm-gRPC-Example.release.xcconfig"; path = "Target Support Files/Pods-DIDComm-gRPC-Example/Pods-DIDComm-gRPC-Example.release.xcconfig"; sourceTree = "<group>"; };
-		D3E9655970DE4901DF7B82BD /* libPods-DIDComm-gRPC-Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DIDComm-gRPC-Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E401D520A6127165594E6217 /* Pods-Okapi-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Okapi-Example.debug.xcconfig"; path = "Target Support Files/Pods-Okapi-Example/Pods-Okapi-Example.debug.xcconfig"; sourceTree = "<group>"; };
+		FE8F9A80C7557CDB4ABF7803 /* libPods-Okapi-Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Okapi-Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,7 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C819E28F265AEB6B67E97F27 /* libPods-DIDComm-gRPC-Example.a in Frameworks */,
+				75DC181B056E0E9471069864 /* libPods-Okapi-Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,7 +46,7 @@
 		186D4C465474E08874298419 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D3E9655970DE4901DF7B82BD /* libPods-DIDComm-gRPC-Example.a */,
+				FE8F9A80C7557CDB4ABF7803 /* libPods-Okapi-Example.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -54,7 +54,7 @@
 		A09D9CB4255C4F58007A2203 = {
 			isa = PBXGroup;
 			children = (
-				A09D9CBF255C4F58007A2203 /* DIDComm-gRPC-Example */,
+				A09D9CBF255C4F58007A2203 /* Okapi-Example */,
 				A09D9CBE255C4F58007A2203 /* Products */,
 				B4B42C91DDAF44F59BB73177 /* Pods */,
 				186D4C465474E08874298419 /* Frameworks */,
@@ -64,12 +64,12 @@
 		A09D9CBE255C4F58007A2203 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A09D9CBD255C4F58007A2203 /* DIDComm-gRPC-Example.app */,
+				A09D9CBD255C4F58007A2203 /* Okapi-Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A09D9CBF255C4F58007A2203 /* DIDComm-gRPC-Example */ = {
+		A09D9CBF255C4F58007A2203 /* Okapi-Example */ = {
 			isa = PBXGroup;
 			children = (
 				A09D9CC0255C4F58007A2203 /* AppDelegate.swift */,
@@ -81,14 +81,14 @@
 				A09D9CCE255C4F5A007A2203 /* Info.plist */,
 				A08BF357255C559800096CCE /* Header.h */,
 			);
-			path = "DIDComm-gRPC-Example";
+			path = "Okapi-Example";
 			sourceTree = "<group>";
 		};
 		B4B42C91DDAF44F59BB73177 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				5DF35EA126C9CF4D49D3E8C7 /* Pods-DIDComm-gRPC-Example.debug.xcconfig */,
-				BD5508077361DEC50CDF81E6 /* Pods-DIDComm-gRPC-Example.release.xcconfig */,
+				E401D520A6127165594E6217 /* Pods-Okapi-Example.debug.xcconfig */,
+				8246BB6D6C539AC38B04C0D8 /* Pods-Okapi-Example.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -96,9 +96,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A09D9CBC255C4F58007A2203 /* DIDComm-gRPC-Example */ = {
+		A09D9CBC255C4F58007A2203 /* Okapi-Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A09D9CD1255C4F5A007A2203 /* Build configuration list for PBXNativeTarget "DIDComm-gRPC-Example" */;
+			buildConfigurationList = A09D9CD1255C4F5A007A2203 /* Build configuration list for PBXNativeTarget "Okapi-Example" */;
 			buildPhases = (
 				0A5DD4494FE0578B8E34470B /* [CP] Check Pods Manifest.lock */,
 				A09D9CB9255C4F58007A2203 /* Sources */,
@@ -110,9 +110,9 @@
 			);
 			dependencies = (
 			);
-			name = "DIDComm-gRPC-Example";
+			name = "Okapi-Example";
 			productName = "DIDComm-gRPC-Example";
-			productReference = A09D9CBD255C4F58007A2203 /* DIDComm-gRPC-Example.app */;
+			productReference = A09D9CBD255C4F58007A2203 /* Okapi-Example.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -129,7 +129,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A09D9CB8255C4F58007A2203 /* Build configuration list for PBXProject "DIDComm-gRPC-Example" */;
+			buildConfigurationList = A09D9CB8255C4F58007A2203 /* Build configuration list for PBXProject "Okapi-Example" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -142,7 +142,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A09D9CBC255C4F58007A2203 /* DIDComm-gRPC-Example */,
+				A09D9CBC255C4F58007A2203 /* Okapi-Example */,
 			);
 		};
 /* End PBXProject section */
@@ -176,7 +176,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DIDComm-gRPC-Example-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Okapi-Example-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -189,15 +189,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DIDComm-gRPC-Example/Pods-DIDComm-gRPC-Example-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Okapi-Example/Pods-Okapi-Example-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DIDComm-gRPC-Example/Pods-DIDComm-gRPC-Example-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Okapi-Example/Pods-Okapi-Example-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DIDComm-gRPC-Example/Pods-DIDComm-gRPC-Example-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Okapi-Example/Pods-Okapi-Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -353,20 +353,20 @@
 		};
 		A09D9CD2255C4F5A007A2203 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5DF35EA126C9CF4D49D3E8C7 /* Pods-DIDComm-gRPC-Example.debug.xcconfig */;
+			baseConfigurationReference = E401D520A6127165594E6217 /* Pods-Okapi-Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "DIDComm-gRPC-Example/Info.plist";
+				INFOPLIST_FILE = "Okapi-Example/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.didcomm.DIDComm-gRPC-Example";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.trinsic.Okapi-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "DIDComm-gRPC-Example/Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Okapi-Example/Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -374,20 +374,20 @@
 		};
 		A09D9CD3255C4F5A007A2203 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BD5508077361DEC50CDF81E6 /* Pods-DIDComm-gRPC-Example.release.xcconfig */;
+			baseConfigurationReference = 8246BB6D6C539AC38B04C0D8 /* Pods-Okapi-Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "DIDComm-gRPC-Example/Info.plist";
+				INFOPLIST_FILE = "Okapi-Example/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.didcomm.DIDComm-gRPC-Example";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.trinsic.Okapi-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "DIDComm-gRPC-Example/Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Okapi-Example/Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -396,7 +396,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A09D9CB8255C4F58007A2203 /* Build configuration list for PBXProject "DIDComm-gRPC-Example" */ = {
+		A09D9CB8255C4F58007A2203 /* Build configuration list for PBXProject "Okapi-Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A09D9CCF255C4F5A007A2203 /* Debug */,
@@ -405,7 +405,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A09D9CD1255C4F5A007A2203 /* Build configuration list for PBXNativeTarget "DIDComm-gRPC-Example" */ = {
+		A09D9CD1255C4F5A007A2203 /* Build configuration list for PBXNativeTarget "Okapi-Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A09D9CD2255C4F5A007A2203 /* Debug */,

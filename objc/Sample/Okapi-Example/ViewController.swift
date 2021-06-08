@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         
         let signRequest = SignRequest()
         signRequest.payload = message.data()
-        signRequest.key = keyResponse.key
+        signRequest.key = keyResponse.keyArray.firstObject as? JsonWebKey
         
         do {
             let signedMessage = try DIDComm.sign(signRequest)

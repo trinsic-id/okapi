@@ -13,7 +13,7 @@
 		A027D266266FD18900EE595F /* LdProofs.m in Sources */ = {isa = PBXBuildFile; fileRef = A027D265266FD18900EE595F /* LdProofs.m */; };
 		A027D267266FD4C100EE595F /* LdProofs.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A027D264266FD18900EE595F /* LdProofs.h */; };
 		A02AA994255B50CE00E8068D /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = A02AA993255B50CE00E8068D /* Tests.m */; };
-		A02AA996255B50CE00E8068D /* libOkapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A02AA980255B505800E8068D /* libOkapi.a */; };
+		A02AA996255B50CE00E8068D /* libOkapi-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A02AA980255B505800E8068D /* libOkapi-iOS.a */; };
 		A02AA9BC255B56E300E8068D /* DIDComm.m in Sources */ = {isa = PBXBuildFile; fileRef = A02AA9BB255B56E300E8068D /* DIDComm.m */; };
 		A02AA9BF255B577F00E8068D /* DIDComm.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A02AA9BA255B56E300E8068D /* DIDComm.h */; };
 		A0A2B90F256ADB3000D74B4A /* DIDKey.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A2B90E256ADB3000D74B4A /* DIDKey.m */; };
@@ -57,7 +57,7 @@
 		A027D262266FA77E00EE595F /* libokapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libokapi.a; path = ../../libs/ios/libokapi.a; sourceTree = "<group>"; };
 		A027D264266FD18900EE595F /* LdProofs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LdProofs.h; sourceTree = "<group>"; };
 		A027D265266FD18900EE595F /* LdProofs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LdProofs.m; sourceTree = "<group>"; };
-		A02AA980255B505800E8068D /* libOkapi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOkapi.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A02AA980255B505800E8068D /* libOkapi-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libOkapi-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A02AA991255B50CE00E8068D /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A02AA993255B50CE00E8068D /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		A02AA995255B50CE00E8068D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A02AA996255B50CE00E8068D /* libOkapi.a in Frameworks */,
+				A02AA996255B50CE00E8068D /* libOkapi-iOS.a in Frameworks */,
 				69EA340B026FEE81ED340121 /* libPods-Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -125,7 +125,7 @@
 		A02AA981255B505800E8068D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A02AA980255B505800E8068D /* libOkapi.a */,
+				A02AA980255B505800E8068D /* libOkapi-iOS.a */,
 				A02AA991255B50CE00E8068D /* Tests.xctest */,
 			);
 			name = Products;
@@ -157,9 +157,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A02AA97F255B505800E8068D /* Okapi */ = {
+		A02AA97F255B505800E8068D /* Okapi-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A02AA989255B505800E8068D /* Build configuration list for PBXNativeTarget "Okapi" */;
+			buildConfigurationList = A02AA989255B505800E8068D /* Build configuration list for PBXNativeTarget "Okapi-iOS" */;
 			buildPhases = (
 				863F16A3F859B6F12A74FB05 /* [CP] Check Pods Manifest.lock */,
 				A02AA97C255B505800E8068D /* Sources */,
@@ -170,9 +170,9 @@
 			);
 			dependencies = (
 			);
-			name = Okapi;
+			name = "Okapi-iOS";
 			productName = "DIDComm-gRPC";
-			productReference = A02AA980255B505800E8068D /* libOkapi.a */;
+			productReference = A02AA980255B505800E8068D /* libOkapi-iOS.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		A02AA990255B50CE00E8068D /* Tests */ = {
@@ -211,7 +211,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A02AA97B255B505800E8068D /* Build configuration list for PBXProject "Okapi" */;
+			buildConfigurationList = A02AA97B255B505800E8068D /* Build configuration list for PBXProject "Okapi-iOS" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -224,7 +224,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A02AA97F255B505800E8068D /* Okapi */,
+				A02AA97F255B505800E8068D /* Okapi-iOS */,
 				A02AA990255B50CE00E8068D /* Tests */,
 			);
 		};
@@ -328,7 +328,7 @@
 /* Begin PBXTargetDependency section */
 		A02AA998255B50CE00E8068D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A02AA97F255B505800E8068D /* Okapi */;
+			target = A02AA97F255B505800E8068D /* Okapi-iOS */;
 			targetProxy = A02AA997255B50CE00E8068D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -543,7 +543,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A02AA97B255B505800E8068D /* Build configuration list for PBXProject "Okapi" */ = {
+		A02AA97B255B505800E8068D /* Build configuration list for PBXProject "Okapi-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A02AA987255B505800E8068D /* Debug */,
@@ -552,7 +552,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A02AA989255B505800E8068D /* Build configuration list for PBXNativeTarget "Okapi" */ = {
+		A02AA989255B505800E8068D /* Build configuration list for PBXNativeTarget "Okapi-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A02AA98A255B505800E8068D /* Debug */,
