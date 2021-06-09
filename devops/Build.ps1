@@ -19,31 +19,27 @@ if ($null -eq $OutLocation) { throw "Parameter -OutLocation must be specified." 
 # Allows to execute this script from any context
 Set-Location $PSScriptRoot/../native
 
-Write-Output "Current folder: $PWD"
-Write-Output "Invocation Path: $InvocationPath"
-Write-Output "Target Output: $TargetOutput"
-
 try {
     switch ($Platform) {
         Windows {
             rustup target add x86_64-pc-windows-msvc
             cargo build --release --target x86_64-pc-windows-msvc
 
-            Copy-Item -Path .\target\release\okapi.dll -Destination $TargetOutput
+            Copy-Item -Path .\target\x86_64-pc-windows-msvc\release\okapi.dll -Destination $TargetOutput
             break
         }
         Linux {
             rustup target add x86_64-unknown-linux-gnu
             cargo build --release --target x86_64-unknown-linux-gnu
 
-            Copy-Item -Path .\target\release\libokapi.so -Destination $TargetOutput
+            Copy-Item -Path .\target\x86_64-unknown-linux-gnu\release\libokapi.so -Destination $TargetOutput
             break
         }
         MacOS {
             rustup target add x86_64-apple-darwin
             cargo build --release --target x86_64-apple-darwin
 
-            Copy-Item -Path .\target\release\libokapi.dylib -Destination $TargetOutput
+            Copy-Item -Path .\target\x86_64-apple-darwin\release\libokapi.dylib -Destination $TargetOutput
             break
         }
         iOS {
