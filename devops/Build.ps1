@@ -2,38 +2,41 @@ param($Platform, $OutLocation, $AndroidNdkHome)
 
 $ErrorActionPreference = "Stop"
 
+# Ensure target directory exists and gather invocation info
+$InvocationPath = (Get-Item .).FullName
+$TargetOutput = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath([IO.Path]::Combine($InvocationPath, $OutLocation))
+mkdir -p $TargetOutput
+
 if ($null -eq $Platform) { throw "Parameter -Platform must be specified." }
 if ($null -eq $OutLocation) { throw "Parameter -OutLocation must be specified." }
+
+# Allows to execute this script from any context
+Set-Location $PSScriptRoot/../native
 
 switch ($Platform) {
     Windows {
         cargo build --release
 
-        mkdir -p $OutLocation
-        Copy-Item -Path .\target\release\okapi.dll -Destination $OutLocation
+        Copy-Item -Path .\target\release\okapi.dll -Destination $TargetOutput
         break
     }
     Linux {
         cargo build --release
 
-        mkdir -p $OutLocation
-        Copy-Item -Path .\target\release\libokapi.so -Destination $OutLocation
+        Copy-Item -Path .\target\release\libokapi.so -Destination $TargetOutput
         break
     }
     MacOS {
         cargo build --release
 
-        mkdir -p $OutLocation
-        Copy-Item -Path .\target\release\libokapi.dylib -Destination $OutLocation
+        Copy-Item -Path .\target\release\libokapi.dylib -Destination $TargetOutput
         break
     }
     iOS {
-        mkdir -p $OutLocation/
-
         cargo install cargo-lipo
         rustup target install x86_64-apple-ios aarch64-apple-ios
         cargo lipo --release
-        Copy-Item -Path "./target/universal/release/libokapi.a" -Destination $OutLocation/
+        Copy-Item -Path "./target/universal/release/libokapi.a" -Destination $TargetOutput/
         break
     }
     Android {
@@ -55,12 +58,15 @@ switch ($Platform) {
         cargo build --target armv7-linux-androideabi --release
         cargo build --target i686-linux-android --release
 
-        mkdir -p $OutLocation/arm64-v8a/
-        mkdir -p $OutLocation/armeabi-v7a/
-        mkdir -p $OutLocation/x86/
-        Copy-Item -Path ./target/aarch64-linux-android/release/libokapi.so -Destination $OutLocation/arm64-v8a/
-        Copy-Item -Path ./target/armv7-linux-androideabi/release/libokapi.so -Destination $OutLocation/armeabi-v7a/
-        Copy-Item -Path ./target/i686-linux-android/release/libokapi.so -Destination $OutLocation/x86/
+        mkdir -p $TargetOutput/arm64-v8a/
+        mkdir -p $TargetOutput/armeabi-v7a/
+        mkdir -p $TargetOutput/x86/
+        Copy-Item -Path ./target/aarch64-linux-android/release/libokapi.so -Destination $TargetOutput/arm64-v8a/
+        Copy-Item -Path ./target/armv7-linux-androideabi/release/libokapi.so -Destination $TargetOutput/armeabi-v7a/
+        Copy-Item -Path ./target/i686-linux-android/release/libokapi.so -Destination $TargetOutput/x86/
         break
     }
 }
+
+# Return to invocation context
+Set-Location $InvocationPath
