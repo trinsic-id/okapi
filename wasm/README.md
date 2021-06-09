@@ -39,5 +39,5 @@ npm run test
 This step is required if there have been changes to the proto files.
 
 ```powershell
-./Generate-Proto.ps1
+PS> ./Generate-Proto.ps1
 ```
