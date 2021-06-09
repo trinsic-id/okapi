@@ -1,4 +1,10 @@
-param($Platform, $OutLocation, $AndroidNdkHome)
+param
+(
+    [ValidateSet('Windows','MacOS','Linux', 'iOS', 'Android')]
+    $Platform,
+    $OutLocation,
+    $AndroidNdkHome
+)
 
 $ErrorActionPreference = "Stop"
 
