@@ -1,4 +1,10 @@
-# .NET
+# Okapi for .NET
+
+## Usage
+
+```
+dotnet add package Okapi.Net
+```
 
 ## To build nuget package
 
