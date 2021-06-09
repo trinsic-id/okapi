@@ -19,6 +19,10 @@ if ($null -eq $OutLocation) { throw "Parameter -OutLocation must be specified." 
 # Allows to execute this script from any context
 Set-Location $PSScriptRoot/../native
 
+Write-Output "Current folder: $PWD"
+Write-Output "Invocation Path: $InvocationPath"
+Write-Output "Target Output: $TargetOutput"
+
 try {
     switch ($Platform) {
         Windows {

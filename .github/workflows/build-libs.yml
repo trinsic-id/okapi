@@ -56,9 +56,8 @@ jobs:
         with:
           submodules: "true"
       - name: Run build script
-        run: ../devops/Build.ps1 -Platform MacOS -OutLocation ../libs/macos
+        run: ./devops/Build.ps1 -Platform MacOS -OutLocation ./libs/macos
         shell: pwsh
-        working-directory: native
       - name: Codesign dynamic library
         env:
           MACOS_CERTIFICATE: ${{ secrets.MACOS_DEVELOPER_ID_CERTIFICATE }}
