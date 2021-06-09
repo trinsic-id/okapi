@@ -10,7 +10,7 @@
   "author": "Tomislav Markovski",
   "license": "ISC",
   "dependencies": {
-    "@trinsic/okapi": "1.0.0-preview.12"
+    "@trinsic/okapi": "1.0.0-preview.19"
   },
   "devDependencies": {
     "@types/google-protobuf": "^3.15.2"
