@@ -1,4 +1,4 @@
-# DIDComm v2 Objective C / Swift library for iOS - Maintainers Instructions
+# Okapi for iOS - Maintainers Instructions
 
 ## Requirements
 
@@ -22,7 +22,7 @@ After this, open `DIDComm-gRPC.xcworkspace` with Xcode. You should be able to co
 
 - Ensure the project can be built locally
 - Update the `libs/ios/didcommgrpc.a` file with latest build (you can get one from CI artifacts or build one locally). This file will be used from this location in the Podspec bundle.
-- Edit the version in the `DIDComm-gRPC.podspec` file
+- Edit the version in the `Okapi-iOS.podspec` file
 - Release new Pod version by [following the instructions](https://guides.cocoapods.org/making/making-a-cocoapod.html)
 
 ## Generating Obj C files from protobuf manually
