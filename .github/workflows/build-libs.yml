@@ -17,8 +17,7 @@ jobs:
         with:
           submodules: "true"
       - name: Run build script
-        run: ../devops/Build.ps1 -Platform Windows -OutLocation ../libs/windows
-        working-directory: native
+        run: ./devops/Build.ps1 -Platform Windows -OutLocation ./libs/windows
         shell: pwsh
       - name: Upload Windows artifact
         uses: actions/upload-artifact@v2
@@ -37,9 +36,8 @@ jobs:
           submodules: "true"
 
       - name: Run build script
-        run: ../devops/Build.ps1 -Platform Linux -OutLocation ../libs/linux
+        run: ./devops/Build.ps1 -Platform Linux -OutLocation ./libs/linux
         shell: pwsh
-        working-directory: native
       - name: Upload Linux artifact
         uses: actions/upload-artifact@v2
         with:
@@ -56,9 +54,8 @@ jobs:
         with:
           submodules: "true"
       - name: Run build script
-        run: ../devops/Build.ps1 -Platform MacOS -OutLocation ../libs/macos
+        run: ./devops/Build.ps1 -Platform MacOS -OutLocation ./libs/macos
         shell: pwsh
-        working-directory: native
       - name: Codesign dynamic library
         env:
           MACOS_CERTIFICATE: ${{ secrets.MACOS_DEVELOPER_ID_CERTIFICATE }}
@@ -92,9 +89,8 @@ jobs:
           submodules: "true"
 
       - name: Run build script
-        run: ../devops/Build.ps1 -Platform iOS -OutLocation ../libs/ios
+        run: ./devops/Build.ps1 -Platform iOS -OutLocation ./libs/ios
         shell: pwsh
-        working-directory: native
       - name: Upload iOS artifact
         uses: actions/upload-artifact@v2
         with:
@@ -112,9 +108,8 @@ jobs:
           submodules: "true"
 
       - name: Run build script
-        run: ../devops/Build.ps1 -Platform Android -OutLocation ../libs/android -AndroidNdkHome ~/Library/Developer/Xamarin/android-ndk/
+        run: ./devops/Build.ps1 -Platform Android -OutLocation ./libs/android -AndroidNdkHome ~/Library/Developer/Xamarin/android-ndk/
         shell: pwsh
-        working-directory: native
       - name: Upload Android artifact
         uses: actions/upload-artifact@v2
         with:
