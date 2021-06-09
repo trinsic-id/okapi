@@ -13,22 +13,22 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+
         let keyRequest = GenerateKeyRequest()
         keyRequest.keyType = .ed25519
 
         let keyResponse = try! DIDKey.generate(keyRequest)
-        
+
         let message = BasicMessage()
         message.text = "Hello Swift!"
-        
+
         let signRequest = SignRequest()
         signRequest.payload = message.data()
         signRequest.key = keyResponse.keyArray.firstObject as? JsonWebKey
-        
+
         do {
             let signedMessage = try DIDComm.sign(signRequest)
-            
+
             print(signedMessage.description)
         } catch {
             print("Couldn't sign the message")

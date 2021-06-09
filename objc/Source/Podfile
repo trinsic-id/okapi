@@ -3,7 +3,7 @@ platform :ios, '13.0'
 
 install! 'cocoapods', :deterministic_uuids => false
 
-target 'Okapi' do
+target 'Okapi-iOS' do
   # Depend on the generated HelloWorld library.
   pod 'Okapi-Proto', :path => '.'
 end

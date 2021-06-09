@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02645230DE40391B256E125E /* libPods-Okapi-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CEE170C23B0FCE2A4368624 /* libPods-Okapi-iOS.a */; };
 		69EA340B026FEE81ED340121 /* libPods-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E96A3EA9A8B03239CAC7B0F /* libPods-Tests.a */; };
-		859F2A4440AB615E4ADBFD10 /* libPods-Okapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D3DF8BA6149458B5E551484 /* libPods-Okapi.a */; };
 		A027D263266FA77E00EE595F /* libokapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A027D262266FA77E00EE595F /* libokapi.a */; };
 		A027D266266FD18900EE595F /* LdProofs.m in Sources */ = {isa = PBXBuildFile; fileRef = A027D265266FD18900EE595F /* LdProofs.m */; };
 		A027D267266FD4C100EE595F /* LdProofs.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A027D264266FD18900EE595F /* LdProofs.h */; };
@@ -49,10 +49,10 @@
 
 /* Begin PBXFileReference section */
 		2280D59587E1B158DF386DC9 /* Pods-Okapi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Okapi.debug.xcconfig"; path = "Target Support Files/Pods-Okapi/Pods-Okapi.debug.xcconfig"; sourceTree = "<group>"; };
-		4D3DF8BA6149458B5E551484 /* libPods-Okapi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Okapi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		583F8D57923D2CFE02C38B47 /* Pods-Okapi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Okapi.release.xcconfig"; path = "Target Support Files/Pods-Okapi/Pods-Okapi.release.xcconfig"; sourceTree = "<group>"; };
 		83A7EE52676ADFAD772060B7 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		8C5C054A93B909223957C500 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		8CEE170C23B0FCE2A4368624 /* libPods-Okapi-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Okapi-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E96A3EA9A8B03239CAC7B0F /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A027D262266FA77E00EE595F /* libokapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libokapi.a; path = ../../libs/ios/libokapi.a; sourceTree = "<group>"; };
 		A027D264266FD18900EE595F /* LdProofs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LdProofs.h; sourceTree = "<group>"; };
@@ -66,6 +66,8 @@
 		A02AA9BB255B56E300E8068D /* DIDComm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DIDComm.m; sourceTree = "<group>"; };
 		A0A2B90D256ADB3000D74B4A /* DIDKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DIDKey.h; sourceTree = "<group>"; };
 		A0A2B90E256ADB3000D74B4A /* DIDKey.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DIDKey.m; sourceTree = "<group>"; };
+		C280BDA02ADE7A85DAE276DE /* Pods-Okapi-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Okapi-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Okapi-iOS/Pods-Okapi-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		D6B040297C33C9EA1A58B908 /* Pods-Okapi-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Okapi-iOS.release.xcconfig"; path = "Target Support Files/Pods-Okapi-iOS/Pods-Okapi-iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +76,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A027D263266FA77E00EE595F /* libokapi.a in Frameworks */,
-				859F2A4440AB615E4ADBFD10 /* libPods-Okapi.a in Frameworks */,
+				02645230DE40391B256E125E /* libPods-Okapi-iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +99,8 @@
 				83A7EE52676ADFAD772060B7 /* Pods-Tests.release.xcconfig */,
 				2280D59587E1B158DF386DC9 /* Pods-Okapi.debug.xcconfig */,
 				583F8D57923D2CFE02C38B47 /* Pods-Okapi.release.xcconfig */,
+				C280BDA02ADE7A85DAE276DE /* Pods-Okapi-iOS.debug.xcconfig */,
+				D6B040297C33C9EA1A58B908 /* Pods-Okapi-iOS.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -106,7 +110,7 @@
 			children = (
 				A027D262266FA77E00EE595F /* libokapi.a */,
 				9E96A3EA9A8B03239CAC7B0F /* libPods-Tests.a */,
-				4D3DF8BA6149458B5E551484 /* libPods-Okapi.a */,
+				8CEE170C23B0FCE2A4368624 /* libPods-Okapi-iOS.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -278,7 +282,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Okapi-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Okapi-iOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -448,7 +452,7 @@
 		};
 		A02AA98A255B505800E8068D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2280D59587E1B158DF386DC9 /* Pods-Okapi.debug.xcconfig */;
+			baseConfigurationReference = C280BDA02ADE7A85DAE276DE /* Pods-Okapi-iOS.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				LIBRARY_SEARCH_PATHS = (
@@ -472,7 +476,7 @@
 		};
 		A02AA98B255B505800E8068D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 583F8D57923D2CFE02C38B47 /* Pods-Okapi.release.xcconfig */;
+			baseConfigurationReference = D6B040297C33C9EA1A58B908 /* Pods-Okapi-iOS.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				LIBRARY_SEARCH_PATHS = (
