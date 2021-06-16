@@ -1,5 +1,7 @@
-import ctypes
 from typing import Any
+import platform
+import ctypes
+from os.path import join, abspath, dirname
 
 from keys_pb2 import GenerateKeyRequest, GenerateKeyResponse, ResolveRequest, ResolveResponse
 from proofs_pb2 import CreateProofRequest, CreateProofResponse, VerifyProofRequest, VerifyProofResponse
@@ -28,31 +30,31 @@ class _ExternError(ctypes.Structure):
     ]
 
 
-class _OkapiBase(object):
-    def __init__(self):
-        self._lib = self.__load_library()
+library_name = {'Windows': 'okapi.dll',
+                'Darwin': 'libokapi.dylib',
+                'Linux': 'libokapi.so'}
 
-    def _copy_response_buffer(self, response: Any, response_buffer: ctypes.pointer) -> None:
-        bytes_view = memoryview(ctypes.cast(response_buffer.contents.data, ctypes.POINTER(ctypes.c_ubyte*response_buffer.contents.len))[0]).tobytes()
-        response.ParseFromString(bytes_view)
-        self._lib.didcomm_byte_buffer_free(response_buffer.contents)
+
+def load_library() -> '_DLLT':
+    lib_path = join(dirname(abspath(__file__)), 'libs')
+
+    sys = platform.system()
+    try:
+        return ctypes.cdll.LoadLibrary(abspath(join(lib_path, library_name[platform.system()])))
+    except KeyError:
+        raise NotImplementedError(f"Unsupported operating system {sys}: {platform.platform()}")
+
+
+class _OkapiBase(object):
+    _lib = load_library()
 
     @staticmethod
-    def __load_library() -> '_DLLT':
-        import platform
-        import ctypes
-        from os.path import join, abspath, dirname
-
-        lib_path = join(dirname(abspath(__file__)), 'libs')
-
-        sys = platform.system()
-        library_name = {'Windows': 'okapi.dll',
-                        'Darwin': 'libokapi.dylib',
-                        'Linux': 'libokapi.so'}
-        try:
-            return ctypes.cdll.LoadLibrary(abspath(join(lib_path, library_name[platform.system()])))
-        except KeyError:
-            raise NotImplementedError(f"Unsupported operating system {sys}: {platform.platform()}")
+    def _copy_response_buffer(response: Any, response_buffer: ctypes.pointer) -> None:
+        bytes_view = memoryview(
+            ctypes.cast(response_buffer.contents.data, ctypes.POINTER(ctypes.c_ubyte * response_buffer.contents.len))[
+                0]).tobytes()
+        response.ParseFromString(bytes_view)
+        _OkapiBase._lib.didcomm_byte_buffer_free(response_buffer.contents)
 
     @staticmethod
     def _create_buffers(request) -> tuple[_ByteBuffer, ctypes.pointer, ctypes.pointer]:
@@ -64,72 +66,71 @@ class _OkapiBase(object):
 
 
 class DIDKey(_OkapiBase):
-    def __init__(self):
-        super().__init__()
-
-    def generate(self, request: GenerateKeyRequest) -> GenerateKeyResponse:
-        request_buffer, response_buffer, error_out = self._create_buffers(request)
-        ret_val = self._lib.didkey_generate(request_buffer, response_buffer, error_out)
+    @staticmethod
+    def generate(request: GenerateKeyRequest) -> GenerateKeyResponse:
+        request_buffer, response_buffer, error_out = _OkapiBase._create_buffers(request)
+        ret_val = _OkapiBase._lib.didkey_generate(request_buffer, response_buffer, error_out)
         print(f"Return Value={ret_val}")
         response = GenerateKeyResponse()
-        self._copy_response_buffer(response, response_buffer)
+        _OkapiBase._copy_response_buffer(response, response_buffer)
         return response
 
-    def resolve(self, request: ResolveRequest) -> ResolveResponse:
-        request_buffer, response_buffer, error_out = self._create_buffers(request)
-        self._lib.didkey_resolve(request_buffer, response_buffer, error_out)
+    @staticmethod
+    def resolve(request: ResolveRequest) -> ResolveResponse:
+        request_buffer, response_buffer, error_out = _OkapiBase._create_buffers(request)
+        _OkapiBase._lib.didkey_resolve(request_buffer, response_buffer, error_out)
         response = ResolveResponse()
-        self._copy_response_buffer(response, response_buffer)
+        _OkapiBase._copy_response_buffer(response, response_buffer)
         return response
 
 
 class DIDComm(_OkapiBase):
-    def __init__(self):
-        super().__init__()
-
-    def pack(self, request: PackRequest) -> PackResponse:
-        request_buffer, response_buffer, error_out = self._create_buffers(request)
-        self._lib.didcomm_pack(request_buffer, response_buffer, error_out)
+    @staticmethod
+    def pack(request: PackRequest) -> PackResponse:
+        request_buffer, response_buffer, error_out = _OkapiBase._create_buffers(request)
+        _OkapiBase._lib.didcomm_pack(request_buffer, response_buffer, error_out)
         response = PackResponse()
-        self._copy_response_buffer(response, response_buffer)
+        _OkapiBase._copy_response_buffer(response, response_buffer)
         return response
 
-    def unpack(self, request: UnpackRequest) -> UnpackResponse:
-        request_buffer, response_buffer, error_out = self._create_buffers(request)
-        self._lib.didcomm_unpack(request_buffer, response_buffer, error_out)
+    @staticmethod
+    def unpack(request: UnpackRequest) -> UnpackResponse:
+        request_buffer, response_buffer, error_out = _OkapiBase._create_buffers(request)
+        _OkapiBase._lib.didcomm_unpack(request_buffer, response_buffer, error_out)
         response = UnpackResponse()
-        self._copy_response_buffer(response, response_buffer)
+        _OkapiBase._copy_response_buffer(response, response_buffer)
         return response
 
-    def sign(self, request: SignRequest) -> SignResponse:
-        request_buffer, response_buffer, error_out = self._create_buffers(request)
-        self._lib.didcomm_sign(request_buffer, response_buffer, error_out)
+    @staticmethod
+    def sign(request: SignRequest) -> SignResponse:
+        request_buffer, response_buffer, error_out = _OkapiBase._create_buffers(request)
+        _OkapiBase._lib.didcomm_sign(request_buffer, response_buffer, error_out)
         response = SignResponse()
-        self._copy_response_buffer(response, response_buffer)
+        _OkapiBase._copy_response_buffer(response, response_buffer)
         return response
 
-    def verify(self, request: VerifyRequest) -> VerifyResponse:
-        request_buffer, response_buffer, error_out = self._create_buffers(request)
-        self._lib.didcomm_verify(request_buffer, response_buffer, error_out)
+    @staticmethod
+    def verify(request: VerifyRequest) -> VerifyResponse:
+        request_buffer, response_buffer, error_out = _OkapiBase._create_buffers(request)
+        _OkapiBase._lib.didcomm_verify(request_buffer, response_buffer, error_out)
         response = VerifyResponse()
-        self._copy_response_buffer(response, response_buffer)
+        _OkapiBase._copy_response_buffer(response, response_buffer)
         return response
 
 
 class LDProofs(_OkapiBase):
-    def __init__(self):
-        super().__init__()
-
-    def create(self, request: CreateProofRequest) -> CreateProofResponse:
-        request_buffer, response_buffer, error_out = self._create_buffers(request)
-        self._lib.ldproofs_create_proof(request_buffer, response_buffer, error_out)
+    @staticmethod
+    def create(request: CreateProofRequest) -> CreateProofResponse:
+        request_buffer, response_buffer, error_out = _OkapiBase._create_buffers(request)
+        _OkapiBase._lib.ldproofs_create_proof(request_buffer, response_buffer, error_out)
         response = CreateProofResponse()
-        self._copy_response_buffer(response, response_buffer)
+        _OkapiBase._copy_response_buffer(response, response_buffer)
         return response
 
-    def verify(self, request: VerifyProofRequest) -> VerifyProofResponse:
-        request_buffer, response_buffer, error_out = self._create_buffers(request)
-        self._lib.ldproofs_verify_proof(request_buffer, response_buffer, error_out)
+    @staticmethod
+    def verify(request: VerifyProofRequest) -> VerifyProofResponse:
+        request_buffer, response_buffer, error_out = _OkapiBase._create_buffers(request)
+        _OkapiBase._lib.ldproofs_verify_proof(request_buffer, response_buffer, error_out)
         response = VerifyProofResponse()
-        self._copy_response_buffer(response, response_buffer)
+        _OkapiBase._copy_response_buffer(response, response_buffer)
         return response
