@@ -5,8 +5,5 @@ request = GenerateKeyRequest()
 request.key_type = KeyType.Ed25519
 request.seed = bytes(bytearray([1, 2, 3]))
 
-key = DIDKey()
-key_response = key.generate(request)
-
-
+key_response = DIDKey.generate(request)
 print(key_response.key)
