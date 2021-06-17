@@ -17,7 +17,7 @@ class DIDKey:
         return response
 
 
-class DIDComm():
+class DIDComm:
     @staticmethod
     def pack(request: PackRequest) -> PackResponse:
         response = typed_wrap_and_call("didcomm_pack", request, PackResponse)
@@ -39,7 +39,7 @@ class DIDComm():
         return response
 
 
-class LDProofs():
+class LDProofs:
     @staticmethod
     def create(request: CreateProofRequest) -> CreateProofResponse:
         response = typed_wrap_and_call("ldproofs_create_proof", request, CreateProofResponse)
