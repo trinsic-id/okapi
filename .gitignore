@@ -378,3 +378,4 @@ native/out.h
 /Android/.idea
 /Android/app/local.properties
 /java/.idea
+/dotnet/.idea
