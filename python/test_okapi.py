@@ -1,13 +1,12 @@
 import unittest
 
-from okapi import _OkapiBase, DIDKey
+from okapi import DIDKey, load_library
 from keys_pb2 import GenerateKeyRequest, KeyType
 
 
 class MyTestCase(unittest.TestCase):
     def test_load_library(self):
-        # Yes, I know this throws away private convention, but in case we run into issues, throw the exception out the stack.
-        base_okapi = _OkapiBase()
+        base_okapi = load_library()
         self.assertIsNotNone(base_okapi)
 
     def test_generate_key(self):

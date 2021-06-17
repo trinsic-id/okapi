@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Optional, List
 import platform
 import ctypes
 from os.path import join, abspath, dirname
@@ -9,128 +9,161 @@ from transport_pb2 import PackRequest, UnpackRequest, PackResponse, UnpackRespon
     VerifyRequest, VerifyResponse
 
 
-class _ByteBuffer(ctypes.Structure):
+class ByteBuffer(ctypes.Structure):
+    """Buffer allocated by the native library"""
     _fields_ = [
         ("len", ctypes.c_int64),
         ("data", ctypes.POINTER(ctypes.c_uint8))
     ]
 
-    @staticmethod
-    def create_from(obj: Any) -> '_ByteBuffer':
-        request_buffer = _ByteBuffer()
-        request_buffer.len = len(obj)
-        request_buffer.data = ctypes.cast(obj, ctypes.POINTER(ctypes.c_uint8))
-        return request_buffer
+    @property
+    def raw(self) -> ctypes.Array:
+        ret = (ctypes.c_ubyte * self.len).from_address(self.data)
+        setattr(ret, "_ref_", self)  # ensure the buffer isn't dropped
+        return ret
+
+    def __bytes__(self) -> bytes:
+        return ctypes.string_at(self.data, self.len)
+
+    def __repr__(self) -> str:
+        return repr(bytes(self))
+
+    def free(self):
+        func = wrap_native_function("didcomm_byte_buffer_free", arg_types=[ByteBuffer], return_type=None)
+        func(self)
 
 
-class _ExternError(ctypes.Structure):
+class ExternError(ctypes.Structure):
     _fields_ = [
         ("code", ctypes.c_int32),
         ("message", ctypes.c_char_p)
     ]
 
+    def __repr__(self):
+        return f"code={self.code} message={self.message.value.decode('utf-8') if self.code != 0 else ''}"
+
+
+def create_from(obj: bytes) -> ByteBuffer:
+    request_buffer = ByteBuffer()
+    request_buffer.len = len(obj)
+    request_buffer.data = (ctypes.c_ubyte * request_buffer.len).from_buffer_copy(obj)
+    return request_buffer
+
 
 library_name = {'Windows': 'okapi.dll',
                 'Darwin': 'libokapi.dylib',
                 'Linux': 'libokapi.so'}
+OKAPI_DLL = None
 
 
-def load_library() -> '_DLLT':
-    lib_path = join(dirname(abspath(__file__)), 'libs')
-
-    sys = platform.system()
-    try:
-        return ctypes.cdll.LoadLibrary(abspath(join(lib_path, library_name[platform.system()])))
-    except KeyError:
-        raise NotImplementedError(f"Unsupported operating system {sys}: {platform.platform()}")
-
-
-class _OkapiBase(object):
-    _lib = load_library()
-
-    @staticmethod
-    def _copy_response_buffer(response: Any, response_buffer: ctypes.pointer) -> None:
-        bytes_view = memoryview(
-            ctypes.cast(response_buffer.contents.data, ctypes.POINTER(ctypes.c_ubyte * response_buffer.contents.len))[
-                0]).tobytes()
-        response.ParseFromString(bytes_view)
-        _OkapiBase._lib.didcomm_byte_buffer_free(response_buffer.contents)
-
-    @staticmethod
-    def _create_buffers(request) -> tuple[_ByteBuffer, ctypes.pointer, ctypes.pointer]:
-        request_buffer = _ByteBuffer.create_from(request.SerializeToString())
-        response_buffer = ctypes.pointer(_ByteBuffer())
-        error_out = ctypes.pointer(_ExternError())
-
-        return request_buffer, response_buffer, error_out
+def load_library() -> ctypes.CDLL:
+    global OKAPI_DLL
+    if OKAPI_DLL is None:
+        lib_path = join(dirname(abspath(__file__)), 'libs')
+        sys = platform.system()
+        try:
+            OKAPI_DLL = ctypes.CDLL(abspath(join(lib_path, library_name[platform.system()])))
+        except KeyError:
+            raise NotImplementedError(f"Unsupported operating system {sys}: {platform.platform()}")
+    return OKAPI_DLL
 
 
-class DIDKey(_OkapiBase):
+def wrap_native_function(function_name: str, *, arg_types: Optional[List[Any]] = None,
+                         return_type: Optional[Any] = None):
+    library_function = getattr(load_library(), function_name)
+    if arg_types:
+        library_function.argtypes = arg_types
+    if return_type:
+        library_function.restype = return_type
+    else:
+        library_function.restype = ctypes.c_int32
+
+    return library_function
+
+
+def copy_response_buffer(response: Any, response_buffer: ByteBuffer) -> None:
+    response.ParseFromString(bytes(response_buffer))
+    del response_buffer
+
+
+def create_buffers(request) -> tuple[ByteBuffer, ByteBuffer, ExternError]:
+    request_buffer = create_from(request.SerializeToString())
+    response_buffer_pointer = ByteBuffer()
+    error_out = ExternError()
+
+    return request_buffer, response_buffer_pointer, error_out
+
+
+class DIDKey:
     @staticmethod
     def generate(request: GenerateKeyRequest) -> GenerateKeyResponse:
-        request_buffer, response_buffer, error_out = _OkapiBase._create_buffers(request)
-        ret_val = _OkapiBase._lib.didkey_generate(request_buffer, response_buffer, error_out)
-        print(f"Return Value={ret_val}")
+        request_buffer, response_buffer, error_out = create_buffers(request)
+
+        func = wrap_native_function("didkey_generate", arg_types=[ByteBuffer,
+                                                                  ctypes.POINTER(ByteBuffer),
+                                                                  ctypes.POINTER(ExternError)])
+        ret_val = func(request_buffer, ctypes.byref(response_buffer), ctypes.byref(error_out))
+        print(f"Return Value={ret_val} {error_out}")
         response = GenerateKeyResponse()
-        _OkapiBase._copy_response_buffer(response, response_buffer)
+        copy_response_buffer(response, response_buffer)
         return response
 
     @staticmethod
     def resolve(request: ResolveRequest) -> ResolveResponse:
-        request_buffer, response_buffer, error_out = _OkapiBase._create_buffers(request)
-        _OkapiBase._lib.didkey_resolve(request_buffer, response_buffer, error_out)
+        request_buffer, response_buffer, error_out = create_buffers(request)
+        load_library().didkey_resolve(request_buffer, response_buffer, error_out)
         response = ResolveResponse()
-        _OkapiBase._copy_response_buffer(response, response_buffer)
+        copy_response_buffer(response, response_buffer)
         return response
 
 
-class DIDComm(_OkapiBase):
+class DIDComm():
     @staticmethod
     def pack(request: PackRequest) -> PackResponse:
-        request_buffer, response_buffer, error_out = _OkapiBase._create_buffers(request)
-        _OkapiBase._lib.didcomm_pack(request_buffer, response_buffer, error_out)
+        request_buffer, response_buffer, error_out = create_buffers(request)
+        load_library().didcomm_pack(request_buffer, response_buffer, error_out)
         response = PackResponse()
-        _OkapiBase._copy_response_buffer(response, response_buffer)
+        copy_response_buffer(response, response_buffer)
         return response
 
     @staticmethod
     def unpack(request: UnpackRequest) -> UnpackResponse:
-        request_buffer, response_buffer, error_out = _OkapiBase._create_buffers(request)
-        _OkapiBase._lib.didcomm_unpack(request_buffer, response_buffer, error_out)
+        request_buffer, response_buffer, error_out = create_buffers(request)
+        load_library().didcomm_unpack(request_buffer, response_buffer, error_out)
         response = UnpackResponse()
-        _OkapiBase._copy_response_buffer(response, response_buffer)
+        copy_response_buffer(response, response_buffer)
         return response
 
     @staticmethod
     def sign(request: SignRequest) -> SignResponse:
-        request_buffer, response_buffer, error_out = _OkapiBase._create_buffers(request)
-        _OkapiBase._lib.didcomm_sign(request_buffer, response_buffer, error_out)
+        request_buffer, response_buffer, error_out = create_buffers(request)
+        load_library().didcomm_sign(request_buffer, response_buffer, error_out)
         response = SignResponse()
-        _OkapiBase._copy_response_buffer(response, response_buffer)
+        copy_response_buffer(response, response_buffer)
         return response
 
     @staticmethod
     def verify(request: VerifyRequest) -> VerifyResponse:
-        request_buffer, response_buffer, error_out = _OkapiBase._create_buffers(request)
-        _OkapiBase._lib.didcomm_verify(request_buffer, response_buffer, error_out)
+        request_buffer, response_buffer, error_out = create_buffers(request)
+        load_library().didcomm_verify(request_buffer, response_buffer, error_out)
         response = VerifyResponse()
-        _OkapiBase._copy_response_buffer(response, response_buffer)
+        copy_response_buffer(response, response_buffer)
         return response
 
 
-class LDProofs(_OkapiBase):
+class LDProofs():
     @staticmethod
     def create(request: CreateProofRequest) -> CreateProofResponse:
-        request_buffer, response_buffer, error_out = _OkapiBase._create_buffers(request)
-        _OkapiBase._lib.ldproofs_create_proof(request_buffer, response_buffer, error_out)
+        request_buffer, response_buffer, error_out = create_buffers(request)
+        load_library().ldproofs_create_proof(request_buffer, response_buffer, error_out)
         response = CreateProofResponse()
-        _OkapiBase._copy_response_buffer(response, response_buffer)
+        copy_response_buffer(response, response_buffer)
         return response
 
     @staticmethod
     def verify(request: VerifyProofRequest) -> VerifyProofResponse:
-        request_buffer, response_buffer, error_out = _OkapiBase._create_buffers(request)
-        _OkapiBase._lib.ldproofs_verify_proof(request_buffer, response_buffer, error_out)
+        request_buffer, response_buffer, error_out = create_buffers(request)
+        load_library().ldproofs_verify_proof(request_buffer, response_buffer, error_out)
         response = VerifyProofResponse()
-        _OkapiBase._copy_response_buffer(response, response_buffer)
+        copy_response_buffer(response, response_buffer)
         return response
