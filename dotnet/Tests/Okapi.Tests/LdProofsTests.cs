@@ -15,7 +15,7 @@ namespace Okapi.Tests
         [Fact]
         public void GenerateCapabilityInvocationProofWithJcs()
         {
-            var capbility = new JObject
+            var capability = new JObject
             {
                 { "@context", "https://w3id.org/security/v2" },
                 { "target", "urn:trinsic:wallets:noop" },
@@ -31,7 +31,7 @@ namespace Okapi.Tests
             var signedCapability = LDProofs.CreateProof(new CreateProofRequest
             {
                 Key = signingKey,
-                Document = capbility.ToStruct(),
+                Document = capability.ToStruct(),
                 Suite = LdSuite.JcsEd25519Signature2020
             });
 
