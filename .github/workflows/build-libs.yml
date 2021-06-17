@@ -175,16 +175,14 @@ jobs:
 
   test_python:
     name: Test Python code
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        python-version: [3.5, 3.6, 3.7, 3.8, 3.9]
-    needs: [build_linux]
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: [3.7, 3.8, 3.9]
+    needs: [build_linux, build_windows, build_macos]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-          with:
-            submodules: "true"
+      - uses: actions/checkout@v2
       - uses: actions/download-artifact@v2
         with:
           path: ./python/libs
