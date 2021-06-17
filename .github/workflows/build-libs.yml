@@ -172,3 +172,30 @@ jobs:
             nuget push $item.FullName -ApiKey "${{ secrets.NUGET_API_KEY }}" -Source https://api.nuget.org/v3/index.json -SkipDuplicate
           }
         shell: pwsh
+
+  test_python:
+    name: Test Python code
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.5, 3.6, 3.7, 3.8, 3.9]
+    needs: [build_linux]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+          with:
+            submodules: "true"
+      - uses: actions/download-artifact@v2
+        with:
+          path: ./python/libs
+      - name: Install dependencies
+        run: |
+          cd python
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Test with pytest
+        run: |
+          cd python
+          pip install pytest
+          pip install pytest-cov
+          pytest test_keys.py test_ldproofs.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
