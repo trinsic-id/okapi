@@ -55,9 +55,15 @@ class ExternError(ctypes.Structure):
     def __repr__(self):
         return f"code={self.code} message={self.message.decode('utf-8') if self.code != 0 else ''}"
 
+    def free(self):
+        func = wrap_native_function("didcomm_string_free", arg_types=[ctypes.c_char_p])
+        func(self.message)
+
     def raise_error_if_needed(self):
         if self.code != 0:
-            raise DidError(self.code, self.message.decode("utf-8"))
+            string_copy = self.message.decode("utf-8")
+            # self.free()
+            raise DidError(self.code, string_copy)
 
 
 library_name = {'Windows': 'okapi.dll',
