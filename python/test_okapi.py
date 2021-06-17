@@ -1,6 +1,6 @@
 import unittest
 
-from didcommgrpc import _OkapiBase, DIDKey
+from okapi import _OkapiBase, DIDKey
 from keys_pb2 import GenerateKeyRequest, KeyType
 
 
