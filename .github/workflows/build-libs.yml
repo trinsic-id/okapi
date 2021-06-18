@@ -175,7 +175,7 @@ jobs:
         
   publish_binaries:
     name: Upload ${{ matrix.build_job }} artifact
-    runs-on: ${{ matrix.os }}
+    runs-on: [build_macos, build_windows, build_linux]
     strategy:
       matrix:
         include:
