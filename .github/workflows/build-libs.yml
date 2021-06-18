@@ -201,13 +201,13 @@ jobs:
           path: ./libs
       - name: Push packages to release
         uses: svenstaro/upload-release-action@v2
-          with:
-            repo_token: ${{ secrets.GITHUB_TOKEN }}
-            file: ./libs/${{ matrix.artifact_name }}/${{ matrix.library_file }}
-            asset_name: ${{ matrix.artifact_name }}
-            tag: ${{ github.ref }}
-            overwrite: true
-            body: "Okapi binaries"
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./libs/${{ matrix.artifact_name }}/${{ matrix.library_file }}
+          asset_name: ${{ matrix.artifact_name }}
+          tag: ${{ github.ref }}
+          overwrite: true
+          body: "Okapi binaries"
 
   test_python:
     name: Test Python code
