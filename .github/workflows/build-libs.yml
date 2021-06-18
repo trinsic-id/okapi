@@ -179,7 +179,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: [3.6, 3.7, 3.8, 3.9]
+        python-version: [3.8, 3.9]
     needs: [build_linux, build_windows, build_macos]
     steps:
       - uses: actions/checkout@v2
@@ -203,8 +203,7 @@ jobs:
           cd python
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install pytest
-          pip install pytest-cov
+          pip install pytest pytest-cov
       - name: Test with pytest
         run: |
           cd python
