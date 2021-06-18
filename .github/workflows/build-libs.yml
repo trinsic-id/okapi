@@ -203,9 +203,11 @@ jobs:
           cd python
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install pytest
+          pip install pytest-cov
       - name: Test with pytest
         run: |
           cd python
-          pip install pytest
-          pip install pytest-cov
-          pytest test_keys.py test_ldproofs.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+          pytest --cache-clear tests/ --cov=app > pytest-coverage.txt
+      - name: Comment coverage
+        uses: coroo/pytest-coverage-commentator@v1.0.2
