@@ -75,7 +75,7 @@ OKAPI_DLL = None
 def load_library() -> ctypes.CDLL:
     global OKAPI_DLL
     if OKAPI_DLL is None:
-        lib_path = join(dirname(abspath(__file__)), 'libs')
+        lib_path = join(dirname(abspath(__file__)), '../../libs')
         sys = platform.system()
         try:
             OKAPI_DLL = ctypes.CDLL(abspath(join(lib_path, library_name[platform.system()])))

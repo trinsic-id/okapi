@@ -10,7 +10,7 @@ def generate_proto_files() -> None:
     :return:
     """
     file_path = abspath(dirname(abspath(__file__)))
-    base_path = abspath(join(file_path, '..', 'proto'))
+    base_path = abspath(join(file_path, '../../..', 'proto'))
     proto_file_path = abspath(join(base_path, "**", "*.proto"))
     base_command = ['C:\\bin\\protoc.exe', f'--proto_path={base_path}', f'--proto_path=C:\\bin',
                     f'--python_out={file_path}']
@@ -27,7 +27,7 @@ def generate_better_proto_files() -> None:
     :return:
     """
     output_path = abspath(dirname(abspath(__file__)))
-    base_path = abspath(join(output_path, '', '..', 'proto'))
+    base_path = abspath(join(output_path, '', '../../..', 'proto'))
     proto_file_path = abspath(join(base_path, "**", "*.proto"))
     # Inject an empty python code file path to mimic the first argument.
     # TODO - Come up with better locations, import google defaults from the package location (see code in protoc.main)
@@ -36,6 +36,11 @@ def generate_better_proto_files() -> None:
     base_command.extend(glob.glob(proto_file_path, recursive=True))
     print(base_command)
     protoc.main(base_command)
+
+
+def download_binary_files() -> None:
+    # TODO - Download the appropriate library files
+    raise NotImplementedError
 
 
 if __name__ == "__main__":
