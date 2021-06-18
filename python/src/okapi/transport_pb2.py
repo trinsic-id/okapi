@@ -11,8 +11,8 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-import keys_pb2 as keys__pb2
-from pbmse import pbmse_pb2 as pbmse_dot_pbmse__pb2
+import src.okapi.keys_pb2 as keys__pb2
+from src.okapi.pbmse import pbmse_pb2 as pbmse_dot_pbmse__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(

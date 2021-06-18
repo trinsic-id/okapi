@@ -1,5 +1,5 @@
 from okapi.keys import DIDKey
-from keys_pb2 import GenerateKeyRequest, KeyType
+from okapi.keys_pb2 import GenerateKeyRequest, KeyType
 
 request = GenerateKeyRequest()
 request.key_type = KeyType.Ed25519

@@ -379,3 +379,4 @@ native/out.h
 /Android/app/local.properties
 /java/.idea
 /dotnet/.idea
+python/pytest-coverage.txt
