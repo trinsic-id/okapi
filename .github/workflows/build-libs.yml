@@ -175,7 +175,7 @@ jobs:
         
   publish_binaries:
     name: Upload ${{ matrix.build_job }} artifact
-    runs-on: [build_macos, build_windows, build_linux]
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         include:
@@ -194,7 +194,7 @@ jobs:
     if: |
       github.event_name == 'release' &&
       github.event.action == 'published'
-    needs: ${{ matrix.build_job }}
+    needs: [build_macos, build_windows, build_linux]
     steps:
       - uses: actions/download-artifact@v2
         with:
