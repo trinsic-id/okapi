@@ -172,6 +172,42 @@ jobs:
             nuget push $item.FullName -ApiKey "${{ secrets.NUGET_API_KEY }}" -Source https://api.nuget.org/v3/index.json -SkipDuplicate
           }
         shell: pwsh
+        
+  publish_binaries:
+    name: Upload ${{ matrix.build_job }} artifact
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            library_file: libokapi.so
+            artifact_name: linux
+            build_job: build_linux
+          - os: windows-latest
+            library_file: okapi.dll
+            artifact_name: windows
+            build_job: build_windows
+          - os: macos-latest
+            library_file: libokapi.dylib
+            artifact_name: macos
+            build_job: build_macos
+    if: |
+      github.event_name == 'release' &&
+      github.event.action == 'published'
+    needs: [build_macos, build_windows, build_linux]
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          path: ./libs
+      - name: Push packages to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./libs/${{ matrix.artifact_name }}/${{ matrix.library_file }}
+          asset_name: ${{ matrix.artifact_name }}
+          tag: ${{ github.ref }}
+          overwrite: true
+          body: "Okapi binaries"
 
   test_python:
     name: Test Python code
