@@ -1,4 +1,4 @@
-from okapi import DIDKey
+from okapi.keys import DIDKey
 from keys_pb2 import GenerateKeyRequest, KeyType
 
 request = GenerateKeyRequest()

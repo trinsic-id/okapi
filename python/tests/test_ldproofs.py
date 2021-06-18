@@ -3,9 +3,9 @@ import unittest
 
 import google.protobuf.struct_pb2
 
-from keys_pb2 import GenerateKeyRequest, KeyType
-from okapi import DIDKey, LDProofs
-from proofs_pb2 import CreateProofRequest, LdSuite
+from src.okapi.keys_pb2 import GenerateKeyRequest, KeyType
+from src.okapi.keys import DIDKey, LDProofs
+from src.okapi.proofs_pb2 import CreateProofRequest, LdSuite
 
 
 class LdProofsTests(unittest.TestCase):
