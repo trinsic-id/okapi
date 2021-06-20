@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyName>Okapi.Net</AssemblyName>
     <PackageId>Okapi.Net</PackageId>
-    <TargetFrameworks>netstandard2.1;xamarinios10</TargetFrameworks>
+    <TargetFramework>net5.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <SkipNativeLibsCopy>false</SkipNativeLibsCopy>
     <Protobuf_ToolsOs Condition="'$([MSBuild]::IsOsPlatform(OSX))'">macosx</Protobuf_ToolsOs>
