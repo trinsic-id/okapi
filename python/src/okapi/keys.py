@@ -1,7 +1,7 @@
-from keys_pb2 import GenerateKeyRequest, GenerateKeyResponse, ResolveRequest, ResolveResponse
-from okapi_utils import typed_wrap_and_call
-from proofs_pb2 import CreateProofRequest, CreateProofResponse, VerifyProofRequest, VerifyProofResponse
-from transport_pb2 import PackRequest, UnpackRequest, PackResponse, UnpackResponse, SignRequest, SignResponse, \
+from .keys_pb2 import GenerateKeyRequest, GenerateKeyResponse, ResolveRequest, ResolveResponse
+from .okapi_utils import typed_wrap_and_call
+from .proofs_pb2 import CreateProofRequest, CreateProofResponse, VerifyProofRequest, VerifyProofResponse
+from .transport_pb2 import PackRequest, UnpackRequest, PackResponse, UnpackResponse, SignRequest, SignResponse, \
     VerifyRequest, VerifyResponse
 
 
