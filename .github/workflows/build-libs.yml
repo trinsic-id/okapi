@@ -115,6 +115,29 @@ jobs:
         with:
           name: android
           path: ./libs/android/*
+          
+  code_cover_dotnet_sdk:
+    name: Dotnet SDK Testing
+    runs-on: windows-latest
+    needs: [build_windows]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - uses: actions/download-artifact@v2
+        with:
+          path: ./libs
+      - name: Test coverage
+        run: ./Test.ps1
+        working-directory: ./dotnet
+        shell: pwsh
+      - name: Comment report
+        uses: 5monkeys/cobertura-action@master
+        with:
+          path: dotnet/Tests/Okapi.Tests/TestResults/coverage.cobertura.xml
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          minimum_coverage: 75
+          show_class_names: true
+          fail_below_threshold: false
 
   package_nuget:
     name: Package Nuget

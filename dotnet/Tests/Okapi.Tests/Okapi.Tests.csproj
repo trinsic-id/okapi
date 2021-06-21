@@ -2,7 +2,6 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
-
         <IsPackable>false</IsPackable>
     </PropertyGroup>
 
@@ -20,8 +19,12 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="FluentAssertions" Version="5.10.3" />
-        <PackageReference Include="Multiformats.Base" Version="2.0.2" />
+        <PackageReference Include="coverlet.msbuild" Version="2.9.0">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="FluentAssertions" Version="5.10.3"/>
+        <PackageReference Include="Multiformats.Base" Version="2.0.2"/>
     </ItemGroup>
 
     <ItemGroup>
