@@ -118,8 +118,8 @@ jobs:
           
   code_cover_dotnet_sdk:
     name: Dotnet SDK Testing
-    runs-on: linux-latest
-    needs: [build_linux]
+    runs-on: windows-latest
+    needs: [build_windows]
     steps:
       - name: Checkout
         uses: actions/checkout@v1
