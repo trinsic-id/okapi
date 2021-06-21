@@ -148,9 +148,9 @@ jobs:
         uses: actions/checkout@v1
         with:
           submodules: "true"
-      - uses: actions/setup-dotnet@v1
+      - uses: microsoft/setup-msbuild@v1.0.2
         with:
-          dotnet-version: '5.x'
+          vs-version: '[16.8,16.11)'
 
       - uses: actions/download-artifact@v2
         with:

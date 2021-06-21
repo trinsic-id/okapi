@@ -38,13 +38,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="build\netstandard2.1\Okapi.Net.targets" Pack="true" PackagePath="build/netstandard2.1" Visible="false" />
+    <Content Include="build\netcore5\Okapi.Net.targets" Pack="true" PackagePath="build/netstandard2.1" Visible="false" />
     <Content Include="build\xamarinios10\Okapi.Net.targets" Pack="true" PackagePath="build/xamarinios10" Visible="false" />
     <Content Include="build\MonoAndroid10\Okapi.Net.targets" Pack="true" PackagePath="build/MonoAndroid10" Visible="false" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="build\netstandard2.1\Okapi.Net.targets" Visible="false" />
+    <None Update="build\netcore5\Okapi.Net.targets" Visible="false" />
     <None Update="build\xamarinios10\Okapi.Net.targets" Visible="false" />
     <None Update="build\MonoAndroid10\Okapi.Net.targets" Visible="false" />
   </ItemGroup>
