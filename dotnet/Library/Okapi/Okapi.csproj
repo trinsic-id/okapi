@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyName>Okapi.Net</AssemblyName>
     <PackageId>Okapi.Net</PackageId>
-    <TargetFrameworks>netstandard2.1;xamarinios10</TargetFrameworks>
+    <TargetFrameworks>net5.0;xamarinios10</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <SkipNativeLibsCopy>false</SkipNativeLibsCopy>
     <Protobuf_ToolsOs Condition="'$([MSBuild]::IsOsPlatform(OSX))'">macosx</Protobuf_ToolsOs>
@@ -13,10 +13,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Google.Protobuf" Version="3.15.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="Grpc" Version="2.36.1" />
-    <PackageReference Include="Grpc.Tools" Version="2.36.1" PrivateAssets="All" />
+    <PackageReference Include="Google.Protobuf" Version="3.17.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Grpc" Version="2.38.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.38.0" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,13 +38,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="build\netstandard2.1\Okapi.Net.targets" Pack="true" PackagePath="build/netstandard2.1" Visible="false" />
+    <Content Include="build\netcore5\Okapi.Net.targets" Pack="true" PackagePath="build/netstandard2.1" Visible="false" />
     <Content Include="build\xamarinios10\Okapi.Net.targets" Pack="true" PackagePath="build/xamarinios10" Visible="false" />
     <Content Include="build\MonoAndroid10\Okapi.Net.targets" Pack="true" PackagePath="build/MonoAndroid10" Visible="false" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="build\netstandard2.1\Okapi.Net.targets" Visible="false" />
+    <None Update="build\netcore5\Okapi.Net.targets" Visible="false" />
     <None Update="build\xamarinios10\Okapi.Net.targets" Visible="false" />
     <None Update="build\MonoAndroid10\Okapi.Net.targets" Visible="false" />
   </ItemGroup>
