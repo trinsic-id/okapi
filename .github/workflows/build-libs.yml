@@ -163,7 +163,7 @@ jobs:
 
       - name: Create Nuget package
         run: |
-          "%programfiles(x86)%\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\msbuild.exe" /t:restore,pack /p:SkipNativeLibsCopy=true /p:Configuration=Release /p:PackageVersion=$env:PACKAGE_VERSION
+          "%programfiles(x86)%\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\msbuild.exe" -target:restore,pack -property:SkipNativeLibsCopy=true -property:Configuration=Release -property:PackageVersion=$env:PACKAGE_VERSION
         shell: pwsh
         working-directory: ./dotnet/Library/Okapi
 
