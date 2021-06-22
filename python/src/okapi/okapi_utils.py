@@ -66,9 +66,9 @@ class ExternError(ctypes.Structure):
             raise DidError(self.code, string_copy)
 
 
-library_name = {'Windows': 'okapi.dll',
-                'Darwin': 'libokapi.dylib',
-                'Linux': 'libokapi.so'}
+library_name = {'Windows': join('windows', 'okapi.dll'),
+                'Darwin': join('macos', 'libokapi.dylib'),
+                'Linux': join('linux', 'libokapi.so')}
 OKAPI_DLL = None
 
 

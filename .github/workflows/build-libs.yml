@@ -247,12 +247,6 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           path: ./python/libs
-      - name: Move libraries up one level
-        run: |
-          cd python/libs
-          cp ./linux/libokapi.so ./libokapi.so
-          cp ./macos/libokapi.dylib ./libokapi.dylib
-          cp ./windows/okapi.dll ./okapi.dll
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
