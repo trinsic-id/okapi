@@ -141,17 +141,13 @@ jobs:
 
   package_nuget:
     name: Package Nuget
-    runs-on: macos-latest
+    runs-on: windows-latest
     needs: [build_macos, build_windows, build_linux, build_ios, build_android]
     steps:
       - name: Checkout
         uses: actions/checkout@v1
         with:
           submodules: "true"
-      - uses: microsoft/setup-msbuild@v1.0.2
-        with:
-          vs-version: '[16.8,16.11)'
-
       - uses: actions/download-artifact@v2
         with:
           path: ./libs
