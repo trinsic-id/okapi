@@ -152,7 +152,7 @@ jobs:
         with:
           path: ./libs
       - name: Setup MSBuild.exe
-        uses: warrenbuckley/Setup-MSBuild@v1
+        uses: microsoft/setup-msbuild@v1.0.2
       - name: Generate Package Version
         run: |
           $packageVersion = node -p -e "require('./package.json').version"
