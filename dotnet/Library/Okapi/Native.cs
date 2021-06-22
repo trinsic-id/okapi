@@ -10,9 +10,9 @@ namespace Okapi
     internal class Native
     {
 #if __IOS__
-        internal const string LibraryName = "__Internal";
+        private const string LibraryName = "__Internal";
 #else
-        internal const string LibraryName = "okapi";
+        private const string LibraryName = "okapi";
 #endif
 
         internal delegate int NativeMethod(ByteBuffer request, out ByteBuffer response, out ExternError error);

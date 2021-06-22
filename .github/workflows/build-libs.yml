@@ -141,17 +141,18 @@ jobs:
 
   package_nuget:
     name: Package Nuget
-    runs-on: macos-latest
+    runs-on: windows-latest
     needs: [build_macos, build_windows, build_linux, build_ios, build_android]
     steps:
       - name: Checkout
         uses: actions/checkout@v1
         with:
           submodules: "true"
-
       - uses: actions/download-artifact@v2
         with:
           path: ./libs
+      - name: Setup MSBuild.exe
+        uses: microsoft/setup-msbuild@v1.0.2
       - name: Generate Package Version
         run: |
           $packageVersion = node -p -e "require('./package.json').version"
@@ -163,7 +164,8 @@ jobs:
         shell: pwsh
 
       - name: Create Nuget package
-        run: msbuild /t:restore,pack /p:SkipNativeLibsCopy=true /p:Configuration=Release /p:PackageVersion=$env:PACKAGE_VERSION
+        run: |
+          msbuild -target:restore,pack -property:SkipNativeLibsCopy=true -property:Configuration=Release -property:PackageVersion=$env:PACKAGE_VERSION
         shell: pwsh
         working-directory: ./dotnet/Library/Okapi
 
