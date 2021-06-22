@@ -11,7 +11,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-from models import Attributes_pb2 as models_dot_Attributes__pb2
+from src.trinsic.models import Attributes_pb2 as models_dot_Attributes__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
