@@ -34,7 +34,7 @@ on:
     steps:
       - name: Download workflow artifact
         uses: dawidd6/action-download-artifact@v2.14.0
-          workflow: build-libs.yml
+          workflow: "build-libs.yml"
           path: ./libs
           branch: main
       - name: Push packages to release

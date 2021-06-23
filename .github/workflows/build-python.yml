@@ -15,7 +15,7 @@ on:
       - uses: actions/checkout@v2
       - name: Download workflow artifact
         uses: dawidd6/action-download-artifact@v2.14.0
-          workflow: build-libs.yml
+          workflow: "build-libs.yml"
           path: ./python/libs
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
