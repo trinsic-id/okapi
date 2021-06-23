@@ -5,6 +5,7 @@ on:
   release:
     types: [ published ]
 
+jobs:
   publish_nuget:
     name: Publish Nuget
     if: |

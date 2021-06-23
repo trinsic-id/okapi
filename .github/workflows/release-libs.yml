@@ -5,6 +5,7 @@ on:
   release:
     types: [published, prereleased]
 
+jobs:
   publish_binaries:
     name: Upload ${{ matrix.build_job }} artifact
     runs-on: ${{ matrix.os }}
