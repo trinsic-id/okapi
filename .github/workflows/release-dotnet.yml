@@ -1,0 +1,30 @@
+name: Build .NET SDK
+
+on:
+  workflow_dispatch:
+  release:
+    types: [ published ]
+
+jobs:
+  publish_nuget:
+    name: Publish Nuget
+    if: |
+      github.event_name == 'release' &&
+      github.event.action == 'published' &&
+      github.release.draft == false &&
+      github.release.prerelease == false
+    runs-on: windows-latest
+    steps:
+      - name: Download workflow artifact
+        uses: dawidd6/action-download-artifact@v2.14.0
+        with:
+          workflow: "build-dotnet.yml"
+          path: ./nuget
+          branch: main
+      - name: Push packages to Nuget
+        run: |
+          foreach ($item in get-childitem ./nuget -recurse | select-object FullName | where { $_.FullName.EndsWith("nupkg") })
+          {
+            nuget push $item.FullName -ApiKey "${{ secrets.NUGET_API_KEY }}" -Source https://api.nuget.org/v3/index.json -SkipDuplicate
+          }
+        shell: pwsh

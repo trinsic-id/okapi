@@ -1,0 +1,36 @@
+name: Build Python SDK
+
+on:
+  workflow_dispatch:
+  release:
+    types: [ published, prereleased ]
+  push:
+    branches:
+      - main
+
+jobs:
+  release_testpypi:
+    name: TestPyPI deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.9
+      - name: Install pypa/build
+        run: |
+          cd python
+          python -m pip install build
+      - name: Build a binary wheel and a source tarball
+        run: |
+          cd python
+          python -m build --sdist --wheel --outdir dist/ .
+      - name: Publish distribution 📦 to Test PyPI
+        uses: pypa/gh-action-pypi-publish@master
+        with:
+          password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+          repository_url: https://test.pypi.org/legacy/
+          packages_dir: ./python/dist
+          skip_existing: true
+  # TODO - Support releasing to PyPI
