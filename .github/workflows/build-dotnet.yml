@@ -3,8 +3,6 @@ name: Build .NET SDK
 on:
   workflow_dispatch:
   pull_request:
-  release:
-    types: [published, prereleased]
 
   code_cover_dotnet_sdk:
     name: Dotnet SDK Testing
@@ -13,8 +11,9 @@ on:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-      - uses: actions/download-artifact@v2
-        with:
+      - name: Download workflow artifact
+        uses: dawidd6/action-download-artifact@v2.14.0
+          workflow: build-libs.yml
           path: ./libs
       - name: Test coverage
         run: ./Test.ps1
@@ -66,24 +65,3 @@ on:
           path: |
             ./dotnet/Library/Okapi/bin/Release/*.nupkg
             ./dotnet/Library/Okapi/bin/Release/*.snupkg
-
-  publish_nuget:
-    name: Publish Nuget
-    if: |
-      github.event_name == 'release' &&
-      github.event.action == 'published' &&
-      github.release.draft == false &&
-      github.release.prerelease == false
-    runs-on: windows-latest
-    needs: [package_nuget]
-    steps:
-      - uses: actions/download-artifact@v2
-        with:
-          path: ./nuget
-      - name: Push packages to Nuget
-        run: |
-          foreach ($item in get-childitem ./nuget -recurse | select-object FullName | where { $_.FullName.EndsWith("nupkg") })
-          {
-            nuget push $item.FullName -ApiKey "${{ secrets.NUGET_API_KEY }}" -Source https://api.nuget.org/v3/index.json -SkipDuplicate
-          }
-        shell: pwsh

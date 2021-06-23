@@ -31,15 +31,12 @@ on:
             library_file: libokapi.a
             artifact_name: ios
             build_job: build_ios
-    if: |
-      github.event_name == 'release' &&
-      github.event.action == 'published'
-    needs: [ build_macos, build_windows, build_linux, build_android, build_ios ]
     steps:
       - name: Download workflow artifact
         uses: dawidd6/action-download-artifact@v2.14.0
           workflow: build-libs.yml
           path: ./libs
+          branch: main
       - name: Push packages to release
         uses: svenstaro/upload-release-action@v2
         with:

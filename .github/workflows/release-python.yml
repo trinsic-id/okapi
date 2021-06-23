@@ -2,6 +2,8 @@ name: Build Python SDK
 
 on:
   workflow_dispatch:
+  release:
+    types: [ published, prereleased ]
   push:
     branches:
       - main
@@ -30,3 +32,4 @@ on:
           repository_url: https://test.pypi.org/legacy/
           packages_dir: ./python/dist
           skip_existing: true
+  # TODO - Support releasing to PyPI
