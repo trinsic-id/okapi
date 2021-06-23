@@ -34,12 +34,15 @@ jobs:
           packages_dir: ./python/dist
           skip_existing: true
       - name: Push packages to release
-          uses: svenstaro/upload-release-action@v2
-          with:
-            repo_token: ${{ secrets.GITHUB_TOKEN }}
-            file: ./python/dist/*
-            asset_name: "python"
-            tag: ${{ github.ref }}
-            overwrite: true
-            body: "Python SDK package"
+        if: |
+          github.event_name == 'release' &&
+          github.event.action == 'published' &&
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./python/dist/*
+          asset_name: "python"
+          tag: ${{ github.ref }}
+          overwrite: true
+          body: "Python SDK package"
   # TODO - Support releasing to PyPI
