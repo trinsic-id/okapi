@@ -383,3 +383,4 @@ python/pytest-coverage.txt
 libs/
 python/dist/
 python/src/trinsic_okapi.egg-info/
+.github/.idea/
