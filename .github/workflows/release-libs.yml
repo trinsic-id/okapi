@@ -1,0 +1,51 @@
+name: Build Platform Libraries
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published, prereleased]
+
+  publish_binaries:
+    name: Upload ${{ matrix.build_job }} artifact
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            library_file: libokapi.so
+            artifact_name: linux
+            build_job: build_linux
+          - os: windows-latest
+            library_file: okapi.dll
+            artifact_name: windows
+            build_job: build_windows
+          - os: macos-latest
+            library_file: libokapi.dylib
+            artifact_name: macos
+            build_job: build_macos
+          - os: macos-latest
+            library_file: ./libs/android/*
+            artifact_name: android
+            build_job: build_android
+          - os: macos-latest
+            library_file: libokapi.a
+            artifact_name: ios
+            build_job: build_ios
+    if: |
+      github.event_name == 'release' &&
+      github.event.action == 'published'
+    needs: [ build_macos, build_windows, build_linux, build_android, build_ios ]
+    steps:
+      - name: Download workflow artifact
+        uses: dawidd6/action-download-artifact@v2.14.0
+          workflow: build-libs.yml
+          path: ./libs
+      - name: Push packages to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./libs/${{ matrix.artifact_name }}/${{ matrix.library_file }}
+          asset_name: ${{ matrix.artifact_name }}
+          tag: ${{ github.ref }}
+          overwrite: true
+          body: "Okapi binaries"
