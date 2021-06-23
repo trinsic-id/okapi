@@ -16,6 +16,7 @@ on:
     steps:
       - name: Download workflow artifact
         uses: dawidd6/action-download-artifact@v2.14.0
+        with:
           workflow: "build-dotnet.yml"
           path: ./nuget
           branch: main

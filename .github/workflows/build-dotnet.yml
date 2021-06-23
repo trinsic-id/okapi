@@ -37,6 +37,7 @@ on:
           submodules: "true"
       - name: Download workflow artifact
         uses: dawidd6/action-download-artifact@v2.14.0
+        with:
           workflow: "build-libs.yml"
           path: ./libs
       - name: Setup MSBuild.exe
