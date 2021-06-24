@@ -1,4 +1,4 @@
-name: Build Python SDK
+name: Release Python SDK
 
 on:
   workflow_dispatch:
@@ -14,6 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
+      - name: Download workflow artifact
+          uses: dawidd6/action-download-artifact@v2.14.0
+          with:
+            workflow: "build-libs.yml"
+            path: ./python/libs
+            branch: main
       - name: Set up Python 3.9
         uses: actions/setup-python@v1
         with:
@@ -21,6 +27,7 @@ jobs:
       - name: Install pypa/build
         run: |
           cd python
+          python -m pip install --upgrade pip
           python -m pip install build
       - name: Build a binary wheel and a source tarball
         run: |
