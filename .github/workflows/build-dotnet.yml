@@ -7,7 +7,7 @@ on:
 jobs:
   code_cover_dotnet_sdk:
     name: Dotnet SDK Testing
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -20,6 +20,11 @@ jobs:
         run: ./Test.ps1
         working-directory: ./dotnet
         shell: pwsh
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1.18
+        if: always()
+        with:
+          files: dotnet/Tests/Okapi.Tests/TestResults/coverage.opencover.xml
       - name: Comment report
         uses: 5monkeys/cobertura-action@master
         with:

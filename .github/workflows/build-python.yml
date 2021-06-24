@@ -34,7 +34,15 @@ jobs:
       - name: Test with pytest
         run: |
           cd python
-          pytest --cache-clear ./tests --cov=src > pytest-coverage.txt
+          pytest --cache-clear ./tests --junitxml=pytest_junit.xml --cov=src > pytest-coverage.txt
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1.18
+        if: |
+          always() &&
+          ${{ matrix.os }} == 'ubuntu-latest' &&
+          ${{ matrix.python-version }} == '3.9'
+        with:
+          files: python/pytest_junit.xml
       - name: Comment coverage
         uses: coroo/pytest-coverage-commentator@v1.0.2
         if: |
