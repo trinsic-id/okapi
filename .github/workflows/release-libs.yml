@@ -4,6 +4,9 @@ on:
   workflow_dispatch:
   release:
     types: [published, prereleased]
+  push:
+    branches:
+      - main
 
 jobs:
   publish_binaries:
@@ -41,6 +44,7 @@ jobs:
           branch: main
       - name: Push packages to release
         uses: svenstaro/upload-release-action@v2
+        if: github.event_name == 'release'
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ./libs/${{ matrix.artifact_name }}/${{ matrix.library_file }}
