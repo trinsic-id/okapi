@@ -78,7 +78,7 @@ def load_library() -> ctypes.CDLL:
         lib_path = join(dirname(abspath(__file__)), '../../libs')
         sys = platform.system()
         try:
-            OKAPI_DLL = ctypes.CDLL(abspath(join(lib_path, library_name[platform.system()])))
+            OKAPI_DLL = ctypes.CDLL(abspath(join(lib_path, library_name[sys])))
         except KeyError:
             raise NotImplementedError(f"Unsupported operating system {sys}: {platform.platform()}")
     return OKAPI_DLL
