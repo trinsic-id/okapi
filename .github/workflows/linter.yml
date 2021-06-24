@@ -1,0 +1,17 @@
+name: Github action linter
+
+on:
+  workflow_dispatch:
+  release:
+    types: [ published, prereleased ]
+
+jobs:
+  lint_github_actions:
+    name: Github action YAML lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: YAML Lint
+        uses: ibiqlik/action-yamllint@v3.0.2
+        with:
+          file_or_dir: .github/*.yaml
