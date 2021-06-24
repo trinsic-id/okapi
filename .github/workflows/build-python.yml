@@ -35,18 +35,29 @@ jobs:
         run: |
           cd python
           pytest --cache-clear ./tests --junitxml=pytest_junit.xml --cov=src > pytest-coverage.txt
+      - name: Upload nuget artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: pytest-results
+          path: |
+            ./python/pytest*.*
+
+  upload_test_results:
+    name: Upload Python Test Results
+    runs-on: ubuntu-latest
+    needs: [test_python]
+    steps:
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v2.0.10
+        with:
+          name: pytest-results
+          path: python
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1.18
-        if: |
-          ${{ success() || failure() }} &&
-          ${{ matrix.os }} == 'ubuntu-latest' &&
-          ${{ matrix.python-version }} == '3.9'
+        if: always()
         with:
           files: python/pytest_junit.xml
       - name: Comment coverage
         uses: coroo/pytest-coverage-commentator@v1.0.2
-        if: |
-          ${{ matrix.os }} == 'ubuntu-latest' &&
-          ${{ matrix.python-version }} == '3.9'
         with:
           pytest-coverage: ./python/pytest-coverage.txt
