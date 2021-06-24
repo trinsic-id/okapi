@@ -38,7 +38,7 @@ jobs:
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1.18
         if: |
-          always() &&
+          ${{ success() || failure() }} &&
           ${{ matrix.os }} == 'ubuntu-latest' &&
           ${{ matrix.python-version }} == '3.9'
         with:
