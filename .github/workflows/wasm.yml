@@ -4,6 +4,10 @@ on:
   pull_request:
     branches:
       - main
+    paths:
+      - "native/**"
+      - "proto/**"
+      - "wasm/**"
   push:
     branches:
       - main
@@ -60,10 +64,6 @@ jobs:
       - uses: jetli/wasm-pack-action@v0.3.0
         with:
           version: 'latest'
-      # - run: |
-      #     rustup toolchain uninstall stable
-      #     rustup toolchain install stable
-      #     rustup toolchain install stable --target wasm32-unknown-unknown
       - run: npm run start
       - run: npm run build
       - name: Generate Package Version

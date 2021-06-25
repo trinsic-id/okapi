@@ -3,6 +3,9 @@ name: Build Platform Libraries
 on:
   workflow_dispatch:
   pull_request:
+    paths:
+      - "native/**"
+      - "proto/**"
   release:
     types: [published, prereleased]
   push:
