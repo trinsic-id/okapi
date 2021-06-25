@@ -3,6 +3,9 @@ name: Build Python SDK
 on:
   workflow_dispatch:
   pull_request:
+    paths:
+      - "python/**"
+      - "proto/**"
   push:
     branches:
       - main
