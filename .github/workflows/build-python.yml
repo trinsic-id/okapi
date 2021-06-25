@@ -24,7 +24,7 @@ jobs:
         uses: dawidd6/action-download-artifact@v2.14.0
         with:
           workflow: "build-libs.yml"
-          path: ./python/libs
+          path: ./python/okapi/libs
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
@@ -40,7 +40,7 @@ jobs:
       - name: Test with pytest
         run: |
           cd python
-          pytest --cache-clear ./tests --junitxml=pytest_junit.xml --cov=src > pytest-coverage.txt
+          pytest --cache-clear ./tests --junitxml=pytest_junit.xml --cov=.
       - name: Upload nuget artifact
         uses: actions/upload-artifact@v2
         with:
@@ -63,7 +63,3 @@ jobs:
         if: always()
         with:
           files: python/pytest_junit.xml
-      - name: Comment coverage
-        uses: coroo/pytest-coverage-commentator@v1.0.2
-        with:
-          pytest-coverage: ./python/pytest-coverage.txt
