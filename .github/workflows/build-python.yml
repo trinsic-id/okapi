@@ -37,7 +37,7 @@ jobs:
       - name: Test with pytest
         run: |
           cd python
-          pytest --cache-clear ./tests --junitxml=pytest_junit.xml --cov=. > pytest-coverage.txt
+          pytest --cache-clear ./tests --junitxml=pytest_junit.xml --cov=.
       - name: Upload nuget artifact
         uses: actions/upload-artifact@v2
         with:
@@ -60,7 +60,3 @@ jobs:
         if: always()
         with:
           files: python/pytest_junit.xml
-      - name: Comment coverage
-        uses: coroo/pytest-coverage-commentator@v1.0.2
-        with:
-          pytest-coverage: ./python/pytest-coverage.txt
