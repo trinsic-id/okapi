@@ -6,7 +6,7 @@ from os.path import join, dirname, abspath
 import urllib3
 from github import Github
 
-import src.okapi.okapi_utils
+import okapi.okapi_utils
 
 
 def generate_proto_files(base_path: str = None, file_path: str = None) -> None:
@@ -29,10 +29,10 @@ def generate_proto_files(base_path: str = None, file_path: str = None) -> None:
 def download_binary_files() -> None:
     g = Github()
     latest_including_dev_release = g.get_repo('trinsic-id/okapi').get_releases()[0]
-    download_path = src.okapi.okapi_utils.library_name[platform.system()]
+    download_path = okapi.okapi_utils.library_name[platform.system()]
     system_asset = [asset for asset in latest_including_dev_release.get_assets() if asset.name in download_path][0]
 
-    libs_path = abspath(join(abspath(dirname(abspath(__file__))),'..', '..', 'libs', download_path))
+    libs_path = abspath(join(abspath(dirname(abspath(__file__))), '../src', '..', 'libs', download_path))
     libs_dir = dirname(libs_path)
 
     os.makedirs(libs_dir, exist_ok=True)
