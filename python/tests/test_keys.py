@@ -2,9 +2,9 @@ import base64
 import unittest
 import base58
 
-from src.okapi.keys import DIDKey
-from src.okapi.keys_pb2 import GenerateKeyRequest, KeyType, GenerateKeyResponse
-from src.okapi.okapi_utils import DidError
+from okapi.keys import DIDKey
+from okapi.keys_pb2 import GenerateKeyRequest, KeyType, GenerateKeyResponse
+from okapi.okapi_utils import DidError
 
 
 def base64_padding(base_64: str) -> str:

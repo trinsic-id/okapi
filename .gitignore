@@ -380,7 +380,9 @@ native/out.h
 /java/.idea
 /dotnet/.idea
 python/pytest-coverage.txt
-libs/
+/libs/
 python/dist/
 python/src/trinsic_okapi.egg-info/
 .github/.idea/
+python/trinsic_okapi.egg-info/
+python/okapi/trinsic_okapi.egg-info/
