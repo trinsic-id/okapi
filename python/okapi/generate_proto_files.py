@@ -1,6 +1,8 @@
-import glob, platform, subprocess
+import glob
 import os
+import platform
 import shutil
+import subprocess
 from os.path import join, dirname, abspath
 
 import urllib3
