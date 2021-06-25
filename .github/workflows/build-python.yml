@@ -6,6 +6,7 @@ on:
     paths:
       - "python/**"
       - "proto/**"
+      - ".github/workflows/*python*"
   push:
     branches:
       - main
