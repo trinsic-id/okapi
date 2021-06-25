@@ -37,7 +37,7 @@ jobs:
       - name: Test with pytest
         run: |
           cd python
-          pytest --cache-clear ./tests --junitxml=pytest_junit.xml --cov=src > pytest-coverage.txt
+          pytest --cache-clear ./tests --junitxml=pytest_junit.xml > pytest-coverage.txt
       - name: Upload nuget artifact
         uses: actions/upload-artifact@v2
         with:
