@@ -386,3 +386,4 @@ python/src/trinsic_okapi.egg-info/
 .github/.idea/
 python/trinsic_okapi.egg-info/
 python/okapi/trinsic_okapi.egg-info/
+python/pytest_junit.xml
