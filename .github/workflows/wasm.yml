@@ -8,6 +8,9 @@ on:
       - "native/**"
       - "proto/**"
       - "wasm/**"
+      - ".github/workflows/*wasm*"
+      - ".github/workflows/*node*"
+      - ".github/workflows/*browser*"
   push:
     branches:
       - main
