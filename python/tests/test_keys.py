@@ -3,7 +3,7 @@ import unittest
 import base58
 
 from okapi.keys import DIDKey
-from okapi.keys_pb2 import GenerateKeyRequest, KeyType, GenerateKeyResponse
+from okapi.proto.okapi.keys import GenerateKeyRequest, KeyType, GenerateKeyResponse
 from okapi.okapi_utils import DidError
 
 

@@ -5,10 +5,12 @@ import shutil
 import subprocess
 from os.path import join, dirname, abspath
 
+import pkg_resources
 import urllib3
 from github import Github
+from grpc_tools import protoc
 
-import okapi.okapi_utils
+from okapi import okapi_utils
 
 
 def generate_proto_files(base_path: str = None, file_path: str = None) -> None:
@@ -28,10 +30,29 @@ def generate_proto_files(base_path: str = None, file_path: str = None) -> None:
     print('Complete!')
 
 
+def generate_better_proto_files() -> None:
+    """
+    Generate the protobuf interface files using the python library https://github.com/danielgtaylor/python-betterproto
+    :return:
+    """
+    file_path = abspath(dirname(abspath(__file__)))
+    base_path = abspath(join(file_path, '..', '..', 'proto'))
+    proto_file_path = abspath(join(base_path, "*.proto"))
+    output_path = abspath(join(file_path, 'proto'))
+    # Come up with better locations, import google defaults from the package location (see code in protoc.main)
+    proto_include = pkg_resources.resource_filename('grpc_tools', '_proto').replace("lib", "Lib")
+    # Inject an empty python code file path to mimic the first argument.
+    base_command = ['', '-I', base_path, f'--python_betterproto_out=proto']
+    # Get all the included proto files
+    base_command.extend(glob.glob(proto_file_path, recursive=True))
+    base_command.append(f'-I{proto_include}')
+    protoc.main(base_command)
+
+
 def download_binary_files() -> None:
     g = Github()
     latest_including_dev_release = g.get_repo('trinsic-id/okapi').get_releases()[0]
-    download_path = okapi.okapi_utils.library_name[platform.system()]
+    download_path = okapi_utils.library_name[platform.system()]
     system_asset = [asset for asset in latest_including_dev_release.get_assets() if asset.name in download_path][0]
 
     libs_path = abspath(join(abspath(dirname(abspath(__file__))), '../src', '..', 'libs', download_path))
@@ -46,8 +67,4 @@ def download_binary_files() -> None:
 
 
 if __name__ == "__main__":
-    download_binary_files()
-
-    # file_path = abspath(dirname(abspath(__file__)))
-    # base_path = 'C:\\work\\okapi\\proto'
-    # generate_proto_files(base_path=base_path, file_path=file_path)
+    generate_better_proto_files()
