@@ -1,9 +1,11 @@
-from typing import Any, Optional, List
+import datetime
+from typing import Any, Optional, List, Dict
 import platform
 import ctypes
 from os.path import join, abspath, dirname
 
-from google.protobuf.reflection import GeneratedProtocolMessageType
+import betterproto
+from betterproto.lib.google.protobuf import Struct, Value, ListValue
 
 
 class DidError(Exception):
@@ -66,6 +68,30 @@ class ExternError(ctypes.Structure):
             raise DidError(self.code, string_copy)
 
 
+def value_to_proto_value(obj: Any) -> Value:
+    value = Value()
+    if isinstance(obj, str) or isinstance(obj, datetime.datetime):
+        value = Value(string_value=str(obj))
+    elif isinstance(obj, int) or isinstance(obj, float):
+        value = Value(number_value=float(obj))
+    elif isinstance(obj, bool):
+        value = Value(bool_value=obj)
+    elif isinstance(obj, dict):
+        value = Value(struct_value=dictionary_to_struct(obj))
+    elif isinstance(obj, list):
+        value = Value(list_value=list_to_proto_list(obj))
+
+    return value
+
+
+def list_to_proto_list(obj: List) -> ListValue:
+    return ListValue(values=[value_to_proto_value(item) for item in obj])
+
+
+def dictionary_to_struct(obj: Dict[str, Any]) -> Struct:
+    return Struct(fields=dict([(k, value_to_proto_value(v)) for k, v in obj.items()]))
+
+
 library_name = {'Windows': join('windows', 'okapi.dll'),
                 'Darwin': join('macos', 'libokapi.dylib'),
                 'Linux': join('linux', 'libokapi.so')}
@@ -112,9 +138,9 @@ def ffi_wrap_and_call(function_name: str, request_buffer: ByteBuffer) -> ByteBuf
     return response_buffer
 
 
-def typed_wrap_and_call(function_name, request: GeneratedProtocolMessageType, response_type: type) -> GeneratedProtocolMessageType:
-    buffer = ffi_wrap_and_call(function_name, ByteBuffer.create_from(request.SerializeToString()))
+def typed_wrap_and_call(function_name, request: betterproto.Message, response_type: type) -> betterproto.Message:
+    buffer = ffi_wrap_and_call(function_name, ByteBuffer.create_from(bytes(request)))
     output_object = response_type()
-    output_object.ParseFromString(bytes(buffer))
+    output_object.parse(bytes(buffer))
     buffer.free()
     return output_object
