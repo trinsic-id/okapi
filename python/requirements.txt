@@ -1,4 +1,4 @@
-protobuf~=3.17.3
 base58~=2.1.0
 urllib3~=1.26.5
 PyGithub~=1.55
+betterproto~=2.0.0b3
