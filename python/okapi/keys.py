@@ -13,7 +13,7 @@ class DIDKey:
 
     @staticmethod
     def resolve(request: ResolveRequest) -> ResolveResponse:
-        response = typed_wrap_and_call("didkey_resolve", request, GenerateKeyResponse)
+        response = typed_wrap_and_call("didkey_resolve", request, ResolveResponse)
         return response
 
 

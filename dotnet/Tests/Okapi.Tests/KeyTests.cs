@@ -52,6 +52,17 @@ namespace Okapi.Tests
                 })
             ); 
         }
+        
+        [Fact(DisplayName = "Resolve a given key")]
+        public void TestResolveKey()
+        {
+            var response = DIDKey.Resolve(new ResolveRequest
+            {
+                Did =
+                    "did:key:z6Mkt6QT8FPajKXDrtMefkjxRQENd9wFzKkDFomdQAVFzpzm#z6LSfDq6DuofPeZUqNEmdZsxpvfHvSoUXGEWFhw7JHk4cynN"
+            });
+                Assert.NotNull(response);
+        }
 
 
         [Theory(DisplayName = "Generate new key from seed")]

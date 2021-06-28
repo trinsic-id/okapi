@@ -3,7 +3,7 @@ import unittest
 import base58
 
 from okapi.keys import DIDKey
-from okapi.proto.okapi.keys import GenerateKeyRequest, KeyType, GenerateKeyResponse
+from okapi.proto.okapi.keys import GenerateKeyRequest, KeyType, GenerateKeyResponse, ResolveRequest
 from okapi.okapi_utils import DidError
 
 
@@ -33,6 +33,11 @@ class KeyTests(unittest.TestCase):
         response = DIDKey.generate(request)
 
         self.assert_valid_key_generated(response)
+
+    def test_resolve_key(self):
+        key = 'did:key:z6Mkt6QT8FPajKXDrtMefkjxRQENd9wFzKkDFomdQAVFzpzm#z6LSfDq6DuofPeZUqNEmdZsxpvfHvSoUXGEWFhw7JHk4cynN'
+        response = DIDKey.resolve(ResolveRequest(did=key))
+        self.assertIsNotNone(response)
 
     def assert_valid_key_generated(self, response, crv="Ed25519") -> bytes:
         self.assertIsNotNone(response)

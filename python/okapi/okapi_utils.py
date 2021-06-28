@@ -128,19 +128,19 @@ def copy_response_buffer(response: Any, response_buffer: ByteBuffer) -> None:
     del response_buffer
 
 
-def ffi_wrap_and_call(function_name: str, request_buffer: ByteBuffer) -> ByteBuffer:
+def ffi_wrap_and_call(function_name: str, request_buffer: ByteBuffer) -> bytes:
     func = wrap_native_function(function_name)
     error_out = ExternError()
     response_buffer = ByteBuffer()
     ret_val = func(request_buffer, ctypes.byref(response_buffer), ctypes.byref(error_out))
     print(f"Return Value={ret_val} {error_out}")
     error_out.raise_error_if_needed()
-    return response_buffer
+    byte_data = bytes(response_buffer)
+    response_buffer.free()
+    return byte_data
 
 
 def typed_wrap_and_call(function_name, request: betterproto.Message, response_type: type) -> betterproto.Message:
     buffer = ffi_wrap_and_call(function_name, ByteBuffer.create_from(bytes(request)))
-    output_object = response_type()
-    output_object.parse(bytes(buffer))
-    buffer.free()
+    output_object = response_type().parse(buffer)
     return output_object
