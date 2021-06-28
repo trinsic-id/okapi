@@ -6,6 +6,7 @@ on:
     paths:
       - "native/**"
       - "proto/**"
+      - ".github/workflows/*libs*"
   release:
     types: [published, prereleased]
   push:

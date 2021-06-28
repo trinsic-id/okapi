@@ -6,6 +6,7 @@ on:
     paths:
       - "dotnet/**"
       - "proto/**"
+      - ".github/workflows/*dotnet*"
   push:
     branches:
       - main
