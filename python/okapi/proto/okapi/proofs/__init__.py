@@ -4,7 +4,6 @@
 from dataclasses import dataclass
 
 import betterproto
-from betterproto.grpc.grpclib_server import ServiceBase
 
 
 class LdSuite(betterproto.Enum):

@@ -1,11 +1,13 @@
-import datetime
-from typing import Any, Optional, List, Dict, Union
+from typing import Any, Optional, List, Dict, Union, Type, TypeVar
 import platform
 import ctypes
 from os.path import join, abspath, dirname
 
 import betterproto
 from betterproto.lib.google.protobuf import Struct, Value, ListValue
+
+
+T_response = TypeVar('T_response', bound=betterproto.Message)
 
 
 class DidError(Exception):
@@ -140,23 +142,18 @@ def wrap_native_function(function_name: str, *, arg_types: Optional[List[Any]] =
     return library_function
 
 
-def copy_response_buffer(response: Any, response_buffer: ByteBuffer) -> None:
-    response.ParseFromString(bytes(response_buffer))
-    del response_buffer
-
-
 def ffi_wrap_and_call(function_name: str, request_buffer: ByteBuffer) -> bytes:
     func = wrap_native_function(function_name)
     error_out = ExternError()
     response_buffer = ByteBuffer()
-    ret_val = func(request_buffer, ctypes.byref(response_buffer), ctypes.byref(error_out))
+    func(request_buffer, ctypes.byref(response_buffer), ctypes.byref(error_out))
     error_out.raise_error_if_needed()
     byte_data = bytes(response_buffer)
     response_buffer.free()
     return byte_data
 
 
-def typed_wrap_and_call(function_name, request: betterproto.Message, response_type: type) -> betterproto.Message:
+def typed_wrap_and_call(function_name, request: betterproto.Message, response_type: Type[T_response]) -> T_response:
     buffer = ffi_wrap_and_call(function_name, ByteBuffer.create_from(bytes(request)))
     output_object = response_type().parse(buffer)
     return output_object
