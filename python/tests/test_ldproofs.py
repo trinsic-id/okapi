@@ -12,7 +12,7 @@ class LdProofsTests(unittest.TestCase):
         capability_dict = {"@context": "https://w3id.org/security/v2",
                       "target": "urn:trinsic:wallets:noop",
                       "proof": {
-                          "created": datetime.datetime.now()
+                          "created": datetime.datetime.now().isoformat()
                       }
                       }
 
