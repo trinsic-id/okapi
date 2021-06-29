@@ -1,8 +1,8 @@
 from .proto.okapi.keys import GenerateKeyRequest, GenerateKeyResponse, ResolveRequest, ResolveResponse
 from .okapi_utils import typed_wrap_and_call
 from .proto.okapi.proofs import CreateProofRequest, CreateProofResponse, VerifyProofRequest, VerifyProofResponse
-from .proto.okapi.transport import PackRequest, UnpackRequest, PackResponse, UnpackResponse, SignRequest, SignResponse, \
-    VerifyRequest, VerifyResponse
+from .proto.okapi.transport import PackRequest, UnpackRequest, PackResponse, UnpackResponse, SignRequest, \
+    SignResponse, VerifyRequest, VerifyResponse
 
 
 class DIDKey:
