@@ -10,11 +10,11 @@ from okapi.proto.okapi.proofs import CreateProofRequest, LdSuite
 class LdProofsTests(unittest.TestCase):
     def test_generate_capability_invocation_proof_with_jcs(self):
         capability_dict = {"@context": "https://w3id.org/security/v2",
-                      "target": "urn:trinsic:wallets:noop",
-                      "proof": {
-                          "created": datetime.datetime.now().isoformat()
-                      }
-                      }
+                           "target": "urn:trinsic:wallets:noop",
+                           "proof": {
+                               "created": datetime.datetime.now().isoformat()
+                           }
+                           }
 
         capability = dictionary_to_struct(capability_dict)
         print(capability)

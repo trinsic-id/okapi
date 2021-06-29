@@ -38,7 +38,6 @@ def generate_better_proto_files() -> None:
     file_path = abspath(dirname(abspath(__file__)))
     base_path = abspath(join(file_path, '..', '..', 'proto'))
     proto_file_path = abspath(join(base_path, "*.proto"))
-    output_path = abspath(join(file_path, 'proto'))
     # Come up with better locations, import google defaults from the package location (see code in protoc.main)
     proto_include = pkg_resources.resource_filename('grpc_tools', '_proto').replace("lib", "Lib")
     # Inject an empty python code file path to mimic the first argument.
