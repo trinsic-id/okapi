@@ -48,6 +48,7 @@ function Build-Package {
 # Setup
 $InvocationPath = (Get-Item .).FullName
 cd ../python
+Copy-Item "../libs/*" -Destination "./okapi/libs" -Recurse
 # Do the things
 Activate-Venv
 Install-Requirements
