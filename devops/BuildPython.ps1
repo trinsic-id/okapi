@@ -3,7 +3,7 @@ param
     [string]$GitTag
 )
 
-. "./VersionParse.ps1"
+. "$PSScriptRoot/VersionParse.ps1"
 
 function Activate-Venv {
 	try {
