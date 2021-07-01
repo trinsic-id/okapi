@@ -14,3 +14,5 @@ jobs:
         uses: ibiqlik/action-yamllint@v3.0.2
         with:
           file_or_dir: .github/workflows
+          config_data: |
+            line-length: {max: 160}
