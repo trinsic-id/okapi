@@ -24,15 +24,9 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: 3.9
-      - name: Install pypa/build
-        run: |
-          cd python
-          python -m pip install --upgrade pip
-          python -m pip install build
-      - name: Build a binary wheel and a source tarball
-        run: |
-          cd python
-          python -m build --sdist --wheel --outdir dist/ .
+      - name: Build, Test, Pack
+          run: ./devops/BuildPython.ps1 -GitTag ${{ GITHUB_REF }}
+          shell: pwsh
       - name: Publish distribution 📦 to Test PyPI
         uses: pypa/gh-action-pypi-publish@master
         with:
