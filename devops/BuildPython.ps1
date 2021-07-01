@@ -10,9 +10,9 @@ function Activate-Venv {
 		if ($IsWindows) {
 			 .\venv\Scripts\activate
 		} else {
-			ls -l
 			./venv/bin/activate
 		}
+	} catch {
 	} finally {
 		if ($IsWindows) {
 			Write-Output (where python)
