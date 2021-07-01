@@ -3,14 +3,14 @@ name: Release Python SDK
 on:
   workflow_dispatch:
   release:
-    types: [ published, prereleased ]
+    types: [published]
   push:
     branches:
       - main
 
 jobs:
-  release_testpypi:
-    name: TestPyPI deploy
+  release_pypi:
+    name: Python Package deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -42,6 +42,7 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ./python/dist/*
+          file_glob: true
           asset_name: "python"
           tag: ${{ github.ref }}
           overwrite: true
@@ -49,9 +50,7 @@ jobs:
       - name: Publish distribution 📦 to PyPI
         if: |
           github.event_name == 'release' &&
-          github.event.action == 'published' &&
-          github.release.draft == false &&
-          github.release.prerelease == false
+          github.event.action == 'published'
         uses: pypa/gh-action-pypi-publish@master
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}

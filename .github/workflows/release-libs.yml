@@ -3,10 +3,7 @@ name: Release Platform Libraries
 on:
   workflow_dispatch:
   release:
-    types: [published, prereleased]
-  push:
-    branches:
-      - main
+    types: [published]
 
 jobs:
   publish_binaries:
@@ -28,7 +25,7 @@ jobs:
             artifact_name: macos
             build_job: build_macos
           - os: macos-latest
-            library_file: ./libs/android/*
+            library_file: "**/*.so"
             artifact_name: android
             build_job: build_android
           - os: macos-latest

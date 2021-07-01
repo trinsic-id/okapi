@@ -2,8 +2,7 @@ name: Github action linter
 
 on:
   workflow_dispatch:
-  release:
-    types: [ published, prereleased ]
+  pull_request:
 
 jobs:
   lint_github_actions:
@@ -14,4 +13,6 @@ jobs:
       - name: YAML Lint
         uses: ibiqlik/action-yamllint@v3.0.2
         with:
-          file_or_dir: .github/*.yaml
+          file_or_dir: .github/workflows
+          config_data: |
+            line-length: {max: 160}
