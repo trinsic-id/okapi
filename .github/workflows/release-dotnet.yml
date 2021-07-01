@@ -3,7 +3,7 @@ name: Release .NET SDK
 on:
   workflow_dispatch:
   release:
-    types: [ published ]
+    types: [published]
 
 jobs:
   publish_nuget:

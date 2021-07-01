@@ -3,7 +3,7 @@ name: Release Python SDK
 on:
   workflow_dispatch:
   release:
-    types: [ published, prereleased ]
+    types: [published]
   push:
     branches:
       - main
@@ -50,7 +50,7 @@ jobs:
       - name: Publish distribution 📦 to PyPI
         if: |
           github.event_name == 'release' &&
-          github.event.action == 'published' &&
+          github.event.action == 'published'
         uses: pypa/gh-action-pypi-publish@master
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}
