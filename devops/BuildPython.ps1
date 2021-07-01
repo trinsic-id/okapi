@@ -56,5 +56,8 @@ Install-Requirements
 Run-Tests
 Build-Package
 # Leave the venv
-deactivate
+try {
+	deactivate
+} catch {
+}
 Set-Location $InvocationPath
