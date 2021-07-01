@@ -47,11 +47,11 @@ jobs:
           overwrite: true
           body: "Python SDK package"
       - name: Publish distribution 📦 to PyPI
-         if: |
-           github.event_name == 'release' &&
-           github.event.action == 'published' &&
-           github.release.draft == false &&
-           github.release.prerelease == false
+        if: |
+          github.event_name == 'release' &&
+          github.event.action == 'published' &&
+          github.release.draft == false &&
+          github.release.prerelease == false
         uses: pypa/gh-action-pypi-publish@master
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}
