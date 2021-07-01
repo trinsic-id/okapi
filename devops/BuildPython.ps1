@@ -47,7 +47,7 @@ function Build-Package {
 
 # Setup
 $InvocationPath = (Get-Item .).FullName
-cd ../python
+cd "$PSScriptRoot/../python"
 Copy-Item "../libs/*" -Destination "./okapi/libs" -Recurse
 # Do the things
 Activate-Venv
