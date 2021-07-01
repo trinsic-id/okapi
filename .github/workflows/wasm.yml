@@ -80,4 +80,3 @@ jobs:
         working-directory: ./
       - run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
       - run: npx lerna publish $env:PACKAGE_VERSION --no-git-tag-version --yes --no-verify-access
-
