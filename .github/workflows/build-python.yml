@@ -33,7 +33,7 @@ jobs:
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
       - name: Build, Test, Pack
-        run: ./devops/BuildPython.ps1 -GitTag ${{ GITHUB_REF }}
+        run: ./devops/BuildPython.ps1 -GitTag ${{ github.ref }}
         shell: pwsh
       - name: Upload nuget artifact
         uses: actions/upload-artifact@v2

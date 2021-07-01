@@ -3,15 +3,16 @@ param
     [string]$GitTag
 )
 
-. "./VersionParse.ps1"
+. "$PSScriptRoot/VersionParse.ps1"
 
 function Activate-Venv {
 	try {
 		if ($IsWindows) {
 			 .\venv\Scripts\activate
 		} else {
-			source env/bin/activate
+			./venv/bin/activate
 		}
+	} catch {
 	} finally {
 		if ($IsWindows) {
 			Write-Output (where python)
@@ -47,7 +48,7 @@ function Build-Package {
 
 # Setup
 $InvocationPath = (Get-Item .).FullName
-cd ../python
+cd "$PSScriptRoot/../python"
 Copy-Item "../libs/*" -Destination "./okapi/libs" -Recurse
 # Do the things
 Activate-Venv
@@ -55,5 +56,8 @@ Install-Requirements
 Run-Tests
 Build-Package
 # Leave the venv
-deactivate
+try {
+	deactivate
+} catch {
+}
 Set-Location $InvocationPath
