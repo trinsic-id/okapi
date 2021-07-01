@@ -25,8 +25,8 @@ jobs:
         with:
           python-version: 3.9
       - name: Build, Test, Pack
-          run: ./devops/BuildPython.ps1 -GitTag ${{ github.ref }}
-          shell: pwsh
+        run: ./devops/BuildPython.ps1 -GitTag ${{ github.ref }}
+        shell: pwsh
       - name: Publish distribution 📦 to Test PyPI
         uses: pypa/gh-action-pypi-publish@master
         with:
