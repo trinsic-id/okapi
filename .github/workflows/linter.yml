@@ -13,4 +13,4 @@ jobs:
       - name: YAML Lint
         uses: ibiqlik/action-yamllint@v3.0.2
         with:
-          file_or_dir: .github/workflows/*.yaml
+          file_or_dir: .github/workflows
