@@ -10,7 +10,7 @@ function Activate-Venv {
 		if ($IsWindows) {
 			 .\venv\Scripts\activate
 		} else {
-			source env/bin/activate
+			./venv/bin/activate
 		}
 	} finally {
 		if ($IsWindows) {
