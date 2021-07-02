@@ -14,17 +14,15 @@ function Activate-Venv {
 		}
 	} catch {
 	} finally {
-		if ($IsWindows) {
-			Write-Output (where python)
-		} else {
-			Write-Output (which python)
-		}
+		Write-Output (Where-Object python)
 	}
 }
 function Install-Requirements {
 	python -m pip install --upgrade pip
 	python -m pip install -r requirements.txt
 	python -m pip install pytest pytest-cov build
+
+	python ./okapi/generate_proto_files.py
 }
 function Run-Tests {
 	python -m pytest --cache-clear ./tests --junitxml=pytest_junit.xml --cov=.
@@ -48,7 +46,7 @@ function Build-Package {
 
 # Setup
 $InvocationPath = (Get-Item .).FullName
-cd "$PSScriptRoot/../python"
+Set-Location "$PSScriptRoot/../python"
 Copy-Item "../libs/*" -Destination "./okapi/libs" -Recurse
 # Do the things
 Activate-Venv
