@@ -2,6 +2,11 @@ name: Release Python SDK
 
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Package version - PEP440 compliant [N!]N(.N)*[{a|b|rc}N][.postN][.devN]'
+        required: true
+        default: ''
   release:
     types: [published]
   push:
@@ -25,12 +30,12 @@ jobs:
         with:
           python-version: 3.9
       - name: Build, Test, Pack
-        run: ./devops/BuildPython.ps1 -GitTag ${{ github.ref }}
+        run: ./devops/BuildPython.ps1 -GitTag ${{ github.ref }} -PackageVersion ${{ github.event.inputs.version }}
         shell: pwsh
       - name: Push packages to release
         if: |
-          github.event_name == 'release' &&
-          github.event.action == 'published'
+          (github.event_name == 'release' &&
+          github.event.action == 'published')
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
@@ -42,8 +47,9 @@ jobs:
           body: "Python SDK package"
       - name: Publish distribution 📦 to PyPI
         if: |
-          github.event_name == 'release' &&
-          github.event.action == 'published'
+          (github.event_name == 'release' &&
+          github.event.action == 'published') ||
+          github.event.inputs.version != ''
         uses: pypa/gh-action-pypi-publish@master
         with:
           user: __token__
