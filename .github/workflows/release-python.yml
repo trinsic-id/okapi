@@ -30,7 +30,7 @@ jobs:
         with:
           python-version: 3.9
       - name: Build, Test, Pack
-        run: ./devops/BuildPython.ps1 -GitTag ${{ github.ref }} -PackageVersion ${{ github.event.inputs.version }}
+        run: ./devops/BuildPython.ps1 -GitTag "${{ github.ref }}" -PackageVersion "${{ github.event.inputs.version }}"
         shell: pwsh
       - name: Push packages to release
         if: |
