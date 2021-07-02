@@ -1,7 +1,7 @@
 param
 (
-    [string]$GitTag = '',
-    [string]$PackageVersion = ''
+    [string]$GitTag = ' ',
+    [string]$PackageVersion = ' '
 )
 
 . "$PSScriptRoot/VersionParse.ps1"
