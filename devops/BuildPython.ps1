@@ -44,7 +44,7 @@ function Build-Package {
         $pythonPackageVersion = Get-PythonVersion($GitTag)
         Set-Python-Version($pythonPackageVersion)
     } catch {
-        if ($PackageVersion -ne '') {
+        if (-not [string]::IsNullOrWhitespace($PackageVersion)) {
             Set-Python-Version($PackageVersion)
         }
     }finally {
