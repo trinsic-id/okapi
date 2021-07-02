@@ -27,13 +27,6 @@ jobs:
       - name: Build, Test, Pack
         run: ./devops/BuildPython.ps1 -GitTag ${{ github.ref }}
         shell: pwsh
-      - name: Publish distribution 📦 to Test PyPI
-        uses: pypa/gh-action-pypi-publish@master
-        with:
-          password: ${{ secrets.TEST_PYPI_API_TOKEN }}
-          repository_url: https://test.pypi.org/legacy/
-          packages_dir: ./python/dist
-          skip_existing: true
       - name: Push packages to release
         if: |
           github.event_name == 'release' &&
