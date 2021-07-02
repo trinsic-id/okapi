@@ -35,7 +35,7 @@ jobs:
       - name: Build, Test, Pack
         run: ./devops/BuildPython.ps1 -GitTag ${{ github.ref }}
         shell: pwsh
-      - name: Upload nuget artifact
+      - name: Upload test results
         uses: actions/upload-artifact@v2
         with:
           name: pytest-results
