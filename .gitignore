@@ -372,19 +372,13 @@ native/out.h
 
 # Android Files:
 !/Android/didcommgrpc/src/main/jniLibs/x86/
-
+/Android/app/local.properties
 #Java
 /java/out
-/Android/.idea
-/Android/app/local.properties
-/java/.idea
-/dotnet/.idea
-python/pytest-coverage.txt
 /libs/
+python/pytest-coverage.txt
 python/dist/
-python/src/trinsic_okapi.egg-info/
-.github/.idea/
-python/trinsic_okapi.egg-info/
-python/okapi/trinsic_okapi.egg-info/
+trinsic_okapi.egg-info/
 python/pytest_junit.xml
 python/build/
+.idea/
