@@ -1,6 +1,6 @@
 # Tools and libraries for managing digital identity
 
-This repo constains core components used in the Trinsic SDK
+This repo contains core components used in the Trinsic SDK
 
 - Support for working with `did:key` method
 - Implementation of DIDComm Messaging protocol for gRPC
