@@ -48,6 +48,11 @@ jobs:
         with:
           name: linux
           path: ./libs/linux/*
+      - name: Upload C header artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: C_header
+          path: ./include/okapi.h
 
   build_macos:
     name: MacOS
