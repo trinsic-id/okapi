@@ -12,6 +12,10 @@ fn main() {
     // custom serialization implemented separately
     compile_protobuf_files();
 
+    build_C_header_file();
+}
+
+fn build_C_header_file() {
     let crate_dir = env::var("CARGO_MANIFEST_DIR").unwrap();
 
     cbindgen::Builder::new()
@@ -19,7 +23,6 @@ fn main() {
         .with_language(Language::C)
         .with_parse_deps(true)
         .with_parse_include(&["ffi-support"])
-        //.with_header("int32_t didcomm_byte_buffer_free(struct ByteBuffer request);")
         .with_parse_expand_features(&["didcomm_byte_buffer_free"])
         .with_documentation(false)
         .with_parse_expand(&[crate_dir])
