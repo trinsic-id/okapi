@@ -28,6 +28,7 @@ crate-type = [ "lib", "cdylib", "staticlib" ]
 
 [build-dependencies]
 prost-build = "0.6"
+cbindgen = "0.19.0"
 
 [dev-dependencies]
 fluid = "0.4"
