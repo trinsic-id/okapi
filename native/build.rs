@@ -1,13 +1,34 @@
-use std::fs::{copy, remove_file};
-
-use prost_build::Config;
-
 extern crate prost_build;
+extern crate cbindgen;
+
+use std::fs::{copy, remove_file};
+use std::env;
+use prost_build::Config;
+use cbindgen::{Language};
 
 fn main() {
     // Build all protos with support for 'serde'
     // except the well known types, which have
     // custom serialization implemented separately
+    compile_protobuf_files();
+
+    let crate_dir = env::var("CARGO_MANIFEST_DIR").unwrap();
+
+    cbindgen::Builder::new()
+        .with_crate(&crate_dir)
+        .with_language(Language::C)
+        .with_parse_deps(true)
+        .with_parse_include(&["ffi-support"])
+        //.with_header("int32_t didcomm_byte_buffer_free(struct ByteBuffer request);")
+        .with_parse_expand_features(&["didcomm_byte_buffer_free"])
+        .with_documentation(false)
+        .with_parse_expand(&[crate_dir])
+        .generate()
+        .expect("Unable to generate bindings")
+        .write_to_file("../include/okapi.h");
+}
+
+fn compile_protobuf_files() {
     Config::new()
         .compile_well_known_types()
         .type_attribute(".okapi", "#[derive(::serde::Serialize, ::serde::Deserialize)]")

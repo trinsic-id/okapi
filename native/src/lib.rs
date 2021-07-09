@@ -1,9 +1,6 @@
 #[macro_use]
 extern crate ffi_support;
 
-define_string_destructor!(didcomm_string_free);
-define_bytebuffer_destructor!(didcomm_byte_buffer_free);
-
 use prost::{DecodeError, Message};
 
 pub struct DIDComm {}
