@@ -12,10 +12,10 @@ fn main() {
     // custom serialization implemented separately
     compile_protobuf_files();
 
-    build_C_header_file();
+    build_c_header_file();
 }
 
-fn build_C_header_file() {
+fn build_c_header_file() {
     let crate_dir = env::var("CARGO_MANIFEST_DIR").unwrap();
 
     cbindgen::Builder::new()
