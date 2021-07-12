@@ -19,6 +19,11 @@ jobs:
         uses: ruby/setup-ruby@v1.76.0
         with:
           ruby-version: 2.7.x
+      - name: Download workflow artifact
+        uses: dawidd6/action-download-artifact@v2.14.0
+        with:
+          workflow: "build-libs.yml"
+          path: ./libs
       - run: bundle install
 
       - name: Publish to GPR
