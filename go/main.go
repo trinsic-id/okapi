@@ -1,24 +1,22 @@
 package main
 
+// #cgo CFLAGS: -I../include
+// #cgo LDFLAGS: -L../native/target/debug -lokapi
+// #include <okapi.h>
+import "C"
+
 import (
+	pb "didcomm.org/grpc/messaging"
 	"fmt"
+	"github.com/golang/protobuf/proto"
 	"log"
 	"unsafe"
-	"github.com/golang/protobuf/proto"
-	pb "didcomm.org/grpc/messaging"
 )
-
-/*
-#cgo CFLAGS: -I../include
-#cgo LDFLAGS: -L. -ldidcommgrpc
-#include <didcommgrpc.h>
-*/
-import "C"
 
 func main() {
 
 	generateKeyRequest := &pb.GenerateKeyRequest {
-		KeyType: pb.KeyType_ed25519,
+		KeyType: pb.KeyType_Ed25519,
 	}
 	fmt.Println(generateKeyRequest)
 
@@ -30,7 +28,7 @@ func main() {
 	request := C.ByteBuffer { len: 0, data: (*C.uint8_t)(unsafe.Pointer(&out[0])) }
 	response := C.ByteBuffer { }
 	err := C.ExternError { }
-	code := C.didcomm_generate_key(request, &response, &err)
+	code := C.didkey_generate(request, &response, &err)
 
 	fmt.Println("Called native result: ", code, ", buffer length: ", response.len)
 
@@ -42,5 +40,5 @@ func main() {
 
 	C.didcomm_byte_buffer_free(response)
 
-	fmt.Println(generateKeyResponse.Key.KeyId)
+	fmt.Println(generateKeyResponse.Key)
 }
