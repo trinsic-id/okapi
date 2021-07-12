@@ -1,0 +1,33 @@
+
+name: Build Ruby bindings
+
+on:
+  pull_request:
+    paths:
+      - "python/**"
+      - "proto/**"
+      - ".github/workflows/*python*"
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1.76.0
+        with:
+          ruby-version: 2.7.x
+      - name: Download workflow artifact
+        uses: dawidd6/action-download-artifact@v2.14.0
+        with:
+          workflow: "build-libs.yml"
+          path: ./libs
+      - name: Install dependencies
+        run: bundle install
+      - name: Run tests
+        run: bundle exec rake
