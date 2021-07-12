@@ -1,0 +1,1 @@
+protoc --proto_path=../proto --ruby_out=proto ../proto/examples.proto ../proto/keys.proto ../proto/proofs.proto ../proto/transport.proto
