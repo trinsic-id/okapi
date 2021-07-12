@@ -1,0 +1,25 @@
+PATH
+  remote: .
+  specs:
+    okapi (0.1.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    google-protobuf (3.17.3-x64-mingw32)
+    minitest (5.14.4)
+    os (1.1.1)
+    rake (12.3.3)
+
+PLATFORMS
+  x64-mingw32
+
+DEPENDENCIES
+  google-protobuf
+  minitest (~> 5.0)
+  okapi!
+  os
+  rake (~> 12.0)
+
+BUNDLED WITH
+   2.1.4

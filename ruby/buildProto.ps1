@@ -1,1 +1,1 @@
-protoc --proto_path=../proto --ruby_out=proto ../proto/examples.proto ../proto/keys.proto ../proto/proofs.proto ../proto/transport.proto
+protoc --proto_path=../proto --ruby_out=./lib/okapi ../proto/examples.proto ../proto/keys.proto ../proto/proofs.proto ../proto/transport.proto
