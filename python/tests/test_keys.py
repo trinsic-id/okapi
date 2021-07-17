@@ -53,7 +53,7 @@ class KeyTests(unittest.TestCase):
         self.assertEqual(32, len(response_64))
         return public_key
 
-    def test_generate_key_throws_invalid_seed_size(self):
+    def test_generate_key_throws_invalid_key_type(self):
         request = GenerateKeyRequest()
         request.key_type = -1
         with self.assertRaises(DidError):

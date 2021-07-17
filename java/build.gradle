@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group 'id.trinsic'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.jetbrains:annotations:20.1.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.7.0'
+    implementation group: 'com.google.protobuf', name: 'protobuf-java', version: '3.17.3'
+    implementation group: 'com.github.jnr', name: 'jnr-ffi', version: '2.2.4'
+}
+
+test {
+    useJUnitPlatform()
+}
