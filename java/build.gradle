@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'id.trinsic'
-version '1.0-SNAPSHOT'
+version '0.1.0'
 
 repositories {
     mavenCentral()
@@ -20,4 +20,9 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+jar {
+    archiveBaseName = 'trinsic-okapi'
+    archiveVersion =  '0.1.0'
 }

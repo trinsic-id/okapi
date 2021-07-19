@@ -384,4 +384,3 @@ python/build/
 .idea/
 java/.gradle/
 java/build/
-java/gradle/wrapper/gradle-wrapper.jar
