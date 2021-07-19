@@ -14,7 +14,10 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
       - uses: actions/checkout@v2
@@ -34,6 +37,7 @@ jobs:
         run: ./gradlew build
         working-directory: ./java
       - uses: actions/upload-artifact@v2
+        if: (${{ matrix.os }} == 'ubuntu-latest')
         with:
           name: Package
           path: java/build/libs
