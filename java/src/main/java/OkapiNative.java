@@ -3,6 +3,9 @@ import jnr.ffi.*;
 import jnr.ffi.Runtime;
 import jnr.ffi.Struct;
 
+import java.nio.file.Paths;
+import java.util.Locale;
+
 
 class OkapiNative {
 
@@ -60,16 +63,45 @@ class OkapiNative {
 
     // TODO - https://stackoverflow.com/questions/8297705/how-to-implement-thread-safe-lazy-initialization
     // Java 8 Supplier<IOkapiC> ???
-    private static final String libPath = "C:/work/okapi/libs/windows/okapi.dll";
+    private static final String OS = System.getProperty("os.name").toLowerCase();
 
-    private static IOkapiC __nativeLibrary = null;
+    private static boolean isWindows() {
+        return OS.startsWith("windows");
+    }
+
+    private static boolean isLinux() {
+        return OS.startsWith("linux");
+    }
+
+    private static boolean isMacOs() {
+        return OS.startsWith("mac") || OS.startsWith("darwin");
+    }
+
+    private static String getLibraryPath() {
+        String baseDir = System.getProperty("user.dir");
+        String libDir = "../libs";
+        String osPath = getOsPath();
+        return Paths.get(baseDir, libDir, osPath).toAbsolutePath().toString();
+    }
+
+    private static String getOsPath() {
+        if (isWindows())
+            return "windows/okapi.dll";
+        if (isLinux())
+            return "linux/libokapi.so";
+        if (isMacOs())
+            return "macos/libokapi.dylib";
+        // TODO - Android support?
+        return "";
+    }
+
+    private static IOkapiC nativeLibrary = null;
+
     public static IOkapiC getNativeLibrary() {
-        if (__nativeLibrary == null) {
-            // TODO - Don't hard code
-            __nativeLibrary = LibraryLoader.create(IOkapiC.class).load(libPath);
-            // TODO - Other operating systems.
-        }
-        return __nativeLibrary;
+        if (nativeLibrary == null)
+            nativeLibrary = LibraryLoader.create(IOkapiC.class).load(getLibraryPath());
+
+        return nativeLibrary;
     }
 
     static Runtime getRuntime() {
@@ -86,7 +118,7 @@ class OkapiNative {
     }
 
     static byte[] bufferToByteArray(OkapiByteBuffer buffer) {
-        int len = (int)buffer.len.longValue();
+        int len = (int) buffer.len.longValue();
         byte[] data = new byte[len];
         buffer.data.get().get(0, data, 0, len);
         byteBufferFree(Struct.getMemory(buffer));
@@ -96,6 +128,7 @@ class OkapiNative {
     static void byteBufferFree(Pointer buffer) {
         getNativeLibrary().didcomm_byte_buffer_free(buffer);
     }
+
     static void stringFree(Pointer p) {
         getNativeLibrary().didcomm_string_free(p);
     }

@@ -25,6 +25,11 @@ jobs:
           distribution: 'adopt'
       - name: Gradle Wrapper Validation
         uses: gradle/wrapper-validation-action@v1.0.4
+      - name: Download workflow artifact
+        uses: dawidd6/action-download-artifact@v2.14.0
+        with:
+          workflow: "build-libs.yml"
+          path: ./libs
       - name: Build with Gradle
         run: ./gradlew build
         working-directory: ./java

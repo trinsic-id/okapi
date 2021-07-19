@@ -4,7 +4,4 @@ public class DidException extends Exception {
         super(message);
         this.ErrorCode = errorCode;
     }
-    protected DidException() {
-        super();
-    }
 }
