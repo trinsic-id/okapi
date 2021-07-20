@@ -1,5 +1,4 @@
-
-name: Java SDK build
+name: Build Java SDK
 
 on:
   workflow_dispatch:
