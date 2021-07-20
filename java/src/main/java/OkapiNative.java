@@ -18,7 +18,6 @@ class OkapiNative {
         }
 
         public void setBufferData(jnr.ffi.Pointer pointer, long len) {
-            System.out.println("Allocating: " + len + " bytes");
             this.len.set(len);
             this.data.set(pointer);
         }
