@@ -64,3 +64,4 @@ jobs:
         if: always()
         with:
           files: go/test_output.xml
+          comment_mode: create new

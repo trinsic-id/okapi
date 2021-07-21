@@ -57,3 +57,4 @@ jobs:
         if: always()
         with:
           files: python/pytest_junit.xml
+          comment_mode: create new
