@@ -35,16 +35,28 @@ jobs:
       - name: Build, Test
         run: |
           go build .
-          go test -v -covermode=count -coverprofile=coverage.out ./DidKey ./LdProofs
+          go test -v -covermode=count -coverprofile=coverage.out ./DidKey ./LdProofs | go2xunit > test_output.xml
         working-directory: ./go/okapi
         shell: pwsh
-      - name: Convert coverage to lcov
-        uses: jandelgado/gcov2lcov-action@v1.0.8
+      - name: Upload test results
+        uses: actions/upload-artifact@v2
         with:
-          infile: ./go/okapi/coverage.out
-          outfile: ./go/okapi/coverage.lcov
-      - name: Coveralls
-        uses: coverallsapp/github-action@v1.0.4
+          name: golang-test-results
+          path: |
+            ./go/okapi/test_output.xml
+
+  upload_test_results:
+    name: Upload Golang Test Results
+    runs-on: ubuntu-latest
+    needs: [ test_go ]
+    steps:
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v2.0.10
         with:
-          github-token: ${{ secrets.github_token }}
-          path-to-lcov: ./go/okapi/coverage.lcov
+          name: golang-test-results
+          path: ./go
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1.18
+        if: always()
+        with:
+          files: go/test_output.xml

@@ -383,3 +383,4 @@ python/pytest_junit.xml
 python/build/
 .idea/
 go/okapi/coverage.out
+go/okapi/test_output.xml
