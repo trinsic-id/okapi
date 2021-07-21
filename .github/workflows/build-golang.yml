@@ -1,0 +1,50 @@
+name: Build Golang SDK
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "go/**"
+      - "proto/**"
+      - ".github/workflows/*golang*"
+  push:
+    branches:
+      - main
+
+jobs:
+  test_go:
+    name: Test Go code
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest] # [ubuntu-latest, windows-latest, macos-latest]
+        go-version: ['1.16'] # ['1.16', '1.15', '1.14', '1.13']
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download workflow artifact
+        uses: dawidd6/action-download-artifact@v2.14.0
+        with:
+          workflow: "build-libs.yml"
+          path: ./libs
+      - name: Set up Go ${{ matrix.go-version }}
+        uses: actions/setup-go@v2
+        with:
+          go-version: ${{ matrix.go-version }}
+      - name: Display Golang version
+        run: go version
+      - name: Build, Test
+        run: |
+          go build .
+          go test -v -covermode=count -coverprofile=coverage.out ./DidKey ./LdProofs
+        working-directory: ./go/okapi
+        shell: pwsh
+      - name: Convert coverage to lcov
+        uses: jandelgado/gcov2lcov-action@v1.0.8
+        with:
+          infile: ./go/okapi/coverage.out
+          outfile: ./go/okapi/coverage.lcov
+      - name: Coveralls
+        uses: coverallsapp/github-action@v1.0.4
+        with:
+          github-token: ${{ secrets.github_token }}
+          path-to-lcov: ./go/okapi/coverage.lcov

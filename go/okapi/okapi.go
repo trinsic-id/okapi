@@ -8,6 +8,8 @@ import (
 	"github.com/golang/protobuf/proto"
 	"golang.org/x/sys/windows"
 	"log"
+	"path"
+	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -16,13 +18,18 @@ var once sync.Once
 var okapiDll *windows.DLL
 func GetLibrary() *windows.DLL {
 	once.Do(func() {
-		okapiLib, err := windows.LoadDLL("../../../libs/windows/okapi.dll")
+		okapiLib, err := windows.LoadDLL(path.Join(getCurrentDir(), "../../libs/windows/okapi.dll"))
 		if err != nil {
 			log.Fatalln("Failed to load library", err)
 		}
 		okapiDll = okapiLib
 	})
 	return okapiDll
+}
+
+func getCurrentDir() string {
+	_, filename, _, _ := runtime.Caller(1)
+	return path.Dir(filename)
 }
 
 func GetFunction(functionName string) *windows.Proc {
