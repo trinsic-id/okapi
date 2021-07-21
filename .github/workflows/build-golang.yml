@@ -27,7 +27,7 @@ jobs:
           workflow: "build-libs.yml"
           path: ./libs
       - name: Copy include file
-        run: copy ./libs/C_header/okapi.h -Destination ./include/okapi.h
+        run: cp ./libs/C_header/okapi.h ./include/okapi.h
         shell: pwsh
       - name: Set up Go ${{ matrix.go-version }}
         uses: actions/setup-go@v2
