@@ -26,6 +26,11 @@ jobs:
         with:
           workflow: "build-libs.yml"
           path: ./libs
+      - name: Download workflow artifact
+        uses: dawidd6/action-download-artifact@v2.14.0
+        with:
+          workflow: "build-libs.yml"
+          path: ./include
       - name: Set up Go ${{ matrix.go-version }}
         uses: actions/setup-go@v2
         with:
@@ -34,6 +39,7 @@ jobs:
         run: go version
       - name: Build, Test
         run: |
+          go get github.com/tebeka/go2xunit
           go build .
           go test -v -covermode=count -coverprofile=coverage.out ./DidKey ./LdProofs | go2xunit > test_output.xml
         working-directory: ./go/okapi
