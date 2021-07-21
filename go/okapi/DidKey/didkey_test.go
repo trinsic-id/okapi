@@ -2,6 +2,7 @@ package DidKey
 
 import (
 	pb "didcomm.org/grpc/messaging"
+	"didcomm.org/grpc/okapi"
 	"encoding/base64"
 	"encoding/hex"
 	"fmt"
@@ -41,7 +42,9 @@ func TestResolveKey(t *testing.T) {
 func TestGenerateKeyThrowsInvalidKeyType(t *testing.T) {
 	request := pb.GenerateKeyRequest{}
 	request.KeyType = -1
-	Generate(&request)
+	_, err := Generate(&request)
+	assert.NotNil(t, err)
+	assert.IsType(t, &okapi.DidError{}, err)
 }
 
 type DataArgument struct {

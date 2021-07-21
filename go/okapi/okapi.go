@@ -43,10 +43,11 @@ func CallFunction(functionName string, requestMessage proto.Message, responseMes
 	code, _, _ := GetFunction(functionName).Call(uintptr(unsafe.Pointer(&requestBuffer)), uintptr(unsafe.Pointer(&responseBuffer)), uintptr(unsafe.Pointer(&err)))
 
 	if code != 0 {
+		responseMessage = nil
 		return &DidError{
-			code:         int(code),
-			functionName: functionName,
-			message:      C.GoString(err.message),
+			Code:         int(code),
+			FunctionName: functionName,
+			Message:      C.GoString(err.message),
 		}
 	}
 	if e := proto.Unmarshal(C.GoBytes(unsafe.Pointer(responseBuffer.data), C.int(responseBuffer.len)), responseMessage); e != nil {
@@ -70,10 +71,10 @@ func FreeBuffer(buffer C.ByteBuffer) {
 }
 
 type DidError struct {
-	code int
-	functionName string
-	message string
+	Code         int
+	FunctionName string
+	Message      string
 }
 func (d *DidError) Error() string {
-	return fmt.Sprintf("Error on call: %s() return code=%d message=%s", d.functionName, d.code, d.message)
+	return fmt.Sprintf("Error on call: %s() return code=%d message=%s", d.FunctionName, d.Code, d.Message)
 }
