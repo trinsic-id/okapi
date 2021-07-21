@@ -1,7 +1,7 @@
 package okapi
 
 // #cgo CFLAGS: -I../../include
-// #include <okapi.h>
+// #include "okapi.h"
 import "C"
 import (
 	"fmt"

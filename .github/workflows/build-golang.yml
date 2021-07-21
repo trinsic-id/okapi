@@ -38,7 +38,7 @@ jobs:
       - name: Build, Test
         run: |
           go get github.com/tebeka/go2xunit
-          go build .
+          go build
           go test -v -covermode=count -coverprofile=coverage.out ./DidKey ./LdProofs | go2xunit > test_output.xml
         working-directory: ./go/okapi
         shell: pwsh
