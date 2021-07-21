@@ -26,11 +26,9 @@ jobs:
         with:
           workflow: "build-libs.yml"
           path: ./libs
-      - name: Download workflow artifact
-        uses: dawidd6/action-download-artifact@v2.14.0
-        with:
-          workflow: "build-libs.yml"
-          path: ./include
+      - name: Copy include file
+        run: Copy-Item ./libs/C_header/okapi.h -Destination ./include
+        shell: pwsh
       - name: Set up Go ${{ matrix.go-version }}
         uses: actions/setup-go@v2
         with:
