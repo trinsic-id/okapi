@@ -386,3 +386,4 @@ java/.gradle/
 java/build/
 go/okapi/coverage.out
 go/okapi/test_output.xml
+ruby/coverage/
