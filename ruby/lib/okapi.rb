@@ -45,53 +45,6 @@ module Okapi
 end
 
 module Okapi
-  extend Fiddle::Importer
-  # if OS.windows?
-  #   dllPath = "#{__dir__}/../../libs/windows/okapi.dll"
-  #   dlload
-  # elsif OS.linux?
-  #   dllPath = ("#{__dir__}/../../libs/linux/libokapi.so")
-  # elsif OS.mac?
-  #   dllPath = ("#{__dir__}/../../libs/macos/libokapi.dylib")
-  # end
-  # dlload dllPath
-
-  # didkey_generate = Fiddle::Function.new(
-  #   libOkapi['didkey_generate'],
-  #   [Fiddle::TYPE_VOIDP, Fiddle::TYPE_VOIDP, Fiddle::TYPE_VOIDP],
-  #   Fiddle::TYPE_INT
-  # )
-
-  # typealias "int32_t", "int"
-  # typealias "uint8_t", "unsigned char"
-  # typealias "int64_t", "long"
-  # typealias "ErrorCode", "int32_t"
-  #
-  # ByteBuffer = struct [
-  #                       "int64_t len",
-  #                       "uint8_t* data",
-  # ]
-  # ExternError = struct [
-  #                        "ErrorCode code",
-  #                        "char* message",
-  #                      ]
-
-  # extern 'int32_t didcomm_pack(struct ByteBuffer*, struct ByteBuffer*, struct ExternError*)'
-  # extern 'int32_t didcomm_unpack(struct ByteBuffer*, struct ByteBuffer *, ExternError *)'
-  # extern 'int32_t didcomm_sign(struct ByteBuffer*, struct ByteBuffer *, ExternError *)'
-  # extern 'int32_t didcomm_verify(struct ByteBuffer*, struct ByteBuffer *, ExternError *)'
-  #
-  # extern 'int32_t didkey_generate(struct ByteBuffer*, struct ByteBuffer *, struct ExternError *)'
-  # extern 'int32_t didkey_resolve(struct ByteBuffer*, struct ByteBuffer *, ExternError *)'
-  #
-  # extern 'int32_t ldproofs_create_proof(struct ByteBuffer*, struct ByteBuffer *, ExternError *)'
-  # extern 'int32_t ldproofs_verify_proof(struct ByteBuffer*, struct ByteBuffer *, ExternError *)'
-  #
-  # extern 'int32_t didcomm_byte_buffer_free(struct ByteBuffer*)'
-  # extern 'int32_t didcomm_string_free(char *)'
-end
-
-module Okapi
   def self.verify_type arg, klass
     raise "Argument type error is: #{arg.class}, should be #{klass}" unless arg.kind_of?(klass)
   end
@@ -114,11 +67,11 @@ module Okapi
     request_buffer[:data] = FFI::MemoryPointer.from_string(serialized)
     response_buffer = Okapi::ByteBuffer.new
     error = Okapi::ExternError.new
-
     extern_function = Okapi.method(function)
     response_value = extern_function.call(request_buffer, response_buffer, error)
     if response_value != 0
       raise Okapi::DidError.new(:code=>response_value,
+
                                 :msg=> error[:message])
     end
     response = response_klass.decode(response_buffer[:data].read_string(response_buffer[:len]))
