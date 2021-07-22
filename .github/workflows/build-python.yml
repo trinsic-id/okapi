@@ -57,4 +57,6 @@ jobs:
         if: always()
         with:
           files: python/pytest_junit.xml
-          comment_mode: create new
+          comment_mode: "create new"
+          hide_comments: "off"
+          check_name: "Python Unit Test Results"
