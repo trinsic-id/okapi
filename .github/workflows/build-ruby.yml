@@ -1,0 +1,50 @@
+name: Build Ruby bindings
+
+on:
+  pull_request:
+    paths:
+      - "ruby/**"
+      - "proto/**"
+      - ".github/workflows/*ruby*"
+  push:
+    branches:
+      - main
+
+jobs:
+  build_ruby:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ windows-latest ] # [ ubuntu-latest, windows-latest, macos-latest ]
+        # Due to https://github.com/actions/runner/issues/849, we have to use quotes for '3.0'
+        ruby-version: [ 2.7 ] # [2.5, 2.6, 2.7, '3.0']
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1.76.0
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+      - name: Download workflow artifact
+        uses: dawidd6/action-download-artifact@v2.14.0
+        with:
+          workflow: "build-libs.yml"
+          path: ./libs
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          gem install rspec
+          bundle install
+        working-directory: ruby
+      - name: Run tests
+        run: bundle exec rake
+        working-directory: ruby
+      - name: cobertura-report
+        if: ( ${{ matrix.os }} == 'windows-latest' && ${{ matrix.ruby-version }} = '2.7' )
+        uses: 5monkeys/cobertura-action@v9
+        with:
+          path: ruby/coverage/coverage.xml
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          minimum_coverage: 75
+          show_class_names: true
+          fail_below_threshold: false
