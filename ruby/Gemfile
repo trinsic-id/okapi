@@ -7,3 +7,6 @@ gem "rake", "~> 12.0"
 gem "minitest", "~> 5.0"
 gem "google-protobuf"
 gem "os"
+gem "base64"
+gem "simplecov", require: false, group: :test
+gem "simplecov-cobertura", require: false, group: :test

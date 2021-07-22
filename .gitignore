@@ -373,9 +373,16 @@ native/out.h
 # Android Files:
 !/Android/didcommgrpc/src/main/jniLibs/x86/
 /Android/app/local.properties
+
 #Java
 /java/out
+/java/.gradle/
+/java/build/
+
+
 /libs/
+
+# Python
 python/pytest-coverage.txt
 python/dist/
 trinsic_okapi.egg-info/
@@ -383,6 +390,7 @@ python/pytest_junit.xml
 python/build/
 .idea/
 
+# Ruby
 /ruby/.bundle/
 /ruby/.yardoc
 /ruby/_yardoc/
@@ -391,3 +399,7 @@ python/build/
 /ruby/pkg/
 /ruby/spec/reports/
 /ruby/tmp/
+
+#Golang
+/go/okapi/coverage.out
+/go/okapi/test_output.xml
