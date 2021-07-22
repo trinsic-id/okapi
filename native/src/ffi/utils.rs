@@ -1,6 +1,4 @@
-#[macro_use]
-
-use ffi_support::{ByteBuffer, ExternError};
+use ffi_support::ByteBuffer;
 
 // TODO: Cargo build doesn't expand these correctly with cbindgen, manually expanded below.
 // define_string_destructor!(didcomm_string_free2);

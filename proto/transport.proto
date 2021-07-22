@@ -3,7 +3,7 @@ syntax = "proto3";
 package okapi.transport;
 
 option csharp_namespace = "Okapi.Transport";
-option go_package = "github.com/trinsic-id/okapi/transport";
+option go_package = "github.com/trinsic-id/okapi";
 option java_package = "Okapi.Transport";
 option java_outer_classname="API";
 
