@@ -26,6 +26,7 @@ class KeyTests(unittest.TestCase):
         key_response = DIDKey.generate(request)
         self.assertIsNotNone(key_response)
         self.assertIsInstance(key_response, GenerateKeyResponse)
+        self.assert_valid_key_generated(key_response)
 
     def test_generate_key_no_seed(self):
         request = GenerateKeyRequest()
