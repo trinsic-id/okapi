@@ -34,7 +34,7 @@ jobs:
         run: |
           gem install bundler
           bundle install
-          COVERAGE=true bundle exec rspec
+          bundle exec rspec
         working-directory: ruby
       - name: Run tests
         run: bundle exec rake
