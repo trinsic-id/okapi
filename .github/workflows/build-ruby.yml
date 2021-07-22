@@ -35,7 +35,6 @@ jobs:
           gem install bundler
           gem install rspec
           bundle install
-          bundle exec rspec
         working-directory: ruby
       - name: Run tests
         run: bundle exec rake
