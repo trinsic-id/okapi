@@ -6,23 +6,26 @@ import "C"
 import (
 	"fmt"
 	"github.com/golang/protobuf/proto"
-	"golang.org/x/sys/windows"
 	"log"
 	"path"
 	"runtime"
 	"sync"
+	"syscall"
 	"unsafe"
 )
 
 var once sync.Once
-var okapiDll *windows.DLL
-func GetLibrary() *windows.DLL {
+var okapiDll *syscall.LazyDLL
+
+func GetLibrary() *syscall.LazyDLL {
 	once.Do(func() {
-		okapiLib, err := windows.LoadDLL(path.Join(getCurrentDir(), "../../libs/windows/okapi.dll"))
-		if err != nil {
-			log.Fatalln("Failed to load library", err)
+		if runtime.GOOS == "windows" {
+			okapiDll = syscall.NewLazyDLL(path.Join(getCurrentDir(), "../../libs/windows/okapi.dll"))
+		} else if runtime.GOOS == "linux" {
+			okapiDll = syscall.NewLazyDLL(path.Join(getCurrentDir(), "../../libs/linux/libokapi.so"))
+		} else if runtime.GOOS == "darwin" {
+			okapiDll = syscall.NewLazyDLL(path.Join(getCurrentDir(), "../../libs/macos/libokapi.dylib"))
 		}
-		okapiDll = okapiLib
 	})
 	return okapiDll
 }
@@ -32,11 +35,16 @@ func getCurrentDir() string {
 	return path.Dir(filename)
 }
 
-func GetFunction(functionName string) *windows.Proc {
-	functionPointer, err := GetLibrary().FindProc(functionName)
-	if err != nil {
-		log.Fatalln("Failed to load procedure:", err)
+var lock = sync.RWMutex{}
+var functionPointerCache = map[string]*syscall.LazyProc{}
+func GetFunction(functionName string) *syscall.LazyProc {
+	if fcnPtr, ok := functionPointerCache[functionName]; ok {
+		return fcnPtr
 	}
+	lock.Lock()
+	defer lock.Unlock()
+	functionPointer := GetLibrary().NewProc(functionName)
+	functionPointerCache[functionName] = functionPointer
 	return functionPointer
 }
 

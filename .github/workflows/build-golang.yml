@@ -46,8 +46,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: golang-test-results
-          path: |
-            ./go/okapi/test_output.xml
+          path: ./go/okapi/test_output.xml
 
   upload_test_results:
     name: Upload Golang Test Results
