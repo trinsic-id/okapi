@@ -382,5 +382,7 @@ trinsic_okapi.egg-info/
 python/pytest_junit.xml
 python/build/
 .idea/
+java/.gradle/
+java/build/
 go/okapi/coverage.out
 go/okapi/test_output.xml
