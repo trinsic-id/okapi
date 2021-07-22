@@ -34,6 +34,7 @@ jobs:
         run: |
           gem install bundler
           bundle install
+          bundle install rspec
           bundle exec rspec
         working-directory: ruby
       - name: Run tests
