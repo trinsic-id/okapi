@@ -1,7 +1,5 @@
 require "okapi/version"
 require "ffi"
-require "fiddle"
-require "fiddle/import"
 require "os"
 require "okapi/keys_pb"
 require "okapi/examples_pb"
