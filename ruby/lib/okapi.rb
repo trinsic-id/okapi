@@ -1,6 +1,5 @@
 require "okapi/version"
-require "fiddle"
-require "fiddle/import"
+require "ffi"
 require "os"
 require "okapi/keys_pb"
 require "okapi/examples_pb"
@@ -8,41 +7,39 @@ require "okapi/proofs_pb"
 require "okapi/transport_pb"
 
 module Okapi
-  extend Fiddle::Importer
+  extend FFI::Library
+
   if OS.windows?
-    dlload "#{__dir__}/../../libs/windows/okapi.dll"
+    ffi_lib "#{__dir__}/../../libs/windows/okapi.dll"
   elsif OS.linux?
-    dlload "#{__dir__}/../../libs/linux/libokapi.so"
+    ffi_lib "#{__dir__}/../../libs/linux/libokapi.so"
   elsif OS.mac?
-    dlload "#{__dir__}/../../libs/macos/libokapi.dylib"
+    ffi_lib "#{__dir__}/../../libs/macos/libokapi.dylib"
+  end
+  # ffi_convention :stdcall
+
+  class ByteBuffer < FFI::Struct
+    layout :len, :int64,
+           :data, :pointer
+  end
+  class ExternError < FFI::Struct
+    layout :code, :int32,
+           :message, :string
   end
 
+  attach_function :didkey_generate, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
+  attach_function :didkey_resolve, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
 
-  typealias "int32_t", "int"
-  typealias "ErrorCode", "int32_t"
+  attach_function :didcomm_pack, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
+  attach_function :didcomm_unpack, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
+  attach_function :didcomm_sign, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
+  attach_function :didcomm_verify, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
 
-  ByteBuffer = struct [
-                        "int64_t len",
-                        "uint8_t* data",
-  ]
-  ExternError = struct [
-                         "ErrorCode code",
-                         "char* message",
-                       ]
+  attach_function :ldproofs_create_proof, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
+  attach_function :ldproofs_verify_proof, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
 
-  extern 'int32_t didcomm_pack(struct ByteBuffer*, struct ByteBuffer*, struct ExternError*)'
-  extern 'int32_t didcomm_unpack(struct ByteBuffer*, struct ByteBuffer *, ExternError *)'
-  extern 'int32_t didcomm_sign(struct ByteBuffer*, struct ByteBuffer *, ExternError *)'
-  extern 'int32_t didcomm_verify(struct ByteBuffer*, struct ByteBuffer *, ExternError *)'
-
-  extern 'int32_t didkey_generate(struct ByteBuffer*, struct ByteBuffer*, struct ExternError*)'
-  extern 'int32_t didkey_resolve(struct ByteBuffer*, struct ByteBuffer *, ExternError *)'
-
-  extern 'int32_t ldproofs_create_proof(struct ByteBuffer*, struct ByteBuffer *, ExternError *)'
-  extern 'int32_t ldproofs_verify_proof(struct ByteBuffer*, struct ByteBuffer *, ExternError *)'
-
-  extern 'int32_t didcomm_byte_buffer_free(struct ByteBuffer*)'
-  extern 'int32_t didcomm_string_free(char *)'
+  attach_function :didcomm_byte_buffer_free, [ ByteBuffer.by_value ], :int
+  attach_function :didcomm_string_free, [ :pointer ], :int
 end
 
 module Okapi
@@ -63,18 +60,19 @@ module Okapi
   def self.ffi_call(function, request, response_klass)
     # static method call: e.g. Okapi::Keys::GenerateKeyRequest.encode(request)
     serialized = request.class.encode(request)
-    request_buffer = Okapi::ByteBuffer.malloc
-    request_buffer.len = serialized.bytesize
-    request_buffer.data = serialized
-    response_buffer = Okapi::ByteBuffer.malloc
-    error = Okapi::ExternError.malloc
+    request_buffer = Okapi::ByteBuffer.new
+    request_buffer[:len] = serialized.bytesize
+    request_buffer[:data] = FFI::MemoryPointer.from_string(serialized)
+    response_buffer = Okapi::ByteBuffer.new
+    error = Okapi::ExternError.new
     extern_function = Okapi.method(function)
     response_value = extern_function.call(request_buffer, response_buffer, error)
     if response_value != 0
       raise Okapi::DidError.new(:code=>response_value,
-                                :msg=>error.message.to_s)
+
+                                :msg=> error[:message])
     end
-    response = response_klass.decode(response_buffer.data.to_s(response_buffer.len))
+    response = response_klass.decode(response_buffer[:data].read_string(response_buffer[:len]))
     # puts "Return Code=#{response_value}, output=#{response}"
     byte_buffer_free(response_buffer)
     return response
