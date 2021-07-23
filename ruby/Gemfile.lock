@@ -8,6 +8,7 @@ GEM
   specs:
     base64 (0.1.0)
     docile (1.4.0)
+    ffi (1.15.3-x64-mingw32)
     google-protobuf (3.17.3-x64-mingw32)
     minitest (5.14.4)
     os (1.1.1)
@@ -26,6 +27,7 @@ PLATFORMS
 
 DEPENDENCIES
   base64
+  ffi
   google-protobuf
   minitest (~> 5.0)
   okapi!
