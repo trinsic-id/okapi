@@ -38,7 +38,7 @@ module Okapi
   attach_function :ldproofs_create_proof, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
   attach_function :ldproofs_verify_proof, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
 
-  attach_function :didcomm_byte_buffer_free, [ ByteBuffer.by_ref ], :int
+  attach_function :didcomm_byte_buffer_free, [ ByteBuffer.by_value ], :int
   attach_function :didcomm_string_free, [ :pointer ], :int
 end
 
