@@ -1,4 +1,3 @@
-#[macro_use]
 extern crate ffi_support;
 
 use prost::{DecodeError, Message};

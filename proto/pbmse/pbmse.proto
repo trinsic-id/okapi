@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package pbmse;
 
+option go_package = "github.com/trinsic-id/okapi";
+
 // JWS
 // Protocol buffer message signing and encryption
 message SignedMessage {
