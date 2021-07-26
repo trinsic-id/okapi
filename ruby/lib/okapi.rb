@@ -125,12 +125,12 @@ module Okapi
   end
 
   module LdProofs
-    def create_proof(request)
+    def self.create(request)
       Okapi.verify_type(request, Okapi::Proofs::CreateProofRequest)
       return Okapi.ffi_call("ldproofs_create_proof", request, Okapi::Proofs::CreateProofResponse)
     end
 
-    def verify_proof(request)
+    def self.verify(request)
       Okapi.verify_type(request, Okapi::Proofs::VerifyProofRequest)
       return Okapi.ffi_call("ldproofs_verify_proof", request, Okapi::Proofs::VerifyProofResponse)
     end
