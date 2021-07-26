@@ -1,6 +1,6 @@
 param
 (
-    [ValidateSet('Windows','MacOS','Linux', 'iOS', 'Android')]
+    [ValidateSet('Windows', 'Windows-GNU', 'MacOS', 'Linux', 'iOS', 'Android')]
     $Platform,
     $OutLocation,
     $AndroidNdkHome
@@ -26,6 +26,15 @@ try {
             cargo build --release --target x86_64-pc-windows-msvc
 
             Copy-Item -Path .\target\x86_64-pc-windows-msvc\release\okapi.dll -Destination $TargetOutput
+            Copy-Item -Path .\target\x86_64-pc-windows-msvc\release\okapi.lib -Destination $TargetOutput
+            break
+        }
+        Windows-GNU {
+            rustup target add x86_64-pc-windows-gnu
+            cargo build --release --target x86_64-pc-windows-gnu
+
+            Copy-Item -Path .\target\x86_64-pc-windows-gnu\release\okapi.dll -Destination $TargetOutput
+            Copy-Item -Path .\target\x86_64-pc-windows-gnu\release\libokapi.a -Destination $TargetOutput
             break
         }
         Linux {
@@ -33,6 +42,7 @@ try {
             cargo build --release --target x86_64-unknown-linux-gnu
 
             Copy-Item -Path .\target\x86_64-unknown-linux-gnu\release\libokapi.so -Destination $TargetOutput
+            Copy-Item -Path .\target\x86_64-unknown-linux-gnu\release\libokapi.a -Destination $TargetOutput
             break
         }
         MacOS {
@@ -40,6 +50,7 @@ try {
             cargo build --release --target x86_64-apple-darwin
 
             Copy-Item -Path .\target\x86_64-apple-darwin\release\libokapi.dylib -Destination $TargetOutput
+            Copy-Item -Path .\target\x86_64-apple-darwin\release\libokapi.a -Destination $TargetOutput
             break
         }
         iOS {
