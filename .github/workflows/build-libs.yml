@@ -104,7 +104,9 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: macos
-          path: ./libs/macos/*.dylib
+          path: |
+            ./libs/macos/*.dylib
+            ./libs/macos/*.a
 
   build_ios:
     name: iOS
