@@ -22,8 +22,8 @@
   },
   "scripts": {
     "build": "npm run build:wasm && npm run build:copy",
-    "build:wasm": "wasm-pack build --target web",
-    "build:copy": "copyfiles -u 3 ../../pkg/okapi* lib/ && rimraf ../../pkg/",
+    "build:wasm": "rollup --config",
+    "build:copy": "copyfiles ./target/wasm-pack/okapi-wasm/index.d.ts ./lib/okapi_wasm.d.ts",
     "test": "echo 'No Tests'"
   },
   "devDependencies": {
