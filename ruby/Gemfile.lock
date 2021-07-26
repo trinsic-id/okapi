@@ -6,6 +6,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    base58 (0.2.3)
     base64 (0.1.0)
     docile (1.4.0)
     ffi (1.15.3-x64-mingw32)
@@ -26,6 +27,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  base58
   base64
   ffi
   google-protobuf
