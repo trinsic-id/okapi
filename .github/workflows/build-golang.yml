@@ -24,7 +24,7 @@ jobs:
             go-version: '1.16'
           - os: windows-latest
             dynamic_lib_file: okapi.dll
-            artifact_name: windows-gnu
+            artifact_name: windows
             go-version: '1.16'
           - os: macos-latest
             dynamic_lib_file: libokapi.dylib
@@ -41,7 +41,7 @@ jobs:
         run: |
           mkdir ./include
           cp ./libs/C_header/okapi.h ./include/okapi.h
-          mkdir ./native/target/release
+          mkdir ./native/target && mkdir ./native/target/release
           cp ./libs/${{ matrix.artifact_name }}/libokapi.a ./native/target/release
         shell: pwsh
       - name: Set up Go ${{ matrix.go-version }}
@@ -52,12 +52,13 @@ jobs:
         run: go version
       - name: Build, Test
         run: |
-          export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"$(pwd)/native/target/release"
           go get github.com/tebeka/go2xunit
           go build
           go test -v ./DidKey ./LdProofs | go2xunit > test_output.xml
         working-directory: ./go/okapi
         shell: pwsh
+        env:
+          LD_LIBRARY_PATH: "$GITHUB_WORKSPACE/native/target/release"
       - name: Upload test results
         uses: actions/upload-artifact@v2
         with:

@@ -2,6 +2,7 @@ package okapi
 
 // #cgo CFLAGS: -I../../include
 // #cgo LDFLAGS: -L../../native/target/release -lokapi
+// #cgo linux LDFLAGS: -ldl -lm
 // #include "okapi.h"
 import "C"
 import (
