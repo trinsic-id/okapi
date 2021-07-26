@@ -4781,9 +4781,9 @@ public final class API {
       "\n\001x\030\002 \001(\t\022\t\n\001y\030\003 \001(\t\022\t\n\001d\030\004 \001(\t\022\013\n\003crv\030\005" +
       " \001(\t\022\013\n\003kty\030\006 \001(\t*M\n\007KeyType\022\013\n\007Ed25519\020" +
       "\000\022\n\n\006X25519\020\001\022\010\n\004P256\020\002\022\020\n\014Bls12381G1G2\020" +
-      "\003\022\r\n\tSecp256k1\020\004B@\n\nOkapi.KeysB\003APIZ git" +
-      "hub.com/trinsic-id/okapi/keys\252\002\nOkapi.Ke" +
-      "ysb\006proto3"
+      "\003\022\r\n\tSecp256k1\020\004B;\n\nOkapi.KeysB\003APIZ\033git" +
+      "hub.com/trinsic-id/okapi\252\002\nOkapi.Keysb\006p" +
+      "roto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

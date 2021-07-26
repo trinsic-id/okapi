@@ -5164,7 +5164,8 @@ public final class Pbmse {
       "t_encryption_key\030\002 \001(\014R\003cek*8\n\016Encryptio" +
       "nMode\022\n\n\006direct\020\000\022\032\n\026content_encryption_" +
       "key\020\001*9\n\023EncryptionAlgorithm\022\025\n\021xchacha2" +
-      "0poly1305\020\000\022\013\n\007aes_gcm\020\001b\006proto3"
+      "0poly1305\020\000\022\013\n\007aes_gcm\020\001B\035Z\033github.com/t" +
+      "rinsic-id/okapib\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

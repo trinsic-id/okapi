@@ -7554,9 +7554,9 @@ public final class API {
       "\001\n\013CoreMessage\022\n\n\002id\030\001 \001(\t\022\014\n\004type\030\002 \001(\t" +
       "\022\014\n\004body\030\003 \001(\014\022\n\n\002to\030\004 \003(\t\022\014\n\004from\030\005 \001(\t" +
       "\022\035\n\007created\030\006 \001(\003R\014created_time\022\035\n\007expir" +
-      "es\030\007 \001(\003R\014expires_timeBO\n\017Okapi.Transpor" +
-      "tB\003APIZ%github.com/trinsic-id/okapi/tran" +
-      "sport\252\002\017Okapi.Transportb\006proto3"
+      "es\030\007 \001(\003R\014expires_timeBE\n\017Okapi.Transpor" +
+      "tB\003APIZ\033github.com/trinsic-id/okapi\252\002\017Ok" +
+      "api.Transportb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

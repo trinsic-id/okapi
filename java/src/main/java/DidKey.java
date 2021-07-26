@@ -6,7 +6,7 @@ public class DidKey extends OkapiNative {
         var requestBuffer = messageToBuffer(request);
         var responseBuffer = new OkapiByteBuffer(getRuntime());
         var errBuffer = new ExternError(getRuntime());
-        getNativeLibrary().didkey_generate(Struct.getMemory(requestBuffer), Struct.getMemory(responseBuffer), Struct.getMemory(errBuffer));
+        getNativeLibrary().didkey_generate(requestBuffer, Struct.getMemory(responseBuffer), Struct.getMemory(errBuffer));
         errBuffer.RaiseError();
         return Okapi.Keys.API.GenerateKeyResponse.parseFrom(bufferToByteArray(responseBuffer));
     }
@@ -15,7 +15,7 @@ public class DidKey extends OkapiNative {
         var requestBuffer = messageToBuffer(request);
         var responseBuffer = new OkapiByteBuffer(getRuntime());
         var errBuffer = new ExternError(getRuntime());
-        getNativeLibrary().didkey_resolve(Struct.getMemory(requestBuffer), Struct.getMemory(responseBuffer), Struct.getMemory(errBuffer));
+        getNativeLibrary().didkey_resolve(requestBuffer, Struct.getMemory(responseBuffer), Struct.getMemory(errBuffer));
         errBuffer.RaiseError();
         return Okapi.Keys.API.ResolveResponse.parseFrom(bufferToByteArray(responseBuffer));
     }

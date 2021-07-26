@@ -597,9 +597,9 @@ public final class BasicMsg {
   static {
     java.lang.String[] descriptorData = {
       "\n\016examples.proto\022\016okapi.examples\"\034\n\014Basi" +
-      "cMessage\022\014\n\004text\030\001 \001(\tBQ\n\016Okapi.Examples" +
-      "B\010BasicMsgZ$github.com/trinsic-id/okapi/" +
-      "examples\252\002\016Okapi.Examplesb\006proto3"
+      "cMessage\022\014\n\004text\030\001 \001(\tBH\n\016Okapi.Examples" +
+      "B\010BasicMsgZ\033github.com/trinsic-id/okapi\252" +
+      "\002\016Okapi.Examplesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

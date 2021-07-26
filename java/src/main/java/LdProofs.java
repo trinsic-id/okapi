@@ -6,7 +6,7 @@ public class LdProofs extends OkapiNative {
         var requestBuffer = messageToBuffer(request);
         var responseBuffer = new OkapiByteBuffer(getRuntime());
         var errBuffer = new ExternError(getRuntime());
-        getNativeLibrary().ldproofs_create_proof(Struct.getMemory(requestBuffer), Struct.getMemory(responseBuffer), Struct.getMemory(errBuffer));
+        getNativeLibrary().ldproofs_create_proof(requestBuffer, Struct.getMemory(responseBuffer), Struct.getMemory(errBuffer));
         errBuffer.RaiseError();
         return Okapi.Proofs.API.CreateProofResponse.parseFrom(bufferToByteArray(responseBuffer));
     }
@@ -15,7 +15,7 @@ public class LdProofs extends OkapiNative {
         var requestBuffer = messageToBuffer(request);
         var responseBuffer = new OkapiByteBuffer(getRuntime());
         var errBuffer = new ExternError(getRuntime());
-        getNativeLibrary().ldproofs_verify_proof(Struct.getMemory(requestBuffer), Struct.getMemory(responseBuffer), Struct.getMemory(errBuffer));
+        getNativeLibrary().ldproofs_verify_proof(requestBuffer, Struct.getMemory(responseBuffer), Struct.getMemory(errBuffer));
         errBuffer.RaiseError();
         return Okapi.Proofs.API.VerifyProofResponse.parseFrom(bufferToByteArray(responseBuffer));
     }

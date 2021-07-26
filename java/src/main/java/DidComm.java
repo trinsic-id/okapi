@@ -6,7 +6,7 @@ public class DidComm extends OkapiNative {
         var requestBuffer = messageToBuffer(request);
         var responseBuffer = new OkapiByteBuffer(getRuntime());
         var errBuffer = new ExternError(getRuntime());
-        getNativeLibrary().didcomm_pack(Struct.getMemory(requestBuffer), Struct.getMemory(responseBuffer), Struct.getMemory(errBuffer));
+        getNativeLibrary().didcomm_pack(requestBuffer, Struct.getMemory(responseBuffer), Struct.getMemory(errBuffer));
         errBuffer.RaiseError();
         return Okapi.Transport.API.PackResponse.parseFrom(bufferToByteArray(responseBuffer));
     }
@@ -15,7 +15,7 @@ public class DidComm extends OkapiNative {
         var requestBuffer = messageToBuffer(request);
         var responseBuffer = new OkapiByteBuffer(getRuntime());
         var errBuffer = new ExternError(getRuntime());
-        getNativeLibrary().didcomm_unpack(Struct.getMemory(requestBuffer), Struct.getMemory(responseBuffer), Struct.getMemory(errBuffer));
+        getNativeLibrary().didcomm_unpack(requestBuffer, Struct.getMemory(responseBuffer), Struct.getMemory(errBuffer));
         errBuffer.RaiseError();
         return Okapi.Transport.API.UnpackResponse.parseFrom(bufferToByteArray(responseBuffer));
     }
@@ -24,7 +24,7 @@ public class DidComm extends OkapiNative {
         var requestBuffer = messageToBuffer(request);
         var responseBuffer = new OkapiByteBuffer(getRuntime());
         var errBuffer = new ExternError(getRuntime());
-        getNativeLibrary().didcomm_sign(Struct.getMemory(requestBuffer), Struct.getMemory(responseBuffer), Struct.getMemory(errBuffer));
+        getNativeLibrary().didcomm_sign(requestBuffer, Struct.getMemory(responseBuffer), Struct.getMemory(errBuffer));
         errBuffer.RaiseError();
         return Okapi.Transport.API.SignResponse.parseFrom(bufferToByteArray(responseBuffer));
     }
@@ -33,7 +33,7 @@ public class DidComm extends OkapiNative {
         var requestBuffer = messageToBuffer(request);
         var responseBuffer = new OkapiByteBuffer(getRuntime());
         var errBuffer = new ExternError(getRuntime());
-        getNativeLibrary().didcomm_verify(Struct.getMemory(requestBuffer), Struct.getMemory(responseBuffer), Struct.getMemory(errBuffer));
+        getNativeLibrary().didcomm_verify(requestBuffer, Struct.getMemory(responseBuffer), Struct.getMemory(errBuffer));
         errBuffer.RaiseError();
         return Okapi.Transport.API.VerifyResponse.parseFrom(bufferToByteArray(responseBuffer));
     }

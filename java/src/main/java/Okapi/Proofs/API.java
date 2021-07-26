@@ -2785,9 +2785,9 @@ public final class API {
       "gned_document\030\001 \001(\0132\027.google.protobuf.St" +
       "ruct\"\024\n\022VerifyProofRequest\"\025\n\023VerifyProo" +
       "fResponse*&\n\007LdSuite\022\033\n\027JcsEd25519Signat" +
-      "ure2020\020\000BF\n\014Okapi.ProofsB\003APIZ\"github.c" +
-      "om/trinsic-id/okapi/proofs\252\002\014Okapi.Proof" +
-      "sb\006proto3"
+      "ure2020\020\000B?\n\014Okapi.ProofsB\003APIZ\033github.c" +
+      "om/trinsic-id/okapi\252\002\014Okapi.Proofsb\006prot" +
+      "o3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

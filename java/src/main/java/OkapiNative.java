@@ -4,7 +4,6 @@ import jnr.ffi.Runtime;
 import jnr.ffi.Struct;
 
 import java.nio.file.Paths;
-import java.util.Locale;
 
 
 class OkapiNative {
@@ -40,39 +39,49 @@ class OkapiNative {
     }
 
     public interface IOkapiC {
-        int didcomm_pack(Pointer request, Pointer response, Pointer err);
+        int didcomm_pack(OkapiByteBuffer request, Pointer response, Pointer err);
 
-        int didcomm_unpack(Pointer request, Pointer response, Pointer err);
+        int didcomm_unpack(OkapiByteBuffer request, Pointer response, Pointer err);
 
-        int didcomm_sign(Pointer request, Pointer response, Pointer err);
+        int didcomm_sign(OkapiByteBuffer request, Pointer response, Pointer err);
 
-        int didcomm_verify(Pointer request, Pointer response, Pointer err);
+        int didcomm_verify(OkapiByteBuffer request, Pointer response, Pointer err);
 
-        int didkey_generate(Pointer request, Pointer response, Pointer err);
+        int didkey_generate(OkapiByteBuffer request, Pointer response, Pointer err);
 
-        int didkey_resolve(Pointer request, Pointer response, Pointer err);
+        int didkey_resolve(OkapiByteBuffer request, Pointer response, Pointer err);
 
-        int ldproofs_create_proof(Pointer request, Pointer response, Pointer err);
+        int ldproofs_create_proof(OkapiByteBuffer request, Pointer response, Pointer err);
 
-        int ldproofs_verify_proof(Pointer request, Pointer response, Pointer err);
+        int ldproofs_verify_proof(OkapiByteBuffer request, Pointer response, Pointer err);
 
-        void didcomm_byte_buffer_free(Pointer v);
+        void didcomm_byte_buffer_free(OkapiByteBuffer v);
 
         void didcomm_string_free(Pointer s);
     }
 
     // TODO - https://stackoverflow.com/questions/8297705/how-to-implement-thread-safe-lazy-initialization
     // Java 8 Supplier<IOkapiC> ???
-    private static final String OS = System.getProperty("os.name").toLowerCase();
 
+    private static IOkapiC nativeLibrary = null;
+    public static IOkapiC getNativeLibrary() {
+        if (nativeLibrary == null)
+            nativeLibrary = LibraryLoader.create(IOkapiC.class).load(getLibraryPath());
+
+        return nativeLibrary;
+    }
+
+    static Runtime getRuntime() {
+        return Runtime.getRuntime(getNativeLibrary());
+    }
+
+    private static final String OS = System.getProperty("os.name").toLowerCase();
     private static boolean isWindows() {
         return OS.startsWith("windows");
     }
-
     private static boolean isLinux() {
         return OS.startsWith("linux");
     }
-
     private static boolean isMacOs() {
         return OS.startsWith("mac") || OS.startsWith("darwin");
     }
@@ -95,19 +104,6 @@ class OkapiNative {
         return "";
     }
 
-    private static IOkapiC nativeLibrary = null;
-
-    public static IOkapiC getNativeLibrary() {
-        if (nativeLibrary == null)
-            nativeLibrary = LibraryLoader.create(IOkapiC.class).load(getLibraryPath());
-
-        return nativeLibrary;
-    }
-
-    static Runtime getRuntime() {
-        return Runtime.getRuntime(getNativeLibrary());
-    }
-
     static OkapiByteBuffer messageToBuffer(GeneratedMessageV3 requestMessage) {
         var requestBuffer = new OkapiByteBuffer(getRuntime());
         var bytes = requestMessage.toByteArray();
@@ -121,12 +117,8 @@ class OkapiNative {
         int len = (int) buffer.len.longValue();
         byte[] data = new byte[len];
         buffer.data.get().get(0, data, 0, len);
-        byteBufferFree(Struct.getMemory(buffer));
-        return data;
-    }
-
-    static void byteBufferFree(Pointer buffer) {
         getNativeLibrary().didcomm_byte_buffer_free(buffer);
+        return data;
     }
 
     static void stringFree(Pointer p) {
