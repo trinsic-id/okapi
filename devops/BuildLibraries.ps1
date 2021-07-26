@@ -34,7 +34,7 @@ try {
             cargo build --release --target x86_64-pc-windows-gnu
 
             Copy-Item -Path .\target\x86_64-pc-windows-gnu\release\okapi.dll -Destination $TargetOutput
-            Copy-Item -Path .\target\x86_64-pc-windows-gnu\release\libokapi.a -Destination $TargetOutput
+            Copy-Item -Path .\target\x86_64-pc-windows-gnu\release\libokapi.dll.a -Destination $TargetOutput
             break
         }
         Linux {
