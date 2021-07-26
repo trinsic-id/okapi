@@ -30,6 +30,24 @@ jobs:
           name: windows
           path: ./libs/windows/*
 
+  build_windows_gnu:
+    name: Windows-GNU
+    if: "! contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+        with:
+          submodules: "true"
+      - name: Run build script
+        run: ./devops/BuildLibraries.ps1 -Platform Windows-GNU -OutLocation ./libs/windows-gnu
+        shell: pwsh
+      - name: Upload Windows-GNU artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: windows
+          path: ./libs/windows-gnu/*
+
   build_linux:
     name: Linux
     if: "! contains(github.event.head_commit.message, '[skip ci]')"
