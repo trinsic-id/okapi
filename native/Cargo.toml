@@ -14,7 +14,6 @@ hex = "0.4.2"
 getrandom = { version = "0.2", features = ["js"] }
 regex = "1"
 did-key = { git = "https://github.com/decentralized-identity/did-key.rs", branch = "main" }
-# did-key = { path = "../did-key.rs" }
 jni = { version = "0.18" }
 serde = "1.0.119"
 serde_json = "1.0.60"
@@ -33,6 +32,3 @@ cbindgen = "0.19.0"
 [dev-dependencies]
 fluid = "0.4"
 wasm-bindgen-test = "0.3.13"
-
-[target.x86_64-pc-windows-gnu]
-linker = "C:\\bin\\mingw-w64\\x86_64-8.1.0-win32-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe"
