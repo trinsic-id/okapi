@@ -1,78 +1,41 @@
 import com.google.protobuf.*;
-import jnr.ffi.*;
-import jnr.ffi.Runtime;
-import jnr.ffi.Struct;
+import com.sun.jna.Native;
 
 import java.nio.file.Paths;
 
 
 class OkapiNative {
 
-    static class OkapiByteBuffer extends Struct {
-        public Struct.Signed64 len = new Signed64();
-        public Struct.Pointer data = new Pointer();
+    public interface IOkapiC extends com.sun.jna.Library {
+        int didcomm_pack(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
 
-        public OkapiByteBuffer(Runtime runtime) {
-            super(runtime);
-        }
+        int didcomm_unpack(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
 
-        public void setBufferData(jnr.ffi.Pointer pointer, long len) {
-            this.len.set(len);
-            this.data.set(pointer);
-        }
-    }
+        int didcomm_sign(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
 
-    static class ExternError extends Struct {
-        public Signed32 ErrorCode = new Signed32();
-        public Pointer message = new Pointer();
+        int didcomm_verify(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
 
-        public ExternError(Runtime runtime) {
-            super(runtime);
-        }
+        int didkey_generate(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
 
-        public void RaiseError() throws DidException {
-            if (this.ErrorCode.intValue() == 0)
-                return;
-            var outputString = this.message.get().getString(0);
-            throw new DidException(this.ErrorCode.intValue(), outputString);
-        }
-    }
+        int didkey_resolve(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
 
-    public interface IOkapiC {
-        int didcomm_pack(OkapiByteBuffer request, Pointer response, Pointer err);
+        int ldproofs_create_proof(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
 
-        int didcomm_unpack(OkapiByteBuffer request, Pointer response, Pointer err);
+        int ldproofs_verify_proof(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
 
-        int didcomm_sign(OkapiByteBuffer request, Pointer response, Pointer err);
+        void didcomm_byte_buffer_free(OkapiByteBuffer.ByValue v);
 
-        int didcomm_verify(OkapiByteBuffer request, Pointer response, Pointer err);
-
-        int didkey_generate(OkapiByteBuffer request, Pointer response, Pointer err);
-
-        int didkey_resolve(OkapiByteBuffer request, Pointer response, Pointer err);
-
-        int ldproofs_create_proof(OkapiByteBuffer request, Pointer response, Pointer err);
-
-        int ldproofs_verify_proof(OkapiByteBuffer request, Pointer response, Pointer err);
-
-        void didcomm_byte_buffer_free(OkapiByteBuffer v);
-
-        void didcomm_string_free(Pointer s);
+        void didcomm_string_free(com.sun.jna.ptr.ByteByReference s);
     }
 
     // TODO - https://stackoverflow.com/questions/8297705/how-to-implement-thread-safe-lazy-initialization
     // Java 8 Supplier<IOkapiC> ???
-
     private static IOkapiC nativeLibrary = null;
     public static IOkapiC getNativeLibrary() {
         if (nativeLibrary == null)
-            nativeLibrary = LibraryLoader.create(IOkapiC.class).load(getLibraryPath());
+            nativeLibrary = Native.load(getLibraryPath(), IOkapiC.class);
 
         return nativeLibrary;
-    }
-
-    static Runtime getRuntime() {
-        return Runtime.getRuntime(getNativeLibrary());
     }
 
     private static final String OS = System.getProperty("os.name").toLowerCase();
@@ -104,24 +67,15 @@ class OkapiNative {
         return "";
     }
 
-    static OkapiByteBuffer messageToBuffer(GeneratedMessageV3 requestMessage) {
-        var requestBuffer = new OkapiByteBuffer(getRuntime());
-        var bytes = requestMessage.toByteArray();
-        var buf = Memory.allocateDirect(getRuntime(), bytes.length);
-        buf.put(0, bytes, 0, bytes.length);
-        requestBuffer.setBufferData(buf, bytes.length);
+    static OkapiByteBuffer.ByValue messageToBuffer(GeneratedMessageV3 requestMessage) {
+        var requestBuffer = new OkapiByteBuffer.ByValue();
+        requestBuffer.setData(requestMessage.toByteArray());
         return requestBuffer;
     }
 
     static byte[] bufferToByteArray(OkapiByteBuffer buffer) {
-        int len = (int) buffer.len.longValue();
-        byte[] data = new byte[len];
-        buffer.data.get().get(0, data, 0, len);
-        getNativeLibrary().didcomm_byte_buffer_free(buffer);
+        byte[] data = buffer.getData();
+        getNativeLibrary().didcomm_byte_buffer_free(buffer.byValue());
         return data;
-    }
-
-    static void stringFree(Pointer p) {
-        getNativeLibrary().didcomm_string_free(p);
     }
 }

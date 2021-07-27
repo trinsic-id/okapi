@@ -1,23 +1,23 @@
+import Okapi.Keys.API;
 import com.google.protobuf.InvalidProtocolBufferException;
-import jnr.ffi.Struct;
 
 public class DidKey extends OkapiNative {
-    public static Okapi.Keys.API.GenerateKeyResponse generate(Okapi.Keys.API.GenerateKeyRequest request) throws DidException, InvalidProtocolBufferException {
+    public static API.GenerateKeyResponse generate(API.GenerateKeyRequest request) throws DidException, InvalidProtocolBufferException {
         var requestBuffer = messageToBuffer(request);
-        var responseBuffer = new OkapiByteBuffer(getRuntime());
-        var errBuffer = new ExternError(getRuntime());
-        getNativeLibrary().didkey_generate(requestBuffer, Struct.getMemory(responseBuffer), Struct.getMemory(errBuffer));
+        var responseBuffer = new OkapiByteBuffer();
+        var errBuffer = new ExternError();
+        getNativeLibrary().didkey_generate(requestBuffer, responseBuffer, errBuffer);
         errBuffer.RaiseError();
-        return Okapi.Keys.API.GenerateKeyResponse.parseFrom(bufferToByteArray(responseBuffer));
+        return API.GenerateKeyResponse.parseFrom(bufferToByteArray(responseBuffer));
     }
 
-    public static Okapi.Keys.API.ResolveResponse resolve(Okapi.Keys.API.ResolveRequest request) throws DidException, InvalidProtocolBufferException {
+    public static API.ResolveResponse resolve(API.ResolveRequest request) throws DidException, InvalidProtocolBufferException {
         var requestBuffer = messageToBuffer(request);
-        var responseBuffer = new OkapiByteBuffer(getRuntime());
-        var errBuffer = new ExternError(getRuntime());
-        getNativeLibrary().didkey_resolve(requestBuffer, Struct.getMemory(responseBuffer), Struct.getMemory(errBuffer));
+        var responseBuffer = new OkapiByteBuffer();
+        var errBuffer = new ExternError();
+        getNativeLibrary().didkey_resolve(requestBuffer, responseBuffer, errBuffer);
         errBuffer.RaiseError();
-        return Okapi.Keys.API.ResolveResponse.parseFrom(bufferToByteArray(responseBuffer));
+        return API.ResolveResponse.parseFrom(bufferToByteArray(responseBuffer));
     }
 }
 
