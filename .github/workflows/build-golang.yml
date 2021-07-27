@@ -17,8 +17,22 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest] # [ubuntu-latest, windows-latest, macos-latest]
-        go-version: ['1.16'] # ['1.16', '1.15', '1.14', '1.13']
+        include:
+          - os: ubuntu-latest
+            static_lib_file: libokapi.a
+            dynamic_lib_file: libokapi.so
+            artifact_name: linux
+            go-version: '1.16'
+          - os: windows-latest
+            static_lib_file: libokapi.dll.a
+            dynamic_lib_file: okapi.dll
+            artifact_name: windows
+            go-version: '1.16'
+          - os: macos-latest
+            static_lib_file: libokapi.a
+            dynamic_lib_file: libokapi.dylib
+            artifact_name: macos
+            go-version: '1.16'
     steps:
       - uses: actions/checkout@v2
       - name: Download workflow artifact
@@ -26,8 +40,13 @@ jobs:
         with:
           workflow: "build-libs.yml"
           path: ./libs
-      - name: Copy include file
-        run: mkdir ./include && cp ./libs/C_header/okapi.h ./include/okapi.h
+      - name: Copy include file and libraries
+        run: |
+          mkdir ./include
+          cp ./libs/C_header/okapi.h ./include/okapi.h
+          mkdir ./native/target && mkdir ./native/target/release
+          cp ./libs/${{ matrix.artifact_name }}/${{ matrix.static_lib_file}} ./native/target/release
+          cp ./libs/${{ matrix.artifact_name }}/${{ matrix.dynamic_lib_file}} ./go/okapi
         shell: pwsh
       - name: Set up Go ${{ matrix.go-version }}
         uses: actions/setup-go@v2
@@ -42,6 +61,8 @@ jobs:
           go test -v ./DidKey ./LdProofs | go2xunit > test_output.xml
         working-directory: ./go/okapi
         shell: pwsh
+        env:
+          LD_LIBRARY_PATH: "$GITHUB_WORKSPACE/go/okapi"
       - name: Upload test results
         uses: actions/upload-artifact@v2
         with:

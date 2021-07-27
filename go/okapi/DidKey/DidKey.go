@@ -8,12 +8,18 @@ import (
 
 func Generate(request *pb.GenerateKeyRequest) (pb.GenerateKeyResponse, error) {
 	response := pb.GenerateKeyResponse{}
-	err := okapi.CallFunction("didkey_generate", request, &response)
-	return response, err
+	key := okapi.DidKey{}
+	requestBuffer, responseBuffer, err := okapi.CreateBuffersFromMessage(request)
+	code := key.Generate(requestBuffer, &responseBuffer, &err)
+	okapi.UnmarshalResponse(responseBuffer, &response, requestBuffer)
+	return response, okapi.CreateError("didkey_generate", code, err)
 }
 
 func Resolve(request *pb.ResolveRequest) (pb.ResolveResponse, error) {
 	response := pb.ResolveResponse{}
-	err := okapi.CallFunction("didkey_resolve", request, &response)
-	return response, err
+	key := okapi.DidKey{}
+	requestBuffer, responseBuffer, err := okapi.CreateBuffersFromMessage(request)
+	code := key.Resolve(requestBuffer, &responseBuffer, &err)
+	okapi.UnmarshalResponse(responseBuffer, &response, requestBuffer)
+	return response, okapi.CreateError("didkey_resolve", code, err)
 }
