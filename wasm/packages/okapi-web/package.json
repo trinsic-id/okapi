@@ -1,12 +1,13 @@
 {
   "name": "@trinsic/okapi-web",
-  "version": "1.0.0-preview.19",
+  "version": "1.0.0-preview.22",
   "description": "> TODO: description",
   "author": "Tomislav Markovski <tomislav@trinsic.id>",
   "homepage": "https://github.com/trinsic-id/okapi#readme",
   "license": "ISC",
   "main": "lib/okapi_wasm.js",
   "types": "lib/okapi_wasm.d.ts",
+  "type": "module",
   "directories": {
     "lib": "lib"
   },
