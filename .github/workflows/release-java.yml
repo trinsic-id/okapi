@@ -29,6 +29,7 @@ jobs:
           path: ./libs
           branch: main
       - name: Publish package
-        run: gradle publish
+        run: ./gradlew publish
+        working-directory: java
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
