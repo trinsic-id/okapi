@@ -34,7 +34,7 @@ jobs:
           path: ./libs
       - name: Build with Gradle
         run: ./gradlew build
-        working-directory: ./java
+        working-directory: java
       - uses: actions/upload-artifact@v2
         if: (${{ matrix.os }} == 'ubuntu-latest')
         with:
