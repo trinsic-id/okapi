@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+}
+
+group 'id.trinsic'
+version '0.1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.jetbrains:annotations:20.1.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.7.0'
+    implementation group: 'com.google.protobuf', name: 'protobuf-java', version: '3.17.3'
+    implementation group: 'net.java.dev.jna', name: 'jna', version: '5.8.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    archiveBaseName = 'trinsic-okapi'
+    archiveVersion =  '0.1.0'
+}
