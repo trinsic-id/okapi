@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: Build + Publish
+    name: Build + Publish Ruby
     runs-on: ubuntu-latest
     permissions:
       packages: write
