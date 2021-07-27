@@ -23,7 +23,7 @@
   },
   "scripts": {
     "build": "npm run build:wasm && npm run build:copy",
-    "build:wasm": "wasm-pack build --target web",
+    "build:wasm": "npx wasm-pack build --target web",
     "build:copy": "copyfiles -u 3 ../../pkg/okapi* lib/ && rimraf ../../pkg/",
     "test": "echo 'No Tests'"
   },
