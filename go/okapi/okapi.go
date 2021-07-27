@@ -1,88 +1,104 @@
 package okapi
 
 // #cgo CFLAGS: -I../../include
-// #include <okapi.h>
+// #cgo LDFLAGS: -L../../native/target/release -lokapi
+// #cgo linux LDFLAGS: -ldl -lm
+// #include "okapi.h"
 import "C"
 import (
 	"fmt"
 	"github.com/golang/protobuf/proto"
 	"log"
-	"path"
-	"runtime"
-	"sync"
-	"syscall"
 	"unsafe"
 )
 
-var once sync.Once
-var okapiDll *syscall.LazyDLL
+type IDidComm interface {
+	pack(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32
+	unpack(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32
+	sign(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32
+	verify(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32
 
-func GetLibrary() *syscall.LazyDLL {
-	once.Do(func() {
-		if runtime.GOOS == "windows" {
-			okapiDll = syscall.NewLazyDLL(path.Join(getCurrentDir(), "../../libs/windows/okapi.dll"))
-		} else if runtime.GOOS == "linux" {
-			okapiDll = syscall.NewLazyDLL(path.Join(getCurrentDir(), "../../libs/linux/libokapi.so"))
-		} else if runtime.GOOS == "darwin" {
-			okapiDll = syscall.NewLazyDLL(path.Join(getCurrentDir(), "../../libs/macos/libokapi.dylib"))
-		}
-	})
-	return okapiDll
+	byteBufferFree(v C.ByteBuffer)
+	stringFree(s *C.char)
+}
+type IDidKey interface {
+	generate(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32
+	resolve(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32
+}
+type ILdProofs interface {
+	createProof(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32
+	verifyProof(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32
 }
 
-func getCurrentDir() string {
-	_, filename, _, _ := runtime.Caller(1)
-	return path.Dir(filename)
+type DidComm struct {}
+type DidKey struct {}
+type LdProofs struct {}
+
+func (d DidComm) Pack(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+	return int32(C.didcomm_pack(request, response, err))
+}
+func (d DidComm) Unpack(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+	return int32(C.didcomm_unpack(request, response, err))
+}
+func (d DidComm) Sign(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+	return int32(C.didcomm_sign(request, response, err))
+}
+func (d DidComm) Verify(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+	return int32(C.didcomm_verify(request, response, err))
 }
 
-var lock = sync.RWMutex{}
-var functionPointerCache = map[string]*syscall.LazyProc{}
-func GetFunction(functionName string) *syscall.LazyProc {
-	if fcnPtr, ok := functionPointerCache[functionName]; ok {
-		return fcnPtr
-	}
-	lock.Lock()
-	defer lock.Unlock()
-	functionPointer := GetLibrary().NewProc(functionName)
-	functionPointerCache[functionName] = functionPointer
-	return functionPointer
+func (d DidKey) Generate(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+	return int32(C.didkey_generate(request, response, err))
+}
+func (d DidKey) Resolve(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+	return int32(C.didkey_resolve(request, response, err))
 }
 
-func CallFunction(functionName string, requestMessage proto.Message, responseMessage proto.Message) error {
+func (d LdProofs) CreateProof(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+	return int32(C.ldproofs_create_proof(request, response, err))
+}
+func (d LdProofs) VerifyProof(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+	return int32(C.ldproofs_verify_proof(request, response, err))
+}
+
+func CreateBuffersFromMessage(requestMessage proto.Message) (C.ByteBuffer, C.ByteBuffer, C.ExternError) {
 	out, e := proto.Marshal(requestMessage)
 	if e != nil {
 		log.Fatalln("Failed to encode requestMessage:", e)
 	}
 
 	requestBuffer, responseBuffer, err := AllocateBuffers(out)
-	code, _, _ := GetFunction(functionName).Call(uintptr(unsafe.Pointer(&requestBuffer)), uintptr(unsafe.Pointer(&responseBuffer)), uintptr(unsafe.Pointer(&err)))
+	return requestBuffer, responseBuffer, err
+}
 
-	if code != 0 {
-		responseMessage = nil
-		return &DidError{
-			Code:         int(code),
-			FunctionName: functionName,
-			Message:      C.GoString(err.message),
-		}
-	}
+func UnmarshalResponse(responseBuffer C.ByteBuffer, responseMessage proto.Message, requestBuffer C.ByteBuffer) {
 	if e := proto.Unmarshal(C.GoBytes(unsafe.Pointer(responseBuffer.data), C.int(responseBuffer.len)), responseMessage); e != nil {
 		log.Fatalln("Failed to decode responseMessage:", e)
 	}
 	C.free(unsafe.Pointer(requestBuffer.data))
 	FreeBuffer(responseBuffer)
-	return nil
+}
+
+func CreateError(functionName string, code int32, err C.ExternError) error {
+	if code == 0 {
+		return nil
+	}
+	return &DidError{
+		Code: int(code),
+		FunctionName: functionName,
+		Message:      C.GoString(err.message),
+	}
 }
 
 func AllocateBuffers(out []byte) (C.ByteBuffer, C.ByteBuffer, C.ExternError) {
-	requestBuffer := C.ByteBuffer{len: C.longlong(len(out)), data: (*C.uint8_t)(C.CBytes(out))}
+	requestBuffer := C.ByteBuffer{len: C.int64_t(len(out)), data: (*C.uint8_t)(C.CBytes(out))}
 	responseBuffer := C.ByteBuffer{}
 	err := C.ExternError{}
 	return requestBuffer, responseBuffer, err
 }
 
 func FreeBuffer(buffer C.ByteBuffer) {
-	byteBufferFree := GetFunction("didcomm_byte_buffer_free")
-	_, _, _ = byteBufferFree.Call(uintptr(unsafe.Pointer(&buffer)))
+	C.didcomm_byte_buffer_free(buffer)
 }
 
 type DidError struct {

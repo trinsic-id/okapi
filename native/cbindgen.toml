@@ -1,3 +1,0 @@
-# cargo install --force cbindgen
-# cbindgen --config cbindgen.toml --crate okapi --output ../include/okapi.h --lang c
-# copy data manually into include/didcomm_grpc.h
