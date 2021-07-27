@@ -18,14 +18,19 @@ jobs:
       - name: Set up Ruby 2.6
         uses: ruby/setup-ruby@v1.76.0
         with:
-          ruby-version: 2.7.4
+          ruby-version: 2.7
       - name: Download workflow artifact
         uses: dawidd6/action-download-artifact@v2.14.0
         with:
           workflow: "build-libs.yml"
           path: ./libs
-      - run: bundle install
-
+          branch: main
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          gem install rspec
+          bundle install
+        working-directory: ruby
       - name: Publish to GPR
         run: |
           mkdir -p $HOME/.gem
