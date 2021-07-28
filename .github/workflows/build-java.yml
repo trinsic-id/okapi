@@ -6,7 +6,7 @@ on:
     paths:
       - "java/**"
       - "proto/**"
-      - ".github/workflows/*dotnet*"
+      - ".github/workflows/*java*"
   push:
     branches:
       - main
