@@ -26,10 +26,7 @@ on:
 jobs:
   build_test:
     name: Build for Web Assembly
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ windows-latest, macos-latest, ubuntu-latest ]
+    runs-on: "macos-latest"
     defaults:
       run:
         working-directory: ./wasm
