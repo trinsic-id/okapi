@@ -33,7 +33,7 @@ jobs:
           workflow: "build-libs.yml"
           path: ./libs
       - name: Build with Gradle
-        run: ./gradlew build
+        run: gradle build
         working-directory: java
       - uses: actions/upload-artifact@v2
         if: (${{ matrix.os }} == 'ubuntu-latest')

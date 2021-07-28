@@ -3,6 +3,9 @@ name: Ruby Gem
 on:
   workflow_dispatch:
   push:
+    pull_request:
+      paths:
+        - "ruby/**"
     branches: [ main ]
 
 jobs:
