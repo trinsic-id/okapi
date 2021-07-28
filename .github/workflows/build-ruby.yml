@@ -47,4 +47,3 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           minimum_coverage: 75
           show_class_names: true
-          fail_below_threshold: false
