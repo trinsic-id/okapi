@@ -11,7 +11,9 @@
     "lib/*"
   ],
   "scripts": {
-    "build": "npx tsc -p .",
+    "build": "npm run build:node && npm run build:browser",
+    "build:node": "npx tsc -p tsconfig.node.json",
+    "build:browser": "npx tsc -p tsconfig.browser.json",
     "test": "ava --verbose"
   },
   "author": "Tomislav Markovski",

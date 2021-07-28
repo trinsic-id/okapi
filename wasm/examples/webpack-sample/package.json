@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack build",
+    "start": "npx http-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tomislav Markovski",
   "license": "ISC",
   "dependencies": {
-    "@trinsic/okapi": "1.0.0-preview.19"
+    "@trinsic/okapi": "file:../../packages/okapi"
   },
   "devDependencies": {
     "http-server": "^0.12.3",
