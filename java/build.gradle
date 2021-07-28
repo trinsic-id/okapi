@@ -13,6 +13,11 @@ publishing {
             }
         }
     }
+    publications {
+        gpr(MavenPublication) {
+            from(components.java)
+        }
+    }
 }
 
 group 'id.trinsic'
