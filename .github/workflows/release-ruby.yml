@@ -6,6 +6,7 @@ on:
     pull_request:
       paths:
         - "ruby/**"
+        - ".github/workflows/*ruby*"
     branches: [ main ]
 
 jobs:
