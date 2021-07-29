@@ -6,7 +6,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = "https://maven.pkg.github.com/trinsic-id"
+            url = "https://maven.pkg.github.com/trinsic-id/okapi"
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN")
@@ -15,6 +15,9 @@ publishing {
     }
     publications {
         gpr(MavenPublication) {
+            groupId = 'id.trinsic.okapi'
+            artifactId = 'library'
+            version = '0.1.0'
             from(components.java)
         }
     }
