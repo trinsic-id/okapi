@@ -1,16 +1,13 @@
 {
   "name": "@trinsic/okapi-web",
-  "version": "1.0.0-preview.22",
+  "version": "1.0.0-preview.27",
   "description": "> TODO: description",
   "author": "Tomislav Markovski <tomislav@trinsic.id>",
   "homepage": "https://github.com/trinsic-id/okapi#readme",
   "license": "ISC",
-  "main": "lib/okapi_wasm.js",
   "types": "lib/okapi_wasm.d.ts",
-  "type": "module",
-  "directories": {
-    "lib": "lib"
-  },
+  "module": "lib/okapi_wasm.js",
+  "sideEffects": false,
   "files": [
     "lib/*"
   ],
@@ -23,8 +20,8 @@
   },
   "scripts": {
     "build": "npm run build:wasm && npm run build:copy",
-    "build:wasm": "npx wasm-pack build --target web",
-    "build:copy": "copyfiles -u 3 ../../pkg/okapi* lib/ && rimraf ../../pkg/",
+    "build:wasm": "npx wasm-pack build --target bundler",
+    "build:copy": "copyfiles -u 3 ../../pkg/okapi_wasm* lib/ && rimraf ../../pkg/",
     "test": "echo 'No Tests'"
   },
   "devDependencies": {

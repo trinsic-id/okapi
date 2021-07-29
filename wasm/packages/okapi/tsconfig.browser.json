@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es2020",
+    "moduleResolution": "node",
+    "declaration": true,
+    "lib": ["es2016", "dom", "es5"],
+    "sourceMap": true,
+    "outDir": "./lib",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["./src/index.web.ts"],
+  "exclude": ["node_modules", "lib"]
+}

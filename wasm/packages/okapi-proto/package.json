@@ -1,6 +1,6 @@
 {
   "name": "@trinsic/okapi-proto",
-  "version": "1.0.0-preview.22",
+  "version": "1.0.0-preview.27",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -21,6 +21,7 @@
     "google-protobuf": "^3.14.0"
   },
   "devDependencies": {
+    "@types/google-protobuf": "^3.7.4",
     "copyfiles": "^2.4.1"
   },
   "repository": {
