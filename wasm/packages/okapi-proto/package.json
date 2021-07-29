@@ -1,6 +1,6 @@
 {
   "name": "@trinsic/okapi-proto",
-  "version": "1.0.0-preview.23",
+  "version": "1.0.0-preview.24",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

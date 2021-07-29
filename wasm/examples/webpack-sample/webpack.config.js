@@ -6,4 +6,7 @@ module.exports = {
     path: path.resolve(__dirname, ''),
     filename: 'bundle.js',
   },
+  experiments: {
+    asyncWebAssembly: true
+  }
 };
