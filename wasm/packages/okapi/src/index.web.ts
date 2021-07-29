@@ -1,11 +1,11 @@
-import init, * as native from "@trinsic/okapi-web";
 import * as proto from "@trinsic/okapi-proto";
 export * from "@trinsic/okapi-proto";
 
+let native: any;
 let initalized = false;
 async function initialize() {
   if (!initalized) {
-    await init();
+    native = await import("@trinsic/okapi-web");
     initalized = true;
   }
 }
