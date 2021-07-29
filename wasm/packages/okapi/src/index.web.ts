@@ -1,13 +1,13 @@
-import * as native from "@trinsic/okapi-web";
 import * as proto from "@trinsic/okapi-proto";
 export * from "@trinsic/okapi-proto";
 
+let native: any;
 let initalized = false;
-function initialize() {
+async function initialize() {
   if (!initalized) {
+    native = await import("@trinsic/okapi-web");
     initalized = true;
   }
-  return Promise.resolve();
 }
 
 export class DIDKey {

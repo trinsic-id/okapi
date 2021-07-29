@@ -7,32 +7,29 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.3.tgz#90420f9f9c6d3987f176a19a7d8e764271a2f55d"
   integrity sha512-Fxt+AfXgjMoin2maPIYzFZnQjAXjAL0PHscM5pRTtatFqB+vZxAM9tLp2Optnuw3QOQC40jTNeGYFOMvyf7v9g==
 
-"@trinsic/okapi-node@^1.0.0-preview.23":
-  version "1.0.0-preview.23"
-  resolved "https://registry.yarnpkg.com/@trinsic/okapi-node/-/okapi-node-1.0.0-preview.23.tgz#f37a026c9d3cfd3838d838d9eacd7612b915e34d"
-  integrity sha512-VgWy58j6codWDP6fBoZQsG6ZKdWswhWRnQyofLA1y3EmHuSkXHkNxrMniluVv/HiPjdZjLf/YITmWrYFtHYH6w==
+"@trinsic/okapi-node@^1.0.0-preview.25":
+  version "1.0.0-preview.25"
+  resolved "https://registry.yarnpkg.com/@trinsic/okapi-node/-/okapi-node-1.0.0-preview.25.tgz#08eda6016c78de5bea50f352eaacb76e7c1c04fd"
+  integrity sha512-u8dp9JpzjMDltRpaG+R8jSi0HOlo1RVmINmjgppFQSIncn4Kf0Uj8/W7lXofkcxrDShvbfPq9CrRX9hrN5N2Vg==
 
-"@trinsic/okapi-proto@^1.0.0-preview.23":
-  version "1.0.0-preview.23"
-  resolved "https://registry.yarnpkg.com/@trinsic/okapi-proto/-/okapi-proto-1.0.0-preview.23.tgz#294c2e5beeb9690db8ea3e7ff5453798e17d8258"
-  integrity sha512-tlGv0mjTGB603HxkE00myP5dZKX8LQA+fhqIglhDP4rCTVv9SOHmM9c5OCb9jdthVKiNvrGXK75JbpH7onv+XQ==
+"@trinsic/okapi-proto@^1.0.0-preview.25":
+  version "1.0.0-preview.25"
+  resolved "https://registry.yarnpkg.com/@trinsic/okapi-proto/-/okapi-proto-1.0.0-preview.25.tgz#c0f106767dd188534369e8c687e0c9b79c20c6a5"
+  integrity sha512-wc9J3mrNVrH8yb7FZHv68ycACjf0ONphGu8XQeITdJGd9XN0O5IymGluxjrMrC349GyElHtnpl4FflIEevEoNA==
   dependencies:
     google-protobuf "^3.14.0"
 
-"@trinsic/okapi-web@^1.0.0-preview.23":
-  version "1.0.0-preview.23"
-  resolved "https://registry.yarnpkg.com/@trinsic/okapi-web/-/okapi-web-1.0.0-preview.23.tgz#63ec56e69a71ae0b13fa25504ee7e1f515758a5e"
-  integrity sha512-NQpYLV1bLS7BhxoPkhUSc2WC6Q3Yzelc0QEWuWtgN+9ih+Ys+ZedzREClcTxZVXDjKZrXVYrZgGwiqKDyp/tPg==
-
-"@trinsic/okapi-web@file:../../packages/okapi-web":
-  version "1.0.0-preview.23"
+"@trinsic/okapi-web@^1.0.0-preview.25":
+  version "1.0.0-preview.25"
+  resolved "https://registry.yarnpkg.com/@trinsic/okapi-web/-/okapi-web-1.0.0-preview.25.tgz#d98afbe12ea92fc523ce074a0d8683f938dfd623"
+  integrity sha512-ciD4LxSGChWi04CBHesENvHwav8eU6yRXEcaZyy+DU9+vay+hSokkG29u+OKy+LJ34Ub9vnh7EdZFakKiRB+fg==
 
 "@trinsic/okapi@file:../../packages/okapi":
-  version "1.0.0-preview.23"
+  version "1.0.0-preview.25"
   dependencies:
-    "@trinsic/okapi-node" "^1.0.0-preview.23"
-    "@trinsic/okapi-proto" "^1.0.0-preview.23"
-    "@trinsic/okapi-web" "^1.0.0-preview.23"
+    "@trinsic/okapi-node" "^1.0.0-preview.25"
+    "@trinsic/okapi-proto" "^1.0.0-preview.25"
+    "@trinsic/okapi-web" "^1.0.0-preview.25"
     google-protobuf "^3.14.0-rc.3"
 
 "@types/eslint-scope@^3.7.0":
