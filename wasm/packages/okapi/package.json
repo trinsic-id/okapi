@@ -1,6 +1,6 @@
 {
   "name": "@trinsic/okapi",
-  "version": "1.0.0-preview.26",
+  "version": "1.0.0-preview.27",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -19,9 +19,9 @@
   "author": "Tomislav Markovski",
   "license": "ISC",
   "dependencies": {
-    "@trinsic/okapi-node": "^1.0.0-preview.26",
-    "@trinsic/okapi-proto": "^1.0.0-preview.26",
-    "@trinsic/okapi-web": "^1.0.0-preview.26",
+    "@trinsic/okapi-node": "^1.0.0-preview.27",
+    "@trinsic/okapi-proto": "^1.0.0-preview.27",
+    "@trinsic/okapi-web": "^1.0.0-preview.27",
     "google-protobuf": "^3.14.0-rc.3"
   },
   "devDependencies": {
