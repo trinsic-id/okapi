@@ -7,6 +7,9 @@ on:
       - "native/**"
       - "proto/**"
       - ".github/workflows/*libs*"
+  schedule:
+    # Do it twice a day to guarantee that the binaries never expire and give the "couldn't download artifact" run error in other jobs
+    - cron: "* */12 * * *"
   push:
     branches:
       - main
