@@ -1,3 +1,8 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
 plugins {
     id 'java'
     id 'maven-publish'
@@ -15,15 +20,17 @@ publishing {
     }
     publications {
         gpr(MavenPublication) {
-            groupId = 'id.trinsic.okapi'
-            artifactId = 'library'
-            version = '0.1.0'
+            groupId = 'id.trinsic'
+            artifactId = 'okapi'
+            version = '0.1.1'
             from(components.java)
         }
     }
 }
 
-group 'id.trinsic'
+group 'id.trinsic.okapi'
+archivesBaseName = 'trinsic-okapi'
+version = '0.1.1'
 
 repositories {
     mavenCentral()
@@ -44,5 +51,5 @@ test {
 
 jar {
     archiveBaseName.set('trinsic-okapi')
-    archiveVersion.set( '0.1.0')
+    archiveVersion.set( '0.1.1')
 }
