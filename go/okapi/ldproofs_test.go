@@ -1,8 +1,6 @@
-package LdProofs
+package okapi
 
 import (
-	pb "didcomm.org/grpc/messaging"
-	"didcomm.org/grpc/okapi/DidKey"
 	"github.com/stretchr/testify/assert"
 	"google.golang.org/protobuf/types/known/structpb"
 	"log"
@@ -19,22 +17,22 @@ func TestGenerateCapabilityInvocationProofWithJCS(t *testing.T) {
 		},
 	})
 
-	request := pb.GenerateKeyRequest{KeyType: pb.KeyType_Ed25519}
-	response, err := DidKey.Generate(&request)
+	request := GenerateKeyRequest{KeyType: KeyType_Ed25519}
+	response, err := Generate(&request)
 	if err != nil {
 		log.Fatalln(err)
 	}
-	signingKey := &pb.JsonWebKey{}
+	signingKey := &JsonWebKey{}
 	for _, key := range response.Key {
 		if key.Crv == "Ed25519" {
 			signingKey = key
 			break
 		}
 	}
-	signedCapability, err2 := CreateProof(&pb.CreateProofRequest{
+	signedCapability, err2 := CreateProof(&CreateProofRequest{
 		Document: proofStruct,
 		Key:      signingKey,
-		Suite:    pb.LdSuite_JcsEd25519Signature2020,
+		Suite:    LdSuite_JcsEd25519Signature2020,
 	})
 	if err2 != nil {
 		log.Fatalln(err2)

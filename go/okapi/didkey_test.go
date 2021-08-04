@@ -1,8 +1,6 @@
-package DidKey
+package okapi
 
 import (
-	pb "didcomm.org/grpc/messaging"
-	"didcomm.org/grpc/okapi"
 	"encoding/base64"
 	"encoding/hex"
 	"fmt"
@@ -12,8 +10,8 @@ import (
 )
 
 func TestGenerateKey(t *testing.T) {
-	request := pb.GenerateKeyRequest{}
-	request.KeyType = pb.KeyType_Ed25519
+	request := GenerateKeyRequest{}
+	request.KeyType = KeyType_Ed25519
 	request.Seed = []byte{1, 2, 3}
 
 	response, err := Generate(&request)
@@ -23,8 +21,8 @@ func TestGenerateKey(t *testing.T) {
 }
 
 func TestGenerateKeyNoSeed(t *testing.T) {
-	request := pb.GenerateKeyRequest{}
-	request.KeyType = pb.KeyType_Ed25519
+	request := GenerateKeyRequest{}
+	request.KeyType = KeyType_Ed25519
 	response, err := Generate(&request)
 	assert.Nil(t, err)
 	assertValidKeyGenerated(t, &response)
@@ -32,7 +30,7 @@ func TestGenerateKeyNoSeed(t *testing.T) {
 
 func TestResolveKey(t *testing.T) {
 	key := "did:key:z6Mkt6QT8FPajKXDrtMefkjxRQENd9wFzKkDFomdQAVFzpzm#z6LSfDq6DuofPeZUqNEmdZsxpvfHvSoUXGEWFhw7JHk4cynN"
-	request := &pb.ResolveRequest{}
+	request := &ResolveRequest{}
 	request.Did = key
 	response, err := Resolve(request)
 	assert.Nil(t, err)
@@ -40,25 +38,25 @@ func TestResolveKey(t *testing.T) {
 }
 
 func TestGenerateKeyThrowsInvalidKeyType(t *testing.T) {
-	request := pb.GenerateKeyRequest{}
+	request := GenerateKeyRequest{}
 	request.KeyType = -1
 	_, err := Generate(&request)
 	assert.NotNil(t, err)
-	assert.IsType(t, &okapi.DidError{}, err)
+	assert.IsType(t, &DidError{}, err)
 }
 
 type DataArgument struct {
-	keyType pb.KeyType
+	keyType KeyType
 	keyTypeString string
 	seed string
 	response string
 }
 
 func TestGenerateKeyFromSeed(t *testing.T) {
-	dataArguments := []DataArgument{{keyType: pb.KeyType_Ed25519, keyTypeString: "Ed25519",
+	dataArguments := []DataArgument{{keyType: KeyType_Ed25519, keyTypeString: "Ed25519",
 		seed:     "4f66b355aa7b0980ff901f2295b9c562ac3061be4df86703eb28c612faae6578",
 		response: "6fioC1zcDPyPEL19pXRS2E4iJ46zH7xP6uSgAaPdwDrx"},
-		{keyType: pb.KeyType_X25519, keyTypeString: "X25519",
+		{keyType: KeyType_X25519, keyTypeString: "X25519",
 			seed:     "9b29d42b38ddd52ed39c0ff70b39572a6eb9b3cac201918dc6d6a84b4c88d2a5",
 			response: "3EK9AYXoUV4Unn5AjvYY39hyK91n7gg4ExC8rKKSUQXJ"},
 	}
@@ -68,7 +66,7 @@ func TestGenerateKeyFromSeed(t *testing.T) {
 			if err != nil {
 				assert.Failf(t,"Failed to decode hex", argument.seed)
 			}
-			request := pb.GenerateKeyRequest{KeyType: argument.keyType, Seed: hex}
+			request := GenerateKeyRequest{KeyType: argument.keyType, Seed: hex}
 			response, err := Generate(&request)
 			assert.Nil(t, err)
 
@@ -78,7 +76,7 @@ func TestGenerateKeyFromSeed(t *testing.T) {
 	}
 }
 
-func assertValidKeyGenerated(t *testing.T, response *pb.GenerateKeyResponse, crvOptional ...string) []byte {
+func assertValidKeyGenerated(t *testing.T, response *GenerateKeyResponse, crvOptional ...string) []byte {
 	crv := "Ed25519"
 	if len(crvOptional) > 0 {
 		crv = crvOptional[0]
