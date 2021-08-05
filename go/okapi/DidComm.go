@@ -2,38 +2,42 @@ package okapi
 
 import "C"
 
-func Pack(request *PackRequest) (PackResponse, error) {
+type DidComm struct{}
+type IDidComm interface {
+	Pack(request *PackRequest) (PackResponse, error)
+	Unpack(request *UnpackRequest) (UnpackResponse, error)
+	Sign(request *SignRequest) (SignResponse, error)
+	Verify(request *VerifyRequest) (VerifyResponse, error)
+}
+
+func (d DidComm) Pack(request *PackRequest) (PackResponse, error) {
 	response := PackResponse{}
-	didcomm := DidComm{}
-	requestBuffer, responseBuffer, err := CreateBuffersFromMessage(request)
-	code := didcomm.Pack(requestBuffer, &responseBuffer, &err)
-	UnmarshalResponse(responseBuffer, &response, requestBuffer)
-	return response, CreateError("didcomm_pack", code, err)
+	requestBuffer, responseBuffer, err := createBuffersFromMessage(request)
+	code := didcomm_pack(requestBuffer, &responseBuffer, &err)
+	unmarshalResponse(responseBuffer, &response, requestBuffer)
+	return response, createError("didcomm_pack", code, err)
 }
 
-func Unpack(request *UnpackRequest) (UnpackResponse, error) {
+func (d DidComm) Unpack(request *UnpackRequest) (UnpackResponse, error) {
 	response := UnpackResponse{}
-	didcomm := DidComm{}
-	requestBuffer, responseBuffer, err := CreateBuffersFromMessage(request)
-	code := didcomm.Unpack(requestBuffer, &responseBuffer, &err)
-	UnmarshalResponse(responseBuffer, &response, requestBuffer)
-	return response, CreateError("didcomm_unpack", code, err)
+	requestBuffer, responseBuffer, err := createBuffersFromMessage(request)
+	code := didcomm_unpack(requestBuffer, &responseBuffer, &err)
+	unmarshalResponse(responseBuffer, &response, requestBuffer)
+	return response, createError("didcomm_unpack", code, err)
 }
 
-func Sign(request *SignRequest) (SignResponse, error) {
+func (d DidComm) Sign(request *SignRequest) (SignResponse, error) {
 	response := SignResponse{}
-	didcomm := DidComm{}
-	requestBuffer, responseBuffer, err := CreateBuffersFromMessage(request)
-	code := didcomm.Sign(requestBuffer, &responseBuffer, &err)
-	UnmarshalResponse(responseBuffer, &response, requestBuffer)
-	return response, CreateError("didcomm_sign", code, err)
+	requestBuffer, responseBuffer, err := createBuffersFromMessage(request)
+	code := didcomm_sign(requestBuffer, &responseBuffer, &err)
+	unmarshalResponse(responseBuffer, &response, requestBuffer)
+	return response, createError("didcomm_sign", code, err)
 }
 
-func Verify(request *VerifyRequest) (VerifyResponse, error) {
+func (d DidComm) Verify(request *VerifyRequest) (VerifyResponse, error) {
 	response := VerifyResponse{}
-	didcomm := DidComm{}
-	requestBuffer, responseBuffer, err := CreateBuffersFromMessage(request)
-	code := didcomm.Verify(requestBuffer, &responseBuffer, &err)
-	UnmarshalResponse(responseBuffer, &response, requestBuffer)
-	return response, CreateError("didcomm_verify", code, err)
+	requestBuffer, responseBuffer, err := createBuffersFromMessage(request)
+	code := didcomm_verify(requestBuffer, &responseBuffer, &err)
+	unmarshalResponse(responseBuffer, &response, requestBuffer)
+	return response, createError("didcomm_verify", code, err)
 }

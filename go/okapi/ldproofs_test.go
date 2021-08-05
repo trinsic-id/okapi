@@ -18,7 +18,7 @@ func TestGenerateCapabilityInvocationProofWithJCS(t *testing.T) {
 	})
 
 	request := GenerateKeyRequest{KeyType: KeyType_Ed25519}
-	response, err := Generate(&request)
+	response, err := DidKey{}.Generate(&request)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -29,7 +29,7 @@ func TestGenerateCapabilityInvocationProofWithJCS(t *testing.T) {
 			break
 		}
 	}
-	signedCapability, err2 := CreateProof(&CreateProofRequest{
+	signedCapability, err2 := LdProofs{}.CreateProof(&CreateProofRequest{
 		Document: proofStruct,
 		Key:      signingKey,
 		Suite:    LdSuite_JcsEd25519Signature2020,

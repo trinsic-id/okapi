@@ -1,7 +1,6 @@
 package okapi
 
-// #cgo CFLAGS: -I../../include
-// #cgo LDFLAGS: -L../../native/target/release -lokapi
+// #cgo LDFLAGS: -L. -lokapi
 // #cgo linux LDFLAGS: -ldl -lm
 // #include "okapi.h"
 import "C"
@@ -12,74 +11,62 @@ import (
 	"unsafe"
 )
 
-type IDidComm interface {
-	pack(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32
-	unpack(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32
-	sign(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32
-	verify(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32
 
-	byteBufferFree(v C.ByteBuffer)
-	stringFree(s *C.char)
+type DidError struct {
+	Code         int
+	FunctionName string
+	Message      string
 }
-type IDidKey interface {
-	generate(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32
-	resolve(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32
-}
-type ILdProofs interface {
-	createProof(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32
-	verifyProof(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32
+func (d *DidError) Error() string {
+	return fmt.Sprintf("Error on call: %s() return code=%d message=%s", d.FunctionName, d.Code, d.Message)
 }
 
-type DidComm struct {}
-type DidKey struct {}
-type LdProofs struct {}
-
-func (d DidComm) Pack(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+func didcomm_pack(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
 	return int32(C.didcomm_pack(request, response, err))
 }
-func (d DidComm) Unpack(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+func didcomm_unpack(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
 	return int32(C.didcomm_unpack(request, response, err))
 }
-func (d DidComm) Sign(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+func didcomm_sign(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
 	return int32(C.didcomm_sign(request, response, err))
 }
-func (d DidComm) Verify(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+func didcomm_verify(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
 	return int32(C.didcomm_verify(request, response, err))
 }
 
-func (d DidKey) Generate(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+func didkey_generate(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
 	return int32(C.didkey_generate(request, response, err))
 }
-func (d DidKey) Resolve(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+func didkey_resolve(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
 	return int32(C.didkey_resolve(request, response, err))
 }
 
-func (d LdProofs) CreateProof(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+func ldproofs_create_proof(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
 	return int32(C.ldproofs_create_proof(request, response, err))
 }
-func (d LdProofs) VerifyProof(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+func ldproofs_verify_proof(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
 	return int32(C.ldproofs_verify_proof(request, response, err))
 }
 
-func CreateBuffersFromMessage(requestMessage proto.Message) (C.ByteBuffer, C.ByteBuffer, C.ExternError) {
+func createBuffersFromMessage(requestMessage proto.Message) (C.ByteBuffer, C.ByteBuffer, C.ExternError) {
 	out, e := proto.Marshal(requestMessage)
 	if e != nil {
 		log.Fatalln("Failed to encode requestMessage:", e)
 	}
 
-	requestBuffer, responseBuffer, err := AllocateBuffers(out)
+	requestBuffer, responseBuffer, err := allocateBuffers(out)
 	return requestBuffer, responseBuffer, err
 }
 
-func UnmarshalResponse(responseBuffer C.ByteBuffer, responseMessage proto.Message, requestBuffer C.ByteBuffer) {
+func unmarshalResponse(responseBuffer C.ByteBuffer, responseMessage proto.Message, requestBuffer C.ByteBuffer) {
 	if e := proto.Unmarshal(C.GoBytes(unsafe.Pointer(responseBuffer.data), C.int(responseBuffer.len)), responseMessage); e != nil {
 		log.Fatalln("Failed to decode responseMessage:", e)
 	}
 	C.free(unsafe.Pointer(requestBuffer.data))
-	FreeBuffer(responseBuffer)
+	C.didcomm_byte_buffer_free(responseBuffer)
 }
 
-func CreateError(functionName string, code int32, err C.ExternError) error {
+func createError(functionName string, code int32, err C.ExternError) error {
 	if code == 0 {
 		return nil
 	}
@@ -90,22 +77,9 @@ func CreateError(functionName string, code int32, err C.ExternError) error {
 	}
 }
 
-func AllocateBuffers(out []byte) (C.ByteBuffer, C.ByteBuffer, C.ExternError) {
+func allocateBuffers(out []byte) (C.ByteBuffer, C.ByteBuffer, C.ExternError) {
 	requestBuffer := C.ByteBuffer{len: C.int64_t(len(out)), data: (*C.uint8_t)(C.CBytes(out))}
 	responseBuffer := C.ByteBuffer{}
 	err := C.ExternError{}
 	return requestBuffer, responseBuffer, err
-}
-
-func FreeBuffer(buffer C.ByteBuffer) {
-	C.didcomm_byte_buffer_free(buffer)
-}
-
-type DidError struct {
-	Code         int
-	FunctionName string
-	Message      string
-}
-func (d *DidError) Error() string {
-	return fmt.Sprintf("Error on call: %s() return code=%d message=%s", d.FunctionName, d.Code, d.Message)
 }
