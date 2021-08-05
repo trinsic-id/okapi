@@ -2,20 +2,24 @@ package okapi
 
 import "C"
 
-func CreateProof(request *CreateProofRequest) (CreateProofResponse, error) {
-	response := CreateProofResponse{}
-	ldproofs := LdProofs{}
-	requestBuffer, responseBuffer, err := CreateBuffersFromMessage(request)
-	code := ldproofs.CreateProof(requestBuffer, &responseBuffer, &err)
-	UnmarshalResponse(responseBuffer, &response, requestBuffer)
-	return response, CreateError("ldproofs_create_proof", code, err)
+type LdProofs struct {}
+type ILdProofs interface {
+	CreateProof(request *CreateProofRequest) (CreateProofResponse, error)
+	VerifyProof(request *VerifyProofRequest) (VerifyProofResponse, error)
 }
 
-func VerifyProof(request *VerifyProofRequest) (VerifyProofResponse, error) {
+func (l LdProofs) CreateProof(request *CreateProofRequest) (CreateProofResponse, error) {
+	response := CreateProofResponse{}
+	requestBuffer, responseBuffer, err := createBuffersFromMessage(request)
+	code := ldproofs_create_proof(requestBuffer, &responseBuffer, &err)
+	unmarshalResponse(responseBuffer, &response, requestBuffer)
+	return response, createError("ldproofs_create_proof", code, err)
+}
+
+func (l LdProofs) VerifyProof(request *VerifyProofRequest) (VerifyProofResponse, error) {
 	response := VerifyProofResponse{}
-	ldproofs := LdProofs{}
-	requestBuffer, responseBuffer, err := CreateBuffersFromMessage(request)
-	code := ldproofs.VerifyProof(requestBuffer, &responseBuffer, &err)
-	UnmarshalResponse(responseBuffer, &response, requestBuffer)
-	return response, CreateError("ldproofs_verify_proof", code, err)
+	requestBuffer, responseBuffer, err := createBuffersFromMessage(request)
+	code := ldproofs_verify_proof(requestBuffer, &responseBuffer, &err)
+	unmarshalResponse(responseBuffer, &response, requestBuffer)
+	return response, createError("ldproofs_verify_proof", code, err)
 }
