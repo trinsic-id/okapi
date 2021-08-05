@@ -42,9 +42,8 @@ jobs:
           path: ./libs
       - name: Copy include file and libraries
         run: |
-          Copy-Item ./libs/C_header/okapi.h ./include/okapi.h
-          New-Item -Type dir ./native/target/release
-          Copy-Item ./libs/${{ matrix.artifact_name }}/${{ matrix.static_lib_file}} ./native/target/release
+          Copy-Item ./libs/C_header/okapi.h ./go/okapi
+          Copy-Item ./libs/${{ matrix.artifact_name }}/${{ matrix.static_lib_file}} ./go/okapi
           Copy-Item ./libs/${{ matrix.artifact_name }}/${{ matrix.dynamic_lib_file}} ./go/okapi
         shell: pwsh
       - name: Set up Go ${{ matrix.go-version }}

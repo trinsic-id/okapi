@@ -14,7 +14,7 @@ func TestGenerateKey(t *testing.T) {
 	request.KeyType = KeyType_Ed25519
 	request.Seed = []byte{1, 2, 3}
 
-	response, err := Generate(&request)
+	response, err := DidKey{}.Generate(&request)
 	assert.Nil(t, err)
 	assert.NotNil(t, &response)
 	assertValidKeyGenerated(t, &response)
@@ -23,7 +23,7 @@ func TestGenerateKey(t *testing.T) {
 func TestGenerateKeyNoSeed(t *testing.T) {
 	request := GenerateKeyRequest{}
 	request.KeyType = KeyType_Ed25519
-	response, err := Generate(&request)
+	response, err := DidKey{}.Generate(&request)
 	assert.Nil(t, err)
 	assertValidKeyGenerated(t, &response)
 }
@@ -32,15 +32,15 @@ func TestResolveKey(t *testing.T) {
 	key := "did:key:z6Mkt6QT8FPajKXDrtMefkjxRQENd9wFzKkDFomdQAVFzpzm#z6LSfDq6DuofPeZUqNEmdZsxpvfHvSoUXGEWFhw7JHk4cynN"
 	request := &ResolveRequest{}
 	request.Did = key
-	response, err := Resolve(request)
+	response, err := DidKey{}.Resolve(request)
 	assert.Nil(t, err)
-	assert.NotNil(t, response)
+	assert.NotNil(t, &response)
 }
 
 func TestGenerateKeyThrowsInvalidKeyType(t *testing.T) {
 	request := GenerateKeyRequest{}
 	request.KeyType = -1
-	_, err := Generate(&request)
+	_, err := DidKey{}.Generate(&request)
 	assert.NotNil(t, err)
 	assert.IsType(t, &DidError{}, err)
 }
@@ -67,7 +67,7 @@ func TestGenerateKeyFromSeed(t *testing.T) {
 				assert.Failf(t,"Failed to decode hex", argument.seed)
 			}
 			request := GenerateKeyRequest{KeyType: argument.keyType, Seed: hex}
-			response, err := Generate(&request)
+			response, err := DidKey{}.Generate(&request)
 			assert.Nil(t, err)
 
 			pk := assertValidKeyGenerated(t, &response, argument.keyTypeString)
