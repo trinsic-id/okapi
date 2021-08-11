@@ -8,9 +8,17 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Base64;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class OkapiNativeTest {
+    @Test
+    void testLoadDifferentPath() {
+        // Current path
+        OkapiNative.setLibraryPath("");
+        System.out.println(OkapiNative.getLibraryPath());
+        // Only works locally. Uncomment this to test it.
+//        assertNotNull(OkapiNative.getNativeLibrary());
+    }
     @Test
     void generateKeyCall() throws DidException, InvalidProtocolBufferException {
         Okapi.Keys.API.GenerateKeyRequest request = Okapi.Keys.API.GenerateKeyRequest.newBuilder()
