@@ -35,8 +35,8 @@ publishing {
     }
 }
 
-group = domainId + "." + groupId + '.' + artifactNameId
-archivesBaseName = 'trinsic-' + artifactNameId
+group = jarDomainId + "." + jarGroupId + '.' + jarArtifactId
+archivesBaseName = 'trinsic-' + jarArtifactId
 version = jarVersion
 
 repositories {
