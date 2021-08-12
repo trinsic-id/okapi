@@ -1,3 +1,4 @@
+import threading
 from typing import Any, Optional, List, Dict, Union, Type, TypeVar
 import platform
 import ctypes
@@ -115,17 +116,21 @@ library_name = {'Windows': join('windows', 'okapi.dll'),
                 'Darwin': join('macos', 'libokapi.dylib'),
                 'Linux': join('linux', 'libokapi.so')}
 OKAPI_DLL = None
+okapi_loader_lock = threading.Lock()
 
 
 def load_library() -> ctypes.CDLL:
     global OKAPI_DLL
-    if OKAPI_DLL is None:
-        lib_path = join(dirname(abspath(__file__)), 'libs')
-        sys = platform.system()
-        try:
-            OKAPI_DLL = ctypes.CDLL(abspath(join(lib_path, library_name[sys])))
-        except KeyError:
-            raise NotImplementedError(f"Unsupported operating system {sys}: {platform.platform()}")
+    # Python multithreading is super primitive due to the GIL. All we need to do is prevent double copying.
+    # https://opensource.com/article/17/4/grok-gil
+    with okapi_loader_lock:
+        if OKAPI_DLL is None:
+            lib_path = join(dirname(abspath(__file__)), 'libs')
+            sys = platform.system()
+            try:
+                OKAPI_DLL = ctypes.CDLL(abspath(join(lib_path, library_name[sys])))
+            except KeyError:
+                raise NotImplementedError(f"Unsupported operating system {sys}: {platform.platform()}")
     return OKAPI_DLL
 
 
