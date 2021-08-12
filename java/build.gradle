@@ -9,9 +9,9 @@ plugins {
 }
 
 // Gradle doesn't allow these at the top of the file - go figure?
-def domainId = "id"
-def groupId = "trinsic"
-def artifactId = "okapi"
+def jarDomainId = "id"
+def jarGroupId = "trinsic"
+def jarArtifactId = "okapi"
 def jarVersion = "0.1.2"
 
 publishing {
@@ -27,16 +27,16 @@ publishing {
     }
     publications {
         gpr(MavenPublication) {
-            groupId = domainId + "." + groupId
-            artifactId = artifactId
+            groupId = jarDomainId + "." + jarGroupId
+            artifactId = jarArtifactId
             version = jarVersion
             from(components.java)
         }
     }
 }
 
-group = domainId + "." + groupId + '.' + artifactId
-archivesBaseName = 'trinsic-' + artifactId
+group = domainId + "." + groupId + '.' + artifactNameId
+archivesBaseName = 'trinsic-' + artifactNameId
 version = jarVersion
 
 repositories {
