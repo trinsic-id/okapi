@@ -7,6 +7,13 @@ plugins {
     id 'java'
     id 'maven-publish'
 }
+
+// Gradle doesn't allow these at the top of the file - go figure?
+def domainId = "id"
+def groupId = "trinsic"
+def artifactId = "okapi"
+def jarVersion = "0.1.2"
+
 publishing {
     repositories {
         maven {
@@ -20,27 +27,27 @@ publishing {
     }
     publications {
         gpr(MavenPublication) {
-            groupId = 'id.trinsic'
-            artifactId = 'okapi'
-            version = '0.1.1'
+            groupId = domainId + "." + groupId
+            artifactId = artifactId
+            version = jarVersion
             from(components.java)
         }
     }
 }
 
-group 'id.trinsic.okapi'
-archivesBaseName = 'trinsic-okapi'
-version = '0.1.2'
+group = domainId + "." + groupId + '.' + artifactId
+archivesBaseName = 'trinsic-' + artifactId
+version = jarVersion
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation 'org.jetbrains:annotations:20.1.0'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.7.0'
+    implementation 'org.jetbrains:annotations:21.0.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.7.2'
     implementation group: 'com.google.protobuf', name: 'protobuf-java', version: '3.17.3'
     implementation group: 'net.java.dev.jna', name: 'jna', version: '5.8.0'
 }
@@ -50,6 +57,6 @@ test {
 }
 
 jar {
-    archiveBaseName.set('trinsic-okapi')
-    archiveVersion.set( '0.1.2')
+    archiveBaseName.set(getArchivesBaseName())
+    archiveVersion.set(jarVersion)
 }
