@@ -4,7 +4,7 @@ import com.sun.jna.Native;
 import java.nio.file.Paths;
 
 
-class OkapiNative {
+public class OkapiNative {
 
     public interface IOkapiC extends com.sun.jna.Library {
         int didcomm_pack(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
@@ -28,10 +28,8 @@ class OkapiNative {
         void didcomm_string_free(com.sun.jna.ptr.ByteByReference s);
     }
 
-    // TODO - https://stackoverflow.com/questions/8297705/how-to-implement-thread-safe-lazy-initialization
-    // Java 8 Supplier<IOkapiC> ???
     private static IOkapiC nativeLibrary = null;
-    public static IOkapiC getNativeLibrary() {
+    public synchronized static IOkapiC getNativeLibrary() {
         if (nativeLibrary == null)
             nativeLibrary = Native.load(getLibraryPath(), IOkapiC.class);
 
@@ -49,21 +47,32 @@ class OkapiNative {
         return OS.startsWith("mac") || OS.startsWith("darwin");
     }
 
-    private static String getLibraryPath() {
-        String baseDir = System.getProperty("user.dir");
-        String libDir = "../libs";
-        String osPath = getOsPath();
-        return Paths.get(baseDir, libDir, osPath).toAbsolutePath().toString();
+    private static String overrideLibraryPath = null;
+    public static void setLibraryPath(String path) { overrideLibraryPath = path; }
+    public static String getLibraryPath() {
+        String libraryPath = Paths.get(System.getProperty("user.dir"), "../libs", getOsPath()).toAbsolutePath().toString();
+        if (overrideLibraryPath != null)
+            libraryPath = overrideLibraryPath;
+        return Paths.get(libraryPath, getOsFile()).toAbsolutePath().toString();
     }
 
     private static String getOsPath() {
         if (isWindows())
-            return "windows/okapi.dll";
+            return "windows";
         if (isLinux())
-            return "linux/libokapi.so";
+            return "linux";
         if (isMacOs())
-            return "macos/libokapi.dylib";
-        // TODO - Android support?
+            return "macos";
+        return "";
+    }
+
+    private static String getOsFile() {
+        if (isWindows())
+            return "okapi.dll";
+        if (isLinux())
+            return "libokapi.so";
+        if (isMacOs())
+            return "libokapi.dylib";
         return "";
     }
 
