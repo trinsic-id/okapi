@@ -46,10 +46,19 @@ public class OkapiNative {
     private static boolean isMacOs() {
         return OS.startsWith("mac") || OS.startsWith("darwin");
     }
+    private static boolean isAndroid() {
+        // There isn't a proven way to do this, but this seems the most logical. Alternatives would be:
+        return System.getProperty("java.runtime.name").equals("Android Runtime");
+        // return "The Android Project".equals(System.getProperty("java.specification.vendor"));
+    }
 
     private static String overrideLibraryPath = null;
     public static void setLibraryPath(String path) { overrideLibraryPath = path; }
     public static String getLibraryPath() {
+        if (isAndroid())
+            // Android does not allow directory separators in the library name.
+            return getOsFile();
+        // Desktop platforms we can do other things.
         String libraryPath = Paths.get(System.getProperty("user.dir"), "../libs", getOsPath()).toAbsolutePath().toString();
         if (overrideLibraryPath != null)
             libraryPath = overrideLibraryPath;
