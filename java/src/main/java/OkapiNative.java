@@ -76,15 +76,16 @@ public class OkapiNative {
     }
 
     private static String getOsFile() {
+        // Android also identifies as linux, so check this first.
+        if (isAndroid())
+            // Android automatically does "lib" + [NAME} + ".so"
+            return "okapi";
         if (isWindows())
             return "okapi.dll";
         if (isLinux())
             return "libokapi.so";
         if (isMacOs())
             return "libokapi.dylib";
-        if (isAndroid())
-            // Android automatically does "lib" + [NAME} + ".so"
-            return "okapi";
         return "";
     }
 
