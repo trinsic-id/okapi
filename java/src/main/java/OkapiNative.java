@@ -82,6 +82,9 @@ public class OkapiNative {
             return "libokapi.so";
         if (isMacOs())
             return "libokapi.dylib";
+        if (isAndroid())
+            // Android automatically does "lib" + [NAME} + ".so"
+            return "okapi";
         return "";
     }
 
