@@ -4,8 +4,7 @@ package okapi.proofs;
 
 option csharp_namespace = "Okapi.Proofs";
 option go_package = "github.com/trinsic-id/okapi";
-option java_package = "Okapi.Proofs";
-option java_outer_classname="API";
+option java_package = "trinsic.okapi";
 
 import "keys.proto";
 import "google/protobuf/struct.proto";
