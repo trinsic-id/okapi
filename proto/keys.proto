@@ -4,8 +4,7 @@ package okapi.keys;
 
 option csharp_namespace = "Okapi.Keys";
 option go_package = "github.com/trinsic-id/okapi";
-option java_package = "Okapi.Keys";
-option java_outer_classname="API";
+option java_package = "trinsic.okapi";
 
 import "google/protobuf/struct.proto";
 
