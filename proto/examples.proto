@@ -4,8 +4,7 @@ package okapi.examples;
 
 option csharp_namespace = "Okapi.Examples";
 option go_package = "github.com/trinsic-id/okapi";
-option java_package = "Okapi.Examples";
-option java_outer_classname="BasicMsg";
+option java_package = "trinsic.okapi";
 
 message BasicMessage {
     string text = 1;

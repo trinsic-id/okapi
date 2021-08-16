@@ -1,41 +1,41 @@
-import Okapi.Transport.API;
 import com.google.protobuf.InvalidProtocolBufferException;
+import trinsic.okapi.Transport;
 
 public class DidComm extends OkapiNative {
-    public static API.PackResponse pack(API.PackRequest request) throws DidException, InvalidProtocolBufferException {
+    public static Transport.PackResponse pack(Transport.PackRequest request) throws DidException, InvalidProtocolBufferException {
         var requestBuffer = messageToBuffer(request);
         var responseBuffer = new OkapiByteBuffer();
         var errBuffer = new ExternError();
         getNativeLibrary().didcomm_pack(requestBuffer, responseBuffer, errBuffer);
         errBuffer.RaiseError();
-        return API.PackResponse.parseFrom(bufferToByteArray(responseBuffer));
+        return Transport.PackResponse.parseFrom(bufferToByteArray(responseBuffer));
     }
 
-    public static API.UnpackResponse unpack(API.UnpackRequest request) throws DidException, InvalidProtocolBufferException {
+    public static Transport.UnpackResponse unpack(Transport.UnpackRequest request) throws DidException, InvalidProtocolBufferException {
         var requestBuffer = messageToBuffer(request);
         var responseBuffer = new OkapiByteBuffer();
         var errBuffer = new ExternError();
         getNativeLibrary().didcomm_unpack(requestBuffer, responseBuffer, errBuffer);
         errBuffer.RaiseError();
-        return API.UnpackResponse.parseFrom(bufferToByteArray(responseBuffer));
+        return Transport.UnpackResponse.parseFrom(bufferToByteArray(responseBuffer));
     }
 
-    public static API.SignResponse sign(API.SignRequest request) throws DidException, InvalidProtocolBufferException {
+    public static Transport.SignResponse sign(Transport.SignRequest request) throws DidException, InvalidProtocolBufferException {
         var requestBuffer = messageToBuffer(request);
         var responseBuffer = new OkapiByteBuffer();
         var errBuffer = new ExternError();
         getNativeLibrary().didcomm_sign(requestBuffer, responseBuffer, errBuffer);
         errBuffer.RaiseError();
-        return API.SignResponse.parseFrom(bufferToByteArray(responseBuffer));
+        return Transport.SignResponse.parseFrom(bufferToByteArray(responseBuffer));
     }
 
-    public static API.VerifyResponse verify(API.VerifyRequest request) throws DidException, InvalidProtocolBufferException {
+    public static Transport.VerifyResponse verify(Transport.VerifyRequest request) throws DidException, InvalidProtocolBufferException {
         var requestBuffer = messageToBuffer(request);
         var responseBuffer = new OkapiByteBuffer();
         var errBuffer = new ExternError();
         getNativeLibrary().didcomm_verify(requestBuffer, responseBuffer, errBuffer);
         errBuffer.RaiseError();
-        return API.VerifyResponse.parseFrom(bufferToByteArray(responseBuffer));
+        return Transport.VerifyResponse.parseFrom(bufferToByteArray(responseBuffer));
     }
 }
 
