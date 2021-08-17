@@ -25,6 +25,11 @@ jobs:
           workflow: "build-libs.yml"
           path: ./libs
           branch: main
+      - name: Move libs
+        run: |
+          New-Item -ItemType Directory -Path "./ruby/libs" -Force
+          Copy-Item "./libs/*" -Destination "./ruby/libs" -Recurse -Force -Container:$false
+        shell: pwsh
       - name: Install dependencies
         run: |
           gem install bundler

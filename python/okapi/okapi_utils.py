@@ -7,7 +7,6 @@ from os.path import join, abspath, dirname
 import betterproto
 from betterproto.lib.google.protobuf import Struct, Value, ListValue
 
-
 T_response = TypeVar('T_response', bound=betterproto.Message)
 
 
@@ -112,11 +111,18 @@ def struct_to_dictionary(obj: Struct) -> Dict[str, Any]:
     return dict([(k, proto_value_to_value(v)) for k, v in obj.fields.items()])
 
 
-library_name = {'Windows': join('windows', 'okapi.dll'),
-                'Darwin': join('macos', 'libokapi.dylib'),
-                'Linux': join('linux', 'libokapi.so')}
-OKAPI_DLL = None
+library_name = {'Windows': 'okapi.dll',
+                'Darwin': 'libokapi.dylib',
+                'Linux': 'libokapi.so'}
+OKAPI_DLL: Dict[str, Union[str, ctypes.CDLL]] = {'library_path': '',
+                                                 'library': None}
 okapi_loader_lock = threading.Lock()
+
+
+def set_library_path(path: str):
+    global OKAPI_DLL
+    with okapi_loader_lock:
+        OKAPI_DLL['library_path'] = path
 
 
 def load_library() -> ctypes.CDLL:
@@ -124,14 +130,14 @@ def load_library() -> ctypes.CDLL:
     # Python multithreading is super primitive due to the GIL. All we need to do is prevent double copying.
     # https://opensource.com/article/17/4/grok-gil
     with okapi_loader_lock:
-        if OKAPI_DLL is None:
-            lib_path = join(dirname(abspath(__file__)), 'libs')
+        if OKAPI_DLL['library'] is None:
+            lib_path = OKAPI_DLL['library_path'] or join(dirname(abspath(__file__)), 'libs')
             sys = platform.system()
             try:
-                OKAPI_DLL = ctypes.CDLL(abspath(join(lib_path, library_name[sys])))
+                OKAPI_DLL['library'] = ctypes.CDLL(abspath(join(lib_path, library_name[sys])))
             except KeyError:
                 raise NotImplementedError(f"Unsupported operating system {sys}: {platform.platform()}")
-    return OKAPI_DLL
+    return OKAPI_DLL['library']
 
 
 def wrap_native_function(function_name: str, *, arg_types: Optional[List[Any]] = None,
