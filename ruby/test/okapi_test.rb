@@ -6,6 +6,10 @@ require 'base64'
 require 'base58'
 
 class OkapiTest < Minitest::Test
+  def before_setup
+    Okapi::set_library_path('./libs')
+    Okapi::load_native_library
+  end
   def test_for_version_number
     refute_nil ::Okapi::VERSION
   end
