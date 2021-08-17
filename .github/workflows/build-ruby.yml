@@ -31,7 +31,7 @@ jobs:
           workflow: "build-libs.yml"
           path: ./libs
       - name: Move libs
-        run: Copy-Item "../libs/*" -Destination "./ruby/libs" -Recurse -Force -Container:$false
+        run: Copy-Item "./libs/*" -Destination "./ruby/libs" -Recurse -Force -Container:$false
         shell: pwsh
       - name: Install dependencies
         run: |
