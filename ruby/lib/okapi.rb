@@ -8,15 +8,28 @@ require "okapi/transport_pb"
 
 module Okapi
   extend FFI::Library
-
-  if OS.windows?
-    ffi_lib "#{__dir__}/../../libs/windows/okapi.dll"
-  elsif OS.linux?
-    ffi_lib "#{__dir__}/../../libs/linux/libokapi.so"
-  elsif OS.mac?
-    ffi_lib "#{__dir__}/../../libs/macos/libokapi.dylib"
+  @@library_path = ''
+  @@library_linked = false
+  def self.get_library_path
+    if @@library_path == ''
+      return "#{__dir__}/libs/"
+    else
+      return @@library_path
+    end
   end
-  # ffi_convention :stdcall
+  def self.set_library_path(path)
+    @@library_path = path
+  end
+  def self.get_library_name
+    if OS.windows?
+      return "okapi.dll"
+    elsif OS.linux?
+      return "libokapi.so"
+    elsif OS.mac?
+      return "libokapi.dylib"
+    end
+    raise NotImplementedError
+  end
 
   class ByteBuffer < FFI::Struct
     layout :len, :int64,
@@ -27,19 +40,26 @@ module Okapi
            :message, :string
   end
 
-  attach_function :didkey_generate, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
-  attach_function :didkey_resolve, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
+  def self.load_native_library
+    if @@library_linked
+      return
+    end
+    ffi_lib File.expand_path(File.join(self.get_library_path, self.get_library_name))
 
-  attach_function :didcomm_pack, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
-  attach_function :didcomm_unpack, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
-  attach_function :didcomm_sign, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
-  attach_function :didcomm_verify, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
+    attach_function :didkey_generate, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
+    attach_function :didkey_resolve, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
 
-  attach_function :ldproofs_create_proof, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
-  attach_function :ldproofs_verify_proof, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
+    attach_function :didcomm_pack, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
+    attach_function :didcomm_unpack, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
+    attach_function :didcomm_sign, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
+    attach_function :didcomm_verify, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
 
-  attach_function :didcomm_byte_buffer_free, [ ByteBuffer.by_value ], :int
-  attach_function :didcomm_string_free, [ :pointer ], :int
+    attach_function :ldproofs_create_proof, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
+    attach_function :ldproofs_verify_proof, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
+
+    attach_function :didcomm_byte_buffer_free, [ ByteBuffer.by_value ], :int
+    attach_function :didcomm_string_free, [ :pointer ], :int
+  end
 end
 
 module Okapi
@@ -49,15 +69,16 @@ module Okapi
 
   def self.byte_buffer_free(buffer)
     verify_type(buffer, Okapi::ByteBuffer)
-    Okapi.didcomm_byte_buffer_free(buffer)
+    self.didcomm_byte_buffer_free(buffer)
   end
 
   def self.string_free(ptr)
     verify_type(ptr, Fiddle::Pointer)
-    Okapi.didcomm_string_free(ptr)
+    self.didcomm_string_free(ptr)
   end
 
   def self.ffi_call(function, request, response_klass)
+    self.load_native_library
     # static method call: e.g. Okapi::Keys::GenerateKeyRequest.encode(request)
     serialized = request.class.encode(request)
     request_buffer = Okapi::ByteBuffer.new
@@ -73,7 +94,6 @@ module Okapi
                                 :msg=> error[:message])
     end
     response = response_klass.decode(response_buffer[:data].read_string(response_buffer[:len]))
-    # puts "Return Code=#{response_value}, output=#{response}"
     byte_buffer_free(response_buffer)
     return response
   end
