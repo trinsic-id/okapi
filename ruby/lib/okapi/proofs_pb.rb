@@ -3,7 +3,7 @@
 
 require 'google/protobuf'
 
-require 'okapi/keys_pb'
+require 'keys_pb'
 require 'google/protobuf/struct_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("proofs.proto", :syntax => :proto3) do
