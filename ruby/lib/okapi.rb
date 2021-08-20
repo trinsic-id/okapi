@@ -1,4 +1,3 @@
-require "okapi/version"
 require "ffi"
 require "os"
 require "okapi/keys_pb"

@@ -1,4 +1,4 @@
-require_relative 'lib/okapi/version'
+require_relative 'lib/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "okapi"
