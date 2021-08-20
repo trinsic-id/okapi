@@ -13,3 +13,8 @@ gem "base64"
 
 gem "ffi"
 gem 'base58'
+
+group :development do
+  gem 'rbs_protobuf', require: false
+  gem 'rbs'
+end
