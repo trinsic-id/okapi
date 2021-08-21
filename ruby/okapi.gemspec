@@ -26,4 +26,14 @@ Gem::Specification.new do |spec|
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
+
+  spec.add_dependency "rake"
+  spec.add_dependency 'google-protobuf'
+  spec.add_dependency "os"
+  spec.add_dependency "base64"
+  spec.add_dependency "ffi"
+  spec.add_dependency 'base58'
+  spec.add_dependency 'rexml', '~> 3.2', '>= 3.2.4'
+
+  spec.add_development_dependency "minitest", "~> 5.0"
 end
