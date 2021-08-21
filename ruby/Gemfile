@@ -9,7 +9,6 @@ group :test do
 end
 
 group :development do
-  gem "minitest", "~> 5.0"
   gem 'rbs_protobuf', require: false
   gem 'rbs'
 end
