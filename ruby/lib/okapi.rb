@@ -1,10 +1,9 @@
-require "okapi/version"
 require "ffi"
 require "os"
-require "okapi/keys_pb"
-require "okapi/examples_pb"
-require "okapi/proofs_pb"
-require "okapi/transport_pb"
+require_relative 'okapi/keys_pb'
+require_relative "okapi/examples_pb"
+require_relative "okapi/proofs_pb"
+require_relative "okapi/transport_pb"
 
 module Okapi
   extend FFI::Library

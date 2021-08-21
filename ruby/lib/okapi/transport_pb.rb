@@ -3,8 +3,8 @@
 
 require 'google/protobuf'
 
-require 'okapi/keys_pb'
-require 'okapi/pbmse/pbmse_pb'
+require_relative 'keys_pb'
+require_relative 'pbmse/pbmse_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("transport.proto", :syntax => :proto3) do
     add_message "okapi.transport.SignRequest" do
