@@ -9,6 +9,7 @@ gem "os"
 gem "base64"
 gem "ffi"
 gem 'base58'
+gem 'rexml', '~> 3.2', '>= 3.2.4'
 
 group :test do
   gem "simplecov", require: false
