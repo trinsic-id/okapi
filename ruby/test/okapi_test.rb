@@ -1,7 +1,8 @@
-require "./test/test_helper"
-require 'okapi/keys_pb'
+require_relative 'test_helper'
+require_relative '../lib/okapi/keys_pb'
 require 'google/protobuf/well_known_types'
-require 'okapi'
+require_relative '../lib/okapi'
+require_relative '../lib/version'
 require 'base64'
 require 'base58'
 
@@ -11,7 +12,7 @@ class OkapiTest < Minitest::Test
     Okapi::load_native_library
   end
   def test_for_version_number
-    refute_nil ::Okapi::VERSION
+    refute_nil Okapi::VERSION
   end
 
   def test_generate_key
