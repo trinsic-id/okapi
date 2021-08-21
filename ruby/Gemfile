@@ -3,14 +3,6 @@ source "https://rubygems.org"
 # Specify your gem's dependencies in okapi.gemspec
 gemspec
 
-gem "rake"
-gem 'google-protobuf'
-gem "os"
-gem "base64"
-gem "ffi"
-gem 'base58'
-gem 'rexml', '~> 3.2', '>= 3.2.4'
-
 group :test do
   gem "simplecov", require: false
   gem "simplecov-cobertura", require: false
