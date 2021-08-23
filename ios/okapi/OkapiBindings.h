@@ -10,7 +10,7 @@
 
 #import "okapi.h"
 #import "Keys.pbobjc.h"
-#import "Proofs.pbobjc.h
+#import "Proofs.pbobjc.h"
 #import "Transport.pbobjc.h"
 
 @interface okapiBindings : NSObject
