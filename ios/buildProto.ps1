@@ -1,0 +1,1 @@
+protoc --proto_path=../proto --objc_out=./okapi ../proto/examples.proto ../proto/keys.proto ../proto/proofs.proto ../proto/transport.proto ../proto/pbmse/pbmse.proto
