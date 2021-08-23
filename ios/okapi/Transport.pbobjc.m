@@ -15,7 +15,7 @@
 
 #import "Transport.pbobjc.h"
 #import "Keys.pbobjc.h"
-#import "pbmse/Pbmse.pbobjc.h"
+#import "Pbmse.pbobjc.h"
 // @@protoc_insertion_point(imports)
 
 #pragma clang diagnostic push

@@ -73,6 +73,7 @@ GPBEnumDescriptor *LdSuite_EnumDescriptor(void) {
                               extraTextFormatInfo:extraTextFormatInfo];
     GPBEnumDescriptor *expected = nil;
     if (!atomic_compare_exchange_strong(&descriptor, &expected, worker)) {
+      [worker release];
     }
   }
   return descriptor;
