@@ -89,6 +89,50 @@
     }
 }
 
+- (void)testGenerateCapabilityInvocationProofWithJCS {
+    okapiBindings* bind = [[okapiBindings alloc] init];
+    NSMutableDictionary<NSString*, GPBValue*> *dict = @{
+            @"@context": [self fromString:@"https://w3id.org/security/v2"],
+            @"target": [self fromString:@"urn:trinsic:wallets:noop"],
+            @"proof": [self fromDictionary:@{
+                    @"created": [self fromString:[[[NSISO8601DateFormatter alloc] init] stringFromDate:[NSDate date]]]
+            }]};
+
+    GPBStruct * protobufStruct = [GPBStruct message];
+    protobufStruct.fields = dict;
+    NSLog(@"%@", protobufStruct);
+
+    GenerateKeyRequest * request = [[GenerateKeyRequest alloc] init];
+    request.keyType = KeyType_Ed25519;
+    GenerateKeyResponse * response = [bind DIDKeyGenerate:request];
+    JsonWebKey *signingKey = nil;
+    for (int ij = 0; ij < response.keyArray.count; ij++) {
+        if ([response.keyArray[ij].crv isEqualToString:@"Ed25519"])
+        {
+            signingKey = response.keyArray[ij];
+            break;
+        }
+    }
+    CreateProofRequest *proofRequest = [[CreateProofRequest alloc] init];
+    proofRequest.document = protobufStruct;
+    proofRequest.key = signingKey;
+    proofRequest.suite = LdSuite_JcsEd25519Signature2020;
+    CreateProofResponse *proofResponse = [bind LDProofsCreateProof:proofRequest];
+    XCTAssertNotNil(proofResponse);
+    XCTAssertNotNil(proofResponse.signedDocument);
+}
+
+-(GPBStringValue*)fromString : (NSString*)str {
+    GPBStringValue * value = [[GPBStringValue alloc] init];
+    value.value = str;
+    return value;
+}
+-(GPBStruct*)fromDictionary : (NSDictionary*) dict {
+    GPBStruct* gpbStruct = [[GPBStruct alloc] init];
+    gpbStruct.fields = dict;
+    return gpbStruct;
+}
+
 -(NSMutableData*)assertValidKeyGenerated : (GenerateKeyResponse*) response : (NSString*) crv {
     if (crv == nil)
         crv = @"Ed25519";
