@@ -404,3 +404,13 @@ python/build/
 /go/okapi/coverage.out
 /go/okapi/test_output.xml
 ruby/Gemfile.lock
+
+# ios cocoapods
+/ios/Pods
+/ios/okapi.xcodeproj/xcuserdata
+/ios/okapi.xcodeproj/*/xcuserdata
+*.xcworkspacedata
+*.xcuserstate
+xcshareddata
+xcschememanagement.plist
+
