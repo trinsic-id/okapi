@@ -46,7 +46,7 @@ try {
             break
         }
         MacOS {
-            rustup target add x86_64-apple-darwin
+            rustup target add x86_64-apple-darwin aarch64-apple-darwin
             cargo build --release --target x86_64-apple-darwin
 
             Copy-Item -Path .\target\x86_64-apple-darwin\release\libokapi.dylib -Destination $TargetOutput
