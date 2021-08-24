@@ -20,10 +20,10 @@
 		6833ED542AFE209FBCBF5FE9 /* Pbmse.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 6833EBEDE076CB9C914D1A6D /* Pbmse.pbobjc.h */; };
 		6833EE5DA2B32A9232BF72D5 /* Proofs.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 6833EEC0C7EEF8D0259F70B5 /* Proofs.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6833EE98A2FA6D6F4B9F08E6 /* Pbmse.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 6833E7CEFFE45291C68C1751 /* Pbmse.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		A7666FBCA645DFED2FA99F64 /* Pods_okapi_okapiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8BFB88A9D7D58AD949FF54E /* Pods_okapi_okapiTests.framework */; };
 		D20415EF26D410A500BAC775 /* OkapiBindings.h in Headers */ = {isa = PBXBuildFile; fileRef = D20415EE26D410A500BAC775 /* OkapiBindings.h */; };
 		D261827F26D3FA71004BBA85 /* OkapiBindings.m in Sources */ = {isa = PBXBuildFile; fileRef = D261827E26D3FA71004BBA85 /* OkapiBindings.m */; };
 		D261828A26D3FF93004BBA85 /* okapi.h in Headers */ = {isa = PBXBuildFile; fileRef = D261828926D3FF93004BBA85 /* okapi.h */; };
+		D2C589D626D51EEA006A9839 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6833EFFD4B183BCD993CA321 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,13 +33,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 2C4EE331A5C9AC3749F3A91D475AF014;
 			remoteInfo = "Pods-okapi";
-		};
-		6833E317E8400F656EB710FB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6833EE177C25540CDC880D27 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5CEB476AA8C635CEA6E2707394E4E004;
-			remoteInfo = "Pods-okapi-okapiTests";
 		};
 		6833EDD41C7EFDB537B41886 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -76,6 +69,7 @@
 		6833EE177C25540CDC880D27 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		6833EEC0C7EEF8D0259F70B5 /* Proofs.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Proofs.pbobjc.m; sourceTree = "<group>"; };
 		6833EFDA28F13DD2A7182352 /* Transport.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transport.pbobjc.m; sourceTree = "<group>"; };
+		6833EFFD4B183BCD993CA321 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C3A053A5980C77E5F6297A87 /* Pods-okapi-okapiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-okapi-okapiTests.debug.xcconfig"; path = "Target Support Files/Pods-okapi-okapiTests/Pods-okapi-okapiTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C51FA5A0856F02A9A1CEC5D1 /* Pods-okapi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-okapi.debug.xcconfig"; path = "Target Support Files/Pods-okapi/Pods-okapi.debug.xcconfig"; sourceTree = "<group>"; };
 		C91C4145AFF6B03EE01C7EB2 /* Pods-okapi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-okapi.release.xcconfig"; path = "Target Support Files/Pods-okapi/Pods-okapi.release.xcconfig"; sourceTree = "<group>"; };
@@ -83,7 +77,6 @@
 		D261827E26D3FA71004BBA85 /* OkapiBindings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OkapiBindings.m; sourceTree = "<group>"; };
 		D261828926D3FF93004BBA85 /* okapi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = okapi.h; sourceTree = "<group>"; };
 		D2C477EC26D403B1005B6999 /* libokapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libokapi.a; sourceTree = "<group>"; };
-		D8BFB88A9D7D58AD949FF54E /* Pods_okapi_okapiTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_okapi_okapiTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +93,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6833E1D66DD4531073DEC06E /* okapi.framework in Frameworks */,
-				A7666FBCA645DFED2FA99F64 /* Pods_okapi_okapiTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				6833ECB9502699C7D0D261EA /* Pods_okapi.framework */,
-				6833E084F9C347FC83914A49 /* Pods_okapi_okapiTests.framework */,
 				6833E8B9FEABE602F08BE455 /* Protobuf.framework */,
 			);
 			name = Products;
@@ -156,6 +147,7 @@
 				D20415EE26D410A500BAC775 /* OkapiBindings.h */,
 				6833EBEDE076CB9C914D1A6D /* Pbmse.pbobjc.h */,
 				6833E7CEFFE45291C68C1751 /* Pbmse.pbobjc.m */,
+				6833EFFD4B183BCD993CA321 /* README.md */,
 			);
 			path = okapi;
 			sourceTree = "<group>";
@@ -173,7 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				1A53DF589292AAA261C4D5F4 /* Pods_okapi.framework */,
-				D8BFB88A9D7D58AD949FF54E /* Pods_okapi_okapiTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -255,6 +246,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					6833E48C82C2935358632672 = {
+						DevelopmentTeam = 9AQK7Q6PZV;
+					};
+				};
 			};
 			buildConfigurationList = 6833EB6BEAD6BE86B65CC318 /* Build configuration list for PBXProject "okapi" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -282,13 +278,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		6833E084F9C347FC83914A49 /* Pods_okapi_okapiTests.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Pods_okapi_okapiTests.framework;
-			remoteRef = 6833E317E8400F656EB710FB /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		6833E8B9FEABE602F08BE455 /* Protobuf.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -310,6 +299,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2C589D626D51EEA006A9839 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,7 +414,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C91C4145AFF6B03EE01C7EB2 /* Pods-okapi.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 9AQK7Q6PZV;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -440,10 +432,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/okapi",
 				);
+				MARKETING_VERSION = 0.1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-framework",
-					"\"Protobuf\"",
 					"-L\"$(SRCROOT)/okapi\"",
 					"-lokapi",
 				);
@@ -460,7 +451,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C51FA5A0856F02A9A1CEC5D1 /* Pods-okapi.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 9AQK7Q6PZV;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -476,10 +469,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/okapi",
 				);
+				MARKETING_VERSION = 0.1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-framework",
-					"\"Protobuf\"",
 					"-L\"$(SRCROOT)/okapi\"",
 					"-lokapi",
 				);
@@ -545,11 +537,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -561,6 +554,10 @@
 			buildSettings = {
 				INFOPLIST_FILE = okapiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/okapi",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = id.trinsic.okapiTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -614,10 +611,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -630,6 +628,10 @@
 			buildSettings = {
 				INFOPLIST_FILE = okapiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/okapi",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = id.trinsic.okapiTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -646,7 +648,7 @@
 				6833EF9156F3E0F7F2870329 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		6833EB37BDF9D607403D552B /* Build configuration list for PBXNativeTarget "okapi" */ = {
 			isa = XCConfigurationList;
@@ -655,7 +657,7 @@
 				6833E38A02759CA0D75BB8CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		6833EB6BEAD6BE86B65CC318 /* Build configuration list for PBXProject "okapi" */ = {
 			isa = XCConfigurationList;
@@ -664,7 +666,7 @@
 				6833EC321BBDF397DE0D51C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
