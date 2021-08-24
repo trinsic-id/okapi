@@ -57,7 +57,6 @@
 }
 
 - (void)testGenerateKeyThrowsInvalidKeyType {
-    okapiBindings* bind = [[okapiBindings alloc] init];
     GenerateKeyRequest* request = [GenerateKeyRequest message];
     @try
     {
@@ -91,7 +90,7 @@
 
 - (void)testGenerateCapabilityInvocationProofWithJCS {
     okapiBindings* bind = [[okapiBindings alloc] init];
-    NSMutableDictionary<NSString*, GPBValue*> *dict = @{
+    NSMutableDictionary<NSString*, GPBValue*> *dict = (NSMutableDictionary<NSString *, GPBValue *> *) @{
             @"@context": [self fromString:@"https://w3id.org/security/v2"],
             @"target": [self fromString:@"urn:trinsic:wallets:noop"],
             @"proof": [self fromDictionary:@{
@@ -106,7 +105,7 @@
     request.keyType = KeyType_Ed25519;
     GenerateKeyResponse * response = [bind DIDKeyGenerate:request];
     JsonWebKey *signingKey = nil;
-    for (int ij = 0; ij < response.keyArray.count; ij++) {
+    for (NSUInteger ij = 0; ij < response.keyArray.count; ij++) {
         if ([response.keyArray[ij].crv isEqualToString:@"Ed25519"])
         {
             signingKey = response.keyArray[ij];
@@ -117,6 +116,7 @@
     proofRequest.document = protobufStruct;
     proofRequest.key = signingKey;
     proofRequest.suite = LdSuite_JcsEd25519Signature2020;
+
     CreateProofResponse *proofResponse = [bind LDProofsCreateProof:proofRequest];
     XCTAssertNotNil(proofResponse);
     XCTAssertNotNil(proofResponse.signedDocument);
@@ -129,7 +129,7 @@
 }
 -(GPBStruct*)fromDictionary : (NSDictionary*) dict {
     GPBStruct* gpbStruct = [[GPBStruct alloc] init];
-    gpbStruct.fields = dict;
+    gpbStruct.fields = (NSMutableDictionary<NSString *, GPBValue *> *) dict;
     return gpbStruct;
 }
 
@@ -140,8 +140,8 @@
     XCTAssertNotNil(response.keyArray[0]);
     XCTAssertEqualObjects(crv, response.keyArray[0].crv);
     
-    NSData* x = [[NSData alloc] initWithBase64EncodedString:[self base64Padding:response.keyArray[0].x] options:NSDataBase64Encoding64CharacterLineLength];
-    NSData* y = [[NSData alloc] initWithBase64EncodedString:[self base64Padding:response.keyArray[0].y] options:NSDataBase64Encoding64CharacterLineLength];
+    NSData* x = [[NSData alloc] initWithBase64EncodedString:[self base64Padding:response.keyArray[0].x] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    NSData* y = [[NSData alloc] initWithBase64EncodedString:[self base64Padding:response.keyArray[0].y] options:NSDataBase64DecodingIgnoreUnknownCharacters];
     
     NSMutableData* publicKey = [[NSMutableData alloc] initWithData:x];
     [publicKey appendData:y];

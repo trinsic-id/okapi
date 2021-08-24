@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
     sna.source_files = non_arc_files
   end
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '11.0'
   s.source_files = 'okapi/*.{h,m}'
   s.dependency 'Protobuf'
 end

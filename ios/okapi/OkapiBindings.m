@@ -123,7 +123,6 @@
 
 - (NSData *)getData : (ByteBuffer *)requestBuffer : (ByteBuffer)responseBuffer {
     // Decode returned data
-    NSError* error;
     NSData* data = [NSData dataWithBytes:responseBuffer.data length:(NSUInteger) responseBuffer.len];
     didcomm_byte_buffer_free(responseBuffer);
     free(requestBuffer);
@@ -134,7 +133,7 @@
     // Push data into bytebuffer
     ByteBuffer* requestBuffer = (ByteBuffer*)malloc(sizeof(ByteBuffer));
     requestBuffer->len = (int64_t) request.data.length;
-    requestBuffer->data = request.data.bytes;
+    requestBuffer->data = (uint8_t*)request.data.bytes;
     return requestBuffer;
 }
 
@@ -144,7 +143,10 @@
         // TODO - Error handling
         NSString* errString = [NSString stringWithUTF8String:(*errorBuffer).message];
         int errorCode = (*errorBuffer).code;
+        NSString* errMessageString = [NSString stringWithFormat:@"Error Code=%d Message=%@", errorCode, errString];
+        NSException * exception = [[NSException alloc] initWithName:[NSString stringWithUTF8String:"OkapiException"] reason:errMessageString userInfo:nil];
         didcomm_string_free((*errorBuffer).message);
+        @throw exception;
     }
 }
 @end
