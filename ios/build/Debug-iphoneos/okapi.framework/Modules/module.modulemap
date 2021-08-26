@@ -1,0 +1,6 @@
+framework module okapi {
+  umbrella header "okapi.h"
+
+  export *
+  module * { export * }
+}
