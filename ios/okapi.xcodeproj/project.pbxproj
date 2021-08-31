@@ -20,7 +20,6 @@
 		6833ED542AFE209FBCBF5FE9 /* Pbmse.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 6833EBEDE076CB9C914D1A6D /* Pbmse.pbobjc.h */; };
 		6833EE5DA2B32A9232BF72D5 /* Proofs.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 6833EEC0C7EEF8D0259F70B5 /* Proofs.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6833EE98A2FA6D6F4B9F08E6 /* Pbmse.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 6833E7CEFFE45291C68C1751 /* Pbmse.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		A7666FBCA645DFED2FA99F64 /* Pods_okapi_okapiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8BFB88A9D7D58AD949FF54E /* Pods_okapi_okapiTests.framework */; };
 		D20415EF26D410A500BAC775 /* OkapiBindings.h in Headers */ = {isa = PBXBuildFile; fileRef = D20415EE26D410A500BAC775 /* OkapiBindings.h */; };
 		D261827F26D3FA71004BBA85 /* OkapiBindings.m in Sources */ = {isa = PBXBuildFile; fileRef = D261827E26D3FA71004BBA85 /* OkapiBindings.m */; };
 		D261828A26D3FF93004BBA85 /* okapi.h in Headers */ = {isa = PBXBuildFile; fileRef = D261828926D3FF93004BBA85 /* okapi.h */; };
@@ -100,7 +99,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6833E1D66DD4531073DEC06E /* okapi.framework in Frameworks */,
-				A7666FBCA645DFED2FA99F64 /* Pods_okapi_okapiTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
