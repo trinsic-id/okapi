@@ -5,7 +5,7 @@ project 'okapi.xcodeproj'
 
 target 'okapi' do
   # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
+  # use_frameworks!
   pod 'Protobuf'
 
   # Pods for okapi
