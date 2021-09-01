@@ -33,13 +33,6 @@
 			remoteGlobalIDString = 2C4EE331A5C9AC3749F3A91D475AF014;
 			remoteInfo = "Pods-okapi";
 		};
-		6833E317E8400F656EB710FB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6833EE177C25540CDC880D27 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5CEB476AA8C635CEA6E2707394E4E004;
-			remoteInfo = "Pods-okapi-okapiTests";
-		};
 		6833EDD41C7EFDB537B41886 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6833E44E2F75D5049A85586A /* Project object */;
@@ -82,7 +75,6 @@
 		D261827E26D3FA71004BBA85 /* OkapiBindings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OkapiBindings.m; sourceTree = "<group>"; };
 		D261828926D3FF93004BBA85 /* okapi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = okapi.h; sourceTree = "<group>"; };
 		D2C477EC26D403B1005B6999 /* libokapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libokapi.a; sourceTree = "<group>"; };
-		D8BFB88A9D7D58AD949FF54E /* Pods_okapi_okapiTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_okapi_okapiTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +101,6 @@
 			isa = PBXGroup;
 			children = (
 				6833ECB9502699C7D0D261EA /* Pods_okapi.framework */,
-				6833E084F9C347FC83914A49 /* Pods_okapi_okapiTests.framework */,
 				6833E8B9FEABE602F08BE455 /* Protobuf.framework */,
 			);
 			name = Products;
@@ -171,7 +162,6 @@
 			isa = PBXGroup;
 			children = (
 				1A53DF589292AAA261C4D5F4 /* Pods_okapi.framework */,
-				D8BFB88A9D7D58AD949FF54E /* Pods_okapi_okapiTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -280,13 +270,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		6833E084F9C347FC83914A49 /* Pods_okapi_okapiTests.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Pods_okapi_okapiTests.framework;
-			remoteRef = 6833E317E8400F656EB710FB /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		6833E8B9FEABE602F08BE455 /* Protobuf.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
