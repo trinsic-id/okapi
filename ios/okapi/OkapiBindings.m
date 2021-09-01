@@ -9,7 +9,7 @@
 #import "OkapiBindings.h"
 
 @implementation okapiBindings
-- (PackResponse *)DIDCommPack:(PackRequest *)request {
++ (PackResponse *)DIDCommPack:(PackRequest *)request {
     // Allocate byte buffers
     ByteBuffer* requestBuffer = [self getBuffer:request];
     ByteBuffer responseBuffer = {};
@@ -23,7 +23,7 @@
     return response;
 }
 
-- (UnpackResponse *)DIDCommUnpack:(UnpackRequest *)request {
++ (UnpackResponse *)DIDCommUnpack:(UnpackRequest *)request {
     // Allocate byte buffers
     ByteBuffer* requestBuffer = [self getBuffer:request];
     ByteBuffer responseBuffer = {};
@@ -37,7 +37,7 @@
     return response;
 }
 
-- (SignResponse *)DIDCommSign:(SignRequest *)request {
++ (SignResponse *)DIDCommSign:(SignRequest *)request {
     // Allocate byte buffers
     ByteBuffer* requestBuffer = [self getBuffer:request];
     ByteBuffer responseBuffer = {};
@@ -51,7 +51,7 @@
     return response;
 }
 
-- (VerifyResponse *)DIDCommVerify:(VerifyRequest *)request {
++ (VerifyResponse *)DIDCommVerify:(VerifyRequest *)request {
     // Allocate byte buffers
     ByteBuffer* requestBuffer = [self getBuffer:request];
     ByteBuffer responseBuffer = {};
@@ -65,7 +65,7 @@
     return response;
 }
 
-- (GenerateKeyResponse*) DIDKeyGenerate: (GenerateKeyRequest*) request {
++ (GenerateKeyResponse*) DIDKeyGenerate: (GenerateKeyRequest*) request {
     // Allocate byte buffers
     ByteBuffer* requestBuffer = [self getBuffer:request];
     ByteBuffer responseBuffer = {};
@@ -79,7 +79,7 @@
     return response;
 }
 
-- (ResolveResponse *)DIDKeyResolve:(ResolveRequest *)request {
++ (ResolveResponse *)DIDKeyResolve:(ResolveRequest *)request {
     // Allocate byte buffers
     ByteBuffer* requestBuffer = [self getBuffer:request];
     ByteBuffer responseBuffer = {};
@@ -93,7 +93,7 @@
     return response;
 }
 
-- (CreateProofResponse *)LDProofsCreateProof:(CreateProofRequest *)request {
++ (CreateProofResponse *)LDProofsCreateProof:(CreateProofRequest *)request {
     // Allocate byte buffers
     ByteBuffer* requestBuffer = [self getBuffer:request];
     ByteBuffer responseBuffer = {};
@@ -107,7 +107,7 @@
     return response;
 }
 
-- (VerifyProofResponse *)LDProofsVerifyProof:(VerifyProofRequest *)request {
++ (VerifyProofResponse *)LDProofsVerifyProof:(VerifyProofRequest *)request {
     // Allocate byte buffers
     ByteBuffer* requestBuffer = [self getBuffer:request];
     ByteBuffer responseBuffer = {};
@@ -121,7 +121,7 @@
     return response;
 }
 
-- (NSData *)getData : (ByteBuffer *)requestBuffer : (ByteBuffer)responseBuffer {
++ (NSData *)getData : (ByteBuffer *)requestBuffer : (ByteBuffer)responseBuffer {
     // Decode returned data
     NSData* data = [NSData dataWithBytes:responseBuffer.data length:(NSUInteger) responseBuffer.len];
     didcomm_byte_buffer_free(responseBuffer);
@@ -129,7 +129,7 @@
     return data;
 }
 
-- (ByteBuffer*)getBuffer:(GPBMessage *)request {
++ (ByteBuffer*)getBuffer:(GPBMessage *)request {
     // Push data into bytebuffer
     ByteBuffer* requestBuffer = (ByteBuffer*)malloc(sizeof(ByteBuffer));
     requestBuffer->len = (int64_t) request.data.length;
@@ -137,7 +137,7 @@
     return requestBuffer;
 }
 
-- (void)handleError:(ExternError *)errorBuffer returnValue:(int)returnValue {
++ (void)handleError:(ExternError *)errorBuffer returnValue:(int)returnValue {
     NSLog(@"returnValue=%d", returnValue);
     if (returnValue != 0) {
         // Error handling
