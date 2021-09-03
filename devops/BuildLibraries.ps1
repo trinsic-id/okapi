@@ -56,6 +56,7 @@ try {
         iOS {
             cargo install cargo-lipo
             rustup target install x86_64-apple-ios aarch64-apple-ios
+            rustup target install aarch64-apple-ios-sim
             cargo lipo --release
             Copy-Item -Path "./target/universal/release/libokapi.a" -Destination $TargetOutput/
             break

@@ -26,38 +26,34 @@
 
 - (void)testGenerateKey {
     // Use XCTAssert and related functions to verify your tests produce the correct results.
-    okapiBindings* bind = [[okapiBindings alloc] init];
     GenerateKeyRequest *request = [GenerateKeyRequest message];
     request.keyType = KeyType_Ed25519;
     static char seed[3] = {1, 2, 3};
     request.seed = [NSData dataWithBytes:seed length:3];
-    GenerateKeyResponse* response = [bind DIDKeyGenerate:(request)];
+    GenerateKeyResponse* response = [okapiBindings DIDKeyGenerate:(request)];
     NSLog(@"%@", response.didDocument);
     
     NSAssert(response != NULL, @"Valid response should be returned!");
 }
 
 - (void)testGenerateKeyNoSeed {
-    okapiBindings* bind = [[okapiBindings alloc] init];
     GenerateKeyRequest *request = [GenerateKeyRequest message];
     request.keyType = KeyType_Ed25519;
-    GenerateKeyResponse* response = [bind DIDKeyGenerate:request];
+    GenerateKeyResponse* response = [okapiBindings DIDKeyGenerate:request];
 
     [self assertValidKeyGenerated:response :nil];
 }
 
 - (void)testResolveKey {
-    okapiBindings* bind = [[okapiBindings alloc] init];
     NSString* key = @"did:key:z6Mkt6QT8FPajKXDrtMefkjxRQENd9wFzKkDFomdQAVFzpzm#z6LSfDq6DuofPeZUqNEmdZsxpvfHvSoUXGEWFhw7JHk4cynN";
     ResolveRequest* request = [ResolveRequest message];
     request.did = key;
-    ResolveResponse* response = [bind DIDKeyResolve:request];
+    ResolveResponse* response = [okapiBindings DIDKeyResolve:request];
 
     XCTAssertNotNil(response);
 }
 
 - (void)testGenerateKeyThrowsInvalidKeyType {
-    okapiBindings* bind = [[okapiBindings alloc] init];
     GenerateKeyRequest* request = [GenerateKeyRequest message];
     @try
     {
@@ -69,7 +65,6 @@
 }
 
 - (void)testGenerateKeyFromSeed {
-    okapiBindings* bind = [[okapiBindings alloc] init];
     // TODO - Better test case parameterization.
     KeyType keyTypes[2] = {KeyType_Ed25519, KeyType_X25519};
     NSString* names[2] = {@"Ed25519", @"X25519"};
@@ -82,7 +77,7 @@
         GenerateKeyRequest * request = [GenerateKeyRequest message];
         request.keyType = keyTypes[run];
         request.seed = [self dataFromHexString:seeds[run]];
-        GenerateKeyResponse * response = [bind DIDKeyGenerate:request];
+        GenerateKeyResponse * response = [okapiBindings DIDKeyGenerate:request];
 
         NSData* publicKey = [self assertValidKeyGenerated:response :names[run]];
         XCTAssertEqualObjects([self dataFromHexString:results[run]], publicKey);
@@ -90,8 +85,7 @@
 }
 
 - (void)testGenerateCapabilityInvocationProofWithJCS {
-    okapiBindings* bind = [[okapiBindings alloc] init];
-    NSMutableDictionary<NSString*, GPBValue*> *dict = @{
+    NSDictionary<NSString*, GPBValue*> *dict = @{
             @"@context": [self fromString:@"https://w3id.org/security/v2"],
             @"target": [self fromString:@"urn:trinsic:wallets:noop"],
             @"proof": [self fromDictionary:@{
@@ -99,12 +93,12 @@
             }]};
 
     GPBStruct * protobufStruct = [GPBStruct message];
-    protobufStruct.fields = dict;
+    protobufStruct.fields = [dict mutableCopy];
     NSLog(@"%@", protobufStruct);
 
     GenerateKeyRequest * request = [[GenerateKeyRequest alloc] init];
     request.keyType = KeyType_Ed25519;
-    GenerateKeyResponse * response = [bind DIDKeyGenerate:request];
+    GenerateKeyResponse * response = [okapiBindings DIDKeyGenerate:request];
     JsonWebKey *signingKey = nil;
     for (int ij = 0; ij < response.keyArray.count; ij++) {
         if ([response.keyArray[ij].crv isEqualToString:@"Ed25519"])
@@ -117,20 +111,22 @@
     proofRequest.document = protobufStruct;
     proofRequest.key = signingKey;
     proofRequest.suite = LdSuite_JcsEd25519Signature2020;
-    CreateProofResponse *proofResponse = [bind LDProofsCreateProof:proofRequest];
+    CreateProofResponse *proofResponse = [okapiBindings LDProofsCreateProof:proofRequest];
     XCTAssertNotNil(proofResponse);
     XCTAssertNotNil(proofResponse.signedDocument);
 }
 
--(GPBStringValue*)fromString : (NSString*)str {
-    GPBStringValue * value = [[GPBStringValue alloc] init];
-    value.value = str;
+-(GPBValue*)fromString : (NSString*)str {
+    GPBValue * value = [[GPBValue alloc] init];
+    value.stringValue = str;
     return value;
 }
--(GPBStruct*)fromDictionary : (NSDictionary*) dict {
+-(GPBValue*)fromDictionary : (NSDictionary*) dict {
+    GPBValue* value = [[GPBValue alloc] init];
     GPBStruct* gpbStruct = [[GPBStruct alloc] init];
-    gpbStruct.fields = dict;
-    return gpbStruct;
+    gpbStruct.fields = [dict mutableCopy];
+    value.structValue = gpbStruct;
+    return value;
 }
 
 -(NSMutableData*)assertValidKeyGenerated : (GenerateKeyResponse*) response : (NSString*) crv {
@@ -140,8 +136,8 @@
     XCTAssertNotNil(response.keyArray[0]);
     XCTAssertEqualObjects(crv, response.keyArray[0].crv);
     
-    NSData* x = [[NSData alloc] initWithBase64EncodedString:[self base64Padding:response.keyArray[0].x] options:NSDataBase64Encoding64CharacterLineLength];
-    NSData* y = [[NSData alloc] initWithBase64EncodedString:[self base64Padding:response.keyArray[0].y] options:NSDataBase64Encoding64CharacterLineLength];
+    NSData* x = [[NSData alloc] initWithBase64EncodedString:[self base64Padding:response.keyArray[0].x] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    NSData* y = [[NSData alloc] initWithBase64EncodedString:[self base64Padding:response.keyArray[0].y] options:NSDataBase64DecodingIgnoreUnknownCharacters];
     
     NSMutableData* publicKey = [[NSMutableData alloc] initWithData:x];
     [publicKey appendData:y];
