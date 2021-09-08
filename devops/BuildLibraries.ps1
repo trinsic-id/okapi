@@ -49,6 +49,8 @@ try {
             xcodebuild -showsdks
             rustup target add x86_64-apple-darwin aarch64-apple-darwin
             cargo build --release --target x86_64-apple-darwin
+            $env:SDKROOT=$(xcrun -sdk macosx11.1 --show-sdk-path)
+            $env:MACOSX_DEPLOYMENT_TARGET=$(xcrun -sdk macosx11.1 --show-sdk-platform-version)
             cargo build --release --target aarch64-apple-darwin
             # Create the fat binaries.
             lipo -create ".\target\x86_64-apple-darwin\release\libokapi.a" ".\target\aarch64-apple-darwin\release\libokapi.a" -output "$TargetOutput\libokapi.a"
