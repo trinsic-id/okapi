@@ -63,9 +63,9 @@ try {
             $env:SDKROOT=$(xcrun -sdk macosx11.1 --show-sdk-path)
             $env:MACOSX_DEPLOYMENT_TARGET=$(xcrun -sdk macosx11.1 --show-sdk-platform-version)
 
-            rustup target add x86_64-apple-ios aarch64-apple-ios
             # Install nightly to allow for building ios sim.
-            rustup toolchain install nightly --allow-downgrade --profile minimal
+            rustup toolchain install nightly --allow-downgrade --profile minimal --component core
+            rustup target add x86_64-apple-ios aarch64-apple-ios
             rustup target add aarch64-apple-ios-sim --toolchain nightly
             
             cargo build --release --target x86_64-apple-ios
@@ -76,7 +76,6 @@ try {
             lipo -create "./target/x86_64-apple-ios/release/libokapi.a" "./target/aarch64-apple-ios/release/libokapi.a" "./target/aarch64-apple-ios-sim/release/libokapi.a" -output "$TargetOutput/libokapi.a"
             lipo -create "./target/x86_64-apple-ios/release/libokapi.dylib" "./target/aaarch64-apple-ios/release/libokapi.dylib" "./target/aarch64-apple-ios-sim/release/libokapi.dylib" -output "$TargetOutput/libokapi.dylib"
 
-            Copy-Item -Path "./target/universal/release/libokapi.a" -Destination $TargetOutput/
             break
         }
         Android {
