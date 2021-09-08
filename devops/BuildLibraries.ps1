@@ -64,7 +64,7 @@ try {
             $env:MACOSX_DEPLOYMENT_TARGET=$(xcrun -sdk macosx11.1 --show-sdk-platform-version)
 
             # Install nightly to allow for building ios sim.
-            rustup toolchain install nightly --allow-downgrade --profile minimal --component core
+            rustup toolchain install nightly --allow-downgrade
             rustup target add x86_64-apple-ios aarch64-apple-ios
             rustup target add aarch64-apple-ios-sim --toolchain nightly
             
@@ -74,7 +74,7 @@ try {
 
             # Create the fat binaries, cargo-lipo doesn't support ios sim aarch64
             lipo -create "./target/x86_64-apple-ios/release/libokapi.a" "./target/aarch64-apple-ios/release/libokapi.a" "./target/aarch64-apple-ios-sim/release/libokapi.a" -output "$TargetOutput/libokapi.a"
-            lipo -create "./target/x86_64-apple-ios/release/libokapi.dylib" "./target/aaarch64-apple-ios/release/libokapi.dylib" "./target/aarch64-apple-ios-sim/release/libokapi.dylib" -output "$TargetOutput/libokapi.dylib"
+            # lipo -create "./target/x86_64-apple-ios/release/libokapi.dylib" "./target/aaarch64-apple-ios/release/libokapi.dylib" "./target/aarch64-apple-ios-sim/release/libokapi.dylib" -output "$TargetOutput/libokapi.dylib"
 
             break
         }
