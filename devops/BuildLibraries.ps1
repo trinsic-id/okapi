@@ -46,11 +46,12 @@ try {
             break
         }
         MacOS {
-            xcodebuild -showsdks
-            rustup target add x86_64-apple-darwin aarch64-apple-darwin
-            cargo build --release --target x86_64-apple-darwin
+            # Need OSX11 for the ARM64 libraries
             $env:SDKROOT=$(xcrun -sdk macosx11.1 --show-sdk-path)
             $env:MACOSX_DEPLOYMENT_TARGET=$(xcrun -sdk macosx11.1 --show-sdk-platform-version)
+
+            rustup target add x86_64-apple-darwin aarch64-apple-darwin
+            cargo build --release --target x86_64-apple-darwin
             cargo build --release --target aarch64-apple-darwin
             # Create the fat binaries.
             lipo -create "./target/x86_64-apple-darwin/release/libokapi.a" "./target/aarch64-apple-darwin/release/libokapi.a" -output "$TargetOutput/libokapi.a"
@@ -58,12 +59,23 @@ try {
             break
         }
         iOS {
-            cargo install cargo-lipo
+            # Need OSX11 for the ARM64 libraries
+            $env:SDKROOT=$(xcrun -sdk macosx11.1 --show-sdk-path)
+            $env:MACOSX_DEPLOYMENT_TARGET=$(xcrun -sdk macosx11.1 --show-sdk-platform-version)
+
             rustup target add x86_64-apple-ios aarch64-apple-ios
             # Install nightly to allow for building ios sim.
             rustup toolchain install nightly --allow-downgrade --profile minimal
             rustup target add aarch64-apple-ios-sim --toolchain nightly
-            cargo lipo --release
+            
+            cargo build --release --target x86_64-apple-ios
+            cargo build --release --target aarch64-apple-ios
+            cargo build --release --target aarch64-apple-ios-sim
+
+            # Create the fat binaries, cargo-lipo doesn't support ios sim aarch64
+            lipo -create "./target/x86_64-apple-ios/release/libokapi.a" "./target/aarch64-apple-ios/release/libokapi.a" "./target/aarch64-apple-ios-sim/release/libokapi.a" -output "$TargetOutput/libokapi.a"
+            lipo -create "./target/x86_64-apple-ios/release/libokapi.dylib" "./target/aaarch64-apple-ios/release/libokapi.dylib" "./target/aarch64-apple-ios-sim/release/libokapi.dylib" -output "$TargetOutput/libokapi.dylib"
+
             Copy-Item -Path "./target/universal/release/libokapi.a" -Destination $TargetOutput/
             break
         }
