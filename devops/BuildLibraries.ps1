@@ -73,7 +73,8 @@ try {
             cargo build --release --target aarch64-apple-ios
 
             # Create the fat binaries, cargo-lipo doesn't support ios sim aarch64
-            lipo -create "./target/x86_64-apple-ios/release/libokapi.a" "./target/aarch64-apple-ios/release/libokapi.a" "./target/aarch64-apple-ios-sim/release/libokapi.a" -output "$TargetOutput/libokapi.a"
+            lipo -create "./target/x86_64-apple-ios/release/libokapi.a" "./target/aarch64-apple-ios-sim/release/libokapi.a" -output "$TargetOutput/libokapi_simulator.a"
+            Copy-Item -Path "./target/aarch64-apple-ios/release/libokapi.a" -Destination "$TargetOutput/libokapi.a"
             break
         }
         Android {
