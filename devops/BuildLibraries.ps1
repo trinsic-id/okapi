@@ -57,6 +57,8 @@ try {
         iOS {
             cargo install cargo-lipo
             rustup target add x86_64-apple-ios aarch64-apple-ios
+            # Install nightly to allow for building ios sim.
+            rustup toolchain install nightly --allow-downgrade --profile minimal --component clippy
             rustup target add aarch64-apple-ios-sim --toolchain nightly
             cargo lipo --release
             Copy-Item -Path "./target/universal/release/libokapi.a" -Destination $TargetOutput/
