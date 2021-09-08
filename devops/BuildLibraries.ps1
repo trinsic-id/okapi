@@ -46,8 +46,11 @@ try {
             break
         }
         MacOS {
+            xcodebuild -showsdks
             rustup target add x86_64-apple-darwin aarch64-apple-darwin
             cargo build --release --target x86_64-apple-darwin
+            SDKROOT=$(xcrun -sdk macosx11.1 --show-sdk-path) \
+            MACOSX_DEPLOYMENT_TARGET=$(xcrun -sdk macosx11.1 --show-sdk-platform-version) \
             cargo build --release --target aarch64-apple-darwin
             # Create the fat binaries.
             lipo -create ".\target\x86_64-apple-darwin\release\libokapi.a" ".\target\aarch64-apple-darwin\release\libokapi.a" -output "$TargetOutput\libokapi.a"
@@ -58,7 +61,7 @@ try {
             cargo install cargo-lipo
             rustup target add x86_64-apple-ios aarch64-apple-ios
             # Install nightly to allow for building ios sim.
-            rustup toolchain install nightly --allow-downgrade --profile minimal --component clippy
+            rustup toolchain install nightly --allow-downgrade --profile minimal
             rustup target add aarch64-apple-ios-sim --toolchain nightly
             cargo lipo --release
             Copy-Item -Path "./target/universal/release/libokapi.a" -Destination $TargetOutput/
