@@ -1,7 +1,8 @@
 param
 (
     [AllowNull()][string]$GitTag = '',
-    [AllowNull()][string]$PackageVersion = ''
+    [AllowNull()][string]$PackageVersion = '',
+    [AllowNull()][Boolean]$RequirementsOnly = $false
 )
 
 . "$PSScriptRoot/VersionParse.ps1"
@@ -48,7 +49,7 @@ function Build-Package {
             Set-Python-Version($PackageVersion)
         }
     }finally {
-        
+
         python -m build --sdist --wheel --outdir dist/ .
     }
 }
@@ -60,8 +61,10 @@ Copy-Item "../libs/*" -Destination "./okapi/libs" -Recurse -Force -Container:$fa
 # Do the things
 Activate-Venv
 Install-Requirements
-Run-Tests
-Build-Package
+if (!$RequirementsOnly) {
+    Run-Tests
+    Build-Package
+}
 # Leave the venv
 try {
     deactivate
