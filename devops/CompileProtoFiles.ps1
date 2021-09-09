@@ -21,20 +21,22 @@ function Get-Proto-Path()
 function Compile-Golang()
 {
     $GoPath = "../go/okapi"
-    protoc $(Get-Proto-Path) --go_out="$GoPath" --go-grpc_out="$GoPath" --go_opt=paths=source_relative --go-grpc_opt=paths=source_relative $( Get-Proto-Files )
+    protoc $( Get-Proto-Path ) --go_out = "$GoPath" --go-grpc_out = "$GoPath" --go_opt = paths = source_relative --go-grpc_opt = paths = source_relative $( Get-Proto-Files )
 
     # flatten hierarchy
     Copy-Item -Path "$GoPath/pbmse/*"  -Destination "$GoPath" -recurse -Force
     Remove-Item -Path "$GoPath/pbmse" -Force -Recurse
 }
 
-function Set-Require-Relative($filename) {
-    $replacePairs = @{}
+function Set-Require-Relative($filename)
+{
+    $replacePairs = @{ }
     $replacePairs["require 'keys_pb'"] = "require_relative 'keys_pb'"
     $replacePairs["require 'pbmse/pbmse_pb'"] = "require_relative 'pbmse/pbmse_pb'"
     $fileLines = Get-Content $filename
     for ($ij = 0; $ij -lt $fileLines.Length; $ij++) {
-        if ($replacePairs.ContainsKey($fileLines[$ij])) {
+        if ( $replacePairs.ContainsKey($fileLines[$ij]))
+        {
             $fileLines[$ij] = $replacePairs[$fileLines[$ij]]
         }
     }
@@ -44,8 +46,8 @@ function Set-Require-Relative($filename) {
 function Compile-Ruby()
 {
     $RubyPath = "../ruby/lib/okapi"
-    protoc $(Get-Proto-Path) `
-       --ruby_out="$RubyPath" `
+    protoc $( Get-Proto-Path ) `
+       --ruby_out = "$RubyPath" `
        $( Get-Proto-Files )
 
     # TODO - Type specifier capability
@@ -55,14 +57,15 @@ function Compile-Ruby()
     Set-Require-Relative("../ruby/lib/okapi/proofs_pb.rb")
 }
 
-function Compile-Swift() {
-    protoc $(Get-Proto-Path) --swift_out=./Sources/OkapiSwift/proto --swift_opt=Visibility=Public  $(Get-Proto-Files)
+function Compile-Swift()
+{
+    protoc $( Get-Proto-Path ) --swift_out = ./Sources/OkapiSwift/proto --swift_opt = Visibility = Public  $( Get-Proto-Files )
 }
 
-function Compile-Java() {
+function Compile-Java()
+{
     $JavaPath = "../java/src/main/java"
-    protoc $(Get-Proto-Path) --java_out="$JavaPath" $(Get-Proto-Files)
-
+    protoc $( Get-Proto-Path ) --java_out = "$JavaPath" $( Get-Proto-Files )
 }
 
 Setup
