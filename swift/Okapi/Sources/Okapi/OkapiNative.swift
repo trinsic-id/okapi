@@ -6,15 +6,15 @@ import Foundation
 import OkapiObjectiveC
 import SwiftProtobuf
 
-enum OkapiError : Error {
+enum OkapiError: Error {
     case nativeError(String)
 }
 
 typealias NativeHandler = (ByteBuffer, UnsafeMutablePointer<ByteBuffer>, UnsafeMutablePointer<ExternError>) -> Int32
 
 struct OkapiNative {
-    static func nativeCall<T_response:SwiftProtobuf.Message>(request: SwiftProtobuf.Message,
-                                                             nativeFunction: NativeHandler) throws -> T_response {
+    static func nativeCall<T_response: SwiftProtobuf.Message>(request: SwiftProtobuf.Message,
+                                                              nativeFunction: NativeHandler) throws -> T_response {
         var responseBuffer = ByteBuffer();
         var errorBuffer = ExternError();
         var requestBuffer = ByteBuffer();

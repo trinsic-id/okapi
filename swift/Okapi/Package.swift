@@ -2,6 +2,13 @@
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
+import Foundation
+
+var filePath = URL(fileURLWithPath: #filePath)
+        .deletingLastPathComponent()
+        .appendingPathComponent("Sources")
+        .appendingPathComponent("OkapiObjectiveC");
+let linkFlag: String = "-L\(filePath.relativePath)";
 
 let package = Package(
         name: "Okapi",
@@ -26,7 +33,12 @@ let package = Package(
                     name: "OkapiObjectiveC",
                     dependencies: [],
                     exclude: ["libokapi.a", "libokapi_simulator.a", "libokapi_ios.a"],
-            linkerSettings: [LinkerSetting.unsafeFlags(["-L./Sources/OkapiObjectiveC/", "-lokapi"])]
+                    linkerSettings: [
+                        LinkerSetting.linkedLibrary("okapi", .when(platforms: [.macOS])),
+                        LinkerSetting.linkedLibrary("okapi_ios", .when(platforms: [.iOS])),
+                        // TODO - Support the simulator
+                        LinkerSetting.unsafeFlags([linkFlag], .when(platforms: [.macOS, .iOS]))
+                    ]
             ),
             .target(
                     name: "Okapi",
