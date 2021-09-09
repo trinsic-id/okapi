@@ -42,7 +42,7 @@ jobs:
           path: |
             ./python/pytest*.*
 
-  upload_test_results:
+  upload_test_results_python:
     name: Upload Python Test Results
     runs-on: ubuntu-latest
     needs: [test_python]
