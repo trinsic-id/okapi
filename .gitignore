@@ -432,3 +432,4 @@ DerivedData/
 libokapi.a
 # Cocoapods data
 ios/Pods
+swift/Okapi/.build
