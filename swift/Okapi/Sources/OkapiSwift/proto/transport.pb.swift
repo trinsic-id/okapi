@@ -20,236 +20,236 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
-struct Okapi_Transport_SignRequest {
+public struct Okapi_Transport_SignRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var payload: Data = Data()
+  public var payload: Data = Data()
 
-  var key: Okapi_Keys_JsonWebKey {
+  public var key: Okapi_Keys_JsonWebKey {
     get {return _key ?? Okapi_Keys_JsonWebKey()}
     set {_key = newValue}
   }
   /// Returns true if `key` has been explicitly set.
-  var hasKey: Bool {return self._key != nil}
+  public var hasKey: Bool {return self._key != nil}
   /// Clears the value of `key`. Subsequent reads from it will return its default value.
-  mutating func clearKey() {self._key = nil}
+  public mutating func clearKey() {self._key = nil}
 
-  var appendTo: Pbmse_SignedMessage {
+  public var appendTo: Pbmse_SignedMessage {
     get {return _appendTo ?? Pbmse_SignedMessage()}
     set {_appendTo = newValue}
   }
   /// Returns true if `appendTo` has been explicitly set.
-  var hasAppendTo: Bool {return self._appendTo != nil}
+  public var hasAppendTo: Bool {return self._appendTo != nil}
   /// Clears the value of `appendTo`. Subsequent reads from it will return its default value.
-  mutating func clearAppendTo() {self._appendTo = nil}
+  public mutating func clearAppendTo() {self._appendTo = nil}
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 
   fileprivate var _key: Okapi_Keys_JsonWebKey? = nil
   fileprivate var _appendTo: Pbmse_SignedMessage? = nil
 }
 
-struct Okapi_Transport_SignResponse {
+public struct Okapi_Transport_SignResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var message: Pbmse_SignedMessage {
+  public var message: Pbmse_SignedMessage {
     get {return _message ?? Pbmse_SignedMessage()}
     set {_message = newValue}
   }
   /// Returns true if `message` has been explicitly set.
-  var hasMessage: Bool {return self._message != nil}
+  public var hasMessage: Bool {return self._message != nil}
   /// Clears the value of `message`. Subsequent reads from it will return its default value.
-  mutating func clearMessage() {self._message = nil}
+  public mutating func clearMessage() {self._message = nil}
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 
   fileprivate var _message: Pbmse_SignedMessage? = nil
 }
 
-struct Okapi_Transport_VerifyRequest {
+public struct Okapi_Transport_VerifyRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var message: Pbmse_SignedMessage {
+  public var message: Pbmse_SignedMessage {
     get {return _message ?? Pbmse_SignedMessage()}
     set {_message = newValue}
   }
   /// Returns true if `message` has been explicitly set.
-  var hasMessage: Bool {return self._message != nil}
+  public var hasMessage: Bool {return self._message != nil}
   /// Clears the value of `message`. Subsequent reads from it will return its default value.
-  mutating func clearMessage() {self._message = nil}
+  public mutating func clearMessage() {self._message = nil}
 
-  var key: Okapi_Keys_JsonWebKey {
+  public var key: Okapi_Keys_JsonWebKey {
     get {return _key ?? Okapi_Keys_JsonWebKey()}
     set {_key = newValue}
   }
   /// Returns true if `key` has been explicitly set.
-  var hasKey: Bool {return self._key != nil}
+  public var hasKey: Bool {return self._key != nil}
   /// Clears the value of `key`. Subsequent reads from it will return its default value.
-  mutating func clearKey() {self._key = nil}
+  public mutating func clearKey() {self._key = nil}
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 
   fileprivate var _message: Pbmse_SignedMessage? = nil
   fileprivate var _key: Okapi_Keys_JsonWebKey? = nil
 }
 
-struct Okapi_Transport_VerifyResponse {
+public struct Okapi_Transport_VerifyResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var isValid: Bool = false
+  public var isValid: Bool = false
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
-struct Okapi_Transport_PackRequest {
+public struct Okapi_Transport_PackRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var senderKey: Okapi_Keys_JsonWebKey {
+  public var senderKey: Okapi_Keys_JsonWebKey {
     get {return _senderKey ?? Okapi_Keys_JsonWebKey()}
     set {_senderKey = newValue}
   }
   /// Returns true if `senderKey` has been explicitly set.
-  var hasSenderKey: Bool {return self._senderKey != nil}
+  public var hasSenderKey: Bool {return self._senderKey != nil}
   /// Clears the value of `senderKey`. Subsequent reads from it will return its default value.
-  mutating func clearSenderKey() {self._senderKey = nil}
+  public mutating func clearSenderKey() {self._senderKey = nil}
 
-  var receiverKey: Okapi_Keys_JsonWebKey {
+  public var receiverKey: Okapi_Keys_JsonWebKey {
     get {return _receiverKey ?? Okapi_Keys_JsonWebKey()}
     set {_receiverKey = newValue}
   }
   /// Returns true if `receiverKey` has been explicitly set.
-  var hasReceiverKey: Bool {return self._receiverKey != nil}
+  public var hasReceiverKey: Bool {return self._receiverKey != nil}
   /// Clears the value of `receiverKey`. Subsequent reads from it will return its default value.
-  mutating func clearReceiverKey() {self._receiverKey = nil}
+  public mutating func clearReceiverKey() {self._receiverKey = nil}
 
-  var associatedData: Data = Data()
+  public var associatedData: Data = Data()
 
-  var plaintext: Data = Data()
+  public var plaintext: Data = Data()
 
-  var mode: Pbmse_EncryptionMode = .direct
+  public var mode: Pbmse_EncryptionMode = .direct
 
-  var algorithm: Pbmse_EncryptionAlgorithm = .xchacha20Poly1305
+  public var algorithm: Pbmse_EncryptionAlgorithm = .xchacha20Poly1305
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 
   fileprivate var _senderKey: Okapi_Keys_JsonWebKey? = nil
   fileprivate var _receiverKey: Okapi_Keys_JsonWebKey? = nil
 }
 
-struct Okapi_Transport_PackResponse {
+public struct Okapi_Transport_PackResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var message: Pbmse_EncryptedMessage {
+  public var message: Pbmse_EncryptedMessage {
     get {return _message ?? Pbmse_EncryptedMessage()}
     set {_message = newValue}
   }
   /// Returns true if `message` has been explicitly set.
-  var hasMessage: Bool {return self._message != nil}
+  public var hasMessage: Bool {return self._message != nil}
   /// Clears the value of `message`. Subsequent reads from it will return its default value.
-  mutating func clearMessage() {self._message = nil}
+  public mutating func clearMessage() {self._message = nil}
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 
   fileprivate var _message: Pbmse_EncryptedMessage? = nil
 }
 
-struct Okapi_Transport_UnpackRequest {
+public struct Okapi_Transport_UnpackRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var senderKey: Okapi_Keys_JsonWebKey {
+  public var senderKey: Okapi_Keys_JsonWebKey {
     get {return _storage._senderKey ?? Okapi_Keys_JsonWebKey()}
     set {_uniqueStorage()._senderKey = newValue}
   }
   /// Returns true if `senderKey` has been explicitly set.
-  var hasSenderKey: Bool {return _storage._senderKey != nil}
+  public var hasSenderKey: Bool {return _storage._senderKey != nil}
   /// Clears the value of `senderKey`. Subsequent reads from it will return its default value.
-  mutating func clearSenderKey() {_uniqueStorage()._senderKey = nil}
+  public mutating func clearSenderKey() {_uniqueStorage()._senderKey = nil}
 
-  var receiverKey: Okapi_Keys_JsonWebKey {
+  public var receiverKey: Okapi_Keys_JsonWebKey {
     get {return _storage._receiverKey ?? Okapi_Keys_JsonWebKey()}
     set {_uniqueStorage()._receiverKey = newValue}
   }
   /// Returns true if `receiverKey` has been explicitly set.
-  var hasReceiverKey: Bool {return _storage._receiverKey != nil}
+  public var hasReceiverKey: Bool {return _storage._receiverKey != nil}
   /// Clears the value of `receiverKey`. Subsequent reads from it will return its default value.
-  mutating func clearReceiverKey() {_uniqueStorage()._receiverKey = nil}
+  public mutating func clearReceiverKey() {_uniqueStorage()._receiverKey = nil}
 
-  var message: Pbmse_EncryptedMessage {
+  public var message: Pbmse_EncryptedMessage {
     get {return _storage._message ?? Pbmse_EncryptedMessage()}
     set {_uniqueStorage()._message = newValue}
   }
   /// Returns true if `message` has been explicitly set.
-  var hasMessage: Bool {return _storage._message != nil}
+  public var hasMessage: Bool {return _storage._message != nil}
   /// Clears the value of `message`. Subsequent reads from it will return its default value.
-  mutating func clearMessage() {_uniqueStorage()._message = nil}
+  public mutating func clearMessage() {_uniqueStorage()._message = nil}
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-struct Okapi_Transport_UnpackResponse {
+public struct Okapi_Transport_UnpackResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var plaintext: Data = Data()
+  public var plaintext: Data = Data()
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
-struct Okapi_Transport_CoreMessage {
+public struct Okapi_Transport_CoreMessage {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var id: String = String()
+  public var id: String = String()
 
-  var type: String = String()
+  public var type: String = String()
 
-  var body: Data = Data()
+  public var body: Data = Data()
 
-  var to: [String] = []
+  public var to: [String] = []
 
-  var from: String = String()
+  public var from: String = String()
 
-  var created: Int64 = 0
+  public var created: Int64 = 0
 
-  var expires: Int64 = 0
+  public var expires: Int64 = 0
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -257,14 +257,14 @@ struct Okapi_Transport_CoreMessage {
 fileprivate let _protobuf_package = "okapi.transport"
 
 extension Okapi_Transport_SignRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".SignRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".SignRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "payload"),
     2: .same(proto: "key"),
     3: .standard(proto: "append_to"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -278,7 +278,7 @@ extension Okapi_Transport_SignRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.payload.isEmpty {
       try visitor.visitSingularBytesField(value: self.payload, fieldNumber: 1)
     }
@@ -291,7 +291,7 @@ extension Okapi_Transport_SignRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Okapi_Transport_SignRequest, rhs: Okapi_Transport_SignRequest) -> Bool {
+  public static func ==(lhs: Okapi_Transport_SignRequest, rhs: Okapi_Transport_SignRequest) -> Bool {
     if lhs.payload != rhs.payload {return false}
     if lhs._key != rhs._key {return false}
     if lhs._appendTo != rhs._appendTo {return false}
@@ -301,12 +301,12 @@ extension Okapi_Transport_SignRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
 }
 
 extension Okapi_Transport_SignResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".SignResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".SignResponse"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "message"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -318,14 +318,14 @@ extension Okapi_Transport_SignResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if let v = self._message {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Okapi_Transport_SignResponse, rhs: Okapi_Transport_SignResponse) -> Bool {
+  public static func ==(lhs: Okapi_Transport_SignResponse, rhs: Okapi_Transport_SignResponse) -> Bool {
     if lhs._message != rhs._message {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -333,13 +333,13 @@ extension Okapi_Transport_SignResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
 }
 
 extension Okapi_Transport_VerifyRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".VerifyRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".VerifyRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "message"),
     2: .same(proto: "key"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -352,7 +352,7 @@ extension Okapi_Transport_VerifyRequest: SwiftProtobuf.Message, SwiftProtobuf._M
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if let v = self._message {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
     }
@@ -362,7 +362,7 @@ extension Okapi_Transport_VerifyRequest: SwiftProtobuf.Message, SwiftProtobuf._M
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Okapi_Transport_VerifyRequest, rhs: Okapi_Transport_VerifyRequest) -> Bool {
+  public static func ==(lhs: Okapi_Transport_VerifyRequest, rhs: Okapi_Transport_VerifyRequest) -> Bool {
     if lhs._message != rhs._message {return false}
     if lhs._key != rhs._key {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -371,12 +371,12 @@ extension Okapi_Transport_VerifyRequest: SwiftProtobuf.Message, SwiftProtobuf._M
 }
 
 extension Okapi_Transport_VerifyResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".VerifyResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".VerifyResponse"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "is_valid"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -388,14 +388,14 @@ extension Okapi_Transport_VerifyResponse: SwiftProtobuf.Message, SwiftProtobuf._
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.isValid != false {
       try visitor.visitSingularBoolField(value: self.isValid, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Okapi_Transport_VerifyResponse, rhs: Okapi_Transport_VerifyResponse) -> Bool {
+  public static func ==(lhs: Okapi_Transport_VerifyResponse, rhs: Okapi_Transport_VerifyResponse) -> Bool {
     if lhs.isValid != rhs.isValid {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -403,8 +403,8 @@ extension Okapi_Transport_VerifyResponse: SwiftProtobuf.Message, SwiftProtobuf._
 }
 
 extension Okapi_Transport_PackRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".PackRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".PackRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "sender_key"),
     2: .standard(proto: "receiver_key"),
     3: .standard(proto: "associated_data"),
@@ -413,7 +413,7 @@ extension Okapi_Transport_PackRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     6: .same(proto: "algorithm"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -430,7 +430,7 @@ extension Okapi_Transport_PackRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if let v = self._senderKey {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
     }
@@ -452,7 +452,7 @@ extension Okapi_Transport_PackRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Okapi_Transport_PackRequest, rhs: Okapi_Transport_PackRequest) -> Bool {
+  public static func ==(lhs: Okapi_Transport_PackRequest, rhs: Okapi_Transport_PackRequest) -> Bool {
     if lhs._senderKey != rhs._senderKey {return false}
     if lhs._receiverKey != rhs._receiverKey {return false}
     if lhs.associatedData != rhs.associatedData {return false}
@@ -465,12 +465,12 @@ extension Okapi_Transport_PackRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
 }
 
 extension Okapi_Transport_PackResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".PackResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".PackResponse"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "message"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -482,14 +482,14 @@ extension Okapi_Transport_PackResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if let v = self._message {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Okapi_Transport_PackResponse, rhs: Okapi_Transport_PackResponse) -> Bool {
+  public static func ==(lhs: Okapi_Transport_PackResponse, rhs: Okapi_Transport_PackResponse) -> Bool {
     if lhs._message != rhs._message {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -497,8 +497,8 @@ extension Okapi_Transport_PackResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
 }
 
 extension Okapi_Transport_UnpackRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".UnpackRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".UnpackRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "sender_key"),
     2: .standard(proto: "receiver_key"),
     3: .same(proto: "message"),
@@ -527,7 +527,7 @@ extension Okapi_Transport_UnpackRequest: SwiftProtobuf.Message, SwiftProtobuf._M
     return _storage
   }
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -544,7 +544,7 @@ extension Okapi_Transport_UnpackRequest: SwiftProtobuf.Message, SwiftProtobuf._M
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._senderKey {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -559,7 +559,7 @@ extension Okapi_Transport_UnpackRequest: SwiftProtobuf.Message, SwiftProtobuf._M
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Okapi_Transport_UnpackRequest, rhs: Okapi_Transport_UnpackRequest) -> Bool {
+  public static func ==(lhs: Okapi_Transport_UnpackRequest, rhs: Okapi_Transport_UnpackRequest) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -577,12 +577,12 @@ extension Okapi_Transport_UnpackRequest: SwiftProtobuf.Message, SwiftProtobuf._M
 }
 
 extension Okapi_Transport_UnpackResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".UnpackResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".UnpackResponse"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "plaintext"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -594,14 +594,14 @@ extension Okapi_Transport_UnpackResponse: SwiftProtobuf.Message, SwiftProtobuf._
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.plaintext.isEmpty {
       try visitor.visitSingularBytesField(value: self.plaintext, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Okapi_Transport_UnpackResponse, rhs: Okapi_Transport_UnpackResponse) -> Bool {
+  public static func ==(lhs: Okapi_Transport_UnpackResponse, rhs: Okapi_Transport_UnpackResponse) -> Bool {
     if lhs.plaintext != rhs.plaintext {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -609,8 +609,8 @@ extension Okapi_Transport_UnpackResponse: SwiftProtobuf.Message, SwiftProtobuf._
 }
 
 extension Okapi_Transport_CoreMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".CoreMessage"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".CoreMessage"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
     2: .same(proto: "type"),
     3: .same(proto: "body"),
@@ -620,7 +620,7 @@ extension Okapi_Transport_CoreMessage: SwiftProtobuf.Message, SwiftProtobuf._Mes
     7: .unique(proto: "expires", json: "expires_time"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -638,7 +638,7 @@ extension Okapi_Transport_CoreMessage: SwiftProtobuf.Message, SwiftProtobuf._Mes
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.id.isEmpty {
       try visitor.visitSingularStringField(value: self.id, fieldNumber: 1)
     }
@@ -663,7 +663,7 @@ extension Okapi_Transport_CoreMessage: SwiftProtobuf.Message, SwiftProtobuf._Mes
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Okapi_Transport_CoreMessage, rhs: Okapi_Transport_CoreMessage) -> Bool {
+  public static func ==(lhs: Okapi_Transport_CoreMessage, rhs: Okapi_Transport_CoreMessage) -> Bool {
     if lhs.id != rhs.id {return false}
     if lhs.type != rhs.type {return false}
     if lhs.body != rhs.body {return false}

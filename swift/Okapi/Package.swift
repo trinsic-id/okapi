@@ -18,8 +18,8 @@ let package = Package(
         products: [
             // Products define the executables and libraries a package produces, and make them visible to other packages.
             .library(
-                    name: "Okapi",
-                    targets: ["Okapi"]),
+                    name: "TrinsicOkapi",
+                    targets: ["OkapiSwift", "OkapiObjectiveC"]),
         ],
         dependencies: [
             // Dependencies declare other packages that this package depends on.
@@ -41,10 +41,10 @@ let package = Package(
                     ]
             ),
             .target(
-                    name: "Okapi",
+                    name: "OkapiSwift",
                     dependencies: ["OkapiObjectiveC", "SwiftProtobuf"]),
             .testTarget(
                     name: "OkapiTests",
-                    dependencies: ["Okapi", "Base58Swift"]),
+                    dependencies: ["OkapiSwift", "Base58Swift"]),
         ]
 )

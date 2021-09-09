@@ -20,8 +20,8 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
-enum Okapi_Keys_KeyType: SwiftProtobuf.Enum {
-  typealias RawValue = Int
+public enum Okapi_Keys_KeyType: SwiftProtobuf.Enum {
+  public typealias RawValue = Int
   case ed25519 // = 0
   case x25519 // = 1
   case p256 // = 2
@@ -29,11 +29,11 @@ enum Okapi_Keys_KeyType: SwiftProtobuf.Enum {
   case secp256K1 // = 4
   case UNRECOGNIZED(Int)
 
-  init() {
+  public init() {
     self = .ed25519
   }
 
-  init?(rawValue: Int) {
+  public init?(rawValue: Int) {
     switch rawValue {
     case 0: self = .ed25519
     case 1: self = .x25519
@@ -44,7 +44,7 @@ enum Okapi_Keys_KeyType: SwiftProtobuf.Enum {
     }
   }
 
-  var rawValue: Int {
+  public var rawValue: Int {
     switch self {
     case .ed25519: return 0
     case .x25519: return 1
@@ -61,7 +61,7 @@ enum Okapi_Keys_KeyType: SwiftProtobuf.Enum {
 
 extension Okapi_Keys_KeyType: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static var allCases: [Okapi_Keys_KeyType] = [
+  public static var allCases: [Okapi_Keys_KeyType] = [
     .ed25519,
     .x25519,
     .p256,
@@ -72,101 +72,101 @@ extension Okapi_Keys_KeyType: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-struct Okapi_Keys_GenerateKeyRequest {
+public struct Okapi_Keys_GenerateKeyRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var seed: Data = Data()
+  public var seed: Data = Data()
 
-  var keyType: Okapi_Keys_KeyType = .ed25519
+  public var keyType: Okapi_Keys_KeyType = .ed25519
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
-struct Okapi_Keys_GenerateKeyResponse {
+public struct Okapi_Keys_GenerateKeyResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var key: [Okapi_Keys_JsonWebKey] = []
+  public var key: [Okapi_Keys_JsonWebKey] = []
 
-  var didDocument: SwiftProtobuf.Google_Protobuf_Struct {
+  public var didDocument: SwiftProtobuf.Google_Protobuf_Struct {
     get {return _didDocument ?? SwiftProtobuf.Google_Protobuf_Struct()}
     set {_didDocument = newValue}
   }
   /// Returns true if `didDocument` has been explicitly set.
-  var hasDidDocument: Bool {return self._didDocument != nil}
+  public var hasDidDocument: Bool {return self._didDocument != nil}
   /// Clears the value of `didDocument`. Subsequent reads from it will return its default value.
-  mutating func clearDidDocument() {self._didDocument = nil}
+  public mutating func clearDidDocument() {self._didDocument = nil}
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 
   fileprivate var _didDocument: SwiftProtobuf.Google_Protobuf_Struct? = nil
 }
 
-struct Okapi_Keys_ResolveRequest {
+public struct Okapi_Keys_ResolveRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var did: String = String()
+  public var did: String = String()
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
-struct Okapi_Keys_ResolveResponse {
+public struct Okapi_Keys_ResolveResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var didDocument: SwiftProtobuf.Google_Protobuf_Struct {
+  public var didDocument: SwiftProtobuf.Google_Protobuf_Struct {
     get {return _didDocument ?? SwiftProtobuf.Google_Protobuf_Struct()}
     set {_didDocument = newValue}
   }
   /// Returns true if `didDocument` has been explicitly set.
-  var hasDidDocument: Bool {return self._didDocument != nil}
+  public var hasDidDocument: Bool {return self._didDocument != nil}
   /// Clears the value of `didDocument`. Subsequent reads from it will return its default value.
-  mutating func clearDidDocument() {self._didDocument = nil}
+  public mutating func clearDidDocument() {self._didDocument = nil}
 
-  var keys: [Okapi_Keys_JsonWebKey] = []
+  public var keys: [Okapi_Keys_JsonWebKey] = []
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 
   fileprivate var _didDocument: SwiftProtobuf.Google_Protobuf_Struct? = nil
 }
 
-struct Okapi_Keys_JsonWebKey {
+public struct Okapi_Keys_JsonWebKey {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var kid: String = String()
+  public var kid: String = String()
 
   /// public_key
-  var x: String = String()
+  public var x: String = String()
 
   /// public_key
-  var y: String = String()
+  public var y: String = String()
 
   /// secret_key
-  var d: String = String()
+  public var d: String = String()
 
-  var crv: String = String()
+  public var crv: String = String()
 
-  var kty: String = String()
+  public var kty: String = String()
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -174,7 +174,7 @@ struct Okapi_Keys_JsonWebKey {
 fileprivate let _protobuf_package = "okapi.keys"
 
 extension Okapi_Keys_KeyType: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "Ed25519"),
     1: .same(proto: "X25519"),
     2: .same(proto: "P256"),
@@ -184,13 +184,13 @@ extension Okapi_Keys_KeyType: SwiftProtobuf._ProtoNameProviding {
 }
 
 extension Okapi_Keys_GenerateKeyRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".GenerateKeyRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".GenerateKeyRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "seed"),
     2: .standard(proto: "key_type"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -203,7 +203,7 @@ extension Okapi_Keys_GenerateKeyRequest: SwiftProtobuf.Message, SwiftProtobuf._M
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.seed.isEmpty {
       try visitor.visitSingularBytesField(value: self.seed, fieldNumber: 1)
     }
@@ -213,7 +213,7 @@ extension Okapi_Keys_GenerateKeyRequest: SwiftProtobuf.Message, SwiftProtobuf._M
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Okapi_Keys_GenerateKeyRequest, rhs: Okapi_Keys_GenerateKeyRequest) -> Bool {
+  public static func ==(lhs: Okapi_Keys_GenerateKeyRequest, rhs: Okapi_Keys_GenerateKeyRequest) -> Bool {
     if lhs.seed != rhs.seed {return false}
     if lhs.keyType != rhs.keyType {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -222,13 +222,13 @@ extension Okapi_Keys_GenerateKeyRequest: SwiftProtobuf.Message, SwiftProtobuf._M
 }
 
 extension Okapi_Keys_GenerateKeyResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".GenerateKeyResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".GenerateKeyResponse"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "key"),
     2: .standard(proto: "did_document"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -241,7 +241,7 @@ extension Okapi_Keys_GenerateKeyResponse: SwiftProtobuf.Message, SwiftProtobuf._
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.key.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.key, fieldNumber: 1)
     }
@@ -251,7 +251,7 @@ extension Okapi_Keys_GenerateKeyResponse: SwiftProtobuf.Message, SwiftProtobuf._
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Okapi_Keys_GenerateKeyResponse, rhs: Okapi_Keys_GenerateKeyResponse) -> Bool {
+  public static func ==(lhs: Okapi_Keys_GenerateKeyResponse, rhs: Okapi_Keys_GenerateKeyResponse) -> Bool {
     if lhs.key != rhs.key {return false}
     if lhs._didDocument != rhs._didDocument {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -260,12 +260,12 @@ extension Okapi_Keys_GenerateKeyResponse: SwiftProtobuf.Message, SwiftProtobuf._
 }
 
 extension Okapi_Keys_ResolveRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".ResolveRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".ResolveRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "did"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -277,14 +277,14 @@ extension Okapi_Keys_ResolveRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.did.isEmpty {
       try visitor.visitSingularStringField(value: self.did, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Okapi_Keys_ResolveRequest, rhs: Okapi_Keys_ResolveRequest) -> Bool {
+  public static func ==(lhs: Okapi_Keys_ResolveRequest, rhs: Okapi_Keys_ResolveRequest) -> Bool {
     if lhs.did != rhs.did {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -292,13 +292,13 @@ extension Okapi_Keys_ResolveRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
 }
 
 extension Okapi_Keys_ResolveResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".ResolveResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".ResolveResponse"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "did_document"),
     2: .same(proto: "keys"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -311,7 +311,7 @@ extension Okapi_Keys_ResolveResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if let v = self._didDocument {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
     }
@@ -321,7 +321,7 @@ extension Okapi_Keys_ResolveResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Okapi_Keys_ResolveResponse, rhs: Okapi_Keys_ResolveResponse) -> Bool {
+  public static func ==(lhs: Okapi_Keys_ResolveResponse, rhs: Okapi_Keys_ResolveResponse) -> Bool {
     if lhs._didDocument != rhs._didDocument {return false}
     if lhs.keys != rhs.keys {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -330,8 +330,8 @@ extension Okapi_Keys_ResolveResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
 }
 
 extension Okapi_Keys_JsonWebKey: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".JsonWebKey"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".JsonWebKey"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "kid"),
     2: .same(proto: "x"),
     3: .same(proto: "y"),
@@ -340,7 +340,7 @@ extension Okapi_Keys_JsonWebKey: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     6: .same(proto: "kty"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -357,7 +357,7 @@ extension Okapi_Keys_JsonWebKey: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.kid.isEmpty {
       try visitor.visitSingularStringField(value: self.kid, fieldNumber: 1)
     }
@@ -379,7 +379,7 @@ extension Okapi_Keys_JsonWebKey: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Okapi_Keys_JsonWebKey, rhs: Okapi_Keys_JsonWebKey) -> Bool {
+  public static func ==(lhs: Okapi_Keys_JsonWebKey, rhs: Okapi_Keys_JsonWebKey) -> Bool {
     if lhs.kid != rhs.kid {return false}
     if lhs.x != rhs.x {return false}
     if lhs.y != rhs.y {return false}

@@ -20,23 +20,23 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
-enum Okapi_Proofs_LdSuite: SwiftProtobuf.Enum {
-  typealias RawValue = Int
+public enum Okapi_Proofs_LdSuite: SwiftProtobuf.Enum {
+  public typealias RawValue = Int
   case jcsEd25519Signature2020 // = 0
   case UNRECOGNIZED(Int)
 
-  init() {
+  public init() {
     self = .jcsEd25519Signature2020
   }
 
-  init?(rawValue: Int) {
+  public init?(rawValue: Int) {
     switch rawValue {
     case 0: self = .jcsEd25519Signature2020
     default: self = .UNRECOGNIZED(rawValue)
     }
   }
 
-  var rawValue: Int {
+  public var rawValue: Int {
     switch self {
     case .jcsEd25519Signature2020: return 0
     case .UNRECOGNIZED(let i): return i
@@ -49,14 +49,14 @@ enum Okapi_Proofs_LdSuite: SwiftProtobuf.Enum {
 
 extension Okapi_Proofs_LdSuite: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static var allCases: [Okapi_Proofs_LdSuite] = [
+  public static var allCases: [Okapi_Proofs_LdSuite] = [
     .jcsEd25519Signature2020,
   ]
 }
 
 #endif  // swift(>=4.2)
 
-struct Okapi_Proofs_CreateProofRequest {
+public struct Okapi_Proofs_CreateProofRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -65,78 +65,78 @@ struct Okapi_Proofs_CreateProofRequest {
   /// to create the LD Proof. This document must
   /// also contain a "proof" object, with the desired
   /// values filled in.
-  var document: SwiftProtobuf.Google_Protobuf_Struct {
+  public var document: SwiftProtobuf.Google_Protobuf_Struct {
     get {return _document ?? SwiftProtobuf.Google_Protobuf_Struct()}
     set {_document = newValue}
   }
   /// Returns true if `document` has been explicitly set.
-  var hasDocument: Bool {return self._document != nil}
+  public var hasDocument: Bool {return self._document != nil}
   /// Clears the value of `document`. Subsequent reads from it will return its default value.
-  mutating func clearDocument() {self._document = nil}
+  public mutating func clearDocument() {self._document = nil}
 
   /// The signer of the proof. This field must include
   /// the 'kid' in full URI format.
   /// Example:
   ///  did:example:alice#key-1
-  var key: Okapi_Keys_JsonWebKey {
+  public var key: Okapi_Keys_JsonWebKey {
     get {return _key ?? Okapi_Keys_JsonWebKey()}
     set {_key = newValue}
   }
   /// Returns true if `key` has been explicitly set.
-  var hasKey: Bool {return self._key != nil}
+  public var hasKey: Bool {return self._key != nil}
   /// Clears the value of `key`. Subsequent reads from it will return its default value.
-  mutating func clearKey() {self._key = nil}
+  public mutating func clearKey() {self._key = nil}
 
   /// The LD Suite to use to produce this proof
-  var suite: Okapi_Proofs_LdSuite = .jcsEd25519Signature2020
+  public var suite: Okapi_Proofs_LdSuite = .jcsEd25519Signature2020
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 
   fileprivate var _document: SwiftProtobuf.Google_Protobuf_Struct? = nil
   fileprivate var _key: Okapi_Keys_JsonWebKey? = nil
 }
 
-struct Okapi_Proofs_CreateProofResponse {
+public struct Okapi_Proofs_CreateProofResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var signedDocument: SwiftProtobuf.Google_Protobuf_Struct {
+  public var signedDocument: SwiftProtobuf.Google_Protobuf_Struct {
     get {return _signedDocument ?? SwiftProtobuf.Google_Protobuf_Struct()}
     set {_signedDocument = newValue}
   }
   /// Returns true if `signedDocument` has been explicitly set.
-  var hasSignedDocument: Bool {return self._signedDocument != nil}
+  public var hasSignedDocument: Bool {return self._signedDocument != nil}
   /// Clears the value of `signedDocument`. Subsequent reads from it will return its default value.
-  mutating func clearSignedDocument() {self._signedDocument = nil}
+  public mutating func clearSignedDocument() {self._signedDocument = nil}
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 
   fileprivate var _signedDocument: SwiftProtobuf.Google_Protobuf_Struct? = nil
 }
 
-struct Okapi_Proofs_VerifyProofRequest {
+public struct Okapi_Proofs_VerifyProofRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
-struct Okapi_Proofs_VerifyProofResponse {
+public struct Okapi_Proofs_VerifyProofResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -144,20 +144,20 @@ struct Okapi_Proofs_VerifyProofResponse {
 fileprivate let _protobuf_package = "okapi.proofs"
 
 extension Okapi_Proofs_LdSuite: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "JcsEd25519Signature2020"),
   ]
 }
 
 extension Okapi_Proofs_CreateProofRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".CreateProofRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".CreateProofRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "document"),
     3: .same(proto: "key"),
     4: .same(proto: "suite"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -171,7 +171,7 @@ extension Okapi_Proofs_CreateProofRequest: SwiftProtobuf.Message, SwiftProtobuf.
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if let v = self._document {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
     }
@@ -184,7 +184,7 @@ extension Okapi_Proofs_CreateProofRequest: SwiftProtobuf.Message, SwiftProtobuf.
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Okapi_Proofs_CreateProofRequest, rhs: Okapi_Proofs_CreateProofRequest) -> Bool {
+  public static func ==(lhs: Okapi_Proofs_CreateProofRequest, rhs: Okapi_Proofs_CreateProofRequest) -> Bool {
     if lhs._document != rhs._document {return false}
     if lhs._key != rhs._key {return false}
     if lhs.suite != rhs.suite {return false}
@@ -194,12 +194,12 @@ extension Okapi_Proofs_CreateProofRequest: SwiftProtobuf.Message, SwiftProtobuf.
 }
 
 extension Okapi_Proofs_CreateProofResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".CreateProofResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".CreateProofResponse"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "signed_document"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -211,14 +211,14 @@ extension Okapi_Proofs_CreateProofResponse: SwiftProtobuf.Message, SwiftProtobuf
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if let v = self._signedDocument {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Okapi_Proofs_CreateProofResponse, rhs: Okapi_Proofs_CreateProofResponse) -> Bool {
+  public static func ==(lhs: Okapi_Proofs_CreateProofResponse, rhs: Okapi_Proofs_CreateProofResponse) -> Bool {
     if lhs._signedDocument != rhs._signedDocument {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -226,38 +226,38 @@ extension Okapi_Proofs_CreateProofResponse: SwiftProtobuf.Message, SwiftProtobuf
 }
 
 extension Okapi_Proofs_VerifyProofRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".VerifyProofRequest"
-  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  public static let protoMessageName: String = _protobuf_package + ".VerifyProofRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Okapi_Proofs_VerifyProofRequest, rhs: Okapi_Proofs_VerifyProofRequest) -> Bool {
+  public static func ==(lhs: Okapi_Proofs_VerifyProofRequest, rhs: Okapi_Proofs_VerifyProofRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension Okapi_Proofs_VerifyProofResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".VerifyProofResponse"
-  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  public static let protoMessageName: String = _protobuf_package + ".VerifyProofResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Okapi_Proofs_VerifyProofResponse, rhs: Okapi_Proofs_VerifyProofResponse) -> Bool {
+  public static func ==(lhs: Okapi_Proofs_VerifyProofResponse, rhs: Okapi_Proofs_VerifyProofResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

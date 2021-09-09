@@ -6,7 +6,7 @@ import Foundation
 import OkapiObjectiveC
 import SwiftProtobuf
 
-enum OkapiError: Error {
+public enum OkapiError: Error {
     case nativeError(String)
 }
 
@@ -21,7 +21,7 @@ struct OkapiNative {
         var result: Int32 = 0;
         var requestData = try request.serializedData();
         requestBuffer.len = Int64(requestData.count);
-        requestData.withUnsafeMutableBytes { (pointer: UnsafeMutablePointer<UInt8>) -> Void in
+        requestData.withUnsafeMutableBytes { (pointer: UnsafeMutablePointer<UInt8>) in
             requestBuffer.data = pointer;
             result = nativeFunction(requestBuffer, &responseBuffer, &errorBuffer);
         };

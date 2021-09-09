@@ -20,16 +20,16 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
-struct Okapi_Examples_BasicMessage {
+public struct Okapi_Examples_BasicMessage {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var text: String = String()
+  public var text: String = String()
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -37,12 +37,12 @@ struct Okapi_Examples_BasicMessage {
 fileprivate let _protobuf_package = "okapi.examples"
 
 extension Okapi_Examples_BasicMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".BasicMessage"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".BasicMessage"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "text"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -54,14 +54,14 @@ extension Okapi_Examples_BasicMessage: SwiftProtobuf.Message, SwiftProtobuf._Mes
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.text.isEmpty {
       try visitor.visitSingularStringField(value: self.text, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Okapi_Examples_BasicMessage, rhs: Okapi_Examples_BasicMessage) -> Bool {
+  public static func ==(lhs: Okapi_Examples_BasicMessage, rhs: Okapi_Examples_BasicMessage) -> Bool {
     if lhs.text != rhs.text {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
