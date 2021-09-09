@@ -433,3 +433,5 @@ libokapi.a
 # Cocoapods data
 ios/Pods
 swift/Okapi/.build
+swift/Okapi/Sources/OkapiObjectiveC/libokapi_ios.a
+swift/Okapi/Sources/OkapiObjectiveC/libokapi_simulator.a
