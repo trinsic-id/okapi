@@ -44,7 +44,6 @@ function Set-Require-Relative($filename) {
 function Compile-Ruby()
 {
     $RubyPath = "../ruby/lib/okapi"
-    $env:RBS_PROTOBUF_BACKEND = 'google-protobuf'
     protoc $(Get-Proto-Path) `
        --ruby_out="$RubyPath" `
        $( Get-Proto-Files )
@@ -60,9 +59,16 @@ function Compile-Swift() {
     protoc $(Get-Proto-Path) --swift_out=./Sources/OkapiSwift/proto --swift_opt=Visibility=Public  $(Get-Proto-Files)
 }
 
+function Compile-Java() {
+    $JavaPath = "../java/src/main/java"
+    protoc $(Get-Proto-Path) --java_out="$JavaPath" $(Get-Proto-Files)
+
+}
+
 Setup
 Compile-Golang
 Compile-Ruby
 Compile-Swift
+Compile-Java
 # Python is handled in the BuildPython due to venv requirements
 . "./BuildPython.ps1" -RequirementsOnly $true
