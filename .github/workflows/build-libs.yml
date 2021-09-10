@@ -48,7 +48,7 @@ jobs:
       - name: Upload Windows-GNU artifact
         uses: actions/upload-artifact@v2
         with:
-          name: windows
+          name: windows-gnu
           path: ./libs/windows-gnu/*
 
   build_linux:
