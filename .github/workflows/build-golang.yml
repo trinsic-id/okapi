@@ -26,7 +26,7 @@ jobs:
           - os: windows-latest
             static_lib_file: libokapi.dll.a
             dynamic_lib_file: okapi.dll
-            artifact_name: windows
+            artifact_name: windows-gnu
             go-version: '1.16'
           - os: macos-latest
             static_lib_file: libokapi.a
@@ -67,7 +67,7 @@ jobs:
           name: golang-test-results
           path: ./go/okapi/test_output.xml
 
-  upload_test_results:
+  upload_test_results_golang:
     name: Upload Golang Test Results
     runs-on: ubuntu-latest
     needs: [ test_go ]
