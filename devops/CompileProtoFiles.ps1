@@ -3,7 +3,7 @@ function Setup()
     Set-Location $PSScriptRoot
 }
 
-function Get-Proto-Files()
+function Get-ProtoFiles()
 {
     return @(
     "../proto/keys.proto",
@@ -13,15 +13,20 @@ function Get-Proto-Files()
     "../proto/pbmse/pbmse.proto")
 }
 
-function Get-Proto-Path()
+function Get-ProtoPath()
 {
     return "--proto_path=../proto"
 }
 
-function Compile-Golang()
+function Update-Golang()
 {
     $GoPath = "../go/okapi"
-    protoc $( Get-Proto-Path ) --go_out = "$GoPath" --go-grpc_out = "$GoPath" --go_opt = paths = source_relative --go-grpc_opt = paths = source_relative $( Get-Proto-Files )
+    protoc $( Get-ProtoPath ) `
+         --go_out="$GoPath" `
+         --go-grpc_out="$GoPath" `
+         '--go_opt=paths=source_relative' `
+         '--go-grpc_opt=paths=source_relative' `
+         $( Get-ProtoFiles )
 
     # flatten hierarchy
     Copy-Item -Path "$GoPath/pbmse/*"  -Destination "$GoPath" -recurse -Force
@@ -43,12 +48,12 @@ function Set-Require-Relative($filename)
     Set-Content -path $filename -value $fileLines
 }
 
-function Compile-Ruby()
+function Update-Ruby()
 {
     $RubyPath = "../ruby/lib/okapi"
-    protoc $( Get-Proto-Path ) `
-       --ruby_out = "$RubyPath" `
-       $( Get-Proto-Files )
+    protoc $( Get-ProtoPath ) `
+       --ruby_out="$RubyPath" `
+       $( Get-ProtoFiles )
 
     # TODO - Type specifier capability
 
@@ -57,21 +62,26 @@ function Compile-Ruby()
     Set-Require-Relative("../ruby/lib/okapi/proofs_pb.rb")
 }
 
-function Compile-Swift()
+function Update-Swift()
 {
-    protoc $( Get-Proto-Path ) --swift_out = ./Sources/OkapiSwift/proto --swift_opt = Visibility = Public  $( Get-Proto-Files )
+    protoc $( Get-ProtoPath ) `
+        '--swift_out="../swift/Okapi/Sources/OkapiSwift/proto' `
+        '--swift_opt=Visibility=Public' `
+        $( Get-ProtoFiles )
 }
 
-function Compile-Java()
+function Update-Java()
 {
     $JavaPath = "../java/src/main/java"
-    protoc $( Get-Proto-Path ) --java_out = "$JavaPath" $( Get-Proto-Files )
+    protoc $( Get-ProtoPath ) `
+        --java_out="$JavaPath" `
+        $( Get-ProtoFiles )
 }
 
 Setup
-Compile-Golang
-Compile-Ruby
-Compile-Swift
-Compile-Java
+Update-Golang
+Update-Ruby
+Update-Swift
+Update-Java
 # Python is handled in the BuildPython due to venv requirements
 . "./BuildPython.ps1" -RequirementsOnly $true
