@@ -37,7 +37,7 @@ macro_rules! c_impl {
                 return 1;
             }
         }
-    };};
+    }};
 }
 
 #[allow(unused_macros)]
