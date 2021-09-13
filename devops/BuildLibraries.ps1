@@ -46,24 +46,29 @@ try {
             break
         }
         MacOS {
-            cargo install cargo-lipo
+            # cargo install cargo-lipo
             rustup target add x86_64-apple-darwin aarch64-apple-darwin
-            # cargo build --release --target x86_64-apple-darwin
-            # cargo build --release --target aarch64-apple-darwin
-            cargo lipo --release
-            Copy-Item -Path "./target/universal/release/libokapi.a" -Destination $TargetOutput
-            Copy-Item -Path "./target/universal/release/libokapi.dylib" -Destination $TargetOutput
+            cargo build --release --target x86_64-apple-darwin
+            cargo build --release --target aarch64-apple-darwin
+            # cargo lipo --release
+            # Copy-Item -Path "./target/universal/release/libokapi.a" -Destination $TargetOutput
+            # Copy-Item -Path "./target/universal/release/libokapi.dylib" -Destination $TargetOutput
             # Create the fat binaries.
-            # lipo -create .\target\x86_64-apple-darwin\release\libokapi.a .\target\aarch64-apple-darwin\release\libokapi.a -output $TargetOutput\libokapi.a
-            # lipo -create .\target\x86_64-apple-darwin\release\libokapi.dylib .\target\aarch64-apple-darwin\release\libokapi.dylib -output $TargetOutput\libokapi.dylib
+            lipo -create ".\target\x86_64-apple-darwin\release\libokapi.a" ".\target\aarch64-apple-darwin\release\libokapi.a" -output "$TargetOutput\libokapi.a"
+            lipo -create ".\target\x86_64-apple-darwin\release\libokapi.dylib" ".\target\aarch64-apple-darwin\release\libokapi.dylib" -output "$TargetOutput\libokapi.dylib"
             break
         }
         iOS {
-            cargo install cargo-lipo
+            # rustup toolchain install nightly --allow-downgrade --profile minimal --component clippy
+            # cargo install cargo-lipo
             rustup target add x86_64-apple-ios aarch64-apple-ios
             rustup target add aarch64-apple-ios-sim --toolchain nightly
-            cargo lipo --release
-            Copy-Item -Path "./target/universal/release/libokapi.a" -Destination $TargetOutput/
+            cargo build --release --target x86_64-apple-ios
+            cargo build --release --target aarch64-apple-ios
+            cargo build --release --target aarch64-apple-ios-sim
+            # cargo lipo --release
+            lipo -create ".\target\x86_64-apple-ios\release\libokapi.a" ".\target\aarch64-apple-ios-sim\release\libokapi.a" -output "$TargetOutput\libokapi_simulator.a"
+            lipo -create ".\target\aarch64-apple-ios\release\libokapi.a" ".\target\aarch64-apple-ios\release\libokapi.a" -output "$TargetOutput\libokapi.a"
             break
         }
         Android {
