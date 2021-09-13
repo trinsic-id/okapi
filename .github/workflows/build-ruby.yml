@@ -31,7 +31,7 @@ jobs:
           workflow: "build-libs.yml"
           path: ./libs
       - name: Build and run tests
-        run: ./devops/BuildPython.ps1 -GitTag ${{ github.ref }}
+        run: ./devops/BuildRuby.ps1 -GitTag ${{ github.ref }}
       - name: cobertura-report
         if: ( ${{ matrix.os }} == 'windows-latest' && ${{ matrix.ruby-version }} = '2.7' )
         uses: 5monkeys/cobertura-action@v9
