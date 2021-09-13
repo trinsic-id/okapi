@@ -59,13 +59,16 @@ try {
             break
         }
         iOS {
-            # rustup toolchain install nightly --allow-downgrade --profile minimal --component clippy
+            rustup toolchain install nightly --allow-downgrade
+            rustup default nightly
+            rustup target add aarch64-apple-ios-sim --toolchain nightly
+            cargo +nightly build --release --target aarch64-apple-ios-sim
+
+            rustup default stable
             # cargo install cargo-lipo
             rustup target add x86_64-apple-ios aarch64-apple-ios
-            rustup target add aarch64-apple-ios-sim --toolchain nightly
             cargo build --release --target x86_64-apple-ios
             cargo build --release --target aarch64-apple-ios
-            cargo build --release --target aarch64-apple-ios-sim
             # cargo lipo --release
             lipo -create ".\target\x86_64-apple-ios\release\libokapi.a" ".\target\aarch64-apple-ios-sim\release\libokapi.a" -output "$TargetOutput\libokapi_simulator.a"
             lipo -create ".\target\aarch64-apple-ios\release\libokapi.a" ".\target\aarch64-apple-ios\release\libokapi.a" -output "$TargetOutput\libokapi.a"
