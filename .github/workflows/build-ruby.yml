@@ -32,6 +32,7 @@ jobs:
           path: ./libs
       - name: Build and run tests
         run: ./devops/BuildRuby.ps1 -GitTag ${{ github.ref }}
+        shell: pwsh
       - name: cobertura-report
         if: ( ${{ matrix.os }} == 'windows-latest' && ${{ matrix.ruby-version }} = '2.7' )
         uses: 5monkeys/cobertura-action@v9
