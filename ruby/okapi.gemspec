@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.description   = spec.summary
   spec.homepage      = "https://github.com/trinsic-id/okapi"
   spec.license       = "MIT"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.7.0")
 
   spec.metadata["allowed_push_host"] = "https://rubygems.pkg.github.com"
 
@@ -27,13 +27,17 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "rake"
-  spec.add_dependency 'google-protobuf'
-  spec.add_dependency "os"
-  spec.add_dependency "base64"
-  spec.add_dependency "ffi"
-  spec.add_dependency 'base58'
+  spec.add_dependency 'rake', '~> 13.0', '>= 13.0.6'
+  spec.add_dependency 'google-protobuf', '~> 3.17', '>= 3.17.3'
+  spec.add_dependency 'os', '~> 1.1', '>= 1.1.1'
+  spec.add_dependency 'base64', '~> 0.1.0'
+  spec.add_dependency 'ffi', '~> 1.15', '>= 1.15.4'
   spec.add_dependency 'rexml', '~> 3.2', '>= 3.2.4'
 
-  spec.add_development_dependency "minitest", "~> 5.0"
+  spec.add_development_dependency 'base58', '~> 0.2.3'
+  spec.add_development_dependency 'minitest', '~> 5.14'
+  spec.add_development_dependency 'simplecov', '~> 0.21'
+  spec.add_development_dependency 'simplecov-cobertura', '~> 1.4'
+  spec.add_development_dependency 'rbs_protobuf', '~> 0.1'
+  spec.add_development_dependency 'rbs', '~> 1.6'
 end

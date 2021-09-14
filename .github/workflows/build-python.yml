@@ -35,26 +35,9 @@ jobs:
       - name: Build, Test, Pack
         run: ./devops/BuildPython.ps1 -GitTag ${{ github.ref }}
         shell: pwsh
-      - name: Upload test results
-        uses: actions/upload-artifact@v2
-        with:
-          name: pytest-results
-          path: |
-            ./python/pytest*.*
-
-  upload_test_results_python:
-    name: Upload Python Test Results
-    runs-on: ubuntu-latest
-    needs: [test_python]
-    steps:
-      - name: Download a Build Artifact
-        uses: actions/download-artifact@v2.0.10
-        with:
-          name: pytest-results
-          path: python
       - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v1.18
-        if: always()
+        uses: EnricoMi/publish-unit-test-result-action/composite@v1.18
+        if: ( ${{ matrix.os }} == 'ubuntu-latest' && ${{ matrix.python-version }} = '3.9' )
         with:
           files: python/pytest_junit.xml
           comment_mode: "create new"
