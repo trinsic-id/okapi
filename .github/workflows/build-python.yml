@@ -36,7 +36,7 @@ jobs:
         run: ./devops/BuildPython.ps1 -GitTag ${{ github.ref }}
         shell: pwsh
       - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v1.18
+        uses: EnricoMi/publish-unit-test-result-action/composite@v1.18
         if: ( ${{ matrix.os }} == 'ubuntu-latest' && ${{ matrix.python-version }} = '3.9' )
         with:
           files: python/pytest_junit.xml
