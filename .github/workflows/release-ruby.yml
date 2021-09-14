@@ -2,6 +2,11 @@ name: Ruby Gem
 
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Package version - SemVer compliant [N!]N(.N)*[{a|b|rc}N]'
+        required: true
+        default: ' '
   push:
     branches: [ main ]
 
@@ -25,17 +30,9 @@ jobs:
           workflow: "build-libs.yml"
           path: ./libs
           branch: main
-      - name: Move libs
-        run: |
-          New-Item -ItemType Directory -Path "./ruby/libs" -Force
-          Copy-Item "./libs/*" -Destination "./ruby/libs" -Recurse -Force -Container:$false
-        shell: pwsh
       - name: Install dependencies
-        run: |
-          gem install bundler
-          gem install rspec
-          bundle install
-        working-directory: ruby
+        run: ./devops/BuildRuby.ps1 -GitTag "${{ github.ref }}" -PackageVersion "${{ github.event.inputs.version }}"
+        shell: pwsh
       - name: Publish to GPR
         run: |
           mkdir -p $HOME/.gem
