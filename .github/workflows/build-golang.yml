@@ -56,20 +56,9 @@ jobs:
         with:
           name: golang-test-results
           path: ./go/okapi/test_output.xml
-
-  upload_test_results_golang:
-    name: Upload Golang Test Results
-    runs-on: ubuntu-latest
-    needs: [ test_go ]
-    steps:
-      - name: Download a Build Artifact
-        uses: actions/download-artifact@v2.0.10
-        with:
-          name: golang-test-results
-          path: ./go
       - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v1.18
-        if: always()
+        uses: EnricoMi/publish-unit-test-result-action/composite@v1.18
+        if: ( ${{ matrix.os }} == 'ubuntu-latest' )
         with:
           files: go/test_output.xml
           comment_mode: "create new"
