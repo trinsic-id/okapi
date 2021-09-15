@@ -399,11 +399,14 @@ python/build/
 /ruby/pkg/
 /ruby/spec/reports/
 /ruby/tmp/
+ruby/Gemfile.lock
 
 #Golang
 /go/okapi/coverage.out
 /go/okapi/test_output.xml
-ruby/Gemfile.lock
+go/test_output.xml
+go/okapi/libokapi.dll.a
+go/okapi/okapi.h
 
 # Xcode
 ## User settings
@@ -430,6 +433,7 @@ DerivedData/
 /*.gcno
 # Static library
 libokapi.a
+
 # Cocoapods data
 ios/Pods
 swift/Okapi/.build

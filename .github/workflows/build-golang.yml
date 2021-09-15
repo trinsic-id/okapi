@@ -40,25 +40,15 @@ jobs:
         with:
           workflow: "build-libs.yml"
           path: ./libs
-      - name: Copy include file and libraries
-        run: |
-          Copy-Item ./libs/C_header/okapi.h ./go/okapi
-          Copy-Item ./libs/${{ matrix.artifact_name }}/${{ matrix.static_lib_file}} ./go/okapi
-          Copy-Item ./libs/${{ matrix.artifact_name }}/${{ matrix.dynamic_lib_file}} ./go/okapi
-        shell: pwsh
       - name: Set up Go ${{ matrix.go-version }}
         uses: actions/setup-go@v2
         with:
           go-version: ${{ matrix.go-version }}
       - name: Display Golang version
         run: go version
-      - name: Build, Test
-        run: |
-          go get github.com/tebeka/go2xunit
-          go build
-          go test -v | go2xunit > test_output.xml
-        working-directory: ./go/okapi
-        shell: pwsh
+      - name: Build, Test, Pack
+          run: ./devops/BuildPython.ps1 -GitTag ${{ github.ref }}
+          shell: pwsh
         env:
           LD_LIBRARY_PATH: "$GITHUB_WORKSPACE/go/okapi"
       - name: Upload test results
