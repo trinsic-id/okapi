@@ -10,7 +10,7 @@
 pub struct Struct {
     /// Unordered map of dynamically typed values.
     #[prost(map="string, message", tag="1")]
-    pub fields: ::std::collections::HashMap<std::string::String, Value>,
+    pub fields: ::std::collections::HashMap<::prost::alloc::string::String, Value>,
 }
 /// `Value` represents a dynamically typed value which can be either
 /// null, a number, a string, a boolean, a recursive struct value, or a
@@ -22,8 +22,9 @@ pub struct Struct {
 pub struct Value {
     /// The kind of value.
     #[prost(oneof="value::Kind", tags="1, 2, 3, 4, 5, 6")]
-    pub kind: ::std::option::Option<value::Kind>,
+    pub kind: ::core::option::Option<value::Kind>,
 }
+/// Nested message and enum types in `Value`.
 pub mod value {
     /// The kind of value.
     #[derive(Clone, PartialEq, ::prost::Oneof)]
@@ -36,7 +37,7 @@ pub mod value {
         NumberValue(f64),
         /// Represents a string value.
         #[prost(string, tag="3")]
-        StringValue(std::string::String),
+        StringValue(::prost::alloc::string::String),
         /// Represents a boolean value.
         #[prost(bool, tag="4")]
         BoolValue(bool),
@@ -55,7 +56,7 @@ pub mod value {
 pub struct ListValue {
     /// Repeated field of dynamically typed values.
     #[prost(message, repeated, tag="1")]
-    pub values: ::std::vec::Vec<Value>,
+    pub values: ::prost::alloc::vec::Vec<Value>,
 }
 /// `NullValue` is a singleton enumeration to represent the null value for the
 /// `Value` type union.
