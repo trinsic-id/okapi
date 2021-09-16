@@ -7,10 +7,16 @@ import "C"
 import (
 	"fmt"
 	"github.com/golang/protobuf/proto"
-	"log"
 	"unsafe"
 )
+type OkapiError struct {
+	Message string
+	InternalError error
+}
 
+func (o OkapiError) Error() string {
+	return fmt.Sprintf("Error:%s  InternalError:%v", o.Message, o.InternalError)
+}
 
 type DidError struct {
 	Code         int
@@ -21,59 +27,81 @@ func (d *DidError) Error() string {
 	return fmt.Sprintf("Error on call: %s() return code=%d message=%s", d.FunctionName, d.Code, d.Message)
 }
 
-func didcomm_pack(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+type okapiCall func (request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32
+
+func didcommPack(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
 	return int32(C.didcomm_pack(request, response, err))
 }
-func didcomm_unpack(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+func didcommUnpack(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
 	return int32(C.didcomm_unpack(request, response, err))
 }
-func didcomm_sign(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+func didcommSign(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
 	return int32(C.didcomm_sign(request, response, err))
 }
-func didcomm_verify(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+func didcommVerify(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
 	return int32(C.didcomm_verify(request, response, err))
 }
 
-func didkey_generate(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+func didkeyGenerate(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
 	return int32(C.didkey_generate(request, response, err))
 }
-func didkey_resolve(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+func didkeyResolve(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
 	return int32(C.didkey_resolve(request, response, err))
 }
 
-func ldproofs_create_proof(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+func ldproofsCreateProof(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
 	return int32(C.ldproofs_create_proof(request, response, err))
 }
-func ldproofs_verify_proof(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+func ldproofsVerifyProof(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
 	return int32(C.ldproofs_verify_proof(request, response, err))
 }
 
-func createBuffersFromMessage(requestMessage proto.Message) (C.ByteBuffer, C.ByteBuffer, C.ExternError) {
+func callOkapiNative(request proto.Message, response proto.Message, nativeFunc okapiCall) error {
+	requestBuffer, responseBuffer, errorBuffer, err := createBuffersFromMessage(request)
+	if err != nil {
+		return wrapError("Failed to create buffers", err)
+	}
+	code := nativeFunc(requestBuffer, &responseBuffer, &errorBuffer)
+	err = unmarshalResponse(responseBuffer, response, requestBuffer)
+	if err != nil {
+		return wrapError("Failed to unmarshal response",err)
+	}
+	return createError(code, errorBuffer)
+}
+
+func createBuffersFromMessage(requestMessage proto.Message) (C.ByteBuffer, C.ByteBuffer, C.ExternError, error) {
 	out, e := proto.Marshal(requestMessage)
 	if e != nil {
-		log.Fatalln("Failed to encode requestMessage:", e)
+		return C.ByteBuffer{}, C.ByteBuffer{}, C.ExternError{}, wrapError("Failed to marshal message to protobuf", e)
 	}
 
 	requestBuffer, responseBuffer, err := allocateBuffers(out)
-	return requestBuffer, responseBuffer, err
+	return requestBuffer, responseBuffer, err, nil
 }
 
-func unmarshalResponse(responseBuffer C.ByteBuffer, responseMessage proto.Message, requestBuffer C.ByteBuffer) {
-	if e := proto.Unmarshal(C.GoBytes(unsafe.Pointer(responseBuffer.data), C.int(responseBuffer.len)), responseMessage); e != nil {
-		log.Fatalln("Failed to decode responseMessage:", e)
+func unmarshalResponse(responseBuffer C.ByteBuffer, responseMessage proto.Message, requestBuffer C.ByteBuffer) error {
+	e := proto.Unmarshal(C.GoBytes(unsafe.Pointer(responseBuffer.data), C.int(responseBuffer.len)), responseMessage)
+	if e != nil {
+		return wrapError("Failed to unmarshal message to protobuf", e)
 	}
 	C.free(unsafe.Pointer(requestBuffer.data))
 	C.didcomm_byte_buffer_free(responseBuffer)
+	return nil
 }
 
-func createError(functionName string, code int32, err C.ExternError) error {
+func createError(code int32, err C.ExternError) error {
 	if code == 0 {
 		return nil
 	}
 	return &DidError{
 		Code: int(code),
-		FunctionName: functionName,
 		Message:      C.GoString(err.message),
+	}
+}
+func wrapError(message string, internalError error) error {
+	return &OkapiError{
+		Message:       message,
+		InternalError: internalError,
 	}
 }
 
