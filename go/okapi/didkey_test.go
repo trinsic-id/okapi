@@ -17,7 +17,7 @@ func TestGenerateKey(t *testing.T) {
 	response, err := DidKey{}.Generate(&request)
 	assert.Nil(t, err)
 	assert.NotNil(t, &response)
-	assertValidKeyGenerated(t, &response)
+	assertValidKeyGenerated(t, response)
 }
 
 func TestGenerateKeyNoSeed(t *testing.T) {
@@ -25,7 +25,7 @@ func TestGenerateKeyNoSeed(t *testing.T) {
 	request.KeyType = KeyType_Ed25519
 	response, err := DidKey{}.Generate(&request)
 	assert.Nil(t, err)
-	assertValidKeyGenerated(t, &response)
+	assertValidKeyGenerated(t, response)
 }
 
 func TestResolveKey(t *testing.T) {
@@ -70,7 +70,7 @@ func TestGenerateKeyFromSeed(t *testing.T) {
 			response, err := DidKey{}.Generate(&request)
 			assert.Nil(t, err)
 
-			pk := assertValidKeyGenerated(t, &response, argument.keyTypeString)
+			pk := assertValidKeyGenerated(t, response, argument.keyTypeString)
 			assert.Equal(t, argument.response, base58.Encode(pk))
 		})
 	}
