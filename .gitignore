@@ -435,3 +435,10 @@ ios/Pods
 swift/Okapi/.build
 swift/Okapi/Sources/OkapiObjectiveC/libokapi_ios.a
 swift/Okapi/Sources/OkapiObjectiveC/libokapi_simulator.a
+go/test_output.xml
+go/okapi/libokapi.dll.a
+go/okapi/okapi.h
+java/okapi.dll
+ruby/libs/libokapi.dylib
+ruby/libs/libokapi.so
+ruby/libs/okapi.dll
