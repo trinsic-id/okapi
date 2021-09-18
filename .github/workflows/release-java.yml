@@ -1,4 +1,4 @@
-name: Java Maven Package
+name: Release Java Maven Package
 
 on:
   workflow_dispatch:

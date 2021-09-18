@@ -40,24 +40,14 @@ jobs:
         with:
           workflow: "build-libs.yml"
           path: ./libs
-      - name: Copy include file and libraries
-        run: |
-          Copy-Item ./libs/C_header/okapi.h ./go/okapi
-          Copy-Item ./libs/${{ matrix.artifact_name }}/${{ matrix.static_lib_file}} ./go/okapi
-          Copy-Item ./libs/${{ matrix.artifact_name }}/${{ matrix.dynamic_lib_file}} ./go/okapi
-        shell: pwsh
       - name: Set up Go ${{ matrix.go-version }}
         uses: actions/setup-go@v2
         with:
           go-version: ${{ matrix.go-version }}
       - name: Display Golang version
         run: go version
-      - name: Build, Test
-        run: |
-          go get github.com/tebeka/go2xunit
-          go build
-          go test -v | go2xunit > test_output.xml
-        working-directory: ./go/okapi
+      - name: Build, Test, Pack
+        run: ./devops/BuildPython.ps1 -GitTag ${{ github.ref }}
         shell: pwsh
         env:
           LD_LIBRARY_PATH: "$GITHUB_WORKSPACE/go/okapi"
@@ -66,20 +56,9 @@ jobs:
         with:
           name: golang-test-results
           path: ./go/okapi/test_output.xml
-
-  upload_test_results_golang:
-    name: Upload Golang Test Results
-    runs-on: ubuntu-latest
-    needs: [ test_go ]
-    steps:
-      - name: Download a Build Artifact
-        uses: actions/download-artifact@v2.0.10
-        with:
-          name: golang-test-results
-          path: ./go
       - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v1.18
-        if: always()
+        uses: EnricoMi/publish-unit-test-result-action/composite@v1.18
+        if: ( ${{ matrix.os }} == 'ubuntu-latest' )
         with:
           files: go/test_output.xml
           comment_mode: "create new"
