@@ -378,6 +378,7 @@ native/out.h
 /java/out
 /java/.gradle/
 /java/build/
+/java/okapi.dll
 
 
 /libs/
@@ -399,11 +400,17 @@ python/build/
 /ruby/pkg/
 /ruby/spec/reports/
 /ruby/tmp/
+ruby/Gemfile.lock
+/ruby/libs/libokapi.dylib
+/ruby/libs/libokapi.so
+/ruby/libs/okapi.dll
 
 #Golang
 /go/okapi/coverage.out
 /go/okapi/test_output.xml
-ruby/Gemfile.lock
+/go/test_output.xml
+/go/okapi/libokapi.dll.a
+/go/okapi/okapi.h
 
 # Xcode
 ## User settings
@@ -430,15 +437,9 @@ DerivedData/
 /*.gcno
 # Static library
 libokapi.a
-# Cocoapods data
+
+# Swift data
 ios/Pods
 swift/Okapi/.build
 swift/Okapi/Sources/OkapiObjectiveC/libokapi_ios.a
 swift/Okapi/Sources/OkapiObjectiveC/libokapi_simulator.a
-go/test_output.xml
-go/okapi/libokapi.dll.a
-go/okapi/okapi.h
-java/okapi.dll
-ruby/libs/libokapi.dylib
-ruby/libs/libokapi.so
-ruby/libs/okapi.dll

@@ -1,4 +1,4 @@
-name: Ruby Gem
+name: Release Ruby Gem
 
 on:
   workflow_dispatch:
@@ -33,25 +33,8 @@ jobs:
       - name: Install dependencies
         run: ./devops/BuildRuby.ps1 -GitTag "${{ github.ref }}" -PackageVersion "${{ github.event.inputs.version }}"
         shell: pwsh
-      - name: Publish to GPR
-        run: |
-          mkdir -p $HOME/.gem
-          touch $HOME/.gem/credentials
-          chmod 0600 $HOME/.gem/credentials
-          printf -- "---\n:github: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
-          gem build *.gemspec
-          gem push --KEY github --host https://rubygems.pkg.github.com/trinsic-id *.gem
-        working-directory: ruby
-        env:
-          GEM_HOST_API_KEY: "Bearer ${{secrets.GITHUB_TOKEN}}"
-
-      # - name: Publish to RubyGems
-        # run: |
-          # mkdir -p $HOME/.gem
-          # touch $HOME/.gem/credentials
-          # chmod 0600 $HOME/.gem/credentials
-          # printf -- "---\n:rubygems_api_key: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
-          # gem build *.gemspec
-          # gem push *.gem
-        # env:
-          # GEM_HOST_API_KEY: "${{secrets.RUBYGEMS_AUTH_TOKEN}}"
+      - name: Publish gem
+        uses: dawidd6/action-publish-gem@v1.2.0
+        with:
+          api_key: ${{secrets.RUBYGEMS_AUTH_TOKEN}}
+          github_token: ${{secrets.GITHUB_TOKEN}}
