@@ -47,7 +47,7 @@ jobs:
       - name: Display Golang version
         run: go version
       - name: Build, Test, Pack
-        run: ./devops/BuildPython.ps1 -GitTag ${{ github.ref }}
+        run: ./devops/BuildGolang.ps1 -GitTag ${{ github.ref }}
         shell: pwsh
         env:
           LD_LIBRARY_PATH: "$GITHUB_WORKSPACE/go/okapi"

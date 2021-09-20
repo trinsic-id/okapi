@@ -22,20 +22,9 @@ jobs:
         with:
           workflow: "build-libs.yml"
           path: ./libs
-      - name: Copy static libraries
-        run: |
-          $source = "./libs"
-          $dest = "./swift/Okapi/OkapiObjectiveC"
-          Get-ChildItem $source -Recurse | `
-              Where-Object { $_.PSIsContainer -eq $False } | `
-              ForEach-Object {Copy-Item -Path $_.Fullname -Destination $dest -Force} # Do the things
       - name: Build, Test, Pack
-        run:  |
-          swift build
-          swift test
+        run: ./devops/BuildSwift.ps1 -GitTag ${{ github.ref }}
         shell: pwsh
-        with:
-          path: ./swift/Okapi
       # - name: Publish Unit Test Results
       #   uses: EnricoMi/publish-unit-test-result-action/composite@v1.18
       #   with:
