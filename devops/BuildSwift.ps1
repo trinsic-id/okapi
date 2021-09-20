@@ -11,8 +11,8 @@ function Install-Requirements {
 }
 function Run-Tests {
     cd "./Okapi"
-    swift build -v
-    swift test -v
+    swift build
+    swift test
     cd ".."
 }
 function Build-Package {
