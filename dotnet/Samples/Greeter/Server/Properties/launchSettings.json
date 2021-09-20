@@ -1,7 +1,8 @@
 {
   "profiles": {
     "Server": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "environmentVariables": {}
     }
   }
 }

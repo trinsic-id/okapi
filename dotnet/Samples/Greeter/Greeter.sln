@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{2F7B182E-9CC8-46AF-A36A-9FBE7521DF82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DIDComm.Messaging.gRPC", "..\..\Library\DIDComm.Messaging.gRPC\DIDComm.Messaging.gRPC.csproj", "{9266C618-870F-4D12-B285-4323E510CD49}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Okapi", "..\..\Library\Okapi\Okapi.csproj", "{9266C618-870F-4D12-B285-4323E510CD49}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{4BD89AD1-8099-4BA9-B4B8-02EB1481772D}"
 EndProject

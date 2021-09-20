@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Library\DIDComm.Messaging.gRPC\DIDComm.Messaging.gRPC.csproj" />
+    <ProjectReference Include="..\..\..\Library\Okapi\Okapi.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Multiformats.Base" Version="2.0.2" />

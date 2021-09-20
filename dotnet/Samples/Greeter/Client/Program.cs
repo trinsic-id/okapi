@@ -2,14 +2,12 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using Common;
-using DIDComm.Messaging;
 using Google.Protobuf;
-using Grpc.Core;
 using Grpc.Net.Client;
 using Grpc.Net.Client.Web;
-using DIDCommGrpc = DIDComm.Messaging.DIDComm;
-using Multiformats.Base;
 using System.Diagnostics;
+using Okapi.Examples;
+using Okapi.Transport;
 
 namespace Client
 {
@@ -20,7 +18,7 @@ namespace Client
             AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
 
             // Get reference to didcomm service with encryption endpoints
-            var client = new DIDCommEncrypted.DIDCommEncryptedClient(
+            var client = new SecureExample.SecureExampleClient(
                 channel: GrpcChannel.ForAddress("http://localhost:5000",
                 channelOptions: new GrpcChannelOptions { HttpHandler = new GrpcWebHandler(new HttpClientHandler()) }));
 
@@ -35,10 +33,10 @@ namespace Client
                 Console.Write("<Alice> ");
                 var message = new BasicMessage { Text = Console.ReadLine() };
                 stopwatch.Start();
-                var encryptedMessage = DIDCommGrpc.Pack(new PackRequest { ReceiverKey = Bob.PublicKey, SenderKey = Alice.SecretKey, Plaintext = message.ToByteString() });
+                var encryptedMessage = DIDComm.Pack(new PackRequest { ReceiverKey = Bob.PublicKey, SenderKey = Alice.SecretKey, Plaintext = message.ToByteString() });
 
                 var response = await client.UnaryAsync(encryptedMessage.Message);
-                var decryptedResponse = DIDCommGrpc.Unpack(new UnpackRequest { Message = response, ReceiverKey = Alice.SecretKey, SenderKey = Bob.PublicKey });
+                var decryptedResponse = DIDComm.Unpack(new UnpackRequest { Message = response, ReceiverKey = Alice.SecretKey, SenderKey = Bob.PublicKey });
 
                 var reply = new BasicMessage();
                 reply.MergeFrom(decryptedResponse.Plaintext);
