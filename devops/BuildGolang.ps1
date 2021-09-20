@@ -10,8 +10,8 @@ param
 function Install-Requirements {
     go get github.com/tebeka/go2xunit
 }
-function Run-Tests {
-    cd "./okapi"
+function Test-Unittests {
+    cd "okapi"
     go test -v | go2xunit > test_output.xml
     cd ".."
 }
@@ -35,7 +35,7 @@ Get-ChildItem $source -Recurse | `
     ForEach-Object {Copy-Item -Path $_.Fullname -Destination $dest -Force} # Do the things
 Install-Requirements
 if (!$RequirementsOnly) {
-    Run-Tests
+    Test-Unittests
     Build-Package
 }
 Set-Location $InvocationPath

@@ -10,7 +10,7 @@ param
 function Install-Requirements {
 }
 function Run-Tests {
-    cd "./swift/Okapi"
+    cd "./Okapi"
     swift build -v
     swift test -v
     cd ".."
