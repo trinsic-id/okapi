@@ -10,7 +10,7 @@ final class OkapiTests: XCTestCase {
         request.seed = Data(_: [1, 2, 3]);
 
         let response = try DidKey.generate(request: request);
-        assertValidKeyGenerated(response: response);
+        _ = assertValidKeyGenerated(response: response);
     }
 
     func testGenerateKeyNoSeed() throws {
@@ -18,7 +18,7 @@ final class OkapiTests: XCTestCase {
         request.keyType = Okapi_Keys_KeyType.ed25519;
 
         let response = try DidKey.generate(request: request);
-        assertValidKeyGenerated(response: response);
+        _ = assertValidKeyGenerated(response: response);
     }
 
     func testResolveKey() throws {
