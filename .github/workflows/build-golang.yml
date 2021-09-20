@@ -51,11 +51,6 @@ jobs:
         shell: pwsh
         env:
           LD_LIBRARY_PATH: "$GITHUB_WORKSPACE/go/okapi"
-      - name: Upload test results
-        uses: actions/upload-artifact@v2
-        with:
-          name: golang-test-results
-          path: ./go/okapi/test_output.xml
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action/composite@v1.18
         if: ( ${{ matrix.os }} == 'ubuntu-latest' )
