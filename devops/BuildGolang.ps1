@@ -11,9 +11,7 @@ function Install-Requirements {
     go get github.com/tebeka/go2xunit
 }
 function Test-Unittests {
-    cd "okapi"
     go test -v | go2xunit > test_output.xml
-    cd ".."
 }
 function Build-Package {
     $replaceLineVersion = $PackageVersion
