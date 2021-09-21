@@ -8,12 +8,10 @@ param
 . "$PSScriptRoot/VersionParse.ps1"
 
 function Install-Requirements {
-    go get github.com/tebeka/go2xunit
+    go get -u github.com/jstemmer/go-junit-report
 }
-function Run-Tests {
-    cd "./okapi"
-    go test -v | go2xunit > test_output.xml
-    cd ".."
+function Test-Golang {
+    go test -v 2>&1 | go-junit-report > test_output.xml
 }
 function Build-Package {
     $replaceLineVersion = $PackageVersion
@@ -21,9 +19,7 @@ function Build-Package {
         $replaceLineVersion = Get-GolangVersion($GitTag)
     } catch {
     } finally {
-        cd "./okapi"
         go build
-        cd ".."
     }
 }
 
@@ -37,7 +33,9 @@ Get-ChildItem $source -Recurse | `
     ForEach-Object {Copy-Item -Path $_.Fullname -Destination $dest -Force} # Do the things
 Install-Requirements
 if (!$RequirementsOnly) {
-    Run-Tests
+    cd "./okapi"
+    Test-Golang
     Build-Package
+    cd ".."
 }
 Set-Location $InvocationPath
