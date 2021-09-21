@@ -3,17 +3,20 @@ param
     [AllowNull()][string]$GitTag = '',
     [AllowNull()][string]$PackageVersion = '',
     [AllowNull()][string]$TestOutput = 'test_output.xml',
-    [AllowNull()][string]$ArtifactName = '',
+    [AllowNull()][string]$ArtifactName = 'windows-gnu',
     [AllowNull()][Boolean]$RequirementsOnly = $false
 )
 
 . "$PSScriptRoot/VersionParse.ps1"
 
 function Install-Requirements {
+    go install golang.org/x/lint/golint@latest
+    go install github.com/jstemmer/go-junit-report@latest
 }
 function Test-Golang {
-    # go test -v 2>&1 | go-junit-report > $TestOutput
-    go test -v
+    Write-Output "Go path: $env:GOPATH"
+    go test -v 2>&1 | go-junit-report > $TestOutput
+    # TODO - Add `staticcheck` support
 }
 function Build-Package {
     $replaceLineVersion = $PackageVersion
@@ -21,24 +24,23 @@ function Build-Package {
         $replaceLineVersion = Get-GolangVersion($GitTag)
     } catch {
     } finally {
-        go build
+        go build .
+        golint .
     }
 }
 
 # Setup
 $InvocationPath = (Get-Item .).FullName
-Set-Location "$PSScriptRoot/../go"
-$source = "../libs/$ArtifactName"
-$dest = "./okapi"
+Set-Location "$PSScriptRoot/../go/okapi"
+$source = "$PSScriptRoot/../libs/$ArtifactName"
+$dest = "./"
 Get-ChildItem $source -Recurse | `
     Where-Object { $_.PSIsContainer -eq $False } | `
     ForEach-Object {Copy-Item -Path $_.Fullname -Destination $dest -Force} # Do the things
-Copy-Item -Path "../libs/C_header/okapi.h" -Destination "$dest"
+Copy-Item -Path "$PSScriptRoot/../libs/C_header/okapi.h" -Destination "$dest"
 Install-Requirements
 if (!$RequirementsOnly) {
-    cd "./okapi"
     Test-Golang
     Build-Package
-    cd ".."
 }
 Set-Location $InvocationPath
