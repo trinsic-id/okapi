@@ -21,7 +21,9 @@ function Build-Package {
         $replaceLineVersion = Get-GolangVersion($GitTag)
     } catch {
     } finally {
+        cd "./okapi"
         go build
+        cd ".."
     }
 }
 

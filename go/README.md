@@ -1,26 +1,8 @@
-# In Progress
-
-Development in progress...
-
-## Generate new proto files
-
-From inside the `proto` folder in the root of the repo type
-
-```
-mkdir messaging
-protoc --go_out=./messaging --go_opt=paths=source_relative --go-grpc_out=./messaging --go-grpc_opt=paths=source_relative *
-```
-
-Move all files from `messaging` into `go/messaging`
-
-## To run the tests
-
-Copy the platform specific library for your OS from the `libs` folder into `go` folder.
-
-
-### References
-
-https://github.com/AlekSi/cgo-by-example/blob/master/main.go
-
-https://stackoverflow.com/questions/59586045/how-to-convert-gos-byte-to-cs-uint8-t
-
+## Okapi Golang Bindings
+1. Download the binaries by platform from here: https://github.com/trinsic-id/okapi/actions/workflows/build-libs.yml
+   1. For windows, use the `windows-gnu` artifact, since golang requires GCC compatible binaries. You will need the `.dll.a` and `.dll` files
+   2. For Linux, you should only need the `okapi.a` binary
+   3. For MacOS, you should need the `libokapi.a` binary, not the `libokapi.dylib`.
+2. Place them in the `go/okapi` folder
+3. Place the `okapi.h` header file (under the artifact called `C_header`) in the `go/okapi` folder
+4. It should now build.
