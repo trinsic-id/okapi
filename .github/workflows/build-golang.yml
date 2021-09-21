@@ -19,20 +19,11 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            static_lib_file: libokapi.a
-            dynamic_lib_file: libokapi.so
             artifact_name: linux
-            go-version: '1.16'
           - os: windows-latest
-            static_lib_file: libokapi.dll.a
-            dynamic_lib_file: okapi.dll
             artifact_name: windows-gnu
-            go-version: '1.16'
           - os: macos-latest
-            static_lib_file: libokapi.a
-            dynamic_lib_file: libokapi.dylib
             artifact_name: macos
-            go-version: '1.16'
     steps:
       - uses: actions/checkout@v2
       - name: Download workflow artifact
@@ -48,7 +39,7 @@ jobs:
         run: go version
       - name: Build, Test, Pack
         run: |
-          ./devops/BuildGolang.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output_${{ matrix.os }}.xml"
+          ./devops/BuildGolang.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output_${{ matrix.os }}.xml" -ArtifactName "${{ matrix.artifact_name }}"
         shell: pwsh
         env:
           LD_LIBRARY_PATH: "$GITHUB_WORKSPACE/go/okapi"
