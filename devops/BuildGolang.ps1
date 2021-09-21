@@ -10,7 +10,7 @@ param
 . "$PSScriptRoot/VersionParse.ps1"
 
 function Install-Requirements {
-    go get -u github.com/jstemmer/go-junit-report
+    go install github.com/jstemmer/go-junit-report
 }
 function Test-Golang {
     go test -v 2>&1 | go-junit-report > $TestOutput
