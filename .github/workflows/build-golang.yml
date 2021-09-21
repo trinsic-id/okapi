@@ -48,8 +48,7 @@ jobs:
         run: go version
       - name: Build, Test, Pack
         run: |
-          ./devops/BuildGolang.ps1 -GitTag ${{ github.ref }}
-          Rename-Item -Path "./go/okapi/test_output.xml" -NewName "./go/okapi/test_output_$${{ matrix.os }}.xml"
+          ./devops/BuildGolang.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output_${{ matrix.os }}.xml"
         shell: pwsh
         env:
           LD_LIBRARY_PATH: "$GITHUB_WORKSPACE/go/okapi"

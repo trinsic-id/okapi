@@ -2,6 +2,7 @@ param
 (
     [AllowNull()][string]$GitTag = '',
     [AllowNull()][string]$PackageVersion = '',
+    [AllowNull()][string]$TestOutput = 'test_output.xml',
     [AllowNull()][Boolean]$RequirementsOnly = $false
 )
 
@@ -11,7 +12,7 @@ function Install-Requirements {
     go get -u github.com/jstemmer/go-junit-report
 }
 function Test-Golang {
-    go test -v | go-junit-report > test_output.xml
+    go test -v | go-junit-report > $TestOutput
 }
 function Build-Package {
     $replaceLineVersion = $PackageVersion
