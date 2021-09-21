@@ -12,8 +12,8 @@ param
 function Install-Requirements {
 }
 function Test-Golang {
-    go test -v 2>&1 | go-junit-report > $TestOutput
-    # go test -v
+    # go test -v 2>&1 | go-junit-report > $TestOutput
+    go test -v
 }
 function Build-Package {
     $replaceLineVersion = $PackageVersion
