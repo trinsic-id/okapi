@@ -33,7 +33,7 @@ $dest = "./okapi"
 Get-ChildItem $source -Recurse | `
     Where-Object { $_.PSIsContainer -eq $False } | `
     ForEach-Object {Copy-Item -Path $_.Fullname -Destination $dest -Force} # Do the things
-Copy-Item -Path "$source/C_header/okapi.h" -Destination "$dest"
+Copy-Item -Path "$../libs/C_header/okapi.h" -Destination "$dest"
 Install-Requirements
 if (!$RequirementsOnly) {
     cd "./okapi"
