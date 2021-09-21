@@ -18,12 +18,12 @@ jobs:
     strategy:
       matrix:
         include:
-#          - os: ubuntu-latest
-#            artifact_name: linux
+          - os: ubuntu-latest
+            artifact_name: linux
           - os: windows-latest
             artifact_name: windows-gnu
-#          - os: macos-latest
-#            artifact_name: macos
+          - os: macos-latest
+            artifact_name: macos
     steps:
       - uses: actions/checkout@v2
       - name: Download workflow artifact
@@ -43,9 +43,9 @@ jobs:
         shell: pwsh
         env:
           LD_LIBRARY_PATH: "${{ github.workspace }}/go/okapi"
-      - name: Publish Test Report
-        uses: mikepenz/action-junit-report@v2
-        if: always() # always run even if the previous step fails
-        with:
-          report_paths: ./go/okapi/test_output*.xml
-          fail_on_failure: true
+#      - name: Publish Test Report
+#        uses: mikepenz/action-junit-report@v2
+#        if: always() # always run even if the previous step fails
+#        with:
+#          report_paths: ./go/okapi/test_output*.xml
+#          fail_on_failure: true
