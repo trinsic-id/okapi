@@ -2,18 +2,18 @@ param
 (
     [AllowNull()][string]$GitTag = '',
     [AllowNull()][string]$PackageVersion = '',
+    [AllowNull()][string]$TestOutput = 'test_output.xml',
+    [AllowNull()][string]$ArtifactName = '',
     [AllowNull()][Boolean]$RequirementsOnly = $false
 )
 
 . "$PSScriptRoot/VersionParse.ps1"
 
 function Install-Requirements {
-    go get github.com/tebeka/go2xunit
 }
-function Run-Tests {
-    cd "./okapi"
-    go test -v | go2xunit > test_output.xml
-    cd ".."
+function Test-Golang {
+    # go test -v 2>&1 | go-junit-report > $TestOutput
+    go test -v
 }
 function Build-Package {
     $replaceLineVersion = $PackageVersion
@@ -28,14 +28,17 @@ function Build-Package {
 # Setup
 $InvocationPath = (Get-Item .).FullName
 Set-Location "$PSScriptRoot/../go"
-$source = "../libs"
+$source = "../libs/$ArtifactName"
 $dest = "./okapi"
 Get-ChildItem $source -Recurse | `
     Where-Object { $_.PSIsContainer -eq $False } | `
     ForEach-Object {Copy-Item -Path $_.Fullname -Destination $dest -Force} # Do the things
+Copy-Item -Path "../libs/C_header/okapi.h" -Destination "$dest"
 Install-Requirements
 if (!$RequirementsOnly) {
-    Run-Tests
+    cd "./okapi"
+    Test-Golang
     Build-Package
+    cd ".."
 }
 Set-Location $InvocationPath

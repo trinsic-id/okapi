@@ -19,20 +19,11 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            static_lib_file: libokapi.a
-            dynamic_lib_file: libokapi.so
             artifact_name: linux
-            go-version: '1.16'
           - os: windows-latest
-            static_lib_file: libokapi.dll.a
-            dynamic_lib_file: okapi.dll
             artifact_name: windows-gnu
-            go-version: '1.16'
           - os: macos-latest
-            static_lib_file: libokapi.a
-            dynamic_lib_file: libokapi.dylib
             artifact_name: macos
-            go-version: '1.16'
     steps:
       - uses: actions/checkout@v2
       - name: Download workflow artifact
@@ -40,27 +31,22 @@ jobs:
         with:
           workflow: "build-libs.yml"
           path: ./libs
-      - name: Set up Go ${{ matrix.go-version }}
+      - name: Set up Go
         uses: actions/setup-go@v2
         with:
           go-version: ${{ matrix.go-version }}
       - name: Display Golang version
         run: go version
       - name: Build, Test, Pack
-        run: ./devops/BuildPython.ps1 -GitTag ${{ github.ref }}
+        run: |
+          ./devops/BuildGolang.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output_${{ matrix.os }}.xml" -ArtifactName "${{ matrix.artifact_name }}"
         shell: pwsh
         env:
-          LD_LIBRARY_PATH: "$GITHUB_WORKSPACE/go/okapi"
-      - name: Upload test results
-        uses: actions/upload-artifact@v2
-        with:
-          name: golang-test-results
-          path: ./go/okapi/test_output.xml
-      - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action/composite@v1.18
-        if: ( ${{ matrix.os }} == 'ubuntu-latest' )
-        with:
-          files: go/test_output.xml
-          comment_mode: "create new"
-          hide_comments: "off"
-          check_name: "Golang Unit Test Results"
+          LD_LIBRARY_PATH: "${{ github.workspace }}/go/okapi"
+          DYLD_LIBRARY_PATH: "${{ github.workspace }}/go/okapi"
+#      - name: Publish Test Report
+#        uses: mikepenz/action-junit-report@v2
+#        if: always() # always run even if the previous step fails
+#        with:
+#          report_paths: ./go/okapi/test_output*.xml
+#          fail_on_failure: true
