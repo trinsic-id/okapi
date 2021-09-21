@@ -40,7 +40,7 @@ jobs:
         with:
           workflow: "build-libs.yml"
           path: ./libs
-      - name: Set up Go ${{ matrix.go-version }}
+      - name: Set up Go
         uses: actions/setup-go@v2
         with:
           go-version: ${{ matrix.go-version }}
@@ -51,7 +51,7 @@ jobs:
         shell: pwsh
         env:
           LD_LIBRARY_PATH: "$GITHUB_WORKSPACE/go/okapi"
-      - name: Publish Test Report
+      - name: Publish Test Report ${{ matrix.os }}
         uses: mikepenz/action-junit-report@v2
         if: always() # always run even if the previous step fails
         with:
