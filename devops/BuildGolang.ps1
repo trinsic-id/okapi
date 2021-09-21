@@ -13,7 +13,7 @@ function Install-Requirements {
     go get -u github.com/jstemmer/go-junit-report
 }
 function Test-Golang {
-    go test -v | go-junit-report > $TestOutput
+    go test -v 2>&1 | go-junit-report > $TestOutput
 }
 function Build-Package {
     $replaceLineVersion = $PackageVersion
