@@ -1,0 +1,5 @@
+module COkapi {
+  header "../../Headers/okapi-Bridging-Header.h"
+  link "okapi"
+  export *
+}
