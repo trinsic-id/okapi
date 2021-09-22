@@ -22,8 +22,8 @@ jobs:
             artifact_name: linux
           - os: windows-latest
             artifact_name: windows-gnu
-          # - os: macos-latest
-          #   artifact_name: macos
+          - os: macos-latest
+            artifact_name: macos
     steps:
       - uses: actions/checkout@v2
       - name: Download workflow artifact
