@@ -10,8 +10,8 @@ param
 . "$PSScriptRoot/VersionParse.ps1"
 
 function Install-Requirements {
-    go install golang.org/x/lint/golint@latest
-    go install github.com/jstemmer/go-junit-report@latest
+    # go install golang.org/x/lint/golint@latest
+    # go install github.com/jstemmer/go-junit-report@latest
 }
 function Test-Golang {
     Write-Output "Go path: $env:GOPATH"
