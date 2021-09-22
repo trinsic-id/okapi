@@ -15,7 +15,7 @@ function Install-Requirements {
     # go install github.com/jstemmer/go-junit-report@latest
 }
 function Test-Golang {
-    go test -v 2>&1 | go-junit-report > $TestOutput
+    go test -v | go-junit-report > $TestOutput
     # TODO - Add `staticcheck` support
 }
 function Build-Package {
