@@ -18,11 +18,11 @@ function Get-PythonVersion {
 
 function Get-RubyVersion {
     param ([string]$tag)
-	return "$(Get-PythonVersion)"
+    return "$(Get-PythonVersion)"
 }
-function Get-Golangersion {
+function Get-GolangVersion {
     param ([string]$tag)
-	return "$(Get-PythonVersion)"
+    return "$(Get-PythonVersion)"
 }
 
 function Set-Version {

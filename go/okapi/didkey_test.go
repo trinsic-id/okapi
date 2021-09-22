@@ -6,12 +6,13 @@ import (
 	"fmt"
 	"github.com/btcsuite/btcutil/base58"
 	"github.com/stretchr/testify/assert"
+	"github.com/trinsic-id/okapi/go/proto"
 	"testing"
 )
 
 func TestGenerateKey(t *testing.T) {
-	request := GenerateKeyRequest{}
-	request.KeyType = KeyType_Ed25519
+	request := proto.GenerateKeyRequest{}
+	request.KeyType = proto.KeyType_Ed25519
 	request.Seed = []byte{1, 2, 3}
 
 	response, err := DidKey{}.Generate(&request)
@@ -21,8 +22,8 @@ func TestGenerateKey(t *testing.T) {
 }
 
 func TestGenerateKeyNoSeed(t *testing.T) {
-	request := GenerateKeyRequest{}
-	request.KeyType = KeyType_Ed25519
+	request := proto.GenerateKeyRequest{}
+	request.KeyType = proto.KeyType_Ed25519
 	response, err := DidKey{}.Generate(&request)
 	assert.Nil(t, err)
 	assertValidKeyGenerated(t, response)
@@ -30,7 +31,7 @@ func TestGenerateKeyNoSeed(t *testing.T) {
 
 func TestResolveKey(t *testing.T) {
 	key := "did:key:z6Mkt6QT8FPajKXDrtMefkjxRQENd9wFzKkDFomdQAVFzpzm#z6LSfDq6DuofPeZUqNEmdZsxpvfHvSoUXGEWFhw7JHk4cynN"
-	request := &ResolveRequest{}
+	request := &proto.ResolveRequest{}
 	request.Did = key
 	response, err := DidKey{}.Resolve(request)
 	assert.Nil(t, err)
@@ -38,7 +39,7 @@ func TestResolveKey(t *testing.T) {
 }
 
 func TestGenerateKeyThrowsInvalidKeyType(t *testing.T) {
-	request := GenerateKeyRequest{}
+	request := proto.GenerateKeyRequest{}
 	request.KeyType = -1
 	_, err := DidKey{}.Generate(&request)
 	assert.NotNil(t, err)
@@ -46,17 +47,17 @@ func TestGenerateKeyThrowsInvalidKeyType(t *testing.T) {
 }
 
 type DataArgument struct {
-	keyType KeyType
+	keyType       proto.KeyType
 	keyTypeString string
 	seed string
 	response string
 }
 
 func TestGenerateKeyFromSeed(t *testing.T) {
-	dataArguments := []DataArgument{{keyType: KeyType_Ed25519, keyTypeString: "Ed25519",
+	dataArguments := []DataArgument{{keyType: proto.KeyType_Ed25519, keyTypeString: "Ed25519",
 		seed:     "4f66b355aa7b0980ff901f2295b9c562ac3061be4df86703eb28c612faae6578",
 		response: "6fioC1zcDPyPEL19pXRS2E4iJ46zH7xP6uSgAaPdwDrx"},
-		{keyType: KeyType_X25519, keyTypeString: "X25519",
+		{keyType: proto.KeyType_X25519, keyTypeString: "X25519",
 			seed:     "9b29d42b38ddd52ed39c0ff70b39572a6eb9b3cac201918dc6d6a84b4c88d2a5",
 			response: "3EK9AYXoUV4Unn5AjvYY39hyK91n7gg4ExC8rKKSUQXJ"},
 	}
@@ -66,7 +67,7 @@ func TestGenerateKeyFromSeed(t *testing.T) {
 			if err != nil {
 				assert.Failf(t,"Failed to decode hex", argument.seed)
 			}
-			request := GenerateKeyRequest{KeyType: argument.keyType, Seed: hex}
+			request := proto.GenerateKeyRequest{KeyType: argument.keyType, Seed: hex}
 			response, err := DidKey{}.Generate(&request)
 			assert.Nil(t, err)
 
@@ -76,7 +77,7 @@ func TestGenerateKeyFromSeed(t *testing.T) {
 	}
 }
 
-func assertValidKeyGenerated(t *testing.T, response *GenerateKeyResponse, crvOptional ...string) []byte {
+func assertValidKeyGenerated(t *testing.T, response *proto.GenerateKeyResponse, crvOptional ...string) []byte {
 	crv := "Ed25519"
 	if len(crvOptional) > 0 {
 		crv = crvOptional[0]

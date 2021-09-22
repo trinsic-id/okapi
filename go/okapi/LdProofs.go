@@ -1,21 +1,21 @@
 package okapi
 
-import "C"
+import "github.com/trinsic-id/okapi/go/proto"
 
 type LdProofs struct {}
 type LdProofer interface {
-	CreateProof(request *CreateProofRequest) (*CreateProofResponse, error)
-	VerifyProof(request *VerifyProofRequest) (*VerifyProofResponse, error)
+	CreateProof(request *proto.CreateProofRequest) (*proto.CreateProofResponse, error)
+	VerifyProof(request *proto.VerifyProofRequest) (*proto.VerifyProofResponse, error)
 }
 
-func (l LdProofs) CreateProof(request *CreateProofRequest) (*CreateProofResponse, error) {
-	response := CreateProofResponse{}
+func (l LdProofs) CreateProof(request *proto.CreateProofRequest) (*proto.CreateProofResponse, error) {
+	response := proto.CreateProofResponse{}
 	err := callOkapiNative(request, &response, ldproofsCreateProof)
 	return &response, err
 }
 
-func (l LdProofs) VerifyProof(request *VerifyProofRequest) (*VerifyProofResponse, error) {
-	response := VerifyProofResponse{}
+func (l LdProofs) VerifyProof(request *proto.VerifyProofRequest) (*proto.VerifyProofResponse, error) {
+	response := proto.VerifyProofResponse{}
 	err := callOkapiNative(request, &response, ldproofsVerifyProof)
 	return &response, err
 }
