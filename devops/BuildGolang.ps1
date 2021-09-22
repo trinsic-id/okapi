@@ -16,6 +16,7 @@ function Install-Requirements {
 }
 function Test-Golang {
     go build
+    golint
     go test -v | go-junit-report > $TestOutput
     # TODO - Add `staticcheck` support
 }
@@ -25,8 +26,6 @@ function Build-Package {
         $replaceLineVersion = Get-GolangVersion($GitTag)
     } catch {
     } finally {
-        # go build .
-        # golint .
     }
 }
 
@@ -36,7 +35,7 @@ Set-Location "$PSScriptRoot/../go/okapi"
 $source = "$PSScriptRoot/../libs/$ArtifactName"
 $dest = "./"
 Get-ChildItem $source -Recurse | `
-    Where-Object { $_.PSIsContainer -eq $False } | `
+    Where-Object { $_.PSIsContainer -eq $False -and !$_.Extension.Contains("dylib") } | `
     ForEach-Object {Copy-Item -Path $_.Fullname -Destination $dest -Force} # Do the things
 Copy-Item -Path "$PSScriptRoot/../libs/C_header/okapi.h" -Destination "$dest"
 
