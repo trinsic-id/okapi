@@ -25,8 +25,8 @@ function Build-Package {
         $replaceLineVersion = Get-GolangVersion($GitTag)
     } catch {
     } finally {
-        go build .
-        golint .
+        # go build .
+        # golint .
     }
 }
 
