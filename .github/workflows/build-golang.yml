@@ -18,8 +18,8 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: ubuntu-latest
-            artifact_name: linux
+          # - os: ubuntu-latest
+          #   artifact_name: linux
           - os: windows-latest
             artifact_name: windows-gnu
           - os: macos-latest
