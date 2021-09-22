@@ -20,7 +20,7 @@ function Get-ProtoPath()
 
 function Update-Golang()
 {
-    $GoPath = "../go/okapi"
+    $GoPath = "../go/proto"
     protoc $( Get-ProtoPath ) `
          --go_out="$GoPath" `
          --go-grpc_out="$GoPath" `
