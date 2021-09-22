@@ -40,7 +40,7 @@ jobs:
       - name: Add $GOPATH/bin to $PATH
         run: |
           mkdir -p $(go env GOPATH)/bin/
-          echo "::add-path::$(go env GOPATH)/bin"
+          export PATH=$PATH:$(go env GOPATH)/bin
         env:
           GOPATH: "${{ github.workspace }}/go"
       - name: Build, Test, Pack
