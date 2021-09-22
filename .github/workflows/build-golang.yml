@@ -37,6 +37,12 @@ jobs:
           go-version: ^1.16
       - name: Display Golang version
         run: go version
+      - name: Add $GOPATH/bin to $PATH
+        run: |
+          mkdir -p $(go env GOPATH)/bin/
+          echo "::add-path::$(go env GOPATH)/bin"
+        env:
+          GOPATH: "${{ github.workspace }}/go"
       - name: Build, Test, Pack
         run: |
           ./devops/BuildGolang.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output_${{ matrix.os }}.xml" -ArtifactName "${{ matrix.artifact_name }}"
@@ -44,7 +50,7 @@ jobs:
         env:
           LD_LIBRARY_PATH: "${{ github.workspace }}/go/okapi"
           DYLD_LIBRARY_PATH: "${{ github.workspace }}/go/okapi"
-          GOPATH: "${{ github.workspace }}/go/okapi"
+          GOPATH: "${{ github.workspace }}/go"
       - name: Publish Test Report
         uses: mikepenz/action-junit-report@v2
         if: always() # always run even if the previous step fails
