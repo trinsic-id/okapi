@@ -43,8 +43,8 @@ jobs:
       - name: Build, Test, Pack
         run: |
           ./devops/BuildGolang.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output_${{ matrix.os }}.xml" -ArtifactName "${{ matrix.artifact_name }}"
-          cd "go/okapi"
-          go test -v | go-junit-report
+          # cd "go/okapi"
+          # go test -v | go-junit-report
         shell: pwsh
         env:
           LD_LIBRARY_PATH: "${{ github.workspace }}/go/okapi"
