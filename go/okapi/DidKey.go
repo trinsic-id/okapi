@@ -3,7 +3,7 @@ package okapi
 import "C"
 
 type DidKey struct {}
-type IDidKey interface {
+type DidKeyer interface {
 	Generate(request *GenerateKeyRequest) (*GenerateKeyResponse, error)
 	Resolve(request *ResolveRequest) (*ResolveResponse, error)
 }

@@ -3,7 +3,7 @@ package okapi
 import "C"
 
 type LdProofs struct {}
-type ILdProofs interface {
+type LdProofer interface {
 	CreateProof(request *CreateProofRequest) (*CreateProofResponse, error)
 	VerifyProof(request *VerifyProofRequest) (*VerifyProofResponse, error)
 }
