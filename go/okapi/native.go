@@ -2,6 +2,7 @@ package okapi
 
 // #cgo LDFLAGS: -L. -lokapi
 // #cgo linux LDFLAGS: -ldl -lm
+// #cgo darwin LDFLAGS: -Wl,-rpath,\$ORIGIN
 // #include "okapi.h"
 import "C"
 import (
@@ -9,6 +10,7 @@ import (
 	"github.com/golang/protobuf/proto"
 	"unsafe"
 )
+
 type OkapiError struct {
 	Message string
 	InternalError error
