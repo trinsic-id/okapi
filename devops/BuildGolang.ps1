@@ -15,7 +15,6 @@ function Install-Requirements {
     # go install github.com/jstemmer/go-junit-report@latest
 }
 function Test-Golang {
-    Write-Output "Go path: $env:GOPATH"
     go test -v 2>&1 | go-junit-report > $TestOutput
     # TODO - Add `staticcheck` support
 }
@@ -39,12 +38,12 @@ Get-ChildItem $source -Recurse | `
     Where-Object { $_.PSIsContainer -eq $False } | `
     ForEach-Object {Copy-Item -Path $_.Fullname -Destination $dest -Force} # Do the things
 Copy-Item -Path "$PSScriptRoot/../libs/C_header/okapi.h" -Destination "$dest"
+
 Install-Requirements
 if (!$RequirementsOnly) {
     Test-Golang
     Build-Package
 }
+
 Set-Location $InvocationPath
-if ($LASTEXITCODE -ge 0) {
-    Exit 0
-}
+exit 0
