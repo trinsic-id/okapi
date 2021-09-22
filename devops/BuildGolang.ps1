@@ -10,6 +10,7 @@ param
 . "$PSScriptRoot/VersionParse.ps1"
 
 function Install-Requirements {
+    # Due to weirdness with github action runners not updating path dynamically, we have to use the yaml file to install these
     # go install golang.org/x/lint/golint@latest
     # go install github.com/jstemmer/go-junit-report@latest
 }
@@ -44,3 +45,6 @@ if (!$RequirementsOnly) {
     Build-Package
 }
 Set-Location $InvocationPath
+if ($LASTEXITCODE -ge 0) {
+    Exit 0
+}
