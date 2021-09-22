@@ -3,7 +3,7 @@ param
     [AllowNull()][string]$GitTag = '',
     [AllowNull()][string]$PackageVersion = '',
     [AllowNull()][string]$TestOutput = 'test_output.xml',
-    [AllowNull()][string]$ArtifactName = 'windows-gnu',
+    [AllowNull()][string]$ArtifactName = 'macos',
     [AllowNull()][Boolean]$RequirementsOnly = $false
 )
 
@@ -15,6 +15,7 @@ function Install-Requirements {
     # go install github.com/jstemmer/go-junit-report@latest
 }
 function Test-Golang {
+    go build
     go test -v | go-junit-report > $TestOutput
     # TODO - Add `staticcheck` support
 }
@@ -35,7 +36,7 @@ Set-Location "$PSScriptRoot/../go/okapi"
 $source = "$PSScriptRoot/../libs/$ArtifactName"
 $dest = "./"
 Get-ChildItem $source -Recurse | `
-    Where-Object { $_.PSIsContainer -eq $False -and $_.Extension -ne "dylib" } | `
+    Where-Object { $_.PSIsContainer -eq $False } | `
     ForEach-Object {Copy-Item -Path $_.Fullname -Destination $dest -Force} # Do the things
 Copy-Item -Path "$PSScriptRoot/../libs/C_header/okapi.h" -Destination "$dest"
 

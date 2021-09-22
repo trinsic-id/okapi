@@ -9,6 +9,7 @@ import (
 	"github.com/golang/protobuf/proto"
 	"unsafe"
 )
+
 type OkapiError struct {
 	Message string
 	InternalError error
