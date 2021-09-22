@@ -3,7 +3,7 @@ package okapi
 import "C"
 
 type DidComm struct{}
-type IDidComm interface {
+type DidCommer interface {
 	Pack(request *PackRequest) (*PackResponse, error)
 	Unpack(request *UnpackRequest) (*UnpackResponse, error)
 	Sign(request *SignRequest) (*SignResponse, error)
