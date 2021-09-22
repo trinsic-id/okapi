@@ -35,7 +35,7 @@ Set-Location "$PSScriptRoot/../go/okapi"
 $source = "$PSScriptRoot/../libs/$ArtifactName"
 $dest = "./"
 Get-ChildItem $source -Recurse | `
-    Where-Object { $_.PSIsContainer -eq $False } | `
+    Where-Object { $_.PSIsContainer -eq $False -and $_.Extension -ne "dylib" } | `
     ForEach-Object {Copy-Item -Path $_.Fullname -Destination $dest -Force} # Do the things
 Copy-Item -Path "$PSScriptRoot/../libs/C_header/okapi.h" -Destination "$dest"
 
