@@ -3,7 +3,7 @@ package okapi
 import "github.com/trinsic-id/okapi/go/proto"
 
 type DidComm struct{}
-type IDidComm interface {
+type DidCommer interface {
 	Pack(request *proto.PackRequest) (*proto.PackResponse, error)
 	Unpack(request *proto.UnpackRequest) (*proto.UnpackResponse, error)
 	Sign(request *proto.SignRequest) (*proto.SignResponse, error)

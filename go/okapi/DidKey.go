@@ -3,7 +3,7 @@ package okapi
 import "github.com/trinsic-id/okapi/go/proto"
 
 type DidKey struct {}
-type IDidKey interface {
+type DidKeyer interface {
 	Generate(request *proto.GenerateKeyRequest) (*proto.GenerateKeyResponse, error)
 	Resolve(request *proto.ResolveRequest) (*proto.ResolveResponse, error)
 }

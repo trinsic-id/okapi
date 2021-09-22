@@ -3,7 +3,7 @@ package okapi
 import "github.com/trinsic-id/okapi/go/proto"
 
 type LdProofs struct {}
-type ILdProofs interface {
+type LdProofer interface {
 	CreateProof(request *proto.CreateProofRequest) (*proto.CreateProofResponse, error)
 	VerifyProof(request *proto.VerifyProofRequest) (*proto.VerifyProofResponse, error)
 }
