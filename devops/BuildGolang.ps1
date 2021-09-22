@@ -41,8 +41,8 @@ Copy-Item -Path "$PSScriptRoot/../libs/C_header/okapi.h" -Destination "$dest"
 
 Install-Requirements
 if (!$RequirementsOnly) {
-    Test-Golang
-    Build-Package
+    # Test-Golang
+    # Build-Package
 }
 
 Set-Location $InvocationPath
