@@ -14,7 +14,6 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.17.3" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Grpc" Version="2.38.0" />
     <PackageReference Include="Grpc.Tools" Version="2.38.0" PrivateAssets="All" />
   </ItemGroup>
