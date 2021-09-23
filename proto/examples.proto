@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "pbmse/pbmse.proto";
+
 package okapi.examples;
 
 option csharp_namespace = "Okapi.Examples";
@@ -8,4 +10,10 @@ option java_package = "trinsic.okapi";
 
 message BasicMessage {
     string text = 1;
+}
+
+service SecureExample {
+    rpc Unary(pbmse.EncryptedMessage) returns (pbmse.EncryptedMessage);
+
+    rpc ServerStreaming(pbmse.EncryptedMessage) returns (stream pbmse.EncryptedMessage);
 }
