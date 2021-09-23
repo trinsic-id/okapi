@@ -4,7 +4,7 @@
 // 	protoc        v3.17.3
 // source: proofs.proto
 
-package okapi
+package proto
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"

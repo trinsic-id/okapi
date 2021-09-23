@@ -39,7 +39,7 @@ class ByteBuffer(ctypes.Structure):
         return repr(bytes(self))
 
     def free(self):
-        func = wrap_native_function("didcomm_byte_buffer_free", arg_types=[ByteBuffer], return_type=None)
+        func = wrap_native_function("didcomm_byte_buffer_free", arg_types=[ByteBuffer])
         func(self)
 
     @staticmethod
