@@ -61,7 +61,7 @@ jobs:
           name: nuget
       - name: Push packages to Nuget
         run: |
-          foreach ($item in get-childitem ./nuget -recurse | select-object FullName | where { $_.FullName.EndsWith("nupkg") })
+          foreach ($item in get-childitem ./ -recurse | select-object FullName | where { $_.FullName.EndsWith("nupkg") })
           {
             nuget push $item.FullName -ApiKey "${{ secrets.NUGET_API_KEY }}" -Source https://api.nuget.org/v3/index.json -SkipDuplicate
           }
