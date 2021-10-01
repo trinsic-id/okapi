@@ -22,11 +22,11 @@ function Build-Package {
 $InvocationPath = (Get-Item .).FullName
 Set-Location "$PSScriptRoot/../swift"
 $source = "../libs"
-$dest = "./Okapi/Sources/OkapiObjectiveC"
+$dest = "./COkapi/Headers"
 Get-ChildItem $source -Recurse | `
     Where-Object { $_.PSIsContainer -eq $False -and $_.Extension -eq "a" } | `
     ForEach-Object {Copy-Item -Path $_.Fullname -Destination $dest -Force} # Do the things
-Copy-Item -Path "$source/C_header/okapi.h" -Destination "$dest/include" -Force
+Copy-Item -Path "$source/C_header/okapi.h" -Destination "$dest" -Force
 Install-Requirements
 if (!$RequirementsOnly) {
     Run-Tests
