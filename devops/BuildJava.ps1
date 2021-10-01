@@ -7,8 +7,6 @@ param
 
 . "$PSScriptRoot/VersionParse.ps1"
 
-function Install-Requirements {
-}
 function Build-Package {
     $replaceLineVersion = $PackageVersion
     try {
@@ -26,7 +24,6 @@ function Build-Package {
 $InvocationPath = (Get-Item .).FullName
 Set-Location "$PSScriptRoot/../java"
 # Do the things
-Install-Requirements
 if (!$RequirementsOnly) {
     Build-Package
 }
