@@ -1,4 +1,3 @@
-import COkapi
 
 public struct DidKey {
     public static func generate(request: Okapi_Keys_GenerateKeyRequest) throws -> Okapi_Keys_GenerateKeyResponse {
