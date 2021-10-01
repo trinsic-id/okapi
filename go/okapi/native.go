@@ -1,14 +1,18 @@
 package okapi
 
-// #cgo LDFLAGS: -L. -lokapi
+// #cgo LDFLAGS: -L${SRCDIR} -lokapi
+// #cgo CFLAGS: -I${SRCDIR}
 // #cgo linux LDFLAGS: -ldl -lm
+// #cgo darwin LDFLAGS: -Wl,-rpath,\$ORIGIN
 // #include "okapi.h"
 import "C"
+
 import (
 	"fmt"
 	"github.com/golang/protobuf/proto"
 	"unsafe"
 )
+
 type OkapiError struct {
 	Message string
 	InternalError error
