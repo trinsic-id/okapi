@@ -21,7 +21,7 @@ function Build-Package {
 # Setup
 $InvocationPath = (Get-Item .).FullName
 Set-Location "$PSScriptRoot/../swift"
-$source = "../libs"
+$source = "../libs/macos"
 $dest = "./Okapi/Sources/OkapiObjectiveC"
 Get-ChildItem $source -Recurse | `
     Where-Object { $_.PSIsContainer -eq $False -and $_.Extension -eq ".a" } | `
