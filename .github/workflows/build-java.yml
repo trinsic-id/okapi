@@ -33,8 +33,9 @@ jobs:
           workflow: "build-libs.yml"
           path: ./libs
       - name: Build with Gradle
-        run: gradle build
-        working-directory: java
+        run: |
+          ./devops/BuildJava.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output_${{ matrix.os }}.xml" -ArtifactName "${{ matrix.artifact_name }}"
+        shell: pwsh
       - uses: actions/upload-artifact@v2
         if: (${{ matrix.os }} == 'ubuntu-latest')
         with:
