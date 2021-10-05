@@ -90,18 +90,21 @@ try {
 
             Get-Content "../devops/android-cargo-config" | Out-File "~/.cargo/config"
 
-            rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-android
+            rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-android x86_64-linux-android
 
             cargo build --target aarch64-linux-android --release
             cargo build --target armv7-linux-androideabi --release
             cargo build --target i686-linux-android --release
+            cargo build --target x86_64-linux-android --release
 
             mkdir -p $TargetOutput/arm64-v8a/
             mkdir -p $TargetOutput/armeabi-v7a/
             mkdir -p $TargetOutput/x86/
+            mkdir -p $TargetOutput/x86_64/
             Copy-Item -Path ./target/aarch64-linux-android/release/libokapi.so -Destination $TargetOutput/arm64-v8a/
             Copy-Item -Path ./target/armv7-linux-androideabi/release/libokapi.so -Destination $TargetOutput/armeabi-v7a/
             Copy-Item -Path ./target/i686-linux-android/release/libokapi.so -Destination $TargetOutput/x86/
+            Copy-Item -Path ./target/x86_64-linux-android/release/libokapi.so -Destination $TargetOutput/x86_64/
             break
         }
     }
