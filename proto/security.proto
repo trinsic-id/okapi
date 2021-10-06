@@ -1,0 +1,48 @@
+// messages related to the oberon protocol
+// See: https://github.com/mikelodder7/oberon
+syntax = "proto3";
+
+package okapi.security;
+
+option csharp_namespace = "Okapi.Security";
+option go_package = "github.com/trinsic-id/okapi";
+option java_package = "trinsic.okapi";
+
+
+// Create a new oberon token
+message CreateOberonTokenRequest {
+    bytes sk = 1; // raw BLS key bytes
+    bytes data = 2; // data is the public part of the oberon protocol and can be any data
+    repeated bytes blinding = 3; // optional blinding for the token
+}
+
+// Contains the token with optional blinding 
+message CreateOberonTokenReply {
+    bytes token = 1; // raw token bytes
+}
+
+// Create a proof that holder knows the token
+message CreateOberonProofRequest {
+    bytes data = 1; // data used to create the token
+    bytes token = 2; // token data
+    repeated bytes blinding = 3; // any blindings used to create the token
+    bytes nonce = 4; // nonce for generating the proof
+}
+
+// Contains the token proof
+message CreateOberonProofReply {
+    bytes proof = 2; // raw proof bytes
+}
+
+// Verify the presented proof is valid
+message VerifyOberonProofRequest {
+    bytes proof = 1; // raw proof bytes returned from CreateProof
+    bytes data = 2; // data used to create the token
+    bytes nonce = 3; // nonce used to generate the proof
+    bytes pk = 4; // public key that was used to generate the token
+}
+
+// Contains the status of the proof validation
+message VerifyOberonProofReply {
+    bool valid = 1; // whether the given proof was valid
+}

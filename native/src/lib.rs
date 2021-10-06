@@ -5,6 +5,7 @@ use prost::{DecodeError, Message};
 pub struct DIDComm {}
 pub struct DIDKey {}
 pub struct LdProofs {}
+pub struct Oberon {}
 
 #[allow(clippy::ptr_arg)]
 pub trait MessageFormatter {
@@ -42,6 +43,7 @@ mod ffi;
 #[cfg(not(target_arch = "wasm32"))]
 mod jni;
 mod ldproofs;
+mod oberon;
 pub mod proto;
 #[cfg(test)]
 mod tests;
