@@ -89,3 +89,22 @@ pub struct BlindOberonTokenReply {
     #[prost(bytes="vec", tag="1")]
     pub token: ::prost::alloc::vec::Vec<u8>,
 }
+/// UnBlind an oberon token 
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UnBlindOberonTokenRequest {
+    /// raw token bytes
+    #[prost(bytes="vec", tag="1")]
+    pub token: ::prost::alloc::vec::Vec<u8>,
+    /// blinding to remove from the token
+    #[prost(bytes="vec", repeated, tag="2")]
+    pub blinding: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
+}
+/// Contains the unblinded token reply
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UnBlindOberonTokenReply {
+    /// raw unblinded token bytes
+    #[prost(bytes="vec", tag="1")]
+    pub token: ::prost::alloc::vec::Vec<u8>,
+}

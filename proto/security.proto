@@ -57,3 +57,14 @@ message BlindOberonTokenRequest {
 message BlindOberonTokenReply {
     bytes token = 1; // raw blinded token bytes
 }
+
+// UnBlind an oberon token 
+message UnBlindOberonTokenRequest {
+    bytes token = 1; // raw token bytes
+    repeated bytes blinding = 2; // blinding to remove from the token
+}
+
+// Contains the unblinded token reply
+message UnBlindOberonTokenReply {
+    bytes token = 1; // raw unblinded token bytes
+}

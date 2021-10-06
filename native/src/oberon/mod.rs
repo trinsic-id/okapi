@@ -117,4 +117,28 @@ impl crate::Oberon{
             token: tkn.to_bytes().to_vec()
         })
     }
+
+    pub fn unblind<'a>(request: &UnBlindOberonTokenRequest) -> Result<BlindOberonTokenReply, Error<'a>> {
+        let tokenbytes: [u8; oberon::Token::BYTES] = match request.token.as_slice().try_into() {
+            Ok(tokenbytes) => tokenbytes,
+            Err(_) => return Err(Error::InvalidField("invalid token provided"))
+        };
+
+        let tkn = oberon::Token::from_bytes(&tokenbytes);
+        if tkn.is_none().into() {
+            return Err(Error::InvalidField("invalid token provided"))
+        }
+
+        let mut tkn = tkn.unwrap();
+
+        let blind_iter = request.blinding.iter();
+        for blind in blind_iter {
+            let b = oberon::Blinding::new(&blind);
+            tkn = tkn + b;
+        }
+
+        Ok(BlindOberonTokenReply{
+            token: tkn.to_bytes().to_vec()
+        })
+    }
 }
