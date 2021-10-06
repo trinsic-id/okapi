@@ -41,7 +41,7 @@ namespace Okapi.Tests
             System.Convert.FromBase64String(base64toBase64Url(response.Key[0].D)).Should().NotBeNull().And.HaveCount(32);
         }
 
-        
+
         [Fact(DisplayName = "Generate new key throws for invalid key type")]
         public void TestGenerateKeyThrowsInvalidSeedSize()
         {
@@ -50,9 +50,9 @@ namespace Okapi.Tests
                 {
                     KeyType = (KeyType)(-1)
                 })
-            ); 
+            );
         }
-        
+
         [Fact(DisplayName = "Resolve a given key")]
         public void TestResolveKey()
         {
@@ -61,7 +61,7 @@ namespace Okapi.Tests
                 Did =
                     "did:key:z6Mkt6QT8FPajKXDrtMefkjxRQENd9wFzKkDFomdQAVFzpzm#z6LSfDq6DuofPeZUqNEmdZsxpvfHvSoUXGEWFhw7JHk4cynN"
             });
-                Assert.NotNull(response);
+            Assert.NotNull(response);
         }
 
 
