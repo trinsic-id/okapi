@@ -46,3 +46,14 @@ message VerifyOberonProofRequest {
 message VerifyOberonProofReply {
     bool valid = 1; // whether the given proof was valid
 }
+
+// Blind an oberon token 
+message BlindOberonTokenRequest {
+    bytes token = 1; // raw token bytes
+    repeated bytes blinding = 2; // blinding to apply to the token
+}
+
+// Contains the blinded token reply
+message BlindOberonTokenReply {
+    bytes token = 1; // raw blinded token bytes
+}

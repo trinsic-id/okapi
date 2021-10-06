@@ -70,3 +70,22 @@ pub struct VerifyOberonProofReply {
     #[prost(bool, tag="1")]
     pub valid: bool,
 }
+/// Blind an oberon token 
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct BlindOberonTokenRequest {
+    /// raw token bytes
+    #[prost(bytes="vec", tag="1")]
+    pub token: ::prost::alloc::vec::Vec<u8>,
+    /// blinding to apply to the token
+    #[prost(bytes="vec", repeated, tag="2")]
+    pub blinding: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
+}
+/// Contains the blinded token reply
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct BlindOberonTokenReply {
+    /// raw blinded token bytes
+    #[prost(bytes="vec", tag="1")]
+    pub token: ::prost::alloc::vec::Vec<u8>,
+}

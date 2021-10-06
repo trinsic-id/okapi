@@ -41,8 +41,8 @@ impl crate::Oberon{
             Err(_) => return Err(Error::InvalidField("invalid token provided"))
         };
 
-        let tk = oberon::Token::from_bytes(&tokenbytes);
-        if tk.is_none().into() {
+        let tkn = oberon::Token::from_bytes(&tokenbytes);
+        if tkn.is_none().into() {
             return Err(Error::InvalidField("invalid token provided"))
         }
         
@@ -52,7 +52,7 @@ impl crate::Oberon{
 
         let mut rng = thread_rng();
 
-        let proof = match oberon::Proof::new(&tk.unwrap(), &blinds, &request.data, &request.nonce, &mut rng) {
+        let proof = match oberon::Proof::new(&tkn.unwrap(), &blinds, &request.data, &request.nonce, &mut rng) {
             None => return Err(Error::Unknown),
             Some(proof) => proof,
         };
@@ -91,6 +91,30 @@ impl crate::Oberon{
 
         Ok(VerifyOberonProofReply{
             valid: valid.into()
+        })
+    }
+
+    pub fn blind<'a>(request: &BlindOberonTokenRequest) -> Result<BlindOberonTokenReply, Error<'a>> {
+        let tokenbytes: [u8; oberon::Token::BYTES] = match request.token.as_slice().try_into() {
+            Ok(tokenbytes) => tokenbytes,
+            Err(_) => return Err(Error::InvalidField("invalid token provided"))
+        };
+
+        let tkn = oberon::Token::from_bytes(&tokenbytes);
+        if tkn.is_none().into() {
+            return Err(Error::InvalidField("invalid token provided"))
+        }
+
+        let mut tkn = tkn.unwrap();
+
+        let blind_iter = request.blinding.iter();
+        for blind in blind_iter {
+            let b = oberon::Blinding::new(&blind);
+            tkn = tkn - b;
+        }
+
+        Ok(BlindOberonTokenReply{
+            token: tkn.to_bytes().to_vec()
         })
     }
 }
