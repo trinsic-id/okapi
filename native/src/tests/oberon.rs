@@ -1,6 +1,4 @@
 use crate::{didcomm::Error, proto::{security::*}};
-use rand::prelude::*;
-
 
 #[test]
 fn test_create_token() {
