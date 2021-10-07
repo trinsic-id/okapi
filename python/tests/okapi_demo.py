@@ -1,4 +1,4 @@
-from okapi.keys import DIDKey
+from okapi.wrapper import DIDKey
 from okapi.proto.okapi.keys import GenerateKeyRequest, KeyType
 
 request = GenerateKeyRequest()

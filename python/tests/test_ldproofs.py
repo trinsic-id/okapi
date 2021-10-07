@@ -3,7 +3,7 @@ import unittest
 
 from okapi.okapi_utils import dictionary_to_struct
 from okapi.proto.okapi.keys import GenerateKeyRequest, KeyType, JsonWebKey
-from okapi.keys import DIDKey, LDProofs
+from okapi.wrapper import DIDKey, LDProofs
 from okapi.proto.okapi.proofs import CreateProofRequest, LdSuite
 
 
