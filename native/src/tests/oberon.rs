@@ -290,3 +290,13 @@ fn test_create_key() {
 
     crate::Oberon::key(&req).unwrap();
 }
+
+#[test]
+fn test_create_key_with_seed() {
+    let req = CreateOberonKeyRequest {
+        seed: b"super secret seed".to_vec(),
+    };
+
+    let result = crate::Oberon::key(&req);
+    assert!(result.is_ok())
+}
