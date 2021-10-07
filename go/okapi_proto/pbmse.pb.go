@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.27.1
 // 	protoc        v3.17.3
-// source: pbmse/pbmse.proto
+// source: pbmse/pbmse.okapi_proto
 
-package proto
+package okapi
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -363,9 +363,9 @@ type EncryptionHeader struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Mode      EncryptionMode      `protobuf:"varint,1,opt,name=mode,json=enc,proto3,enum=pbmse.EncryptionMode" json:"mode,omitempty"`
-	Algorithm EncryptionAlgorithm `protobuf:"varint,2,opt,name=algorithm,json=alg,proto3,enum=pbmse.EncryptionAlgorithm" json:"algorithm,omitempty"`
-	KeyId     string              `protobuf:"bytes,3,opt,name=key_id,json=kid,proto3" json:"key_id,omitempty"`
+	Mode        EncryptionMode      `protobuf:"varint,1,opt,name=mode,json=enc,proto3,enum=pbmse.EncryptionMode" json:"mode,omitempty"`
+	Algorithm   EncryptionAlgorithm `protobuf:"varint,2,opt,name=algorithm,json=alg,proto3,enum=pbmse.EncryptionAlgorithm" json:"algorithm,omitempty"`
+	KeyId       string              `protobuf:"bytes,3,opt,name=key_id,json=kid,proto3" json:"key_id,omitempty"`
 	SenderKeyId string              `protobuf:"bytes,4,opt,name=sender_key_id,json=skid,proto3" json:"sender_key_id,omitempty"`
 }
 
