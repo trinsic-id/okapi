@@ -14,7 +14,7 @@ message CreateOberonKeyRequest {
 }
 
 // Contains the oberon secret key bytes
-message CreateOberonKeyReply {
+message CreateOberonKeyResponse {
     bytes sk = 2; // raw secret key bytes
     bytes pk = 3; // raw public key bytes
 }
@@ -27,7 +27,7 @@ message CreateOberonTokenRequest {
 }
 
 // Contains the token with optional blinding 
-message CreateOberonTokenReply {
+message CreateOberonTokenResponse {
     bytes token = 1; // raw token bytes
 }
 
@@ -40,7 +40,7 @@ message CreateOberonProofRequest {
 }
 
 // Contains the token proof
-message CreateOberonProofReply {
+message CreateOberonProofResponse {
     bytes proof = 2; // raw proof bytes
 }
 
@@ -53,7 +53,7 @@ message VerifyOberonProofRequest {
 }
 
 // Contains the status of the proof validation
-message VerifyOberonProofReply {
+message VerifyOberonProofResponse {
     bool valid = 1; // whether the given proof was valid
 }
 
@@ -64,7 +64,7 @@ message BlindOberonTokenRequest {
 }
 
 // Contains the blinded token reply
-message BlindOberonTokenReply {
+message BlindOberonTokenResponse {
     bytes token = 1; // raw blinded token bytes
 }
 
@@ -75,6 +75,6 @@ message UnBlindOberonTokenRequest {
 }
 
 // Contains the unblinded token reply
-message UnBlindOberonTokenReply {
+message UnBlindOberonTokenResponse {
     bytes token = 1; // raw unblinded token bytes
 }
