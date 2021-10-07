@@ -4,7 +4,7 @@ use rand::prelude::*;
 use std::convert::TryInto;
 
 impl crate::Oberon {
-    pub fn key<'a>(request: &CreateOberonKeyRequest) -> Result<CreateOberonKeyReply, Error<'a>> {
+    pub fn key<'a>(request: &CreateOberonKeyRequest) -> Result<CreateOberonKeyResponse, Error<'a>> {
         let sk = if request.seed.len() == 0 {
             let rng = thread_rng();
             oberon::SecretKey::new(rng)
@@ -13,13 +13,13 @@ impl crate::Oberon {
         };
         let pk = oberon::PublicKey::from(&sk);
 
-        Ok(CreateOberonKeyReply {
+        Ok(CreateOberonKeyResponse {
             sk: sk.to_bytes().to_vec(),
             pk: pk.to_bytes().to_vec(),
         })
     }
 
-    pub fn token<'a>(request: &CreateOberonTokenRequest) -> Result<CreateOberonTokenReply, Error<'a>> {
+    pub fn token<'a>(request: &CreateOberonTokenRequest) -> Result<CreateOberonTokenResponse, Error<'a>> {
         if request.data.len() == 0 {
             return Err(Error::InvalidField("must provide data"));
         }
@@ -41,12 +41,12 @@ impl crate::Oberon {
             token = token - b;
         }
 
-        Ok(CreateOberonTokenReply {
+        Ok(CreateOberonTokenResponse {
             token: token.to_bytes().to_vec(),
         })
     }
 
-    pub fn proof<'a>(request: &CreateOberonProofRequest) -> Result<CreateOberonProofReply, Error<'a>> {
+    pub fn proof<'a>(request: &CreateOberonProofRequest) -> Result<CreateOberonProofResponse, Error<'a>> {
         if request.data.len() == 0 {
             return Err(Error::InvalidField("must provide data"));
         }
@@ -70,12 +70,12 @@ impl crate::Oberon {
             Some(proof) => proof,
         };
 
-        Ok(CreateOberonProofReply {
+        Ok(CreateOberonProofResponse {
             proof: proof.to_bytes().to_vec(),
         })
     }
 
-    pub fn verify<'a>(request: &VerifyOberonProofRequest) -> Result<VerifyOberonProofReply, Error<'a>> {
+    pub fn verify<'a>(request: &VerifyOberonProofRequest) -> Result<VerifyOberonProofResponse, Error<'a>> {
         if request.data.len() == 0 {
             return Err(Error::InvalidField("must provide data"));
         }
@@ -102,10 +102,10 @@ impl crate::Oberon {
 
         let valid = proof.unwrap().open(pk.unwrap(), &*request.data, &request.nonce);
 
-        Ok(VerifyOberonProofReply { valid: valid.into() })
+        Ok(VerifyOberonProofResponse { valid: valid.into() })
     }
 
-    pub fn blind<'a>(request: &BlindOberonTokenRequest) -> Result<BlindOberonTokenReply, Error<'a>> {
+    pub fn blind<'a>(request: &BlindOberonTokenRequest) -> Result<BlindOberonTokenResponse, Error<'a>> {
         let tokenbytes: [u8; oberon::Token::BYTES] = match request.token.as_slice().try_into() {
             Ok(tokenbytes) => tokenbytes,
             Err(_) => return Err(Error::InvalidField("invalid token provided")),
@@ -124,12 +124,12 @@ impl crate::Oberon {
             tkn = tkn - b;
         }
 
-        Ok(BlindOberonTokenReply {
+        Ok(BlindOberonTokenResponse {
             token: tkn.to_bytes().to_vec(),
         })
     }
 
-    pub fn unblind<'a>(request: &UnBlindOberonTokenRequest) -> Result<BlindOberonTokenReply, Error<'a>> {
+    pub fn unblind<'a>(request: &UnBlindOberonTokenRequest) -> Result<BlindOberonTokenResponse, Error<'a>> {
         let tokenbytes: [u8; oberon::Token::BYTES] = match request.token.as_slice().try_into() {
             Ok(tokenbytes) => tokenbytes,
             Err(_) => return Err(Error::InvalidField("invalid token provided")),
@@ -148,7 +148,7 @@ impl crate::Oberon {
             tkn = tkn + b;
         }
 
-        Ok(BlindOberonTokenReply {
+        Ok(BlindOberonTokenResponse {
             token: tkn.to_bytes().to_vec(),
         })
     }
