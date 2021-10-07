@@ -92,10 +92,10 @@ try {
 
             rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-android x86_64-linux-android
 
+            cargo build --target x86_64-linux-android --release
             cargo build --target aarch64-linux-android --release
             cargo build --target armv7-linux-androideabi --release
             cargo build --target i686-linux-android --release
-            cargo build --target x86_64-linux-android --release
 
             mkdir -p $TargetOutput/arm64-v8a/
             mkdir -p $TargetOutput/armeabi-v7a/
