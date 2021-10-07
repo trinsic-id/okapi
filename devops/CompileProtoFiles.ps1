@@ -6,10 +6,11 @@ function Setup()
 function Get-ProtoFiles()
 {
     return @(
+    "../proto/examples.proto",
     "../proto/keys.proto",
     "../proto/proofs.proto",
+    "../proto/security.proto",
     "../proto/transport.proto",
-    "../proto/examples.proto",
     "../proto/pbmse/pbmse.proto")
 }
 
