@@ -9,7 +9,7 @@ pub struct CreateOberonKeyRequest {
 /// Contains the oberon secret key bytes
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct CreateOberonKeyReply {
+pub struct CreateOberonKeyResponse {
     /// raw secret key bytes
     #[prost(bytes="vec", tag="2")]
     pub sk: ::prost::alloc::vec::Vec<u8>,
@@ -34,7 +34,7 @@ pub struct CreateOberonTokenRequest {
 /// Contains the token with optional blinding 
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct CreateOberonTokenReply {
+pub struct CreateOberonTokenResponse {
     /// raw token bytes
     #[prost(bytes="vec", tag="1")]
     pub token: ::prost::alloc::vec::Vec<u8>,
@@ -59,7 +59,7 @@ pub struct CreateOberonProofRequest {
 /// Contains the token proof
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct CreateOberonProofReply {
+pub struct CreateOberonProofResponse {
     /// raw proof bytes
     #[prost(bytes="vec", tag="2")]
     pub proof: ::prost::alloc::vec::Vec<u8>,
@@ -84,7 +84,7 @@ pub struct VerifyOberonProofRequest {
 /// Contains the status of the proof validation
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct VerifyOberonProofReply {
+pub struct VerifyOberonProofResponse {
     /// whether the given proof was valid
     #[prost(bool, tag="1")]
     pub valid: bool,
@@ -103,7 +103,7 @@ pub struct BlindOberonTokenRequest {
 /// Contains the blinded token reply
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct BlindOberonTokenReply {
+pub struct BlindOberonTokenResponse {
     /// raw blinded token bytes
     #[prost(bytes="vec", tag="1")]
     pub token: ::prost::alloc::vec::Vec<u8>,
@@ -122,7 +122,7 @@ pub struct UnBlindOberonTokenRequest {
 /// Contains the unblinded token reply
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct UnBlindOberonTokenReply {
+pub struct UnBlindOberonTokenResponse {
     /// raw unblinded token bytes
     #[prost(bytes="vec", tag="1")]
     pub token: ::prost::alloc::vec::Vec<u8>,
