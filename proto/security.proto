@@ -10,11 +10,13 @@ option java_package = "trinsic.okapi";
 
 // Create an Oberon Compatible Secret Key
 message CreateOberonKeyRequest {
+    bytes seed = 1; // optional seed to generate deterministic keys
 }
 
 // Contains the oberon secret key bytes
 message CreateOberonKeyReply {
-    bytes key = 2; // raw key bytes
+    bytes sk = 2; // raw secret key bytes
+    bytes pk = 3; // raw public key bytes
 }
 
 // Create a new oberon token
