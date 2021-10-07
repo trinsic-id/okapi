@@ -5,11 +5,11 @@ use std::convert::TryInto;
 
 impl crate::Oberon {
     pub fn key<'a>(request: &CreateOberonKeyRequest) -> Result<CreateOberonKeyReply, Error<'a>> {
-        let rng = thread_rng();
-
-        let sk = match request.seed.len() {
-            0 => oberon::SecretKey::new(rng),
-            _ => oberon::SecretKey::hash(&request.seed),
+        let sk = if request.seed.len() == 0 {
+            let rng = thread_rng();
+            oberon::SecretKey::new(rng)
+        } else {
+            oberon::SecretKey::hash(&request.seed)
         };
         let pk = oberon::PublicKey::from(&sk);
 
