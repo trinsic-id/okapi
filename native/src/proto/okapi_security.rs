@@ -2,14 +2,20 @@
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateOberonKeyRequest {
+    /// optional seed to generate deterministic keys
+    #[prost(bytes="vec", tag="1")]
+    pub seed: ::prost::alloc::vec::Vec<u8>,
 }
 /// Contains the oberon secret key bytes
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateOberonKeyReply {
-    /// raw key bytes
+    /// raw secret key bytes
     #[prost(bytes="vec", tag="2")]
-    pub key: ::prost::alloc::vec::Vec<u8>,
+    pub sk: ::prost::alloc::vec::Vec<u8>,
+    /// raw public key bytes
+    #[prost(bytes="vec", tag="3")]
+    pub pk: ::prost::alloc::vec::Vec<u8>,
 }
 /// Create a new oberon token
 #[derive(::serde::Serialize, ::serde::Deserialize)]
