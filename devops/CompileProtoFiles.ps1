@@ -66,8 +66,8 @@ function Update-Ruby()
 function Update-Swift()
 {
     protoc $( Get-ProtoPath ) `
-        '--swift_out="../swift/Okapi/Sources/OkapiSwift/proto' `
-        '--swift_opt=Visibility=Public' `
+        --swift_out="../swift/Okapi/Sources/OkapiSwift/proto" `
+        --swift_opt="Visibility=Public" `
         $( Get-ProtoFiles )
 }
 
