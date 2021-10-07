@@ -5,7 +5,7 @@ use fluid::prelude::*;
 
 #[theory]
 #[case(KeyType::X25519, 32)]
-#[case(KeyType::P256, 65)]
+#[case(KeyType::P256, 33)]
 #[case(KeyType::Ed25519, 32)]
 fn test_generate_key_no_seed(key_type: KeyType, public_key_size: usize) {
     let request = GenerateKeyRequest {
@@ -30,7 +30,7 @@ fn test_generate_key_no_seed(key_type: KeyType, public_key_size: usize) {
 #[test]
 fn test_generate_key_no_seed_1() {
     let key_type = KeyType::P256;
-    let public_key_size: usize = 65;
+    let public_key_size: usize = 33;
 
     let request = GenerateKeyRequest {
         seed: vec![],
