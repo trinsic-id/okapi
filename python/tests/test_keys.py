@@ -2,7 +2,7 @@ import base64
 import unittest
 import base58
 
-from okapi.keys import DIDKey
+from okapi.wrapper import DIDKey
 from okapi.proto.okapi.keys import GenerateKeyRequest, KeyType, GenerateKeyResponse, ResolveRequest
 from okapi.okapi_utils import DidError
 
