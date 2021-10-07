@@ -47,6 +47,10 @@ int32_t ldproofs_verify_proof(struct ByteBuffer request,
                               struct ByteBuffer *response,
                               struct ExternError *err);
 
+int32_t oberon_create_key(struct ByteBuffer request,
+                          struct ByteBuffer *response,
+                          struct ExternError *err);
+
 int32_t oberon_create_token(struct ByteBuffer request,
                             struct ByteBuffer *response,
                             struct ExternError *err);

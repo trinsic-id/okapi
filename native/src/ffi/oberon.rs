@@ -2,6 +2,11 @@ use crate::{proto::security::*, *};
 use ffi_support::{ByteBuffer, ExternError};
 
 #[no_mangle]
+pub extern "C" fn oberon_create_key(request: ByteBuffer, response: &mut ByteBuffer, err: &mut ExternError) -> i32 {
+    c_impl!(CreateOberonKeyRequest, Oberon, key, request, response, err)
+}
+
+#[no_mangle]
 pub extern "C" fn oberon_create_token(request: ByteBuffer, response: &mut ByteBuffer, err: &mut ExternError) -> i32 {
     c_impl!(CreateOberonTokenRequest, Oberon, token, request, response, err)
 }
@@ -13,7 +18,7 @@ pub extern "C" fn oberon_blind_token(request: ByteBuffer, response: &mut ByteBuf
 
 #[no_mangle]
 pub extern "C" fn oberon_unblind_token(request: ByteBuffer, response: &mut ByteBuffer, err: &mut ExternError) -> i32 {
-    c_impl!(UnBlindOberonTokenRequest, Oberon, blind, request, response, err)
+    c_impl!(UnBlindOberonTokenRequest, Oberon, unblind, request, response, err)
 }
 
 #[no_mangle]

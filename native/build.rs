@@ -1,10 +1,10 @@
-extern crate prost_build;
 extern crate cbindgen;
+extern crate prost_build;
 
-use std::fs::{copy, remove_file};
-use std::env;
+use cbindgen::Language;
 use prost_build::Config;
-use cbindgen::{Language};
+use std::env;
+use std::fs::{copy, remove_file};
 
 fn main() {
     // Build all protos with support for 'serde'
@@ -43,7 +43,7 @@ fn compile_protobuf_files() {
                 "../proto/examples.proto",
                 "../proto/keys.proto",
                 "../proto/proofs.proto",
-                "../proto/security.proto"
+                "../proto/security.proto",
             ],
             &["../proto", "../proto/pbmse"],
         )
