@@ -286,7 +286,7 @@ fn test_unblind_token() {
 
 #[test]
 fn test_create_key() {
-    let req = CreateOberonKeyRequest {};
+    let req = CreateOberonKeyRequest { seed: vec![] };
 
     crate::Oberon::key(&req).unwrap();
 }

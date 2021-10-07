@@ -4,12 +4,19 @@ use rand::prelude::*;
 use std::convert::TryInto;
 
 impl crate::Oberon {
-    pub fn key<'a>(_request: &CreateOberonKeyRequest) -> Result<CreateOberonKeyReply, Error<'a>> {
+    pub fn key<'a>(request: &CreateOberonKeyRequest) -> Result<CreateOberonKeyReply, Error<'a>> {
         let rng = thread_rng();
 
-        let sk = oberon::SecretKey::new(rng);
+        let sk = match request.seed.len() {
+            0 => oberon::SecretKey::new(rng),
+            _ => oberon::SecretKey::hash(&request.seed),
+        };
+        let pk = oberon::PublicKey::from(&sk);
 
-        Ok(CreateOberonKeyReply { key: sk.to_bytes().to_vec() })
+        Ok(CreateOberonKeyReply {
+            sk: sk.to_bytes().to_vec(),
+            pk: pk.to_bytes().to_vec(),
+        })
     }
 
     pub fn token<'a>(request: &CreateOberonTokenRequest) -> Result<CreateOberonTokenReply, Error<'a>> {
