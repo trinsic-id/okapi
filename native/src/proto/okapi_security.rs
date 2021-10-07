@@ -1,9 +1,8 @@
 /// Create an Oberon Compatible Secret Key
-/// Optonally, a seed can be passed to generate
-/// deterministic keys
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateOberonKeyRequest {
+    /// optional seed to generate deterministic keys
     #[prost(bytes="vec", tag="1")]
     pub seed: ::prost::alloc::vec::Vec<u8>,
 }

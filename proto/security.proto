@@ -9,10 +9,8 @@ option go_package = "github.com/trinsic-id/okapi";
 option java_package = "trinsic.okapi";
 
 // Create an Oberon Compatible Secret Key
-// Optonally, a seed can be passed to generate
-// deterministic keys
 message CreateOberonKeyRequest {
-    bytes seed = 1;
+    bytes seed = 1; // optional seed to generate deterministic keys
 }
 
 // Contains the oberon secret key bytes
