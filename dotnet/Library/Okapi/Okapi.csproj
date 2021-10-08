@@ -32,6 +32,7 @@
     <Protobuf Include="..\..\..\proto\keys.proto" Link="Protobuf/keys.proto" />
     <Protobuf Include="..\..\..\proto\transport.proto" Link="Protobuf/transport.proto" />
     <Protobuf Include="..\..\..\proto\proofs.proto" Link="Protobuf/proofs.proto" />
+    <Protobuf Include="..\..\..\proto\security.proto" Link="Protobuf/security.proto" />
     <Protobuf Include="..\..\..\proto\pbmse\pbmse.proto" Link="Protobuf/pbmse/pbmse.proto" />
     <Protobuf Include="..\..\..\proto\examples.proto" Link="Protobuf/examples.proto" />
   </ItemGroup>
