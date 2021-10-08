@@ -81,5 +81,26 @@ namespace Okapi
         internal static extern int ldproofs_verify_proof(ByteBuffer request, out ByteBuffer response, out ExternError error);
 
         #endregion
+
+        #region Oberon
+        [DllImport(LibraryName, CharSet = CharSet.Auto, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+        internal static extern int oberon_create_key(ByteBuffer request, out ByteBuffer response, out ExternError error);
+
+        [DllImport(LibraryName, CharSet = CharSet.Auto, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+        internal static extern int oberon_create_token(ByteBuffer request, out ByteBuffer response, out ExternError error);
+
+        [DllImport(LibraryName, CharSet = CharSet.Auto, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+        internal static extern int oberon_create_proof(ByteBuffer request, out ByteBuffer response, out ExternError error);
+
+        [DllImport(LibraryName, CharSet = CharSet.Auto, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+        internal static extern int oberon_verify_proof(ByteBuffer request, out ByteBuffer response, out ExternError error);
+
+        [DllImport(LibraryName, CharSet = CharSet.Auto, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+        internal static extern int oberon_blind_token(ByteBuffer request, out ByteBuffer response, out ExternError error);
+
+        [DllImport(LibraryName, CharSet = CharSet.Auto, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+        internal static extern int oberon_unblind_token(ByteBuffer request, out ByteBuffer response, out ExternError error);
+
+        #endregion
     }
 }
