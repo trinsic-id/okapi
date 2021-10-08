@@ -1,6 +1,6 @@
 ﻿namespace Okapi.Keys
 {
-    public class DIDKey
+    public static class DIDKey
     {
         /// <summary>
         /// Generate new key

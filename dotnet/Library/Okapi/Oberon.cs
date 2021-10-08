@@ -1,6 +1,6 @@
 namespace Okapi.Security
 {
-    public class Oberon
+    public static class Oberon
     {
         public static CreateOberonKeyResponse CreateKey(CreateOberonKeyRequest request) =>
             Native.Call<CreateOberonKeyRequest, CreateOberonKeyResponse>(request, Native.oberon_create_key);
