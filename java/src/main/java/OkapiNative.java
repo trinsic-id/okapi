@@ -23,6 +23,18 @@ public class OkapiNative {
 
         int ldproofs_verify_proof(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
 
+        int oberon_create_key(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
+
+        int oberon_create_token(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
+
+        int oberon_blind_token(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
+
+        int oberon_unblind_token(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
+
+        int oberon_create_proof(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
+
+        int oberon_verify_proof(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
+
         void didcomm_byte_buffer_free(OkapiByteBuffer.ByValue v);
 
         void didcomm_string_free(com.sun.jna.ptr.ByteByReference s);
