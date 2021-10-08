@@ -1,5 +1,6 @@
 require_relative 'test_helper'
 require_relative '../lib/okapi/keys_pb'
+require_relative '../lib/okapi/security_pb'
 require 'google/protobuf/well_known_types'
 require_relative '../lib/okapi'
 require_relative '../lib/version'
@@ -13,6 +14,18 @@ class OkapiTest < Minitest::Test
   end
   def test_for_version_number
     refute_nil Okapi::VERSION
+  end
+
+  def test_oberon_demo
+    key = Okapi::Oberon::create_key(Okapi::Security::CreateOberonKeyRequest.new)
+    data = "alice"
+    nonce = "1234"
+
+    token = Okapi::Oberon::create_token(Okapi::Security::CreateOberonTokenRequest.new(:data=>data, :sk=>key.sk))
+    proof = Okapi::Oberon::create_proof(Okapi::Security::CreateOberonProofRequest.new(:data=>data, :nonce=>nonce, :token=>token.token))
+    result = Okapi::Oberon::verify_proof(Okapi::Security::VerifyOberonProofRequest.new(:data=>data, :nonce=>nonce, :pk=>key.pk, :proof=>proof.proof))
+
+    assert result.valid == true
   end
 
   def test_generate_key
