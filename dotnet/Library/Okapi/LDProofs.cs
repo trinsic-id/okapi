@@ -2,7 +2,7 @@ using Okapi.Transport;
 
 namespace Okapi.Proofs
 {
-    public class LDProofs
+    public static class LDProofs
     {
         /// <summary>
         /// Generate new key
