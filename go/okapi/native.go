@@ -60,6 +60,25 @@ func ldproofsVerifyProof(request C.ByteBuffer, response *C.ByteBuffer, err *C.Ex
 	return int32(C.ldproofs_verify_proof(request, response, err))
 }
 
+func oberonCreateKey(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+	return int32(C.oberon_create_key(request, response, err))
+}
+func oberonCreateToken(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+	return int32(C.oberon_create_token(request, response, err))
+}
+func oberonBlindToken(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+	return int32(C.oberon_blind_token(request, response, err))
+}
+func oberonUnBlindToken(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+	return int32(C.oberon_unblind_token(request, response, err))
+}
+func oberonCreateProof(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+	return int32(C.oberon_create_proof(request, response, err))
+}
+func oberonVerifyProof(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+	return int32(C.oberon_verify_proof(request, response, err))
+}
+
 func callOkapiNative(request proto.Message, response proto.Message, nativeFunc okapiCall) error {
 	requestBuffer, responseBuffer, errorBuffer, err := createBuffersFromMessage(request)
 	if err != nil {

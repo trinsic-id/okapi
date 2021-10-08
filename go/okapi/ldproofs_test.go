@@ -2,7 +2,7 @@ package okapi
 
 import (
 	"github.com/stretchr/testify/assert"
-	"github.com/trinsic-id/okapi/go/proto"
+	"github.com/trinsic-id/okapi/go/okapi_proto"
 	"google.golang.org/protobuf/types/known/structpb"
 	"log"
 	"testing"
@@ -18,22 +18,22 @@ func TestGenerateCapabilityInvocationProofWithJCS(t *testing.T) {
 		},
 	})
 
-	request := proto.GenerateKeyRequest{KeyType: proto.KeyType_Ed25519}
+	request := okapi.GenerateKeyRequest{KeyType: okapi.KeyType_Ed25519}
 	response, err := DidKey{}.Generate(&request)
 	if err != nil {
 		log.Fatalln(err)
 	}
-	signingKey := &proto.JsonWebKey{}
+	signingKey := &okapi.JsonWebKey{}
 	for _, key := range response.Key {
 		if key.Crv == "Ed25519" {
 			signingKey = key
 			break
 		}
 	}
-	signedCapability, err2 := LdProofs{}.CreateProof(&proto.CreateProofRequest{
+	signedCapability, err2 := LdProofs{}.CreateProof(&okapi.CreateProofRequest{
 		Document: proofStruct,
 		Key:      signingKey,
-		Suite:    proto.LdSuite_JcsEd25519Signature2020,
+		Suite:    okapi.LdSuite_JcsEd25519Signature2020,
 	})
 	if err2 != nil {
 		log.Fatalln(err2)
