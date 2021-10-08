@@ -2,22 +2,22 @@ namespace Okapi.Security
 {
     public class Oberon
     {
-        public static CreateOberonKeyReply CreateKey(CreateOberonKeyRequest request) =>
-            Native.Call<CreateOberonKeyRequest, CreateOberonKeyReply>(request, Native.oberon_create_key);
+        public static CreateOberonKeyResponse CreateKey(CreateOberonKeyRequest request) =>
+            Native.Call<CreateOberonKeyRequest, CreateOberonKeyResponse>(request, Native.oberon_create_key);
 
-        public static CreateOberonTokenReply CreateToken(CreateOberonTokenRequest request) =>
-            Native.Call<CreateOberonTokenRequest, CreateOberonTokenReply>(request, Native.oberon_create_token);
+        public static CreateOberonTokenResponse CreateToken(CreateOberonTokenRequest request) =>
+            Native.Call<CreateOberonTokenRequest, CreateOberonTokenResponse>(request, Native.oberon_create_token);
 
-        public static CreateOberonProofReply CreateProof(CreateOberonProofRequest request) =>
-            Native.Call<CreateOberonProofRequest, CreateOberonProofReply>(request, Native.oberon_create_proof);
+        public static CreateOberonProofResponse CreateProof(CreateOberonProofRequest request) =>
+            Native.Call<CreateOberonProofRequest, CreateOberonProofResponse>(request, Native.oberon_create_proof);
 
-        public static VerifyOberonProofReply VerifyProof(VerifyOberonProofRequest request) =>
-            Native.Call<VerifyOberonProofRequest, VerifyOberonProofReply>(request, Native.oberon_verify_proof);
+        public static VerifyOberonProofResponse VerifyProof(VerifyOberonProofRequest request) =>
+            Native.Call<VerifyOberonProofRequest, VerifyOberonProofResponse>(request, Native.oberon_verify_proof);
 
-        public static BlindOberonTokenReply BlindToken(BlindOberonTokenRequest request) =>
-            Native.Call<BlindOberonTokenRequest, BlindOberonTokenReply>(request, Native.oberon_blind_token);
+        public static BlindOberonTokenResponse BlindToken(BlindOberonTokenRequest request) =>
+            Native.Call<BlindOberonTokenRequest, BlindOberonTokenResponse>(request, Native.oberon_blind_token);
 
-        public static UnBlindOberonTokenReply UnblindToken(UnBlindOberonTokenRequest request) =>
-            Native.Call<UnBlindOberonTokenRequest, UnBlindOberonTokenReply>(request, Native.oberon_unblind_token);
+        public static UnBlindOberonTokenResponse UnblindToken(UnBlindOberonTokenRequest request) =>
+            Native.Call<UnBlindOberonTokenRequest, UnBlindOberonTokenResponse>(request, Native.oberon_unblind_token);
     }
 }
