@@ -56,6 +56,13 @@ module Okapi
     attach_function :ldproofs_create_proof, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
     attach_function :ldproofs_verify_proof, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
 
+    attach_function :oberon_create_key, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
+    attach_function :oberon_create_token, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
+    attach_function :oberon_blind_token, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
+    attach_function :oberon_unblind_token, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
+    attach_function :oberon_create_proof, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
+    attach_function :oberon_verify_proof, [ ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref ], :int
+
     attach_function :didcomm_byte_buffer_free, [ ByteBuffer.by_value ], :int
     attach_function :didcomm_string_free, [ :pointer ], :int
   end
@@ -152,6 +159,33 @@ module Okapi
     def self.verify(request)
       Okapi.verify_type(request, Okapi::Proofs::VerifyProofRequest)
       return Okapi.ffi_call("ldproofs_verify_proof", request, Okapi::Proofs::VerifyProofResponse)
+    end
+  end
+
+  module Oberon
+    def self.create_key(request)
+      Okapi.verify_type(request, Okapi::Security::CreateOberonKeyRequest)
+      return Okapi.ffi_call("oberon_create_key", request, Okapi::Security::CreateOberonKeyResponse)
+    end
+    def self.create_token(request)
+      Okapi.verify_type(request, Okapi::Security::CreateOberonTokenRequest)
+      return Okapi.ffi_call("oberon_create_token", request, Okapi::Security::CreateOberonTokenResponse)
+    end
+    def self.blind_token(request)
+      Okapi.verify_type(request, Okapi::Security::BlindOberonTokenRequest)
+      return Okapi.ffi_call("oberon_blind_token", request, Okapi::Security::BlindOberonTokenResponse)
+    end
+    def self.unblind_token(request)
+      Okapi.verify_type(request, Okapi::Security::UnBlindOberonTokenRequest)
+      return Okapi.ffi_call("oberon_unblind_token", request, Okapi::Security::UnBlindOberonTokenResponse)
+    end
+    def self.create_proof(request)
+      Okapi.verify_type(request, Okapi::Security::CreateOberonProofRequest)
+      return Okapi.ffi_call("oberon_create_proof", request, Okapi::Security::CreateOberonProofResponse)
+    end
+    def self.verify_proof(request)
+      Okapi.verify_type(request, Okapi::Security::VerifyOberonProofRequest)
+      return Okapi.ffi_call("oberon_verify_proof", request, Okapi::Security::VerifyOberonProofResponse)
     end
   end
 end

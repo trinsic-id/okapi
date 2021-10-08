@@ -3,6 +3,7 @@
 
 require 'google/protobuf'
 
+require_relative 'pbmse/pbmse_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("examples.proto", :syntax => :proto3) do
     add_message "okapi.examples.BasicMessage" do
