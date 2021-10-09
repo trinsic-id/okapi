@@ -33,13 +33,11 @@ jobs:
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
       - name: Build, Test, Pack
-        run: ./devops/BuildPython.ps1 -GitTag ${{ github.ref }}
+        run: ./devops/BuildPython.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output_${{ matrix.os }}.xml" -ArtifactName "${{ matrix.artifact_name }}"
         shell: pwsh
-      - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action/composite@v1.18
-        if: ( ${{ matrix.os }} == 'ubuntu-latest' && ${{ matrix.python-version }} = '3.9' )
+      - name: Publish Test Report
+        uses: mikepenz/action-junit-report@v2
+        if: always() # always run even if the previous step fails
         with:
-          files: python/pytest_junit.xml
-          comment_mode: "create new"
-          hide_comments: "off"
-          check_name: "Python Unit Test Results"
+          report_paths: ./python/test_output_*.xml
+          fail_on_failure: true

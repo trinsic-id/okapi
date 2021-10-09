@@ -31,13 +31,11 @@ jobs:
           workflow: "build-libs.yml"
           path: ./libs
       - name: Build and run tests
-        run: ./devops/BuildRuby.ps1 -GitTag ${{ github.ref }}
+        run: ./devops/BuildRuby.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output_${{ matrix.os }}.xml" -ArtifactName "${{ matrix.artifact_name }}"
         shell: pwsh
-      - name: cobertura-report
-        if: ( ${{ matrix.os }} == 'windows-latest' && ${{ matrix.ruby-version }} = '2.7' )
-        uses: 5monkeys/cobertura-action@v9
+      - name: Publish Test Report
+        uses: mikepenz/action-junit-report@v2
+        if: always() # always run even if the previous step fails
         with:
-          path: ruby/coverage/coverage.xml
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          minimum_coverage: 75
-          show_class_names: true
+          report_paths: ./ruby/coverage/coverage.xml
+          fail_on_failure: true

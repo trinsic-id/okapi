@@ -30,13 +30,19 @@ jobs:
         run: ./Test.ps1
         working-directory: ./dotnet
         shell: pwsh
-      - name: Comment report
-        if: ( ${{ matrix.os }} == 'ubuntu-latest' )
-        uses: 5monkeys/cobertura-action@master
+      # - name: Comment report
+      #   if: ( ${{ matrix.os }} == 'ubuntu-latest' )
+      #   uses: 5monkeys/cobertura-action@master
+      #   with:
+      #     path: dotnet/Tests/Okapi.Tests/TestResults/coverage.cobertura.xml
+      #     repo_token: ${{ secrets.GITHUB_TOKEN }}
+      #     minimum_coverage: 75
+      #     show_class_names: true
+      #     fail_below_threshold: false
+      - name: Publish Test Report
+        uses: mikepenz/action-junit-report@v2
+        if: always() # always run even if the previous step fails
         with:
-          path: dotnet/Tests/Okapi.Tests/TestResults/coverage.cobertura.xml
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          minimum_coverage: 75
-          show_class_names: true
-          fail_below_threshold: false
+          report_paths: dotnet/Tests/Okapi.Tests/TestResults/coverage.cobertura.xml
+          fail_on_failure: true
           
