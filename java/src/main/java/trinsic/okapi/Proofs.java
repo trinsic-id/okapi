@@ -106,7 +106,7 @@ public final class Proofs {
 
     private final int value;
 
-    private LdSuite(int value) {
+    LdSuite(int value) {
       this.value = value;
     }
 
@@ -509,8 +509,7 @@ public final class Proofs {
             .equals(other.getKey())) return false;
       }
       if (suite_ != other.suite_) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -1475,8 +1474,7 @@ public final class Proofs {
         if (!getSignedDocument()
             .equals(other.getSignedDocument())) return false;
       }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -2030,8 +2028,7 @@ public final class Proofs {
       }
       trinsic.okapi.Proofs.VerifyProofRequest other = (trinsic.okapi.Proofs.VerifyProofRequest) obj;
 
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -2448,8 +2445,7 @@ public final class Proofs {
       }
       trinsic.okapi.Proofs.VerifyProofResponse other = (trinsic.okapi.Proofs.VerifyProofResponse) obj;
 
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -2772,7 +2768,7 @@ public final class Proofs {
       getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
+  private static final com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {

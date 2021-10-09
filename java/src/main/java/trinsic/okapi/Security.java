@@ -177,8 +177,7 @@ public final class Security {
 
       if (!getSeed()
           .equals(other.getSeed())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -737,8 +736,7 @@ public final class Security {
           .equals(other.getSk())) return false;
       if (!getPk()
           .equals(other.getPk())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -1446,8 +1444,7 @@ public final class Security {
           .equals(other.getData())) return false;
       if (!getBlindingList()
           .equals(other.getBlindingList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -2156,8 +2153,7 @@ public final class Security {
 
       if (!getToken()
           .equals(other.getToken())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -2851,8 +2847,7 @@ public final class Security {
           .equals(other.getBlindingList())) return false;
       if (!getNonce()
           .equals(other.getNonce())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -3615,8 +3610,7 @@ public final class Security {
 
       if (!getProof()
           .equals(other.getProof())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -4255,8 +4249,7 @@ public final class Security {
           .equals(other.getNonce())) return false;
       if (!getPk()
           .equals(other.getPk())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -4936,8 +4929,7 @@ public final class Security {
 
       if (getValid()
           != other.getValid()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -5549,8 +5541,7 @@ public final class Security {
           .equals(other.getToken())) return false;
       if (!getBlindingList()
           .equals(other.getBlindingList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -6205,8 +6196,7 @@ public final class Security {
 
       if (!getToken()
           .equals(other.getToken())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -6820,8 +6810,7 @@ public final class Security {
           .equals(other.getToken())) return false;
       if (!getBlindingList()
           .equals(other.getBlindingList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -7476,8 +7465,7 @@ public final class Security {
 
       if (!getToken()
           .equals(other.getToken())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -7898,7 +7886,7 @@ public final class Security {
       getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
+  private static final com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {
