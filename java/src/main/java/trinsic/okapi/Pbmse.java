@@ -115,7 +115,7 @@ public final class Pbmse {
 
     private final int value;
 
-    private EncryptionMode(int value) {
+    EncryptionMode(int value) {
       this.value = value;
     }
 
@@ -223,7 +223,7 @@ public final class Pbmse {
 
     private final int value;
 
-    private EncryptionAlgorithm(int value) {
+    EncryptionAlgorithm(int value) {
       this.value = value;
     }
 
@@ -473,8 +473,7 @@ public final class Pbmse {
           .equals(other.getPayload())) return false;
       if (!getSignaturesList()
           .equals(other.getSignaturesList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -1290,8 +1289,7 @@ public final class Pbmse {
           .equals(other.getHeader())) return false;
       if (!getSignature()
           .equals(other.getSignature())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -1922,8 +1920,7 @@ public final class Pbmse {
           .equals(other.getAlgorithm())) return false;
       if (!getKeyId()
           .equals(other.getKeyId())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -2725,8 +2722,7 @@ public final class Pbmse {
           .equals(other.getTag())) return false;
       if (!getRecipientsList()
           .equals(other.getRecipientsList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -3819,8 +3815,7 @@ public final class Pbmse {
           .equals(other.getKeyId())) return false;
       if (!getSenderKeyId()
           .equals(other.getSenderKeyId())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -4629,8 +4624,7 @@ public final class Pbmse {
       }
       if (!getContentEncryptionKey()
           .equals(other.getContentEncryptionKey())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -5142,7 +5136,7 @@ public final class Pbmse {
       getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
+  private static final com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {
