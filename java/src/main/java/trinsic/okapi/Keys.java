@@ -142,7 +142,7 @@ public final class Keys {
 
     private final int value;
 
-    private KeyType(int value) {
+    KeyType(int value) {
       this.value = value;
     }
 
@@ -345,8 +345,7 @@ public final class Keys {
       if (!getSeed()
           .equals(other.getSeed())) return false;
       if (keyType_ != other.keyType_) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -1020,8 +1019,7 @@ public final class Keys {
         if (!getDidDocument()
             .equals(other.getDidDocument())) return false;
       }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -1928,8 +1926,7 @@ public final class Keys {
 
       if (!getDid()
           .equals(other.getDid())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -2584,8 +2581,7 @@ public final class Keys {
       }
       if (!getKeysList()
           .equals(other.getKeysList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -3865,8 +3861,7 @@ public final class Keys {
           .equals(other.getCrv())) return false;
       if (!getKty()
           .equals(other.getKty())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -4764,7 +4759,7 @@ public final class Keys {
       getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
+  private static final com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {

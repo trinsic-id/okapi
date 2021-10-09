@@ -297,8 +297,7 @@ public final class Transport {
         if (!getAppendTo()
             .equals(other.getAppendTo())) return false;
       }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -1097,8 +1096,7 @@ public final class Transport {
         if (!getMessage()
             .equals(other.getMessage())) return false;
       }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -1784,8 +1782,7 @@ public final class Transport {
         if (!getKey()
             .equals(other.getKey())) return false;
       }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -2507,8 +2504,7 @@ public final class Transport {
 
       if (getIsValid()
           != other.getIsValid()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -3251,8 +3247,7 @@ public final class Transport {
           .equals(other.getPlaintext())) return false;
       if (mode_ != other.mode_) return false;
       if (algorithm_ != other.algorithm_) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -4217,8 +4212,7 @@ public final class Transport {
         if (!getMessage()
             .equals(other.getMessage())) return false;
       }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -4970,8 +4964,7 @@ public final class Transport {
         if (!getMessage()
             .equals(other.getMessage())) return false;
       }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -5831,8 +5824,7 @@ public final class Transport {
 
       if (!getPlaintext()
           .equals(other.getPlaintext())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -6667,8 +6659,7 @@ public final class Transport {
           != other.getCreated()) return false;
       if (getExpires()
           != other.getExpires()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -7526,14 +7517,14 @@ public final class Transport {
       getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
+  private static final com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {
       "\n\017transport.proto\022\017okapi.transport\032\nkeys" +
       ".proto\032\021pbmse/pbmse.proto\"l\n\013SignRequest" +
       "\022\017\n\007payload\030\001 \001(\014\022#\n\003key\030\002 \001(\0132\026.okapi.k" +
-      "eys.JsonWebKey\022\'\n\tappend_to\030\003 \001(\0132\024.pbms" +
+              "eys.JsonWebKey\022'\n\tappend_to\030\003 \001(\0132\024.pbms" +
       "e.SignedMessage\"5\n\014SignResponse\022%\n\007messa" +
       "ge\030\001 \001(\0132\024.pbmse.SignedMessage\"[\n\rVerify" +
       "Request\022%\n\007message\030\001 \001(\0132\024.pbmse.SignedM" +
