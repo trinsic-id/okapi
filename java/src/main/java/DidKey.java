@@ -1,23 +1,23 @@
 import com.google.protobuf.InvalidProtocolBufferException;
-import trinsic.okapi.Keys;
+import trinsic.okapi.keys.*;
 
 public class DidKey extends OkapiNative {
-    public static Keys.GenerateKeyResponse generate(Keys.GenerateKeyRequest request) throws DidException, InvalidProtocolBufferException {
+    public static GenerateKeyResponse generate(GenerateKeyRequest request) throws DidException, InvalidProtocolBufferException {
         OkapiByteBuffer.ByValue requestBuffer = messageToBuffer(request);
         OkapiByteBuffer responseBuffer = new OkapiByteBuffer();
         ExternError errBuffer = new ExternError();
         getNativeLibrary().didkey_generate(requestBuffer, responseBuffer, errBuffer);
         errBuffer.RaiseError();
-        return Keys.GenerateKeyResponse.parseFrom(bufferToByteArray(responseBuffer));
+        return GenerateKeyResponse.parseFrom(bufferToByteArray(responseBuffer));
     }
 
-    public static Keys.ResolveResponse resolve(Keys.ResolveRequest request) throws DidException, InvalidProtocolBufferException {
+    public static ResolveResponse resolve(ResolveRequest request) throws DidException, InvalidProtocolBufferException {
         OkapiByteBuffer.ByValue requestBuffer = messageToBuffer(request);
         OkapiByteBuffer responseBuffer = new OkapiByteBuffer();
         ExternError errBuffer = new ExternError();
         getNativeLibrary().didkey_resolve(requestBuffer, responseBuffer, errBuffer);
         errBuffer.RaiseError();
-        return Keys.ResolveResponse.parseFrom(bufferToByteArray(responseBuffer));
+        return ResolveResponse.parseFrom(bufferToByteArray(responseBuffer));
     }
 }
 
