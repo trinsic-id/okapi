@@ -1,8 +1,9 @@
 import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import com.sun.jna.Structure.FieldOrder;
 
-@Structure.FieldOrder({"len", "data"})
+@FieldOrder({"len", "data"})
 public class OkapiByteBuffer extends Structure {
     public static class ByValue extends OkapiByteBuffer implements Structure.ByValue {
     }

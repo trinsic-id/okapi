@@ -38,15 +38,11 @@ try {
             break
         }
         Linux {
-            rustup target add x86_64-unknown-linux-gnu armv7-unknown-linux-gnueabihf
+            rustup target add x86_64-unknown-linux-gnu
             cargo build --release --target x86_64-unknown-linux-gnu
-            cargo build --release --target armv7-unknown-linux-gnueabihf
 
-            # mkdir -p $TargetOutput/arm64-v8a/ - future ARMv8 support
-            mkdir -p $TargetOutput/armv7-gnueabihf/
-            mkdir -p $TargetOutput/x86_64/
-            Copy-Item -Path ".\target\x86_64-unknown-linux-gnu\release\libokapi.*" -Destination "$TargetOutput/x86_64"
-            Copy-Item -Path ".\target\armv7-unknown-linux-gnueabihf\release\libokapi.*" -Destination "$TargetOutput/armv7-gnueabihf"
+            Copy-Item -Path .\target\x86_64-unknown-linux-gnu\release\libokapi.so -Destination $TargetOutput
+            Copy-Item -Path .\target\x86_64-unknown-linux-gnu\release\libokapi.a -Destination $TargetOutput
             break
         }
         MacOS {
