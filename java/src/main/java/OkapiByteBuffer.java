@@ -25,7 +25,7 @@ public class OkapiByteBuffer extends Structure {
     }
 
     public ByValue byValue() {
-        var byvalueStruct = new OkapiByteBuffer.ByValue();
+        ByValue byvalueStruct = new OkapiByteBuffer.ByValue();
         byvalueStruct.len = this.len;
         byvalueStruct.data = this.data;
         return byvalueStruct;

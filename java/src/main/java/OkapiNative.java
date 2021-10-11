@@ -102,7 +102,7 @@ public class OkapiNative {
     }
 
     static OkapiByteBuffer.ByValue messageToBuffer(GeneratedMessageV3 requestMessage) {
-        var requestBuffer = new OkapiByteBuffer.ByValue();
+        OkapiByteBuffer.ByValue requestBuffer = new OkapiByteBuffer.ByValue();
         requestBuffer.setData(requestMessage.toByteArray());
         return requestBuffer;
     }

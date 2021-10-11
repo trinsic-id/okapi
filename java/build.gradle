@@ -35,6 +35,11 @@ publishing {
     }
 }
 
+compileJava {
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+}
+
 group = jarDomainId + "." + jarGroupId + '.' + jarArtifactId
 archivesBaseName = 'trinsic-' + jarArtifactId
 version = jarVersion
