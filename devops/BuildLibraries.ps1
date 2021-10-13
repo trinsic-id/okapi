@@ -92,9 +92,7 @@ try {
             break
         }
         Android-ARM {
-            if ($null -eq $AndroidNdkHome) { throw "Parameter -AndroidNdkHome must be specified." }
-
-            $AndroidNdkHome = Resolve-Path $AndroidNdkHome
+            $AndroidNdkHome = $Env:ANDROID_NDK_HOME
 
             mkdir -p ~/.NDK
 
@@ -115,9 +113,7 @@ try {
             break
         }
         Android-x86 {
-            if ($null -eq $AndroidNdkHome) { throw "Parameter -AndroidNdkHome must be specified." }
-
-            $AndroidNdkHome = Resolve-Path $AndroidNdkHome
+            $AndroidNdkHome = $Env:ANDROID_NDK_HOME
 
             mkdir -p ~/.NDK
 

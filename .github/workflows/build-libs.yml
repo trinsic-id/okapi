@@ -170,7 +170,7 @@ jobs:
           submodules: "true"
 
       - name: Run build script
-        run: ./devops/BuildLibraries.ps1 -Platform Android-ARM -OutLocation ./libs/android -AndroidNdkHome $ANDROID_NDK_HOME
+        run: ./devops/BuildLibraries.ps1 -Platform Android-ARM -OutLocation ./libs/android
         shell: pwsh
       - name: Upload Android artifact
         uses: actions/upload-artifact@v2
@@ -189,7 +189,7 @@ jobs:
           submodules: "true"
 
       - name: Run build script
-        run: ./devops/BuildLibraries.ps1 -Platform Android-x86 -OutLocation ./libs/android -AndroidNdkHome $ANDROID_NDK_HOME
+        run: ./devops/BuildLibraries.ps1 -Platform Android-x86 -OutLocation ./libs/android
         shell: pwsh
       - name: Upload Android artifact
         uses: actions/upload-artifact@v2
