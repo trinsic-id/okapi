@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import trinsic.okapi.Keys;
+import trinsic.okapi.keys.*;
 
 import java.util.Base64;
 
@@ -19,29 +19,29 @@ class OkapiNativeTest {
     }
     @Test
     void generateKeyCall() throws DidException, InvalidProtocolBufferException {
-       Keys.GenerateKeyRequest request = Keys.GenerateKeyRequest.newBuilder()
-                .setKeyType(Keys.KeyType.Ed25519)
+       GenerateKeyRequest request = GenerateKeyRequest.newBuilder()
+                .setKeyType(KeyType.Ed25519)
                 .setSeed(ByteString.copyFrom(new byte[]{1,2,3}))
                 .build();
 
-        Keys.GenerateKeyResponse response= DidKey.generate(request);
+        GenerateKeyResponse response= DidKey.generate(request);
         Assertions.assertNotNull(response);
     }
 
     @Test
     void generateKeyNoSeed() throws DidException, InvalidProtocolBufferException {
-        Keys.GenerateKeyRequest request = Keys.GenerateKeyRequest.newBuilder()
-                .setKeyType(Keys.KeyType.Ed25519)
+        GenerateKeyRequest request = GenerateKeyRequest.newBuilder()
+                .setKeyType(KeyType.Ed25519)
                 .build();
 
-        Keys.GenerateKeyResponse response= DidKey.generate(request);
+        GenerateKeyResponse response= DidKey.generate(request);
         var pk = assertValidKeyGenerated(response, null);
     }
 
     @Test
     void testResolveKey() throws DidException, InvalidProtocolBufferException {
         String key = "did:key:z6Mkt6QT8FPajKXDrtMefkjxRQENd9wFzKkDFomdQAVFzpzm#z6LSfDq6DuofPeZUqNEmdZsxpvfHvSoUXGEWFhw7JHk4cynN";
-        var request = Keys.ResolveRequest.newBuilder()
+        var request = ResolveRequest.newBuilder()
                 .setDid(key)
                 .build();
         var response = DidKey.resolve(request);
@@ -50,14 +50,14 @@ class OkapiNativeTest {
 
     @Test
     void testGenerateKeyThrowsInvalidSeedType() throws DidException {
-        var request = Keys.GenerateKeyRequest.newBuilder()
+        var request = GenerateKeyRequest.newBuilder()
                 .setKeyTypeValue(-1)
                 .build();
         Assertions.assertThrows(DidException.class, () -> DidKey.generate(request));
     }
 
     private class DataArgument {
-        public Keys.KeyType keyType;
+        public KeyType keyType;
         public String keyTypeString;
         public String seed;
         public String response;
@@ -65,14 +65,14 @@ class OkapiNativeTest {
     private DataArgument getArguments(int index) {
         if (index == 1) {
             var arg = new DataArgument();
-            arg.keyType = Keys.KeyType.Ed25519;
+            arg.keyType = KeyType.Ed25519;
             arg.keyTypeString = "Ed25519";
             arg.seed = "4f66b355aa7b0980ff901f2295b9c562ac3061be4df86703eb28c612faae6578";
             arg.response = "6fioC1zcDPyPEL19pXRS2E4iJ46zH7xP6uSgAaPdwDrx";
             return arg;
         } else if (index == 2) {
             var arg = new DataArgument();
-            arg.keyType = Keys.KeyType.X25519;
+            arg.keyType = KeyType.X25519;
             arg.keyTypeString = "X25519";
             arg.seed = "9b29d42b38ddd52ed39c0ff70b39572a6eb9b3cac201918dc6d6a84b4c88d2a5";
             arg.response = "3EK9AYXoUV4Unn5AjvYY39hyK91n7gg4ExC8rKKSUQXJ";
@@ -86,7 +86,7 @@ class OkapiNativeTest {
     void testGenerateKeyFromSeed(int index) throws DidException, InvalidProtocolBufferException {
         var args = getArguments(index);
         assert args != null;
-        var request = Keys.GenerateKeyRequest.newBuilder()
+        var request = GenerateKeyRequest.newBuilder()
                 .setKeyType(args.keyType)
                 .setSeed(ByteString.copyFrom(Hex.hexStringToByteArray(args.seed)))
                 .build();
@@ -96,7 +96,7 @@ class OkapiNativeTest {
         Assertions.assertEquals(args.response, Base58.encode(pk));
     }
 
-    byte[] assertValidKeyGenerated(Keys.GenerateKeyResponse response, String crv) {
+    byte[] assertValidKeyGenerated(GenerateKeyResponse response, String crv) {
         if (crv == null) crv ="Ed25519";
 
         Assertions.assertNotNull(response);

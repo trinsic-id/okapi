@@ -12,7 +12,7 @@ plugins {
 def jarDomainId = "id"
 def jarGroupId = "trinsic"
 def jarArtifactId = "okapi"
-def jarVersion = "0.1.7"
+def jarVersion = "0.1.8"
 
 publishing {
     repositories {
@@ -33,6 +33,11 @@ publishing {
             from(components.java)
         }
     }
+}
+
+compileJava {
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
 }
 
 group = jarDomainId + "." + jarGroupId + '.' + jarArtifactId

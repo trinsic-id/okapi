@@ -38,7 +38,7 @@ function Build-Package {
     } catch {
     } finally {
         if (-not [string]::IsNullOrWhitespace($replaceLineVersion)) {
-            Set-Version -configFile "./setup.cfg" -findLine "version" -replaceLine "version = '${replaceLineVersion}'"
+            Set-Version -configFile "./setup.cfg" -findLine "version" -replaceLine "version = ${replaceLineVersion}"
         }
         python -m build --sdist --wheel --outdir dist/ .
     }

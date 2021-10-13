@@ -1,6 +1,7 @@
 import com.sun.jna.Structure;
+import com.sun.jna.Structure.FieldOrder;
 
-@Structure.FieldOrder({"code", "message"})
+@FieldOrder({"code", "message"})
 public class ExternError extends Structure {
     public int code;
     public String message;

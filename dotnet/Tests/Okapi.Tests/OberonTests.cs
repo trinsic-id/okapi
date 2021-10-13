@@ -51,14 +51,14 @@ namespace Okapi.Tests
             // to transfer the token securely
             var issuer_2fa = ByteString.CopyFromUtf8("issuer code");
 
-            CreateOberonTokenRequest tokenRequst = new()
+            CreateOberonTokenRequest tokenRequest = new()
             {
                 Data = data,
                 Sk = key.Sk
             };
-            tokenRequst.Blinding.Add(issuer_2fa);
+            tokenRequest.Blinding.Add(issuer_2fa);
 
-            var blindedToken = Oberon.CreateToken(tokenRequst);
+            var blindedToken = Oberon.CreateToken(tokenRequest);
 
             // Holder unblinds the token
             UnBlindOberonTokenRequest unblindRequest = new() { Token = blindedToken.Token };
