@@ -97,7 +97,7 @@ jobs:
       - name: Upload Linux-aarch64 artifact
         uses: actions/upload-artifact@v2
         with:
-          name: linux-armv7
+          name: linux-aarch64
           path: ./libs/linux-arm/linux-aarch64/*
 
   build_macos:
