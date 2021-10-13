@@ -18,7 +18,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: [ 3.8, 3.9 ]  # '3.10' doesn't exist yet.
+        python-version: [ 3.6, 3.7, 3.8, 3.9, '3.10' ]
     steps:
       - uses: actions/checkout@v2
       - name: Download workflow artifact
@@ -40,6 +40,5 @@ jobs:
         if: ( ${{ matrix.os }} == 'ubuntu-latest' && ${{ matrix.python-version }} = '3.9' )
         with:
           files: python/pytest_junit.xml
-          comment_mode: "create new"
           hide_comments: "off"
           check_name: "Python Unit Test Results"
