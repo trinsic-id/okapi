@@ -47,7 +47,7 @@ try {
         }
         Linux-ARM {
             # TODO - aarch64-unknown-linux-gnu ???
-            # TODO - sudo apt-get install gcc-arm-linux-gnueabihf
+            sudo apt-get install gcc-arm-linux-gnueabihf
             rustup target add armv7-unknown-linux-gnueabihf
             cargo build --release --target armv7-unknown-linux-gnueabihf
 
