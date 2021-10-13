@@ -76,6 +76,30 @@ jobs:
           name: C_header
           path: ./include/okapi.h
 
+  build_linux_arm:
+    name: Linux-ARM
+    if: "! contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+        with:
+          submodules: "true"
+
+      - name: Run build script
+        run: ./devops/BuildLibraries.ps1 -Platform Linux-ARM -OutLocation ./libs/linux-arm
+        shell: pwsh
+      - name: Upload Linux-ARMv7 artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: linux-armv7
+          path: ./libs/linux-arm/linux-armv7/*
+      - name: Upload Linux-aarch64 artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: linux-aarch64
+          path: ./libs/linux-arm/linux-aarch64/*
+
   build_macos:
     name: MacOS
     if: "! contains(github.event.head_commit.message, '[skip ci]')"

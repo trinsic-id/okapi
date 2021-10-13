@@ -3,8 +3,8 @@ import com.google.protobuf.Struct;
 import com.google.protobuf.Value;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import trinsic.okapi.Keys;
-import trinsic.okapi.Proofs;
+import trinsic.okapi.keys.*;
+import trinsic.okapi.proofs.*;
 
 import java.time.Instant;
 import java.util.HashMap;
@@ -25,13 +25,13 @@ public class LdProofTest {
         var capability = Struct.newBuilder().putAllFields(capabilityDict).build();
         System.out.println(capability);
 
-        var request = Keys.GenerateKeyRequest.newBuilder()
-                .setKeyType(Keys.KeyType.Ed25519).build();
+        var request = GenerateKeyRequest.newBuilder()
+                .setKeyType(KeyType.Ed25519).build();
         var response = DidKey.generate(request);
         var signingKey = response.getKeyList().stream().takeWhile(jsonWebKey -> jsonWebKey.getCrv().equals("Ed25519")).findFirst().get();
 
-        var proofRequest = Proofs.CreateProofRequest.newBuilder()
-                .setDocument(capability).setKey(signingKey).setSuite(Proofs.LdSuite.JcsEd25519Signature2020)
+        var proofRequest = CreateProofRequest.newBuilder()
+                .setDocument(capability).setKey(signingKey).setSuite(LdSuite.JcsEd25519Signature2020)
                 .build();
         var signedCapability = LdProofs.createProof(proofRequest);
 

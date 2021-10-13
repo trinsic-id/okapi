@@ -6,10 +6,11 @@ function Setup()
 function Get-ProtoFiles()
 {
     return @(
+    "../proto/examples.proto",
     "../proto/keys.proto",
     "../proto/proofs.proto",
+    "../proto/security.proto",
     "../proto/transport.proto",
-    "../proto/examples.proto",
     "../proto/pbmse/pbmse.proto")
 }
 
@@ -20,7 +21,7 @@ function Get-ProtoPath()
 
 function Update-Golang()
 {
-    $GoPath = "../go/proto"
+    $GoPath = "../go/okapi_proto"
     protoc $( Get-ProtoPath ) `
          --go_out="$GoPath" `
          --go-grpc_out="$GoPath" `
@@ -65,8 +66,8 @@ function Update-Ruby()
 function Update-Swift()
 {
     protoc $( Get-ProtoPath ) `
-        '--swift_out="../swift/Okapi/Sources/OkapiSwift/proto' `
-        '--swift_opt=Visibility=Public' `
+        --swift_out="../swift/Okapi/Sources/OkapiSwift/proto" `
+        --swift_opt="Visibility=Public" `
         $( Get-ProtoFiles )
 }
 
