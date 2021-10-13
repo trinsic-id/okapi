@@ -4,7 +4,8 @@ package okapi.transport;
 
 option csharp_namespace = "Okapi.Transport";
 option go_package = "github.com/trinsic-id/okapi";
-option java_package = "trinsic.okapi";
+option java_package = "trinsic.okapi.transport";
+option java_multiple_files = true;
 
 import "keys.proto";
 import "pbmse/pbmse.proto";
