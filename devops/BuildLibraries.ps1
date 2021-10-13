@@ -46,13 +46,17 @@ try {
             break
         }
         Linux-ARM {
-            # TODO - aarch64-unknown-linux-gnu ???
-            sudo apt-get install gcc-arm-linux-gnueabihf
-            rustup target add armv7-unknown-linux-gnueabihf
+            sudo apt-get install gcc-arm-linux-gnueabihf gcc-aarch64-linux-gnu
+            rustup target add armv7-unknown-linux-gnueabihf aarch64-unknown-linux-gnu
             cargo build --release --target armv7-unknown-linux-gnueabihf
+            cargo build --release --target aarch64-unknown-linux-gnu
 
-            Copy-Item -Path .\target\armv7-unknown-linux-gnueabihf\release\libokapi.so -Destination $TargetOutput
-            Copy-Item -Path .\target\armv7-unknown-linux-gnueabihf\release\libokapi.a -Destination $TargetOutput
+            mkdir -p $TargetOutput/linux-armv7/
+            mkdir -p $TargetOutput/linux-aarch64/
+            Copy-Item -Path .\target\armv7-unknown-linux-gnueabihf\release\libokapi.so -Destination "$TargetOutput/linux-armv7"
+            Copy-Item -Path .\target\armv7-unknown-linux-gnueabihf\release\libokapi.a -Destination "$TargetOutput/linux-armv7"
+            Copy-Item -Path .\target\aarch64-unknown-linux-gnu\release\libokapi.so -Destination "$TargetOutput/linux-aarch64"
+            Copy-Item -Path .\target\aarch64-unknown-linux-gnu\release\libokapi.a -Destination "$TargetOutput/linux-aarch64"
             break
         }
         MacOS {
