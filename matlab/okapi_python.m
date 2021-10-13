@@ -6,4 +6,4 @@ request2.seed = py.bytes(uint8([1,2,3]));
 request2.key_type = py.okapi.proto.okapi.keys.KeyType(0) % Ed25519
 request2.key_type
 response2 = py.okapi.keys.DIDKey.generate(request2)
-response2.did_document
+response2.did_document.to_dict()
