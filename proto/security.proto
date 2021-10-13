@@ -6,7 +6,8 @@ package okapi.security;
 
 option csharp_namespace = "Okapi.Security";
 option go_package = "github.com/trinsic-id/okapi";
-option java_package = "trinsic.okapi";
+option java_package = "trinsic.okapi.security";
+option java_multiple_files = true;
 
 // Create an Oberon Compatible Secret Key
 message CreateOberonKeyRequest {

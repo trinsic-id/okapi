@@ -43,7 +43,11 @@ public class OkapiNative {
     private static IOkapiC nativeLibrary = null;
     public synchronized static IOkapiC getNativeLibrary() {
         if (nativeLibrary == null)
-            nativeLibrary = Native.load(getLibraryPath(), IOkapiC.class);
+            try {
+                nativeLibrary = Native.load(getLibraryPath(), IOkapiC.class);
+            } catch (NoSuchMethodError err) {
+                nativeLibrary = Native.loadLibrary(getLibraryPath(), IOkapiC.class);
+            }
 
         return nativeLibrary;
     }
@@ -102,7 +106,7 @@ public class OkapiNative {
     }
 
     static OkapiByteBuffer.ByValue messageToBuffer(GeneratedMessageV3 requestMessage) {
-        var requestBuffer = new OkapiByteBuffer.ByValue();
+        OkapiByteBuffer.ByValue requestBuffer = new OkapiByteBuffer.ByValue();
         requestBuffer.setData(requestMessage.toByteArray());
         return requestBuffer;
     }
