@@ -1,6 +1,6 @@
 param
 (
-    [ValidateSet('Windows', 'Windows-GNU', 'MacOS', 'Linux', 'iOS', 'Android')]
+    [ValidateSet('Windows', 'Windows-GNU', 'MacOS', 'Linux', 'Linux-ARM', 'iOS', 'Android')]
     $Platform,
     $OutLocation,
     $AndroidNdkHome
@@ -43,6 +43,16 @@ try {
 
             Copy-Item -Path .\target\x86_64-unknown-linux-gnu\release\libokapi.so -Destination $TargetOutput
             Copy-Item -Path .\target\x86_64-unknown-linux-gnu\release\libokapi.a -Destination $TargetOutput
+            break
+        }
+        Linux-ARM {
+            # TODO - aarch64-unknown-linux-gnu ???
+            # TODO - sudo apt-get install gcc-arm-linux-gnueabihf
+            rustup target add armv7-unknown-linux-gnueabihf
+            cargo build --release --target armv7-unknown-linux-gnueabihf
+
+            Copy-Item -Path .\target\armv7-unknown-linux-gnueabihf\release\libokapi.so -Destination $TargetOutput
+            Copy-Item -Path .\target\armv7-unknown-linux-gnueabihf\release\libokapi.a -Destination $TargetOutput
             break
         }
         MacOS {
