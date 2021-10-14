@@ -1,6 +1,6 @@
 param
 (
-    [ValidateSet('Windows', 'Windows-GNU', 'MacOS', 'Linux', 'Linux-ARM', 'iOS', 'Android')]
+    [ValidateSet('Windows', 'Windows-GNU', 'MacOS', 'Linux', 'Linux-ARM', 'iOS', 'Android-x86', 'Android-ARM')]
     $Platform,
     $OutLocation,
     $AndroidNdkHome
@@ -91,31 +91,16 @@ try {
             Copy-Item -Path "./target/aarch64-apple-ios/release/libokapi.a" -Destination "$TargetOutput/libokapi.a"
             break
         }
-        Android {
-            if ($null -eq $AndroidNdkHome) { throw "Parameter -AndroidNdkHome must be specified." }
-
-            $AndroidNdkHome = Resolve-Path $AndroidNdkHome
-
-            mkdir -p ~/.NDK
-
-            & (Resolve-Path "$AndroidNdkHome/build/tools/make_standalone_toolchain.py") --api 26 --arch arm64 --install-dir ~/.NDK/arm64;
-            & (Resolve-Path "$AndroidNdkHome/build/tools/make_standalone_toolchain.py") --api 26 --arch arm --install-dir ~/.NDK/arm;
-            & (Resolve-Path "$AndroidNdkHome/build/tools/make_standalone_toolchain.py") --api 26 --arch x86 --install-dir ~/.NDK/x86;
-
-            Get-Content "../devops/android-cargo-config" | Out-File "~/.cargo/config"
-
-            rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-android
-
-            cargo build --target aarch64-linux-android --release
-            cargo build --target armv7-linux-androideabi --release
-            cargo build --target i686-linux-android --release
-
-            mkdir -p $TargetOutput/arm64-v8a/
-            mkdir -p $TargetOutput/armeabi-v7a/
-            mkdir -p $TargetOutput/x86/
-            Copy-Item -Path ./target/aarch64-linux-android/release/libokapi.so -Destination $TargetOutput/arm64-v8a/
-            Copy-Item -Path ./target/armv7-linux-androideabi/release/libokapi.so -Destination $TargetOutput/armeabi-v7a/
-            Copy-Item -Path ./target/i686-linux-android/release/libokapi.so -Destination $TargetOutput/x86/
+        Android-ARM {
+            cargo install cargo-ndk
+            rustup target add aarch64-linux-android armv7-linux-androideabi
+            cargo ndk --target armv7-linux-androideabi --target aarch64-linux-android -o "$TargetOutput" build --release
+            break
+        }
+        Android-x86 {
+            cargo install cargo-ndk
+            rustup target add i686-linux-android x86_64-linux-android
+            cargo ndk --target x86_64-linux-android --target i686-linux-android -o "$TargetOutput" build --release
             break
         }
     }
