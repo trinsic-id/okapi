@@ -30,7 +30,7 @@ jobs:
         run: ./Test.ps1
         working-directory: ./dotnet
         shell: pwsh
-      - name: Publish Test Report
+      - name: Publish Test Report - .NET
         uses: mikepenz/action-junit-report@v2
         if: always() # always run even if the previous step fails
         with:

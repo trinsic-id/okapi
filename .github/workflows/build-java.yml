@@ -36,11 +36,11 @@ jobs:
         run: |
           ./devops/BuildJava.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output_${{ matrix.os }}.xml" -ArtifactName "${{ matrix.artifact_name }}"
         shell: pwsh
-      - name: Publish Test Report
+      - name: Publish Test Report - Java
         uses: mikepenz/action-junit-report@v2
         if: always() # always run even if the previous step fails
         with:
-          report_paths: ./java/**/test_output*.xml
+          report_paths: '**/java/**/test_output*.xml'
           fail_on_failure: true
       - uses: actions/upload-artifact@v2
         if: (${{ matrix.os }} == 'ubuntu-latest')
