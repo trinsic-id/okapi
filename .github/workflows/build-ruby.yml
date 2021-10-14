@@ -33,10 +33,10 @@ jobs:
       - name: Build and run tests
         run: ./devops/BuildRuby.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output_${{ matrix.os }}.xml" -ArtifactName "${{ matrix.artifact_name }}"
         shell: pwsh
-      - name: Publish Test Report - Ruby
-        uses: mikepenz/action-junit-report@v2
-        if: always() # always run even if the previous step fails
-        with:
-          report_paths: '**/ruby/coverage/*.xml'
-          fail_on_failure: true
-          check_name: Ruby Test Report
+      # - name: Publish Test Report - Ruby
+      #   uses: mikepenz/action-junit-report@v2
+      #   if: always() # always run even if the previous step fails
+      #   with:
+      #     report_paths: '**/ruby/coverage/*.xml'
+      #     fail_on_failure: true
+      #     check_name: Ruby Test Report

@@ -12,7 +12,7 @@ on:
       - main
 
 jobs:
-  test_python:
+  test-python:
     name: Test Python code
     runs-on: ${{ matrix.os }}
     strategy:
@@ -35,10 +35,23 @@ jobs:
       - name: Build, Test, Pack
         run: ./devops/BuildPython.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output_${{ matrix.os }}.xml" -ArtifactName "${{ matrix.artifact_name }}"
         shell: pwsh
-      - name: Publish Test Report - Python
-        uses: mikepenz/action-junit-report@v2
-        if: always() # always run even if the previous step fails
-        with:
-          report_paths: '**/python/test_output_*.xml'
-          fail_on_failure: true
-          check_name: Python Test Report
+  #     - name: Upload Unit Test Results
+  #       if: always()
+  #       uses: actions/upload-artifact@v2
+  #       with:
+  #         name: Unit Test Results (Python ${{ matrix.python-version }})
+  #         path: '**/python/test_output_*.xml'
+
+  # publish-test-results-python:
+  #   name: Publish Python Test Results
+  #   needs: test-python
+  #   runs-on: ubuntu-latest
+  #   if: always()
+
+  #   steps:
+  #     - name: Publish Test Report - Python ${{ matrix.python-version }}
+  #       uses: mikepenz/action-junit-report@v2
+  #       with:
+  #         report_paths: '**/python/test_output_*.xml'
+  #         fail_on_failure: true
+  #         check_name: Python Test Report
