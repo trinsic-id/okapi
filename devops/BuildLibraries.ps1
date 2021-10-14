@@ -94,16 +94,13 @@ try {
         Android-ARM {
             cargo install cargo-ndk
             rustup target add aarch64-linux-android armv7-linux-androideabi
-            cargo ndk --target armv7-linux-androideabi --target aarch64-linux-android -o ./jniLibs build --release
-            Copy-Item -Path ./jniLibs/* -Destination $TargetOutput
+            cargo ndk --target armv7-linux-androideabi --target aarch64-linux-android -o "$TargetOutput" build --release
             break
         }
         Android-x86 {
             cargo install cargo-ndk
             rustup target add i686-linux-android x86_64-linux-android
-            cargo ndk --target x86_64-linux-android --target i686-linux-android -o ./jniLibs build --release
-
-            Copy-Item -Path ./jniLibs/* -Destination $TargetOutput
+            cargo ndk --target x86_64-linux-android --target i686-linux-android -o "$TargetOutput" build --release
             break
         }
     }
