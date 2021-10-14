@@ -93,7 +93,7 @@ try {
         }
         Android-ARM {
             $AndroidNdkHome = $Env:ANDROID_NDK_HOME
-            ln -s $AndroidNdkHome "~/.NDK"
+            ln -s $AndroidNdkHome "../.NDK"
 
             rustup target add aarch64-linux-android armv7-linux-androideabi
 
@@ -108,7 +108,7 @@ try {
         }
         Android-x86 {
             $AndroidNdkHome = $Env:ANDROID_NDK_HOME
-            ln -s $AndroidNdkHome "~/.NDK"
+            ln -s $AndroidNdkHome "../.NDK"
 
             rustup target add i686-linux-android x86_64-linux-android
 
