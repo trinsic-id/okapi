@@ -99,7 +99,7 @@ try {
             & (Resolve-Path "$AndroidNdkHome/build/tools/make_standalone_toolchain.py") --api 26 --arch arm64 --install-dir ~/.NDK/arm64;
             & (Resolve-Path "$AndroidNdkHome/build/tools/make_standalone_toolchain.py") --api 26 --arch arm --install-dir ~/.NDK/arm;
 
-            Get-Content "../devops/android-cargo-config" | Out-File "~/.cargo/config"
+            # Get-Content "../devops/android-cargo-config" | Out-File "~/.cargo/config"
 
             rustup target add aarch64-linux-android armv7-linux-androideabi
 
@@ -115,12 +115,7 @@ try {
         Android-x86 {
             $AndroidNdkHome = $Env:ANDROID_NDK_HOME
 
-            mkdir -p ~/.NDK
-
-            & (Resolve-Path "$AndroidNdkHome/build/tools/make_standalone_toolchain.py") --api 26 --arch x86 --install-dir ~/.NDK/x86;
-            & (Resolve-Path "$AndroidNdkHome/build/tools/make_standalone_toolchain.py") --api 26 --arch x86_64 --install-dir ~/.NDK/x86_64;
-
-            Get-Content "../devops/android-cargo-config" | Out-File "~/.cargo/config"
+            # Get-Content "../devops/android-cargo-config" | Out-File "~/.cargo/config"
 
             rustup target add i686-linux-android x86_64-linux-android
 
