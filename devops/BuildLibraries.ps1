@@ -92,33 +92,18 @@ try {
             break
         }
         Android-ARM {
-            $AndroidNdkHome = $Env:ANDROID_NDK_HOME
-            ln -s $AndroidNdkHome "../.NDK"
-
+            cargo install cargo-ndk
             rustup target add aarch64-linux-android armv7-linux-androideabi
-
-            cargo build --target aarch64-linux-android --release
-            cargo build --target armv7-linux-androideabi --release
-
-            mkdir -p $TargetOutput/arm64-v8a/
-            mkdir -p $TargetOutput/armeabi-v7a/
-            Copy-Item -Path ./target/aarch64-linux-android/release/libokapi.so -Destination $TargetOutput/arm64-v8a/
-            Copy-Item -Path ./target/armv7-linux-androideabi/release/libokapi.so -Destination $TargetOutput/armeabi-v7a/
+            cargo ndk --target armv7-linux-androideabi --target aarch64-linux-android -o ./jniLibs build --release
+            Copy-Item -Path ./jniLibs/* -Destination $TargetOutput
             break
         }
         Android-x86 {
-            $AndroidNdkHome = $Env:ANDROID_NDK_HOME
-            ln -s $AndroidNdkHome "../.NDK"
-
+            cargo install cargo-ndk
             rustup target add i686-linux-android x86_64-linux-android
+            cargo ndk --target x86_64-linux-android --target i686-linux-android -o ./jniLibs build --release
 
-            cargo build --target x86_64-linux-android --release
-            cargo build --target i686-linux-android --release
-
-            mkdir -p $TargetOutput/x86/
-            mkdir -p $TargetOutput/x86_64/
-            Copy-Item -Path ./target/i686-linux-android/release/libokapi.so -Destination $TargetOutput/x86/
-            Copy-Item -Path ./target/x86_64-linux-android/release/libokapi.so -Destination $TargetOutput/x86_64/
+            Copy-Item -Path ./jniLibs/* -Destination $TargetOutput
             break
         }
     }
