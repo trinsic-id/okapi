@@ -39,3 +39,4 @@ jobs:
         with:
           report_paths: '**/ruby/coverage/*.xml'
           fail_on_failure: true
+          check_name: Ruby Test Report

@@ -36,4 +36,4 @@ jobs:
         with:
           report_paths: '**/dotnet/Tests/Okapi.Tests/TestResults/coverage.*.xml'
           fail_on_failure: true
-          
+          check_name: .NET Test Report

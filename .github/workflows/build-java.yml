@@ -42,6 +42,7 @@ jobs:
         with:
           report_paths: '**/java/**/test_output*.xml'
           fail_on_failure: true
+          check_name: Java Test Report
       - uses: actions/upload-artifact@v2
         if: (${{ matrix.os }} == 'ubuntu-latest')
         with:

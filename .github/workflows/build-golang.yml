@@ -54,3 +54,4 @@ jobs:
         with:
           report_paths: '**/go/okapi/test_output_*.xml'
           fail_on_failure: true
+          check_name: Golang Test Report
