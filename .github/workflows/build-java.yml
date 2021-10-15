@@ -12,7 +12,7 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-test-java:
     runs-on: ${{ matrix.os-artifact[0] }}
     strategy:
       fail-fast: false
@@ -44,9 +44,9 @@ jobs:
           name: Java Unit Test Results (${{ matrix.os-artifact[0] }})
           path: 'java/build/test-results/test/TEST-*.xml'
 
-  publish-test-results-golang:
-    name: Publish Golang Test Results
-    needs: build-and-test-golang
+  publish-test-results-java:
+    name: Publish Java Test Results
+    needs: build-and-test-java
     runs-on: ubuntu-latest
     if: always()
 
@@ -55,8 +55,8 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           path: artifacts
-      - name: Publish Test Report - Golang
+      - name: Publish Test Report - Java
         uses: EnricoMi/publish-unit-test-result-action@v1.23
         with:
           files: 'artifacts/**/*.xml'
-          check_name: Golang Test Report
+          check_name: Java Test Report
