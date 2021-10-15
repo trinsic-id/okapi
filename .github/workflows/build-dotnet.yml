@@ -27,7 +27,6 @@ jobs:
         with:
           workflow: "build-libs.yml"
           path: ./libs
-          name: ${{ matrix.os-artifact[1] }}
       - name: Test coverage
         run: ./Test.ps1
         working-directory: ./dotnet
