@@ -36,10 +36,10 @@ $InvocationPath = (Get-Item .).FullName
 Set-Location "$PSScriptRoot/../ruby"
 New-Item -ItemType Directory -Path "./ruby/libs" -Force
 $source = "$PSScriptRoot/../libs/$ArtifactName"
-$dest = "./"
+$dest = "./libs"
 Get-ChildItem $source -Recurse | `
     Where-Object { $_.PSIsContainer -eq $False } | `
-    ForEach-Object {Copy-Item -Path $_.Fullname -Destination $dest -Force} # Do the things
+    ForEach-Object {Copy-Item -Path $_.Fullname -Destination $dest -Force -Container:$false } # Do the things
 # Do the things
 Install-Requirements
 if (!$RequirementsOnly) {
