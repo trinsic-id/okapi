@@ -57,6 +57,5 @@ jobs:
       - name: Publish Test Report - Python
         uses: EnricoMi/publish-unit-test-result-action@v1.23
         with:
-          report_paths: 'artifacts/**/*.xml'
-          fail_on_failure: true
+          files: 'artifacts/**/*.xml'
           check_name: Python Test Report
