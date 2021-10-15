@@ -11,7 +11,7 @@ on:
       - main
 
 jobs:
-  build_ruby:
+  build-and-test-ruby:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -31,12 +31,28 @@ jobs:
           workflow: "build-libs.yml"
           path: ./libs
       - name: Build and run tests
-        run: ./devops/BuildRuby.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output_${{ matrix.os }}.xml" -ArtifactName "${{ matrix.artifact_name }}"
+        run: ./devops/BuildRuby.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output.xml" -ArtifactName "${{ matrix.artifact_name }}"
         shell: pwsh
-      # - name: Publish Test Report - Ruby
-      #   uses: mikepenz/action-junit-report@v2
-      #   if: always() # always run even if the previous step fails
-      #   with:
-      #     report_paths: '**/ruby/coverage/*.xml'
-      #     fail_on_failure: true
-      #     check_name: Ruby Test Report
+      - name: Upload Unit Test Results
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: Unit Test Results (${{ matrix.os }} Ruby ${{ matrix.ruby-version }})
+          path: 'ruby/test/reports/TEST-*.xml'
+
+  publish-test-results-ruby:
+    name: Publish Ruby Test Results
+    needs: build-and-test-ruby
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          path: artifacts
+      - name: Publish Test Report - Ruby
+        uses: EnricoMi/publish-unit-test-result-action@v1.23
+        with:
+          files: 'artifacts/**/*.xml'
+          check_name: Ruby Test Report

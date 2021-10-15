@@ -12,7 +12,7 @@ on:
       - main
 
 jobs:
-  test-golang:
+  build-and-test-golang:
     name: Test Go code
     runs-on: ${{ matrix.os }}
     strategy:
@@ -57,7 +57,7 @@ jobs:
 
   publish-test-results-golang:
     name: Publish Golang Test Results
-    needs: test-golang
+    needs: build-and-test-golang
     runs-on: ubuntu-latest
     if: always()
 

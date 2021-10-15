@@ -12,7 +12,7 @@ on:
       - main
 
 jobs:
-  test-dotnet:
+  build-and-test-dotnet:
     name: .NET SDK Testing
     runs-on: ${{ matrix.os }}
     strategy:
@@ -39,7 +39,7 @@ jobs:
 
   publish-test-results-dotnet:
     name: Publish .NET Test Results
-    needs: test-dotnet
+    needs: build-and-test-dotnet
     runs-on: ubuntu-latest
     if: always()
 

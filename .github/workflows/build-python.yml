@@ -12,7 +12,7 @@ on:
       - main
 
 jobs:
-  test-python:
+  build-and-test-python:
     name: Test Python code
     runs-on: ${{ matrix.os }}
     strategy:
@@ -45,7 +45,7 @@ jobs:
 
   publish-test-results-python:
     name: Publish Python Test Results
-    needs: test-python
+    needs: build-and-test-python
     runs-on: ubuntu-latest
     if: always()
 

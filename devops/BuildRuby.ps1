@@ -26,6 +26,7 @@ function Build-Package {
         if (-not [string]::IsNullOrWhitespace($replaceLineVersion)) {
             Set-Version -configFile "./lib/version.rb" -findLine "  VERSION =" -replaceLine "  VERSION = '${replaceLineVersion}'"
         }
+        rake test
         gem build *.gemspec
     }
 }
