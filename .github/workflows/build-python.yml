@@ -54,7 +54,7 @@ jobs:
           uses: actions/download-artifact@v2
           with:
             path: artifacts
-      - name: Publish Test Report - Python ${{ matrix.python-version }}
+      - name: Publish Test Report - Python
         uses: EnricoMi/publish-unit-test-result-action@v1.23
         with:
           report_paths: 'artifacts/**/*.xml'

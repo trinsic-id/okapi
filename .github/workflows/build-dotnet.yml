@@ -12,8 +12,8 @@ on:
       - main
 
 jobs:
-  code_cover_dotnet_sdk:
-    name: Dotnet SDK Testing
+  test-dotnet:
+    name: .NET SDK Testing
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -30,10 +30,27 @@ jobs:
         run: ./Test.ps1
         working-directory: ./dotnet
         shell: pwsh
-      # - name: Publish Test Report - .NET
-      #   uses: mikepenz/action-junit-report@v2
-      #   if: always() # always run even if the previous step fails
-      #   with:
-      #     report_paths: '**/dotnet/Tests/Okapi.Tests/TestResults/coverage.*.xml'
-      #     fail_on_failure: true
-      #     check_name: .NET Test Report
+      - name: Upload Unit Test Results
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: Unit Test Results (${{ matrix.os }})
+          path: 'dotnet/Tests/Okapi.Tests/TestResults/coverage.*.xml'
+
+  publish-test-results-dotnet:
+    name: Publish .NET Test Results
+    needs: test-dotnet
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: Download Artifacts
+          uses: actions/download-artifact@v2
+          with:
+            path: artifacts
+      - name: Publish Test Report - .NET
+        uses: EnricoMi/publish-unit-test-result-action@v1.23
+        with:
+          report_paths: 'artifacts/**/*.xml'
+          fail_on_failure: true
+          check_name: .NET Test Report
