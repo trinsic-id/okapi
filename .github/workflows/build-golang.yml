@@ -25,7 +25,8 @@ jobs:
         uses: dawidd6/action-download-artifact@v2.14.0
         with:
           workflow: "build-libs.yml"
-          path: ./libs
+          path: ./libs/${{ matrix.os-artifact[1] }}
+          name: ${{ matrix.os-artifact[1] }}
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
