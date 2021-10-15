@@ -2,6 +2,8 @@ param
 (
     [AllowNull()][string]$GitTag = '',
     [AllowNull()][string]$PackageVersion = '',
+    [AllowNull()][string]$TestOutput = 'test_output.xml',
+    [AllowNull()][string]$ArtifactName = 'windows-gnu',
     [AllowNull()][Boolean]$RequirementsOnly = $false
 )
 

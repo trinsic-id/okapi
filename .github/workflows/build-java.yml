@@ -12,11 +12,12 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: ${{ matrix.os }}
+  build-and-test-java:
+    runs-on: ${{ matrix.os-artifact[0] }}
     strategy:
+      fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows], [macos-latest, macos] ]
 
     steps:
       - uses: actions/checkout@v2
@@ -34,10 +35,28 @@ jobs:
           path: ./libs
       - name: Build with Gradle
         run: |
-          ./devops/BuildJava.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output_${{ matrix.os }}.xml" -ArtifactName "${{ matrix.artifact_name }}"
+          ./devops/BuildJava.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output.xml" -ArtifactName "${{ matrix.os-artifact[1] }}"
         shell: pwsh
-      - uses: actions/upload-artifact@v2
-        if: (${{ matrix.os }} == 'ubuntu-latest')
+      - name: Upload Unit Test Results - Java
+        if: always()
+        uses: actions/upload-artifact@v2
         with:
-          name: Package
-          path: java/build/libs
+          name: Java Unit Test Results (${{ matrix.os-artifact[0] }})
+          path: 'java/build/test-results/test/TEST-*.xml'
+
+  publish-test-results-java:
+    name: Publish Java Test Results
+    needs: build-and-test-java
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          path: artifacts
+      - name: Publish Test Report - Java
+        uses: EnricoMi/publish-unit-test-result-action@v1.23
+        with:
+          files: 'artifacts/**/*.xml'
+          check_name: Java Test Report

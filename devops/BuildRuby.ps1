@@ -2,6 +2,8 @@ param
 (
     [AllowNull()][string]$GitTag = '',
     [AllowNull()][string]$PackageVersion = '',
+    [AllowNull()][string]$TestOutput = 'test_output.xml',
+    [AllowNull()][string]$ArtifactName = 'windows-gnu',
     [AllowNull()][Boolean]$RequirementsOnly = $false
 )
 
@@ -24,6 +26,7 @@ function Build-Package {
         if (-not [string]::IsNullOrWhitespace($replaceLineVersion)) {
             Set-Version -configFile "./lib/version.rb" -findLine "  VERSION =" -replaceLine "  VERSION = '${replaceLineVersion}'"
         }
+        rake test
         gem build *.gemspec
     }
 }
@@ -32,7 +35,11 @@ function Build-Package {
 $InvocationPath = (Get-Item .).FullName
 Set-Location "$PSScriptRoot/../ruby"
 New-Item -ItemType Directory -Path "./ruby/libs" -Force
-Copy-Item "../libs/*" -Destination "./ruby/libs" -Recurse -Force -Container:$false
+$source = "$PSScriptRoot/../libs/$ArtifactName"
+$dest = "./libs"
+Get-ChildItem $source -Recurse | `
+    Where-Object { $_.PSIsContainer -eq $False } | `
+    ForEach-Object {Copy-Item -Path $_.Fullname -Destination $dest -Force -Container:$false } # Do the things
 # Do the things
 Install-Requirements
 if (!$RequirementsOnly) {

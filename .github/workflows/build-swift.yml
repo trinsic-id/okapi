@@ -25,10 +25,3 @@ jobs:
       - name: Build, Test, Pack
         run: ./devops/BuildSwift.ps1 -GitTag ${{ github.ref }}
         shell: pwsh
-      # - name: Publish Unit Test Results
-      #   uses: EnricoMi/publish-unit-test-result-action/composite@v1.18
-      #   with:
-      #     files: swift/test_output.xml
-      #     comment_mode: "create new"
-      #     hide_comments: "off"
-      #     check_name: "Swift Unit Test Results"
