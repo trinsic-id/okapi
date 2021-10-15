@@ -2,6 +2,8 @@ param
 (
     [AllowNull()][string]$GitTag = '',
     [AllowNull()][string]$PackageVersion = '',
+    [AllowNull()][string]$TestOutput = 'test_output.xml',
+    [AllowNull()][string]$ArtifactName = 'windows-gnu',
     [AllowNull()][Boolean]$RequirementsOnly = $false
 )
 
@@ -27,7 +29,7 @@ function Install-Requirements {
     python ./okapi/generate_proto_files.py
 }
 function Run-Tests {
-    python -m pytest --cache-clear ./tests --junitxml=pytest_junit.xml --cov=.
+    python -m pytest --cache-clear ./tests --junitxml=$TestOutput --cov=.
 }
 function Build-Package {
     $replaceLineVersion = $PackageVersion
@@ -45,7 +47,11 @@ function Build-Package {
 # Setup
 $InvocationPath = (Get-Item .).FullName
 Set-Location "$PSScriptRoot/../python"
-Copy-Item "../libs/*" -Destination "./okapi/libs" -Recurse -Force -Container:$false
+$source = "$PSScriptRoot/../libs/$ArtifactName"
+$dest = "./okapi/libs"
+Get-ChildItem $source -Recurse | `
+    Where-Object { $_.PSIsContainer -eq $False } | `
+    ForEach-Object {Copy-Item -Path $_.Fullname -Destination $dest -Force -Container:$false } # Do the things
 # Do the things
 Activate-Venv
 Install-Requirements

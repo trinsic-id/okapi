@@ -12,13 +12,14 @@ on:
       - main
 
 jobs:
-  test_python:
+  build-and-test-python:
     name: Test Python code
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os-artifact[0] }}
     strategy:
+      fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: [ 3.6, 3.7, 3.8, 3.9, '3.10' ]
+        os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows], [macos-latest, macos] ]
+        python-version: [ 3.6, 3.7, 3.8, 3.9 ]  # '3.10' has issues for now
     steps:
       - uses: actions/checkout@v2
       - name: Download workflow artifact
@@ -33,12 +34,28 @@ jobs:
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
       - name: Build, Test, Pack
-        run: ./devops/BuildPython.ps1 -GitTag ${{ github.ref }}
+        run: ./devops/BuildPython.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output.xml" -ArtifactName ${{ matrix.os-artifact[1] }}
         shell: pwsh
-      - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action/composite@v1.18
-        if: ( ${{ matrix.os }} == 'ubuntu-latest' && ${{ matrix.python-version }} = '3.9' )
+      - name: Upload Unit Test Results - Python
+        if: always()
+        uses: actions/upload-artifact@v2
         with:
-          files: python/pytest_junit.xml
-          hide_comments: "off"
-          check_name: "Python Unit Test Results"
+          name: Python ${{ matrix.python-version }} Unit Test Results (${{ matrix.os-artifact[0] }})
+          path: 'python/test_output*.xml'
+
+  publish-test-results-python:
+    name: Publish Python Test Results
+    needs: build-and-test-python
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          path: artifacts
+      - name: Publish Test Report - Python
+        uses: EnricoMi/publish-unit-test-result-action@v1.23
+        with:
+          files: 'artifacts/**/*.xml'
+          check_name: Python Test Report

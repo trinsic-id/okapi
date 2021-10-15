@@ -12,12 +12,13 @@ on:
       - main
 
 jobs:
-  code_cover_dotnet_sdk:
-    name: Dotnet SDK Testing
-    runs-on: ${{ matrix.os }}
+  build-and-test-dotnet:
+    name: .NET SDK Testing
+    runs-on: ${{ matrix.os-artifact[0] }}
     strategy:
+      fail-fast: false
       matrix:
-        os: [ ubuntu-latest, windows-latest, macos-latest ]
+        os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows], [macos-latest, macos] ]
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -30,13 +31,26 @@ jobs:
         run: ./Test.ps1
         working-directory: ./dotnet
         shell: pwsh
-      - name: Comment report
-        if: ( ${{ matrix.os }} == 'ubuntu-latest' )
-        uses: 5monkeys/cobertura-action@master
+      - name: Upload Unit Test Results - .NET
+        if: always()
+        uses: actions/upload-artifact@v2
         with:
-          path: dotnet/Tests/Okapi.Tests/TestResults/coverage.cobertura.xml
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          minimum_coverage: 75
-          show_class_names: true
-          fail_below_threshold: false
-          
+          name: .NET Unit Test Results (${{ matrix.os-artifact[0] }})
+          path: 'dotnet/Tests/Okapi.Tests/TestResults/test_output.xml'
+
+  publish-test-results-dotnet:
+    name: Publish .NET Test Results
+    needs: build-and-test-dotnet
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          path: artifacts
+      - name: Publish Test Report - .NET
+        uses: EnricoMi/publish-unit-test-result-action@v1.23
+        with:
+          files: 'artifacts/**/*.xml'
+          check_name: .NET Test Report
