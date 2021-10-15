@@ -43,11 +43,11 @@ jobs:
           LD_LIBRARY_PATH: "${{ github.workspace }}/go/okapi"
           DYLD_FALLBACK_LIBRARY_PATH: "${{ github.workspace }}/go/okapi"
           DYLD_LIBRARY_PATH: "${{ github.workspace }}/go/okapi"
-      - name: Upload Unit Test Results
+      - name: Upload Unit Test Results - Golang
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: Unit Test Results (${{ matrix.os-artifact[0] }})
+          name: Golang Unit Test Results (${{ matrix.os-artifact[0] }})
           path: 'go/okapi/test_output*.xml'
 
   publish-test-results-golang:

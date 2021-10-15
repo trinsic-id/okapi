@@ -34,11 +34,11 @@ jobs:
       - name: Build and run tests
         run: ./devops/BuildRuby.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output.xml" -ArtifactName "${{ matrix.os-artifact[1] }}"
         shell: pwsh
-      - name: Upload Unit Test Results
+      - name: Upload Unit Test Results - Ruby
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: Unit Test Results (${{ matrix.os }} Ruby ${{ matrix.ruby-version }})
+          name:  Ruby ${{ matrix.ruby-version }} Unit Test Results (${{ matrix.os }})
           path: 'ruby/test/reports/TEST-*.xml'
 
   publish-test-results-ruby:

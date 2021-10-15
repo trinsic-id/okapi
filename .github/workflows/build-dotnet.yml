@@ -31,11 +31,11 @@ jobs:
         run: ./Test.ps1
         working-directory: ./dotnet
         shell: pwsh
-      - name: Upload Unit Test Results
+      - name: Upload Unit Test Results - .NET
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: Unit Test Results (${{ matrix.os-artifact[0] }})
+          name: .NET Unit Test Results (${{ matrix.os-artifact[0] }})
           path: 'dotnet/Tests/Okapi.Tests/TestResults/test_output.xml'
 
   publish-test-results-dotnet:
