@@ -26,8 +26,7 @@ jobs:
         uses: dawidd6/action-download-artifact@v2.14.0
         with:
           workflow: "build-libs.yml"
-          path: ./libs/${{ matrix.os-artifact[1] }}
-          name: ${{ matrix.os-artifact[1] }}
+          path: ./libs
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:

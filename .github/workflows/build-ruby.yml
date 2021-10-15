@@ -31,8 +31,7 @@ jobs:
         uses: dawidd6/action-download-artifact@v2.14.0
         with:
           workflow: "build-libs.yml"
-          path: ./libs/${{ matrix.os-artifact[1] }}
-          name: ${{ matrix.os-artifact[1] }}
+          path: ./libs
       - name: Build and run tests
         run: ./devops/BuildRuby.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output.xml" -ArtifactName "${{ matrix.os-artifact[1] }}"
         shell: pwsh
