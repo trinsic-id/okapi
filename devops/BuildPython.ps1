@@ -48,7 +48,7 @@ function Build-Package {
 $InvocationPath = (Get-Item .).FullName
 Set-Location "$PSScriptRoot/../python"
 $source = "$PSScriptRoot/../libs/$ArtifactName"
-$dest = "./"
+$dest = "./okapi/libs"
 Get-ChildItem $source -Recurse | `
     Where-Object { $_.PSIsContainer -eq $False } | `
     ForEach-Object {Copy-Item -Path $_.Fullname -Destination $dest -Force} # Do the things
