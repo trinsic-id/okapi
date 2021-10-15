@@ -14,11 +14,11 @@ on:
 jobs:
   build-and-test-python:
     name: Test Python code
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os-artifact[0] }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows], [macos-latest, macos] ]
         python-version: [ 3.6, 3.7, 3.8, 3.9 ]  # '3.10' has issues for now
     steps:
       - uses: actions/checkout@v2
@@ -34,13 +34,13 @@ jobs:
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
       - name: Build, Test, Pack
-        run: ./devops/BuildPython.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output.xml"
+        run: ./devops/BuildPython.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output.xml" -ArtifactName ${{ matrix.os-artifact[1] }}
         shell: pwsh
       - name: Upload Unit Test Results
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: Unit Test Results (${{ matrix.os }} Python ${{ matrix.python-version }})
+          name: Unit Test Results (${{ matrix.os-artifact[0] }} Python ${{ matrix.python-version }})
           path: 'python/test_output*.xml'
 
   publish-test-results-python:
