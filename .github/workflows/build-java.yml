@@ -13,11 +13,11 @@ on:
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os-artifact[0] }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows], [macos-latest, macos] ]
 
     steps:
       - uses: actions/checkout@v2
@@ -35,17 +35,5 @@ jobs:
           path: ./libs
       - name: Build with Gradle
         run: |
-          ./devops/BuildJava.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output_${{ matrix.os }}.xml" -ArtifactName "${{ matrix.artifact_name }}"
+          ./devops/BuildJava.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output.xml" -ArtifactName "${{ matrix.os-artifact[1] }}"
         shell: pwsh
-      # - name: Publish Test Report - Java
-      #   uses: mikepenz/action-junit-report@v2
-      #   if: always() # always run even if the previous step fails
-      #   with:
-      #     report_paths: '**/java/**/test_output*.xml'
-      #     fail_on_failure: true
-      #     check_name: Java Test Report
-      - uses: actions/upload-artifact@v2
-        if: (${{ matrix.os }} == 'ubuntu-latest')
-        with:
-          name: Package
-          path: java/build/libs

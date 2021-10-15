@@ -26,6 +26,7 @@ jobs:
         uses: ruby/setup-ruby@v1.76.0
         with:
           ruby-version: ${{ matrix.ruby-version }}
+          name: ${{ matrix.os-artifact[1] }}
       - name: Download workflow artifact
         uses: dawidd6/action-download-artifact@v2.14.0
         with:

@@ -14,11 +14,11 @@ on:
 jobs:
   build-and-test-dotnet:
     name: .NET SDK Testing
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os-artifact[0] }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-latest, windows-latest, macos-latest ]
+        os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows], [macos-latest, macos] ]
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -27,6 +27,7 @@ jobs:
         with:
           workflow: "build-libs.yml"
           path: ./libs
+          name: ${{ matrix.os-artifact[1] }}
       - name: Test coverage
         run: ./Test.ps1
         working-directory: ./dotnet
@@ -35,7 +36,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: Unit Test Results (${{ matrix.os }})
+          name: Unit Test Results (${{ matrix.os-artifact[0] }})
           path: 'dotnet/Tests/Okapi.Tests/TestResults/test_output.xml'
 
   publish-test-results-dotnet:

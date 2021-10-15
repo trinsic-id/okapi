@@ -14,17 +14,11 @@ on:
 jobs:
   build-and-test-golang:
     name: Test Go code
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os-artifact[0] }}
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - os: ubuntu-latest
-            artifact_name: linux
-          - os: windows-latest
-            artifact_name: windows-gnu
-          - os: macos-latest
-            artifact_name: macos
+        os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows-gnu], [macos-latest, macos] ]
     steps:
       - uses: actions/checkout@v2
       - name: Download workflow artifact
@@ -43,7 +37,7 @@ jobs:
           go install github.com/jstemmer/go-junit-report@latest
       - name: Build, Test, Pack
         run: |
-          ./devops/BuildGolang.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output.xml" -ArtifactName "${{ matrix.artifact_name }}"
+          ./devops/BuildGolang.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output.xml" -ArtifactName "${{ matrix.os-artifact[1] }}"
         shell: pwsh
         env:
           LD_LIBRARY_PATH: "${{ github.workspace }}/go/okapi"
@@ -53,7 +47,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: Unit Test Results (${{ matrix.os }})
+          name: Unit Test Results (${{ matrix.os-artifact[0] }})
           path: 'go/okapi/test_output*.xml'
 
   publish-test-results-golang:
