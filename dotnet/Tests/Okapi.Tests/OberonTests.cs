@@ -1,5 +1,6 @@
 ﻿using Google.Protobuf;
 using Okapi.Security;
+using Okapi.Security.V1;
 using Xunit;
 
 namespace Okapi.Tests

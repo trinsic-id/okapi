@@ -1,3 +1,5 @@
+using Okapi.Security.V1;
+
 namespace Okapi.Security
 {
     public static class Oberon

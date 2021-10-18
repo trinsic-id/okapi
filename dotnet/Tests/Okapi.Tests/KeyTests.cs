@@ -4,6 +4,7 @@ using FluentAssertions;
 using Google.Protobuf;
 using Multiformats.Base;
 using Okapi.Keys;
+using Okapi.Keys.V1;
 using Xunit;
 
 namespace Okapi.Tests
