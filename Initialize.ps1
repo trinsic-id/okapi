@@ -1,5 +1,5 @@
 # This script initializes the repository by downloading the latest pre-built
-# libraries from the "okapi" github repo. These libraires are required to compile
+# libraries from the "okapi" github repo. These libraries are required to compile
 # some of the language specific wrappers.
 
 $Json = Invoke-WebRequest -Uri 'https://api.github.com/repos/trinsic-id/okapi/releases/latest' | ConvertFrom-Json
