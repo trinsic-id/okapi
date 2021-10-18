@@ -1,28 +1,28 @@
 syntax = "proto3";
 
-package okapi.transport;
+package okapi.transport.v1;
 
-option csharp_namespace = "Okapi.Transport";
+option csharp_namespace = "Okapi.V1.Transport";
 option go_package = "github.com/trinsic-id/okapi";
 option java_package = "trinsic.okapi.transport";
 option java_multiple_files = true;
 
-import "keys.proto";
-import "pbmse/pbmse.proto";
+import "okapi/keys/v1/keys.proto";
+import "pbmse/v1/pbmse.proto";
 
 message SignRequest {
     bytes payload = 1;
-    okapi.keys.JsonWebKey key = 2;
-    pbmse.SignedMessage append_to = 3;
+    okapi.keys.v1.JsonWebKey key = 2;
+    pbmse.v1.SignedMessage append_to = 3;
 }
 
 message SignResponse {
-    pbmse.SignedMessage message = 1;
+    pbmse.v1.SignedMessage message = 1;
 }
 
 message VerifyRequest {
-    pbmse.SignedMessage message = 1;
-    okapi.keys.JsonWebKey key = 2;
+    pbmse.v1.SignedMessage message = 1;
+    okapi.keys.v1.JsonWebKey key = 2;
 }
 
 message VerifyResponse {
@@ -30,23 +30,23 @@ message VerifyResponse {
 }
 
 message PackRequest {
-    okapi.keys.JsonWebKey sender_key = 1;
-    okapi.keys.JsonWebKey receiver_key = 2;
+    okapi.keys.v1.JsonWebKey sender_key = 1;
+    okapi.keys.v1.JsonWebKey receiver_key = 2;
     bytes associated_data = 3;
     bytes plaintext = 4;
-    pbmse.EncryptionMode mode = 5;
-    pbmse.EncryptionAlgorithm algorithm = 6;
+    pbmse.v1.EncryptionMode mode = 5;
+    pbmse.v1.EncryptionAlgorithm algorithm = 6;
 }
 
 message PackResponse {
-    pbmse.EncryptedMessage message = 1;
+    pbmse.v1.EncryptedMessage message = 1;
 }
 
 message UnpackRequest {
-    okapi.keys.JsonWebKey sender_key = 1;
-    okapi.keys.JsonWebKey receiver_key = 2;
+    okapi.keys.v1.JsonWebKey sender_key = 1;
+    okapi.keys.v1.JsonWebKey receiver_key = 2;
 
-    pbmse.EncryptedMessage message = 3;
+    pbmse.v1.EncryptedMessage message = 3;
 }
 
 message UnpackResponse {

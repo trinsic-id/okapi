@@ -2,9 +2,9 @@
 // See: https://github.com/mikelodder7/oberon
 syntax = "proto3";
 
-package okapi.security;
+package okapi.security.v1;
 
-option csharp_namespace = "Okapi.Security";
+option csharp_namespace = "Okapi.Security.V1";
 option go_package = "github.com/trinsic-id/okapi";
 option java_package = "trinsic.okapi.security";
 option java_multiple_files = true;

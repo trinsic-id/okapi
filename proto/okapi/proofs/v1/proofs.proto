@@ -1,17 +1,18 @@
 syntax = "proto3";
 
-package okapi.proofs;
+package okapi.proofs.v1;
 
-option csharp_namespace = "Okapi.Proofs";
+option csharp_namespace = "Okapi.V1.Proofs";
 option go_package = "github.com/trinsic-id/okapi";
 option java_package = "trinsic.okapi.proofs";
 option java_multiple_files = true;
 
-import "keys.proto";
+import "okapi/keys/v1/keys.proto";
 import "google/protobuf/struct.proto";
 
 enum LdSuite {
-    JcsEd25519Signature2020 = 0;
+    LD_SUITE_UNSPECIFIED = 0;
+    LD_SUITE_JCSED25519SIGNATURE2020 = 1;
 }
 
 message CreateProofRequest {
@@ -25,7 +26,7 @@ message CreateProofRequest {
     // the 'kid' in full URI format.
     // Example:
     //  did:example:alice#key-1
-    okapi.keys.JsonWebKey key = 3;
+    okapi.keys.v1.JsonWebKey key = 3;
 
     // The LD Suite to use to produce this proof
     LdSuite suite = 4;

@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package okapi.keys;
+package okapi.keys.v1;
 
-option csharp_namespace = "Okapi.Keys";
+option csharp_namespace = "Okapi.Keys.V1";
 option go_package = "github.com/trinsic-id/okapi";
 option java_package = "trinsic.okapi.keys";
 option java_multiple_files = true;
@@ -10,11 +10,12 @@ option java_multiple_files = true;
 import "google/protobuf/struct.proto";
 
 enum KeyType {
-    Ed25519 = 0;
-    X25519 = 1;
-    P256 = 2;
-    Bls12381G1G2 = 3;
-    Secp256k1 = 4;
+    KEY_TYPE_UNSPECIFIED = 0;
+    KEY_TYPE_ED25519 = 1;
+    KEY_TYPE_X25519 = 2;
+    KEY_TYPE_P256 = 3;
+    KEY_TYPE_BLS12381G1G2 = 4;
+    KEY_TYPE_SECP256K1 = 5;
 }
 
 message GenerateKeyRequest {

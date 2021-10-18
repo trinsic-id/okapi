@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package pbmse;
+package pbmse.v1;
 
 option go_package = "github.com/trinsic-id/okapi";
 option java_package = "trinsic.okapi.pbmse";
@@ -44,11 +44,13 @@ message EncryptionRecipient {
 }
 
 enum EncryptionMode {
-    direct = 0;
-    content_encryption_key = 1;
+    ENCRYPTION_MODE_UNSPECIFIED = 0;
+    ENCRYPTION_MODE_DIRECT = 1;
+    ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY = 2;
 }
 
 enum EncryptionAlgorithm {
-    xchacha20poly1305 = 0;
-    aes_gcm = 1;
+    ENCRYPTION_ALGORITHM_UNSPECIFIED = 0;
+    ENCRYPTION_ALGORITHM_XCHACHA20POLY1305 = 1;
+    ENCRYPTION_ALGORITHM_AES_GCM = 2;
 }
