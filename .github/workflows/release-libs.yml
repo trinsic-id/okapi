@@ -57,3 +57,23 @@ jobs:
           tag: ${{ github.ref }}
           overwrite: true
           body: "Okapi binaries"
+
+  publish_binaries_bundle:
+    name: Upload libs.zip artifact
+    runs-on: ubuntu-latest
+    steps:
+      - uses: dawidd6/action-download-artifact@v2.14.0
+        with:
+          workflow: "build-libs.yml"
+          path: ./libs
+          branch: main
+      - run: Compress-Archive -Path ./libs -DestinationPath ./libs.zip
+        shell: pwsh
+      - uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./libs.zip
+          asset_name: libs.zip
+          tag: ${{ github.ref }}
+          overwrite: true
+          body: "Okapi binaries bundle"
