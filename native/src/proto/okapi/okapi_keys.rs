@@ -12,7 +12,7 @@ pub struct GenerateKeyResponse {
     #[prost(message, repeated, tag="1")]
     pub key: ::prost::alloc::vec::Vec<JsonWebKey>,
     #[prost(message, optional, tag="2")]
-    pub did_document: ::core::option::Option<super::super::google::protobuf::Struct>,
+    pub did_document: ::core::option::Option<super::super::super::google::protobuf::Struct>,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -24,7 +24,7 @@ pub struct ResolveRequest {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ResolveResponse {
     #[prost(message, optional, tag="1")]
-    pub did_document: ::core::option::Option<super::super::google::protobuf::Struct>,
+    pub did_document: ::core::option::Option<super::super::super::google::protobuf::Struct>,
     #[prost(message, repeated, tag="2")]
     pub keys: ::prost::alloc::vec::Vec<JsonWebKey>,
 }
@@ -51,9 +51,10 @@ pub struct JsonWebKey {
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum KeyType {
-    Ed25519 = 0,
-    X25519 = 1,
-    P256 = 2,
-    Bls12381G1g2 = 3,
-    Secp256k1 = 4,
+    Unspecified = 0,
+    Ed25519 = 1,
+    X25519 = 2,
+    P256 = 3,
+    Bls12381g1g2 = 4,
+    Secp256k1 = 5,
 }

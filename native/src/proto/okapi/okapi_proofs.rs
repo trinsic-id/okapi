@@ -6,13 +6,13 @@ pub struct CreateProofRequest {
     /// also contain a "proof" object, with the desired
     /// values filled in.
     #[prost(message, optional, tag="1")]
-    pub document: ::core::option::Option<super::super::google::protobuf::Struct>,
+    pub document: ::core::option::Option<super::super::super::google::protobuf::Struct>,
     /// The signer of the proof. This field must include
     /// the 'kid' in full URI format.
     /// Example:
     ///  did:example:alice#key-1
     #[prost(message, optional, tag="3")]
-    pub key: ::core::option::Option<super::keys::JsonWebKey>,
+    pub key: ::core::option::Option<super::super::keys::v1::JsonWebKey>,
     /// The LD Suite to use to produce this proof
     #[prost(enumeration="LdSuite", tag="4")]
     pub suite: i32,
@@ -21,7 +21,7 @@ pub struct CreateProofRequest {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateProofResponse {
     #[prost(message, optional, tag="1")]
-    pub signed_document: ::core::option::Option<super::super::google::protobuf::Struct>,
+    pub signed_document: ::core::option::Option<super::super::super::google::protobuf::Struct>,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -35,5 +35,6 @@ pub struct VerifyProofResponse {
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum LdSuite {
-    JcsEd25519Signature2020 = 0,
+    Unspecified = 0,
+    Jcsed25519signature2020 = 1,
 }

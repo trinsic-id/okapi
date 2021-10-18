@@ -4,23 +4,23 @@ pub struct SignRequest {
     #[prost(bytes="vec", tag="1")]
     pub payload: ::prost::alloc::vec::Vec<u8>,
     #[prost(message, optional, tag="2")]
-    pub key: ::core::option::Option<super::keys::JsonWebKey>,
+    pub key: ::core::option::Option<super::super::keys::v1::JsonWebKey>,
     #[prost(message, optional, tag="3")]
-    pub append_to: ::core::option::Option<super::super::pbmse::SignedMessage>,
+    pub append_to: ::core::option::Option<super::super::super::pbmse::v1::SignedMessage>,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SignResponse {
     #[prost(message, optional, tag="1")]
-    pub message: ::core::option::Option<super::super::pbmse::SignedMessage>,
+    pub message: ::core::option::Option<super::super::super::pbmse::v1::SignedMessage>,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VerifyRequest {
     #[prost(message, optional, tag="1")]
-    pub message: ::core::option::Option<super::super::pbmse::SignedMessage>,
+    pub message: ::core::option::Option<super::super::super::pbmse::v1::SignedMessage>,
     #[prost(message, optional, tag="2")]
-    pub key: ::core::option::Option<super::keys::JsonWebKey>,
+    pub key: ::core::option::Option<super::super::keys::v1::JsonWebKey>,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -32,33 +32,33 @@ pub struct VerifyResponse {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PackRequest {
     #[prost(message, optional, tag="1")]
-    pub sender_key: ::core::option::Option<super::keys::JsonWebKey>,
+    pub sender_key: ::core::option::Option<super::super::keys::v1::JsonWebKey>,
     #[prost(message, optional, tag="2")]
-    pub receiver_key: ::core::option::Option<super::keys::JsonWebKey>,
+    pub receiver_key: ::core::option::Option<super::super::keys::v1::JsonWebKey>,
     #[prost(bytes="vec", tag="3")]
     pub associated_data: ::prost::alloc::vec::Vec<u8>,
     #[prost(bytes="vec", tag="4")]
     pub plaintext: ::prost::alloc::vec::Vec<u8>,
-    #[prost(enumeration="super::super::pbmse::EncryptionMode", tag="5")]
+    #[prost(enumeration="super::super::super::pbmse::v1::EncryptionMode", tag="5")]
     pub mode: i32,
-    #[prost(enumeration="super::super::pbmse::EncryptionAlgorithm", tag="6")]
+    #[prost(enumeration="super::super::super::pbmse::v1::EncryptionAlgorithm", tag="6")]
     pub algorithm: i32,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PackResponse {
     #[prost(message, optional, tag="1")]
-    pub message: ::core::option::Option<super::super::pbmse::EncryptedMessage>,
+    pub message: ::core::option::Option<super::super::super::pbmse::v1::EncryptedMessage>,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UnpackRequest {
     #[prost(message, optional, tag="1")]
-    pub sender_key: ::core::option::Option<super::keys::JsonWebKey>,
+    pub sender_key: ::core::option::Option<super::super::keys::v1::JsonWebKey>,
     #[prost(message, optional, tag="2")]
-    pub receiver_key: ::core::option::Option<super::keys::JsonWebKey>,
+    pub receiver_key: ::core::option::Option<super::super::keys::v1::JsonWebKey>,
     #[prost(message, optional, tag="3")]
-    pub message: ::core::option::Option<super::super::pbmse::EncryptedMessage>,
+    pub message: ::core::option::Option<super::super::super::pbmse::v1::EncryptedMessage>,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, PartialEq, ::prost::Message)]
