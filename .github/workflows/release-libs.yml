@@ -16,10 +16,10 @@ jobs:
             library_file: libokapi.so
             artifact_name: linux
             build_job: build_linux
-          - os: ubuntu-latest
-            library_file: libokapi.so
-            artifact_name: linux-arm
-            build_job: build_linux_arm
+          # - os: ubuntu-latest
+          #   library_file: libokapi.so
+          #   artifact_name: linux-arm
+          #   build_job: build_linux_arm
           - os: windows-latest
             library_file: okapi.dll
             artifact_name: windows
@@ -47,6 +47,11 @@ jobs:
           workflow: "build-libs.yml"
           path: ./libs
           branch: main
+      - run: |
+          $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/okapi/releases/latest' | ConvertFrom-Json
+          $version = $json.tag_name
+          echo "RELEASE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
+        shell: pwsh
       - name: Push packages to release
         uses: svenstaro/upload-release-action@v2
         if: github.event_name == 'release'
@@ -54,7 +59,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ./libs/${{ matrix.artifact_name }}/${{ matrix.library_file }}
           asset_name: ${{ matrix.artifact_name }}
-          tag: ${{ github.ref }}
+          tag: ${{ env.RELEASE_VERSION }}
           overwrite: true
           body: "Okapi binaries"
 
@@ -69,11 +74,16 @@ jobs:
           branch: main
       - run: Compress-Archive -Path ./libs -DestinationPath ./libs.zip
         shell: pwsh
+      - run: |
+          $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/okapi/releases/latest' | ConvertFrom-Json
+          $version = $json.tag_name
+          echo "RELEASE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
+        shell: pwsh
       - uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ./libs.zip
           asset_name: libs.zip
-          tag: ${{ github.ref }}
+          tag: ${{ env.RELEASE_VERSION }}
           overwrite: true
           body: "Okapi binaries bundle"
