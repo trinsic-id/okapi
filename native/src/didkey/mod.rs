@@ -3,7 +3,7 @@ use did_key::*;
 
 use crate::{
     didcomm::Error,
-    proto::{google_protobuf::Struct, okapi_keys::*},
+    proto::{google_protobuf::Struct, okapi::okapi_keys::*},
 };
 
 impl From<VerificationMethod> for JsonWebKey {
@@ -73,8 +73,9 @@ impl crate::DIDKey {
             KeyType::Ed25519 => generate::<Ed25519KeyPair>(Some(request.seed.as_slice())),
             KeyType::X25519 => generate::<X25519KeyPair>(Some(request.seed.as_slice())),
             KeyType::P256 => generate::<P256KeyPair>(Some(request.seed.as_slice())),
-            KeyType::Bls12381G1g2 => generate::<Bls12381KeyPair>(Some(request.seed.as_slice())),
+            KeyType::Bls12381g1g2 => generate::<Bls12381KeyPair>(Some(request.seed.as_slice())),
             KeyType::Secp256k1 => generate::<Secp256k1KeyPair>(Some(request.seed.as_slice())),
+            KeyType::Unspecified => unimplemented!(),
         };
         let did_document = did_key.get_did_document(CONFIG_LD_PRIVATE);
         let jwk_keys: Vec<JsonWebKey> = did_key
@@ -110,7 +111,7 @@ impl crate::DIDKey {
 mod test {
     use did_key::*;
 
-    use crate::proto::okapi_keys::*;
+    use crate::proto::okapi::okapi_keys::*;
 
     #[test]
     fn verification_method_to_jwk() {

@@ -27,8 +27,8 @@ jobs:
         with:
           workflow: "build-libs.yml"
           path: ./libs
-      - name: Test coverage
-        run: ./Test.ps1
+      - name: Build and Test coverage
+        run: ./BuildAndTest.ps1
         working-directory: ./dotnet
         shell: pwsh
       - name: Upload Unit Test Results - .NET

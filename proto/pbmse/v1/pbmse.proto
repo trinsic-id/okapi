@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package pbmse.v1;
+
+option go_package = "github.com/trinsic-id/okapi";
+option java_package = "trinsic.okapi.pbmse";
+option java_multiple_files = true;
+
+// JWS
+// Protocol buffer message signing and encryption
+message SignedMessage {
+    bytes payload = 1;
+    repeated Signature signatures = 2;
+}
+message Signature {
+    bytes header = 1;
+    bytes signature = 3;
+}
+message SignatureHeader {
+    string algorithm = 1;
+    string key_id = 2;
+}
+
+// JWE
+
+message EncryptedMessage {
+    bytes iv = 1                                    [json_name="iv"];
+    bytes aad = 2                                   [json_name="aad"];
+    bytes ciphertext = 3                            [json_name="ciphertext"];
+    bytes tag = 4;
+    repeated EncryptionRecipient recipients = 5;
+}
+
+message EncryptionHeader {
+    EncryptionMode mode = 1                         [json_name="enc"];
+    EncryptionAlgorithm algorithm = 2               [json_name="alg"];
+    string key_id = 3                               [json_name="kid"];
+    string sender_key_id = 4                        [json_name="skid"];
+}
+
+message EncryptionRecipient {
+    EncryptionHeader header = 1                     [json_name="unprotected"];
+    bytes content_encryption_key = 2                [json_name="cek"];
+}
+
+enum EncryptionMode {
+    ENCRYPTION_MODE_UNSPECIFIED = 0;
+    ENCRYPTION_MODE_DIRECT = 1;
+    ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY = 2;
+}
+
+enum EncryptionAlgorithm {
+    ENCRYPTION_ALGORITHM_UNSPECIFIED = 0;
+    ENCRYPTION_ALGORITHM_XCHACHA20POLY1305 = 1;
+    ENCRYPTION_ALGORITHM_AES_GCM = 2;
+}

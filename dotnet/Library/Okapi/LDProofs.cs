@@ -1,4 +1,4 @@
-using Okapi.Transport;
+using Okapi.Proofs.V1;
 
 namespace Okapi.Proofs
 {

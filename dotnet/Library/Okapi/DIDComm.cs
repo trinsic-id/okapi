@@ -1,4 +1,5 @@
 using Google.Protobuf;
+using Okapi.Transport.V1;
 
 namespace Okapi.Transport
 {

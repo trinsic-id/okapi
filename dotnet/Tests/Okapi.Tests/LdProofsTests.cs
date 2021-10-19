@@ -5,7 +5,9 @@ using Google.Protobuf;
 using Google.Protobuf.WellKnownTypes;
 using Newtonsoft.Json.Linq;
 using Okapi.Keys;
+using Okapi.Keys.V1;
 using Okapi.Proofs;
+using Okapi.Proofs.V1;
 using Xunit;
 
 namespace Okapi.Tests
@@ -32,7 +34,7 @@ namespace Okapi.Tests
             {
                 Key = signingKey,
                 Document = capability.ToStruct(),
-                Suite = LdSuite.JcsEd25519Signature2020
+                Suite = LdSuite.Jcsed25519Signature2020
             });
 
             signedCapability.Should().NotBeNull();

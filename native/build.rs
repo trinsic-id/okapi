@@ -39,28 +39,28 @@ fn compile_protobuf_files() {
         .out_dir(".")
         .compile_protos(
             &[
-                "../proto/transport.proto",
-                "../proto/examples.proto",
-                "../proto/keys.proto",
-                "../proto/proofs.proto",
-                "../proto/security.proto",
+                "../proto/okapi/transport/v1/transport.proto",
+                "../proto/okapi/examples/v1/examples.proto",
+                "../proto/okapi/keys/v1/keys.proto",
+                "../proto/okapi/proofs/v1/proofs.proto",
+                "../proto/okapi/security/v1/security.proto",
             ],
-            &["../proto", "../proto/pbmse"],
+            &["../proto", "../proto/pbmse/v1/"],
         )
         .unwrap();
 
-    copy("okapi.examples.rs", "./src/proto/okapi_examples.rs").unwrap();
-    copy("okapi.keys.rs", "./src/proto/okapi_keys.rs").unwrap();
-    copy("okapi.transport.rs", "./src/proto/okapi_transport.rs").unwrap();
-    copy("okapi.proofs.rs", "./src/proto/okapi_proofs.rs").unwrap();
-    copy("okapi.security.rs", "./src/proto/okapi_security.rs").unwrap();
+    copy("okapi.examples.v1.rs", "./src/proto/okapi/okapi_examples.rs").unwrap();
+    copy("okapi.keys.v1.rs", "./src/proto/okapi/okapi_keys.rs").unwrap();
+    copy("okapi.transport.v1.rs", "./src/proto/okapi/okapi_transport.rs").unwrap();
+    copy("okapi.proofs.v1.rs", "./src/proto/okapi/okapi_proofs.rs").unwrap();
+    copy("okapi.security.v1.rs", "./src/proto/okapi/okapi_security.rs").unwrap();
     copy("google.protobuf.rs", "./src/proto/google_protobuf.rs").unwrap();
-    copy("pbmse.rs", "./src/proto/pbmse.rs").unwrap();
-    remove_file("okapi.examples.rs").unwrap();
-    remove_file("okapi.keys.rs").unwrap();
-    remove_file("okapi.transport.rs").unwrap();
-    remove_file("okapi.proofs.rs").unwrap();
-    remove_file("okapi.security.rs").unwrap();
+    copy("pbmse.v1.rs", "./src/proto/pbmse.rs").unwrap();
+    remove_file("okapi.examples.v1.rs").unwrap();
+    remove_file("okapi.keys.v1.rs").unwrap();
+    remove_file("okapi.transport.v1.rs").unwrap();
+    remove_file("okapi.proofs.v1.rs").unwrap();
+    remove_file("okapi.security.v1.rs").unwrap();
     remove_file("google.protobuf.rs").unwrap();
-    remove_file("pbmse.rs").unwrap();
+    remove_file("pbmse.v1.rs").unwrap();
 }

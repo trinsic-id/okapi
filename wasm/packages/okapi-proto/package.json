@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "build": "npx tsc -p . && npm run copy",
-    "copy": "npx copyfiles -u 1 ./src/proto/** ./lib/ && npx copyfiles -u 1 ./src/proto/pbmse/* ./lib/",
+    "copy": "npx recursive-copy-cli ./src/proto/ ./lib/proto/ -w",
     "test": "echo 'no tests'"
   },
   "author": "Tomislav Markovski",
