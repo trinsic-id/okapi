@@ -6,12 +6,12 @@ function Setup()
 function Get-ProtoFiles()
 {
     return @(
-    "../proto/examples.proto",
-    "../proto/keys.proto",
-    "../proto/proofs.proto",
-    "../proto/security.proto",
-    "../proto/transport.proto",
-    "../proto/pbmse/pbmse.proto")
+    "../proto/okapi/examples/v1/examples.proto",
+    "../proto/okapi/keys/v1/keys.proto",
+    "../proto/okapi/proofs/v1/proofs.proto",
+    "../proto/okapi/security/v1/security.proto",
+    "../proto/okapi/transport/v1/transport.proto",
+    "../proto/pbmse/v1/pbmse.proto")
 }
 
 function Get-ProtoPath()
@@ -19,9 +19,15 @@ function Get-ProtoPath()
     return "--proto_path=../proto"
 }
 
+function Remove-Protofiles($protoPath)
+{
+    Remove-Item "$protoPath/*" -Recurse -Force
+}
+
 function Update-Golang()
 {
     $GoPath = "../go/okapi_proto"
+    Remove-Protofiles($GoPath)
     protoc $( Get-ProtoPath ) `
          --go_out="$GoPath" `
          --go-grpc_out="$GoPath" `
@@ -37,8 +43,8 @@ function Update-Golang()
 function Set-Require-Relative($filename)
 {
     $replacePairs = @{ }
-    $replacePairs["require 'keys_pb'"] = "require_relative 'keys_pb'"
-    $replacePairs["require 'pbmse/pbmse_pb'"] = "require_relative 'pbmse/pbmse_pb'"
+    $replacePairs["require 'okapi/keys/v1/keys_pb'"] = "require_relative '../../../okapi/keys/v1/keys_pb'"
+    $replacePairs["require 'pbmse/v1/pbmse_pb'"] = "require_relative '../../../pbmse/v1/pbmse_pb'"
     $fileLines = Get-Content $filename
     for ($ij = 0; $ij -lt $fileLines.Length; $ij++) {
         if ( $replacePairs.ContainsKey($fileLines[$ij]))
@@ -51,7 +57,8 @@ function Set-Require-Relative($filename)
 
 function Update-Ruby()
 {
-    $RubyPath = "../ruby/lib/okapi"
+    $RubyPath = "../ruby/lib/proto"
+    Remove-Protofiles($RubyPath)
     protoc $( Get-ProtoPath ) `
        --ruby_out="$RubyPath" `
        $( Get-ProtoFiles )
@@ -59,21 +66,26 @@ function Update-Ruby()
     # TODO - Type specifier capability
 
     # Rewrite a few lines of the files for require-relative: https://github.com/protocolbuffers/protobuf/issues/1137
-    Set-Require-Relative("../ruby/lib/okapi/transport_pb.rb")
-    Set-Require-Relative("../ruby/lib/okapi/proofs_pb.rb")
+    Set-Require-Relative("$RubyPath/okapi/transport/v1/transport_pb.rb")
+    Set-Require-Relative("$RubyPath/okapi/proofs/v1/proofs_pb.rb")
+    Set-Require-Relative("$RubyPath/okapi/examples/v1/examples_pb.rb")
+    Set-Require-Relative("$RubyPath/okapi/security/v1/security_pb.rb")
 }
 
 function Update-Swift()
 {
+    $SwiftPath = "../java/src/main/java/proto"
+    Remove-Protofiles($SwiftPath)
     protoc $( Get-ProtoPath ) `
-        --swift_out="../swift/Okapi/Sources/OkapiSwift/proto" `
+        --swift_out="$SwiftPath" `
         --swift_opt="Visibility=Public" `
         $( Get-ProtoFiles )
 }
 
 function Update-Java()
 {
-    $JavaPath = "../java/src/main/java"
+    $JavaPath = "../java/src/main/java/proto"
+    Remove-Protofiles($JavaPath)
     protoc $( Get-ProtoPath ) `
         --java_out="$JavaPath" `
         $( Get-ProtoFiles )

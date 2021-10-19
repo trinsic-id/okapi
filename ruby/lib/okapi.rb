@@ -1,9 +1,16 @@
 require "ffi"
 require "os"
-require_relative 'okapi/keys_pb'
-require_relative "okapi/examples_pb"
-require_relative "okapi/proofs_pb"
-require_relative "okapi/transport_pb"
+require_relative "proto/okapi/keys/v1/keys_pb"
+require_relative "proto/okapi/examples/v1/examples_pb"
+require_relative "proto/okapi/proofs/v1/proofs_pb"
+require_relative "proto/okapi/transport/v1/transport_pb"
+require_relative "proto/okapi/security/v1/security_pb"
+
+Transport_V1 = Okapi::Transport::V1
+Keys_V1 = Okapi::Keys::V1
+Proofs_V1 = Okapi::Proofs::V1
+Examples_V1 = Okapi::Examples::V1
+Security_V1 = Okapi::Security::V1
 
 module Okapi
   extend FFI::Library
@@ -118,74 +125,74 @@ module Okapi
 
   module DidComm
     def self.pack(request)
-      Okapi.verify_type(request, Okapi::Transport::PackRequest)
-      return Okapi.ffi_call("didcomm_pack", request, Okapi::Transport::PackResponse)
+      Okapi.verify_type(request, Transport_V1::PackRequest)
+      return Okapi.ffi_call("didcomm_pack", request, Transport_V1::PackResponse)
     end
 
     def self.unpack(request)
-      Okapi.verify_type(request, Okapi::Transport::UnpackRequest)
-      return Okapi.ffi_call("didcomm_unpack", request, Okapi::Transport::UnpackResponse)
+      Okapi.verify_type(request, Transport_V1::UnpackRequest)
+      return Okapi.ffi_call("didcomm_unpack", request, Transport_V1::UnpackResponse)
     end
 
     def self.sign(request)
-      Okapi.verify_type(request, Okapi::Transport::SignRequest)
-      return Okapi.ffi_call("didcomm_sign", request, Okapi::Transport::SignResponse)
+      Okapi.verify_type(request, Transport_V1::SignRequest)
+      return Okapi.ffi_call("didcomm_sign", request, Transport_V1::SignResponse)
     end
 
     def self.verify(request)
-      Okapi.verify_type(request, Okapi::Transport::VerifyRequest)
-      return Okapi.ffi_call("didcomm_verify", request, Okapi::Transport::VerifyResponse)
+      Okapi.verify_type(request, Transport_V1::VerifyRequest)
+      return Okapi.ffi_call("didcomm_verify", request, Transport_V1::VerifyResponse)
     end
   end
 
   module DidKey
     def self.generate(request)
-      Okapi.verify_type(request, Okapi::Keys::GenerateKeyRequest)
-      return Okapi.ffi_call("didkey_generate", request, Okapi::Keys::GenerateKeyResponse)
+      Okapi.verify_type(request, Keys_V1::GenerateKeyRequest)
+      return Okapi.ffi_call("didkey_generate", request, Keys_V1::GenerateKeyResponse)
     end
 
     def self.resolve(request)
-      Okapi.verify_type(request, Okapi::Keys::ResolveRequest)
-      return Okapi.ffi_call("didkey_resolve", request, Okapi::Keys::ResolveResponse)
+      Okapi.verify_type(request, Keys_V1::ResolveRequest)
+      return Okapi.ffi_call("didkey_resolve", request, Keys_V1::ResolveResponse)
     end
   end
 
   module LdProofs
     def self.create(request)
-      Okapi.verify_type(request, Okapi::Proofs::CreateProofRequest)
-      return Okapi.ffi_call("ldproofs_create_proof", request, Okapi::Proofs::CreateProofResponse)
+      Okapi.verify_type(request, Proofs_V1::CreateProofRequest)
+      return Okapi.ffi_call("ldproofs_create_proof", request, Proofs_V1::CreateProofResponse)
     end
 
     def self.verify(request)
-      Okapi.verify_type(request, Okapi::Proofs::VerifyProofRequest)
-      return Okapi.ffi_call("ldproofs_verify_proof", request, Okapi::Proofs::VerifyProofResponse)
+      Okapi.verify_type(request, Proofs_V1::VerifyProofRequest)
+      return Okapi.ffi_call("ldproofs_verify_proof", request, Proofs_V1::VerifyProofResponse)
     end
   end
 
   module Oberon
     def self.create_key(request)
-      Okapi.verify_type(request, Okapi::Security::CreateOberonKeyRequest)
-      return Okapi.ffi_call("oberon_create_key", request, Okapi::Security::CreateOberonKeyResponse)
+      Okapi.verify_type(request, Security_V1::CreateOberonKeyRequest)
+      return Okapi.ffi_call("oberon_create_key", request, Security_V1::CreateOberonKeyResponse)
     end
     def self.create_token(request)
-      Okapi.verify_type(request, Okapi::Security::CreateOberonTokenRequest)
-      return Okapi.ffi_call("oberon_create_token", request, Okapi::Security::CreateOberonTokenResponse)
+      Okapi.verify_type(request, Security_V1::CreateOberonTokenRequest)
+      return Okapi.ffi_call("oberon_create_token", request, Security_V1::CreateOberonTokenResponse)
     end
     def self.blind_token(request)
-      Okapi.verify_type(request, Okapi::Security::BlindOberonTokenRequest)
-      return Okapi.ffi_call("oberon_blind_token", request, Okapi::Security::BlindOberonTokenResponse)
+      Okapi.verify_type(request, Security_V1::BlindOberonTokenRequest)
+      return Okapi.ffi_call("oberon_blind_token", request, Security_V1::BlindOberonTokenResponse)
     end
     def self.unblind_token(request)
-      Okapi.verify_type(request, Okapi::Security::UnBlindOberonTokenRequest)
-      return Okapi.ffi_call("oberon_unblind_token", request, Okapi::Security::UnBlindOberonTokenResponse)
+      Okapi.verify_type(request, Security_V1::UnBlindOberonTokenRequest)
+      return Okapi.ffi_call("oberon_unblind_token", request, Security_V1::UnBlindOberonTokenResponse)
     end
     def self.create_proof(request)
-      Okapi.verify_type(request, Okapi::Security::CreateOberonProofRequest)
-      return Okapi.ffi_call("oberon_create_proof", request, Okapi::Security::CreateOberonProofResponse)
+      Okapi.verify_type(request, Security_V1::CreateOberonProofRequest)
+      return Okapi.ffi_call("oberon_create_proof", request, Security_V1::CreateOberonProofResponse)
     end
     def self.verify_proof(request)
-      Okapi.verify_type(request, Okapi::Security::VerifyOberonProofRequest)
-      return Okapi.ffi_call("oberon_verify_proof", request, Okapi::Security::VerifyOberonProofResponse)
+      Okapi.verify_type(request, Security_V1::VerifyOberonProofRequest)
+      return Okapi.ffi_call("oberon_verify_proof", request, Security_V1::VerifyOberonProofResponse)
     end
   end
 end
