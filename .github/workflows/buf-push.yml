@@ -3,11 +3,15 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+
 jobs:
   push:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: bufbuild/buf-setup-action@v0.5.0
       - uses: bufbuild/buf-push-action@v1
         with:
+          input: 'proto'
           buf_token: ${{ secrets.BUF_BUILD_TOKEN }}
