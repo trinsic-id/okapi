@@ -446,3 +446,6 @@ swift/Okapi/Sources/OkapiObjectiveC/libokapi_simulator.a
 ruby/test/reports/
 
 libs.zip
+Rlang/.RData
+Rlang/.Rhistory
+python/okapi/libs/
