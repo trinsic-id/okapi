@@ -1,6 +1,6 @@
 import unittest
 
-from okapi.proto.okapi.security import CreateOberonKeyRequest, CreateOberonTokenRequest, CreateOberonProofRequest, \
+from okapi.proto.okapi.security.v1 import CreateOberonKeyRequest, CreateOberonTokenRequest, CreateOberonProofRequest, \
     VerifyOberonProofRequest, UnBlindOberonTokenRequest, BlindOberonTokenRequest
 from okapi.wrapper import Oberon
 
