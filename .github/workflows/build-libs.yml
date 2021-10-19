@@ -160,39 +160,15 @@ jobs:
           path: ./libs/ios/*
 
   build_android:
-    name: Android-arm
+    name: Android
     if: "! contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-        with:
-          submodules: "true"
+      - uses: actions/checkout@v1
 
-      - name: Run build script
-        run: ./devops/BuildLibraries.ps1 -Platform Android-ARM -OutLocation ./libs/android
+      - run: ./devops/BuildLibraries.ps1 -Platform Android -OutLocation ./libs/android
         shell: pwsh
-      - name: Upload Android artifact
-        uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v2
         with:
-          name: android-arm
-          path: ./libs/android/*
-
-  build_android_x86:
-    name: Android-x86
-    if: "! contains(github.event.head_commit.message, '[skip ci]')"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-        with:
-          submodules: "true"
-
-      - name: Run build script
-        run: ./devops/BuildLibraries.ps1 -Platform Android-x86 -OutLocation ./libs/android
-        shell: pwsh
-      - name: Upload Android artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: android-x86
+          name: android
           path: ./libs/android/*
