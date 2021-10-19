@@ -4,7 +4,7 @@ use serde_json::Value;
 use sha2::{Digest, Sha256};
 use std::convert::TryFrom;
 
-use crate::{didcomm::Error, proto::google_protobuf::Struct, proto::okapi_proofs::*};
+use crate::{didcomm::Error, proto::google_protobuf::Struct, proto::okapi::okapi_proofs::*};
 
 const SIGNATURE_NAME: &str = "JcsEd25519Signature2020";
 
@@ -113,7 +113,7 @@ mod test {
 
         let request = CreateProofRequest {
             key: Some(jwk),
-            suite: LdSuite::JcsEd25519Signature2020 as i32,
+            suite: LdSuite::Jcsed25519signature2020 as i32,
             document: Some(input),
         };
         let response = LdProofs::create_proof(&request).unwrap();

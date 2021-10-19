@@ -1,4 +1,6 @@
-﻿namespace Okapi.Keys
+﻿using Okapi.Keys.V1;
+
+namespace Okapi.Keys
 {
     public static class DIDKey
     {

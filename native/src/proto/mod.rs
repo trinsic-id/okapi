@@ -272,21 +272,20 @@ pub mod tests {
 }
 
 pub mod google_protobuf;
-pub mod okapi_examples;
 pub mod keys {
-    pub use crate::proto::okapi_keys::*;
+    pub mod v1 {
+        pub use crate::proto::okapi::okapi_keys::*;
+    }
+    pub use crate::proto::okapi::okapi_keys::*;
 }
 pub mod transport {
-    pub use crate::proto::okapi_transport::*;
+    pub use crate::proto::okapi::okapi_transport::*;
 }
 pub mod proofs {
-    pub use crate::proto::okapi_proofs::*;
+    pub use crate::proto::okapi::okapi_proofs::*;
 }
 pub mod security {
-    pub use crate::proto::okapi_security::*;
+    pub use crate::proto::okapi::okapi_security::*;
 }
-pub mod okapi_keys;
-pub mod okapi_proofs;
-pub mod okapi_security;
-pub mod okapi_transport;
+pub mod okapi;
 pub mod pbmse;

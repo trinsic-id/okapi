@@ -55,5 +55,8 @@ pub mod google {
 }
 
 pub mod pbmse {
+    pub mod v1 {
+        pub use crate::proto::pbmse::*;
+    }
     pub use crate::proto::pbmse::*;
 }

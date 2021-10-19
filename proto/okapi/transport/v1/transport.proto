@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package okapi.transport.v1;
+
+option csharp_namespace = "Okapi.Transport.V1";
+option go_package = "github.com/trinsic-id/okapi";
+option java_package = "trinsic.okapi.transport";
+option java_multiple_files = true;
+
+import "okapi/keys/v1/keys.proto";
+import "pbmse/v1/pbmse.proto";
+
+message SignRequest {
+    bytes payload = 1;
+    okapi.keys.v1.JsonWebKey key = 2;
+    pbmse.v1.SignedMessage append_to = 3;
+}
+
+message SignResponse {
+    pbmse.v1.SignedMessage message = 1;
+}
+
+message VerifyRequest {
+    pbmse.v1.SignedMessage message = 1;
+    okapi.keys.v1.JsonWebKey key = 2;
+}
+
+message VerifyResponse {
+    bool is_valid = 1;
+}
+
+message PackRequest {
+    okapi.keys.v1.JsonWebKey sender_key = 1;
+    okapi.keys.v1.JsonWebKey receiver_key = 2;
+    bytes associated_data = 3;
+    bytes plaintext = 4;
+    pbmse.v1.EncryptionMode mode = 5;
+    pbmse.v1.EncryptionAlgorithm algorithm = 6;
+}
+
+message PackResponse {
+    pbmse.v1.EncryptedMessage message = 1;
+}
+
+message UnpackRequest {
+    okapi.keys.v1.JsonWebKey sender_key = 1;
+    okapi.keys.v1.JsonWebKey receiver_key = 2;
+
+    pbmse.v1.EncryptedMessage message = 3;
+}
+
+message UnpackResponse {
+   bytes plaintext = 1;
+}
+
+message CoreMessage {
+    string id = 1;
+    string type = 2;
+    bytes body = 3;
+    repeated string to = 4;
+    string from = 5;
+    int64 created = 6 [json_name="created_time"];
+    int64 expires = 7 [json_name="expires_time"];
+}

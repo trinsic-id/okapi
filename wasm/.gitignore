@@ -5,3 +5,5 @@ packages/okapi/lib
 packages/okapi-proto/lib
 packages/okapi-node/lib
 packages/okapi-web/lib
+packages/okapi-proto/src/proto/**/*
+!packages/okapi-proto/src/proto/index.ts
