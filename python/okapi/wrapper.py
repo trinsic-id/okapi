@@ -1,11 +1,11 @@
-from .proto.okapi.keys import GenerateKeyRequest, GenerateKeyResponse, ResolveRequest, ResolveResponse
+from .proto.okapi.keys.v1 import GenerateKeyRequest, GenerateKeyResponse, ResolveRequest, ResolveResponse
 from .okapi_utils import typed_wrap_and_call
-from .proto.okapi.proofs import CreateProofRequest, CreateProofResponse, VerifyProofRequest, VerifyProofResponse
-from .proto.okapi.security import BlindOberonTokenRequest, BlindOberonTokenResponse, CreateOberonTokenRequest, \
+from .proto.okapi.proofs.v1 import CreateProofRequest, CreateProofResponse, VerifyProofRequest, VerifyProofResponse
+from .proto.okapi.security.v1 import BlindOberonTokenRequest, BlindOberonTokenResponse, CreateOberonTokenRequest, \
     CreateOberonTokenResponse, UnBlindOberonTokenRequest, UnBlindOberonTokenResponse, CreateOberonProofRequest, \
     CreateOberonProofResponse, VerifyOberonProofResponse, VerifyOberonProofRequest, CreateOberonKeyRequest, \
     CreateOberonKeyResponse
-from .proto.okapi.transport import PackRequest, UnpackRequest, PackResponse, UnpackResponse, SignRequest, \
+from .proto.okapi.transport.v1 import PackRequest, UnpackRequest, PackResponse, UnpackResponse, SignRequest, \
     SignResponse, VerifyRequest, VerifyResponse
 
 

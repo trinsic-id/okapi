@@ -2,9 +2,9 @@ import datetime
 import unittest
 
 from okapi.okapi_utils import dictionary_to_struct
-from okapi.proto.okapi.keys import GenerateKeyRequest, KeyType, JsonWebKey
+from okapi.proto.okapi.keys.v1 import GenerateKeyRequest, KeyType, JsonWebKey
 from okapi.wrapper import DIDKey, LDProofs
-from okapi.proto.okapi.proofs import CreateProofRequest, LdSuite
+from okapi.proto.okapi.proofs.v1 import CreateProofRequest, LdSuite
 
 
 class LdProofsTests(unittest.TestCase):
@@ -20,12 +20,12 @@ class LdProofsTests(unittest.TestCase):
         print(capability)
 
         request = GenerateKeyRequest()
-        request.key_type = KeyType.Ed25519
+        request.key_type = KeyType.KEY_TYPE_ED25519
         response = DIDKey.generate(request)
         signing_key: JsonWebKey = [key for key in response.key if key.crv == "Ed25519"][0]
 
         proof_request = CreateProofRequest(document=capability, key=signing_key,
-                                           suite=LdSuite.JcsEd25519Signature2020)
+                                           suite=LdSuite.LD_SUITE_JCSED25519SIGNATURE2020)
 
         signed_capability = LDProofs.create(proof_request)
         self.assertIsNotNone(signed_capability)

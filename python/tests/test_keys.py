@@ -3,7 +3,7 @@ import unittest
 import base58
 
 from okapi.wrapper import DIDKey
-from okapi.proto.okapi.keys import GenerateKeyRequest, KeyType, GenerateKeyResponse, ResolveRequest
+from okapi.proto.okapi.keys.v1 import GenerateKeyRequest, KeyType, GenerateKeyResponse, ResolveRequest
 from okapi.okapi_utils import DidError
 
 
@@ -20,7 +20,7 @@ def base64_padding(base_64: str) -> str:
 class KeyTests(unittest.TestCase):
     def test_generate_key(self):
         request = GenerateKeyRequest()
-        request.key_type = KeyType.Ed25519
+        request.key_type = KeyType.KEY_TYPE_ED25519
         request.seed = bytes(bytearray([1, 2, 3]))
 
         key_response = DIDKey.generate(request)
@@ -30,7 +30,7 @@ class KeyTests(unittest.TestCase):
 
     def test_generate_key_no_seed(self):
         request = GenerateKeyRequest()
-        request.key_type = KeyType.Ed25519
+        request.key_type = KeyType.KEY_TYPE_ED25519
         response = DIDKey.generate(request)
 
         self.assert_valid_key_generated(response)
@@ -61,10 +61,10 @@ class KeyTests(unittest.TestCase):
             DIDKey.generate(request)
 
     def test_generate_key_from_seed(self):
-        data_arguments = [(KeyType.Ed25519, "Ed25519",
+        data_arguments = [(KeyType.KEY_TYPE_ED25519, "Ed25519",
                            "4f66b355aa7b0980ff901f2295b9c562ac3061be4df86703eb28c612faae6578",
                            "6fioC1zcDPyPEL19pXRS2E4iJ46zH7xP6uSgAaPdwDrx"),
-                          (KeyType.X25519, "X25519", "9b29d42b38ddd52ed39c0ff70b39572a6eb9b3cac201918dc6d6a84b4c88d2a5",
+                          (KeyType.KEY_TYPE_X25519, "X25519", "9b29d42b38ddd52ed39c0ff70b39572a6eb9b3cac201918dc6d6a84b4c88d2a5",
                            "3EK9AYXoUV4Unn5AjvYY39hyK91n7gg4ExC8rKKSUQXJ")]
         for argument in data_arguments:
             with self.subTest(f"Testing argument set={argument}"):
