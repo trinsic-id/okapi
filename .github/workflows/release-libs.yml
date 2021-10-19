@@ -16,10 +16,10 @@ jobs:
             library_file: libokapi.so
             artifact_name: linux
             build_job: build_linux
-          - os: ubuntu-latest
-            library_file: libokapi.so
-            artifact_name: linux-arm
-            build_job: build_linux_arm
+          # - os: ubuntu-latest
+          #   library_file: libokapi.so
+          #   artifact_name: linux-arm
+          #   build_job: build_linux_arm
           - os: windows-latest
             library_file: okapi.dll
             artifact_name: windows
