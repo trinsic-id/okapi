@@ -1,0 +1,37 @@
+name: Wasm
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "native/**"
+      - "proto/**"
+      - "wasm/**"
+      - ".github/workflows/*wasm*"
+      - ".github/workflows/*node*"
+      - ".github/workflows/*browser*"
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build_test:
+    name: Build
+    runs-on: "macos-latest"
+    defaults:
+      run:
+        working-directory: ./wasm
+    steps:
+      - uses: actions/checkout@v1
+      - uses: jetli/wasm-pack-action@v0.3.0
+        with:
+          version: 'latest'
+      - run: |
+          rustup toolchain uninstall stable
+          rustup toolchain install stable
+          rustup toolchain install stable --target wasm32-unknown-unknown
+      - run: npm run start
+      - run: npm run build
+      - run: npm run test
