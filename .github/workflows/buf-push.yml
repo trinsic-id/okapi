@@ -1,13 +1,21 @@
-name: Push protos to buf.build
+name: Push to buf.build
 on:
   push:
     branches:
       - main
+    paths:
+      - "proto/**"
+  workflow_dispatch:
+
 jobs:
   push:
     runs-on: ubuntu-latest
+    environment:
+      name: buf.build
     steps:
       - uses: actions/checkout@v2
+      - uses: bufbuild/buf-setup-action@v0.5.0
       - uses: bufbuild/buf-push-action@v1
         with:
+          input: 'proto'
           buf_token: ${{ secrets.BUF_BUILD_TOKEN }}
