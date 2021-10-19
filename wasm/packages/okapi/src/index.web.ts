@@ -58,3 +58,30 @@ export class LdProofs {
     return proto.VerifyProofResponse.deserializeBinary(native.ldproofs_verify_proof(request.serializeBinary()));
   }
 }
+
+export class Oberon {
+  static async createKey(request: proto.CreateOberonKeyRequest): Promise<proto.CreateOberonKeyResponse> {
+    await initialize();
+    return proto.CreateOberonKeyResponse.deserializeBinary(native.oberon_create_key(request.serializeBinary()));
+  }
+  static async createToken(request: proto.CreateOberonTokenRequest): Promise<proto.CreateOberonTokenResponse> {
+    await initialize();
+    return proto.CreateOberonTokenResponse.deserializeBinary(native.oberon_create_token(request.serializeBinary()));
+  }
+  static async createProof(request: proto.CreateOberonProofRequest): Promise<proto.CreateOberonProofResponse> {
+    await initialize();
+    return proto.CreateOberonProofResponse.deserializeBinary(native.oberon_create_proof(request.serializeBinary()));
+  }
+  static async verifyProof(request: proto.VerifyOberonProofRequest): Promise<proto.VerifyOberonProofResponse> {
+    await initialize();
+    return proto.VerifyOberonProofResponse.deserializeBinary(native.oberon_verify_proof(request.serializeBinary()));
+  }
+  static async blindToken(request: proto.BlindOberonTokenRequest): Promise<proto.BlindOberonTokenResponse> {
+    await initialize();
+    return proto.BlindOberonTokenResponse.deserializeBinary(native.oberon_blind_token(request.serializeBinary()));
+  }
+  static async unblindToken(request: proto.UnBlindOberonTokenRequest): Promise<proto.UnBlindOberonTokenResponse> {
+    await initialize();
+    return proto.UnBlindOberonTokenResponse.deserializeBinary(native.oberon_unblind_token(request.serializeBinary()));
+  }
+}

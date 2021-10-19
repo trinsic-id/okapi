@@ -40,3 +40,36 @@ export class LdProofs {
     );
   }
 }
+
+export class Oberon {
+  static createKey(request: proto.CreateOberonKeyRequest): Promise<proto.CreateOberonKeyResponse> {
+    return Promise.resolve(
+      proto.CreateOberonKeyResponse.deserializeBinary(native.oberon_create_key(request.serializeBinary()))
+    );
+  }
+  static createToken(request: proto.CreateOberonTokenRequest): Promise<proto.CreateOberonTokenResponse> {
+    return Promise.resolve(
+      proto.CreateOberonTokenResponse.deserializeBinary(native.oberon_create_token(request.serializeBinary()))
+    );
+  }
+  static createProof(request: proto.CreateOberonProofRequest): Promise<proto.CreateOberonProofResponse> {
+    return Promise.resolve(
+      proto.CreateOberonProofResponse.deserializeBinary(native.oberon_create_proof(request.serializeBinary()))
+    );
+  }
+  static verifyProof(request: proto.VerifyOberonProofRequest): Promise<proto.VerifyOberonProofResponse> {
+    return Promise.resolve(
+      proto.VerifyOberonProofResponse.deserializeBinary(native.oberon_verify_proof(request.serializeBinary()))
+    );
+  }
+  static blindToken(request: proto.BlindOberonTokenRequest): Promise<proto.BlindOberonTokenResponse> {
+    return Promise.resolve(
+      proto.BlindOberonTokenResponse.deserializeBinary(native.oberon_blind_token(request.serializeBinary()))
+    );
+  }
+  static unblindToken(request: proto.UnBlindOberonTokenRequest): Promise<proto.UnBlindOberonTokenResponse> {
+    return Promise.resolve(
+      proto.UnBlindOberonTokenResponse.deserializeBinary(native.oberon_unblind_token(request.serializeBinary()))
+    );
+  }
+}
