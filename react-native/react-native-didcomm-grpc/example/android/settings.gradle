@@ -1,8 +1,0 @@
-rootProject.name = 'DidcommGrpcExample'
-apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
-include ':app'
-include ':didcommgrpc'
-project(':didcommgrpc').projectDir = new File(rootProject.projectDir, '../../../../Android/didcommgrpc')
-
-include ':reactnativedidcommgrpc'
-project(':reactnativedidcommgrpc').projectDir = new File(rootProject.projectDir, '../../android')
