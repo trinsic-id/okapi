@@ -1,6 +1,6 @@
 param
 (
-    [ValidateSet('Windows', 'Windows-GNU', 'MacOS', 'Linux', 'Linux-ARM', 'iOS', 'Android-x86', 'Android-ARM')]
+    [ValidateSet('Windows', 'Windows-GNU', 'MacOS', 'Linux', 'Linux-ARM', 'iOS', 'Android')]
     $Platform,
     $OutLocation,
     $AndroidNdkHome
@@ -91,15 +91,10 @@ try {
             Copy-Item -Path "./target/aarch64-apple-ios/release/libokapi.a" -Destination "$TargetOutput/libokapi.a"
             break
         }
-        Android-ARM {
+        Android {
             cargo install cargo-ndk
-            rustup target add aarch64-linux-android armv7-linux-androideabi
+            rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-android x86_64-linux-android
             cargo ndk --target armv7-linux-androideabi --target aarch64-linux-android -o "$TargetOutput" build --release
-            break
-        }
-        Android-x86 {
-            cargo install cargo-ndk
-            rustup target add i686-linux-android x86_64-linux-android
             cargo ndk --target x86_64-linux-android --target i686-linux-android -o "$TargetOutput" build --release
             break
         }

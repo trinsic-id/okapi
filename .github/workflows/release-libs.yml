@@ -48,10 +48,13 @@ jobs:
           path: ./libs
           branch: main
       - run: |
-          $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/okapi/releases/latest' | ConvertFrom-Json
+          $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/okapi/releases/latest' `
+            -Headers @{ "Authorization" = "Token $env:API_GITHUB_TOKEN"} | ConvertFrom-Json
           $version = $json.tag_name
           echo "RELEASE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
         shell: pwsh
+        env:
+          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
       - name: Push packages to release
         uses: svenstaro/upload-release-action@v2
         if: github.event_name == 'release'
@@ -75,10 +78,13 @@ jobs:
       - run: Compress-Archive -Path ./libs -DestinationPath ./libs.zip
         shell: pwsh
       - run: |
-          $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/okapi/releases/latest' | ConvertFrom-Json
+          $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/okapi/releases/latest' `
+            -Headers @{ "Authorization" = "Token $env:API_GITHUB_TOKEN"} | ConvertFrom-Json
           $version = $json.tag_name
           echo "RELEASE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
         shell: pwsh
+        env:
+          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
       - uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
