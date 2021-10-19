@@ -69,6 +69,7 @@ function Update-Ruby()
     Set-Require-Relative("$RubyPath/okapi/transport/v1/transport_pb.rb")
     Set-Require-Relative("$RubyPath/okapi/proofs/v1/proofs_pb.rb")
     Set-Require-Relative("$RubyPath/okapi/examples/v1/examples_pb.rb")
+    Set-Require-Relative("$RubyPath/okapi/security/v1/security_pb.rb")
 }
 
 function Update-Swift()
