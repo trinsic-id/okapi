@@ -1,4 +1,4 @@
-name: "Web Assembly: Build, Test"
+name: Wasm
 
 on:
   pull_request:
@@ -25,7 +25,7 @@ on:
 
 jobs:
   build_test:
-    name: Build for Web Assembly
+    name: Build
     runs-on: "macos-latest"
     defaults:
       run:
@@ -47,7 +47,7 @@ jobs:
       - run: npm run test
 
   publish_npm:
-    name: Publish packages to NPM
+    name: Publish to NPM
     if: |
       github.event_name == 'release' &&
       github.event.action == 'published' &&
