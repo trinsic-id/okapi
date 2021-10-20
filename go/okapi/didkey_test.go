@@ -6,13 +6,14 @@ import (
 	"fmt"
 	"github.com/btcsuite/btcutil/base58"
 	"github.com/stretchr/testify/assert"
-	"github.com/trinsic-id/okapi/go/okapi_proto"
+	okapi "github.com/trinsic-id/okapi/go/okapi/proto"
+
 	"testing"
 )
 
 func TestGenerateKey(t *testing.T) {
 	request := okapi.GenerateKeyRequest{}
-	request.KeyType = okapi.KeyType_Ed25519
+	request.KeyType = okapi.KeyType_KEY_TYPE_ED25519
 	request.Seed = []byte{1, 2, 3}
 
 	response, err := DidKey{}.Generate(&request)
@@ -23,7 +24,7 @@ func TestGenerateKey(t *testing.T) {
 
 func TestGenerateKeyNoSeed(t *testing.T) {
 	request := okapi.GenerateKeyRequest{}
-	request.KeyType = okapi.KeyType_Ed25519
+	request.KeyType = okapi.KeyType_KEY_TYPE_ED25519
 	response, err := DidKey{}.Generate(&request)
 	assert.Nil(t, err)
 	assertValidKeyGenerated(t, response)
@@ -54,10 +55,10 @@ type DataArgument struct {
 }
 
 func TestGenerateKeyFromSeed(t *testing.T) {
-	dataArguments := []DataArgument{{keyType: okapi.KeyType_Ed25519, keyTypeString: "Ed25519",
+	dataArguments := []DataArgument{{keyType: okapi.KeyType_KEY_TYPE_ED25519, keyTypeString: "Ed25519",
 		seed:     "4f66b355aa7b0980ff901f2295b9c562ac3061be4df86703eb28c612faae6578",
 		response: "6fioC1zcDPyPEL19pXRS2E4iJ46zH7xP6uSgAaPdwDrx"},
-		{keyType: okapi.KeyType_X25519, keyTypeString: "X25519",
+		{keyType: okapi.KeyType_KEY_TYPE_X25519, keyTypeString: "X25519",
 			seed:     "9b29d42b38ddd52ed39c0ff70b39572a6eb9b3cac201918dc6d6a84b4c88d2a5",
 			response: "3EK9AYXoUV4Unn5AjvYY39hyK91n7gg4ExC8rKKSUQXJ"},
 	}
