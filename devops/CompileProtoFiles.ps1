@@ -27,13 +27,14 @@ function Remove-Protofiles($protoPath)
 function Update-Golang()
 {
     $GoPath = "../go/okapi/proto"
-    # Remove-Protofiles($GoPath)
+    Remove-Protofiles($GoPath)
     protoc $( Get-ProtoPath ) `
          --go_out="$GoPath" `
          --go-grpc_out="$GoPath" `
          '--go_opt=module=github.com/trinsic-id/okapi' `
          '--go-grpc_opt=module=github.com/trinsic-id/okapi' `
          $( Get-ProtoFiles )
+    Remove-Item "$GoPath/examples_grpc.pb.go"
 }
 
 function Set-Require-Relative($filename)
