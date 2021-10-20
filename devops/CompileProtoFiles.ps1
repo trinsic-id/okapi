@@ -71,7 +71,7 @@ function Update-Ruby()
 
 function Update-Swift()
 {
-    $SwiftPath = "../java/src/main/java/proto"
+    $SwiftPath = "../swift/Okapi/Sources/OkapiSwift/proto"
     Remove-Protofiles($SwiftPath)
     protoc $( Get-ProtoPath ) `
         --swift_out="$SwiftPath" `
@@ -88,10 +88,15 @@ function Update-Java()
         $( Get-ProtoFiles )
 }
 
+function Update-Python()
+{
+    # Python is handled in the BuildPython due to venv requirements
+    . "./BuildPython.ps1" -RequirementsOnly $true
+}
+
 Setup
 Update-Golang
+Update-Python
 Update-Ruby
 Update-Swift
 Update-Java
-# Python is handled in the BuildPython due to venv requirements
-. "./BuildPython.ps1" -RequirementsOnly $true
