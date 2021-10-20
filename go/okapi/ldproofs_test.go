@@ -2,7 +2,7 @@ package okapi
 
 import (
 	"github.com/stretchr/testify/assert"
-	"github.com/trinsic-id/okapi/go/okapi_proto"
+	okapi "github.com/trinsic-id/okapi/go/okapi/proto"
 	"google.golang.org/protobuf/types/known/structpb"
 	"log"
 	"testing"
@@ -18,7 +18,7 @@ func TestGenerateCapabilityInvocationProofWithJCS(t *testing.T) {
 		},
 	})
 
-	request := okapi.GenerateKeyRequest{KeyType: okapi.KeyType_Ed25519}
+	request := okapi.GenerateKeyRequest{KeyType: okapi.KeyType_KEY_TYPE_ED25519}
 	response, err := DidKey{}.Generate(&request)
 	if err != nil {
 		log.Fatalln(err)
@@ -33,7 +33,7 @@ func TestGenerateCapabilityInvocationProofWithJCS(t *testing.T) {
 	signedCapability, err2 := LdProofs{}.CreateProof(&okapi.CreateProofRequest{
 		Document: proofStruct,
 		Key:      signingKey,
-		Suite:    okapi.LdSuite_JcsEd25519Signature2020,
+		Suite:    okapi.LdSuite_LD_SUITE_JCSED25519SIGNATURE2020,
 	})
 	if err2 != nil {
 		log.Fatalln(err2)

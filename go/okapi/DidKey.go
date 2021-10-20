@@ -1,6 +1,8 @@
 package okapi
 
-import "github.com/trinsic-id/okapi/go/okapi_proto"
+import (
+	okapi "github.com/trinsic-id/okapi/go/okapi/proto"
+)
 
 type DidKey struct {}
 type DidKeyer interface {

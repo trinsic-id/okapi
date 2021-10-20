@@ -2,7 +2,7 @@ package okapi
 
 import (
 	"github.com/stretchr/testify/assert"
-	"github.com/trinsic-id/okapi/go/okapi_proto"
+	okapi "github.com/trinsic-id/okapi/go/okapi/proto"
 	"testing"
 )
 
