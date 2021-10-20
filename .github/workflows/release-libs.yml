@@ -6,66 +6,6 @@ on:
     types: [published]
 
 jobs:
-  publish_binaries:
-    name: Upload ${{ matrix.build_job }} artifact
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        include:
-          - os: ubuntu-latest
-            library_file: libokapi.so
-            artifact_name: linux
-            build_job: build_linux
-          # - os: ubuntu-latest
-          #   library_file: libokapi.so
-          #   artifact_name: linux-arm
-          #   build_job: build_linux_arm
-          - os: windows-latest
-            library_file: okapi.dll
-            artifact_name: windows
-            build_job: build_windows
-          - os: windows-latest
-            library_file: okapi.dll
-            artifact_name: windows-gnu
-            build_job: build_windows_gnu
-          - os: macos-latest
-            library_file: libokapi.dylib
-            artifact_name: macos
-            build_job: build_macos
-          - os: macos-latest
-            library_file: "**/*.so"
-            artifact_name: android
-            build_job: build_android
-          - os: macos-latest
-            library_file: libokapi.a
-            artifact_name: ios
-            build_job: build_ios
-    steps:
-      - name: Download workflow artifact
-        uses: dawidd6/action-download-artifact@v2.14.0
-        with:
-          workflow: "build-libs.yml"
-          path: ./libs
-          branch: main
-      - run: |
-          $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/okapi/releases/latest' `
-            -Headers @{ "Authorization" = "Token $env:API_GITHUB_TOKEN"} | ConvertFrom-Json
-          $version = $json.tag_name
-          echo "RELEASE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
-        shell: pwsh
-        env:
-          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
-      - name: Push packages to release
-        uses: svenstaro/upload-release-action@v2
-        if: github.event_name == 'release'
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./libs/${{ matrix.artifact_name }}/${{ matrix.library_file }}
-          asset_name: ${{ matrix.artifact_name }}
-          tag: ${{ env.RELEASE_VERSION }}
-          overwrite: true
-          body: "Okapi binaries"
-
   publish_binaries_bundle:
     name: Upload libs.zip artifact
     runs-on: ubuntu-latest
