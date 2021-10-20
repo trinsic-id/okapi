@@ -1,6 +1,10 @@
+#!/usr/bin/env pwsh
+
 # This script initializes the repository by downloading the latest pre-built
 # libraries from the "okapi" github repo. These libraries are required to compile
 # some of the language specific wrappers.
+
+Set-Location $PSScriptRoot
 
 $Json = Invoke-WebRequest -Uri 'https://api.github.com/repos/trinsic-id/okapi/releases/latest' | ConvertFrom-Json
 $Asset = $Json.assets | where name -eq "libs.zip"
