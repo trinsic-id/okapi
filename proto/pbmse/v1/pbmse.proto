@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package pbmse.v1;
 
-option go_package = "github.com/trinsic-id/okapi";
+option go_package = "github.com/trinsic-id/okapi/go/okapiproto";
 option java_package = "trinsic.okapi.pbmse";
 option java_multiple_files = true;
 

@@ -26,7 +26,7 @@ function Remove-Protofiles($protoPath)
 
 function Update-Golang()
 {
-    $GoPath = "../go/okapi/proto"
+    $GoPath = "../go/okapiproto"
     Remove-Protofiles($GoPath)
     protoc $( Get-ProtoPath ) `
          --go_out="$GoPath" `
