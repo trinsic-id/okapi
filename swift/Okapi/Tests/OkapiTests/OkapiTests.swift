@@ -1,13 +1,12 @@
 import XCTest
 import Foundation
-import Base58Swift
 
 @testable import OkapiSwift
 
 final class OkapiTests: XCTestCase {
     func testGenerateKey() throws {
-        var request = Okapi_Keys_GenerateKeyRequest();
-        request.keyType = Okapi_Keys_KeyType.ed25519;
+        var request = Okapi_Keys_V1_GenerateKeyRequest();
+        request.keyType = Okapi_Keys_V1_KeyType.ed25519;
         request.seed = Data(_: [1, 2, 3]);
 
         let response = try DidKey.generate(request: request);
@@ -15,15 +14,15 @@ final class OkapiTests: XCTestCase {
     }
 
     func testGenerateKeyNoSeed() throws {
-        var request = Okapi_Keys_GenerateKeyRequest();
-        request.keyType = Okapi_Keys_KeyType.ed25519;
+        var request = Okapi_Keys_V1_GenerateKeyRequest();
+        request.keyType = Okapi_Keys_V1_KeyType.ed25519;
 
         let response = try DidKey.generate(request: request);
         assertValidKeyGenerated(response: response);
     }
 
     func testResolveKey() throws {
-        var request = Okapi_Keys_ResolveRequest();
+        var request = Okapi_Keys_V1_ResolveRequest();
         request.did = "did:key:z6Mkt6QT8FPajKXDrtMefkjxRQENd9wFzKkDFomdQAVFzpzm#z6LSfDq6DuofPeZUqNEmdZsxpvfHvSoUXGEWFhw7JHk4cynN";
 
         _ = try DidKey.resolve(request: request);
@@ -31,39 +30,41 @@ final class OkapiTests: XCTestCase {
 
     func testGenerateKeyThrowsInvalidKeyType() throws {
         // Not needed since static typing prevents invalid coalesce.
-//            var request = Okapi_Keys_GenerateKeyRequest();
-//            request.keyType = Okapi_Keys_KeyType(rawValue: -1) ?? <#default value#>;
+//            var request = Okapi_Keys_V1_GenerateKeyRequest();
+//            request.keyType = Okapi_Keys_V1_KeyType(rawValue: -1) ?? <#default value#>;
     }
 
     func testGenerateKeyFromSeed1() throws {
-        let keyType = Okapi_Keys_KeyType.ed25519;
+        let keyType = Okapi_Keys_V1_KeyType.ed25519;
         let keyTypeName = "Ed25519";
         let seed = "4f66b355aa7b0980ff901f2295b9c562ac3061be4df86703eb28c612faae6578";
-        let answer = "6fioC1zcDPyPEL19pXRS2E4iJ46zH7xP6uSgAaPdwDrx";
+        let answer = "5435c3c2e18a56af75cf153aabbfff8cb0d4abcfc2e5cbb110281dfb57de1531";
         try generateKeyFromArguments(keyType: keyType, keyTypeName: keyTypeName, seed: seed, answer: answer);
     }
 
     func testGenerateKeyFromSeed2() throws {
-        let keyType = Okapi_Keys_KeyType.x25519;
+        let keyType = Okapi_Keys_V1_KeyType.x25519;
         let keyTypeName = "X25519";
         let seed = "9b29d42b38ddd52ed39c0ff70b39572a6eb9b3cac201918dc6d6a84b4c88d2a5";
-        let answer = "3EK9AYXoUV4Unn5AjvYY39hyK91n7gg4ExC8rKKSUQXJ";
+        let answer = "21206faaf739899ca30df9d0a081416a1022f72e01f5c88759083e5833fccf21";
         try generateKeyFromArguments(keyType: keyType, keyTypeName: keyTypeName, seed: seed, answer: answer);
     }
 
-    func generateKeyFromArguments(keyType: Okapi_Keys_KeyType, keyTypeName: String,
+    func generateKeyFromArguments(keyType: Okapi_Keys_V1_KeyType, keyTypeName: String,
                                   seed: String, answer: String) throws {
-        var request = Okapi_Keys_GenerateKeyRequest();
+        var request = Okapi_Keys_V1_GenerateKeyRequest();
         request.keyType = keyType;
         request.seed = Data(fromHexEncodedString: seed) ?? Data();
 
+        let answerData = Data(fromHexEncodedString: answer) ?? Data();
+
         let response = try DidKey.generate(request: request);
         let publicKey = assertValidKeyGenerated(response: response, crv: keyTypeName);
-        let answerString = Data(Base58.base58Decode(answer) ?? []).base64EncodedString();
+        let answerString = answerData.base64EncodedString();
         assert(answerString == publicKey);
     }
 
-    func assertValidKeyGenerated(response: Okapi_Keys_GenerateKeyResponse, crv: String = "Ed25519") -> String {
+    func assertValidKeyGenerated(response: Okapi_Keys_V1_GenerateKeyResponse, crv: String = "Ed25519") -> String {
         assert(response.key[0].crv == crv);
         let x: Data = Data(base64Encoded: base64_padding(s: response.key[0].x), options: [Data.Base64DecodingOptions.ignoreUnknownCharacters]) ?? Data();
         let y: Data = Data(base64Encoded: base64_padding(s: response.key[0].y), options: [Data.Base64DecodingOptions.ignoreUnknownCharacters]) ?? Data();

@@ -23,8 +23,7 @@ let package = Package(
         ],
         dependencies: [
             // Dependencies declare other packages that this package depends on.
-            .package(name: "Base58Swift", url: "https://github.com/keefertaylor/Base58Swift.git", from: "2.1.0"),
-            .package(name: "SwiftProtobuf", url: "https://github.com/apple/swift-protobuf.git", from: "1.17.0"),
+            .package(name: "SwiftProtobuf", url: "https://github.com/apple/swift-protobuf.git", from: "1.17.0")
         ],
         targets: [
             // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -32,12 +31,20 @@ let package = Package(
             .target(
                     name: "OkapiObjectiveC",
                     dependencies: [],
-                    exclude: ["libokapi.a", "libokapi_simulator.a", "libokapi_ios.a"],
+                    exclude: ["libokapi.a", "libokapi_simulator.a", "libokapi_ios.a", "okapi.dll.lib", "okapi.dll"],
                     linkerSettings: [
                         LinkerSetting.linkedLibrary("okapi", .when(platforms: [.macOS])),
+                        LinkerSetting.linkedLibrary("okapi.dll", .when(platforms: [.windows])),
                         LinkerSetting.linkedLibrary("okapi_ios", .when(platforms: [.iOS])),
                         // TODO - Support the simulator
-                        LinkerSetting.unsafeFlags([linkFlag], .when(platforms: [.macOS, .iOS]))
+                        LinkerSetting.unsafeFlags([linkFlag], .when(platforms: [.macOS, .iOS, .windows])),
+
+//                        // TODO - Windows support
+//                        LinkerSetting.linkedLibrary("advapi32", .when(platforms: [.windows])),
+//                        LinkerSetting.linkedLibrary("ws2_32", .when(platforms: [.windows])),
+//                        LinkerSetting.linkedLibrary("userenv", .when(platforms: [.windows])),
+//                        LinkerSetting.linkedLibrary("shell32", .when(platforms: [.windows])),
+//                        LinkerSetting.linkedLibrary("msvcrt", .when(platforms: [.windows]))
                     ]
             ),
             .target(
@@ -45,6 +52,6 @@ let package = Package(
                     dependencies: ["OkapiObjectiveC", "SwiftProtobuf"]),
             .testTarget(
                     name: "OkapiTests",
-                    dependencies: ["OkapiSwift", "Base58Swift"]),
+                    dependencies: ["OkapiSwift"]),
         ]
 )

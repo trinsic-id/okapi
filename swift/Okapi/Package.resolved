@@ -2,24 +2,6 @@
   "object": {
     "pins": [
       {
-        "package": "Base58Swift",
-        "repositoryURL": "https://github.com/keefertaylor/Base58Swift.git",
-        "state": {
-          "branch": null,
-          "revision": "1c13ea6b07f1584660526f8bde3d4cc150e91acd",
-          "version": "2.1.14"
-        }
-      },
-      {
-        "package": "BigInt",
-        "repositoryURL": "https://github.com/attaswift/BigInt.git",
-        "state": {
-          "branch": null,
-          "revision": "0ed110f7555c34ff468e72e1686e59721f2b0da6",
-          "version": "5.3.0"
-        }
-      },
-      {
         "package": "SwiftProtobuf",
         "repositoryURL": "https://github.com/apple/swift-protobuf.git",
         "state": {
