@@ -37,14 +37,7 @@ let package = Package(
                         LinkerSetting.linkedLibrary("okapi.dll", .when(platforms: [.windows])),
                         LinkerSetting.linkedLibrary("okapi_ios", .when(platforms: [.iOS])),
                         // TODO - Support the simulator
-                        LinkerSetting.unsafeFlags([linkFlag], .when(platforms: [.macOS, .iOS, .windows])),
-
-//                        // TODO - Windows support
-//                        LinkerSetting.linkedLibrary("advapi32", .when(platforms: [.windows])),
-//                        LinkerSetting.linkedLibrary("ws2_32", .when(platforms: [.windows])),
-//                        LinkerSetting.linkedLibrary("userenv", .when(platforms: [.windows])),
-//                        LinkerSetting.linkedLibrary("shell32", .when(platforms: [.windows])),
-//                        LinkerSetting.linkedLibrary("msvcrt", .when(platforms: [.windows]))
+                        LinkerSetting.unsafeFlags([linkFlag], .when(platforms: [.macOS, .iOS, .windows]))
                     ]
             ),
             .target(
