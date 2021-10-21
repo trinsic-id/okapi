@@ -21,7 +21,7 @@ function Get-ProtoPath()
 
 function Remove-Protofiles($protoPath)
 {
-    Remove-Item "$protoPath/*" -Recurse -Force
+        Remove-Item "$protoPath/*" -Recurse -Force
 }
 
 function Update-Golang()
