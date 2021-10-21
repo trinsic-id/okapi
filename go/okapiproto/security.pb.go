@@ -7,7 +7,7 @@
 // 	protoc        v3.17.3
 // source: okapi/security/v1/security.proto
 
-package okapi
+package okapiproto
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"

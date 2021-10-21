@@ -1,7 +1,7 @@
 package okapi
 
-// #cgo LDFLAGS: -L${SRCDIR} -lokapi
-// #cgo CFLAGS: -I${SRCDIR}
+// #cgo LDFLAGS: -L${SRCDIR}/libs -lokapi
+// #cgo CFLAGS: -I${SRCDIR}/libs
 // #cgo linux LDFLAGS: -ldl -lm
 // #cgo darwin LDFLAGS: -Wl,-rpath,\$ORIGIN
 // #include "okapi.h"

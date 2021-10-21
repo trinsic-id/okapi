@@ -4,7 +4,7 @@
 // 	protoc        v3.17.3
 // source: pbmse/v1/pbmse.proto
 
-package okapi
+package okapiproto
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"

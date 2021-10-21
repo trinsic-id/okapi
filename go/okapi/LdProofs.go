@@ -1,12 +1,12 @@
 package okapi
 
 import (
-	okapi "github.com/trinsic-id/okapi/go/okapi/proto"
+	"github.com/trinsic-id/okapi/go/okapiproto"
 )
 
 type LdProofer interface {
-	CreateProof(request *okapi.CreateProofRequest) (*okapi.CreateProofResponse, error)
-	VerifyProof(request *okapi.VerifyProofRequest) (*okapi.VerifyProofResponse, error)
+	CreateProof(request *okapiproto.CreateProofRequest) (*okapiproto.CreateProofResponse, error)
+	VerifyProof(request *okapiproto.VerifyProofRequest) (*okapiproto.VerifyProofResponse, error)
 }
 
 func LdProofs() LdProofer {
@@ -15,14 +15,14 @@ func LdProofs() LdProofer {
 
 type ldProofs struct{}
 
-func (l *ldProofs) CreateProof(request *okapi.CreateProofRequest) (*okapi.CreateProofResponse, error) {
-	response := okapi.CreateProofResponse{}
+func (l *ldProofs) CreateProof(request *okapiproto.CreateProofRequest) (*okapiproto.CreateProofResponse, error) {
+	response := okapiproto.CreateProofResponse{}
 	err := callOkapiNative(request, &response, ldproofsCreateProof)
 	return &response, err
 }
 
-func (l *ldProofs) VerifyProof(request *okapi.VerifyProofRequest) (*okapi.VerifyProofResponse, error) {
-	response := okapi.VerifyProofResponse{}
+func (l *ldProofs) VerifyProof(request *okapiproto.VerifyProofRequest) (*okapiproto.VerifyProofResponse, error) {
+	response := okapiproto.VerifyProofResponse{}
 	err := callOkapiNative(request, &response, ldproofsVerifyProof)
 	return &response, err
 }

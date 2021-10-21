@@ -1,13 +1,11 @@
 package okapi
 
-import (
-	okapi "github.com/trinsic-id/okapi/go/okapi/proto"
-)
+import "github.com/trinsic-id/okapi/go/okapiproto"
 
 // DidKeyer is the interface that groups the did:key functions
 type DidKeyer interface {
-	Generate(request *okapi.GenerateKeyRequest) (*okapi.GenerateKeyResponse, error)
-	Resolve(request *okapi.ResolveRequest) (*okapi.ResolveResponse, error)
+	Generate(request *okapiproto.GenerateKeyRequest) (*okapiproto.GenerateKeyResponse, error)
+	Resolve(request *okapiproto.ResolveRequest) (*okapiproto.ResolveResponse, error)
 }
 
 // DidKey returns a DidKeyer that can generate and resolve did:keys
@@ -17,14 +15,14 @@ func DidKey() DidKeyer {
 
 type didKey struct{}
 
-func (d *didKey) Generate(request *okapi.GenerateKeyRequest) (*okapi.GenerateKeyResponse, error) {
-	response := okapi.GenerateKeyResponse{}
+func (d *didKey) Generate(request *okapiproto.GenerateKeyRequest) (*okapiproto.GenerateKeyResponse, error) {
+	response := okapiproto.GenerateKeyResponse{}
 	err := callOkapiNative(request, &response, didkeyGenerate)
 	return &response, err
 }
 
-func (d *didKey) Resolve(request *okapi.ResolveRequest) (*okapi.ResolveResponse, error) {
-	response := okapi.ResolveResponse{}
+func (d *didKey) Resolve(request *okapiproto.ResolveRequest) (*okapiproto.ResolveResponse, error) {
+	response := okapiproto.ResolveResponse{}
 	err := callOkapiNative(request, &response, didkeyResolve)
 	return &response, err
 }

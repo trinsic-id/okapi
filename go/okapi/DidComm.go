@@ -1,14 +1,14 @@
 package okapi
 
 import (
-	okapi "github.com/trinsic-id/okapi/go/okapi/proto"
+	"github.com/trinsic-id/okapi/go/okapiproto"
 )
 
 type DidCommer interface {
-	Pack(request *okapi.PackRequest) (*okapi.PackResponse, error)
-	Unpack(request *okapi.UnpackRequest) (*okapi.UnpackResponse, error)
-	Sign(request *okapi.SignRequest) (*okapi.SignResponse, error)
-	Verify(request *okapi.VerifyRequest) (*okapi.VerifyResponse, error)
+	Pack(request *okapiproto.PackRequest) (*okapiproto.PackResponse, error)
+	Unpack(request *okapiproto.UnpackRequest) (*okapiproto.UnpackResponse, error)
+	Sign(request *okapiproto.SignRequest) (*okapiproto.SignResponse, error)
+	Verify(request *okapiproto.VerifyRequest) (*okapiproto.VerifyResponse, error)
 }
 
 func DidComm() DidCommer {
@@ -17,26 +17,26 @@ func DidComm() DidCommer {
 
 type didComm struct{}
 
-func (d *didComm) Pack(request *okapi.PackRequest) (*okapi.PackResponse, error) {
-	response := okapi.PackResponse{}
+func (d *didComm) Pack(request *okapiproto.PackRequest) (*okapiproto.PackResponse, error) {
+	response := okapiproto.PackResponse{}
 	err := callOkapiNative(request, &response, didcommPack)
 	return &response, err
 }
 
-func (d *didComm) Unpack(request *okapi.UnpackRequest) (*okapi.UnpackResponse, error) {
-	response := okapi.UnpackResponse{}
+func (d *didComm) Unpack(request *okapiproto.UnpackRequest) (*okapiproto.UnpackResponse, error) {
+	response := okapiproto.UnpackResponse{}
 	err := callOkapiNative(request, &response, didcommUnpack)
 	return &response, err
 }
 
-func (d *didComm) Sign(request *okapi.SignRequest) (*okapi.SignResponse, error) {
-	response := okapi.SignResponse{}
+func (d *didComm) Sign(request *okapiproto.SignRequest) (*okapiproto.SignResponse, error) {
+	response := okapiproto.SignResponse{}
 	err := callOkapiNative(request, &response, didcommSign)
 	return &response, err
 }
 
-func (d *didComm) Verify(request *okapi.VerifyRequest) (*okapi.VerifyResponse, error) {
-	response := okapi.VerifyResponse{}
+func (d *didComm) Verify(request *okapiproto.VerifyRequest) (*okapiproto.VerifyResponse, error) {
+	response := okapiproto.VerifyResponse{}
 	err := callOkapiNative(request, &response, didcommVerify)
 	return &response, err
 }
