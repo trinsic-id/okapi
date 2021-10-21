@@ -9,12 +9,13 @@ import "C"
 
 import (
 	"fmt"
-	"github.com/golang/protobuf/proto"
 	"unsafe"
+
+	"google.golang.org/protobuf/proto"
 )
 
 type OkapiError struct {
-	Message string
+	Message       string
 	InternalError error
 }
 
@@ -27,11 +28,12 @@ type DidError struct {
 	FunctionName string
 	Message      string
 }
+
 func (d *DidError) Error() string {
 	return fmt.Sprintf("Error on call: %s() return code=%d message=%s", d.FunctionName, d.Code, d.Message)
 }
 
-type okapiCall func (request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32
+type okapiCall func(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32
 
 func didcommPack(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
 	return int32(C.didcomm_pack(request, response, err))
@@ -87,7 +89,7 @@ func callOkapiNative(request proto.Message, response proto.Message, nativeFunc o
 	code := nativeFunc(requestBuffer, &responseBuffer, &errorBuffer)
 	err = unmarshalResponse(responseBuffer, response, requestBuffer)
 	if err != nil {
-		return wrapError("Failed to unmarshal response",err)
+		return wrapError("Failed to unmarshal response", err)
 	}
 	return createError(code, errorBuffer)
 }
@@ -117,8 +119,8 @@ func createError(code int32, err C.ExternError) error {
 		return nil
 	}
 	return &DidError{
-		Code: int(code),
-		Message:      C.GoString(err.message),
+		Code:    int(code),
+		Message: C.GoString(err.message),
 	}
 }
 func wrapError(message string, internalError error) error {
