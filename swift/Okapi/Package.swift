@@ -35,7 +35,7 @@ let package = Package(
                     linkerSettings: [
                         LinkerSetting.linkedLibrary("okapi", .when(platforms: [.macOS])),
                         // TODO - macos builder won't flag this right
-//                        LinkerSetting.linkedLibrary("okapi.dll", .when(platforms: [.windows])),
+                        LinkerSetting.linkedLibrary("okapi.dll", .when(platforms: [.windows])),
                         LinkerSetting.linkedLibrary("okapi_ios", .when(platforms: [.iOS])),
                         // TODO - Support the simulator
                         LinkerSetting.unsafeFlags([linkFlag], .when(platforms: [.macOS, .iOS, .windows]))
