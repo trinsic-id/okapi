@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	okapi "github.com/trinsic-id/okapi/go/okapi/proto"
+	"github.com/trinsic-id/okapi/go/okapiproto"
 	"google.golang.org/protobuf/types/known/structpb"
 )
 
@@ -25,23 +25,23 @@ func TestGenerateCapabilityInvocationProofWithJCS(t *testing.T) {
 		return
 	}
 
-	request := okapi.GenerateKeyRequest{KeyType: okapi.KeyType_KEY_TYPE_ED25519}
+	request := okapiproto.GenerateKeyRequest{KeyType: okapiproto.KeyType_KEY_TYPE_ED25519}
 	response, err := dk.Generate(&request)
 	if !assert.Nil(err) {
 		return
 	}
 
-	signingKey := &okapi.JsonWebKey{}
+	signingKey := &okapiproto.JsonWebKey{}
 	for _, key := range response.Key {
 		if key.Crv == "Ed25519" {
 			signingKey = key
 			break
 		}
 	}
-	signedCapability, err := ldp.CreateProof(&okapi.CreateProofRequest{
+	signedCapability, err := ldp.CreateProof(&okapiproto.CreateProofRequest{
 		Document: proofStruct,
 		Key:      signingKey,
-		Suite:    okapi.LdSuite_LD_SUITE_JCSED25519SIGNATURE2020,
+		Suite:    okapiproto.LdSuite_LD_SUITE_JCSED25519SIGNATURE2020,
 	})
 	if !assert.Nil(err) {
 		return

@@ -5,7 +5,7 @@ syntax = "proto3";
 package okapi.security.v1;
 
 option csharp_namespace = "Okapi.Security.V1";
-option go_package = "github.com/trinsic-id/okapi";
+option go_package = "github.com/trinsic-id/okapiproto";
 option java_package = "trinsic.okapi.security.v1";
 
 // Create an Oberon Compatible Secret Key
