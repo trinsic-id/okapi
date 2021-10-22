@@ -1,28 +1,36 @@
 package okapi
 
 import (
+	"testing"
+	"time"
+
 	"github.com/stretchr/testify/assert"
 	okapi "github.com/trinsic-id/okapi/go/okapi/proto"
 	"google.golang.org/protobuf/types/known/structpb"
-	"log"
-	"testing"
-	"time"
 )
 
 func TestGenerateCapabilityInvocationProofWithJCS(t *testing.T) {
+	assert := assert.New(t)
+	dk := DidKey()
+	ldp := LdProofs()
+
 	proofStruct, err := structpb.NewStruct(map[string]interface{}{
 		"@context": "https://w3id.org/security/v2",
-		"target": "urn:trinsic:wallets:noop",
+		"target":   "urn:trinsic:wallets:noop",
 		"proof": map[string]interface{}{
 			"created": time.Now().Format(time.RFC3339),
 		},
 	})
+	if !assert.Nil(err) {
+		return
+	}
 
 	request := okapi.GenerateKeyRequest{KeyType: okapi.KeyType_KEY_TYPE_ED25519}
-	response, err := DidKey{}.Generate(&request)
-	if err != nil {
-		log.Fatalln(err)
+	response, err := dk.Generate(&request)
+	if !assert.Nil(err) {
+		return
 	}
+
 	signingKey := &okapi.JsonWebKey{}
 	for _, key := range response.Key {
 		if key.Crv == "Ed25519" {
@@ -30,15 +38,14 @@ func TestGenerateCapabilityInvocationProofWithJCS(t *testing.T) {
 			break
 		}
 	}
-	signedCapability, err2 := LdProofs{}.CreateProof(&okapi.CreateProofRequest{
+	signedCapability, err := ldp.CreateProof(&okapi.CreateProofRequest{
 		Document: proofStruct,
 		Key:      signingKey,
 		Suite:    okapi.LdSuite_LD_SUITE_JCSED25519SIGNATURE2020,
 	})
-	if err2 != nil {
-		log.Fatalln(err2)
+	if !assert.Nil(err) {
+		return
 	}
-	assert.Nil(t, err2)
-	assert.NotNil(t, signedCapability)
-	assert.NotNil(t, signedCapability.SignedDocument)
+	assert.NotNil(signedCapability)
+	assert.NotNil(signedCapability.SignedDocument)
 }
