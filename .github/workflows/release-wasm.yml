@@ -13,7 +13,7 @@ jobs:
     name: Publish Npm
     environment:
       name: npmjs.com
-    runs-on: windows-latest
+    runs-on: macos-latest
     defaults:
       run:
         working-directory: ./wasm
@@ -23,6 +23,10 @@ jobs:
       - uses: jetli/wasm-pack-action@v0.3.0
         with:
           version: 'latest'
+      - run: |
+          rustup toolchain uninstall stable
+          rustup toolchain install stable
+          rustup toolchain install stable --target wasm32-unknown-unknown
       - name: Generate Package Version
         run: |
           $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/okapi/releases/latest' | ConvertFrom-Json
