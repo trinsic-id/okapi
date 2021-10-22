@@ -19,7 +19,7 @@ on:
 jobs:
   build_test:
     name: Build
-    runs-on: "macos-latest"
+    runs-on: macos-latest
     defaults:
       run:
         working-directory: ./wasm
