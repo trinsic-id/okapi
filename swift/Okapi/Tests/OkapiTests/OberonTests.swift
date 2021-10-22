@@ -33,6 +33,11 @@ final class OberonTests: XCTestCase {
     }
 
     func testDemoWithBlinding() throws {
+        let key = try Oberon.createKey(request: Okapi_Security_V1_CreateOberonKeyRequest())
+        let data = "alice".data(using: .utf8) ?? Data()
+        let nonce = "1234".data(using: .utf8) ?? Data()
+
+        let issuer_2fa = "issuer code".data(using: .utf8) ?? Data()
 
     }
 }
