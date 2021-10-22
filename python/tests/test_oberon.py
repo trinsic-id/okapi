@@ -17,7 +17,7 @@ class OberonTests(unittest.TestCase):
 
         self.assertTrue(result.valid, "Proof should verify")
 
-    def test_demo_with_binding(self):
+    def test_demo_with_blinding(self):
         key = Oberon.create_key(CreateOberonKeyRequest())
         data = bytes("alice", "utf8")
         nonce = bytes("1234", "utf8")
