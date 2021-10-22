@@ -5,7 +5,7 @@ from okapi.proto.okapi.security.v1 import CreateOberonKeyRequest, CreateOberonTo
 from okapi.wrapper import Oberon
 
 
-class KeyTests(unittest.TestCase):
+class OberonTests(unittest.TestCase):
     def test_oberon_demo(self):
         key = Oberon.create_key(CreateOberonKeyRequest())
         data = bytes("alice", "utf8")

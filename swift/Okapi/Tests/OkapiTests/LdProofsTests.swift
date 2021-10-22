@@ -19,17 +19,17 @@ final class LdProofsTests: XCTestCase {
         var capabilityStruct: Google_Protobuf_Struct = Google_Protobuf_Struct();
         capabilityStruct.fields = capabilityDictionary;
 
-        var request = Okapi_Keys_GenerateKeyRequest();
-        request.keyType = Okapi_Keys_KeyType.ed25519;
+        var request = Okapi_Keys_V1_GenerateKeyRequest();
+        request.keyType = Okapi_Keys_V1_KeyType.ed25519;
         let response = try DidKey.generate(request: request);
         let signingKey = response.key.first { x in
             x.crv == "Ed25519"
         };
 
-        var proofRequest = Okapi_Proofs_CreateProofRequest();
+        var proofRequest = Okapi_Proofs_V1_CreateProofRequest();
         proofRequest.document = capabilityStruct;
         proofRequest.key = signingKey!;
-        proofRequest.suite = Okapi_Proofs_LdSuite.jcsEd25519Signature2020;
+        proofRequest.suite = Okapi_Proofs_V1_LdSuite.jcsed25519Signature2020;
 
         _ = try LdProofs.createProof(request: proofRequest);
     }
