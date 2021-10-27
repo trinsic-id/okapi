@@ -19,6 +19,8 @@ All library methods are exposed via static method calls, generally grouped under
 
 For example, to generate new key using .NET you can use the `DIDKey` class.
 
+For mathematical languages and environments, use the Python packages. Examples for MATLAB, Mathematica, R(lang), etc. can be found here: https://github.com/trinsic-id/okapi-examples
+
 ```cs
 using Okapi.Keys;
 
@@ -52,5 +54,14 @@ var key = DIDKey.generate(request);
 
 ### LdProofs
 
+- `create_proof`
+- `verify_proof`
+
+### Oberon
+
+- `create_key`
+- `create_token`
+- `blind_token`
+- `unblind_token`
 - `create_proof`
 - `verify_proof`
