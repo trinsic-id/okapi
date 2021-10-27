@@ -1,6 +1,0 @@
-module LibOkapi {
-  header "include/okapi-Bridging-Header.h"
-  link "libokapi.a"
-  export *
-  requires objc
-}
