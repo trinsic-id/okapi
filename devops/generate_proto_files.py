@@ -69,10 +69,10 @@ def update_ruby():
     ruby_path = get_language_dir('ruby')
     ruby_proto_path = join(ruby_path, 'lib')
     # TODO - clean selectively
-    run_protoc({'ruby_out': ruby_proto_path, 'grpc_out': ruby_proto_path}, {}, get_proto_files(),
-               protoc_executable='grpc_tools_ruby_protoc')
+    run_protoc({'ruby_out': ruby_proto_path}, {}, get_proto_files())
     # TODO - Ruby type specifications
-    # run_protoc({'rbs_out': ruby_proto_path}, {}, get_proto_files(), protoc_executable='bundle exec protoc')
+    os.system(f"rbs prototype rb {join(ruby_proto_path, '**', '*.rb')} > {join(ruby_proto_path, 'signatures.rbs')}")
+    # run_protoc({'rbs_out': ruby_proto_path}, {}, get_proto_files())
 
 
 def update_java():
@@ -85,10 +85,24 @@ def update_java():
     shutil.rmtree(join(java_proto_path, 'trinsic', 'okapi'))
 
 
+def update_swift():
+    swift_path = get_language_dir('swift')
+    swift_proto_path = join(swift_path, 'Okapi', 'Sources', 'OkapiSwift', 'proto')
+    clean_proto_dir(swift_proto_path)
+    run_protoc({'swift_out': swift_proto_path}, {'swift_opt': "Visibility=Public"}, get_proto_files())
+
+
+def update_python():
+    # TODO - Call the python script in the python directory?
+    pass
+
+
 def main():
     update_golang()
     update_ruby()
     update_java()
+    update_swift()
+    update_python()
 
 
 if __name__ == "__main__":

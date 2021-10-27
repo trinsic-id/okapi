@@ -1,0 +1,199 @@
+module Okapi
+  module Examples
+    module V1
+      BasicMessage: untyped
+    end
+  end
+end
+
+module Okapi
+  module Keys
+    module V1
+      GenerateKeyRequest: untyped
+
+      GenerateKeyResponse: untyped
+
+      ResolveRequest: untyped
+
+      ResolveResponse: untyped
+
+      JsonWebKey: untyped
+
+      KeyType: untyped
+    end
+  end
+end
+
+module Okapi
+  module Proofs
+    module V1
+      CreateProofRequest: untyped
+
+      CreateProofResponse: untyped
+
+      VerifyProofRequest: untyped
+
+      VerifyProofResponse: untyped
+
+      LdSuite: untyped
+    end
+  end
+end
+
+module Okapi
+  module Security
+    module V1
+      CreateOberonKeyRequest: untyped
+
+      CreateOberonKeyResponse: untyped
+
+      CreateOberonTokenRequest: untyped
+
+      CreateOberonTokenResponse: untyped
+
+      CreateOberonProofRequest: untyped
+
+      CreateOberonProofResponse: untyped
+
+      VerifyOberonProofRequest: untyped
+
+      VerifyOberonProofResponse: untyped
+
+      BlindOberonTokenRequest: untyped
+
+      BlindOberonTokenResponse: untyped
+
+      UnBlindOberonTokenRequest: untyped
+
+      UnBlindOberonTokenResponse: untyped
+    end
+  end
+end
+
+module Okapi
+  module Transport
+    module V1
+      SignRequest: untyped
+
+      SignResponse: untyped
+
+      VerifyRequest: untyped
+
+      VerifyResponse: untyped
+
+      PackRequest: untyped
+
+      PackResponse: untyped
+
+      UnpackRequest: untyped
+
+      UnpackResponse: untyped
+
+      CoreMessage: untyped
+    end
+  end
+end
+
+Transport_V1: untyped
+
+Keys_V1: untyped
+
+Proofs_V1: untyped
+
+Examples_V1: untyped
+
+Security_V1: untyped
+
+module Okapi
+  extend FFI::Library
+
+  def self.library_path: () -> untyped
+
+  def self.library_path=: (untyped path) -> untyped
+
+  def self.library_name: () -> ("okapi.dll" | "libokapi.so" | "libokapi.dylib" | untyped)
+
+  class ByteBuffer < FFI::Struct
+  end
+
+  class ExternError < FFI::Struct
+  end
+
+  def self.load_native_library: () -> (nil | untyped)
+end
+
+module Okapi
+  def self.verify_type: (untyped arg, untyped klass) -> untyped
+
+  def self.byte_buffer_free: (untyped buffer) -> untyped
+
+  def self.string_free: (untyped ptr) -> untyped
+
+  def self.ffi_call: (untyped function, untyped request, untyped response_klass) -> untyped
+
+  class DidError < StandardError
+    def initialize: (?::Integer code, ?untyped? msg) -> void
+
+    def to_s: () -> ::String
+  end
+
+  module DidComm
+    def self.pack: (untyped request) -> untyped
+
+    def self.unpack: (untyped request) -> untyped
+
+    def self.sign: (untyped request) -> untyped
+
+    def self.verify: (untyped request) -> untyped
+  end
+
+  module DidKey
+    def self.generate: (untyped request) -> untyped
+
+    def self.resolve: (untyped request) -> untyped
+  end
+
+  module LdProofs
+    def self.create: (untyped request) -> untyped
+
+    def self.verify: (untyped request) -> untyped
+  end
+
+  module Oberon
+    def self.create_key: (untyped request) -> untyped
+
+    def self.create_token: (untyped request) -> untyped
+
+    def self.blind_token: (untyped request) -> untyped
+
+    def self.unblind_token: (untyped request) -> untyped
+
+    def self.create_proof: (untyped request) -> untyped
+
+    def self.verify_proof: (untyped request) -> untyped
+  end
+end
+
+module Pbmse
+  module V1
+    SignedMessage: untyped
+
+    Signature: untyped
+
+    SignatureHeader: untyped
+
+    EncryptedMessage: untyped
+
+    EncryptionHeader: untyped
+
+    EncryptionRecipient: untyped
+
+    EncryptionMode: untyped
+
+    EncryptionAlgorithm: untyped
+  end
+end
+
+module Okapi
+  VERSION: ::String
+end
