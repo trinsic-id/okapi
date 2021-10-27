@@ -4,10 +4,8 @@ SimpleCov.start do
   SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
 end
 
-require_relative '../lib/okapi'
-
-require "minitest/autorun"
+require 'minitest/autorun'
 unless ENV['RM_INFO']
-  require "minitest/reporters"
+  require 'minitest/reporters'
   Minitest::Reporters.use! Minitest::Reporters::JUnitReporter.new
 end
