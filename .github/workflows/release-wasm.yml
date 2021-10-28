@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   workflow_run:
     workflows: ["Release Platform Libraries"]
-    branches: [main]
+    branches: ["main", "v?.*"]
     types:
       - completed
 
