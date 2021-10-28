@@ -453,3 +453,5 @@ python/okapi/libs/
 ruby/libs/
 swift/Okapi/Sources/OkapiObjectiveC/okapi.dll
 swift/Okapi/Sources/OkapiObjectiveC/okapi.dll.lib
+
+.DS_Store
