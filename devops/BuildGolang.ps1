@@ -9,11 +9,6 @@ param
 
 . "$PSScriptRoot/VersionParse.ps1"
 
-function Install-Requirements {
-    # Due to weirdness with github action runners not updating path dynamically, we have to use the yaml file to install these
-    # go install golang.org/x/lint/golint@latest
-    # go install github.com/jstemmer/go-junit-report@latest
-}
 function Test-Golang {
     go build
     golint
@@ -39,7 +34,6 @@ Get-ChildItem $source -Recurse | `
     ForEach-Object {Copy-Item -Path $_.Fullname -Destination $dest -Force} # Do the things
 Copy-Item -Path "$PSScriptRoot/../libs/C_header/okapi.h" -Destination "$dest"
 
-Install-Requirements
 if (!$RequirementsOnly) {
     Test-Golang
     Build-Package

@@ -4,7 +4,6 @@
 
 function Get-PythonVersion {
     param ([string]$tag)
-	
     $match = $tag -match "$(Get-VersionRegex)"
     if ($match) {
         $versionString = $Matches.MAJOR + "." + $Matches.MINOR
