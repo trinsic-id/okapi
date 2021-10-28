@@ -1,3 +1,4 @@
+$LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 require 'simplecov'
 require 'simplecov-cobertura'
 SimpleCov.start do
