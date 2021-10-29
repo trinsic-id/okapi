@@ -1,8 +1,14 @@
+import io
+import zipfile
+
+import requests
+import shutil
 import threading
+from os import listdir
 from typing import Any, Optional, List, Dict, Union, Type, TypeVar
 import platform
 import ctypes
-from os.path import join, abspath, dirname
+from os.path import join, abspath, dirname, isdir
 
 import betterproto
 from betterproto.lib.google.protobuf import Struct, Value, ListValue
@@ -138,6 +144,51 @@ def load_library() -> ctypes.CDLL:
             except KeyError:
                 raise NotImplementedError(f"Unsupported operating system {sys}: {platform.platform()}")
     return OKAPI_DLL['library']
+
+
+def download_binaries():
+    """
+    Download the latest released binaries from github
+    """
+    latest_release = requests.get('https://api.github.com/repos/trinsic-id/okapi/releases/latest').json()
+    latest_assets = requests.get(latest_release['assets_url']).json()
+    libs_asset = [asset for asset in latest_assets if asset['name'] == 'libs.zip'][0]
+    # Download zip
+    zip_download = requests.get(libs_asset['browser_download_url'], stream=True)
+    z = zipfile.ZipFile(io.BytesIO(zip_download.content))
+    extract_dir = abspath(join(dirname(abspath(__file__)), 'okapi'))
+    z.extractall(extract_dir)
+    # Remove the binaries for other environments.
+    copy_from, copy_to = get_os_arch_binary(extract_dir)
+    shutil.copy2(copy_from, copy_to)
+    cleanup_zip_download(copy_to)
+
+
+def cleanup_zip_download(copy_to):
+    # Delete folders
+    for folder_name in listdir(copy_to):
+        full_path = join(copy_to, folder_name)
+        if isdir(full_path):
+            shutil.rmtree(full_path)
+
+
+def get_os_arch_binary(extract_dir):
+    copy_from = ''
+    copy_to = join(extract_dir, 'libs')
+    os_name = platform.system().lower()
+    processor_name = platform.machine().lower()
+    if os_name == 'windows':
+        copy_from = join(copy_to, 'windows', 'okapi.dll')
+    elif os_name == 'linux':
+        if processor_name == 'amd64':
+            copy_from = join(copy_to, 'linux', 'libokapi.so')
+        elif processor_name == 'armv7':
+            copy_from = join(copy_to, 'linux-armv7', 'libokapi.so')
+        elif processor_name == 'aarch64':
+            copy_from = join(copy_to, 'linux-aarch64', 'libokapi.so')
+    elif os_name == 'darwin':
+        copy_from = join(copy_to, 'macos', 'libokapi.dylib')
+    return copy_from, copy_to
 
 
 def wrap_native_function(function_name: str, *, arg_types: Optional[List[Any]] = None,

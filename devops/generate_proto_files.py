@@ -25,16 +25,6 @@ def get_proto_files(dir_name: str = None) -> List[str]:
     return [abspath(file_path) for file_path in glob.glob(proto_search_glob, recursive=True)]
 
 
-def replace_lines_in_file(file_name: str, replace_lines: Dict[str, str]) -> None:
-    with open(file_name, 'r') as fid:
-        file_lines = fid.readlines()
-
-    file_lines = [line.replace(key, value) for key, value in replace_lines.items() for line in file_lines]
-
-    with open(file_name, 'w') as fid:
-        fid.writelines(file_lines)
-
-
 def clean_proto_dir(language_proto_dir: str) -> None:
     try:
         shutil.rmtree(language_proto_dir)
