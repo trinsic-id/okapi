@@ -455,3 +455,4 @@ swift/Okapi/Sources/OkapiObjectiveC/okapi.dll
 swift/Okapi/Sources/OkapiObjectiveC/okapi.dll.lib
 
 .DS_Store
+go/okapi/okapi.lib
