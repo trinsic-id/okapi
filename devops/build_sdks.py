@@ -45,7 +45,6 @@ def build_python(args) -> None:
                 {'version = ': f'version = {get_github_version(args.github_token)}'})
     # Copy in the binaries
     copy_okapi_libs(join(python_dir, 'okapi', 'libs'))
-    os.chdir(python_dir)
 
 
 def get_github_version(github_token: str = None) -> str:
