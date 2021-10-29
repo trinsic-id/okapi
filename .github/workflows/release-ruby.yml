@@ -30,7 +30,7 @@ jobs:
           workflow: "build-libs.yml"
           path: ./libs
           branch: main
-     - name: Build and run tests
+      - name: Build and run tests
         run: |
           gem install bundler
           bundle install
