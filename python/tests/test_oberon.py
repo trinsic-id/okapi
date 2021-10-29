@@ -1,11 +1,18 @@
 import unittest
+from os.path import join, dirname, abspath
 
+from okapi.okapi_utils import set_library_path, get_os_arch_binary
 from okapi.proto.okapi.security.v1 import CreateOberonKeyRequest, CreateOberonTokenRequest, CreateOberonProofRequest, \
     VerifyOberonProofRequest, UnBlindOberonTokenRequest, BlindOberonTokenRequest
 from okapi.wrapper import Oberon
 
 
 class OberonTests(unittest.TestCase):
+    def setUp(self) -> None:
+        base_dir = abspath(join(dirname(__file__), '..', '..'))
+        lib_path, _ = get_os_arch_binary(base_dir)
+        set_library_path(dirname(lib_path))
+
     def test_oberon_demo(self):
         key = Oberon.create_key(CreateOberonKeyRequest())
         data = bytes("alice", "utf8")

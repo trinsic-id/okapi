@@ -69,8 +69,6 @@ def build_python(args) -> None:
     python_dir = abspath(join(dirname(__file__), '..', 'python'))
     update_line(join(python_dir, 'setup.cfg'),
                 {'version = ': f'version = {get_package_versions(args)}'})
-    # Copy in the binaries
-    copy_okapi_libs(join(python_dir, 'okapi', 'libs'))
 
 
 def build_java(args) -> None:
@@ -85,8 +83,6 @@ def build_ruby(args) -> None:
     ruby_dir = abspath(join(dirname(__file__), '..', 'ruby'))
     update_line(join(ruby_dir, 'lib', 'version.rb'),
                 {'  VERSION =': f"  VERSION = '{get_package_versions(args)}'"})
-    # Copy in the binaries
-    copy_okapi_libs(join(ruby_dir, 'libs'))
 
 
 def build_golang(args) -> None:
