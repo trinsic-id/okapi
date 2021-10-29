@@ -26,7 +26,7 @@ function Install-Requirements {
     python -m pip install -r requirements.txt
     python -m pip install pytest pytest-cov build
 
-    python ./okapi/generate_proto_files.py
+    python ./devops/generate_proto_files.py
 }
 function Run-Tests {
     python -m pytest --cache-clear ./tests --junitxml=$TestOutput --cov=.
