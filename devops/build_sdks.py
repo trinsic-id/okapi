@@ -40,9 +40,10 @@ def get_os_arch_binary(extract_dir):
 
 
 def copy_okapi_libs(copy_to: str):
-    copy_from = abspath(join(dirname(__file__), '..'))
-    copy_from, _ = get_os_arch_binary(copy_from)
+    libs_dir = abspath(join(dirname(__file__), '..'))
+    copy_from, _ = get_os_arch_binary(libs_dir)
     shutil.copy2(copy_from, copy_to)
+    shutil.copy2(join(libs_dir,'libs', 'C_header', 'okapi.h'), copy_to)
 
 
 def update_line(file_name: str, replace_lines: Dict[str, str]) -> None:
