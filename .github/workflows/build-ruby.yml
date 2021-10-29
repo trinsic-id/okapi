@@ -39,13 +39,14 @@ jobs:
           python ../devops/build_sdks.py --github-token=${{ secrets.API_GITHUB_TOKEN }}
           bundle exec rake
           rake test
+          exit 0
         shell: pwsh
         working-directory: ruby
       - name: Upload Unit Test Results - Ruby
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name:  Ruby ${{ matrix.ruby-version }} Unit Test Results (${{ matrix.os }})
+          name:  Ruby ${{ matrix.ruby-version }} Unit Test Results (${{ matrix.os-artifact[0] }})
           path: 'ruby/test/reports/TEST-*.xml'
 
   publish-test-results-ruby:

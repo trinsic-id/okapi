@@ -2,6 +2,11 @@ name: Release Python SDK
 
 on:
   workflow_dispatch:
+    inputs:
+      packageVersion:
+        description: 'Version to build'
+        required: true
+        default: ''
   # release:
   #   types: [published]
   workflow_run:
@@ -29,7 +34,7 @@ jobs:
       - name: Build, Test, Pack
         run: |
           python -m pip install -r requirements.txt
-          python ../devops/build_sdks.py --github-token=${{ secrets.API_GITHUB_TOKEN }}
+          python ../devops/build_sdks.py --github-token=${{ secrets.API_GITHUB_TOKEN }} --package-version=${{ github.event.inputs.packageVersion }}
           python -m build --sdist --wheel --outdir dist/ .
         shell: pwsh
         working-directory: python

@@ -2,6 +2,11 @@ name: Release .NET SDK
 
 on:
   workflow_dispatch:
+    inputs:
+      packageVersion:
+        description: 'Version to build'
+        required: true
+        default: ''
   # release:
   #   types: [published]
   workflow_run:
@@ -38,6 +43,7 @@ jobs:
 
       - name: Create Nuget package
         run: |
+          python ../devops/build_sdks.py --github-token=${{ secrets.API_GITHUB_TOKEN }} --package-version=${{ github.event.inputs.packageVersion }}
           msbuild -target:restore,pack -property:SkipNativeLibsCopy=true -property:Configuration=Release -property:PackageVersion=$env:PACKAGE_VERSION
         shell: pwsh
         working-directory: ./dotnet/Library/Okapi

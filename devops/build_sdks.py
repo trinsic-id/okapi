@@ -4,10 +4,15 @@ Build the various language SDK packages for release
 import argparse
 import glob
 import os
+import platform
 import shutil
 from os.path import join, abspath, dirname
 from typing import Dict
 
+try:
+    import requests
+except ImportError:
+    os.system('pip install requests')
 import requests
 
 
@@ -15,10 +20,29 @@ def parse_version_tag():
     raise NotImplementedError
 
 
+def get_os_arch_binary(extract_dir):
+    copy_from = ''
+    copy_to = join(extract_dir, 'libs')
+    os_name = platform.system().lower()
+    processor_name = platform.machine().lower()
+    if os_name == 'windows':
+        copy_from = join(copy_to, 'windows', 'okapi.dll')
+    elif os_name == 'linux':
+        if processor_name == 'x86_64':
+            copy_from = join(copy_to, 'linux', 'libokapi.so')
+        elif processor_name == 'armv7l':
+            copy_from = join(copy_to, 'linux-armv7', 'libokapi.so')
+        elif processor_name == 'aarch64':
+            copy_from = join(copy_to, 'linux-aarch64', 'libokapi.so')
+    elif os_name == 'darwin':
+        copy_from = join(copy_to, 'macos', 'libokapi.dylib')
+    return copy_from, copy_to
+
+
 def copy_okapi_libs(copy_to: str):
-    copy_from = abspath(join(dirname(__file__), '..', 'libs'))
-    for copy_file in glob.glob(join(copy_from, '**', '*.*'), recursive=True):
-        shutil.copy2(copy_file, copy_to)
+    copy_from = abspath(join(dirname(__file__), '..'))
+    copy_from, _ = get_os_arch_binary(copy_from)
+    shutil.copy2(copy_from, copy_to)
 
 
 def update_line(file_name: str, replace_lines: Dict[str, str]) -> None:
@@ -42,7 +66,7 @@ def build_python(args) -> None:
     # Update version in setup.cfg
     python_dir = abspath(join(dirname(__file__), '..', 'python'))
     update_line(join(python_dir, 'setup.cfg'),
-                {'version = ': f'version = {get_github_version(args.github_token)}'})
+                {'version = ': f'version = {get_package_versions(args)}'})
     # Copy in the binaries
     copy_okapi_libs(join(python_dir, 'okapi', 'libs'))
 
@@ -51,16 +75,31 @@ def build_java(args) -> None:
     # Update version in setup.cfg
     java_dir = abspath(join(dirname(__file__), '..', 'java'))
     update_line(join(java_dir, 'build.gradle'),
-                {'def jarVersion': f'def jarVersion = {get_github_version(args.github_token)}'})
+                {'def jarVersion': f'def jarVersion = {get_package_versions(args)}'})
 
 
 def build_ruby(args) -> None:
     # Update version in setup.cfg
     ruby_dir = abspath(join(dirname(__file__), '..', 'ruby'))
     update_line(join(ruby_dir, 'lib', 'version.rb'),
-                {'  VERSION =': f'  VERSION = {get_github_version(args.github_token)}'})
+                {'  VERSION =': f"  VERSION = '{get_package_versions(args)}'"})
     # Copy in the binaries
     copy_okapi_libs(join(ruby_dir, 'libs'))
+
+
+def build_golang(args) -> None:
+    # Update version in setup.cfg
+    golang_dir = abspath(join(dirname(__file__), '..', 'go', 'okapi'))
+    # Copy in the binaries
+    copy_okapi_libs(golang_dir)
+
+
+def build_dotnet(args) -> None:
+    os.system(f'echo "PACKAGE_VERSION={get_package_versions(args)}" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append')
+
+
+def get_package_versions(args) -> str:
+    return args.package_version if args.package_version else get_github_version(args.github_token)
 
 
 def get_github_version(github_token: str = None) -> str:
@@ -86,6 +125,10 @@ def main():
     args = parse_arguments()
     # Update version information
     build_python(args)
+    build_java(args)
+    build_ruby(args)
+    build_golang(args)
+    build_dotnet(args)
     # Build and upload
     pass
 

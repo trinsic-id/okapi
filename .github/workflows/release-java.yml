@@ -2,6 +2,11 @@ name: Release Java Maven Package
 
 on:
   workflow_dispatch:
+    inputs:
+      packageVersion:
+        description: 'Version to build'
+        required: true
+        default: ''
   # release:
   #   types: [published]
   workflow_run:
@@ -34,7 +39,9 @@ jobs:
           path: ./libs
           branch: main
       - name: Publish package
-        run: gradle publish
+        run: |
+          python ../devops/build_sdks.py --github-token=${{ secrets.API_GITHUB_TOKEN }} --package-version=${{ github.event.inputs.packageVersion }}
+          gradle publish
         working-directory: java
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

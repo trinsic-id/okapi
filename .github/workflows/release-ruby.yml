@@ -2,6 +2,11 @@ name: Release Ruby Gem
 
 on:
   workflow_dispatch:
+    inputs:
+      packageVersion:
+        description: 'Version to build'
+        required: true
+        default: ''
   # release:
   #   types: [published]
   workflow_run:
@@ -34,7 +39,7 @@ jobs:
         run: |
           gem install bundler
           bundle install
-          python ../devops/build_sdks.py --github-token=${{ secrets.API_GITHUB_TOKEN }}
+          python ../devops/build_sdks.py --github-token=${{ secrets.API_GITHUB_TOKEN }} --package-version=${{ github.event.inputs.packageVersion }}
           gem build *.gemspec
         shell: pwsh
         working-directory: ruby
