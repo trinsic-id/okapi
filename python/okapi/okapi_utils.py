@@ -180,9 +180,9 @@ def get_os_arch_binary(extract_dir):
     if os_name == 'windows':
         copy_from = join(copy_to, 'windows', 'okapi.dll')
     elif os_name == 'linux':
-        if processor_name == 'amd64':
+        if processor_name == 'x86_64':
             copy_from = join(copy_to, 'linux', 'libokapi.so')
-        elif processor_name == 'armv7':
+        elif processor_name == 'armv7l':
             copy_from = join(copy_to, 'linux-armv7', 'libokapi.so')
         elif processor_name == 'aarch64':
             copy_from = join(copy_to, 'linux-aarch64', 'libokapi.so')

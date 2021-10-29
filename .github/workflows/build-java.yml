@@ -26,6 +26,10 @@ jobs:
         with:
           java-version: '15'
           distribution: 'adopt'
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
       - name: Gradle Wrapper Validation
         uses: gradle/wrapper-validation-action@v1.0.4
       - name: Download workflow artifact

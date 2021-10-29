@@ -1,10 +1,12 @@
 import base64
 import unittest
+from os.path import dirname, join, abspath
+
 import base58
 
 from okapi.wrapper import DIDKey
 from okapi.proto.okapi.keys.v1 import GenerateKeyRequest, KeyType, GenerateKeyResponse, ResolveRequest
-from okapi.okapi_utils import DidError
+from okapi.okapi_utils import DidError, get_os_arch_binary, set_library_path
 
 
 def base64_padding(base_64: str) -> str:
@@ -18,6 +20,11 @@ def base64_padding(base_64: str) -> str:
 
 
 class KeyTests(unittest.TestCase):
+    def setUp(self) -> None:
+        base_dir = abspath(join(dirname(__file__), '..', '..'))
+        lib_path, _ = get_os_arch_binary(base_dir)
+        set_library_path(dirname(lib_path))
+
     def test_generate_key(self):
         request = GenerateKeyRequest()
         request.key_type = KeyType.KEY_TYPE_ED25519

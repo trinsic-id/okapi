@@ -30,6 +30,14 @@ module Okapi
     @@library_path = path
   end
 
+  def self.library_directory
+    return 'windows' if OS.windows?
+    return 'linux' if OS.linux?
+    return 'macos' if OS.mac?
+
+    raise NotImplementedError
+  end
+
   def self.library_name
     return 'okapi.dll' if OS.windows?
     return 'libokapi.so' if OS.linux?
