@@ -97,7 +97,7 @@ def build_dotnet(args) -> None:
 
 
 def get_package_versions(args) -> str:
-    return args.package_version if args.package_version else get_github_version(args.github_token)
+    return (args.package_version if args.package_version else get_github_version(args.github_token)).lstrip('v')
 
 
 def get_github_version(github_token: str = None) -> str:
