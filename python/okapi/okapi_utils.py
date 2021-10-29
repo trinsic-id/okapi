@@ -151,11 +151,11 @@ def download_binaries(force_download=True):
     """
     Download the latest released binaries from github
     """
-    extract_dir = abspath(join(dirname(abspath(__file__)), 'okapi'))
+    extract_dir = abspath(join(dirname(abspath(__file__)), 'libs'))
     # Remove the binaries for other environments.
-    copy_from, copy_to = get_os_arch_binary(extract_dir)
+    copy_from = get_os_arch_binary(extract_dir)
 
-    if not force_download and os.path.exists(abspath(join(copy_to, basename(copy_from)))):
+    if not force_download and os.path.exists(abspath(join(extract_dir, basename(copy_from)))):
         return
 
     latest_release = requests.get('https://api.github.com/repos/trinsic-id/okapi/releases/latest').json()
@@ -165,8 +165,8 @@ def download_binaries(force_download=True):
     zip_download = requests.get(libs_asset['browser_download_url'], stream=True)
     z = zipfile.ZipFile(io.BytesIO(zip_download.content))
     z.extractall(extract_dir)
-    shutil.copy2(copy_from, copy_to)
-    cleanup_zip_download(copy_to)
+    shutil.copy2(copy_from, extract_dir)
+    cleanup_zip_download(extract_dir)
 
 
 def cleanup_zip_download(copy_to):
@@ -179,21 +179,21 @@ def cleanup_zip_download(copy_to):
 
 def get_os_arch_binary(extract_dir):
     copy_from = ''
-    copy_to = join(extract_dir, 'libs')
+    lib_dir = join(extract_dir, 'libs')
     os_name = platform.system().lower()
     processor_name = platform.machine().lower()
     if os_name == 'windows':
-        copy_from = join(copy_to, 'windows', 'okapi.dll')
+        copy_from = join(lib_dir, 'windows', 'okapi.dll')
     elif os_name == 'linux':
         if processor_name == 'x86_64':
-            copy_from = join(copy_to, 'linux', 'libokapi.so')
+            copy_from = join(lib_dir, 'linux', 'libokapi.so')
         elif processor_name == 'armv7l':
-            copy_from = join(copy_to, 'linux-armv7', 'libokapi.so')
+            copy_from = join(lib_dir, 'linux-armv7', 'libokapi.so')
         elif processor_name == 'aarch64':
-            copy_from = join(copy_to, 'linux-aarch64', 'libokapi.so')
+            copy_from = join(lib_dir, 'linux-aarch64', 'libokapi.so')
     elif os_name == 'darwin':
-        copy_from = join(copy_to, 'macos', 'libokapi.dylib')
-    return copy_from, copy_to
+        copy_from = join(lib_dir, 'macos', 'libokapi.dylib')
+    return copy_from
 
 
 def wrap_native_function(function_name: str, *, arg_types: Optional[List[Any]] = None,
