@@ -27,8 +27,13 @@ jobs:
         with:
           python-version: 3.9
       - name: Build, Test, Pack
-        run: ./devops/BuildPython.ps1 -GitTag "${{ github.ref }}" -PackageVersion "${{ github.event.inputs.version }}"
+        run: |
+          python -m pip install -r requirements.txt
+          python ../devops/build_sdks.py --github-token=${{ secrets.API_GITHUB_TOKEN }}
+          python -m build --sdist --wheel --outdir dist/ .
         shell: pwsh
+        with:
+          path: python
       - name: Publish distribution 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@master
         with:
