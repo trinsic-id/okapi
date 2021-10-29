@@ -75,7 +75,7 @@ def build_java(args) -> None:
     # Update version in setup.cfg
     java_dir = abspath(join(dirname(__file__), '..', 'java'))
     update_line(join(java_dir, 'build.gradle'),
-                {'def jarVersion': f'def jarVersion = {get_package_versions(args)}'})
+                {'def jarVersion': f'def jarVersion = "{get_package_versions(args)}"'})
 
 
 def build_ruby(args) -> None:
