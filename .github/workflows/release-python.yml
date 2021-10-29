@@ -32,8 +32,7 @@ jobs:
           python ../devops/build_sdks.py --github-token=${{ secrets.API_GITHUB_TOKEN }}
           python -m build --sdist --wheel --outdir dist/ .
         shell: pwsh
-        with:
-          path: python
+        working-directory: python
       - name: Publish distribution 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@master
         with:

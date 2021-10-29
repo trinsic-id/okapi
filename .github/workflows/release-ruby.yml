@@ -2,13 +2,13 @@ name: Release Ruby Gem
 
 on:
   workflow_dispatch:
-    inputs:
-      version:
-        description: 'Package version - SemVer compliant [N!]N(.N)*[{a|b|rc}N]'
-        required: true
-        default: ' '
-  push:
-    branches: [ main ]
+  # release:
+  #   types: [published]
+  workflow_run:
+    workflows: ["Release Platform Libraries"]
+    branches: [main, "v?.*"]
+    types:
+      - completed
 
 jobs:
   build:
@@ -30,9 +30,14 @@ jobs:
           workflow: "build-libs.yml"
           path: ./libs
           branch: main
-      - name: Install dependencies
-        run: ./devops/BuildRuby.ps1 -GitTag "${{ github.ref }}" -PackageVersion "${{ github.event.inputs.version }}"
+      - name: Build and run tests
+        run: |
+          gem install bundler
+          bundle install
+          python ../devops/build_sdks.py --github-token=${{ secrets.API_GITHUB_TOKEN }}
+          gem build *.gemspec
         shell: pwsh
+        working-directory: ruby
       - name: Publish gem
         uses: dawidd6/action-publish-gem@v1.2.0
         with:

@@ -2,8 +2,13 @@ name: Release Java Maven Package
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ main ]
+  # release:
+  #   types: [published]
+  workflow_run:
+    workflows: ["Release Platform Libraries"]
+    branches: [main, "v?.*"]
+    types:
+      - completed
 
 jobs:
   build:
