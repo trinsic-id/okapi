@@ -20,30 +20,31 @@ def parse_version_tag():
     raise NotImplementedError
 
 
-def get_os_arch_binary(extract_dir):
+def get_os_arch_path(extract_dir, windows_path='windows'):
     copy_from = ''
-    copy_to = join(extract_dir, 'libs')
+    libs_dir = join(extract_dir, 'libs')
     os_name = platform.system().lower()
     processor_name = platform.machine().lower()
     if os_name == 'windows':
-        copy_from = join(copy_to, 'windows', 'okapi.dll')
+        copy_from = join(libs_dir, windows_path)
     elif os_name == 'linux':
         if processor_name == 'x86_64':
-            copy_from = join(copy_to, 'linux', 'libokapi.so')
+            copy_from = join(libs_dir, 'linux')
         elif processor_name == 'armv7l':
-            copy_from = join(copy_to, 'linux-armv7', 'libokapi.so')
+            copy_from = join(libs_dir, 'linux-armv7')
         elif processor_name == 'aarch64':
-            copy_from = join(copy_to, 'linux-aarch64', 'libokapi.so')
+            copy_from = join(libs_dir, 'linux-aarch64')
     elif os_name == 'darwin':
-        copy_from = join(copy_to, 'macos', 'libokapi.dylib')
-    return copy_from, copy_to
+        copy_from = join(libs_dir, 'macos')
+    return copy_from
 
 
-def copy_okapi_libs(copy_to: str):
+def copy_okapi_libs(copy_to: str, windows_path='windows'):
     libs_dir = abspath(join(dirname(__file__), '..'))
-    copy_from, _ = get_os_arch_binary(libs_dir)
-    shutil.copy2(copy_from, copy_to)
-    shutil.copy2(join(libs_dir,'libs', 'C_header', 'okapi.h'), copy_to)
+    copy_from = get_os_arch_path(libs_dir, windows_path)
+    for copy_file in glob.glob(join(copy_from, '*.*')):
+        shutil.copy2(copy_file, copy_to)
+    shutil.copy2(join(libs_dir, 'libs', 'C_header', 'okapi.h'), copy_to)
 
 
 def update_line(file_name: str, replace_lines: Dict[str, str]) -> None:
@@ -92,7 +93,7 @@ def build_golang(args) -> None:
     # Update version in setup.cfg
     golang_dir = abspath(join(dirname(__file__), '..', 'go', 'okapi'))
     # Copy in the binaries
-    copy_okapi_libs(golang_dir)
+    copy_okapi_libs(golang_dir, 'windows-gnu')
 
 
 def build_dotnet(args) -> None:
