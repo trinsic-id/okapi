@@ -10,6 +10,7 @@ Library is available for use with different languages
 
 [![NuGet version](https://badge.fury.io/nu/okapi.net.svg)](https://badge.fury.io/nu/okapi.net)
 [![npm version](https://badge.fury.io/js/%40trinsic%2Fokapi.svg)](https://badge.fury.io/js/%40trinsic%2Fokapi)
+[![PyPI version](https://badge.fury.io/py/trinsic-okapi.svg)](https://badge.fury.io/py/trinsic-okapi)
 
 ## Library and API structure
 
