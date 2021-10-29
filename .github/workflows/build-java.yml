@@ -35,8 +35,10 @@ jobs:
           path: ./libs
       - name: Build with Gradle
         run: |
-          ./devops/BuildJava.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output.xml" -ArtifactName "${{ matrix.os-artifact[1] }}"
+          python ../devops/build_sdks.py --github-token=${{ secrets.API_GITHUB_TOKEN }}
+          gradle build
         shell: pwsh
+        working-directory: java
       - name: Upload Unit Test Results - Java
         if: always()
         uses: actions/upload-artifact@v2

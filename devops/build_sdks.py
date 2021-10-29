@@ -47,6 +47,22 @@ def build_python(args) -> None:
     copy_okapi_libs(join(python_dir, 'okapi', 'libs'))
 
 
+def build_java(args) -> None:
+    # Update version in setup.cfg
+    java_dir = abspath(join(dirname(__file__), '..', 'java'))
+    update_line(join(java_dir, 'build.gradle'),
+                {'def jarVersion': f'def jarVersion = {get_github_version(args.github_token)}'})
+
+
+def build_ruby(args) -> None:
+    # Update version in setup.cfg
+    ruby_dir = abspath(join(dirname(__file__), '..', 'ruby'))
+    update_line(join(ruby_dir, 'lib', 'version.rb'),
+                {'  VERSION =': f'  VERSION = {get_github_version(args.github_token)}'})
+    # Copy in the binaries
+    copy_okapi_libs(join(ruby_dir, 'libs'))
+
+
 def get_github_version(github_token: str = None) -> str:
     github_release_request = requests.get('https://api.github.com/repos/trinsic-id/okapi/releases/latest',
                                           headers={'Authorization': github_token})
