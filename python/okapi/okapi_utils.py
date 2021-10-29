@@ -1,4 +1,5 @@
 import io
+import os.path
 import zipfile
 
 import requests
@@ -8,7 +9,7 @@ from os import listdir
 from typing import Any, Optional, List, Dict, Union, Type, TypeVar
 import platform
 import ctypes
-from os.path import join, abspath, dirname, isdir
+from os.path import join, abspath, dirname, isdir, basename
 
 import betterproto
 from betterproto.lib.google.protobuf import Struct, Value, ListValue
@@ -146,20 +147,24 @@ def load_library() -> ctypes.CDLL:
     return OKAPI_DLL['library']
 
 
-def download_binaries():
+def download_binaries(force_download=True):
     """
     Download the latest released binaries from github
     """
+    extract_dir = abspath(join(dirname(abspath(__file__)), 'okapi'))
+    # Remove the binaries for other environments.
+    copy_from, copy_to = get_os_arch_binary(extract_dir)
+
+    if not force_download and os.path.exists(abspath(join(copy_to, basename(copy_from)))):
+        return
+
     latest_release = requests.get('https://api.github.com/repos/trinsic-id/okapi/releases/latest').json()
     latest_assets = requests.get(latest_release['assets_url']).json()
     libs_asset = [asset for asset in latest_assets if asset['name'] == 'libs.zip'][0]
     # Download zip
     zip_download = requests.get(libs_asset['browser_download_url'], stream=True)
     z = zipfile.ZipFile(io.BytesIO(zip_download.content))
-    extract_dir = abspath(join(dirname(abspath(__file__)), 'okapi'))
     z.extractall(extract_dir)
-    # Remove the binaries for other environments.
-    copy_from, copy_to = get_os_arch_binary(extract_dir)
     shutil.copy2(copy_from, copy_to)
     cleanup_zip_download(copy_to)
 
