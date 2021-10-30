@@ -5,7 +5,7 @@ import zipfile
 import requests
 import shutil
 import threading
-from os import listdir
+from os import listdir, getenv
 from typing import Any, Optional, List, Dict, Union, Type, TypeVar
 import platform
 import ctypes
@@ -149,7 +149,7 @@ def load_library() -> ctypes.CDLL:
 
 def download_binaries(force_download=True):
     """
-    Download the latest released binaries from github
+    Download the latest released binaries from github. Provide the environment variable API_GITHUB_TOKEN to prevent rate throttling
     """
     extract_dir = abspath(join(dirname(abspath(__file__)), 'libs'))
     # Remove the binaries for other environments.
@@ -158,7 +158,8 @@ def download_binaries(force_download=True):
     if not force_download and os.path.exists(abspath(join(extract_dir, basename(copy_from)))):
         return
 
-    latest_release = requests.get('https://api.github.com/repos/trinsic-id/okapi/releases/latest').json()
+    latest_release = requests.get('https://api.github.com/repos/trinsic-id/okapi/releases/latest',
+                                  headers={'Authorization': f'Token {getenv("API_GITHUB_TOKEN") or ""}'}).json()
     latest_assets = requests.get(latest_release['assets_url']).json()
     libs_asset = [asset for asset in latest_assets if asset['name'] == 'libs.zip'][0]
     # Download zip
