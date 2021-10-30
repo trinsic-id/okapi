@@ -157,17 +157,23 @@ def download_binaries(force_download=True):
 
     if not force_download and os.path.exists(abspath(join(extract_dir, basename(copy_from)))):
         return
-
+    github_token = getenv('API_GITHUB_TOKEN')
+    if github_token:
+        github_token = f'Token {github_token}'
     latest_release = requests.get('https://api.github.com/repos/trinsic-id/okapi/releases/latest',
-                                  headers={'Authorization': f'Token {getenv("API_GITHUB_TOKEN") or ""}'}).json()
-    latest_assets = requests.get(latest_release['assets_url']).json()
-    libs_asset = [asset for asset in latest_assets if asset['name'] == 'libs.zip'][0]
-    # Download zip
-    zip_download = requests.get(libs_asset['browser_download_url'], stream=True)
-    z = zipfile.ZipFile(io.BytesIO(zip_download.content))
-    z.extractall(extract_dir)
-    shutil.copy2(copy_from, extract_dir)
-    cleanup_zip_download(extract_dir)
+                                  headers={'Authorization': github_token}).json()
+    try:
+        latest_assets = requests.get(latest_release['assets_url']).json()
+        libs_asset = [asset for asset in latest_assets if asset['name'] == 'libs.zip'][0]
+        # Download zip
+        zip_download = requests.get(libs_asset['browser_download_url'], stream=True)
+        z = zipfile.ZipFile(io.BytesIO(zip_download.content))
+        z.extractall(extract_dir)
+        shutil.copy2(copy_from, extract_dir)
+        cleanup_zip_download(extract_dir)
+    except:
+        print(latest_release)
+        raise
 
 
 def cleanup_zip_download(copy_to):

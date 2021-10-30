@@ -39,6 +39,8 @@ jobs:
           python -m pytest --cache-clear ./tests --junitxml=test_output.xml --cov=.
         shell: pwsh
         working-directory: python
+        env:
+          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
       - name: Upload Unit Test Results - Python
         if: always()
         uses: actions/upload-artifact@v2
