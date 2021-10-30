@@ -10,7 +10,7 @@ from okapi.wrapper import Oberon
 class OberonTests(unittest.TestCase):
     def setUp(self) -> None:
         base_dir = abspath(join(dirname(__file__), '..', '..'))
-        lib_path, _ = get_os_arch_binary(base_dir)
+        lib_path = get_os_arch_binary(base_dir)
         set_library_path(dirname(lib_path))
 
     def test_oberon_demo(self):
