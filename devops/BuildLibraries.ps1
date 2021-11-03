@@ -46,6 +46,7 @@ try {
             break
         }
         Linux-ARM {
+            sudo apt-get update
             sudo apt-get install gcc-arm-linux-gnueabihf gcc-aarch64-linux-gnu
             rustup target add armv7-unknown-linux-gnueabihf aarch64-unknown-linux-gnu
             cargo build --release --target armv7-unknown-linux-gnueabihf
