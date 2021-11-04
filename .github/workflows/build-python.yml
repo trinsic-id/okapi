@@ -19,7 +19,7 @@ jobs:
       fail-fast: false
       matrix:
         os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows], [macos-latest, macos] ]
-        python-version: [ 3.6, 3.7, 3.8, 3.9 ]  # '3.10' has issues for now
+        python-version: [ 3.6, 3.8, 3.9 ]  # '3.10' has issues for now
     steps:
       - uses: actions/checkout@v2
       - name: Download workflow artifact
