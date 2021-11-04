@@ -14,19 +14,14 @@ on:
 jobs:
   build-and-test-python:
     name: Test Python code
-    runs-on: ${{ matrix.os-artifact[0] }}
+    runs-on: ${{ matrix.os[0] }}
     strategy:
       fail-fast: false
       matrix:
-        os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows], [macos-latest, macos] ]
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
         python-version: [ 3.6, 3.8, 3.9 ]  # '3.10' has issues for now
     steps:
       - uses: actions/checkout@v2
-      - name: Download workflow artifact
-        uses: dawidd6/action-download-artifact@v2.14.0
-        with:
-          workflow: "build-libs.yml"
-          path: ./libs
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
@@ -45,7 +40,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: Python ${{ matrix.python-version }} Unit Test Results (${{ matrix.os-artifact[0] }})
+          name: Python ${{ matrix.python-version }} Unit Test Results (${{ matrix.os[0] }})
           path: 'python/test_output*.xml'
 
   publish-test-results-python:
