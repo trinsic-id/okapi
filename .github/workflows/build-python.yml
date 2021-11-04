@@ -22,6 +22,11 @@ jobs:
         python-version: [ 3.6, 3.8, 3.9 ]  # '3.10' has issues for now
     steps:
       - uses: actions/checkout@v2
+      - name: Download workflow artifact
+        uses: dawidd6/action-download-artifact@v2.14.0
+        with:
+          workflow: "build-libs.yml"
+          path: ./libs
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
