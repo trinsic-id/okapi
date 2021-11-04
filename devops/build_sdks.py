@@ -97,7 +97,7 @@ def build_dotnet(args) -> None:
 
 
 def get_package_versions(args) -> str:
-    return (args.package_version if args.package_version else get_github_version()).lstrip('v')
+    return (args.package_version or get_github_version()).lstrip('v')
 
 
 def get_github_version(github_token: str = None) -> str:
@@ -106,7 +106,7 @@ def get_github_version(github_token: str = None) -> str:
     github_release_request = requests.get('https://api.github.com/repos/trinsic-id/okapi/releases/latest',
                                           headers={'Authorization': github_token})
     github_json = github_release_request.json()
-    version = github_json['tag_name'].lstrip('v')
+    version = github_json['tag_name']
     return version
 
 
