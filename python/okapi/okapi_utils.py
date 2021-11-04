@@ -163,16 +163,15 @@ def download_binaries(force_download=True):
     latest_release = requests.get('https://api.github.com/repos/trinsic-id/okapi/releases/latest',
                                   headers={'Authorization': github_token}).json()
     try:
-        latest_assets = requests.get(latest_release['assets_url']).json()
+        latest_assets = requests.get(latest_release['assets_url'], headers={'Authorization': github_token}).json()
         libs_asset = [asset for asset in latest_assets if asset['name'] == 'libs.zip'][0]
         # Download zip
-        zip_download = requests.get(libs_asset['browser_download_url'], stream=True)
+        zip_download = requests.get(libs_asset['browser_download_url'], headers={'Authorization': github_token}, stream=True)
         z = zipfile.ZipFile(io.BytesIO(zip_download.content))
         z.extractall(extract_dir)
         shutil.copy2(copy_from, extract_dir)
         cleanup_zip_download(extract_dir)
     except:
-        print(latest_release)
         raise
 
 
