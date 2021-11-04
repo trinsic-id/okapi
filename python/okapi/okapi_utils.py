@@ -164,6 +164,7 @@ def download_binaries(force_download=True):
                                   headers={'Authorization': github_token}).json()
     try:
         latest_assets = requests.get(latest_release['assets_url']).json()
+        print(latest_assets)
         libs_asset = [asset for asset in latest_assets if asset['name'] == 'libs.zip'][0]
         # Download zip
         zip_download = requests.get(libs_asset['browser_download_url'], stream=True)
