@@ -35,3 +35,18 @@ cbindgen = "0.19.0"
 [dev-dependencies]
 fluid = "0.4"
 wasm-bindgen-test = "0.3.13"
+
+[package.metadata.deb]
+maintainer = "Tomislav Markovski <tomislav@trinsic.id>"
+copyright = "2021, Trinsic <hello@trinsic.id>"
+license-file = ["../LICENSE", "4"]
+extended-description = """\
+Collection of tools that support workflows for \
+authentic data and identity management."""
+depends = "$auto"
+section = "utility"
+priority = "optional"
+assets = [
+    ["target/release/libokapi.so", "usr/lib/", "644"],
+    ["../include/okapi.h", "usr/include/", "644"],
+]

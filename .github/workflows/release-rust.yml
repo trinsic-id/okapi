@@ -81,25 +81,16 @@ jobs:
 
       - name: Create Package (.deb)
         run: |
-          FILE = okapi_${{ env.PACKAGE_VERSION }}-1
-          mkdir $FILE
-          mkdir $FILE/usr
-          mkdir $FILE/usr/local
-          mkdir $FILE/usr/local/lib
-          mkdir $FILE/usr/local/include
-          mkdir $FILE/DEBIAN
-          sed -i 's/Version:/Version: ${{ env.PACKAGE_VERSION }}-1/g' native/deb.control
-          cp native/deb.control $FILE/DEBIAN/control
-          cp native/target/relese/libokapi.so $FILE/usr/local/lib/
-          cp include/okapi.h $FILE/usr/local/include/
-          dpkg-deb --build $FILE
+          cargo install cargo-deb
+          cargo deb
+        working-directory: native
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
           name: deb
           path: |
-            ./*.deb
+            ./native/target/debain/okapi/*.deb
 
       - name: Upload to Release
         uses: svenstaro/upload-release-action@v2
