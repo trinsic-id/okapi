@@ -1,0 +1,58 @@
+name: "Rust (release)"
+
+on:
+  workflow_dispatch:
+    inputs:
+      packageVersion:
+        description: 'Version to build'
+        required: true
+        default: 'v1.0.0'
+  # release:
+  #   types: [published]
+  workflow_run:
+    workflows: ["Release Platform Libraries"]
+    branches: ["main", "v?.*"]
+    types:
+      - completed
+
+jobs:
+  archive:
+    name: Package Source
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Generate Package Version
+        run: |
+          $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/okapi/releases/latest' `
+            -Headers @{ "Authorization" = "Token $env:API_GITHUB_TOKEN"} | ConvertFrom-Json
+          $version = $json.tag_name.Trim("v")
+          echo "RELEASE_VERSION=$json.tag_name" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
+          echo "PACKAGE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
+        shell: pwsh
+        env:
+          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+
+      - name: Create Archive
+        run: |
+          cp -r include native
+          rm native/build.rs
+          tar -czvf okapi-${{ env.PACKAGE_VERSION }}.tar.gz /path/to/directory-or-file
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: archive
+          path: |
+            ./*.tar.gz
+
+      - name: Upload to Release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./libs.zip
+          asset_name: libs.zip
+          tag: ${{ env.RELEASE_VERSION }}
+          overwrite: true
+          body: "Okapi Library Source"
