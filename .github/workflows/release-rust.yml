@@ -78,7 +78,7 @@ jobs:
       - name: Create Package (.deb)
         run: |
           cargo install cargo-deb
-          sed -i 's/version = "0.1.0"/version = "${{ env.PACKAGE_VERSION }}"/g' native/Cargo.toml
+          sed -i 's/version = "0.1.0"/version = "${{ env.PACKAGE_VERSION }}"/g' Cargo.toml
           cargo deb
         working-directory: native
 
