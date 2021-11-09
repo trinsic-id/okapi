@@ -36,8 +36,8 @@ jobs:
         run: |
           cp -r include native
           rm native/build.rs
-          mv native okapi
           sed -i 's/version = "0.1.0"/version = "${{ env.PACKAGE_VERSION }}"/g' native/Cargo.toml
+          mv native okapi
           tar -czvf okapi-${{ env.PACKAGE_VERSION }}.tar.gz okapi
 
       - name: Upload Artifact
