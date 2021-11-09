@@ -54,7 +54,7 @@ jobs:
           file: ./okapi-${{ env.PACKAGE_VERSION }}.tar.gz
           asset_name: okapi-${{ env.PACKAGE_VERSION }}.tar.gz
           tag: ${{ env.RELEASE_VERSION }}
-          overwrite: false
+          overwrite: true
           body: "Okapi Library Source"
 
   make_deb:
