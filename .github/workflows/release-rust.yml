@@ -88,8 +88,7 @@ jobs:
         run: |
           cargo install cargo-deb
           sed -i 's/version = "0.1.0"/version = "${{ env.PACKAGE_VERSION }}"/g' Cargo.toml
-          rustup target add ${{ matrix.target }}
-          cargo deb --target ${{ matrix.target }}
+          cargo deb
         working-directory: native
 
       - name: Upload Artifact
@@ -99,12 +98,12 @@ jobs:
           path: |
             ./native/target/**/*.deb
 
-      - name: Upload to Release
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./native/target/${{ matrix.target }}/debian/okapi-${{ env.PACKAGE_VERSION }}_${{ matrix.arch }}.deb
-          asset_name: okapi-${{ env.PACKAGE_VERSION }}_${{ matrix.arch }}.deb
-          tag: ${{ env.RELEASE_VERSION }}
-          overwrite: false
-          body: "Okapi Debian Package"
+      # - name: Upload to Release
+      #   uses: svenstaro/upload-release-action@v2
+      #   with:
+      #     repo_token: ${{ secrets.GITHUB_TOKEN }}
+      #     file: ./native/target/${{ matrix.target }}/debian/okapi-${{ env.PACKAGE_VERSION }}_${{ matrix.arch }}.deb
+      #     asset_name: okapi-${{ env.PACKAGE_VERSION }}_${{ matrix.arch }}.deb
+      #     tag: ${{ env.RELEASE_VERSION }}
+      #     overwrite: false
+      #     body: "Okapi Debian Package"
