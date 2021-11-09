@@ -7,9 +7,6 @@ on:
         description: 'Version to build'
         required: true
         default: 'v1.0.0'
-  # release:
-  #   types: [published]
-  pull_request:
   workflow_run:
     workflows: ["Release Platform Libraries"]
     branches: ["main", "v?.*"]
@@ -40,7 +37,7 @@ jobs:
           cp -r include native
           rm native/build.rs
           mv native okapi
-          tar -czvf okapi-${{ env.RELEASE_VERSION }}.tar.gz okapi
+          tar -czvf okapi-${{ env.PACKAGE_VERSION }}.tar.gz okapi
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
@@ -53,8 +50,8 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./okapi-${{ env.RELEASE_VERSION }}.tar.gz
-          asset_name: okapi-${{ env.RELEASE_VERSION }}.tar.gz
+          file: ./okapi-${{ env.PACKAGE_VERSION }}.tar.gz
+          asset_name: okapi-${{ env.PACKAGE_VERSION }}.tar.gz
           tag: ${{ env.RELEASE_VERSION }}
           overwrite: true
           body: "Okapi Library Source"
