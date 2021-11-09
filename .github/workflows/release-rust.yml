@@ -9,6 +9,7 @@ on:
         default: 'v1.0.0'
   # release:
   #   types: [published]
+  pull_request:
   workflow_run:
     workflows: ["Release Platform Libraries"]
     branches: ["main", "v?.*"]
