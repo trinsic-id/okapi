@@ -75,13 +75,10 @@ jobs:
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
 
-      - name: Build Library
-        run: cargo build --release
-        working-directory: native
-
       - name: Create Package (.deb)
         run: |
           cargo install cargo-deb
+          sed -i 's/version = "0.1.0"/version = "${{ env.PACKAGE_VERSION }}"/g' native/Cargo.toml
           cargo deb
         working-directory: native
 
@@ -96,8 +93,8 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./okapi-${{ env.PACKAGE_VERSION }}.deb
-          asset_name: okapi-${{ env.PACKAGE_VERSION }}.deb
+          file: ./native/target/debain/okapi-${{ env.PACKAGE_VERSION }}_amd64.deb
+          asset_name: okapi-${{ env.PACKAGE_VERSION }}_amd64.deb
           tag: ${{ env.RELEASE_VERSION }}
           overwrite: false
           body: "Okapi Debian Package"
