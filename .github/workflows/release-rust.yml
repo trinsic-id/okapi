@@ -62,12 +62,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [x86_64-unknown-linux-gnu, aarch64-unknown-linux-gnu]
+        arch: [x86_64, amd64]
         include:
-          - target: x86_64-unknown-linux-gnu
-            arch: x86_64
-          - target: aarch64-unknown-linux-gnu
-            arch: amd64
+          - arch: x86_64
+            target: x86_64-unknown-linux-gnu
+          - arch: amd64
+            target: aarch64-unknown-linux-gnu
+
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -96,13 +97,13 @@ jobs:
         with:
           name: deb_${{ matrix.arch }}
           path: |
-            ./native/target/debain/okapi/*.deb
+            ./native/target/**/*.deb
 
       - name: Upload to Release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./native/target/debain/okapi-${{ env.PACKAGE_VERSION }}_${{ matrix.arch }}.deb
+          file: ./native/target/${{ matrix.target }}/debian/okapi-${{ env.PACKAGE_VERSION }}_${{ matrix.arch }}.deb
           asset_name: okapi-${{ env.PACKAGE_VERSION }}_${{ matrix.arch }}.deb
           tag: ${{ env.RELEASE_VERSION }}
           overwrite: false
