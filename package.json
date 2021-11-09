@@ -1,7 +1,0 @@
-{
-  "name": "okapi",
-  "version": "1.0.0",
-  "description": "Implementation and message definition for extending DIDComm Messaging v2 using binary protocol (protobuf) and HTTP/2 transport (gRPC).",
-  "author": "Trinsic",
-  "license": "Apache-2.0"
-}
