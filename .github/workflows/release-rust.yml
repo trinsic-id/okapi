@@ -87,6 +87,7 @@ jobs:
         run: |
           cargo install cargo-deb
           sed -i 's/version = "0.1.0"/version = "${{ env.PACKAGE_VERSION }}"/g' Cargo.toml
+          rustup target add ${{ matrix.target }}
           cargo deb --target ${{ matrix.target }}
         working-directory: native
 
