@@ -12,9 +12,10 @@ on:
     branches: ["main", "v?.*"]
     types:
       - completed
+  pull_request:
 
 jobs:
-  archive:
+  package_source:
     name: Package Source
     runs-on: ubuntu-latest
     steps:
@@ -53,5 +54,59 @@ jobs:
           file: ./okapi-${{ env.PACKAGE_VERSION }}.tar.gz
           asset_name: okapi-${{ env.PACKAGE_VERSION }}.tar.gz
           tag: ${{ env.RELEASE_VERSION }}
-          overwrite: true
+          overwrite: false
           body: "Okapi Library Source"
+
+  make_deb:
+    name: Package Source
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Generate Package Version
+        run: |
+          $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/okapi/releases/latest' `
+            -Headers @{ "Authorization" = "Token $env:API_GITHUB_TOKEN"} | ConvertFrom-Json
+          $version = $json.tag_name.Trim("v")
+          echo "RELEASE_VERSION=$($json.tag_name)" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
+          echo "PACKAGE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
+        shell: pwsh
+        env:
+          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+
+      - name: Build Library
+        run: cargo build --release
+        working-directory: native
+
+      - name: Create Package (.deb)
+        run: |
+          FILE = okapi_${{ env.PACKAGE_VERSION }}-1
+          mkdir $FILE
+          mkdir $FILE/usr
+          mkdir $FILE/usr/local
+          mkdir $FILE/usr/local/lib
+          mkdir $FILE/usr/local/include
+          mkdir $FILE/DEBIAN
+          sed -i 's/Version:/Version: ${{ env.PACKAGE_VERSION }}-1/g' native/deb.control
+          cp native/deb.control $FILE/DEBIAN/control
+          cp native/target/relese/libokapi.so $FILE/usr/local/lib/
+          cp include/okapi.h $FILE/usr/local/include/
+          dpkg-deb --build $FILE
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: deb
+          path: |
+            ./*.deb
+
+      - name: Upload to Release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./okapi-${{ env.PACKAGE_VERSION }}.deb
+          asset_name: okapi-${{ env.PACKAGE_VERSION }}.deb
+          tag: ${{ env.RELEASE_VERSION }}
+          overwrite: false
+          body: "Okapi Debian Package"
