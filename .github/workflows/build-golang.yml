@@ -1,4 +1,4 @@
-name: Build Golang SDK
+name: Go
 
 on:
   workflow_dispatch:
