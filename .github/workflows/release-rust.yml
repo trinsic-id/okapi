@@ -53,8 +53,8 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./libs.zip
-          asset_name: libs.zip
+          file: ./okapi-${{ env.RELEASE_VERSION }}.tar.gz
+          asset_name: okapi-${{ env.RELEASE_VERSION }}.tar.gz
           tag: ${{ env.RELEASE_VERSION }}
           overwrite: true
           body: "Okapi Library Source"
