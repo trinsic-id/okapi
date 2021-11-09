@@ -29,7 +29,7 @@ jobs:
           $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/okapi/releases/latest' `
             -Headers @{ "Authorization" = "Token $env:API_GITHUB_TOKEN"} | ConvertFrom-Json
           $version = $json.tag_name.Trim("v")
-          echo "RELEASE_VERSION=$json.tag_name" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
+          echo "RELEASE_VERSION=$($json.tag_name)" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
           echo "PACKAGE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
         shell: pwsh
         env:
