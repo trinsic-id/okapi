@@ -66,3 +66,7 @@ var key = DIDKey.generate(request);
 - `unblind_token`
 - `create_proof`
 - `verify_proof`
+
+## Stats
+
+![Alt](https://repobeats.axiom.co/api/embed/f64200b2f13d2626a24009a65396d0db46fb1dc8.svg "Repobeats analytics image")
