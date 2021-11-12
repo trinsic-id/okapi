@@ -1,6 +1,6 @@
 param
 (
-    [ValidateSet('Windows', 'Windows-GNU', 'MacOS', 'Linux', 'Linux-ARM', 'iOS', 'Android')]
+    [ValidateSet('Windows', 'Windows-GNU', 'MacOS', 'Linux', 'Linux-ARM', 'iOS', 'Android', 'Wasm')]
     $Platform,
     $OutLocation,
     $AndroidNdkHome
@@ -97,6 +97,13 @@ try {
             rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-android x86_64-linux-android
             cargo ndk --target armv7-linux-androideabi --target aarch64-linux-android -o "$TargetOutput" build --release
             cargo ndk --target x86_64-linux-android --target i686-linux-android -o "$TargetOutput" build --release
+            break
+        }
+
+        Wasm {
+            rustup target add wasm32-unknown-unknown
+            cargo build --release --target wasm32-unknown-unknown
+            Copy-Item -Path .\target\wasm32-unknown-unknown\release\okapi.wasm -Destination $TargetOutput
             break
         }
     }
