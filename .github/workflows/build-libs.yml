@@ -75,6 +75,11 @@ jobs:
         with:
           name: C_header
           path: ./include/okapi.h
+      - name: Upload C header artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: include
+          path: ./include/okapi.h
 
   build_linux_arm:
     name: Linux-ARM
