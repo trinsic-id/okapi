@@ -104,6 +104,7 @@ try {
             rustup target add wasm32-unknown-unknown
             cargo build --release --target wasm32-unknown-unknown
             Copy-Item -Path .\target\wasm32-unknown-unknown\release\okapi.wasm -Destination $TargetOutput
+            Copy-Item -Path .\target\wasm32-unknown-unknown\release\libokapi.a -Destination $TargetOutput
             break
         }
     }
