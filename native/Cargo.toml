@@ -48,5 +48,6 @@ section = "utility"
 priority = "optional"
 assets = [
     ["target/release/libokapi.so", "usr/local/lib/", "644"],
+    ["target/release/libokapi.a", "usr/local/lib/", "644"],
     ["../include/okapi.h", "usr/local/include/", "644"],
 ]
