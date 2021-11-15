@@ -39,7 +39,7 @@ jobs:
         run: |
           gem install bundler
           bundle install
-          python ../devops/build_sdks.py --github-token=${{ secrets.API_GITHUB_TOKEN }} --package-version=${{ github.event.inputs.packageVersion }}
+          python ../devops/build_sdks.py --package-version=${{ github.event.inputs.packageVersion }}
 
           mkdir -p $HOME/.gem
           touch $HOME/.gem/credentials
@@ -51,4 +51,5 @@ jobs:
         working-directory: ruby
         env:
           GEM_HOST_API_KEY: "Bearer ${{secrets.RUBYGEMS_API_TOKEN }}"
+          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
           OWNER: ${{ github.repository_owner }}
