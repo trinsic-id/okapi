@@ -176,12 +176,12 @@ jobs:
   build_wasm:
     name: Wasm
     if: "! contains(github.event.head_commit.message, '[skip ci]')"
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v1
       - run: |
-          sudo apt-get update -y
-          sudo apt-get install -y emscripten
+          brew update
+          brew install emscripten
       - run: ./devops/BuildLibraries.ps1 -Platform Wasm -OutLocation ./libs/wasm
         shell: pwsh
       - uses: actions/upload-artifact@v2
