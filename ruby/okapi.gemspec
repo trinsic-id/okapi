@@ -3,7 +3,7 @@
 require_relative 'lib/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'okapi'
+  spec.name          = 'trinsic-okapi'
   spec.version       = Okapi::VERSION
   spec.authors       = ['Scott Phillips']
   spec.email         = ['polygonguru@gmail.com']
