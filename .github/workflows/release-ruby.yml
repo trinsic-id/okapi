@@ -40,16 +40,14 @@ jobs:
           gem install bundler
           bundle install
           python ../devops/build_sdks.py --package-version=${{ github.event.inputs.packageVersion }}
-
-          mkdir -p $HOME/.gem
-          touch $HOME/.gem/credentials
-          chmod 0600 $HOME/.gem/credentials
-          printf -- "---\n:rubygems_api_key: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
-          gem build *.gemspec
-          gem push *.gem
         shell: pwsh
         working-directory: ruby
         env:
-          GEM_HOST_API_KEY: "Bearer ${{secrets.RUBYGEMS_API_TOKEN }}"
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
-          OWNER: ${{ github.repository_owner }}
+      - name: Publish gem
+        uses: dawidd6/action-publish-gem@v1.2.0
+        with:
+          path: ruby
+          api_key: ${{secrets.RUBYGEMS_API_TOKEN}}
+          # Optional, will publish to GitHub Packages if specified
+          github_token: ${{secrets.API_GITHUB_TOKEN}}
