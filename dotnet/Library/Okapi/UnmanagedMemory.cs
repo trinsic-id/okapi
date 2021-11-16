@@ -100,12 +100,12 @@ namespace Okapi
 
                 foreach (var buffer in UnmanagedByteBuffers)
                 {
-                    Native.didcomm_byte_buffer_free(buffer);
+                    Native.okapi_byte_buffer_free(buffer);
                 }
 
                 foreach (var strPtr in UnmanagedStrings)
                 {
-                    Native.didcomm_string_free(strPtr);
+                    Native.okapi_string_free(strPtr);
                 }
 
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.

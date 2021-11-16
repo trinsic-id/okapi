@@ -40,12 +40,14 @@ jobs:
           gem install bundler
           gem install rspec
           bundle install
-          python ../devops/build_sdks.py --github-token=${{ secrets.API_GITHUB_TOKEN }}
+          python ../devops/build_sdks.py
           bundle exec rake
           rake test
           exit 0
         shell: pwsh
         working-directory: ruby
+        env:
+          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
       - name: Upload Unit Test Results - Ruby
         if: always()
         uses: actions/upload-artifact@v2

@@ -110,7 +110,7 @@ func unmarshalResponse(responseBuffer C.ByteBuffer, responseMessage proto.Messag
 		return wrapError("Failed to unmarshal message to protobuf", e)
 	}
 	C.free(unsafe.Pointer(requestBuffer.data))
-	C.didcomm_byte_buffer_free(responseBuffer)
+	C.okapi_bytebuffer_free(responseBuffer)
 	return nil
 }
 

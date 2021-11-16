@@ -39,10 +39,12 @@ jobs:
           path: ./libs
       - name: Build with Gradle
         run: |
-          python ../devops/build_sdks.py --github-token=${{ secrets.API_GITHUB_TOKEN }}
+          python ../devops/build_sdks.py
           gradle build
         shell: pwsh
         working-directory: java
+        env:
+          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
       - name: Upload Unit Test Results - Java
         if: always()
         uses: actions/upload-artifact@v2
