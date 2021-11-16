@@ -64,8 +64,10 @@ class KeyTests(unittest.TestCase):
     def test_generate_key_throws_invalid_key_type(self):
         request = GenerateKeyRequest()
         request.key_type = -1
-        with self.assertRaises(DidError):
+        with self.assertRaises(DidError) as err:
             DIDKey.generate(request)
+        print(err.exception.message)
+        self.assertEqual('failed to execute function', err.exception.message)
 
     def test_generate_key_from_seed(self):
         data_arguments = [(KeyType.KEY_TYPE_ED25519, "Ed25519",
