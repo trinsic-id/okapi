@@ -40,11 +40,11 @@ def get_os_arch_path(extract_dir, windows_path='windows'):
 
 
 def copy_okapi_libs(copy_to: str, windows_path='windows'):
-    libs_dir = abspath(join(dirname(__file__), '..'))
-    copy_from = get_os_arch_path(libs_dir, windows_path)
+    okapi_dir = abspath(join(dirname(__file__), '..'))
+    copy_from = get_os_arch_path(okapi_dir, windows_path)
     for copy_file in glob.glob(join(copy_from, '*.*')):
         shutil.copy2(copy_file, copy_to)
-    shutil.copy2(join(libs_dir, 'libs', 'C_header', 'okapi.h'), copy_to)
+    shutil.copy2(join(okapi_dir, 'libs', 'C_header', 'okapi.h'), copy_to)
 
 
 def update_line(file_name: str, replace_lines: Dict[str, str]) -> None:

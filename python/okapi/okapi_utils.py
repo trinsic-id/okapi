@@ -73,7 +73,7 @@ class ExternError(ctypes.Structure):
     def raise_error_if_needed(self):
         if self.code != 0:
             string_copy = self.message.decode("utf-8")
-            # self.free()
+            self.free()
             raise DidError(self.code, string_copy)
 
 
