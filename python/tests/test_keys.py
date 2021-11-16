@@ -4,9 +4,10 @@ from os.path import dirname, join, abspath
 
 import base58
 
-from okapi.wrapper import DIDKey
-from okapi.proto.okapi.keys.v1 import GenerateKeyRequest, KeyType, GenerateKeyResponse, ResolveRequest
-from okapi.okapi_utils import DidError, get_os_arch_binary, set_library_path
+from trinsicokapi import didkey
+from trinsicokapi.librarydownloader import get_os_arch_binary
+from trinsicokapi.proto.okapi.keys.v1 import GenerateKeyRequest, KeyType, GenerateKeyResponse, ResolveRequest
+from trinsicokapi.wrapper import set_library_path, DidError
 
 
 def base64_padding(base_64: str) -> str:
@@ -30,7 +31,7 @@ class KeyTests(unittest.TestCase):
         request.key_type = KeyType.KEY_TYPE_ED25519
         request.seed = bytes(bytearray([1, 2, 3]))
 
-        key_response = DIDKey.generate(request)
+        key_response = didkey.generate(request)
         self.assertIsNotNone(key_response)
         self.assertIsInstance(key_response, GenerateKeyResponse)
         self.assert_valid_key_generated(key_response)
@@ -38,13 +39,13 @@ class KeyTests(unittest.TestCase):
     def test_generate_key_no_seed(self):
         request = GenerateKeyRequest()
         request.key_type = KeyType.KEY_TYPE_ED25519
-        response = DIDKey.generate(request)
+        response = didkey.generate(request)
 
         self.assert_valid_key_generated(response)
 
     def test_resolve_key(self):
         key = 'did:key:z6Mkt6QT8FPajKXDrtMefkjxRQENd9wFzKkDFomdQAVFzpzm#z6LSfDq6DuofPeZUqNEmdZsxpvfHvSoUXGEWFhw7JHk4cynN'
-        response = DIDKey.resolve(ResolveRequest(did=key))
+        response = didkey.resolve(ResolveRequest(did=key))
         self.assertIsNotNone(response)
 
     def assert_valid_key_generated(self, response, crv="Ed25519") -> bytes:
@@ -65,7 +66,7 @@ class KeyTests(unittest.TestCase):
         request = GenerateKeyRequest()
         request.key_type = -1
         with self.assertRaises(DidError) as err:
-            DIDKey.generate(request)
+            didkey.generate(request)
         print(err.exception.message)
         self.assertEqual('failed to execute function', err.exception.message)
 
@@ -80,7 +81,7 @@ class KeyTests(unittest.TestCase):
                 request = GenerateKeyRequest()
                 request.key_type = argument[0]
                 request.seed = bytes.fromhex(argument[2])
-                response = DIDKey.generate(request)
+                response = didkey.generate(request)
 
                 pk = self.assert_valid_key_generated(response, argument[1])
                 self.assertEqual(argument[3], base58.b58encode(pk).decode('utf-8'))
