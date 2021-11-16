@@ -1,10 +1,10 @@
 import unittest
 from os.path import join, dirname, abspath
 
-from okapi.okapi_utils import set_library_path, get_os_arch_binary
-from okapi.proto.okapi.security.v1 import CreateOberonKeyRequest, CreateOberonTokenRequest, CreateOberonProofRequest, \
+from trinsicokapi.okapi_utils import set_library_path, get_os_arch_binary
+from trinsicokapi.proto.okapi.security.v1 import CreateOberonKeyRequest, CreateOberonTokenRequest, CreateOberonProofRequest, \
     VerifyOberonProofRequest, UnBlindOberonTokenRequest, BlindOberonTokenRequest
-from okapi.wrapper import Oberon
+from trinsicokapi.wrapper import Oberon
 
 
 class OberonTests(unittest.TestCase):

@@ -2,10 +2,10 @@ import datetime
 import unittest
 from os.path import join, dirname, abspath
 
-from okapi.okapi_utils import dictionary_to_struct, set_library_path, get_os_arch_binary
-from okapi.proto.okapi.keys.v1 import GenerateKeyRequest, KeyType, JsonWebKey
-from okapi.wrapper import DIDKey, LDProofs
-from okapi.proto.okapi.proofs.v1 import CreateProofRequest, LdSuite
+from trinsicokapi.okapi_utils import dictionary_to_struct, set_library_path, get_os_arch_binary
+from trinsicokapi.proto.okapi.keys.v1 import GenerateKeyRequest, KeyType, JsonWebKey
+from trinsicokapi.wrapper import DIDKey, LDProofs
+from trinsicokapi.proto.okapi.proofs.v1 import CreateProofRequest, LdSuite
 
 
 class LdProofsTests(unittest.TestCase):

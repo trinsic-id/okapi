@@ -4,9 +4,9 @@ from os.path import dirname, join, abspath
 
 import base58
 
-from okapi.wrapper import DIDKey
-from okapi.proto.okapi.keys.v1 import GenerateKeyRequest, KeyType, GenerateKeyResponse, ResolveRequest
-from okapi.okapi_utils import DidError, get_os_arch_binary, set_library_path
+from trinsicokapi.okapi_utils import get_os_arch_binary, set_library_path, DidError
+from trinsicokapi.wrapper import DIDKey
+from trinsicokapi.proto.okapi.keys.v1 import GenerateKeyRequest, KeyType, GenerateKeyResponse, ResolveRequest
 
 
 def base64_padding(base_64: str) -> str:

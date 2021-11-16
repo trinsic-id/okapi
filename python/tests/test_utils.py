@@ -1,6 +1,6 @@
 import unittest
 
-from okapi.okapi_utils import download_binaries
+from trinsicokapi.okapi_utils import download_binaries
 
 
 class UtilitiesTests(unittest.TestCase):
