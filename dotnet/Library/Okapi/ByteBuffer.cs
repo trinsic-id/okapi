@@ -6,7 +6,7 @@ namespace Okapi
     [StructLayout(LayoutKind.Sequential)]
     internal struct ByteBuffer
     {
-        public ulong Length;
+        public long Length;
         public IntPtr Data;
     }
 }

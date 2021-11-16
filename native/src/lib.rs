@@ -36,14 +36,12 @@ where
 
 #[macro_use]
 mod macros;
-mod didcomm;
-mod didkey;
-#[cfg(not(target_arch = "wasm32"))]
+pub mod didcomm;
+pub mod didkey;
+#[cfg(feature = "ffi")]
 mod ffi;
-#[cfg(not(target_arch = "wasm32"))]
-mod jni;
 mod ldproofs;
-mod oberon;
+pub mod oberon;
 pub mod proto;
 #[cfg(test)]
 mod tests;
