@@ -2,10 +2,12 @@ import datetime
 import unittest
 from os.path import join, dirname, abspath
 
-from trinsicokapi.okapi_utils import dictionary_to_struct, set_library_path, get_os_arch_binary
+from trinsicokapi import didkey, ldproofs
+from trinsicokapi.librarydownloader import get_os_arch_binary
+from trinsicokapi.okapi_utils import dictionary_to_struct
 from trinsicokapi.proto.okapi.keys.v1 import GenerateKeyRequest, KeyType, JsonWebKey
-from trinsicokapi.wrapper import DIDKey, LDProofs
 from trinsicokapi.proto.okapi.proofs.v1 import CreateProofRequest, LdSuite
+from trinsicokapi.wrapper import set_library_path
 
 
 class LdProofsTests(unittest.TestCase):
@@ -27,13 +29,13 @@ class LdProofsTests(unittest.TestCase):
 
         request = GenerateKeyRequest()
         request.key_type = KeyType.KEY_TYPE_ED25519
-        response = DIDKey.generate(request)
+        response = didkey.generate(request)
         signing_key: JsonWebKey = [key for key in response.key if key.crv == "Ed25519"][0]
 
         proof_request = CreateProofRequest(document=capability, key=signing_key,
                                            suite=LdSuite.LD_SUITE_JCSED25519SIGNATURE2020)
 
-        signed_capability = LDProofs.create(proof_request)
+        signed_capability = ldproofs.create(proof_request)
         self.assertIsNotNone(signed_capability)
         self.assertIsNotNone(signed_capability.signed_document)
 

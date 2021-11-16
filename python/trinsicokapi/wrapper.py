@@ -1,81 +1,133 @@
-from .proto.okapi.keys.v1 import GenerateKeyRequest, GenerateKeyResponse, ResolveRequest, ResolveResponse
-from .okapi_utils import typed_wrap_and_call
-from .proto.okapi.proofs.v1 import CreateProofRequest, CreateProofResponse, VerifyProofRequest, VerifyProofResponse
-from .proto.okapi.security.v1 import BlindOberonTokenRequest, BlindOberonTokenResponse, CreateOberonTokenRequest, \
-    CreateOberonTokenResponse, UnBlindOberonTokenRequest, UnBlindOberonTokenResponse, CreateOberonProofRequest, \
-    CreateOberonProofResponse, VerifyOberonProofResponse, VerifyOberonProofRequest, CreateOberonKeyRequest, \
-    CreateOberonKeyResponse
-from .proto.okapi.transport.v1 import PackRequest, UnpackRequest, PackResponse, UnpackResponse, SignRequest, \
-    SignResponse, VerifyRequest, VerifyResponse
+import ctypes
+import platform
+import threading
+from os.path import join, dirname, abspath
+from typing import Type, Optional, List, Any, Dict, Union, TypeVar
+
+import betterproto
 
 
-class DIDKey:
-    @staticmethod
-    def generate(request: GenerateKeyRequest) -> GenerateKeyResponse:
-        response = typed_wrap_and_call("didkey_generate", request, GenerateKeyResponse)
-        return response
-
-    @staticmethod
-    def resolve(request: ResolveRequest) -> ResolveResponse:
-        response = typed_wrap_and_call("didkey_resolve", request, ResolveResponse)
-        return response
+library_name = {'Windows': 'okapi.dll',
+                'Darwin': 'libokapi.dylib',
+                'Linux': 'libokapi.so'}
+OKAPI_DLL: Dict[str, Union[str, ctypes.CDLL]] = {'library_path': '',
+                                                 'library': None}
+okapi_loader_lock = threading.Lock()
 
 
-class DIDComm:
-    @staticmethod
-    def pack(request: PackRequest) -> PackResponse:
-        response = typed_wrap_and_call("didcomm_pack", request, PackResponse)
-        return response
+class DidError(Exception):
+    def __init__(self, code, message):
+        self.code = code
+        self.message = message
 
-    @staticmethod
-    def unpack(request: UnpackRequest) -> UnpackResponse:
-        response = typed_wrap_and_call("didcomm_unpack", request, UnpackResponse)
-        return response
-
-    @staticmethod
-    def sign(request: SignRequest) -> SignResponse:
-        response = typed_wrap_and_call("didcomm_sign", request, SignResponse)
-        return response
-
-    @staticmethod
-    def verify(request: VerifyRequest) -> VerifyResponse:
-        response = typed_wrap_and_call("didcomm_verify", request, VerifyResponse)
-        return response
+    def __repr__(self):
+        return f"code={self.code} message={self.message}"
 
 
-class LDProofs:
-    @staticmethod
-    def create(request: CreateProofRequest) -> CreateProofResponse:
-        response = typed_wrap_and_call("ldproofs_create_proof", request, CreateProofResponse)
-        return response
+class ByteBuffer(ctypes.Structure):
+    """Buffer allocated by the native library"""
+    _fields_ = [
+        ("len", ctypes.c_int64),
+        ("data", ctypes.POINTER(ctypes.c_uint8))
+    ]
+
+    @property
+    def raw(self) -> ctypes.Array:
+        ret = (ctypes.c_ubyte * self.len).from_address(self.data)
+        setattr(ret, "_ref_", self)  # ensure the buffer isn't dropped
+        return ret
+
+    def __bytes__(self) -> bytes:
+        return ctypes.string_at(self.data, self.len)
+
+    def __repr__(self) -> str:
+        return repr(bytes(self))
+
+    def free(self):
+        func = _wrap_native_function("okapi_bytebuffer_free", arg_types=[ByteBuffer])
+        func(self)
 
     @staticmethod
-    def verify(request: VerifyProofRequest) -> VerifyProofResponse:
-        response = typed_wrap_and_call("ldproofs_verify_proof", request, VerifyProofResponse)
-        return response
+    def create_from(obj: bytes) -> 'ByteBuffer':
+        request_buffer = ByteBuffer()
+        request_buffer.len = len(obj)
+        request_buffer.data = (ctypes.c_ubyte * request_buffer.len).from_buffer_copy(obj)
+        return request_buffer
 
 
-class Oberon:
-    @staticmethod
-    def create_key(request: CreateOberonKeyRequest) -> CreateOberonKeyResponse:
-        return typed_wrap_and_call("oberon_create_key", request, CreateOberonKeyResponse)
+class ExternError(ctypes.Structure):
+    _fields_ = [
+        ("code", ctypes.c_int32),
+        ("message", ctypes.POINTER(ctypes.c_char))
+    ]
 
-    @staticmethod
-    def create_proof(request: CreateOberonProofRequest) -> CreateOberonProofResponse:
-        return typed_wrap_and_call("oberon_create_proof", request, CreateOberonProofResponse)
+    def __repr__(self):
+        return f"code={self.code} message={self.get_message if self.code != 0 else ''}"
 
-    @staticmethod
-    def create_token(request: CreateOberonTokenRequest) -> CreateOberonTokenResponse:
-        return typed_wrap_and_call("oberon_create_token", request, CreateOberonTokenResponse)
+    def free(self):
+        func = _wrap_native_function("okapi_string_free", arg_types=[ctypes.POINTER(ctypes.c_char)])
+        func(self.message)
 
-    @staticmethod
-    def blind_token(request: BlindOberonTokenRequest) -> BlindOberonTokenResponse:
-        return typed_wrap_and_call("oberon_blind_token", request, BlindOberonTokenResponse)
+    @property
+    def get_message(self) -> str:
+        return ctypes.string_at(self.message).decode('utf-8')
 
-    @staticmethod
-    def unblind_token(request: UnBlindOberonTokenRequest) -> UnBlindOberonTokenResponse:
-        return typed_wrap_and_call("oberon_unblind_token", request, UnBlindOberonTokenResponse)
+    def raise_error_if_needed(self):
+        if self.code != 0:
+            string_copy = self.get_message
+            self.free()
+            raise DidError(self.code, string_copy)
 
-    @staticmethod
-    def verify_proof(request: VerifyOberonProofRequest) -> VerifyOberonProofResponse:
-        return typed_wrap_and_call("oberon_verify_proof", request, VerifyOberonProofResponse)
+
+def set_library_path(path: str):
+    global OKAPI_DLL
+    with okapi_loader_lock:
+        OKAPI_DLL['library_path'] = path
+
+
+def load_library() -> ctypes.CDLL:
+    global OKAPI_DLL
+    # Python multithreading is super primitive due to the GIL. All we need to do is prevent double copying.
+    # https://opensource.com/article/17/4/grok-gil
+    with okapi_loader_lock:
+        if OKAPI_DLL['library'] is None:
+            lib_path = OKAPI_DLL['library_path'] or join(dirname(abspath(__file__)), 'libs')
+            sys = platform.system()
+            try:
+                OKAPI_DLL['library'] = ctypes.CDLL(abspath(join(lib_path, library_name[sys])))
+            except KeyError:
+                raise NotImplementedError(f"Unsupported operating system {sys}: {platform.platform()}")
+    return OKAPI_DLL['library']
+
+
+def _wrap_native_function(function_name: str, *, arg_types: Optional[List[Any]] = None,
+                          return_type: Optional[Any] = None):
+    library_function = getattr(load_library(), function_name)
+    # Defaults coercion
+    arg_types = arg_types or [ByteBuffer, ctypes.POINTER(ByteBuffer), ctypes.POINTER(ExternError)]
+    return_type = return_type or ctypes.c_int32
+
+    library_function.argtypes = arg_types
+    library_function.restype = return_type
+
+    return library_function
+
+
+def _ffi_wrap_and_call(function_name: str, request_buffer: ByteBuffer) -> bytes:
+    func = _wrap_native_function(function_name)
+    error_out = ExternError()
+    response_buffer = ByteBuffer()
+    func(request_buffer, ctypes.byref(response_buffer), ctypes.byref(error_out))
+    error_out.raise_error_if_needed()
+    byte_data = bytes(response_buffer)
+    response_buffer.free()
+    return byte_data
+
+
+T_response = TypeVar('T_response', bound=betterproto.Message)
+
+
+def _typed_wrap_and_call(function_name, request: betterproto.Message, response_type: Type[T_response]) -> T_response:
+    buffer = _ffi_wrap_and_call(function_name, ByteBuffer.create_from(bytes(request)))
+    output_object = response_type().parse(buffer)
+    return output_object

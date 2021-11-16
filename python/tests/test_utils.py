@@ -1,13 +1,12 @@
 import unittest
 
-from trinsicokapi.okapi_utils import download_binaries
+from trinsicokapi.librarydownloader import download_binaries
 
 
-class UtilitiesTests(unittest.TestCase):
-    def test_download_binaries(self):
-        # Only run this locally, it should take 20-30 seconds the first run, and instantaneous on the second.
-        download_binaries()
-        pass
+def test_download_binaries():
+    # Only run this locally, it should take 20-30 seconds the first run, and instantaneous on the second.
+    download_binaries()
+    pass
 
 
 if __name__ == '__main__':
