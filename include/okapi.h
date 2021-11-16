@@ -74,3 +74,7 @@ int32_t oberon_verify_proof(struct ByteBuffer request,
 void didcomm_byte_buffer_free(struct ByteBuffer v);
 
 void didcomm_string_free(char *s);
+
+void okapi_bytebuffer_free(struct ByteBuffer v);
+
+void okapi_string_free(char *s);

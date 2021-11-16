@@ -23,7 +23,7 @@ fn build_c_header_file() {
         .with_language(Language::C)
         .with_parse_deps(true)
         .with_parse_include(&["ffi-support"])
-        .with_parse_expand_features(&["didcomm_byte_buffer_free"])
+        .with_parse_expand_features(&["okapi_bytebuffer_free"])
         .with_documentation(false)
         .with_parse_expand(&[crate_dir])
         .generate()

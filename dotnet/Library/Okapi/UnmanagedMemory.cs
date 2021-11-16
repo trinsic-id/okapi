@@ -36,7 +36,7 @@ namespace Okapi
 
             GCHandlesCollection.Add(pinnedArray);
 
-            return new ByteBuffer { Length = (ulong)buffer.Length, Data = pointer };
+            return new ByteBuffer { Length = buffer.Length, Data = pointer };
         }
 
         /// <summary>
