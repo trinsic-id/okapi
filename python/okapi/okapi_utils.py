@@ -46,7 +46,7 @@ class ByteBuffer(ctypes.Structure):
         return repr(bytes(self))
 
     def free(self):
-        func = wrap_native_function("okapi_byte_buffer_free", arg_types=[ByteBuffer])
+        func = wrap_native_function("okapi_bytebuffer_free", arg_types=[ByteBuffer])
         func(self)
 
     @staticmethod
