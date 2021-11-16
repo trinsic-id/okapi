@@ -101,10 +101,11 @@ try {
         }
 
         Wasm {
-            rustup target add wasm32-unknown-unknown
-            cargo build --release --target wasm32-unknown-unknown
-            Copy-Item -Path .\target\wasm32-unknown-unknown\release\okapi.wasm -Destination $TargetOutput
-            Copy-Item -Path .\target\wasm32-unknown-unknown\release\libokapi.a -Destination $TargetOutput
+            # https://github.com/rust-lang/rust/issues/41750#issuecomment-312510034
+            $env:EMMAKEN_CFLAGS="-s ERROR_ON_UNDEFINED_SYMBOLS=0 --no-entry"
+            rustup target add wasm32-unknown-emscripten
+            cargo build --release --target wasm32-unknown-emscripten
+            Copy-Item -Path .\target\wasm32-unknown-emscripten\release\libokapi.a -Destination $TargetOutput
             break
         }
     }
