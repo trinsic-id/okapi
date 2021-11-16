@@ -34,10 +34,10 @@ namespace Okapi
         #region Resources
 
         [DllImport(LibraryName, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-        internal static extern int didcomm_string_free(IntPtr str);
+        internal static extern int okapi_string_free(IntPtr str);
 
         [DllImport(LibraryName, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-        internal static extern int didcomm_byte_buffer_free(ByteBuffer data);
+        internal static extern int okapi_byte_buffer_free(ByteBuffer data);
 
         #endregion
 
