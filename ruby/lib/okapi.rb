@@ -81,8 +81,8 @@ module Okapi
     attach_function :oberon_create_proof, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
     attach_function :oberon_verify_proof, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
 
-    attach_function :didcomm_byte_buffer_free, [ByteBuffer.by_value], :int
-    attach_function :didcomm_string_free, [:pointer], :int
+    attach_function :okapi_byte_buffer_free, [ByteBuffer.by_value], :int
+    attach_function :okapi_string_free, [:pointer], :int
   end
 end
 
@@ -93,12 +93,12 @@ module Okapi
 
   def self.byte_buffer_free(buffer)
     verify_type(buffer, Okapi::ByteBuffer)
-    didcomm_byte_buffer_free(buffer)
+    okapi_byte_buffer_free(buffer)
   end
 
   def self.string_free(ptr)
     verify_type(ptr, Fiddle::Pointer)
-    didcomm_string_free(ptr)
+    okapi_string_free(ptr)
   end
 
   def self.ffi_call(function, request, response_klass)

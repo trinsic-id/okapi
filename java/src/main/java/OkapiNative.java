@@ -35,9 +35,9 @@ public class OkapiNative {
 
         int oberon_verify_proof(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
 
-        void didcomm_byte_buffer_free(OkapiByteBuffer.ByValue v);
+        void okapi_byte_buffer_free(OkapiByteBuffer.ByValue v);
 
-        void didcomm_string_free(com.sun.jna.ptr.ByteByReference s);
+        void okapi_string_free(com.sun.jna.ptr.ByteByReference s);
     }
 
     private static IOkapiC nativeLibrary = null;
@@ -109,7 +109,7 @@ public class OkapiNative {
 
     static byte[] bufferToByteArray(OkapiByteBuffer buffer) {
         byte[] data = buffer.getData();
-        getNativeLibrary().didcomm_byte_buffer_free(buffer.byValue());
+        getNativeLibrary().okapi_byte_buffer_free(buffer.byValue());
         return data;
     }
 }

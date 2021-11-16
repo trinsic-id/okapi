@@ -46,7 +46,7 @@ class ByteBuffer(ctypes.Structure):
         return repr(bytes(self))
 
     def free(self):
-        func = wrap_native_function("didcomm_byte_buffer_free", arg_types=[ByteBuffer])
+        func = wrap_native_function("okapi_byte_buffer_free", arg_types=[ByteBuffer])
         func(self)
 
     @staticmethod
@@ -67,7 +67,7 @@ class ExternError(ctypes.Structure):
         return f"code={self.code} message={self.message.decode('utf-8') if self.code != 0 else ''}"
 
     def free(self):
-        func = wrap_native_function("didcomm_string_free", arg_types=[ctypes.c_char_p])
+        func = wrap_native_function("okapi_string_free", arg_types=[ctypes.c_char_p])
         func(self.message)
 
     def raise_error_if_needed(self):
