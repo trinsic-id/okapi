@@ -1,4 +1,4 @@
-import com.google.protobuf.*;
+import com.google.protobuf.GeneratedMessageV3;
 import com.sun.jna.Native;
 
 import java.nio.file.Paths;
@@ -37,7 +37,7 @@ public class OkapiNative {
 
         void okapi_bytebuffer_free(OkapiByteBuffer.ByValue v);
 
-        void okapi_string_free(com.sun.jna.ptr.ByteByReference s);
+        void okapi_string_free(com.sun.jna.Pointer s);
     }
 
     private static IOkapiC nativeLibrary = null;
