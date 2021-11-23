@@ -1,3 +1,5 @@
+package trinsic.okapi;
+
 import com.google.protobuf.InvalidProtocolBufferException;
 import trinsic.okapi.keys.v1.Keys;
 

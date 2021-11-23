@@ -1,10 +1,11 @@
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import trinsic.okapi.DidException;
+import trinsic.okapi.DidKey;
 import trinsic.okapi.keys.v1.Keys;
 
 import java.util.Base64;

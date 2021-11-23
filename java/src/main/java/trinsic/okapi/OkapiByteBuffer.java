@@ -1,3 +1,5 @@
+package trinsic.okapi;
+
 import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;

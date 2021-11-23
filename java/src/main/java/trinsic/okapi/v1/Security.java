@@ -30,7 +30,7 @@ public final class Security {
   }
   /**
    * <pre>
-   * Create an Oberon Compatible Secret Key
+   * Create an trinsic.okapi.Oberon Compatible Secret Key
    * </pre>
    *
    * Protobuf type {@code okapi.security.v1.CreateOberonKeyRequest}
@@ -287,7 +287,7 @@ public final class Security {
     }
     /**
      * <pre>
-     * Create an Oberon Compatible Secret Key
+     * Create an trinsic.okapi.Oberon Compatible Secret Key
      * </pre>
      *
      * Protobuf type {@code okapi.security.v1.CreateOberonKeyRequest}

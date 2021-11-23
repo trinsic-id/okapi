@@ -2,6 +2,8 @@ import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import trinsic.okapi.DidException;
+import trinsic.okapi.Oberon;
 import trinsic.okapi.security.v1.Security;
 
 class OberonTest {

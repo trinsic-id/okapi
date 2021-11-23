@@ -12,7 +12,7 @@ plugins {
 def jarDomainId = "id"
 def jarGroupId = "trinsic"
 def jarArtifactId = "okapi"
-def jarVersion = "1.0.1-preview.8"
+def jarVersion = "1.1.1"
 
 publishing {
     repositories {
