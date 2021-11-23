@@ -71,6 +71,7 @@ def build_python(args) -> None:
     python_dir = abspath(join(dirname(__file__), '..', 'python'))
     update_line(join(python_dir, 'setup.cfg'),
                 {'version = ': f'version = {get_package_versions(args)}'})
+    copy_okapi_libs(abspath(join(python_dir, '..', 'libs')))
 
 
 def build_java(args) -> None:

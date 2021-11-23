@@ -34,6 +34,9 @@ jobs:
         shell: pwsh
         working-directory: python
         env:
+          LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
+          DYLD_FALLBACK_LIBRARY_PATH: "${{ github.workspace }}/libs"
+          DYLD_LIBRARY_PATH: "${{ github.workspace }}/libs"
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
       - name: Publish distribution 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@master
