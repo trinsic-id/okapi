@@ -1,21 +1,38 @@
-import ctypes
-import platform
 import threading
-from os.path import join, dirname, abspath
+import ctypes
+from ctypes import CDLL
+from ctypes.util import find_library
 from typing import Type, Optional, List, Any, Dict, Union, TypeVar
 
 import betterproto
 
-
-library_name = {'Windows': 'okapi.dll',
-                'Darwin': 'libokapi.dylib',
-                'Linux': 'libokapi.so'}
-OKAPI_DLL: Dict[str, Union[str, ctypes.CDLL]] = {'library_path': '',
-                                                 'library': None}
+OKAPI_NATIVE: Dict[str, Union[str, CDLL]] = {'library_path': '',
+                                                    'library': None}
 okapi_loader_lock = threading.Lock()
 
 
-class DidError(Exception):
+def set_library_path(path: str):
+    """Set the exact path of the library, including the file, to load"""
+    global OKAPI_NATIVE
+    with okapi_loader_lock:
+        OKAPI_NATIVE['library_path'] = path
+
+
+def load_library() -> CDLL:
+    global OKAPI_NATIVE
+    # Python multithreading is super primitive due to the GIL. All we need to do is prevent double copying.
+    # https://opensource.com/article/17/4/grok-gil
+    with okapi_loader_lock:
+        if OKAPI_NATIVE['library'] is None:
+            lib_path = OKAPI_NATIVE['library_path'] or "okapi"
+            lib_path = find_library(lib_path)
+            OKAPI_NATIVE['library'] = CDLL(lib_path)
+    return OKAPI_NATIVE['library']
+
+
+class OkapiError(Exception):
+    """Wrapper for Okapi errors"""
+
     def __init__(self, code, message):
         self.code = code
         self.message = message
@@ -73,31 +90,11 @@ class ExternError(ctypes.Structure):
         return ctypes.string_at(self.message).decode('utf-8')
 
     def raise_error_if_needed(self):
+        """Raise an exception if one was returned"""
         if self.code != 0:
             string_copy = self.get_message
             self.free()
-            raise DidError(self.code, string_copy)
-
-
-def set_library_path(path: str):
-    global OKAPI_DLL
-    with okapi_loader_lock:
-        OKAPI_DLL['library_path'] = path
-
-
-def load_library() -> ctypes.CDLL:
-    global OKAPI_DLL
-    # Python multithreading is super primitive due to the GIL. All we need to do is prevent double copying.
-    # https://opensource.com/article/17/4/grok-gil
-    with okapi_loader_lock:
-        if OKAPI_DLL['library'] is None:
-            lib_path = OKAPI_DLL['library_path'] or join(dirname(abspath(__file__)), 'libs')
-            sys = platform.system()
-            try:
-                OKAPI_DLL['library'] = ctypes.CDLL(abspath(join(lib_path, library_name[sys])))
-            except KeyError:
-                raise NotImplementedError(f"Unsupported operating system {sys}: {platform.platform()}")
-    return OKAPI_DLL['library']
+            raise OkapiError(self.code, string_copy)
 
 
 def _wrap_native_function(function_name: str, *, arg_types: Optional[List[Any]] = None,

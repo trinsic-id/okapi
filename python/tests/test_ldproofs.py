@@ -1,21 +1,13 @@
 import datetime
 import unittest
-from os.path import join, dirname, abspath
 
 from trinsicokapi import didkey, ldproofs
-from trinsicokapi.librarydownloader import get_os_arch_binary
 from trinsicokapi.okapi_utils import dictionary_to_struct
 from trinsicokapi.proto.okapi.keys.v1 import GenerateKeyRequest, KeyType, JsonWebKey
 from trinsicokapi.proto.okapi.proofs.v1 import CreateProofRequest, LdSuite
-from trinsicokapi.wrapper import set_library_path
 
 
 class LdProofsTests(unittest.TestCase):
-    def setUp(self) -> None:
-        base_dir = abspath(join(dirname(__file__), '..', '..'))
-        lib_path = get_os_arch_binary(base_dir)
-        set_library_path(dirname(lib_path))
-
     def test_generate_capability_invocation_proof_with_jcs(self):
         capability_dict = {"@context": "https://w3id.org/security/v2",
                            "target": "urn:trinsic:wallets:noop",

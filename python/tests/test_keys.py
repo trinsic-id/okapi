@@ -1,13 +1,11 @@
 import base64
 import unittest
-from os.path import dirname, join, abspath
 
 import base58
 
 from trinsicokapi import didkey
-from trinsicokapi.librarydownloader import get_os_arch_binary
 from trinsicokapi.proto.okapi.keys.v1 import GenerateKeyRequest, KeyType, GenerateKeyResponse, ResolveRequest
-from trinsicokapi.wrapper import set_library_path, DidError
+from trinsicokapi.wrapper import OkapiError
 
 
 def base64_padding(base_64: str) -> str:
@@ -21,11 +19,6 @@ def base64_padding(base_64: str) -> str:
 
 
 class KeyTests(unittest.TestCase):
-    def setUp(self) -> None:
-        base_dir = abspath(join(dirname(__file__), '..', '..'))
-        lib_path = get_os_arch_binary(base_dir)
-        set_library_path(dirname(lib_path))
-
     def test_generate_key(self):
         request = GenerateKeyRequest()
         request.key_type = KeyType.KEY_TYPE_ED25519
@@ -65,7 +58,7 @@ class KeyTests(unittest.TestCase):
     def test_generate_key_throws_invalid_key_type(self):
         request = GenerateKeyRequest()
         request.key_type = -1
-        with self.assertRaises(DidError) as err:
+        with self.assertRaises(OkapiError) as err:
             didkey.generate(request)
         print(err.exception.message)
         self.assertEqual('failed to execute function', err.exception.message)
