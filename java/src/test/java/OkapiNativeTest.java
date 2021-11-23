@@ -1,6 +1,7 @@
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -9,13 +10,15 @@ import trinsic.okapi.keys.v1.Keys;
 import java.util.Base64;
 
 class OkapiNativeTest {
+
     @Test
+    @Disabled("Only works locally, fails on github actions")
     void testLoadDifferentPath() {
         // Current path
         OkapiNative.setLibraryPath("");
         System.out.println(OkapiNative.getLibraryPath());
         // Only works locally. Uncomment this to test it.
-//        assertNotNull(OkapiNative.getNativeLibrary());
+        Assertions.assertNotNull(OkapiNative.getNativeLibrary());
     }
     @Test
     void generateKeyCall() throws DidException, InvalidProtocolBufferException {
