@@ -54,7 +54,7 @@ public class OkapiNative {
         // Explicit path to entire library name
         if (overrideLibraryPath != null && overrideLibraryPath.strip().length() > 0)
             return Paths.get(overrideLibraryPath).toAbsolutePath().toString();
-        
+
         return "okapi";
     }
 
