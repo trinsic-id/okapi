@@ -40,7 +40,7 @@ jobs:
           branch: main
       - name: Publish package
         run: |
-          python ../devops/build_sdks.py --github-token=${{ secrets.API_GITHUB_TOKEN }} --package-version=${{ github.event.inputs.packageVersion }}
+          python ../devops/build_sdks.py --package-version=${{ github.event.inputs.packageVersion }}
           gradle publish
         working-directory: java
         env:
