@@ -6,8 +6,8 @@ public class Oberon extends OkapiNative {
         OkapiByteBuffer.ByValue requestBuffer = messageToBuffer(request);
         OkapiByteBuffer responseBuffer = new OkapiByteBuffer();
         ExternError errBuffer = new ExternError();
-        getNativeLibrary().oberon_create_key(requestBuffer, responseBuffer, errBuffer);
-        errBuffer.RaiseError();
+        var result = getNativeLibrary().oberon_create_key(requestBuffer, responseBuffer, errBuffer);
+        errBuffer.raiseError(result);
         return Security.CreateOberonKeyResponse.parseFrom(bufferToByteArray(responseBuffer));
     }
 
@@ -15,8 +15,8 @@ public class Oberon extends OkapiNative {
         OkapiByteBuffer.ByValue requestBuffer = messageToBuffer(request);
         OkapiByteBuffer responseBuffer = new OkapiByteBuffer();
         ExternError errBuffer = new ExternError();
-        getNativeLibrary().oberon_create_token(requestBuffer, responseBuffer, errBuffer);
-        errBuffer.RaiseError();
+        var result = getNativeLibrary().oberon_create_token(requestBuffer, responseBuffer, errBuffer);
+        errBuffer.raiseError(result);
         return Security.CreateOberonTokenResponse.parseFrom(bufferToByteArray(responseBuffer));
     }
 
@@ -24,8 +24,8 @@ public class Oberon extends OkapiNative {
         OkapiByteBuffer.ByValue requestBuffer = messageToBuffer(request);
         OkapiByteBuffer responseBuffer = new OkapiByteBuffer();
         ExternError errBuffer = new ExternError();
-        getNativeLibrary().oberon_blind_token(requestBuffer, responseBuffer, errBuffer);
-        errBuffer.RaiseError();
+        var result = getNativeLibrary().oberon_blind_token(requestBuffer, responseBuffer, errBuffer);
+        errBuffer.raiseError(result);
         return Security.BlindOberonTokenResponse.parseFrom(bufferToByteArray(responseBuffer));
     }
 
@@ -33,8 +33,8 @@ public class Oberon extends OkapiNative {
         OkapiByteBuffer.ByValue requestBuffer = messageToBuffer(request);
         OkapiByteBuffer responseBuffer = new OkapiByteBuffer();
         ExternError errBuffer = new ExternError();
-        getNativeLibrary().oberon_unblind_token(requestBuffer, responseBuffer, errBuffer);
-        errBuffer.RaiseError();
+        var result = getNativeLibrary().oberon_unblind_token(requestBuffer, responseBuffer, errBuffer);
+        errBuffer.raiseError(result);
         return Security.UnBlindOberonTokenResponse.parseFrom(bufferToByteArray(responseBuffer));
     }
 
@@ -42,8 +42,8 @@ public class Oberon extends OkapiNative {
         OkapiByteBuffer.ByValue requestBuffer = messageToBuffer(request);
         OkapiByteBuffer responseBuffer = new OkapiByteBuffer();
         ExternError errBuffer = new ExternError();
-        getNativeLibrary().oberon_create_proof(requestBuffer, responseBuffer, errBuffer);
-        errBuffer.RaiseError();
+        var result = getNativeLibrary().oberon_create_proof(requestBuffer, responseBuffer, errBuffer);
+        errBuffer.raiseError(result);
         return Security.CreateOberonProofResponse.parseFrom(bufferToByteArray(responseBuffer));
     }
 
@@ -51,8 +51,8 @@ public class Oberon extends OkapiNative {
         OkapiByteBuffer.ByValue requestBuffer = messageToBuffer(request);
         OkapiByteBuffer responseBuffer = new OkapiByteBuffer();
         ExternError errBuffer = new ExternError();
-        getNativeLibrary().oberon_verify_proof(requestBuffer, responseBuffer, errBuffer);
-        errBuffer.RaiseError();
+        var result = getNativeLibrary().oberon_verify_proof(requestBuffer, responseBuffer, errBuffer);
+        errBuffer.raiseError(result);
         return Security.VerifyOberonProofResponse.parseFrom(bufferToByteArray(responseBuffer));
     }
 }
