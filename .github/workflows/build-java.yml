@@ -37,9 +37,10 @@ jobs:
         with:
           workflow: "build-libs.yml"
           path: ./libs
+      - name: Update Windows Path
+        run: echo "${{ github.workspace }}/libs" >> $GITHUB_PATH
       - name: Build with Gradle
         run: |
-          echo "${{ github.workspace }}/libs" | Out-File -FilePath $env:GITHUB_PATH -Append
           python ../devops/build_sdks.py
           gradle build
         shell: pwsh
