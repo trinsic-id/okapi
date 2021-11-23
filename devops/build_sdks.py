@@ -42,6 +42,8 @@ def get_os_arch_path(extract_dir, windows_path='windows'):
 def copy_okapi_libs(copy_to: str, windows_path='windows'):
     okapi_dir = abspath(join(dirname(__file__), '..'))
     copy_from = get_os_arch_path(okapi_dir, windows_path)
+    print(f"Copying okapi libs from: {copy_from}\nto: {copy_to}")
+
     for copy_file in glob.glob(join(copy_from, '*.*')):
         shutil.copy2(copy_file, copy_to)
     shutil.copy2(join(okapi_dir, 'libs', 'C_header', 'okapi.h'), copy_to)
@@ -93,10 +95,6 @@ def build_golang(args) -> None:
     copy_okapi_libs(golang_dir, 'windows-gnu')
 
 
-def build_dotnet(args) -> None:
-    os.system(f'echo "PACKAGE_VERSION={get_package_versions(args)}" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append')
-
-
 def get_package_versions(args) -> str:
     return (args.package_version or get_github_version()).lstrip('v')
 
@@ -128,9 +126,6 @@ def main():
     build_java(args)
     build_ruby(args)
     build_golang(args)
-    build_dotnet(args)
-    # Build and upload
-    pass
 
 
 if __name__ == "__main__":
