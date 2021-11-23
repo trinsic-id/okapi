@@ -42,6 +42,8 @@ def get_os_arch_path(extract_dir, windows_path='windows'):
 def copy_okapi_libs(copy_to: str, windows_path='windows'):
     okapi_dir = abspath(join(dirname(__file__), '..'))
     copy_from = get_os_arch_path(okapi_dir, windows_path)
+    print(f"Copying okapi libs from: {copy_from}\nto: {copy_to}")
+
     for copy_file in glob.glob(join(copy_from, '*.*')):
         shutil.copy2(copy_file, copy_to)
     shutil.copy2(join(okapi_dir, 'libs', 'C_header', 'okapi.h'), copy_to)
@@ -69,6 +71,7 @@ def build_python(args) -> None:
     python_dir = abspath(join(dirname(__file__), '..', 'python'))
     update_line(join(python_dir, 'setup.cfg'),
                 {'version = ': f'version = {get_package_versions(args)}'})
+    copy_okapi_libs(abspath(join(python_dir, '..', 'libs')))
 
 
 def build_java(args) -> None:
@@ -76,6 +79,7 @@ def build_java(args) -> None:
     java_dir = abspath(join(dirname(__file__), '..', 'java'))
     update_line(join(java_dir, 'build.gradle'),
                 {'def jarVersion': f'def jarVersion = "{get_package_versions(args)}"'})
+    copy_okapi_libs(abspath(join(java_dir, '..', 'libs')))
 
 
 def build_ruby(args) -> None:
@@ -90,10 +94,6 @@ def build_golang(args) -> None:
     golang_dir = abspath(join(dirname(__file__), '..', 'go', 'okapi'))
     # Copy in the binaries
     copy_okapi_libs(golang_dir, 'windows-gnu')
-
-
-def build_dotnet(args) -> None:
-    os.system(f'echo "PACKAGE_VERSION={get_package_versions(args)}" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append')
 
 
 def get_package_versions(args) -> str:
@@ -127,9 +127,6 @@ def main():
     build_java(args)
     build_ruby(args)
     build_golang(args)
-    build_dotnet(args)
-    # Build and upload
-    pass
 
 
 if __name__ == "__main__":

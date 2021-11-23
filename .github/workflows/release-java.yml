@@ -44,4 +44,5 @@ jobs:
           gradle publish
         working-directory: java
         env:
+          LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

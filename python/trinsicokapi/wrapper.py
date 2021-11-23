@@ -1,21 +1,71 @@
 import ctypes
+import distutils.ccompiler
+import os
 import platform
 import threading
-from os.path import join, dirname, abspath
-from typing import Type, Optional, List, Any, Dict, Union, TypeVar
+from ctypes import CDLL
+from ctypes.util import find_library
+from typing import Type, Optional, List, Any, Dict, Union, TypeVar, Iterator
 
 import betterproto
 
-
-library_name = {'Windows': 'okapi.dll',
-                'Darwin': 'libokapi.dylib',
-                'Linux': 'libokapi.so'}
-OKAPI_DLL: Dict[str, Union[str, ctypes.CDLL]] = {'library_path': '',
-                                                 'library': None}
+OKAPI_NATIVE: Dict[str, Union[str, CDLL]] = {'library_path': '',
+                                             'library': None}
 okapi_loader_lock = threading.Lock()
 
 
-class DidError(Exception):
+def set_library_path(path: str):
+    """Set the exact path of the library, including the file, to load"""
+    global OKAPI_NATIVE
+    with okapi_loader_lock:
+        OKAPI_NATIVE['library_path'] = path
+
+
+def _check_path(path_string: str, lib_name: str) -> str:
+    # default assume linux
+    lib_extension = "so"
+    lib_prefix = "lib"
+    if platform.system() == "Windows":
+        lib_extension = "dll"
+        lib_prefix = ""
+    elif platform.system() == "Darwin":
+        lib_extension = "dylib"
+
+    lib_name = f"{lib_prefix}{lib_name}.{lib_extension}"
+    for path in path_string.split(os.pathsep):
+        test_path = os.path.join(path, lib_name)
+        if os.path.exists(test_path):
+            return test_path
+    return ""
+
+
+def find_native_lib() -> str:
+    lib_path = OKAPI_NATIVE['library_path']
+    if lib_path:
+        return lib_path
+    lib_name = "okapi"
+    # Allow for manual override and then manually check, since LINUX Python doesn't always work. :(
+    found_lib_path = _check_path(os.getenv('LD_LIBRARY_PATH', ''), lib_name) \
+                     or find_library(lib_path)
+    return found_lib_path
+
+
+def load_library() -> CDLL:
+    global OKAPI_NATIVE
+    # Python multithreading is super primitive due to the GIL. All we need to do is prevent double copying.
+    # https://opensource.com/article/17/4/grok-gil
+    with okapi_loader_lock:
+        if OKAPI_NATIVE['library'] is None:
+            load_lib_path = find_native_lib()
+            if not load_lib_path:
+                raise RuntimeError(f"Could find library:{load_lib_path}")
+            OKAPI_NATIVE['library'] = CDLL(load_lib_path)
+    return OKAPI_NATIVE['library']
+
+
+class OkapiError(Exception):
+    """Wrapper for Okapi errors"""
+
     def __init__(self, code, message):
         self.code = code
         self.message = message
@@ -73,31 +123,11 @@ class ExternError(ctypes.Structure):
         return ctypes.string_at(self.message).decode('utf-8')
 
     def raise_error_if_needed(self):
+        """Raise an exception if one was returned"""
         if self.code != 0:
             string_copy = self.get_message
             self.free()
-            raise DidError(self.code, string_copy)
-
-
-def set_library_path(path: str):
-    global OKAPI_DLL
-    with okapi_loader_lock:
-        OKAPI_DLL['library_path'] = path
-
-
-def load_library() -> ctypes.CDLL:
-    global OKAPI_DLL
-    # Python multithreading is super primitive due to the GIL. All we need to do is prevent double copying.
-    # https://opensource.com/article/17/4/grok-gil
-    with okapi_loader_lock:
-        if OKAPI_DLL['library'] is None:
-            lib_path = OKAPI_DLL['library_path'] or join(dirname(abspath(__file__)), 'libs')
-            sys = platform.system()
-            try:
-                OKAPI_DLL['library'] = ctypes.CDLL(abspath(join(lib_path, library_name[sys])))
-            except KeyError:
-                raise NotImplementedError(f"Unsupported operating system {sys}: {platform.platform()}")
-    return OKAPI_DLL['library']
+            raise OkapiError(self.code, string_copy)
 
 
 def _wrap_native_function(function_name: str, *, arg_types: Optional[List[Any]] = None,

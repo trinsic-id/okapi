@@ -1,6 +1,9 @@
 import com.google.protobuf.GeneratedMessageV3;
 import com.sun.jna.Native;
+import com.sun.jna.Platform;
 
+import java.io.File;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 
 
@@ -48,57 +51,32 @@ public class OkapiNative {
         return nativeLibrary;
     }
 
-    private static final String OS = System.getProperty("os.name").toLowerCase();
-    private static boolean isWindows() {
-        return OS.startsWith("windows");
-    }
-    private static boolean isLinux() {
-        return OS.startsWith("linux");
-    }
-    private static boolean isMacOs() {
-        return OS.startsWith("mac") || OS.startsWith("darwin");
-    }
-    private static boolean isAndroid() {
-        // There isn't a proven way to do this, but this seems the most logical. Alternatives would be:
-        return System.getProperty("java.runtime.name").equals("Android Runtime");
-        // return "The Android Project".equals(System.getProperty("java.specification.vendor"));
+    private static String getLibraryName() {
+        if (Platform.isWindows())
+            return "okapi.dll";
+        if (Platform.isMac())
+            return "libokapi.dylib";
+        // Default is linux
+        return "libokapi.so";
     }
 
     private static String overrideLibraryPath = null;
     public static void setLibraryPath(String path) { overrideLibraryPath = path; }
     public static String getLibraryPath() {
-        if (isAndroid())
-            // Android does not allow directory separators in the library name.
-            return getOsFile();
-        // Desktop platforms we can do other things.
-        String libraryPath = Paths.get(System.getProperty("user.dir"), "../libs", getOsPath()).toAbsolutePath().toString();
-        if (overrideLibraryPath != null)
-            libraryPath = overrideLibraryPath;
-        return Paths.get(libraryPath, getOsFile()).toAbsolutePath().toString();
-    }
+        // Explicit path to entire library name
+        if (overrideLibraryPath != null && overrideLibraryPath.strip().length() > 0)
+            return Paths.get(overrideLibraryPath).toAbsolutePath().toString();
 
-    private static String getOsPath() {
-        if (isWindows())
-            return "windows";
-        if (isLinux())
-            return "linux";
-        if (isMacOs())
-            return "macos";
-        return "";
-    }
-
-    private static String getOsFile() {
-        // Android also identifies as linux, so check this first.
-        if (isAndroid())
-            // Android automatically does "lib" + [NAME} + ".so"
-            return "okapi";
-        if (isWindows())
-            return "okapi.dll";
-        if (isLinux())
-            return "libokapi.so";
-        if (isMacOs())
-            return "libokapi.dylib";
-        return "";
+        var okapi_lib_path = System.getenv("LD_LIBRARY_PATH");
+        if (okapi_lib_path != null && okapi_lib_path.strip().length() > 0) {
+            for (var path: okapi_lib_path.split(File.pathSeparator)) {
+                var testPath = Paths.get(path, getLibraryName());
+                if (Files.exists(testPath))
+                    return testPath.toAbsolutePath().toString();
+            }
+        }
+        // System native path load
+        return "okapi";
     }
 
     static OkapiByteBuffer.ByValue messageToBuffer(GeneratedMessageV3 requestMessage) {
