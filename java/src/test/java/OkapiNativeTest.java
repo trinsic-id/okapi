@@ -10,16 +10,6 @@ import trinsic.okapi.keys.v1.Keys;
 import java.util.Base64;
 
 class OkapiNativeTest {
-
-    @Test
-    @Disabled("Only works locally, fails on github actions")
-    void testLoadDifferentPath() {
-        // Current path
-        OkapiNative.setLibraryPath("");
-        System.out.println(OkapiNative.getLibraryPath());
-        // Only works locally. Uncomment this to test it.
-        Assertions.assertNotNull(OkapiNative.getNativeLibrary());
-    }
     @Test
     void generateKeyCall() throws DidException, InvalidProtocolBufferException {
        Keys.GenerateKeyRequest request = Keys.GenerateKeyRequest.newBuilder()

@@ -458,3 +458,5 @@ swift/Okapi/Sources/OkapiObjectiveC/okapi.dll.lib
 go/okapi/okapi.lib
 
 go/vendor/
+
+python/lib64

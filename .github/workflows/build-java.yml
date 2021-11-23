@@ -48,9 +48,7 @@ jobs:
         shell: pwsh
         working-directory: java
         env:
-          LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
-          DYLD_FALLBACK_LIBRARY_PATH: "${{ github.workspace }}/libs"
-          DYLD_LIBRARY_PATH: "${{ github.workspace }}/libs"
+          OKAPI_LIBRARY_PATH: "${{ github.workspace }}/libs"
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
       - name: Upload Unit Test Results - Java
         if: always()

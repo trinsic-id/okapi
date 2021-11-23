@@ -1,5 +1,6 @@
 import com.google.protobuf.GeneratedMessageV3;
 import com.sun.jna.Native;
+import com.sun.jna.Platform;
 
 import java.nio.file.Paths;
 
@@ -48,6 +49,15 @@ public class OkapiNative {
         return nativeLibrary;
     }
 
+    private static String getLibraryName() {
+        if (Platform.isWindows())
+            return "okapi.dll";
+        if (Platform.isMac())
+            return "libokapi.dylib";
+        // Default is linux
+        return "libokapi.so";
+    }
+
     private static String overrideLibraryPath = null;
     public static void setLibraryPath(String path) { overrideLibraryPath = path; }
     public static String getLibraryPath() {
@@ -55,6 +65,12 @@ public class OkapiNative {
         if (overrideLibraryPath != null && overrideLibraryPath.strip().length() > 0)
             return Paths.get(overrideLibraryPath).toAbsolutePath().toString();
 
+        var okapi_lib_path = System.getenv("OKAPI_LIBRARY_PATH");
+        if (okapi_lib_path != null && okapi_lib_path.strip().length() > 0) {
+            // Get the library name
+            return Paths.get(okapi_lib_path, getLibraryName()).toAbsolutePath().toString();
+        }
+        // System native path load
         return "okapi";
     }
 

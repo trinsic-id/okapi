@@ -1,13 +1,16 @@
-import threading
 import ctypes
+import distutils.ccompiler
+import os
+import platform
+import threading
 from ctypes import CDLL
 from ctypes.util import find_library
-from typing import Type, Optional, List, Any, Dict, Union, TypeVar
+from typing import Type, Optional, List, Any, Dict, Union, TypeVar, Iterator
 
 import betterproto
 
 OKAPI_NATIVE: Dict[str, Union[str, CDLL]] = {'library_path': '',
-                                                    'library': None}
+                                             'library': None}
 okapi_loader_lock = threading.Lock()
 
 
@@ -18,15 +21,44 @@ def set_library_path(path: str):
         OKAPI_NATIVE['library_path'] = path
 
 
+def _check_path(path_string: str, lib_name: str) -> str:
+    # default assume linux
+    lib_extension = "so"
+    lib_prefix = "lib"
+    if platform.system() == "Windows":
+        lib_extension = "dll"
+        lib_prefix = ""
+    elif platform.system() == "Darwin":
+        lib_extension = "dylib"
+
+    lib_name = f"{lib_prefix}{lib_name}.{lib_extension}"
+    for path in path_string.split(os.pathsep):
+        test_path = os.path.join(path, lib_name)
+        if os.path.exists(test_path):
+            return test_path
+    return ""
+
+
+def find_native_lib() -> str:
+    lib_path = OKAPI_NATIVE['library_path']
+    if lib_path:
+        return lib_path
+    lib_name = "okapi"
+    # Allow for manual override and then manually check, since LINUX Python doesn't always work. :(
+    found_lib_path = _check_path(os.getenv('OKAPI_LIBRARY_PATH', ''), lib_name) \
+                     or find_library(lib_path) \
+                     or _check_path(os.getenv('LD_LIBRARY_PATH', ''), lib_name)
+    return found_lib_path
+
+
 def load_library() -> CDLL:
     global OKAPI_NATIVE
     # Python multithreading is super primitive due to the GIL. All we need to do is prevent double copying.
     # https://opensource.com/article/17/4/grok-gil
     with okapi_loader_lock:
         if OKAPI_NATIVE['library'] is None:
-            lib_path = OKAPI_NATIVE['library_path'] or "okapi"
-            load_lib_path = find_library(lib_path)
-            if not lib_path:
+            load_lib_path = find_native_lib()
+            if not load_lib_path:
                 raise RuntimeError(f"Could find library:{load_lib_path}")
             OKAPI_NATIVE['library'] = CDLL(load_lib_path)
     return OKAPI_NATIVE['library']
