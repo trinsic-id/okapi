@@ -1,5 +1,6 @@
 import com.google.protobuf.GeneratedMessageV3;
 import com.sun.jna.Native;
+import com.sun.jna.Platform;
 
 import java.nio.file.Paths;
 
@@ -55,6 +56,8 @@ public class OkapiNative {
         if (overrideLibraryPath != null && overrideLibraryPath.strip().length() > 0)
             return Paths.get(overrideLibraryPath).toAbsolutePath().toString();
 
+        if (Platform.isMac())
+            return "libokapi";
         return "okapi";
     }
 
