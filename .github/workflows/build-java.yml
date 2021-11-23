@@ -42,6 +42,7 @@ jobs:
         shell: pwsh
       - name: Build with Gradle
         run: |
+          echo $env:GITHUB_PATH
           python ../devops/build_sdks.py
           gradle build
         shell: pwsh

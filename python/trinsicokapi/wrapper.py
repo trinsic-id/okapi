@@ -25,8 +25,10 @@ def load_library() -> CDLL:
     with okapi_loader_lock:
         if OKAPI_NATIVE['library'] is None:
             lib_path = OKAPI_NATIVE['library_path'] or "okapi"
-            lib_path = find_library(lib_path)
-            OKAPI_NATIVE['library'] = CDLL(lib_path)
+            load_lib_path = find_library(lib_path)
+            if not lib_path:
+                raise RuntimeError(f"Could find library:{load_lib_path}")
+            OKAPI_NATIVE['library'] = CDLL(load_lib_path)
     return OKAPI_NATIVE['library']
 
 
