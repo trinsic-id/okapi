@@ -1,3 +1,5 @@
+package trinsic.okapi;
+
 import com.google.protobuf.GeneratedMessageV3;
 import com.sun.jna.Native;
 import com.sun.jna.Platform;

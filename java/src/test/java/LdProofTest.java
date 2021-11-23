@@ -3,6 +3,9 @@ import com.google.protobuf.Struct;
 import com.google.protobuf.Value;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import trinsic.okapi.DidException;
+import trinsic.okapi.DidKey;
+import trinsic.okapi.LdProofs;
 import trinsic.okapi.keys.v1.Keys;
 import trinsic.okapi.proofs.v1.Proofs;
 
