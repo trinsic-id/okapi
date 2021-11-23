@@ -40,6 +40,7 @@ jobs:
           branch: main
       - name: Publish package
         run: |
+          echo "${{ github.workspace }}/libs" | Out-File -FilePath $env:GITHUB_PATH -Append
           python ../devops/build_sdks.py --package-version=${{ github.event.inputs.packageVersion }}
           gradle publish
         working-directory: java
