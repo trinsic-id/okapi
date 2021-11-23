@@ -76,6 +76,7 @@ def build_java(args) -> None:
     java_dir = abspath(join(dirname(__file__), '..', 'java'))
     update_line(join(java_dir, 'build.gradle'),
                 {'def jarVersion': f'def jarVersion = "{get_package_versions(args)}"'})
+    copy_okapi_libs(abspath(join(java_dir, '..', 'libs')))
 
 
 def build_ruby(args) -> None:

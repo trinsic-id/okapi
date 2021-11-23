@@ -1,6 +1,5 @@
 import com.google.protobuf.GeneratedMessageV3;
 import com.sun.jna.Native;
-import com.sun.jna.Platform;
 
 import java.nio.file.Paths;
 
@@ -52,34 +51,10 @@ public class OkapiNative {
     private static String overrideLibraryPath = null;
     public static void setLibraryPath(String path) { overrideLibraryPath = path; }
     public static String getLibraryPath() {
-        if (Platform.isAndroid())
-            // Android does not allow directory separators in the library name.
-            return getOsFile();
-        if (overrideLibraryPath == null || overrideLibraryPath.strip().length() == 0)
-            // No override, use system loader paths
-            return getOsFile();
-        return Paths.get(overrideLibraryPath, getOsFile()).toAbsolutePath().toString();
-    }
+        // Explicit path to entire library name
+        if (overrideLibraryPath != null && overrideLibraryPath.strip().length() > 0)
+            return Paths.get(overrideLibraryPath).toAbsolutePath().toString();
 
-    public static String getOsPath() {
-        if (Platform.isWindows())
-            return "windows";
-        if (Platform.isLinux())
-            return "linux";
-        if (Platform.isMac())
-            return "macos";
-        return "";
-    }
-
-    private static String getOsFile() {
-        // Android also identifies as linux, so check this first.
-        if (Platform.isAndroid() || Platform.isWindows())
-            return "okapi";
-        if (Platform.isLinux())
-            return "libokapi.so";
-        if (Platform.isMac())
-            return "libokapi.dylib";
-        // TODO - Log unknown platform
         return "okapi";
     }
 
