@@ -2,6 +2,8 @@ import com.google.protobuf.GeneratedMessageV3;
 import com.sun.jna.Native;
 import com.sun.jna.Platform;
 
+import java.io.File;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 
 
@@ -65,10 +67,13 @@ public class OkapiNative {
         if (overrideLibraryPath != null && overrideLibraryPath.strip().length() > 0)
             return Paths.get(overrideLibraryPath).toAbsolutePath().toString();
 
-        var okapi_lib_path = System.getenv("OKAPI_LIBRARY_PATH");
+        var okapi_lib_path = System.getenv("LD_LIBRARY_PATH");
         if (okapi_lib_path != null && okapi_lib_path.strip().length() > 0) {
-            // Get the library name
-            return Paths.get(okapi_lib_path, getLibraryName()).toAbsolutePath().toString();
+            for (var path: okapi_lib_path.split(File.pathSeparator)) {
+                var testPath = Paths.get(path, getLibraryName());
+                if (Files.exists(testPath))
+                    return testPath.toAbsolutePath().toString();
+            }
         }
         // System native path load
         return "okapi";
