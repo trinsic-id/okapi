@@ -44,5 +44,5 @@ jobs:
           gradle publish
         working-directory: java
         env:
-          OKAPI_LIBRARY_PATH: "${{ github.workspace }}/libs"
+          LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
