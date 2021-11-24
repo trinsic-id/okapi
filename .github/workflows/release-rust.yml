@@ -36,7 +36,6 @@ jobs:
         run: |
           cp -r include native
           sed -i 's/version = "0.1.0"/version = "${{ env.PACKAGE_VERSION }}"/g' native/Cargo.toml
-          chmod 755 native/build.sh
           mv native okapi
           tar -czvf okapi-${{ env.PACKAGE_VERSION }}.tar.gz okapi
 
