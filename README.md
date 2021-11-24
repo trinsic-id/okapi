@@ -1,16 +1,51 @@
 # Tools and libraries for managing digital identity
 
-This repo contains core components used in the Trinsic SDK
+This repo provides bindings in all popular languages for the core Okapi functionalities:
 
 - Support for working with `did:key` method
-- Implementation of DIDComm Messaging protocol for gRPC
+- Security tools for authentication with Oberon
+- Experimental implementation of DIDComm Messaging protocol for gRPC
 - Linked Data Proofs using non-LD processing signatures, such as `JcsEd25519Signature2020`
+- On the roadmap: BBS+ Signatures
 
 Library is available for use with different languages
 
 [![NuGet version](https://badge.fury.io/nu/okapi.net.svg)](https://badge.fury.io/nu/okapi.net)
 [![npm version](https://badge.fury.io/js/%40trinsic%2Fokapi.svg)](https://badge.fury.io/js/%40trinsic%2Fokapi)
 [![PyPI version](https://badge.fury.io/py/trinsic-okapi.svg)](https://badge.fury.io/py/trinsic-okapi)
+
+## Installation
+
+See the language specific README in each folder of this repo for usage. Additionally, check the [okapi-examples](https://github.com/trinsic-id/okapi-examples) for some quick sample applications.
+
+### Native Libraries
+
+If the bindings in your language require the native libraries to be installed on your system (like Go, Python, Java, etc), 
+you can use one of the following methods to install them:
+
+#### Homebrew (MacOS and Linux)
+
+We maintain a Homebrew Tap with bottles for MacOS and Linux. To install run:
+
+```
+brew install trinsic-id/tap/okapi
+```
+
+#### `dpkg` for Linux
+
+You can find .deb packages for your platform with [each release](https://github.com/trinsic-id/okapi/releases). These can be installed using `dpkg`.
+Choose the package for your architecture.
+The packages will install the required libraries and header files.
+
+```
+wget https://github.com/trinsic-id/okapi/releases/download/v1.1.0/okapi_1.1.0_amd64.deb
+
+dpkg -i okapi_1.1.0_amd64.deb
+```
+
+#### `win-get` for Windows
+
+TODO
 
 ## Library and API structure
 
