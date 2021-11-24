@@ -16,14 +16,10 @@ Security_V1 = Okapi::Security::V1
 
 module Okapi
   extend FFI::Library
-  @@library_path = ''
+  @@library_path = nil
   @@library_linked = false
   def self.library_path
-    if @@library_path == ''
-      "#{__dir__}/libs/"
-    else
-      @@library_path
-    end
+    @@library_path
   end
 
   def self.library_path=(path)
@@ -61,7 +57,9 @@ module Okapi
 
     @@library_linked = true
 
-    ffi_lib File.expand_path(File.join(library_path, library_name))
+    full_path = library_name
+    full_path = File.expand_path(File.join(library_path, library_name)) unless library_path.nil?
+    ffi_lib full_path
 
     attach_function :didkey_generate, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
     attach_function :didkey_resolve, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int

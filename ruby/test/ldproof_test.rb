@@ -11,7 +11,6 @@ require 'base58'
 
 class LdProofTest < Minitest::Test
   def before_setup
-    Okapi.library_path = "#{__dir__}/../../libs/#{Okapi.library_directory}"
     Okapi.load_native_library
   end
 
