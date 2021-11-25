@@ -14,30 +14,25 @@ on:
       - completed
 
 jobs:
-  package_source:
+  homebrew:
     name: Package Source
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v1
 
-      - name: Generate Package Version
-        run: |
-          $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/okapi/releases/latest' `
-            -Headers @{ "Authorization" = "Token $env:API_GITHUB_TOKEN"} | ConvertFrom-Json
-          $version = $json.tag_name.Trim("v")
-          echo "RELEASE_VERSION=$($json.tag_name)" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
-          echo "PACKAGE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
-        shell: pwsh
-        env:
-          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+      - uses: trinsic-id/set-version@v0.1
+        id: setversion
+        with:
+          githubToken: ${{ secrets.API_GITHUB_TOKEN }}
+          overrideVersion: ${{ github.event.inputs.packageVersion }}
 
       - name: Create Archive
         run: |
           cp -r include native
-          sed -i 's/version = "0.1.0"/version = "${{ env.PACKAGE_VERSION }}"/g' native/Cargo.toml
+          sed -i 's/version = "0.1.0"/version = "${{ steps.setversion.outputs.packageVersion }}"/g' native/Cargo.toml
           mv native okapi
-          tar -czvf okapi-${{ env.PACKAGE_VERSION }}.tar.gz okapi
+          tar -czvf okapi-${{ steps.setversion.outputs.packageVersion }}.tar.gz okapi
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
@@ -50,13 +45,13 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./okapi-${{ env.PACKAGE_VERSION }}.tar.gz
-          asset_name: okapi-${{ env.PACKAGE_VERSION }}.tar.gz
-          tag: ${{ env.RELEASE_VERSION }}
+          file: ./okapi-${{ steps.setversion.outputs.packageVersion }}.tar.gz
+          asset_name: okapi-${{ steps.setversion.outputs.packageVersion }}.tar.gz
+          tag: ${{ steps.setversion.outputs.releaseVersion }}
           overwrite: false
           body: "Okapi Library Source"
 
-  make_deb:
+  deb:
     name: Make Debian Package
     runs-on: ubuntu-latest
     # strategy:
@@ -74,21 +69,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
-      - name: Generate Package Version
-        run: |
-          $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/okapi/releases/latest' `
-            -Headers @{ "Authorization" = "Token $env:API_GITHUB_TOKEN"} | ConvertFrom-Json
-          $version = $json.tag_name.Trim("v")
-          echo "RELEASE_VERSION=$($json.tag_name)" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
-          echo "PACKAGE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
-        shell: pwsh
-        env:
-          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+      - uses: trinsic-id/set-version@v0.1
+        id: setversion
+        with:
+          githubToken: ${{ secrets.API_GITHUB_TOKEN }}
+          overrideVersion: ${{ github.event.inputs.packageVersion }}
 
       - name: Create Package (.deb)
         run: |
           cargo install cargo-deb
-          sed -i 's/version = "0.1.0"/version = "${{ env.PACKAGE_VERSION }}"/g' Cargo.toml
+          sed -i 's/version = "0.1.0"/version = "${{ steps.setversion.outputs.packageVersion }}"/g' Cargo.toml
           cargo deb
         working-directory: native
 
@@ -103,8 +93,57 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./native/target/debian/okapi_${{ env.PACKAGE_VERSION }}_amd64.deb
-          asset_name: okapi_${{ env.PACKAGE_VERSION }}_amd64.deb
-          tag: ${{ env.RELEASE_VERSION }}
+          file: ./native/target/debian/okapi_${{ steps.setversion.outputs.packageVersion }}_amd64.deb
+          asset_name: okapi_${{ steps.setversion.outputs.packageVersion }}_amd64.deb
+          tag: ${{ steps.setversion.outputs.releaseVersion }}
           overwrite: false
           body: "Okapi Debian Package"
+
+
+  nix:
+    name: NixOS Package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - uses: trinsic-id/set-version@v0.1
+        id: setversion
+        with:
+          githubToken: ${{ secrets.API_GITHUB_TOKEN }}
+          overrideVersion: ${{ github.event.inputs.packageVersion }}
+
+      - name: Create Vendored Folders
+        run: |
+          export CARGO_HOME=`pwd`
+          cd native
+
+          sed -i 's/version = "0.1.0"/version = "${{ steps.setversion.outputs.packageVersion }}"/g' Cargo.toml
+          rm _build.rs
+          mv .cargo/_config.toml .cargo/config.toml
+
+          cargo vendor
+          cargo build
+          cargo clean
+
+      - name: Create Archive
+        run: |
+          mv native okapi
+          tar -czvf okapi-vendor-${{ steps.setversion.outputs.packageVersion }}.tar.gz okapi
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: nix
+          path: |
+            ./*.tar.gz
+
+      - name: Upload to Release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./okapi-vendor-${{ steps.setversion.outputs.packageVersion }}.tar.gz
+          asset_name: okapi-vendor-${{ steps.setversion.outputs.packageVersion }}.tar.gz
+          tag: ${{ steps.setversion.outputs.releaseVersion }}
+          overwrite: false
+          body: "okapi bundle for Nix"
