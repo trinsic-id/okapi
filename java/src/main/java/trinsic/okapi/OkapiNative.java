@@ -70,13 +70,13 @@ public class OkapiNative {
             return Paths.get(overrideLibraryPath).toAbsolutePath().toString();
 
         var okapi_lib_path = System.getenv("LD_LIBRARY_PATH");
-        System.out.println("Okapi_lib_path=" + okapi_lib_path);
+        System.out.println("LD_LIBRARY_PATH=" + okapi_lib_path);
         if (okapi_lib_path != null && okapi_lib_path.strip().length() > 0) {
             for (var path: okapi_lib_path.split(File.pathSeparator)) {
-                var testPath = Paths.get(path, getLibraryName());
+                var testPath = Paths.get(path, getLibraryName()).toAbsolutePath();
                 System.out.println("test path=" + testPath);
                 if (Files.exists(testPath))
-                    return testPath.toAbsolutePath().toString();
+                    return testPath.toString();
             }
         }
         // System native path load
