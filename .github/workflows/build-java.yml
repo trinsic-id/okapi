@@ -30,8 +30,6 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
-      - name: Gradle Wrapper Validation
-        uses: gradle/wrapper-validation-action@v1.0.4
       - name: Download workflow artifact
         uses: dawidd6/action-download-artifact@v2.14.0
         with:
@@ -44,8 +42,10 @@ jobs:
         shell: pwsh
         working-directory: java
         env:
-          LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+          LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
+          DYLD_FALLBACK_LIBRARY_PATH: "${{ github.workspace }}/libs"
+          DYLD_LIBRARY_PATH: "${{ github.workspace }}/libs"
       - name: Upload Unit Test Results - Java
         if: always()
         uses: actions/upload-artifact@v2

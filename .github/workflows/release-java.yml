@@ -30,8 +30,6 @@ jobs:
         with:
           java-version: '15'
           distribution: 'adopt'
-      - name: Gradle Wrapper Validation
-        uses: gradle/wrapper-validation-action@v1.0.4
       - name: Download workflow artifact
         uses: dawidd6/action-download-artifact@v2.14.0
         with:
@@ -44,5 +42,7 @@ jobs:
           gradle publish
         working-directory: java
         env:
-          LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
+          DYLD_FALLBACK_LIBRARY_PATH: "${{ github.workspace }}/libs"
+          DYLD_LIBRARY_PATH: "${{ github.workspace }}/libs"

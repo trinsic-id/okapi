@@ -50,6 +50,8 @@ jobs:
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
           RUBY_DLL_PATH: "${{ github.workspace }}/libs"  # Required for Ruby on Windows
+          DYLD_FALLBACK_LIBRARY_PATH: "${{ github.workspace }}/libs"
+          DYLD_LIBRARY_PATH: "${{ github.workspace }}/libs"
           LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
           DYLD_FALLBACK_LIBRARY_PATH: "${{ github.workspace }}/libs"
           DYLD_LIBRARY_PATH: "${{ github.workspace }}/libs"
