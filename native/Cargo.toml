@@ -3,6 +3,10 @@ name = "okapi"
 version = "0.1.0"
 authors = ["Tomislav Markovski <tomislav@trinsic.id>"]
 edition = "2018"
+# ensure this is not checked in as "true" as it will
+# cause vendored libraries to fail compilation due
+# to dependency on protoc compiler
+build = false
 
 [dependencies]
 chacha20poly1305 = "0.7.0"

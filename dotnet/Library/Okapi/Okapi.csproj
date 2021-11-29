@@ -9,9 +9,12 @@
     <Protobuf_ToolsOs Condition="'$([MSBuild]::IsOsPlatform(OSX))'">macosx</Protobuf_ToolsOs>
   </PropertyGroup>
 
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <WarningLevel>4</WarningLevel>
+  <PropertyGroup>
+    <DebugSymbols>true</DebugSymbols>
+    <EmbedAllSources>true</EmbedAllSources>
+    <DebugType>portable</DebugType>
   </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.17.3" />
     <PackageReference Include="Grpc" Version="2.38.0" />
