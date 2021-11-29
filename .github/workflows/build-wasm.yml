@@ -14,6 +14,13 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "native/**"
+      - "proto/**"
+      - "wasm/**"
+      - ".github/workflows/*wasm*"
+      - ".github/workflows/*node*"
+      - ".github/workflows/*browser*"
   workflow_dispatch:
 
 jobs:
