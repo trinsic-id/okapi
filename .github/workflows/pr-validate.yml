@@ -7,6 +7,7 @@ on:
 
 jobs:
   changes:
+    name: Detect Changes
     runs-on: ubuntu-latest
     outputs:
       dotnet: ${{ steps.paths.outputs.dotnet }}
@@ -27,14 +28,37 @@ jobs:
               - ".github/workflows/*wasm*"
               - ".github/workflows/*node*"
               - ".github/workflows/*browser*"
+            python:
+              - "python/**"
+              - "proto/**"
+              - ".github/workflows/*python*"
 
 
   build-dotnet:
+    name: ".NET"
     uses: trinsic-id/okapi/.github/workflows/build-dotnet.yml@main
     needs: changes
     if: needs.changes.outputs.dotnet == 'true'
 
   build-wasm:
-    uses: trinsic-id/okapi/.github/workflows/build-dotnet.yml@main
+    name: Wasm
+    uses: trinsic-id/okapi/.github/workflows/build-wasm.yml@main
     needs: changes
     if: needs.changes.outputs.wasm == 'true'
+
+  build-python:
+    name: Python
+    uses: trinsic-id/okapi/.github/workflows/build-python.yml@main
+    needs: changes
+    if: needs.changes.outputs.python == 'true'
+
+  pr-valid:
+    name: PR Valid
+    runs-on: ubuntu-latest
+    needs:
+      - build-dotnet
+      - build-wasm
+      - build-python
+    if: ${{ always() && contains(needs.*.result, 'success') && !(contains(needs.*.result, 'failure')) }}
+    steps:
+      - run: echo fin
