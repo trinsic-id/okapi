@@ -1,6 +1,5 @@
 # Okapi for .NET
 
-
 ## Usage
 
 ```
