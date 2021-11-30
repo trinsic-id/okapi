@@ -7,6 +7,7 @@ on:
 
 jobs:
   changes:
+    name: Detect Changes
     runs-on: ubuntu-latest
     outputs:
       dotnet: ${{ steps.paths.outputs.dotnet }}
@@ -30,11 +31,13 @@ jobs:
 
 
   build-dotnet:
+    name: "Build .NET"
     uses: trinsic-id/okapi/.github/workflows/build-dotnet.yml@main
     needs: changes
     if: needs.changes.outputs.dotnet == 'true'
 
   build-wasm:
-    uses: trinsic-id/okapi/.github/workflows/build-dotnet.yml@main
+    name: Bild Wasm
+    uses: trinsic-id/okapi/.github/workflows/build-wasm.yml@main
     needs: changes
     if: needs.changes.outputs.wasm == 'true'
