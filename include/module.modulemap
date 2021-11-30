@@ -1,0 +1,4 @@
+module OkapiNative {
+    header "okapi.h"
+    export *
+}
