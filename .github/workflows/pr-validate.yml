@@ -1,0 +1,40 @@
+name: PR Validate
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      dotnet: ${{ steps.paths.outputs.dotnet }}
+      wasm: ${{ steps.paths.outputs.wasm }}
+    steps:
+      - uses: dorny/paths-filter@v2
+        id: paths
+        with:
+          filters: |
+            dotnet:
+              - "dotnet/**"
+              - "proto/**"
+              - ".github/workflows/*dotnet*"
+            wasm:
+              - "native/**"
+              - "proto/**"
+              - "wasm/**"
+              - ".github/workflows/*wasm*"
+              - ".github/workflows/*node*"
+              - ".github/workflows/*browser*"
+
+
+  build-dotnet:
+    uses: trinsic-id/okapi/.github/workflows/build-dotnet.yml@main
+    needs: changes
+    if: needs.changes.outputs.dotnet == 'true'
+
+  build-wasm:
+    uses: trinsic-id/okapi/.github/workflows/build-dotnet.yml@main
+    needs: changes
+    if: needs.changes.outputs.wasm == 'true'
