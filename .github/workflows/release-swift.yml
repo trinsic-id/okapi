@@ -36,12 +36,12 @@ jobs:
       - name: Create Framework
         run: |
           xcodebuild -create-xcframework \
-            -library ./libs/macos/libokapi.a -headers ./include/okapi.h \
-            -library ./libs/ios/libokapi.a -headers ./include/okapi.h \
-            -library ./libs/ios/libokapi_simulator.a -headers ./include/okapi.h \
-            -output Okapi.xcframework
+            -library ./libs/macos/libokapi.a -headers ./include/ \
+            -library ./libs/ios/libokapi.a -headers ./include/ \
+            -library ./libs/ios/libokapi_simulator.a -headers ./include/ \
+            -output OkapiNative.xcframework
 
-          zip -r okapi.xcframework-${{ steps.setversion.outputs.packageVersion }}.zip Okapi.xcframework
+          zip -r okapi.xcframework-${{ steps.setversion.outputs.packageVersion }}.zip OkapiNative.xcframework
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
@@ -58,4 +58,4 @@ jobs:
           asset_name: okapi.xcframework-${{ steps.setversion.outputs.packageVersion }}.zip
           tag: ${{ steps.setversion.outputs.releaseVersion }}
           overwrite: false
-          body: "Okapi XC Framework"
+          body: "Okapi XCFramework"
