@@ -41,3 +41,10 @@ jobs:
     uses: trinsic-id/okapi/.github/workflows/build-wasm.yml@main
     needs: changes
     if: needs.changes.outputs.wasm == 'true'
+
+  pr-valid:
+    name: PR Valid
+    needs:
+      - build-dotnet
+      - build-wasm
+    if: ${{ always() && contains(needs.*.result, 'success') && !(contains(needs.*.result, 'failure')) }}
