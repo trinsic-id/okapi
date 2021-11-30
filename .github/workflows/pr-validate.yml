@@ -32,9 +32,9 @@ jobs:
   build-dotnet:
     uses: trinsic-id/okapi/.github/workflows/build-dotnet.yml@main
     needs: changes
-    if: jobs.changes.outputs.dotnet == 'true'
+    if: ${{ jobs.changes.outputs.dotnet == 'true' }}
 
   build-wasm:
     uses: trinsic-id/okapi/.github/workflows/build-dotnet.yml@main
     needs: changes
-    if: jobs.changes.outputs.wasm == 'true'
+    if: ${{ jobs.changes.outputs.wasm == 'true' }}
