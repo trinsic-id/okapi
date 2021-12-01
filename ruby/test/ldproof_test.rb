@@ -64,6 +64,8 @@ class LdProofTest < Minitest::Test
       base_64 += '=='
     when 3
       base_64 += '='
+    else
+      raise "Invalid base-64 string!"
     end
     base_64
   end
