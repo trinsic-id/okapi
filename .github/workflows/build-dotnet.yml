@@ -1,20 +1,15 @@
-name: Build .NET SDK
+name: .NET
 
 on:
   workflow_call:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - "dotnet/**"
-      - "proto/**"
-      - ".github/workflows/*dotnet*"
   push:
     branches:
       - main
 
 jobs:
   build-and-test-dotnet:
-    name: .NET SDK Testing
+    name: Build, Test
     runs-on: ${{ matrix.os-artifact[0] }}
     strategy:
       fail-fast: false
@@ -40,7 +35,7 @@ jobs:
           path: 'dotnet/Tests/Okapi.Tests/TestResults/test_output.xml'
 
   publish-test-results-dotnet:
-    name: Publish .NET Test Results
+    name: Publish Test Results
     needs: build-and-test-dotnet
     runs-on: ubuntu-latest
     if: always()

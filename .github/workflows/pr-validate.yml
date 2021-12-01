@@ -7,7 +7,7 @@ on:
 
 jobs:
   changes:
-    name: Detect Changes
+    name: Changes
     runs-on: ubuntu-latest
     outputs:
       dotnet: ${{ steps.paths.outputs.dotnet }}
@@ -32,7 +32,23 @@ jobs:
               - "python/**"
               - "proto/**"
               - ".github/workflows/*python*"
-
+            go:
+              - "go/**"
+              - "proto/**"
+              - ".github/workflows/*golang*"
+            java:
+              - "java/**"
+              - "proto/**"
+              - ".github/workflows/*java*"
+            native:
+              - "native/**"
+              - "proto/**"
+              - ".github/workflows/*libs*"
+              - "devops/BuildLibraries.ps1"
+            ruby:
+              - "ruby/**"
+              - "proto/**"
+              - ".github/workflows/*ruby*"
 
   build-dotnet:
     name: ".NET"
@@ -52,6 +68,30 @@ jobs:
     needs: changes
     if: needs.changes.outputs.python == 'true'
 
+  build-go:
+    name: Go
+    uses: trinsic-id/okapi/.github/workflows/build-golang.yml@main
+    needs: changes
+    if: needs.changes.outputs.go == 'true'
+
+  build-java:
+    name: Java
+    uses: trinsic-id/okapi/.github/workflows/build-java.yml@main
+    needs: changes
+    if: needs.changes.outputs.java == 'true'
+
+  build-native:
+    name: Rust
+    uses: trinsic-id/okapi/.github/workflows/build-libs.yml@main
+    needs: changes
+    if: needs.changes.outputs.native == 'true'
+
+  build-ruby:
+    name: Ruby
+    uses: trinsic-id/okapi/.github/workflows/build-ruby.yml@main
+    needs: changes
+    if: needs.changes.outputs.ruby == 'true'
+
   pr-valid:
     name: PR Valid
     runs-on: ubuntu-latest
@@ -59,6 +99,10 @@ jobs:
       - build-dotnet
       - build-wasm
       - build-python
+      - build-go
+      - build-java
+      - build-native
+      - build-ruby
     if: ${{ always() && contains(needs.*.result, 'success') && !(contains(needs.*.result, 'failure')) }}
     steps:
       - run: echo fin
