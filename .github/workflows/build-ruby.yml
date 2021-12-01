@@ -1,6 +1,7 @@
 name: Build Ruby bindings
 
 on:
+  workflow_call:
   workflow_dispatch:
   pull_request:
     paths:
@@ -53,8 +54,6 @@ jobs:
           DYLD_FALLBACK_LIBRARY_PATH: "${{ github.workspace }}/libs"
           DYLD_LIBRARY_PATH: "${{ github.workspace }}/libs"
           LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
-          DYLD_FALLBACK_LIBRARY_PATH: "${{ github.workspace }}/libs"
-          DYLD_LIBRARY_PATH: "${{ github.workspace }}/libs"
       - name: Upload Unit Test Results - Ruby
         if: always()
         uses: actions/upload-artifact@v2

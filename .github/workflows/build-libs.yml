@@ -1,6 +1,7 @@
 name: Build Platform Libraries
 
 on:
+  workflow_call:
   workflow_dispatch:
   pull_request:
     paths:
