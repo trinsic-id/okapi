@@ -1,32 +1,15 @@
-name: Wasm
+name: Web Assembly
 
 on:
   workflow_call:
-  pull_request:
-    branches:
-      - main
-    paths:
-      - "native/**"
-      - "proto/**"
-      - "wasm/**"
-      - ".github/workflows/*wasm*"
-      - ".github/workflows/*node*"
-      - ".github/workflows/*browser*"
   push:
     branches:
       - main
-    paths:
-      - "native/**"
-      - "proto/**"
-      - "wasm/**"
-      - ".github/workflows/*wasm*"
-      - ".github/workflows/*node*"
-      - ".github/workflows/*browser*"
   workflow_dispatch:
 
 jobs:
   build_test:
-    name: Build
+    name: Build, Test
     runs-on: macos-latest
     defaults:
       run:
