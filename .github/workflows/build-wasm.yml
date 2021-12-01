@@ -1,6 +1,7 @@
 name: Wasm
 
 on:
+  workflow_call:
   pull_request:
     branches:
       - main
@@ -14,6 +15,13 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "native/**"
+      - "proto/**"
+      - "wasm/**"
+      - ".github/workflows/*wasm*"
+      - ".github/workflows/*node*"
+      - ".github/workflows/*browser*"
   workflow_dispatch:
 
 jobs:

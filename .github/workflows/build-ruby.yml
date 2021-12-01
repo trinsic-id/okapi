@@ -1,6 +1,7 @@
 name: Build Ruby bindings
 
 on:
+  workflow_dispatch:
   pull_request:
     paths:
       - "ruby/**"
@@ -12,13 +13,13 @@ on:
 
 jobs:
   build-and-test-ruby:
-    runs-on: ${{ matrix.os-artifact[0] }}
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows], [macos-latest, macos] ]
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
         # Due to https://github.com/actions/runner/issues/849, we have to use quotes for '3.0'
-        ruby-version: [ 2.7, '3.0' ]
+        ruby-version: [ '3.0' ]
 
     steps:
       - uses: actions/checkout@v2
@@ -48,11 +49,17 @@ jobs:
         working-directory: ruby
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+          RUBY_DLL_PATH: "${{ github.workspace }}/libs"  # Required for Ruby on Windows
+          DYLD_FALLBACK_LIBRARY_PATH: "${{ github.workspace }}/libs"
+          DYLD_LIBRARY_PATH: "${{ github.workspace }}/libs"
+          LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
+          DYLD_FALLBACK_LIBRARY_PATH: "${{ github.workspace }}/libs"
+          DYLD_LIBRARY_PATH: "${{ github.workspace }}/libs"
       - name: Upload Unit Test Results - Ruby
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name:  Ruby ${{ matrix.ruby-version }} Unit Test Results (${{ matrix.os-artifact[0] }})
+          name:  Ruby ${{ matrix.ruby-version }} Unit Test Results (${{ matrix.os }})
           path: 'ruby/test/reports/TEST-*.xml'
 
   publish-test-results-ruby:

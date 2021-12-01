@@ -1,0 +1,61 @@
+name: "Swift (release)"
+
+on:
+  workflow_dispatch:
+    inputs:
+      packageVersion:
+        description: 'Version to build'
+        required: true
+        default: 'v1.0.0'
+  workflow_run:
+    workflows: ["Release Platform Libraries"]
+    branches: ["main", "v?.*"]
+    types:
+      - completed
+
+jobs:
+  xcframework:
+    name: XCFramework
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Download workflow artifact
+        uses: dawidd6/action-download-artifact@v2.14.0
+        with:
+          workflow: "build-libs.yml"
+          path: ./libs
+
+      - uses: trinsic-id/set-version@v0.1
+        id: setversion
+        with:
+          githubToken: ${{ secrets.API_GITHUB_TOKEN }}
+          overrideVersion: ${{ github.event.inputs.packageVersion }}
+
+      - name: Create Framework
+        run: |
+          xcodebuild -create-xcframework \
+            -library ./libs/macos/libokapi.a -headers ./include/ \
+            -library ./libs/ios/libokapi.a -headers ./include/ \
+            -library ./libs/ios/libokapi_simulator.a -headers ./include/ \
+            -output OkapiNative.xcframework
+
+          zip -r okapi.xcframework-${{ steps.setversion.outputs.packageVersion }}.zip OkapiNative.xcframework
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: archive
+          path: |
+            ./*.zip
+
+      - name: Upload to Release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./okapi.xcframework-${{ steps.setversion.outputs.packageVersion }}.zip
+          asset_name: okapi.xcframework-${{ steps.setversion.outputs.packageVersion }}.zip
+          tag: ${{ steps.setversion.outputs.releaseVersion }}
+          overwrite: false
+          body: "Okapi XCFramework"
