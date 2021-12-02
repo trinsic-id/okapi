@@ -1,9 +1,9 @@
-<Project Sdk="MSBuild.Sdk.Extras/3.0.22">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <AssemblyName>Okapi.Net</AssemblyName>
     <PackageId>Okapi.Net</PackageId>
-    <TargetFrameworks>net5.0;xamarinios10</TargetFrameworks>
+    <TargetFrameworks>net6.0;net6.0-ios</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <SkipNativeLibsCopy>false</SkipNativeLibsCopy>
     <Protobuf_ToolsOs Condition="'$([MSBuild]::IsOsPlatform(OSX))'">macosx</Protobuf_ToolsOs>
@@ -24,12 +24,14 @@
   <ItemGroup>
     <None Include="..\..\..\libs\macos\libokapi.dylib" PackagePath="native/macos/libokapi.dylib" Pack="true" Visible="false" />
     <None Include="..\..\..\libs\ios\libokapi.a" PackagePath="native/ios/libokapi.a" Pack="true" Visible="false" />
+    <None Include="..\..\..\libs\ios\libokapi_simulator.a" PackagePath="native/ios/libokapi_simulator.a" Pack="true" Visible="false" />
     <None Include="..\..\..\libs\linux\libokapi.so" PackagePath="native/linux/libokapi.so" Pack="true" Visible="false" />
     <None Include="..\..\..\libs\windows\okapi.dll" PackagePath="native/windows/okapi.dll" Pack="true" Visible="false" />
     <None Include="..\..\..\libs\android\arm64-v8a\libokapi.so" PackagePath="native/android/arm64-v8a/libokapi.so" Pack="true" Visible="false" />
     <None Include="..\..\..\libs\android\armeabi-v7a\libokapi.so" PackagePath="native/android/armeabi-v7a/libokapi.so" Pack="true" Visible="false" />
     <None Include="..\..\..\libs\android\x86\libokapi.so" PackagePath="native/android/x86/libokapi.so" Pack="true" Visible="false" />
-    <None Include="..\..\..\libs\wasm\libokapi.a" PackagePath="native/wasm/libokapi.a" Pack="true" Visible="false" />
+    <!-- copy the wasm file as "okapi.a", not "libokapi.a" as DllImport for Blazor doesn't strip the "lib" prefix as native platforms do *shrug* -->
+    <None Include="..\..\..\libs\wasm\libokapi.a" PackagePath="native/wasm/okapi.a" Pack="true" Visible="false" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,15 +44,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="build\netcore5\Okapi.Net.targets" Pack="true" PackagePath="build/netstandard2.1" Visible="false" />
-    <Content Include="build\xamarinios10\Okapi.Net.targets" Pack="true" PackagePath="build/xamarinios10" Visible="false" />
-    <Content Include="build\MonoAndroid10\Okapi.Net.targets" Pack="true" PackagePath="build/MonoAndroid10" Visible="false" />
+    <Content Include="build\net\Okapi.Net.targets" Pack="true" PackagePath="build/net6.0" Visible="false" />
+    <Content Include="build\ios\Okapi.Net.targets" Pack="true" PackagePath="build/net6.0-ios15.0" Visible="false" />
+    <Content Include="build\android\Okapi.Net.targets" Pack="true" PackagePath="build/net6.0-android31.0" Visible="false" />
+    <Content Include="build\iossimulator\Okapi.Net.targets" Pack="true" PackagePath="build/net6.0-iossimulator15.0" Visible="false" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="build\netcore5\Okapi.Net.targets" Visible="false" />
-    <None Update="build\xamarinios10\Okapi.Net.targets" Visible="false" />
-    <None Update="build\MonoAndroid10\Okapi.Net.targets" Visible="false" />
+    <None Update="build\net\Okapi.Net.targets" Visible="false" />
+    <None Update="build\ios\Okapi.Net.targets" Visible="false" />
+    <None Update="build\iossimulator\Okapi.Net.targets" Visible="false" />
+    <None Update="build\android\Okapi.Net.targets" Visible="false" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(SkipNativeLibsCopy)' != 'true'">
