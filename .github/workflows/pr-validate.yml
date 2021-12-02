@@ -52,7 +52,7 @@ jobs:
 
   build-dotnet:
     name: ".NET"
-    uses: trinsic-id/okapi/.github/workflows/build-dotnet.yml@main
+    uses: trinsic-id/okapi/.github/workflows/build-dotnet.yml@TM/net-targets
     needs: changes
     if: needs.changes.outputs.dotnet == 'true'
 
