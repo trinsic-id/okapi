@@ -30,7 +30,8 @@
     <None Include="..\..\..\libs\android\arm64-v8a\libokapi.so" PackagePath="native/android/arm64-v8a/libokapi.so" Pack="true" Visible="false" />
     <None Include="..\..\..\libs\android\armeabi-v7a\libokapi.so" PackagePath="native/android/armeabi-v7a/libokapi.so" Pack="true" Visible="false" />
     <None Include="..\..\..\libs\android\x86\libokapi.so" PackagePath="native/android/x86/libokapi.so" Pack="true" Visible="false" />
-    <None Include="..\..\..\libs\wasm\libokapi.a" PackagePath="native/wasm/libokapi.a" Pack="true" Visible="false" />
+    <!-- copy the wasm file as "okapi.a", not "libokapi.a" as DllImport for Blazor doesn't strip the "lib" prefix as native platforms do *shrug* -->
+    <None Include="..\..\..\libs\wasm\libokapi.a" PackagePath="native/wasm/okapi.a" Pack="true" Visible="false" />
   </ItemGroup>
 
   <ItemGroup>

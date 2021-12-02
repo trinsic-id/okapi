@@ -7,9 +7,7 @@ namespace Okapi;
 internal class Native
 {
 #if __IOS__
-        private const string LibraryName = "__Internal";
-#elif __BLAZOR__
-        private const string LibraryName = "libokapi";
+    private const string LibraryName = "__Internal";
 #else
     private const string LibraryName = "okapi";
 #endif
@@ -33,10 +31,10 @@ internal class Native
     #region Resources
 
     [DllImport(LibraryName, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-    internal static extern int okapi_string_free(IntPtr str);
+    internal static extern void okapi_string_free(IntPtr str);
 
     [DllImport(LibraryName, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-    internal static extern int okapi_byte_buffer_free(ByteBuffer data);
+    internal static extern void okapi_bytebuffer_free(ByteBuffer data);
 
     #endregion
 

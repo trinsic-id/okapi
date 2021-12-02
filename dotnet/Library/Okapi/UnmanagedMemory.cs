@@ -100,7 +100,7 @@ namespace Okapi
 
                 foreach (var buffer in UnmanagedByteBuffers)
                 {
-                    Native.okapi_byte_buffer_free(buffer);
+                    Native.okapi_bytebuffer_free(buffer);
                 }
 
                 foreach (var strPtr in UnmanagedStrings)

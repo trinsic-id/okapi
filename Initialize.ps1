@@ -7,7 +7,11 @@
 Set-Location $PSScriptRoot
 
 $Json = Invoke-WebRequest -Uri 'https://api.github.com/repos/trinsic-id/okapi/releases/latest' | ConvertFrom-Json
-$Asset = $Json.assets | where name -eq "libs.zip"
+$Asset = $Json.assets | Where-Object name -eq "libs.zip"
+
+if (Test-Path ./libs) {
+    Remove-Item -Recurse -Exclude README.md ./libs
+  }
 
 Invoke-WebRequest -Uri $Asset.browser_download_url -Out libs.zip
 Expand-Archive -Path libs.zip -DestinationPath ./ -Force
