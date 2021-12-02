@@ -59,27 +59,26 @@
 
         <Directory Id='TARGETDIR' Name='SourceDir'>
             <Directory Id='$(var.PlatformProgramFilesFolder)' Name='PFiles'>
-                <Directory Id='APPLICATIONFOLDER' Name='okapi'>
+                <Directory Id='APPLICATIONFOLDER' Name='trinsic'>
+                    <Directory Id='okapi' Name='okapi'>
 
-                    <!--
-                      Enabling the license sidecar file in the installer is a four step process:
+                        <!--
+                          Enabling the license sidecar file in the installer is a four step process:
 
-                      1. Uncomment the `Component` tag and its contents.
-                      2. Change the value for the `Source` attribute in the `File` tag to a path
-                         to the file that should be included as the license sidecar file. The path
-                         can, and probably should be, relative to this file.
-                      3. Change the value for the `Name` attribute in the `File` tag to the
-                         desired name for the file when it is installed alongside the `bin` folder
-                         in the installation directory. This can be omitted if the desired name is
-                         the same as the file name.
-                      4. Uncomment the `ComponentRef` tag with the Id attribute value of "License"
-                         further down in this file.
-                    -->
-                    <Component Id='License' Guid='*' Win64='$(var.Win64)'>
-                        <File Id='LicenseFile' DiskId='1' Source='../LICENSE' KeyPath='yes'/>
-                    </Component>
-
-                    <Directory Id='Bin' Name='bin'>
+                          1. Uncomment the `Component` tag and its contents.
+                          2. Change the value for the `Source` attribute in the `File` tag to a path
+                             to the file that should be included as the license sidecar file. The path
+                             can, and probably should be, relative to this file.
+                          3. Change the value for the `Name` attribute in the `File` tag to the
+                             desired name for the file when it is installed alongside the `bin` folder
+                             in the installation directory. This can be omitted if the desired name is
+                             the same as the file name.
+                          4. Uncomment the `ComponentRef` tag with the Id attribute value of "License"
+                             further down in this file.
+                        -->
+                        <Component Id='License' Guid='*' Win64='$(var.Win64)'>
+                            <File Id='LicenseFile' DiskId='1' Source='../LICENSE' KeyPath='yes'/>
+                        </Component>
                         <Component Id='Path' Guid='C7D1AD58-416C-4214-A324-4905D10AE576' Win64='$(var.Win64)'
                                    KeyPath='yes'>
                             <Environment
@@ -91,19 +90,20 @@
                                     Action='set'
                                     System='yes'/>
                         </Component>
-                        <Component Id='binary0' Guid='507A3B80-B0F3-43BE-BD10-D5649E7DA3DE' Win64='$(var.Win64)' KeyPath='yes'>
-<!--                            <File-->
-<!--                                    Id='d0'-->
-<!--                                    Name='libokapi.d'-->
-<!--                                    DiskId='1'-->
-<!--                                    Source='target\$(var.Profile)\libokapi.d'-->
-<!--                            />-->
-<!--                            <File-->
-<!--                                    Id='rlib0'-->
-<!--                                    Name='libokapi.rlib'-->
-<!--                                    DiskId='1'-->
-<!--                                    Source='target\$(var.Profile)\libokapi.rlib'-->
-<!--                            />-->
+                        <Component Id='binary0' Guid='507A3B80-B0F3-43BE-BD10-D5649E7DA3DE' Win64='$(var.Win64)'
+                                   KeyPath='yes'>
+                            <!--                            <File-->
+                            <!--                                    Id='d0'-->
+                            <!--                                    Name='libokapi.d'-->
+                            <!--                                    DiskId='1'-->
+                            <!--                                    Source='target\$(var.Profile)\libokapi.d'-->
+                            <!--                            />-->
+                            <!--                            <File-->
+                            <!--                                    Id='rlib0'-->
+                            <!--                                    Name='libokapi.rlib'-->
+                            <!--                                    DiskId='1'-->
+                            <!--                                    Source='target\$(var.Profile)\libokapi.rlib'-->
+                            <!--                            />-->
                             <File
                                     Id='d1'
                                     Name='okapi.d'
