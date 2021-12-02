@@ -32,22 +32,18 @@ jobs:
       - uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '6.0.x'
-      - name: Generate Package Version
-        run: |
-          $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/okapi/releases/latest' `
-            -Headers @{ "Authorization" = "Token $env:API_GITHUB_TOKEN"} | ConvertFrom-Json
-          $version = $json.tag_name.Trim("v")
-          echo "PACKAGE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
-        shell: pwsh
-        env:
-          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+      - uses: trinsic-id/set-version@v0.1
+        id: setversion
+        with:
+          githubToken: ${{ secrets.API_GITHUB_TOKEN }}
+          overrideVersion: ${{ github.event.inputs.packageVersion }}
 
       - name: Create Nuget package
         run: |
           dotnet workload install ios
           dotnet restore
           dotnet build -c Release
-          dotnet pack -p:SkipNativeLibsCopy=true -p:Configuration=Release -p:PackageVersion=$env:PACKAGE_VERSION
+          dotnet pack -p:SkipNativeLibsCopy=true -p:Configuration=Release -p:PackageVersion=${{ steps.setversion.outputs.packageVersion }}
         shell: pwsh
         working-directory: ./dotnet/Library/Okapi
 
@@ -72,8 +68,8 @@ jobs:
           name: nuget
       - name: Push packages to Nuget
         run: |
-          foreach ($item in get-childitem ./ -recurse | select-object FullName | where { $_.FullName.EndsWith("nupkg") })
+          foreach ($item in get-childitem ./ -recurse | select-object FullName | where { $_.FullName.EndsWith(".nupkg") })
           {
-            nuget push $item.FullName -ApiKey "${{ secrets.NUGET_API_KEY }}" -Source https://api.nuget.org/v3/index.json -SkipDuplicate
+            nuget push $item.FullName -ApiKey "${{ secrets.NUGET_API_KEY }}" -Source https://api.nuget.org/v3/index.json
           }
         shell: pwsh
