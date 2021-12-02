@@ -150,9 +150,6 @@ jobs:
   windows:
     name: WIX Package
     runs-on: windows-latest
-    defaults:
-      run:
-        working-directory: ./native
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -165,25 +162,25 @@ jobs:
 
       - name: Create wix installer
         run: |
-          $env:CARGO_HOME=$PWD
-
           ([Regex]'version = "0.1.0"').Replace((Get-Content -path Cargo.toml -Raw), 'version = "${{ steps.setversion.outputs.packageVersion }}"', 1) | Set-Content -Path Cargo.toml
 
           cargo install cargo-wix
           cargo wix -b "C:\Program Files (x86)\WiX Toolset v3.11\bin"
+        shell: pwsh
+        working-directory: native
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
           name: wix
           path: |
-            ./target/wix/okapi-${{ steps.setversion.outputs.packageVersion }}-x86_64.msi
+            ./native/target/wix/okapi-${{ steps.setversion.outputs.packageVersion }}-x86_64.msi
 
       - name: Upload to Release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./target/wix/okapi-${{ steps.setversion.outputs.packageVersion }}-x86_64.msi
+          file: ./native/target/wix/okapi-${{ steps.setversion.outputs.packageVersion }}-x86_64.msi
           asset_name: okapi-${{ steps.setversion.outputs.packageVersion }}-x86_64.msi
           tag: ${{ steps.setversion.outputs.releaseVersion }}
           overwrite: false
