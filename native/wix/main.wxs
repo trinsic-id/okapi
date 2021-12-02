@@ -84,7 +84,7 @@
                             <Environment
                                     Id='PATH'
                                     Name='PATH'
-                                    Value='[Bin]'
+                                    Value='[okapi]'
                                     Permanent='no'
                                     Part='last'
                                     Action='set'
