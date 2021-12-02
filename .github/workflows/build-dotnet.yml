@@ -27,7 +27,9 @@ jobs:
         with:
           dotnet-version: '6.0.x'
       - name: Build and Test coverage
-        run: ./BuildAndTest.ps1
+        run: |
+          dotnet workload install ios
+          ./BuildAndTest.ps1
         working-directory: ./dotnet
         shell: pwsh
       - name: Upload Unit Test Results - .NET
