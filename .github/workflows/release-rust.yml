@@ -146,3 +146,39 @@ jobs:
           tag: ${{ steps.setversion.outputs.releaseVersion }}
           overwrite: false
           body: "okapi bundle for Nix"
+
+  windows:
+    name: WIX Package
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - uses: trinsic-id/set-version@v0.1
+        id: setversion
+        with:
+          githubToken: ${{ secrets.API_GITHUB_TOKEN }}
+          overrideVersion: ${{ github.event.inputs.packageVersion }}
+
+      - name: Create wix installer
+        run: |
+          export CARGO_HOME=`pwd`
+          cargo install cargo-wix
+          cargo wix
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: wix
+          path: |
+            ./target/wix/okapi-*.msi
+
+      - name: Upload to Release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./target/wix/okapi-*.msi
+          asset_name: okapi-${{ steps.setversion.outputs.packageVersion }}-x86_64.msi
+          tag: ${{ steps.setversion.outputs.releaseVersion }}
+          overwrite: false
+          body: "okapi bundle for windows installer"
