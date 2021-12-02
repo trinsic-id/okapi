@@ -27,10 +27,9 @@ jobs:
         with:
           dotnet-version: '6.0.x'
       - name: Build and Test coverage
-        run: |
-          dotnet build -f net6.0
-          dotnet test --% --logger "junit;LogFilePath=TestResults/test_output.xml" /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=\"cobertura,json\" /p:ExcludeByFile=\"**/obj/**/*.cs\"
+        run: ./BuildAndTest.ps1
         working-directory: ./dotnet
+        shell: pwsh
       - name: Upload Unit Test Results - .NET
         if: always()
         uses: actions/upload-artifact@v2
