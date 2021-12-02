@@ -166,8 +166,8 @@ jobs:
       - name: Create wix installer
         run: |
           $env:CARGO_HOME=$PWD
-          
-          ([Regex]'version = "0.1.0"').Replace((Get-Content -path Cargo.toml -Raw), 'version = "${{ github.event.inputs.packageVersion }}"', 1) | Set-Content -Path Cargo.toml
+
+          ([Regex]'version = "0.1.0"').Replace((Get-Content -path Cargo.toml -Raw), 'version = "${{ steps.setversion.outputs.packageVersion }}"', 1) | Set-Content -Path Cargo.toml
 
           cargo install cargo-wix
           cargo wix -b "C:\Program Files (x86)\WiX Toolset v3.11\bin"
@@ -177,13 +177,13 @@ jobs:
         with:
           name: wix
           path: |
-            ./target/wix/okapi-*.msi
+            ./target/wix/okapi-${{ steps.setversion.outputs.packageVersion }}-x86_64.msi
 
       - name: Upload to Release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./target/wix/okapi-*.msi
+          file: ./target/wix/okapi-${{ steps.setversion.outputs.packageVersion }}-x86_64.msi
           asset_name: okapi-${{ steps.setversion.outputs.packageVersion }}-x86_64.msi
           tag: ${{ steps.setversion.outputs.releaseVersion }}
           overwrite: false
