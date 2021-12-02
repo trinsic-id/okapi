@@ -9,7 +9,7 @@
     Only use this flag if you really know what you're doing. It's your responsibility to ensure that matching versions of
     the Grpc.Core.dll assembly and the native libraries are used at all times.
   -->
-  <ItemGroup>
+  <ItemGroup Condition="'$(RuntimeIdentifier)' != 'browser-wasm'">
     <Content Include="$(MSBuildThisFileDirectory)..\..\native\windows\okapi.dll" Condition="'$([MSBuild]::IsOsPlatform(Windows))'">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Link>okapi.dll</Link>
@@ -25,6 +25,15 @@
       <Link>libokapi.dylib</Link>
       <Visible>false</Visible>
     </Content>
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(RuntimeIdentifier)' != 'browser-wasm'">
+    <DefineConstants>__BLAZOR__</DefineConstants>
+  </PropertyGroup>
+
+  </PropertyGroup>
+  <ItemGroup Condition="'$(RuntimeIdentifier)' != 'browser-wasm'">
+    <NativeFileReference Include="$(MSBuildThisFileDirectory)..\..\native\wasm\libokapi.a" />
   </ItemGroup>
 
 </Project>
