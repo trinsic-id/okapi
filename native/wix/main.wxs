@@ -35,7 +35,7 @@
             Id='*'
             Name='okapi'
             UpgradeCode='4EFC73A9-27F7-4263-8CA6-345FA882AA9C'
-            Manufacturer='Tomislav Markovski'
+            Manufacturer='Trinsic'
             Language='1033'
             Codepage='1252'
             Version='$(var.Version)'>
