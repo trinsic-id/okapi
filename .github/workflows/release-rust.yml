@@ -165,6 +165,7 @@ jobs:
           export CARGO_HOME=`pwd`
           cargo install cargo-wix
           cargo wix
+        shell: bash
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
