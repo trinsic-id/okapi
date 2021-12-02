@@ -12,6 +12,11 @@ jobs:
     outputs:
       dotnet: ${{ steps.paths.outputs.dotnet }}
       wasm: ${{ steps.paths.outputs.wasm }}
+      python: ${{ steps.paths.outputs.python }}
+      go: ${{ steps.paths.outputs.go }}
+      java: ${{ steps.paths.outputs.java }}
+      native: ${{ steps.paths.outputs.native }}
+      ruby: ${{ steps.paths.outputs.ruby }}
     steps:
       - uses: dorny/paths-filter@v2
         id: paths
