@@ -169,7 +169,6 @@ jobs:
           cargo install cargo-wix
           cargo wix
         shell: bash
-        working-directory: native
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
