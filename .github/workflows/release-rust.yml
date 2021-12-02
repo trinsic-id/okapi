@@ -167,7 +167,10 @@ jobs:
         run: |
           export CARGO_HOME=`pwd`
           cargo install cargo-wix
-          cargo wix
+          cargo wix -b "C:\Program Files (x86)\WiX Toolset v3.11\bin"
+          ls -la
+          ls -la ./target/wix
+          ls -la "C:\Program Files (x86)\WiX Toolset v3.11\bin"
         shell: bash
 
       - name: Upload Artifact
