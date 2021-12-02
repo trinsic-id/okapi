@@ -1,19 +1,15 @@
 name: Go
 
 on:
+  workflow_call:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - "go/**"
-      - "proto/**"
-      - ".github/workflows/*golang*"
   push:
     branches:
       - main
 
 jobs:
   build-and-test-golang:
-    name: Test Go code
+    name: Build, Test
     runs-on: ${{ matrix.os-artifact[0] }}
     strategy:
       fail-fast: false
@@ -58,7 +54,7 @@ jobs:
           path: 'go/okapi/test_output*.xml'
 
   publish-test-results-golang:
-    name: Publish Golang Test Results
+    name: Publish Test Results
     needs: build-and-test-golang
     runs-on: ubuntu-latest
     if: always()

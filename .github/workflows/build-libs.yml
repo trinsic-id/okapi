@@ -1,13 +1,8 @@
-name: Build Platform Libraries
+name: Platform Libraries
 
 on:
+  workflow_call:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - "native/**"
-      - "proto/**"
-      - ".github/workflows/*libs*"
-      - "devops/BuildLibraries.ps1"
   schedule:
     # Do it twice a day to guarantee that the binaries never expire and give the "couldn't download artifact" run error in other jobs
     - cron: "* */12 * * *"
@@ -174,7 +169,7 @@ jobs:
           path: ./libs/android/*
 
   build_wasm:
-    name: Wasm
+    name: Wasm (Emscripten)
     if: "! contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: macos-latest
     steps:
