@@ -42,7 +42,7 @@
 
         <Package Id='*'
                  Keywords='Installer'
-                 Manufacturer='Tomislav Markovski'
+                 Manufacturer='Trinsic'
                  InstallerVersion='450'
                  Languages='1033'
                  Compressed='yes'
