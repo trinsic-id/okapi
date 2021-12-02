@@ -52,7 +52,7 @@ jobs:
           body: "Okapi Library Source"
 
   deb:
-    name: Make Debian Package
+    name: Debian Package
     runs-on: ubuntu-latest
     # strategy:
     #   matrix:
@@ -162,22 +162,25 @@ jobs:
 
       - name: Create wix installer
         run: |
-          export CARGO_HOME=`pwd`
+          ([Regex]'version = "0.1.0"').Replace((Get-Content -path Cargo.toml -Raw), 'version = "${{ steps.setversion.outputs.packageVersion }}"', 1) | Set-Content -Path Cargo.toml
+
           cargo install cargo-wix
-          cargo wix
+          cargo wix -b "C:\Program Files (x86)\WiX Toolset v3.11\bin"
+        shell: pwsh
+        working-directory: native
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
           name: wix
           path: |
-            ./target/wix/okapi-*.msi
+            ./native/target/wix/okapi-${{ steps.setversion.outputs.packageVersion }}-x86_64.msi
 
       - name: Upload to Release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./target/wix/okapi-*.msi
+          file: ./native/target/wix/okapi-${{ steps.setversion.outputs.packageVersion }}-x86_64.msi
           asset_name: okapi-${{ steps.setversion.outputs.packageVersion }}-x86_64.msi
           tag: ${{ steps.setversion.outputs.releaseVersion }}
           overwrite: false
