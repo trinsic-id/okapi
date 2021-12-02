@@ -4,7 +4,9 @@
   "scripts": {
     "start": "npm install && npx lerna bootstrap",
     "build:proto": "pwsh ./Generate-Proto.ps1",
-    "build": "npm run build:proto && npx lerna exec npm run build",
+    "build": "npm run build:proto && npx lerna exec npm run build && npm run format",
+    "format": "prettier --write packages/**/*.ts",
+    "format-check": "prettier --check packages/**/*.ts",
     "test": "npx lerna run test --stream"
   },
   "devDependencies": {
@@ -18,6 +20,7 @@
     "rimraf": "^2.7.1",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.5",
-    "wasm-pack": "^0.10.0"
+    "wasm-pack": "^0.10.0",
+    "prettier": "^1.19.1"
   }
 }
