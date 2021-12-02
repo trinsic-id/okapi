@@ -1,5 +1,5 @@
 # Runs the tests and collects coverage results
-dotnet build -f net5.0
+dotnet build -f net6.0
 if ($LASTEXITCODE -lt 0) {
     exit $LASTEXITCODE
 }
