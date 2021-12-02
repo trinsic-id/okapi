@@ -10,11 +10,12 @@ on:
 jobs:
   build-and-test-dotnet:
     name: Build, Test
-    runs-on: ${{ matrix.os-artifact[0] }}
+    # runs-on: ${{ matrix.os-artifact[0] }}
+    runs-on: macos-latest
     strategy:
       fail-fast: false
-      matrix:
-        os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows], [macos-latest, macos] ]
+      # matrix:
+      #   os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows], [macos-latest, macos] ]
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -36,7 +37,8 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: .NET Unit Test Results (${{ matrix.os-artifact[0] }})
+          # name: .NET Unit Test Results (${{ matrix.os-artifact[0] }})
+          name: .NET Unit Test Results
           path: 'dotnet/Tests/Okapi.Tests/TestResults/test_output.xml'
 
   publish-test-results-dotnet:
