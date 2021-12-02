@@ -58,3 +58,5 @@ assets = [
     ["target/release/libokapi.a", "usr/local/lib/", "644"],
     ["../include/okapi.h", "usr/local/include/", "644"],
 ]
+
+

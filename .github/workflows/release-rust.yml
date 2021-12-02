@@ -52,7 +52,7 @@ jobs:
           body: "Okapi Library Source"
 
   deb:
-    name: Make Debian Package
+    name: Debian Package
     runs-on: ubuntu-latest
     # strategy:
     #   matrix:
@@ -165,13 +165,12 @@ jobs:
 
       - name: Create wix installer
         run: |
-          export CARGO_HOME=`pwd`
+          $env:CARGO_HOME=$PWD
+          
+          ([Regex]'version = "0.1.0"').Replace((Get-Content -path Cargo.toml -Raw), 'version = "${{ github.event.inputs.packageVersion }}"', 1) | Set-Content -Path Cargo.toml
+
           cargo install cargo-wix
           cargo wix -b "C:\Program Files (x86)\WiX Toolset v3.11\bin"
-          ls -la
-          ls -la ./target/wix
-          ls -la "C:\Program Files (x86)\WiX Toolset v3.11\bin"
-        shell: bash
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
