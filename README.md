@@ -15,6 +15,7 @@ Library is available for use with different languages
 [![Nuget](https://img.shields.io/nuget/v/okapi.net)](https://www.nuget.org/packages/Okapi.Net/)
 [![npm](https://img.shields.io/npm/v/@trinsic/okapi?color=CC3534)](https://www.npmjs.com/package/@trinsic/okapi)
 [![PyPI](https://img.shields.io/pypi/v/trinsic-okapi?color=%230074b7)](https://pypi.org/project/trinsic-okapi/)
+[![Rust](https://img.shields.io/github/v/release/trinsic-id/okapi?color=green&label=rust)](https://github.com/trinsic-id/okapi/)
 [![Swift](https://img.shields.io/github/v/tag/trinsic-id/okapi-swift?color=orange&label=swift)](https://github.com/trinsic-id/okapi-swift)
 
 ## Installation
