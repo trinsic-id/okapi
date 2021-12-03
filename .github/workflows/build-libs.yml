@@ -124,8 +124,11 @@ jobs:
           security default-keychain -s build.keychain
           security unlock-keychain -p $env:TMP_PASS build.keychain
           security list-keychains -s build.keychain
+          echo "before import"
           security import certificate.p12 -k build.keychain -P $env:MACOS_CERTIFICATE_PWD -T /usr/bin/codesign
+          echo "before set key"
           security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k $env:TMP_PASS build.keychain
+          echo "before codesign"
           /usr/bin/codesign --force -s AEFB3DDA9FD6A31D3DD4D7A9398A59FDDA874DCC libokapi.dylib -v
         shell: pwsh
         working-directory: ./libs/macos
