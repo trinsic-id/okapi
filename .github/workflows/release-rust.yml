@@ -116,6 +116,7 @@ jobs:
       - name: Create Vendored Folders
         run: |
           export CARGO_HOME=`pwd`
+          cp -r include native
           cd native
 
           sed -i 's/version = "0.1.0"/version = "${{ steps.setversion.outputs.packageVersion }}"/g' Cargo.toml
