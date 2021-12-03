@@ -120,6 +120,7 @@ jobs:
 
           sed -i 's/version = "0.1.0"/version = "${{ steps.setversion.outputs.packageVersion }}"/g' Cargo.toml
           mv .cargo/_config.toml .cargo/config.toml
+          rm .cargo/config
 
           cargo vendor
           cargo build
