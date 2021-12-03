@@ -116,18 +116,19 @@ jobs:
           MACOS_CERTIFICATE: ${{ secrets.MACOS_DEVELOPER_ID_CERTIFICATE }}
           MACOS_CERTIFICATE_PWD: ${{ secrets.MACOS_DEVELOPER_ID_CERTIFICATE_PWD }}
         run: |
-          echo CERT $env:MACOS_CERTIFICATE
-          echo CERTPASS $env:MACOS_CERTIFICATE_PWD
-          $env:TMP_PASS = [Guid]::NewGuid().ToString()
-          [System.IO.File]::WriteAllBytes([System.IO.Path]::Combine($pwd.Path, "certificate.p12"), [System.Convert]::FromBase64String("$env:MACOS_CERTIFICATE"))
-          security create-keychain -p $env:TMP_PASS build.keychain
+          $cert = ${{ secrets.MACOS_DEVELOPER_ID_CERTIFICATE }}
+          $password = ${{ secrets.MACOS_DEVELOPER_ID_CERTIFICATE_PWD }}
+
+          $newPass = [Guid]::NewGuid().ToString()
+          [System.IO.File]::WriteAllBytes([System.IO.Path]::Combine($pwd.Path, "certificate.p12"), [System.Convert]::FromBase64String("$cert"))
+          security create-keychain -p $newPass build.keychain
           security default-keychain -s build.keychain
-          security unlock-keychain -p $env:TMP_PASS build.keychain
+          security unlock-keychain -p $newPass build.keychain
           security list-keychains -s build.keychain
           echo "before import"
-          security import certificate.p12 -k build.keychain -P $env:MACOS_CERTIFICATE_PWD -T /usr/bin/codesign
+          security import certificate.p12 -k build.keychain -P $password -T /usr/bin/codesign
           echo "before set key"
-          security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k $env:TMP_PASS build.keychain
+          security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k $newPass build.keychain
           echo "before codesign"
           /usr/bin/codesign --force -s AEFB3DDA9FD6A31D3DD4D7A9398A59FDDA874DCC libokapi.dylib -v
         shell: pwsh
