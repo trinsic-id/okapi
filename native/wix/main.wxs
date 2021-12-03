@@ -84,7 +84,7 @@
                             <Environment
                                     Id='PATH'
                                     Name='PATH'
-                                    Value='[Bin]'
+                                    Value='[okapi]'
                                     Permanent='no'
                                     Part='last'
                                     Action='set'
@@ -104,6 +104,12 @@
                             <!--                                    DiskId='1'-->
                             <!--                                    Source='target\$(var.Profile)\libokapi.rlib'-->
                             <!--                            />-->
+                            <File
+                                    Id='header0'
+                                    Name='okapi.h'
+                                    DiskId='1'
+                                    Source='../include/okapi.h'
+                            />
                             <File
                                     Id='d1'
                                     Name='okapi.d'
