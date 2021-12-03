@@ -10,9 +10,11 @@ This repo provides bindings in all popular languages for the core Okapi function
 
 Library is available for use with different languages
 
-[![NuGet version](https://badge.fury.io/nu/okapi.net.svg)](https://badge.fury.io/nu/okapi.net)
-[![npm version](https://badge.fury.io/js/%40trinsic%2Fokapi.svg)](https://badge.fury.io/js/%40trinsic%2Fokapi)
+[![Nuget](https://img.shields.io/nuget/v/okapi.net)](https://www.nuget.org/packages/Okapi.Net/)
+[![npm](https://img.shields.io/npm/v/@trinsic/okapi)](https://www.npmjs.com/package/@trinsic/okapi)
 [![PyPI version](https://badge.fury.io/py/trinsic-okapi.svg)](https://badge.fury.io/py/trinsic-okapi)
+[![Swift](https://img.shields.io/github/v/tag/trinsic-id/okapi-swift?color=orange&label=swift)](https://github.com/trinsic-id/okapi-swift)
+[![Go)](https://img.shields.io/github/go-mod/go-version/trinsic-id/okapi?label=go&color=cyan&filename=go%2Fgo.mod)](https://github.com/trinsic-id/okapi/tree/main/go/)
 
 ## Installation
 
