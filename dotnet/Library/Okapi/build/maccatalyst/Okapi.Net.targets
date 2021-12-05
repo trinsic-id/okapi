@@ -2,7 +2,7 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <ItemGroup>
-    <NativeReference Include="$(MSBuildThisFileDirectory)..\..\native\ios\libokapi_simulator.a">
+    <NativeReference Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\..\native\ios\libokapi_maccatalyst.a'))">
       <Kind>Static</Kind>
       <ForceLoad>True</ForceLoad>
     </NativeReference>
