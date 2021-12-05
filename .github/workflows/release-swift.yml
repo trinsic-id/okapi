@@ -39,6 +39,7 @@ jobs:
             -library ./libs/macos/libokapi.a -headers ./include/ \
             -library ./libs/ios/libokapi.a -headers ./include/ \
             -library ./libs/ios/libokapi_simulator.a -headers ./include/ \
+            -library ./libs/ios/libokapi_maccatalyst.a -headers ./include/ \
             -output OkapiNative.xcframework
 
           zip -r okapi.xcframework-${{ steps.setversion.outputs.packageVersion }}.zip OkapiNative.xcframework
