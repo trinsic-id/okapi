@@ -87,7 +87,7 @@ jobs:
 
   build-native:
     name: Native
-    uses: trinsic-id/okapi/.github/workflows/build-libs.yml@main
+    uses: trinsic-id/okapi/.github/workflows/build-libs.yml@TM/add-mac-catalyst-libs
     needs: changes
     if: needs.changes.outputs.native == 'true'
 
