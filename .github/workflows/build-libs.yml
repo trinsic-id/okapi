@@ -115,6 +115,7 @@ jobs:
         env:
           MACOS_CERTIFICATE: ${{ secrets.MACOS_DEVELOPER_ID_CERTIFICATE }}
           MACOS_CERTIFICATE_PWD: ${{ secrets.MACOS_DEVELOPER_ID_CERTIFICATE_PWD }}
+          MACOS_CERTIFICATE_ID: ${{ secrets.MACOS_DEVELOPER_ID_CERTIFICATE_IDENTITY }}
         run: |
           $env:TMP_PASS = [Guid]::NewGuid().ToString()
           [System.IO.File]::WriteAllBytes([System.IO.Path]::Combine($pwd.Path, "certificate.p12"), [System.Convert]::FromBase64String("$env:MACOS_CERTIFICATE"))
@@ -124,7 +125,7 @@ jobs:
           security list-keychains -s build.keychain
           security import certificate.p12 -k build.keychain -P $env:MACOS_CERTIFICATE_PWD -T /usr/bin/codesign
           security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k $env:TMP_PASS build.keychain
-          /usr/bin/codesign --force -s AEFB3DDA9FD6A31D3DD4D7A9398A59FDDA874DCC libokapi.dylib -v
+          /usr/bin/codesign --force -s $env:MACOS_CERTIFICATE_ID libokapi.dylib -v
         shell: pwsh
         working-directory: ./libs/macos
       - name: Upload MacOS artifact
