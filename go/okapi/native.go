@@ -9,9 +9,8 @@ import "C"
 
 import (
 	"fmt"
-	"unsafe"
-
 	"google.golang.org/protobuf/proto"
+	"unsafe"
 )
 
 type OkapiError struct {
