@@ -123,7 +123,6 @@ module Okapi
   class DidError < StandardError
     def initialize(code = 0, msg = nil)
       @code = code
-      # @msg = msg
       super(msg)
     end
 
