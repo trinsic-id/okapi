@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyName>Okapi.Net</AssemblyName>
     <PackageId>Okapi.Net</PackageId>
-    <TargetFrameworks>net6.0;net6.0-ios</TargetFrameworks>
+    <TargetFrameworks>net6.0;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <SkipNativeLibsCopy>false</SkipNativeLibsCopy>
   </PropertyGroup>

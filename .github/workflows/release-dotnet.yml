@@ -7,8 +7,6 @@ on:
         description: 'Version to build'
         required: true
         default: ''
-  # release:
-  #   types: [published]
   workflow_run:
     workflows: ["Release Platform Libraries"]
     branches: ["main", "v?.*"]
@@ -41,6 +39,7 @@ jobs:
       - name: Create Nuget package
         run: |
           dotnet workload install ios
+          dotnet workload install maccatalyst
           dotnet restore
           dotnet build -c Release
           dotnet pack -p:SkipNativeLibsCopy=true -p:Configuration=Release -p:PackageVersion=${{ steps.setversion.outputs.packageVersion }}
