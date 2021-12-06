@@ -67,9 +67,9 @@ jobs:
       - name: Download Artifacts
         uses: actions/download-artifact@v2
         with:
-          path: artifacts
+          path: ruby_artifacts
       - name: Publish Test Report - Ruby
         uses: EnricoMi/publish-unit-test-result-action@v1.23
         with:
-          files: 'artifacts/**/*.xml'
+          files: 'ruby_artifacts/**/*.xml'
           check_name: Ruby Test Report

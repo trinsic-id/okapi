@@ -60,9 +60,9 @@ jobs:
       - name: Download Artifacts
         uses: actions/download-artifact@v2
         with:
-          path: artifacts
+          path: java_artifacts
       - name: Publish Test Report - Java
         uses: EnricoMi/publish-unit-test-result-action@v1.23
         with:
-          files: 'artifacts/**/*.xml'
+          files: 'java_artifacts/**/*.xml'
           check_name: Java Test Report
