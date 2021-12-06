@@ -6,7 +6,6 @@
     <TargetFrameworks>net6.0;net6.0-ios</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <SkipNativeLibsCopy>false</SkipNativeLibsCopy>
-    <Protobuf_ToolsOs Condition="'$([MSBuild]::IsOsPlatform(OSX))'">macosx</Protobuf_ToolsOs>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -17,21 +16,8 @@
 
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.17.3" />
-    <PackageReference Include="Grpc" Version="2.38.0" />
+    <PackageReference Include="Grpc" Version="2.38.0"  PrivateAssets="All" />
     <PackageReference Include="Grpc.Tools" Version="2.38.0" PrivateAssets="All" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\..\..\libs\macos\libokapi.dylib" PackagePath="native/macos/libokapi.dylib" Pack="true" Visible="false" />
-    <None Include="..\..\..\libs\ios\libokapi.a" PackagePath="native/ios/libokapi.a" Pack="true" Visible="false" />
-    <None Include="..\..\..\libs\ios\libokapi_simulator.a" PackagePath="native/ios/libokapi_simulator.a" Pack="true" Visible="false" />
-    <None Include="..\..\..\libs\linux\libokapi.so" PackagePath="native/linux/libokapi.so" Pack="true" Visible="false" />
-    <None Include="..\..\..\libs\windows\okapi.dll" PackagePath="native/windows/okapi.dll" Pack="true" Visible="false" />
-    <None Include="..\..\..\libs\android\arm64-v8a\libokapi.so" PackagePath="native/android/arm64-v8a/libokapi.so" Pack="true" Visible="false" />
-    <None Include="..\..\..\libs\android\armeabi-v7a\libokapi.so" PackagePath="native/android/armeabi-v7a/libokapi.so" Pack="true" Visible="false" />
-    <None Include="..\..\..\libs\android\x86\libokapi.so" PackagePath="native/android/x86/libokapi.so" Pack="true" Visible="false" />
-    <!-- copy the wasm file as "okapi.a", not "libokapi.a" as DllImport for Blazor doesn't strip the "lib" prefix as native platforms do *shrug* -->
-    <None Include="..\..\..\libs\wasm\libokapi.a" PackagePath="native/wasm/okapi.a" Pack="true" Visible="false" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,16 +30,30 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="..\..\..\libs\macos\libokapi.dylib" PackagePath="native/macos/libokapi.dylib" Pack="true" Visible="false" />
+    <None Include="..\..\..\libs\ios\libokapi.a" PackagePath="native/ios/libokapi.a" Pack="true" Visible="false" />
+    <None Include="..\..\..\libs\ios\libokapi_simulator.a" PackagePath="native/ios/libokapi_simulator.a" Pack="true" Visible="false" />
+    <None Include="..\..\..\libs\ios\libokapi_maccatalyst.a" PackagePath="native/ios/libokapi_maccatalyst.a" Pack="true" Visible="false" />
+    <None Include="..\..\..\libs\linux\libokapi.so" PackagePath="native/linux/libokapi.so" Pack="true" Visible="false" />
+    <None Include="..\..\..\libs\windows\okapi.dll" PackagePath="native/windows/okapi.dll" Pack="true" Visible="false" />
+    <None Include="..\..\..\libs\android\arm64-v8a\libokapi.so" PackagePath="native/android/arm64-v8a/libokapi.so" Pack="true" Visible="false" />
+    <None Include="..\..\..\libs\android\armeabi-v7a\libokapi.so" PackagePath="native/android/armeabi-v7a/libokapi.so" Pack="true" Visible="false" />
+    <None Include="..\..\..\libs\android\x86\libokapi.so" PackagePath="native/android/x86/libokapi.so" Pack="true" Visible="false" />
+    <!-- copy the wasm file as "okapi.a", not "libokapi.a" as DllImport for Blazor doesn't strip the "lib" prefix as native platforms do *shrug* -->
+    <None Include="..\..\..\libs\wasm\libokapi.a" PackagePath="native/wasm/okapi.a" Pack="true" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="build\net\Okapi.Net.targets" Pack="true" PackagePath="build/net6.0" Visible="false" />
     <Content Include="build\ios\Okapi.Net.targets" Pack="true" PackagePath="build/net6.0-ios15.0" Visible="false" />
     <Content Include="build\android\Okapi.Net.targets" Pack="true" PackagePath="build/net6.0-android31.0" Visible="false" />
-    <Content Include="build\iossimulator\Okapi.Net.targets" Pack="true" PackagePath="build/net6.0-iossimulator15.0" Visible="false" />
+    <Content Include="build\maccatalyst\Okapi.Net.targets" Pack="true" PackagePath="build/net6.0-maccatalyst15.0" Visible="false" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="build\net\Okapi.Net.targets" Visible="false" />
     <None Update="build\ios\Okapi.Net.targets" Visible="false" />
-    <None Update="build\iossimulator\Okapi.Net.targets" Visible="false" />
+    <None Update="build\maccatalyst\Okapi.Net.targets" Visible="false" />
     <None Update="build\android\Okapi.Net.targets" Visible="false" />
   </ItemGroup>
 
