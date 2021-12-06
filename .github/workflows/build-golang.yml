@@ -10,11 +10,11 @@ on:
 jobs:
   build-and-test-golang:
     name: Build, Test
-    runs-on: ${{ matrix.os-artifact[0] }}
+    runs-on: ${{ matrix.os[0] }}
     strategy:
       fail-fast: false
       matrix:
-        os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows-gnu], [macos-latest, macos] ]
+        os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
       - uses: actions/checkout@v2
       - name: Download workflow artifact
@@ -30,7 +30,7 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
-      - name: Display Golang version
+      - name: Build and Test Golang
         run: |
           go version
           go install golang.org/x/lint/golint@latest
@@ -50,7 +50,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: Golang Unit Test Results (${{ matrix.os-artifact[0] }})
+          name: Golang Unit Test Results (${{ matrix.os[0] }})
           path: 'go/okapi/test_output*.xml'
 
   publish-test-results-golang:

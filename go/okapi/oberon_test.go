@@ -40,16 +40,16 @@ func TestDemoWithBlinding(t *testing.T) {
 	data := []byte("alice")
 	nonce := []byte("1234")
 	// blinding code to be used by issuer and given to holder to transfer the token securely
-	issuer_2fa := []byte("issuer code")
+	issuer2fa := []byte("issuer code")
 
 	tokenRequest := okapiproto.CreateOberonTokenRequest{Data: data, Sk: key.Sk}
-	tokenRequest.Blinding = append(tokenRequest.Blinding, issuer_2fa)
+	tokenRequest.Blinding = append(tokenRequest.Blinding, issuer2fa)
 
 	blindedToken, _ := ob.CreateToken(&tokenRequest)
 
 	// Holder unblinds token
 	unblindRequest := okapiproto.UnBlindOberonTokenRequest{Token: blindedToken.Token}
-	unblindRequest.Blinding = append(unblindRequest.Blinding, issuer_2fa)
+	unblindRequest.Blinding = append(unblindRequest.Blinding, issuer2fa)
 	token, _ := ob.UnblindToken(&unblindRequest)
 
 	// Holder prepares a proof without blinding
