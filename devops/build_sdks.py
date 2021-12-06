@@ -87,6 +87,7 @@ def build_ruby(args) -> None:
     ruby_dir = abspath(join(dirname(__file__), '..', 'ruby'))
     update_line(join(ruby_dir, 'lib', 'version.rb'),
                 {'  VERSION =': f"  VERSION = '{get_package_versions(args)}'"})
+    copy_okapi_libs(abspath(join(ruby_dir, '..', 'libs')))
 
 
 def build_golang(args) -> None:
