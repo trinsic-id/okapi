@@ -6,7 +6,7 @@ namespace Okapi;
 
 internal class Native
 {
-#if __IOS__
+#if __IOS__ || __MACCATALYST__
     private const string LibraryName = "__Internal";
 #else
     private const string LibraryName = "okapi";
