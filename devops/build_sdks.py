@@ -88,6 +88,7 @@ def build_ruby(args) -> None:
     update_line(join(ruby_dir, 'lib', 'version.rb'),
                 {'  VERSION =': f"  VERSION = '{get_package_versions(args)}'"})
     copy_okapi_libs(abspath(join(ruby_dir, '..', 'libs')))
+    copy_okapi_libs(ruby_dir)  # Ruby FFI loads from current directory first, this enables macos
 
 
 def build_golang(args) -> None:
