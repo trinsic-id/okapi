@@ -9,17 +9,16 @@ import "C"
 
 import (
 	"fmt"
-	"unsafe"
-
 	"google.golang.org/protobuf/proto"
+	"unsafe"
 )
 
-type OkapiError struct {
+type NativeError struct {
 	Message       string
 	InternalError error
 }
 
-func (o OkapiError) Error() string {
+func (o NativeError) Error() string {
 	return fmt.Sprintf("Error:%s  InternalError:%v", o.Message, o.InternalError)
 }
 
@@ -124,7 +123,7 @@ func createError(code int32, err C.ExternError) error {
 	}
 }
 func wrapError(message string, internalError error) error {
-	return &OkapiError{
+	return &NativeError{
 		Message:       message,
 		InternalError: internalError,
 	}
