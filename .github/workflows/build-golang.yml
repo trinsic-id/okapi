@@ -10,11 +10,11 @@ on:
 jobs:
   build-and-test-golang:
     name: Build, Test
-    runs-on: ${{ matrix.os-artifact[0] }}
+    runs-on: ${{ matrix.os[0] }}
     strategy:
       fail-fast: false
       matrix:
-        os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows-gnu], [macos-latest, macos] ]
+        os: [ ubuntu-latest, windows-latest, macos-10.15 ]
     steps:
       - uses: actions/checkout@v2
       - name: Download workflow artifact
@@ -50,7 +50,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: Golang Unit Test Results (${{ matrix.os-artifact[0] }})
+          name: Golang Unit Test Results (${{ matrix.os[0] }})
           path: 'go/okapi/test_output*.xml'
 
   publish-test-results-golang:
@@ -63,9 +63,9 @@ jobs:
       - name: Download Artifacts
         uses: actions/download-artifact@v2
         with:
-          path: artifacts
+          path: golang_artifacts
       - name: Publish Test Report - Golang
         uses: EnricoMi/publish-unit-test-result-action@v1.23
         with:
-          files: 'artifacts/**/*.xml'
+          files: 'golang_artifacts/**/*.xml'
           check_name: Golang Test Report
