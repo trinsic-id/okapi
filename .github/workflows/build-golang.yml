@@ -1,9 +1,6 @@
 name: Go
 
 on:
-  pull_request:
-    branches:
-      - main
   workflow_call:
   workflow_dispatch:
   push:
@@ -13,7 +10,7 @@ on:
 jobs:
   build-and-test-golang:
     name: Build, Test
-    runs-on: ${{ matrix.os[0] }}
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
