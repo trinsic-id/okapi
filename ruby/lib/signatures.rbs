@@ -111,6 +111,8 @@ module Okapi
 
   def self.library_path=: (untyped path) -> untyped
 
+  def self.library_directory: () -> ("windows" | "linux" | "macos" | untyped)
+
   def self.library_name: () -> ("okapi.dll" | "libokapi.so" | "libokapi.dylib" | untyped)
 
   class ByteBuffer < FFI::Struct
