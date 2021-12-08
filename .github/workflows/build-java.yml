@@ -47,7 +47,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: Java Unit Test Results (${{ matrix.os[0] }})
+          name: Java Unit Test Results (${{ matrix.os }})
           path: 'java/build/test-results/test/TEST-*.xml'
 
   publish-test-results-java:
