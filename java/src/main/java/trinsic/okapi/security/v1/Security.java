@@ -30,7 +30,7 @@ public final class Security {
   }
   /**
    * <pre>
-   * Create an trinsic.okapi.Oberon Compatible Secret Key
+   * Create an Oberon Compatible Secret Key
    * </pre>
    *
    * Protobuf type {@code okapi.security.v1.CreateOberonKeyRequest}
@@ -287,7 +287,7 @@ public final class Security {
     }
     /**
      * <pre>
-     * Create an trinsic.okapi.Oberon Compatible Secret Key
+     * Create an Oberon Compatible Secret Key
      * </pre>
      *
      * Protobuf type {@code okapi.security.v1.CreateOberonKeyRequest}
@@ -7920,9 +7920,9 @@ public final class Security {
       "enResponse\022\r\n\005token\030\001 \001(\014\"<\n\031UnBlindOber" +
       "onTokenRequest\022\r\n\005token\030\001 \001(\014\022\020\n\010blindin" +
       "g\030\002 \003(\014\"+\n\032UnBlindOberonTokenResponse\022\r\n" +
-      "\005token\030\001 \001(\014BL\n\031trinsic.okapi.security.v" +
-      "1Z\033github.com/trinsic-id/okapi\252\002\021Okapi.S" +
-      "ecurity.V1b\006proto3"
+      "\005token\030\001 \001(\014BQ\n\031trinsic.okapi.security.v" +
+      "1Z github.com/trinsic-id/okapiproto\252\002\021Ok" +
+      "api.Security.V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

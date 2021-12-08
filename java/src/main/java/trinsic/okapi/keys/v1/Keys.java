@@ -4792,9 +4792,9 @@ public final class Keys {
       "\001(\t*\224\001\n\007KeyType\022\030\n\024KEY_TYPE_UNSPECIFIED\020" +
       "\000\022\024\n\020KEY_TYPE_ED25519\020\001\022\023\n\017KEY_TYPE_X255" +
       "19\020\002\022\021\n\rKEY_TYPE_P256\020\003\022\031\n\025KEY_TYPE_BLS1" +
-      "2381G1G2\020\004\022\026\n\022KEY_TYPE_SECP256K1\020\005BD\n\025tr" +
-      "insic.okapi.keys.v1Z\033github.com/trinsic-" +
-      "id/okapi\252\002\rOkapi.Keys.V1b\006proto3"
+      "2381G1G2\020\004\022\026\n\022KEY_TYPE_SECP256K1\020\005BI\n\025tr" +
+      "insic.okapi.keys.v1Z github.com/trinsic-" +
+      "id/okapiproto\252\002\rOkapi.Keys.V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

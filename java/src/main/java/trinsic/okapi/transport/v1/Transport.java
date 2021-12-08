@@ -7556,9 +7556,9 @@ public final class Transport {
       "\013CoreMessage\022\n\n\002id\030\001 \001(\t\022\014\n\004type\030\002 \001(\t\022\014" +
       "\n\004body\030\003 \001(\014\022\n\n\002to\030\004 \003(\t\022\014\n\004from\030\005 \001(\t\022\035" +
       "\n\007created\030\006 \001(\003R\014created_time\022\035\n\007expires" +
-      "\030\007 \001(\003R\014expires_timeBN\n\032trinsic.okapi.tr" +
-      "ansport.v1Z\033github.com/trinsic-id/okapi\252" +
-      "\002\022Okapi.Transport.V1b\006proto3"
+      "\030\007 \001(\003R\014expires_timeBS\n\032trinsic.okapi.tr" +
+      "ansport.v1Z github.com/trinsic-id/okapip" +
+      "roto\252\002\022Okapi.Transport.V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

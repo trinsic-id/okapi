@@ -2796,9 +2796,9 @@ public final class Proofs {
       "uct\"\024\n\022VerifyProofRequest\"\025\n\023VerifyProof" +
       "Response*I\n\007LdSuite\022\030\n\024LD_SUITE_UNSPECIF" +
       "IED\020\000\022$\n LD_SUITE_JCSED25519SIGNATURE202" +
-      "0\020\001BH\n\027trinsic.okapi.proofs.v1Z\033github.c" +
-      "om/trinsic-id/okapi\252\002\017Okapi.Proofs.V1b\006p" +
-      "roto3"
+      "0\020\001BM\n\027trinsic.okapi.proofs.v1Z github.c" +
+      "om/trinsic-id/okapiproto\252\002\017Okapi.Proofs." +
+      "V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
