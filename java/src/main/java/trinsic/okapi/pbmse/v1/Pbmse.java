@@ -5186,9 +5186,9 @@ public final class Pbmse {
       "PTION_KEY\020\002*\211\001\n\023EncryptionAlgorithm\022$\n E" +
       "NCRYPTION_ALGORITHM_UNSPECIFIED\020\000\022*\n&ENC" +
       "RYPTION_ALGORITHM_XCHACHA20POLY1305\020\001\022 \n" +
-      "\034ENCRYPTION_ALGORITHM_AES_GCM\020\002B5\n\026trins" +
-      "ic.okapi.pbmse.v1Z\033github.com/trinsic-id" +
-      "/okapib\006proto3"
+      "\034ENCRYPTION_ALGORITHM_AES_GCM\020\002B:\n\026trins" +
+      "ic.okapi.pbmse.v1Z github.com/trinsic-id" +
+      "/okapiprotob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

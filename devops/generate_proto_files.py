@@ -78,11 +78,9 @@ def update_ruby():
 def update_java():
     java_path = get_language_dir('java')
     java_proto_path = join(java_path, 'src', 'main', 'java')
-    # TODO - clean_proto_dir(java_proto_path)
-    run_protoc({'java_out': java_proto_path}, {}, get_proto_files(),
-               plugin=r"C:\bin\protoc-gen-grpc-java-1.39.0-windows-x86_64.exe")
-    # remove okapi pbmse
-    shutil.rmtree(join(java_proto_path, 'trinsic', 'okapi'))
+    # clean_proto_dir(java_proto_path)
+    run_protoc({'java_out': java_proto_path, 'kotlin_out': java_proto_path}, {}, get_proto_files(),
+               plugin=r"C:\bin\\protoc-gen-grpc-java-1.39.0-windows-x86_64.exe")
 
 
 def update_swift():
@@ -98,12 +96,11 @@ def update_python():
     :return:
     """
     # Remove everything under output directory
-    python_proto_path = join(get_language_dir('python'), "proto")
+    python_proto_path = join(get_language_dir('python'), 'trinsicokapi', "proto")
     clean_proto_dir(python_proto_path)
     # Paths for proto compilation
     file_path = abspath(dirname(abspath(__file__)))
     base_path = abspath(join(file_path, '..', 'proto'))
-    proto_file_path = abspath(join(base_path, "**", "*.proto"))
     # Come up with better locations, import google defaults from the package location (see code in protoc.main)
     proto_include = pkg_resources.resource_filename('grpc_tools', '_proto').replace("lib", "Lib")
     # Inject an empty python code file path to mimic the first argument.
@@ -117,7 +114,7 @@ def main():
     update_golang()
     update_ruby()
     update_java()
-    update_swift()
+    # update_swift()
     update_python()
 
 
