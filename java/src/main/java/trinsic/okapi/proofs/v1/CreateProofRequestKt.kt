@@ -4,15 +4,15 @@
 package trinsic.okapi.proofs.v1;
 
 @kotlin.jvm.JvmSynthetic
-inline fun createProofRequest(block: trinsic.okapi.proofs.v1.CreateProofRequestKt.Dsl.() -> Unit): trinsic.okapi.proofs.v1.Proofs.CreateProofRequest =
+public inline fun createProofRequest(block: trinsic.okapi.proofs.v1.CreateProofRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.proofs.v1.Proofs.CreateProofRequest =
   trinsic.okapi.proofs.v1.CreateProofRequestKt.Dsl._create(trinsic.okapi.proofs.v1.Proofs.CreateProofRequest.newBuilder()).apply { block() }._build()
-object CreateProofRequestKt {
+public object CreateProofRequestKt {
   @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
   @com.google.protobuf.kotlin.ProtoDslMarker
-  class Dsl private constructor(
-    @kotlin.jvm.JvmField private val _builder: trinsic.okapi.proofs.v1.Proofs.CreateProofRequest.Builder
+  public class Dsl private constructor(
+    private val _builder: trinsic.okapi.proofs.v1.Proofs.CreateProofRequest.Builder
   ) {
-    companion object {
+    public companion object {
       @kotlin.jvm.JvmSynthetic
       @kotlin.PublishedApi
       internal fun _create(builder: trinsic.okapi.proofs.v1.Proofs.CreateProofRequest.Builder): Dsl = Dsl(builder)
@@ -32,7 +32,7 @@ object CreateProofRequestKt {
      *
      * <code>.google.protobuf.Struct document = 1;</code>
      */
-    var document: com.google.protobuf.Struct
+    public var document: com.google.protobuf.Struct
       @JvmName("getDocument")
       get() = _builder.getDocument()
       @JvmName("setDocument")
@@ -49,7 +49,7 @@ object CreateProofRequestKt {
      *
      * <code>.google.protobuf.Struct document = 1;</code>
      */
-    fun clearDocument() {
+    public fun clearDocument() {
       _builder.clearDocument()
     }
     /**
@@ -63,7 +63,7 @@ object CreateProofRequestKt {
      * <code>.google.protobuf.Struct document = 1;</code>
      * @return Whether the document field is set.
      */
-    fun hasDocument(): kotlin.Boolean {
+    public fun hasDocument(): kotlin.Boolean {
       return _builder.hasDocument()
     }
 
@@ -77,7 +77,7 @@ object CreateProofRequestKt {
      *
      * <code>.okapi.keys.v1.JsonWebKey key = 3;</code>
      */
-    var key: trinsic.okapi.keys.v1.Keys.JsonWebKey
+    public var key: trinsic.okapi.keys.v1.Keys.JsonWebKey
       @JvmName("getKey")
       get() = _builder.getKey()
       @JvmName("setKey")
@@ -94,7 +94,7 @@ object CreateProofRequestKt {
      *
      * <code>.okapi.keys.v1.JsonWebKey key = 3;</code>
      */
-    fun clearKey() {
+    public fun clearKey() {
       _builder.clearKey()
     }
     /**
@@ -108,7 +108,7 @@ object CreateProofRequestKt {
      * <code>.okapi.keys.v1.JsonWebKey key = 3;</code>
      * @return Whether the key field is set.
      */
-    fun hasKey(): kotlin.Boolean {
+    public fun hasKey(): kotlin.Boolean {
       return _builder.hasKey()
     }
 
@@ -119,7 +119,7 @@ object CreateProofRequestKt {
      *
      * <code>.okapi.proofs.v1.LdSuite suite = 4;</code>
      */
-    var suite: trinsic.okapi.proofs.v1.Proofs.LdSuite
+    public var suite: trinsic.okapi.proofs.v1.Proofs.LdSuite
       @JvmName("getSuite")
       get() = _builder.getSuite()
       @JvmName("setSuite")
@@ -133,11 +133,11 @@ object CreateProofRequestKt {
      *
      * <code>.okapi.proofs.v1.LdSuite suite = 4;</code>
      */
-    fun clearSuite() {
+    public fun clearSuite() {
       _builder.clearSuite()
     }
   }
 }
 @kotlin.jvm.JvmSynthetic
-inline fun trinsic.okapi.proofs.v1.Proofs.CreateProofRequest.copy(block: trinsic.okapi.proofs.v1.CreateProofRequestKt.Dsl.() -> Unit): trinsic.okapi.proofs.v1.Proofs.CreateProofRequest =
+public inline fun trinsic.okapi.proofs.v1.Proofs.CreateProofRequest.copy(block: trinsic.okapi.proofs.v1.CreateProofRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.proofs.v1.Proofs.CreateProofRequest =
   trinsic.okapi.proofs.v1.CreateProofRequestKt.Dsl._create(this.toBuilder()).apply { block() }._build()

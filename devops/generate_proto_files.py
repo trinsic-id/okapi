@@ -79,8 +79,7 @@ def update_java():
     java_path = get_language_dir('java')
     java_proto_path = join(java_path, 'src', 'main', 'java')
     # clean_proto_dir(java_proto_path)
-    run_protoc({'java_out': java_proto_path, 'kotlin_out': java_proto_path}, {}, get_proto_files(),
-               plugin=r"C:\bin\\protoc-gen-grpc-java-1.39.0-windows-x86_64.exe")
+    run_protoc({'java_out': java_proto_path, 'kotlin_out': java_proto_path}, {}, get_proto_files())
 
 
 def update_swift():

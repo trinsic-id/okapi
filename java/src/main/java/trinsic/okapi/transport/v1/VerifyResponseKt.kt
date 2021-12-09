@@ -4,15 +4,15 @@
 package trinsic.okapi.transport.v1;
 
 @kotlin.jvm.JvmSynthetic
-inline fun verifyResponse(block: trinsic.okapi.transport.v1.VerifyResponseKt.Dsl.() -> Unit): trinsic.okapi.transport.v1.Transport.VerifyResponse =
+public inline fun verifyResponse(block: trinsic.okapi.transport.v1.VerifyResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.VerifyResponse =
   trinsic.okapi.transport.v1.VerifyResponseKt.Dsl._create(trinsic.okapi.transport.v1.Transport.VerifyResponse.newBuilder()).apply { block() }._build()
-object VerifyResponseKt {
+public object VerifyResponseKt {
   @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
   @com.google.protobuf.kotlin.ProtoDslMarker
-  class Dsl private constructor(
-    @kotlin.jvm.JvmField private val _builder: trinsic.okapi.transport.v1.Transport.VerifyResponse.Builder
+  public class Dsl private constructor(
+    private val _builder: trinsic.okapi.transport.v1.Transport.VerifyResponse.Builder
   ) {
-    companion object {
+    public companion object {
       @kotlin.jvm.JvmSynthetic
       @kotlin.PublishedApi
       internal fun _create(builder: trinsic.okapi.transport.v1.Transport.VerifyResponse.Builder): Dsl = Dsl(builder)
@@ -25,7 +25,7 @@ object VerifyResponseKt {
     /**
      * <code>bool is_valid = 1;</code>
      */
-    var isValid: kotlin.Boolean
+    public var isValid: kotlin.Boolean
       @JvmName("getIsValid")
       get() = _builder.getIsValid()
       @JvmName("setIsValid")
@@ -35,11 +35,11 @@ object VerifyResponseKt {
     /**
      * <code>bool is_valid = 1;</code>
      */
-    fun clearIsValid() {
+    public fun clearIsValid() {
       _builder.clearIsValid()
     }
   }
 }
 @kotlin.jvm.JvmSynthetic
-inline fun trinsic.okapi.transport.v1.Transport.VerifyResponse.copy(block: trinsic.okapi.transport.v1.VerifyResponseKt.Dsl.() -> Unit): trinsic.okapi.transport.v1.Transport.VerifyResponse =
+public inline fun trinsic.okapi.transport.v1.Transport.VerifyResponse.copy(block: trinsic.okapi.transport.v1.VerifyResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.VerifyResponse =
   trinsic.okapi.transport.v1.VerifyResponseKt.Dsl._create(this.toBuilder()).apply { block() }._build()

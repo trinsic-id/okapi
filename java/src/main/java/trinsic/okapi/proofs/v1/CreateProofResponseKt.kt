@@ -4,15 +4,15 @@
 package trinsic.okapi.proofs.v1;
 
 @kotlin.jvm.JvmSynthetic
-inline fun createProofResponse(block: trinsic.okapi.proofs.v1.CreateProofResponseKt.Dsl.() -> Unit): trinsic.okapi.proofs.v1.Proofs.CreateProofResponse =
+public inline fun createProofResponse(block: trinsic.okapi.proofs.v1.CreateProofResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.proofs.v1.Proofs.CreateProofResponse =
   trinsic.okapi.proofs.v1.CreateProofResponseKt.Dsl._create(trinsic.okapi.proofs.v1.Proofs.CreateProofResponse.newBuilder()).apply { block() }._build()
-object CreateProofResponseKt {
+public object CreateProofResponseKt {
   @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
   @com.google.protobuf.kotlin.ProtoDslMarker
-  class Dsl private constructor(
-    @kotlin.jvm.JvmField private val _builder: trinsic.okapi.proofs.v1.Proofs.CreateProofResponse.Builder
+  public class Dsl private constructor(
+    private val _builder: trinsic.okapi.proofs.v1.Proofs.CreateProofResponse.Builder
   ) {
-    companion object {
+    public companion object {
       @kotlin.jvm.JvmSynthetic
       @kotlin.PublishedApi
       internal fun _create(builder: trinsic.okapi.proofs.v1.Proofs.CreateProofResponse.Builder): Dsl = Dsl(builder)
@@ -25,7 +25,7 @@ object CreateProofResponseKt {
     /**
      * <code>.google.protobuf.Struct signed_document = 1;</code>
      */
-    var signedDocument: com.google.protobuf.Struct
+    public var signedDocument: com.google.protobuf.Struct
       @JvmName("getSignedDocument")
       get() = _builder.getSignedDocument()
       @JvmName("setSignedDocument")
@@ -35,18 +35,18 @@ object CreateProofResponseKt {
     /**
      * <code>.google.protobuf.Struct signed_document = 1;</code>
      */
-    fun clearSignedDocument() {
+    public fun clearSignedDocument() {
       _builder.clearSignedDocument()
     }
     /**
      * <code>.google.protobuf.Struct signed_document = 1;</code>
      * @return Whether the signedDocument field is set.
      */
-    fun hasSignedDocument(): kotlin.Boolean {
+    public fun hasSignedDocument(): kotlin.Boolean {
       return _builder.hasSignedDocument()
     }
   }
 }
 @kotlin.jvm.JvmSynthetic
-inline fun trinsic.okapi.proofs.v1.Proofs.CreateProofResponse.copy(block: trinsic.okapi.proofs.v1.CreateProofResponseKt.Dsl.() -> Unit): trinsic.okapi.proofs.v1.Proofs.CreateProofResponse =
+public inline fun trinsic.okapi.proofs.v1.Proofs.CreateProofResponse.copy(block: trinsic.okapi.proofs.v1.CreateProofResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.proofs.v1.Proofs.CreateProofResponse =
   trinsic.okapi.proofs.v1.CreateProofResponseKt.Dsl._create(this.toBuilder()).apply { block() }._build()

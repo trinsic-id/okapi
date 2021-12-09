@@ -4,15 +4,15 @@
 package trinsic.okapi.keys.v1;
 
 @kotlin.jvm.JvmSynthetic
-inline fun jsonWebKey(block: trinsic.okapi.keys.v1.JsonWebKeyKt.Dsl.() -> Unit): trinsic.okapi.keys.v1.Keys.JsonWebKey =
+public inline fun jsonWebKey(block: trinsic.okapi.keys.v1.JsonWebKeyKt.Dsl.() -> kotlin.Unit): trinsic.okapi.keys.v1.Keys.JsonWebKey =
   trinsic.okapi.keys.v1.JsonWebKeyKt.Dsl._create(trinsic.okapi.keys.v1.Keys.JsonWebKey.newBuilder()).apply { block() }._build()
-object JsonWebKeyKt {
+public object JsonWebKeyKt {
   @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
   @com.google.protobuf.kotlin.ProtoDslMarker
-  class Dsl private constructor(
-    @kotlin.jvm.JvmField private val _builder: trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder
+  public class Dsl private constructor(
+    private val _builder: trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder
   ) {
-    companion object {
+    public companion object {
       @kotlin.jvm.JvmSynthetic
       @kotlin.PublishedApi
       internal fun _create(builder: trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder): Dsl = Dsl(builder)
@@ -25,7 +25,7 @@ object JsonWebKeyKt {
     /**
      * <code>string kid = 1;</code>
      */
-    var kid: kotlin.String
+    public var kid: kotlin.String
       @JvmName("getKid")
       get() = _builder.getKid()
       @JvmName("setKid")
@@ -35,7 +35,7 @@ object JsonWebKeyKt {
     /**
      * <code>string kid = 1;</code>
      */
-    fun clearKid() {
+    public fun clearKid() {
       _builder.clearKid()
     }
 
@@ -46,7 +46,7 @@ object JsonWebKeyKt {
      *
      * <code>string x = 2;</code>
      */
-    var x: kotlin.String
+    public var x: kotlin.String
       @JvmName("getX")
       get() = _builder.getX()
       @JvmName("setX")
@@ -60,7 +60,7 @@ object JsonWebKeyKt {
      *
      * <code>string x = 2;</code>
      */
-    fun clearX() {
+    public fun clearX() {
       _builder.clearX()
     }
 
@@ -71,7 +71,7 @@ object JsonWebKeyKt {
      *
      * <code>string y = 3;</code>
      */
-    var y: kotlin.String
+    public var y: kotlin.String
       @JvmName("getY")
       get() = _builder.getY()
       @JvmName("setY")
@@ -85,7 +85,7 @@ object JsonWebKeyKt {
      *
      * <code>string y = 3;</code>
      */
-    fun clearY() {
+    public fun clearY() {
       _builder.clearY()
     }
 
@@ -96,7 +96,7 @@ object JsonWebKeyKt {
      *
      * <code>string d = 4;</code>
      */
-    var d: kotlin.String
+    public var d: kotlin.String
       @JvmName("getD")
       get() = _builder.getD()
       @JvmName("setD")
@@ -110,14 +110,14 @@ object JsonWebKeyKt {
      *
      * <code>string d = 4;</code>
      */
-    fun clearD() {
+    public fun clearD() {
       _builder.clearD()
     }
 
     /**
      * <code>string crv = 5;</code>
      */
-    var crv: kotlin.String
+    public var crv: kotlin.String
       @JvmName("getCrv")
       get() = _builder.getCrv()
       @JvmName("setCrv")
@@ -127,14 +127,14 @@ object JsonWebKeyKt {
     /**
      * <code>string crv = 5;</code>
      */
-    fun clearCrv() {
+    public fun clearCrv() {
       _builder.clearCrv()
     }
 
     /**
      * <code>string kty = 6;</code>
      */
-    var kty: kotlin.String
+    public var kty: kotlin.String
       @JvmName("getKty")
       get() = _builder.getKty()
       @JvmName("setKty")
@@ -144,11 +144,11 @@ object JsonWebKeyKt {
     /**
      * <code>string kty = 6;</code>
      */
-    fun clearKty() {
+    public fun clearKty() {
       _builder.clearKty()
     }
   }
 }
 @kotlin.jvm.JvmSynthetic
-inline fun trinsic.okapi.keys.v1.Keys.JsonWebKey.copy(block: trinsic.okapi.keys.v1.JsonWebKeyKt.Dsl.() -> Unit): trinsic.okapi.keys.v1.Keys.JsonWebKey =
+public inline fun trinsic.okapi.keys.v1.Keys.JsonWebKey.copy(block: trinsic.okapi.keys.v1.JsonWebKeyKt.Dsl.() -> kotlin.Unit): trinsic.okapi.keys.v1.Keys.JsonWebKey =
   trinsic.okapi.keys.v1.JsonWebKeyKt.Dsl._create(this.toBuilder()).apply { block() }._build()

@@ -4,15 +4,15 @@
 package trinsic.okapi.pbmse.v1;
 
 @kotlin.jvm.JvmSynthetic
-inline fun signatureHeader(block: trinsic.okapi.pbmse.v1.SignatureHeaderKt.Dsl.() -> Unit): trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader =
+public inline fun signatureHeader(block: trinsic.okapi.pbmse.v1.SignatureHeaderKt.Dsl.() -> kotlin.Unit): trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader =
   trinsic.okapi.pbmse.v1.SignatureHeaderKt.Dsl._create(trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader.newBuilder()).apply { block() }._build()
-object SignatureHeaderKt {
+public object SignatureHeaderKt {
   @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
   @com.google.protobuf.kotlin.ProtoDslMarker
-  class Dsl private constructor(
-    @kotlin.jvm.JvmField private val _builder: trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader.Builder
+  public class Dsl private constructor(
+    private val _builder: trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader.Builder
   ) {
-    companion object {
+    public companion object {
       @kotlin.jvm.JvmSynthetic
       @kotlin.PublishedApi
       internal fun _create(builder: trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader.Builder): Dsl = Dsl(builder)
@@ -25,7 +25,7 @@ object SignatureHeaderKt {
     /**
      * <code>string algorithm = 1;</code>
      */
-    var algorithm: kotlin.String
+    public var algorithm: kotlin.String
       @JvmName("getAlgorithm")
       get() = _builder.getAlgorithm()
       @JvmName("setAlgorithm")
@@ -35,14 +35,14 @@ object SignatureHeaderKt {
     /**
      * <code>string algorithm = 1;</code>
      */
-    fun clearAlgorithm() {
+    public fun clearAlgorithm() {
       _builder.clearAlgorithm()
     }
 
     /**
      * <code>string key_id = 2;</code>
      */
-    var keyId: kotlin.String
+    public var keyId: kotlin.String
       @JvmName("getKeyId")
       get() = _builder.getKeyId()
       @JvmName("setKeyId")
@@ -52,11 +52,11 @@ object SignatureHeaderKt {
     /**
      * <code>string key_id = 2;</code>
      */
-    fun clearKeyId() {
+    public fun clearKeyId() {
       _builder.clearKeyId()
     }
   }
 }
 @kotlin.jvm.JvmSynthetic
-inline fun trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader.copy(block: trinsic.okapi.pbmse.v1.SignatureHeaderKt.Dsl.() -> Unit): trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader =
+public inline fun trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader.copy(block: trinsic.okapi.pbmse.v1.SignatureHeaderKt.Dsl.() -> kotlin.Unit): trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader =
   trinsic.okapi.pbmse.v1.SignatureHeaderKt.Dsl._create(this.toBuilder()).apply { block() }._build()

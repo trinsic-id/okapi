@@ -5,6 +5,7 @@ require 'google/protobuf'
 
 require 'okapi/keys/v1/keys_pb'
 require 'pbmse/v1/pbmse_pb'
+
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("okapi/transport/v1/transport.proto", :syntax => :proto3) do
     add_message "okapi.transport.v1.SignRequest" do

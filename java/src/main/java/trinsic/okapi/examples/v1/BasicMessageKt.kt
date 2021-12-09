@@ -4,15 +4,15 @@
 package trinsic.okapi.examples.v1;
 
 @kotlin.jvm.JvmSynthetic
-inline fun basicMessage(block: trinsic.okapi.examples.v1.BasicMessageKt.Dsl.() -> Unit): trinsic.okapi.examples.v1.Examples.BasicMessage =
+public inline fun basicMessage(block: trinsic.okapi.examples.v1.BasicMessageKt.Dsl.() -> kotlin.Unit): trinsic.okapi.examples.v1.Examples.BasicMessage =
   trinsic.okapi.examples.v1.BasicMessageKt.Dsl._create(trinsic.okapi.examples.v1.Examples.BasicMessage.newBuilder()).apply { block() }._build()
-object BasicMessageKt {
+public object BasicMessageKt {
   @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
   @com.google.protobuf.kotlin.ProtoDslMarker
-  class Dsl private constructor(
-    @kotlin.jvm.JvmField private val _builder: trinsic.okapi.examples.v1.Examples.BasicMessage.Builder
+  public class Dsl private constructor(
+    private val _builder: trinsic.okapi.examples.v1.Examples.BasicMessage.Builder
   ) {
-    companion object {
+    public companion object {
       @kotlin.jvm.JvmSynthetic
       @kotlin.PublishedApi
       internal fun _create(builder: trinsic.okapi.examples.v1.Examples.BasicMessage.Builder): Dsl = Dsl(builder)
@@ -25,7 +25,7 @@ object BasicMessageKt {
     /**
      * <code>string text = 1;</code>
      */
-    var text: kotlin.String
+    public var text: kotlin.String
       @JvmName("getText")
       get() = _builder.getText()
       @JvmName("setText")
@@ -35,11 +35,11 @@ object BasicMessageKt {
     /**
      * <code>string text = 1;</code>
      */
-    fun clearText() {
+    public fun clearText() {
       _builder.clearText()
     }
   }
 }
 @kotlin.jvm.JvmSynthetic
-inline fun trinsic.okapi.examples.v1.Examples.BasicMessage.copy(block: trinsic.okapi.examples.v1.BasicMessageKt.Dsl.() -> Unit): trinsic.okapi.examples.v1.Examples.BasicMessage =
+public inline fun trinsic.okapi.examples.v1.Examples.BasicMessage.copy(block: trinsic.okapi.examples.v1.BasicMessageKt.Dsl.() -> kotlin.Unit): trinsic.okapi.examples.v1.Examples.BasicMessage =
   trinsic.okapi.examples.v1.BasicMessageKt.Dsl._create(this.toBuilder()).apply { block() }._build()

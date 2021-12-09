@@ -4,15 +4,15 @@
 package trinsic.okapi.transport.v1;
 
 @kotlin.jvm.JvmSynthetic
-inline fun packResponse(block: trinsic.okapi.transport.v1.PackResponseKt.Dsl.() -> Unit): trinsic.okapi.transport.v1.Transport.PackResponse =
+public inline fun packResponse(block: trinsic.okapi.transport.v1.PackResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.PackResponse =
   trinsic.okapi.transport.v1.PackResponseKt.Dsl._create(trinsic.okapi.transport.v1.Transport.PackResponse.newBuilder()).apply { block() }._build()
-object PackResponseKt {
+public object PackResponseKt {
   @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
   @com.google.protobuf.kotlin.ProtoDslMarker
-  class Dsl private constructor(
-    @kotlin.jvm.JvmField private val _builder: trinsic.okapi.transport.v1.Transport.PackResponse.Builder
+  public class Dsl private constructor(
+    private val _builder: trinsic.okapi.transport.v1.Transport.PackResponse.Builder
   ) {
-    companion object {
+    public companion object {
       @kotlin.jvm.JvmSynthetic
       @kotlin.PublishedApi
       internal fun _create(builder: trinsic.okapi.transport.v1.Transport.PackResponse.Builder): Dsl = Dsl(builder)
@@ -25,7 +25,7 @@ object PackResponseKt {
     /**
      * <code>.pbmse.v1.EncryptedMessage message = 1;</code>
      */
-    var message: trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage
+    public var message: trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage
       @JvmName("getMessage")
       get() = _builder.getMessage()
       @JvmName("setMessage")
@@ -35,18 +35,18 @@ object PackResponseKt {
     /**
      * <code>.pbmse.v1.EncryptedMessage message = 1;</code>
      */
-    fun clearMessage() {
+    public fun clearMessage() {
       _builder.clearMessage()
     }
     /**
      * <code>.pbmse.v1.EncryptedMessage message = 1;</code>
      * @return Whether the message field is set.
      */
-    fun hasMessage(): kotlin.Boolean {
+    public fun hasMessage(): kotlin.Boolean {
       return _builder.hasMessage()
     }
   }
 }
 @kotlin.jvm.JvmSynthetic
-inline fun trinsic.okapi.transport.v1.Transport.PackResponse.copy(block: trinsic.okapi.transport.v1.PackResponseKt.Dsl.() -> Unit): trinsic.okapi.transport.v1.Transport.PackResponse =
+public inline fun trinsic.okapi.transport.v1.Transport.PackResponse.copy(block: trinsic.okapi.transport.v1.PackResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.PackResponse =
   trinsic.okapi.transport.v1.PackResponseKt.Dsl._create(this.toBuilder()).apply { block() }._build()

@@ -4,15 +4,15 @@
 package trinsic.okapi.security.v1;
 
 @kotlin.jvm.JvmSynthetic
-inline fun unBlindOberonTokenResponse(block: trinsic.okapi.security.v1.UnBlindOberonTokenResponseKt.Dsl.() -> Unit): trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse =
+public inline fun unBlindOberonTokenResponse(block: trinsic.okapi.security.v1.UnBlindOberonTokenResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse =
   trinsic.okapi.security.v1.UnBlindOberonTokenResponseKt.Dsl._create(trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse.newBuilder()).apply { block() }._build()
-object UnBlindOberonTokenResponseKt {
+public object UnBlindOberonTokenResponseKt {
   @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
   @com.google.protobuf.kotlin.ProtoDslMarker
-  class Dsl private constructor(
-    @kotlin.jvm.JvmField private val _builder: trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse.Builder
+  public class Dsl private constructor(
+    private val _builder: trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse.Builder
   ) {
-    companion object {
+    public companion object {
       @kotlin.jvm.JvmSynthetic
       @kotlin.PublishedApi
       internal fun _create(builder: trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse.Builder): Dsl = Dsl(builder)
@@ -29,7 +29,7 @@ object UnBlindOberonTokenResponseKt {
      *
      * <code>bytes token = 1;</code>
      */
-    var token: com.google.protobuf.ByteString
+    public var token: com.google.protobuf.ByteString
       @JvmName("getToken")
       get() = _builder.getToken()
       @JvmName("setToken")
@@ -43,11 +43,11 @@ object UnBlindOberonTokenResponseKt {
      *
      * <code>bytes token = 1;</code>
      */
-    fun clearToken() {
+    public fun clearToken() {
       _builder.clearToken()
     }
   }
 }
 @kotlin.jvm.JvmSynthetic
-inline fun trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse.copy(block: trinsic.okapi.security.v1.UnBlindOberonTokenResponseKt.Dsl.() -> Unit): trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse =
+public inline fun trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse.copy(block: trinsic.okapi.security.v1.UnBlindOberonTokenResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse =
   trinsic.okapi.security.v1.UnBlindOberonTokenResponseKt.Dsl._create(this.toBuilder()).apply { block() }._build()

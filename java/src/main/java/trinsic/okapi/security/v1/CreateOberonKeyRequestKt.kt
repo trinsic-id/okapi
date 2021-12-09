@@ -4,15 +4,15 @@
 package trinsic.okapi.security.v1;
 
 @kotlin.jvm.JvmSynthetic
-inline fun createOberonKeyRequest(block: trinsic.okapi.security.v1.CreateOberonKeyRequestKt.Dsl.() -> Unit): trinsic.okapi.security.v1.Security.CreateOberonKeyRequest =
+public inline fun createOberonKeyRequest(block: trinsic.okapi.security.v1.CreateOberonKeyRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.security.v1.Security.CreateOberonKeyRequest =
   trinsic.okapi.security.v1.CreateOberonKeyRequestKt.Dsl._create(trinsic.okapi.security.v1.Security.CreateOberonKeyRequest.newBuilder()).apply { block() }._build()
-object CreateOberonKeyRequestKt {
+public object CreateOberonKeyRequestKt {
   @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
   @com.google.protobuf.kotlin.ProtoDslMarker
-  class Dsl private constructor(
-    @kotlin.jvm.JvmField private val _builder: trinsic.okapi.security.v1.Security.CreateOberonKeyRequest.Builder
+  public class Dsl private constructor(
+    private val _builder: trinsic.okapi.security.v1.Security.CreateOberonKeyRequest.Builder
   ) {
-    companion object {
+    public companion object {
       @kotlin.jvm.JvmSynthetic
       @kotlin.PublishedApi
       internal fun _create(builder: trinsic.okapi.security.v1.Security.CreateOberonKeyRequest.Builder): Dsl = Dsl(builder)
@@ -29,7 +29,7 @@ object CreateOberonKeyRequestKt {
      *
      * <code>bytes seed = 1;</code>
      */
-    var seed: com.google.protobuf.ByteString
+    public var seed: com.google.protobuf.ByteString
       @JvmName("getSeed")
       get() = _builder.getSeed()
       @JvmName("setSeed")
@@ -43,11 +43,11 @@ object CreateOberonKeyRequestKt {
      *
      * <code>bytes seed = 1;</code>
      */
-    fun clearSeed() {
+    public fun clearSeed() {
       _builder.clearSeed()
     }
   }
 }
 @kotlin.jvm.JvmSynthetic
-inline fun trinsic.okapi.security.v1.Security.CreateOberonKeyRequest.copy(block: trinsic.okapi.security.v1.CreateOberonKeyRequestKt.Dsl.() -> Unit): trinsic.okapi.security.v1.Security.CreateOberonKeyRequest =
+public inline fun trinsic.okapi.security.v1.Security.CreateOberonKeyRequest.copy(block: trinsic.okapi.security.v1.CreateOberonKeyRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.security.v1.Security.CreateOberonKeyRequest =
   trinsic.okapi.security.v1.CreateOberonKeyRequestKt.Dsl._create(this.toBuilder()).apply { block() }._build()

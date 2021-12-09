@@ -4,15 +4,15 @@
 package trinsic.okapi.transport.v1;
 
 @kotlin.jvm.JvmSynthetic
-inline fun signRequest(block: trinsic.okapi.transport.v1.SignRequestKt.Dsl.() -> Unit): trinsic.okapi.transport.v1.Transport.SignRequest =
+public inline fun signRequest(block: trinsic.okapi.transport.v1.SignRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.SignRequest =
   trinsic.okapi.transport.v1.SignRequestKt.Dsl._create(trinsic.okapi.transport.v1.Transport.SignRequest.newBuilder()).apply { block() }._build()
-object SignRequestKt {
+public object SignRequestKt {
   @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
   @com.google.protobuf.kotlin.ProtoDslMarker
-  class Dsl private constructor(
-    @kotlin.jvm.JvmField private val _builder: trinsic.okapi.transport.v1.Transport.SignRequest.Builder
+  public class Dsl private constructor(
+    private val _builder: trinsic.okapi.transport.v1.Transport.SignRequest.Builder
   ) {
-    companion object {
+    public companion object {
       @kotlin.jvm.JvmSynthetic
       @kotlin.PublishedApi
       internal fun _create(builder: trinsic.okapi.transport.v1.Transport.SignRequest.Builder): Dsl = Dsl(builder)
@@ -25,7 +25,7 @@ object SignRequestKt {
     /**
      * <code>bytes payload = 1;</code>
      */
-    var payload: com.google.protobuf.ByteString
+    public var payload: com.google.protobuf.ByteString
       @JvmName("getPayload")
       get() = _builder.getPayload()
       @JvmName("setPayload")
@@ -35,14 +35,14 @@ object SignRequestKt {
     /**
      * <code>bytes payload = 1;</code>
      */
-    fun clearPayload() {
+    public fun clearPayload() {
       _builder.clearPayload()
     }
 
     /**
      * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
      */
-    var key: trinsic.okapi.keys.v1.Keys.JsonWebKey
+    public var key: trinsic.okapi.keys.v1.Keys.JsonWebKey
       @JvmName("getKey")
       get() = _builder.getKey()
       @JvmName("setKey")
@@ -52,21 +52,21 @@ object SignRequestKt {
     /**
      * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
      */
-    fun clearKey() {
+    public fun clearKey() {
       _builder.clearKey()
     }
     /**
      * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
      * @return Whether the key field is set.
      */
-    fun hasKey(): kotlin.Boolean {
+    public fun hasKey(): kotlin.Boolean {
       return _builder.hasKey()
     }
 
     /**
      * <code>.pbmse.v1.SignedMessage append_to = 3;</code>
      */
-    var appendTo: trinsic.okapi.pbmse.v1.Pbmse.SignedMessage
+    public var appendTo: trinsic.okapi.pbmse.v1.Pbmse.SignedMessage
       @JvmName("getAppendTo")
       get() = _builder.getAppendTo()
       @JvmName("setAppendTo")
@@ -76,18 +76,18 @@ object SignRequestKt {
     /**
      * <code>.pbmse.v1.SignedMessage append_to = 3;</code>
      */
-    fun clearAppendTo() {
+    public fun clearAppendTo() {
       _builder.clearAppendTo()
     }
     /**
      * <code>.pbmse.v1.SignedMessage append_to = 3;</code>
      * @return Whether the appendTo field is set.
      */
-    fun hasAppendTo(): kotlin.Boolean {
+    public fun hasAppendTo(): kotlin.Boolean {
       return _builder.hasAppendTo()
     }
   }
 }
 @kotlin.jvm.JvmSynthetic
-inline fun trinsic.okapi.transport.v1.Transport.SignRequest.copy(block: trinsic.okapi.transport.v1.SignRequestKt.Dsl.() -> Unit): trinsic.okapi.transport.v1.Transport.SignRequest =
+public inline fun trinsic.okapi.transport.v1.Transport.SignRequest.copy(block: trinsic.okapi.transport.v1.SignRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.SignRequest =
   trinsic.okapi.transport.v1.SignRequestKt.Dsl._create(this.toBuilder()).apply { block() }._build()

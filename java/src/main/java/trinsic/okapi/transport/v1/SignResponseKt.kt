@@ -4,15 +4,15 @@
 package trinsic.okapi.transport.v1;
 
 @kotlin.jvm.JvmSynthetic
-inline fun signResponse(block: trinsic.okapi.transport.v1.SignResponseKt.Dsl.() -> Unit): trinsic.okapi.transport.v1.Transport.SignResponse =
+public inline fun signResponse(block: trinsic.okapi.transport.v1.SignResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.SignResponse =
   trinsic.okapi.transport.v1.SignResponseKt.Dsl._create(trinsic.okapi.transport.v1.Transport.SignResponse.newBuilder()).apply { block() }._build()
-object SignResponseKt {
+public object SignResponseKt {
   @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
   @com.google.protobuf.kotlin.ProtoDslMarker
-  class Dsl private constructor(
-    @kotlin.jvm.JvmField private val _builder: trinsic.okapi.transport.v1.Transport.SignResponse.Builder
+  public class Dsl private constructor(
+    private val _builder: trinsic.okapi.transport.v1.Transport.SignResponse.Builder
   ) {
-    companion object {
+    public companion object {
       @kotlin.jvm.JvmSynthetic
       @kotlin.PublishedApi
       internal fun _create(builder: trinsic.okapi.transport.v1.Transport.SignResponse.Builder): Dsl = Dsl(builder)
@@ -25,7 +25,7 @@ object SignResponseKt {
     /**
      * <code>.pbmse.v1.SignedMessage message = 1;</code>
      */
-    var message: trinsic.okapi.pbmse.v1.Pbmse.SignedMessage
+    public var message: trinsic.okapi.pbmse.v1.Pbmse.SignedMessage
       @JvmName("getMessage")
       get() = _builder.getMessage()
       @JvmName("setMessage")
@@ -35,18 +35,18 @@ object SignResponseKt {
     /**
      * <code>.pbmse.v1.SignedMessage message = 1;</code>
      */
-    fun clearMessage() {
+    public fun clearMessage() {
       _builder.clearMessage()
     }
     /**
      * <code>.pbmse.v1.SignedMessage message = 1;</code>
      * @return Whether the message field is set.
      */
-    fun hasMessage(): kotlin.Boolean {
+    public fun hasMessage(): kotlin.Boolean {
       return _builder.hasMessage()
     }
   }
 }
 @kotlin.jvm.JvmSynthetic
-inline fun trinsic.okapi.transport.v1.Transport.SignResponse.copy(block: trinsic.okapi.transport.v1.SignResponseKt.Dsl.() -> Unit): trinsic.okapi.transport.v1.Transport.SignResponse =
+public inline fun trinsic.okapi.transport.v1.Transport.SignResponse.copy(block: trinsic.okapi.transport.v1.SignResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.SignResponse =
   trinsic.okapi.transport.v1.SignResponseKt.Dsl._create(this.toBuilder()).apply { block() }._build()

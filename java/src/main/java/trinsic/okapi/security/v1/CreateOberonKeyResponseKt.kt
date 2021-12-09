@@ -4,15 +4,15 @@
 package trinsic.okapi.security.v1;
 
 @kotlin.jvm.JvmSynthetic
-inline fun createOberonKeyResponse(block: trinsic.okapi.security.v1.CreateOberonKeyResponseKt.Dsl.() -> Unit): trinsic.okapi.security.v1.Security.CreateOberonKeyResponse =
+public inline fun createOberonKeyResponse(block: trinsic.okapi.security.v1.CreateOberonKeyResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.security.v1.Security.CreateOberonKeyResponse =
   trinsic.okapi.security.v1.CreateOberonKeyResponseKt.Dsl._create(trinsic.okapi.security.v1.Security.CreateOberonKeyResponse.newBuilder()).apply { block() }._build()
-object CreateOberonKeyResponseKt {
+public object CreateOberonKeyResponseKt {
   @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
   @com.google.protobuf.kotlin.ProtoDslMarker
-  class Dsl private constructor(
-    @kotlin.jvm.JvmField private val _builder: trinsic.okapi.security.v1.Security.CreateOberonKeyResponse.Builder
+  public class Dsl private constructor(
+    private val _builder: trinsic.okapi.security.v1.Security.CreateOberonKeyResponse.Builder
   ) {
-    companion object {
+    public companion object {
       @kotlin.jvm.JvmSynthetic
       @kotlin.PublishedApi
       internal fun _create(builder: trinsic.okapi.security.v1.Security.CreateOberonKeyResponse.Builder): Dsl = Dsl(builder)
@@ -29,7 +29,7 @@ object CreateOberonKeyResponseKt {
      *
      * <code>bytes sk = 2;</code>
      */
-    var sk: com.google.protobuf.ByteString
+    public var sk: com.google.protobuf.ByteString
       @JvmName("getSk")
       get() = _builder.getSk()
       @JvmName("setSk")
@@ -43,7 +43,7 @@ object CreateOberonKeyResponseKt {
      *
      * <code>bytes sk = 2;</code>
      */
-    fun clearSk() {
+    public fun clearSk() {
       _builder.clearSk()
     }
 
@@ -54,7 +54,7 @@ object CreateOberonKeyResponseKt {
      *
      * <code>bytes pk = 3;</code>
      */
-    var pk: com.google.protobuf.ByteString
+    public var pk: com.google.protobuf.ByteString
       @JvmName("getPk")
       get() = _builder.getPk()
       @JvmName("setPk")
@@ -68,11 +68,11 @@ object CreateOberonKeyResponseKt {
      *
      * <code>bytes pk = 3;</code>
      */
-    fun clearPk() {
+    public fun clearPk() {
       _builder.clearPk()
     }
   }
 }
 @kotlin.jvm.JvmSynthetic
-inline fun trinsic.okapi.security.v1.Security.CreateOberonKeyResponse.copy(block: trinsic.okapi.security.v1.CreateOberonKeyResponseKt.Dsl.() -> Unit): trinsic.okapi.security.v1.Security.CreateOberonKeyResponse =
+public inline fun trinsic.okapi.security.v1.Security.CreateOberonKeyResponse.copy(block: trinsic.okapi.security.v1.CreateOberonKeyResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.security.v1.Security.CreateOberonKeyResponse =
   trinsic.okapi.security.v1.CreateOberonKeyResponseKt.Dsl._create(this.toBuilder()).apply { block() }._build()

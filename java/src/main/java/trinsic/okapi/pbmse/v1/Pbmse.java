@@ -1900,10 +1900,10 @@ public final class Pbmse {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getAlgorithmBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(algorithm_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, algorithm_);
       }
-      if (!getKeyIdBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(keyId_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, keyId_);
       }
       unknownFields.writeTo(output);
@@ -1915,10 +1915,10 @@ public final class Pbmse {
       if (size != -1) return size;
 
       size = 0;
-      if (!getAlgorithmBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(algorithm_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, algorithm_);
       }
-      if (!getKeyIdBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(keyId_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, keyId_);
       }
       size += unknownFields.getSerializedSize();
@@ -3787,10 +3787,10 @@ public final class Pbmse {
       if (algorithm_ != trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm.ENCRYPTION_ALGORITHM_UNSPECIFIED.getNumber()) {
         output.writeEnum(2, algorithm_);
       }
-      if (!getKeyIdBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(keyId_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, keyId_);
       }
-      if (!getSenderKeyIdBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(senderKeyId_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, senderKeyId_);
       }
       unknownFields.writeTo(output);
@@ -3810,10 +3810,10 @@ public final class Pbmse {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(2, algorithm_);
       }
-      if (!getKeyIdBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(keyId_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, keyId_);
       }
-      if (!getSenderKeyIdBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(senderKeyId_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, senderKeyId_);
       }
       size += unknownFields.getSerializedSize();

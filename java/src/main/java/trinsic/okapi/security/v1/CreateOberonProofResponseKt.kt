@@ -4,15 +4,15 @@
 package trinsic.okapi.security.v1;
 
 @kotlin.jvm.JvmSynthetic
-inline fun createOberonProofResponse(block: trinsic.okapi.security.v1.CreateOberonProofResponseKt.Dsl.() -> Unit): trinsic.okapi.security.v1.Security.CreateOberonProofResponse =
+public inline fun createOberonProofResponse(block: trinsic.okapi.security.v1.CreateOberonProofResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.security.v1.Security.CreateOberonProofResponse =
   trinsic.okapi.security.v1.CreateOberonProofResponseKt.Dsl._create(trinsic.okapi.security.v1.Security.CreateOberonProofResponse.newBuilder()).apply { block() }._build()
-object CreateOberonProofResponseKt {
+public object CreateOberonProofResponseKt {
   @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
   @com.google.protobuf.kotlin.ProtoDslMarker
-  class Dsl private constructor(
-    @kotlin.jvm.JvmField private val _builder: trinsic.okapi.security.v1.Security.CreateOberonProofResponse.Builder
+  public class Dsl private constructor(
+    private val _builder: trinsic.okapi.security.v1.Security.CreateOberonProofResponse.Builder
   ) {
-    companion object {
+    public companion object {
       @kotlin.jvm.JvmSynthetic
       @kotlin.PublishedApi
       internal fun _create(builder: trinsic.okapi.security.v1.Security.CreateOberonProofResponse.Builder): Dsl = Dsl(builder)
@@ -29,7 +29,7 @@ object CreateOberonProofResponseKt {
      *
      * <code>bytes proof = 2;</code>
      */
-    var proof: com.google.protobuf.ByteString
+    public var proof: com.google.protobuf.ByteString
       @JvmName("getProof")
       get() = _builder.getProof()
       @JvmName("setProof")
@@ -43,11 +43,11 @@ object CreateOberonProofResponseKt {
      *
      * <code>bytes proof = 2;</code>
      */
-    fun clearProof() {
+    public fun clearProof() {
       _builder.clearProof()
     }
   }
 }
 @kotlin.jvm.JvmSynthetic
-inline fun trinsic.okapi.security.v1.Security.CreateOberonProofResponse.copy(block: trinsic.okapi.security.v1.CreateOberonProofResponseKt.Dsl.() -> Unit): trinsic.okapi.security.v1.Security.CreateOberonProofResponse =
+public inline fun trinsic.okapi.security.v1.Security.CreateOberonProofResponse.copy(block: trinsic.okapi.security.v1.CreateOberonProofResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.security.v1.Security.CreateOberonProofResponse =
   trinsic.okapi.security.v1.CreateOberonProofResponseKt.Dsl._create(this.toBuilder()).apply { block() }._build()
