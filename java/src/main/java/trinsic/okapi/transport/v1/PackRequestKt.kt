@@ -4,15 +4,15 @@
 package trinsic.okapi.transport.v1;
 
 @kotlin.jvm.JvmSynthetic
-inline fun packRequest(block: trinsic.okapi.transport.v1.PackRequestKt.Dsl.() -> Unit): trinsic.okapi.transport.v1.Transport.PackRequest =
+public inline fun packRequest(block: trinsic.okapi.transport.v1.PackRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.PackRequest =
   trinsic.okapi.transport.v1.PackRequestKt.Dsl._create(trinsic.okapi.transport.v1.Transport.PackRequest.newBuilder()).apply { block() }._build()
-object PackRequestKt {
+public object PackRequestKt {
   @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
   @com.google.protobuf.kotlin.ProtoDslMarker
-  class Dsl private constructor(
-    @kotlin.jvm.JvmField private val _builder: trinsic.okapi.transport.v1.Transport.PackRequest.Builder
+  public class Dsl private constructor(
+    private val _builder: trinsic.okapi.transport.v1.Transport.PackRequest.Builder
   ) {
-    companion object {
+    public companion object {
       @kotlin.jvm.JvmSynthetic
       @kotlin.PublishedApi
       internal fun _create(builder: trinsic.okapi.transport.v1.Transport.PackRequest.Builder): Dsl = Dsl(builder)
@@ -25,7 +25,7 @@ object PackRequestKt {
     /**
      * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
      */
-    var senderKey: trinsic.okapi.keys.v1.Keys.JsonWebKey
+    public var senderKey: trinsic.okapi.keys.v1.Keys.JsonWebKey
       @JvmName("getSenderKey")
       get() = _builder.getSenderKey()
       @JvmName("setSenderKey")
@@ -35,21 +35,21 @@ object PackRequestKt {
     /**
      * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
      */
-    fun clearSenderKey() {
+    public fun clearSenderKey() {
       _builder.clearSenderKey()
     }
     /**
      * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
      * @return Whether the senderKey field is set.
      */
-    fun hasSenderKey(): kotlin.Boolean {
+    public fun hasSenderKey(): kotlin.Boolean {
       return _builder.hasSenderKey()
     }
 
     /**
      * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
      */
-    var receiverKey: trinsic.okapi.keys.v1.Keys.JsonWebKey
+    public var receiverKey: trinsic.okapi.keys.v1.Keys.JsonWebKey
       @JvmName("getReceiverKey")
       get() = _builder.getReceiverKey()
       @JvmName("setReceiverKey")
@@ -59,21 +59,21 @@ object PackRequestKt {
     /**
      * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
      */
-    fun clearReceiverKey() {
+    public fun clearReceiverKey() {
       _builder.clearReceiverKey()
     }
     /**
      * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
      * @return Whether the receiverKey field is set.
      */
-    fun hasReceiverKey(): kotlin.Boolean {
+    public fun hasReceiverKey(): kotlin.Boolean {
       return _builder.hasReceiverKey()
     }
 
     /**
      * <code>bytes associated_data = 3;</code>
      */
-    var associatedData: com.google.protobuf.ByteString
+    public var associatedData: com.google.protobuf.ByteString
       @JvmName("getAssociatedData")
       get() = _builder.getAssociatedData()
       @JvmName("setAssociatedData")
@@ -83,14 +83,14 @@ object PackRequestKt {
     /**
      * <code>bytes associated_data = 3;</code>
      */
-    fun clearAssociatedData() {
+    public fun clearAssociatedData() {
       _builder.clearAssociatedData()
     }
 
     /**
      * <code>bytes plaintext = 4;</code>
      */
-    var plaintext: com.google.protobuf.ByteString
+    public var plaintext: com.google.protobuf.ByteString
       @JvmName("getPlaintext")
       get() = _builder.getPlaintext()
       @JvmName("setPlaintext")
@@ -100,14 +100,14 @@ object PackRequestKt {
     /**
      * <code>bytes plaintext = 4;</code>
      */
-    fun clearPlaintext() {
+    public fun clearPlaintext() {
       _builder.clearPlaintext()
     }
 
     /**
      * <code>.pbmse.v1.EncryptionMode mode = 5;</code>
      */
-    var mode: trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode
+    public var mode: trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode
       @JvmName("getMode")
       get() = _builder.getMode()
       @JvmName("setMode")
@@ -117,14 +117,14 @@ object PackRequestKt {
     /**
      * <code>.pbmse.v1.EncryptionMode mode = 5;</code>
      */
-    fun clearMode() {
+    public fun clearMode() {
       _builder.clearMode()
     }
 
     /**
      * <code>.pbmse.v1.EncryptionAlgorithm algorithm = 6;</code>
      */
-    var algorithm: trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm
+    public var algorithm: trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm
       @JvmName("getAlgorithm")
       get() = _builder.getAlgorithm()
       @JvmName("setAlgorithm")
@@ -134,11 +134,11 @@ object PackRequestKt {
     /**
      * <code>.pbmse.v1.EncryptionAlgorithm algorithm = 6;</code>
      */
-    fun clearAlgorithm() {
+    public fun clearAlgorithm() {
       _builder.clearAlgorithm()
     }
   }
 }
 @kotlin.jvm.JvmSynthetic
-inline fun trinsic.okapi.transport.v1.Transport.PackRequest.copy(block: trinsic.okapi.transport.v1.PackRequestKt.Dsl.() -> Unit): trinsic.okapi.transport.v1.Transport.PackRequest =
+public inline fun trinsic.okapi.transport.v1.Transport.PackRequest.copy(block: trinsic.okapi.transport.v1.PackRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.PackRequest =
   trinsic.okapi.transport.v1.PackRequestKt.Dsl._create(this.toBuilder()).apply { block() }._build()

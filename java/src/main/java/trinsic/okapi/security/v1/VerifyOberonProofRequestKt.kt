@@ -4,15 +4,15 @@
 package trinsic.okapi.security.v1;
 
 @kotlin.jvm.JvmSynthetic
-inline fun verifyOberonProofRequest(block: trinsic.okapi.security.v1.VerifyOberonProofRequestKt.Dsl.() -> Unit): trinsic.okapi.security.v1.Security.VerifyOberonProofRequest =
+public inline fun verifyOberonProofRequest(block: trinsic.okapi.security.v1.VerifyOberonProofRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.security.v1.Security.VerifyOberonProofRequest =
   trinsic.okapi.security.v1.VerifyOberonProofRequestKt.Dsl._create(trinsic.okapi.security.v1.Security.VerifyOberonProofRequest.newBuilder()).apply { block() }._build()
-object VerifyOberonProofRequestKt {
+public object VerifyOberonProofRequestKt {
   @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
   @com.google.protobuf.kotlin.ProtoDslMarker
-  class Dsl private constructor(
-    @kotlin.jvm.JvmField private val _builder: trinsic.okapi.security.v1.Security.VerifyOberonProofRequest.Builder
+  public class Dsl private constructor(
+    private val _builder: trinsic.okapi.security.v1.Security.VerifyOberonProofRequest.Builder
   ) {
-    companion object {
+    public companion object {
       @kotlin.jvm.JvmSynthetic
       @kotlin.PublishedApi
       internal fun _create(builder: trinsic.okapi.security.v1.Security.VerifyOberonProofRequest.Builder): Dsl = Dsl(builder)
@@ -29,7 +29,7 @@ object VerifyOberonProofRequestKt {
      *
      * <code>bytes proof = 1;</code>
      */
-    var proof: com.google.protobuf.ByteString
+    public var proof: com.google.protobuf.ByteString
       @JvmName("getProof")
       get() = _builder.getProof()
       @JvmName("setProof")
@@ -43,7 +43,7 @@ object VerifyOberonProofRequestKt {
      *
      * <code>bytes proof = 1;</code>
      */
-    fun clearProof() {
+    public fun clearProof() {
       _builder.clearProof()
     }
 
@@ -54,7 +54,7 @@ object VerifyOberonProofRequestKt {
      *
      * <code>bytes data = 2;</code>
      */
-    var data: com.google.protobuf.ByteString
+    public var data: com.google.protobuf.ByteString
       @JvmName("getData")
       get() = _builder.getData()
       @JvmName("setData")
@@ -68,7 +68,7 @@ object VerifyOberonProofRequestKt {
      *
      * <code>bytes data = 2;</code>
      */
-    fun clearData() {
+    public fun clearData() {
       _builder.clearData()
     }
 
@@ -79,7 +79,7 @@ object VerifyOberonProofRequestKt {
      *
      * <code>bytes nonce = 3;</code>
      */
-    var nonce: com.google.protobuf.ByteString
+    public var nonce: com.google.protobuf.ByteString
       @JvmName("getNonce")
       get() = _builder.getNonce()
       @JvmName("setNonce")
@@ -93,7 +93,7 @@ object VerifyOberonProofRequestKt {
      *
      * <code>bytes nonce = 3;</code>
      */
-    fun clearNonce() {
+    public fun clearNonce() {
       _builder.clearNonce()
     }
 
@@ -104,7 +104,7 @@ object VerifyOberonProofRequestKt {
      *
      * <code>bytes pk = 4;</code>
      */
-    var pk: com.google.protobuf.ByteString
+    public var pk: com.google.protobuf.ByteString
       @JvmName("getPk")
       get() = _builder.getPk()
       @JvmName("setPk")
@@ -118,11 +118,11 @@ object VerifyOberonProofRequestKt {
      *
      * <code>bytes pk = 4;</code>
      */
-    fun clearPk() {
+    public fun clearPk() {
       _builder.clearPk()
     }
   }
 }
 @kotlin.jvm.JvmSynthetic
-inline fun trinsic.okapi.security.v1.Security.VerifyOberonProofRequest.copy(block: trinsic.okapi.security.v1.VerifyOberonProofRequestKt.Dsl.() -> Unit): trinsic.okapi.security.v1.Security.VerifyOberonProofRequest =
+public inline fun trinsic.okapi.security.v1.Security.VerifyOberonProofRequest.copy(block: trinsic.okapi.security.v1.VerifyOberonProofRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.security.v1.Security.VerifyOberonProofRequest =
   trinsic.okapi.security.v1.VerifyOberonProofRequestKt.Dsl._create(this.toBuilder()).apply { block() }._build()

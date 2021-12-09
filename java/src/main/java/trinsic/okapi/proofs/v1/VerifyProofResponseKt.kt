@@ -4,15 +4,15 @@
 package trinsic.okapi.proofs.v1;
 
 @kotlin.jvm.JvmSynthetic
-inline fun verifyProofResponse(block: trinsic.okapi.proofs.v1.VerifyProofResponseKt.Dsl.() -> Unit): trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse =
+public inline fun verifyProofResponse(block: trinsic.okapi.proofs.v1.VerifyProofResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse =
   trinsic.okapi.proofs.v1.VerifyProofResponseKt.Dsl._create(trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse.newBuilder()).apply { block() }._build()
-object VerifyProofResponseKt {
+public object VerifyProofResponseKt {
   @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
   @com.google.protobuf.kotlin.ProtoDslMarker
-  class Dsl private constructor(
-    @kotlin.jvm.JvmField private val _builder: trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse.Builder
+  public class Dsl private constructor(
+    private val _builder: trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse.Builder
   ) {
-    companion object {
+    public companion object {
       @kotlin.jvm.JvmSynthetic
       @kotlin.PublishedApi
       internal fun _create(builder: trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse.Builder): Dsl = Dsl(builder)
@@ -24,5 +24,5 @@ object VerifyProofResponseKt {
   }
 }
 @kotlin.jvm.JvmSynthetic
-inline fun trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse.copy(block: trinsic.okapi.proofs.v1.VerifyProofResponseKt.Dsl.() -> Unit): trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse =
+public inline fun trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse.copy(block: trinsic.okapi.proofs.v1.VerifyProofResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse =
   trinsic.okapi.proofs.v1.VerifyProofResponseKt.Dsl._create(this.toBuilder()).apply { block() }._build()

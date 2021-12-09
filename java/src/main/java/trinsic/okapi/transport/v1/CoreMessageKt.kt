@@ -4,15 +4,15 @@
 package trinsic.okapi.transport.v1;
 
 @kotlin.jvm.JvmSynthetic
-inline fun coreMessage(block: trinsic.okapi.transport.v1.CoreMessageKt.Dsl.() -> Unit): trinsic.okapi.transport.v1.Transport.CoreMessage =
+public inline fun coreMessage(block: trinsic.okapi.transport.v1.CoreMessageKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.CoreMessage =
   trinsic.okapi.transport.v1.CoreMessageKt.Dsl._create(trinsic.okapi.transport.v1.Transport.CoreMessage.newBuilder()).apply { block() }._build()
-object CoreMessageKt {
+public object CoreMessageKt {
   @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
   @com.google.protobuf.kotlin.ProtoDslMarker
-  class Dsl private constructor(
-    @kotlin.jvm.JvmField private val _builder: trinsic.okapi.transport.v1.Transport.CoreMessage.Builder
+  public class Dsl private constructor(
+    private val _builder: trinsic.okapi.transport.v1.Transport.CoreMessage.Builder
   ) {
-    companion object {
+    public companion object {
       @kotlin.jvm.JvmSynthetic
       @kotlin.PublishedApi
       internal fun _create(builder: trinsic.okapi.transport.v1.Transport.CoreMessage.Builder): Dsl = Dsl(builder)
@@ -25,7 +25,7 @@ object CoreMessageKt {
     /**
      * <code>string id = 1;</code>
      */
-    var id: kotlin.String
+    public var id: kotlin.String
       @JvmName("getId")
       get() = _builder.getId()
       @JvmName("setId")
@@ -35,14 +35,14 @@ object CoreMessageKt {
     /**
      * <code>string id = 1;</code>
      */
-    fun clearId() {
+    public fun clearId() {
       _builder.clearId()
     }
 
     /**
      * <code>string type = 2;</code>
      */
-    var type: kotlin.String
+    public var type: kotlin.String
       @JvmName("getType")
       get() = _builder.getType()
       @JvmName("setType")
@@ -52,14 +52,14 @@ object CoreMessageKt {
     /**
      * <code>string type = 2;</code>
      */
-    fun clearType() {
+    public fun clearType() {
       _builder.clearType()
     }
 
     /**
      * <code>bytes body = 3;</code>
      */
-    var body: com.google.protobuf.ByteString
+    public var body: com.google.protobuf.ByteString
       @JvmName("getBody")
       get() = _builder.getBody()
       @JvmName("setBody")
@@ -69,7 +69,7 @@ object CoreMessageKt {
     /**
      * <code>bytes body = 3;</code>
      */
-    fun clearBody() {
+    public fun clearBody() {
       _builder.clearBody()
     }
 
@@ -78,13 +78,13 @@ object CoreMessageKt {
      * generics.
      */
     @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
-    class ToProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    public class ToProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
     /**
      * <code>repeated string to = 4;</code>
      * @return A list containing the to.
      */
-    val to: com.google.protobuf.kotlin.DslList<kotlin.String, ToProxy>
-      @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    public val to: com.google.protobuf.kotlin.DslList<kotlin.String, ToProxy>
+      @kotlin.jvm.JvmSynthetic
       get() = com.google.protobuf.kotlin.DslList(
         _builder.getToList()
       )
@@ -94,7 +94,7 @@ object CoreMessageKt {
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("addTo")
-    fun com.google.protobuf.kotlin.DslList<kotlin.String, ToProxy>.add(value: kotlin.String) {
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, ToProxy>.add(value: kotlin.String) {
       _builder.addTo(value)
     }
     /**
@@ -103,8 +103,9 @@ object CoreMessageKt {
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("plusAssignTo")
-    operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ToProxy>.plusAssign(value: kotlin.String) {
-      _builder.addTo(value)
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ToProxy>.plusAssign(value: kotlin.String) {
+      add(value)
     }
     /**
      * <code>repeated string to = 4;</code>
@@ -112,7 +113,7 @@ object CoreMessageKt {
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("addAllTo")
-    fun com.google.protobuf.kotlin.DslList<kotlin.String, ToProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, ToProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
       _builder.addAllTo(values)
     }
     /**
@@ -121,8 +122,9 @@ object CoreMessageKt {
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("plusAssignAllTo")
-    operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ToProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
-      _builder.addAllTo(values)
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ToProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
+      addAll(values)
     }
     /**
      * <code>repeated string to = 4;</code>
@@ -131,20 +133,20 @@ object CoreMessageKt {
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("setTo")
-    operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ToProxy>.set(index: kotlin.Int, value: kotlin.String) {
+    public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ToProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setTo(index, value)
     }/**
      * <code>repeated string to = 4;</code>
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("clearTo")
-    fun com.google.protobuf.kotlin.DslList<kotlin.String, ToProxy>.clear() {
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, ToProxy>.clear() {
       _builder.clearTo()
     }
     /**
      * <code>string from = 5;</code>
      */
-    var from: kotlin.String
+    public var from: kotlin.String
       @JvmName("getFrom")
       get() = _builder.getFrom()
       @JvmName("setFrom")
@@ -154,14 +156,14 @@ object CoreMessageKt {
     /**
      * <code>string from = 5;</code>
      */
-    fun clearFrom() {
+    public fun clearFrom() {
       _builder.clearFrom()
     }
 
     /**
      * <code>int64 created = 6 [json_name = "created_time"];</code>
      */
-    var created: kotlin.Long
+    public var created: kotlin.Long
       @JvmName("getCreated")
       get() = _builder.getCreated()
       @JvmName("setCreated")
@@ -171,14 +173,14 @@ object CoreMessageKt {
     /**
      * <code>int64 created = 6 [json_name = "created_time"];</code>
      */
-    fun clearCreated() {
+    public fun clearCreated() {
       _builder.clearCreated()
     }
 
     /**
      * <code>int64 expires = 7 [json_name = "expires_time"];</code>
      */
-    var expires: kotlin.Long
+    public var expires: kotlin.Long
       @JvmName("getExpires")
       get() = _builder.getExpires()
       @JvmName("setExpires")
@@ -188,11 +190,11 @@ object CoreMessageKt {
     /**
      * <code>int64 expires = 7 [json_name = "expires_time"];</code>
      */
-    fun clearExpires() {
+    public fun clearExpires() {
       _builder.clearExpires()
     }
   }
 }
 @kotlin.jvm.JvmSynthetic
-inline fun trinsic.okapi.transport.v1.Transport.CoreMessage.copy(block: trinsic.okapi.transport.v1.CoreMessageKt.Dsl.() -> Unit): trinsic.okapi.transport.v1.Transport.CoreMessage =
+public inline fun trinsic.okapi.transport.v1.Transport.CoreMessage.copy(block: trinsic.okapi.transport.v1.CoreMessageKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.CoreMessage =
   trinsic.okapi.transport.v1.CoreMessageKt.Dsl._create(this.toBuilder()).apply { block() }._build()

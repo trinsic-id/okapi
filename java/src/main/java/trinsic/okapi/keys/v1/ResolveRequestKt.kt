@@ -4,15 +4,15 @@
 package trinsic.okapi.keys.v1;
 
 @kotlin.jvm.JvmSynthetic
-inline fun resolveRequest(block: trinsic.okapi.keys.v1.ResolveRequestKt.Dsl.() -> Unit): trinsic.okapi.keys.v1.Keys.ResolveRequest =
+public inline fun resolveRequest(block: trinsic.okapi.keys.v1.ResolveRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.keys.v1.Keys.ResolveRequest =
   trinsic.okapi.keys.v1.ResolveRequestKt.Dsl._create(trinsic.okapi.keys.v1.Keys.ResolveRequest.newBuilder()).apply { block() }._build()
-object ResolveRequestKt {
+public object ResolveRequestKt {
   @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
   @com.google.protobuf.kotlin.ProtoDslMarker
-  class Dsl private constructor(
-    @kotlin.jvm.JvmField private val _builder: trinsic.okapi.keys.v1.Keys.ResolveRequest.Builder
+  public class Dsl private constructor(
+    private val _builder: trinsic.okapi.keys.v1.Keys.ResolveRequest.Builder
   ) {
-    companion object {
+    public companion object {
       @kotlin.jvm.JvmSynthetic
       @kotlin.PublishedApi
       internal fun _create(builder: trinsic.okapi.keys.v1.Keys.ResolveRequest.Builder): Dsl = Dsl(builder)
@@ -25,7 +25,7 @@ object ResolveRequestKt {
     /**
      * <code>string did = 1;</code>
      */
-    var did: kotlin.String
+    public var did: kotlin.String
       @JvmName("getDid")
       get() = _builder.getDid()
       @JvmName("setDid")
@@ -35,11 +35,11 @@ object ResolveRequestKt {
     /**
      * <code>string did = 1;</code>
      */
-    fun clearDid() {
+    public fun clearDid() {
       _builder.clearDid()
     }
   }
 }
 @kotlin.jvm.JvmSynthetic
-inline fun trinsic.okapi.keys.v1.Keys.ResolveRequest.copy(block: trinsic.okapi.keys.v1.ResolveRequestKt.Dsl.() -> Unit): trinsic.okapi.keys.v1.Keys.ResolveRequest =
+public inline fun trinsic.okapi.keys.v1.Keys.ResolveRequest.copy(block: trinsic.okapi.keys.v1.ResolveRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.keys.v1.Keys.ResolveRequest =
   trinsic.okapi.keys.v1.ResolveRequestKt.Dsl._create(this.toBuilder()).apply { block() }._build()

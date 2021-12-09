@@ -4,6 +4,7 @@
 require 'google/protobuf'
 
 require 'pbmse/v1/pbmse_pb'
+
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("okapi/examples/v1/examples.proto", :syntax => :proto3) do
     add_message "okapi.examples.v1.BasicMessage" do

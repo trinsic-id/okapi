@@ -4,15 +4,15 @@
 package trinsic.okapi.security.v1;
 
 @kotlin.jvm.JvmSynthetic
-inline fun verifyOberonProofResponse(block: trinsic.okapi.security.v1.VerifyOberonProofResponseKt.Dsl.() -> Unit): trinsic.okapi.security.v1.Security.VerifyOberonProofResponse =
+public inline fun verifyOberonProofResponse(block: trinsic.okapi.security.v1.VerifyOberonProofResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.security.v1.Security.VerifyOberonProofResponse =
   trinsic.okapi.security.v1.VerifyOberonProofResponseKt.Dsl._create(trinsic.okapi.security.v1.Security.VerifyOberonProofResponse.newBuilder()).apply { block() }._build()
-object VerifyOberonProofResponseKt {
+public object VerifyOberonProofResponseKt {
   @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
   @com.google.protobuf.kotlin.ProtoDslMarker
-  class Dsl private constructor(
-    @kotlin.jvm.JvmField private val _builder: trinsic.okapi.security.v1.Security.VerifyOberonProofResponse.Builder
+  public class Dsl private constructor(
+    private val _builder: trinsic.okapi.security.v1.Security.VerifyOberonProofResponse.Builder
   ) {
-    companion object {
+    public companion object {
       @kotlin.jvm.JvmSynthetic
       @kotlin.PublishedApi
       internal fun _create(builder: trinsic.okapi.security.v1.Security.VerifyOberonProofResponse.Builder): Dsl = Dsl(builder)
@@ -29,7 +29,7 @@ object VerifyOberonProofResponseKt {
      *
      * <code>bool valid = 1;</code>
      */
-    var valid: kotlin.Boolean
+    public var valid: kotlin.Boolean
       @JvmName("getValid")
       get() = _builder.getValid()
       @JvmName("setValid")
@@ -43,11 +43,11 @@ object VerifyOberonProofResponseKt {
      *
      * <code>bool valid = 1;</code>
      */
-    fun clearValid() {
+    public fun clearValid() {
       _builder.clearValid()
     }
   }
 }
 @kotlin.jvm.JvmSynthetic
-inline fun trinsic.okapi.security.v1.Security.VerifyOberonProofResponse.copy(block: trinsic.okapi.security.v1.VerifyOberonProofResponseKt.Dsl.() -> Unit): trinsic.okapi.security.v1.Security.VerifyOberonProofResponse =
+public inline fun trinsic.okapi.security.v1.Security.VerifyOberonProofResponse.copy(block: trinsic.okapi.security.v1.VerifyOberonProofResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.security.v1.Security.VerifyOberonProofResponse =
   trinsic.okapi.security.v1.VerifyOberonProofResponseKt.Dsl._create(this.toBuilder()).apply { block() }._build()

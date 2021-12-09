@@ -4,15 +4,15 @@
 package trinsic.okapi.pbmse.v1;
 
 @kotlin.jvm.JvmSynthetic
-inline fun encryptedMessage(block: trinsic.okapi.pbmse.v1.EncryptedMessageKt.Dsl.() -> Unit): trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage =
+public inline fun encryptedMessage(block: trinsic.okapi.pbmse.v1.EncryptedMessageKt.Dsl.() -> kotlin.Unit): trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage =
   trinsic.okapi.pbmse.v1.EncryptedMessageKt.Dsl._create(trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.newBuilder()).apply { block() }._build()
-object EncryptedMessageKt {
+public object EncryptedMessageKt {
   @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
   @com.google.protobuf.kotlin.ProtoDslMarker
-  class Dsl private constructor(
-    @kotlin.jvm.JvmField private val _builder: trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.Builder
+  public class Dsl private constructor(
+    private val _builder: trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.Builder
   ) {
-    companion object {
+    public companion object {
       @kotlin.jvm.JvmSynthetic
       @kotlin.PublishedApi
       internal fun _create(builder: trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.Builder): Dsl = Dsl(builder)
@@ -25,7 +25,7 @@ object EncryptedMessageKt {
     /**
      * <code>bytes iv = 1 [json_name = "iv"];</code>
      */
-    var iv: com.google.protobuf.ByteString
+    public var iv: com.google.protobuf.ByteString
       @JvmName("getIv")
       get() = _builder.getIv()
       @JvmName("setIv")
@@ -35,14 +35,14 @@ object EncryptedMessageKt {
     /**
      * <code>bytes iv = 1 [json_name = "iv"];</code>
      */
-    fun clearIv() {
+    public fun clearIv() {
       _builder.clearIv()
     }
 
     /**
      * <code>bytes aad = 2 [json_name = "aad"];</code>
      */
-    var aad: com.google.protobuf.ByteString
+    public var aad: com.google.protobuf.ByteString
       @JvmName("getAad")
       get() = _builder.getAad()
       @JvmName("setAad")
@@ -52,14 +52,14 @@ object EncryptedMessageKt {
     /**
      * <code>bytes aad = 2 [json_name = "aad"];</code>
      */
-    fun clearAad() {
+    public fun clearAad() {
       _builder.clearAad()
     }
 
     /**
      * <code>bytes ciphertext = 3 [json_name = "ciphertext"];</code>
      */
-    var ciphertext: com.google.protobuf.ByteString
+    public var ciphertext: com.google.protobuf.ByteString
       @JvmName("getCiphertext")
       get() = _builder.getCiphertext()
       @JvmName("setCiphertext")
@@ -69,14 +69,14 @@ object EncryptedMessageKt {
     /**
      * <code>bytes ciphertext = 3 [json_name = "ciphertext"];</code>
      */
-    fun clearCiphertext() {
+    public fun clearCiphertext() {
       _builder.clearCiphertext()
     }
 
     /**
      * <code>bytes tag = 4;</code>
      */
-    var tag: com.google.protobuf.ByteString
+    public var tag: com.google.protobuf.ByteString
       @JvmName("getTag")
       get() = _builder.getTag()
       @JvmName("setTag")
@@ -86,7 +86,7 @@ object EncryptedMessageKt {
     /**
      * <code>bytes tag = 4;</code>
      */
-    fun clearTag() {
+    public fun clearTag() {
       _builder.clearTag()
     }
 
@@ -95,11 +95,11 @@ object EncryptedMessageKt {
      * generics.
      */
     @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
-    class RecipientsProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    public class RecipientsProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
     /**
      * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
      */
-     val recipients: com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient, RecipientsProxy>
+     public val recipients: com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient, RecipientsProxy>
       @kotlin.jvm.JvmSynthetic
       get() = com.google.protobuf.kotlin.DslList(
         _builder.getRecipientsList()
@@ -110,7 +110,7 @@ object EncryptedMessageKt {
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("addRecipients")
-    fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient, RecipientsProxy>.add(value: trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient) {
+    public fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient, RecipientsProxy>.add(value: trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient) {
       _builder.addRecipients(value)
     }/**
      * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
@@ -118,7 +118,8 @@ object EncryptedMessageKt {
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("plusAssignRecipients")
-    inline operator fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient, RecipientsProxy>.plusAssign(value: trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient) {
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient, RecipientsProxy>.plusAssign(value: trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient) {
       add(value)
     }/**
      * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
@@ -126,7 +127,7 @@ object EncryptedMessageKt {
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("addAllRecipients")
-    fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient, RecipientsProxy>.addAll(values: kotlin.collections.Iterable<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient>) {
+    public fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient, RecipientsProxy>.addAll(values: kotlin.collections.Iterable<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient>) {
       _builder.addAllRecipients(values)
     }/**
      * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
@@ -134,7 +135,8 @@ object EncryptedMessageKt {
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("plusAssignAllRecipients")
-    inline operator fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient, RecipientsProxy>.plusAssign(values: kotlin.collections.Iterable<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient>) {
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient, RecipientsProxy>.plusAssign(values: kotlin.collections.Iterable<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient>) {
       addAll(values)
     }/**
      * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
@@ -143,17 +145,17 @@ object EncryptedMessageKt {
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("setRecipients")
-    operator fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient, RecipientsProxy>.set(index: kotlin.Int, value: trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient) {
+    public operator fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient, RecipientsProxy>.set(index: kotlin.Int, value: trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient) {
       _builder.setRecipients(index, value)
     }/**
      * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("clearRecipients")
-    fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient, RecipientsProxy>.clear() {
+    public fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient, RecipientsProxy>.clear() {
       _builder.clearRecipients()
     }}
 }
 @kotlin.jvm.JvmSynthetic
-inline fun trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.copy(block: trinsic.okapi.pbmse.v1.EncryptedMessageKt.Dsl.() -> Unit): trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage =
+public inline fun trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.copy(block: trinsic.okapi.pbmse.v1.EncryptedMessageKt.Dsl.() -> kotlin.Unit): trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage =
   trinsic.okapi.pbmse.v1.EncryptedMessageKt.Dsl._create(this.toBuilder()).apply { block() }._build()

@@ -4,15 +4,15 @@
 package trinsic.okapi.transport.v1;
 
 @kotlin.jvm.JvmSynthetic
-inline fun unpackRequest(block: trinsic.okapi.transport.v1.UnpackRequestKt.Dsl.() -> Unit): trinsic.okapi.transport.v1.Transport.UnpackRequest =
+public inline fun unpackRequest(block: trinsic.okapi.transport.v1.UnpackRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.UnpackRequest =
   trinsic.okapi.transport.v1.UnpackRequestKt.Dsl._create(trinsic.okapi.transport.v1.Transport.UnpackRequest.newBuilder()).apply { block() }._build()
-object UnpackRequestKt {
+public object UnpackRequestKt {
   @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
   @com.google.protobuf.kotlin.ProtoDslMarker
-  class Dsl private constructor(
-    @kotlin.jvm.JvmField private val _builder: trinsic.okapi.transport.v1.Transport.UnpackRequest.Builder
+  public class Dsl private constructor(
+    private val _builder: trinsic.okapi.transport.v1.Transport.UnpackRequest.Builder
   ) {
-    companion object {
+    public companion object {
       @kotlin.jvm.JvmSynthetic
       @kotlin.PublishedApi
       internal fun _create(builder: trinsic.okapi.transport.v1.Transport.UnpackRequest.Builder): Dsl = Dsl(builder)
@@ -25,7 +25,7 @@ object UnpackRequestKt {
     /**
      * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
      */
-    var senderKey: trinsic.okapi.keys.v1.Keys.JsonWebKey
+    public var senderKey: trinsic.okapi.keys.v1.Keys.JsonWebKey
       @JvmName("getSenderKey")
       get() = _builder.getSenderKey()
       @JvmName("setSenderKey")
@@ -35,21 +35,21 @@ object UnpackRequestKt {
     /**
      * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
      */
-    fun clearSenderKey() {
+    public fun clearSenderKey() {
       _builder.clearSenderKey()
     }
     /**
      * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
      * @return Whether the senderKey field is set.
      */
-    fun hasSenderKey(): kotlin.Boolean {
+    public fun hasSenderKey(): kotlin.Boolean {
       return _builder.hasSenderKey()
     }
 
     /**
      * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
      */
-    var receiverKey: trinsic.okapi.keys.v1.Keys.JsonWebKey
+    public var receiverKey: trinsic.okapi.keys.v1.Keys.JsonWebKey
       @JvmName("getReceiverKey")
       get() = _builder.getReceiverKey()
       @JvmName("setReceiverKey")
@@ -59,21 +59,21 @@ object UnpackRequestKt {
     /**
      * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
      */
-    fun clearReceiverKey() {
+    public fun clearReceiverKey() {
       _builder.clearReceiverKey()
     }
     /**
      * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
      * @return Whether the receiverKey field is set.
      */
-    fun hasReceiverKey(): kotlin.Boolean {
+    public fun hasReceiverKey(): kotlin.Boolean {
       return _builder.hasReceiverKey()
     }
 
     /**
      * <code>.pbmse.v1.EncryptedMessage message = 3;</code>
      */
-    var message: trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage
+    public var message: trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage
       @JvmName("getMessage")
       get() = _builder.getMessage()
       @JvmName("setMessage")
@@ -83,18 +83,18 @@ object UnpackRequestKt {
     /**
      * <code>.pbmse.v1.EncryptedMessage message = 3;</code>
      */
-    fun clearMessage() {
+    public fun clearMessage() {
       _builder.clearMessage()
     }
     /**
      * <code>.pbmse.v1.EncryptedMessage message = 3;</code>
      * @return Whether the message field is set.
      */
-    fun hasMessage(): kotlin.Boolean {
+    public fun hasMessage(): kotlin.Boolean {
       return _builder.hasMessage()
     }
   }
 }
 @kotlin.jvm.JvmSynthetic
-inline fun trinsic.okapi.transport.v1.Transport.UnpackRequest.copy(block: trinsic.okapi.transport.v1.UnpackRequestKt.Dsl.() -> Unit): trinsic.okapi.transport.v1.Transport.UnpackRequest =
+public inline fun trinsic.okapi.transport.v1.Transport.UnpackRequest.copy(block: trinsic.okapi.transport.v1.UnpackRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.UnpackRequest =
   trinsic.okapi.transport.v1.UnpackRequestKt.Dsl._create(this.toBuilder()).apply { block() }._build()

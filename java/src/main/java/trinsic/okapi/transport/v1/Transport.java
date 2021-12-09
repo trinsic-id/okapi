@@ -6579,10 +6579,10 @@ public final class Transport {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getIdBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
-      if (!getTypeBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(type_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, type_);
       }
       if (!body_.isEmpty()) {
@@ -6591,7 +6591,7 @@ public final class Transport {
       for (int i = 0; i < to_.size(); i++) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, to_.getRaw(i));
       }
-      if (!getFromBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(from_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 5, from_);
       }
       if (created_ != 0L) {
@@ -6609,10 +6609,10 @@ public final class Transport {
       if (size != -1) return size;
 
       size = 0;
-      if (!getIdBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
-      if (!getTypeBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(type_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, type_);
       }
       if (!body_.isEmpty()) {
@@ -6627,7 +6627,7 @@ public final class Transport {
         size += dataSize;
         size += 1 * getToList().size();
       }
-      if (!getFromBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(from_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, from_);
       }
       if (created_ != 0L) {

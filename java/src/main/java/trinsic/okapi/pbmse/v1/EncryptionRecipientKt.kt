@@ -4,15 +4,15 @@
 package trinsic.okapi.pbmse.v1;
 
 @kotlin.jvm.JvmSynthetic
-inline fun encryptionRecipient(block: trinsic.okapi.pbmse.v1.EncryptionRecipientKt.Dsl.() -> Unit): trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient =
+public inline fun encryptionRecipient(block: trinsic.okapi.pbmse.v1.EncryptionRecipientKt.Dsl.() -> kotlin.Unit): trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient =
   trinsic.okapi.pbmse.v1.EncryptionRecipientKt.Dsl._create(trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.newBuilder()).apply { block() }._build()
-object EncryptionRecipientKt {
+public object EncryptionRecipientKt {
   @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
   @com.google.protobuf.kotlin.ProtoDslMarker
-  class Dsl private constructor(
-    @kotlin.jvm.JvmField private val _builder: trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.Builder
+  public class Dsl private constructor(
+    private val _builder: trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.Builder
   ) {
-    companion object {
+    public companion object {
       @kotlin.jvm.JvmSynthetic
       @kotlin.PublishedApi
       internal fun _create(builder: trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.Builder): Dsl = Dsl(builder)
@@ -25,7 +25,7 @@ object EncryptionRecipientKt {
     /**
      * <code>.pbmse.v1.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
      */
-    var header: trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader
+    public var header: trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader
       @JvmName("getHeader")
       get() = _builder.getHeader()
       @JvmName("setHeader")
@@ -35,21 +35,21 @@ object EncryptionRecipientKt {
     /**
      * <code>.pbmse.v1.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
      */
-    fun clearHeader() {
+    public fun clearHeader() {
       _builder.clearHeader()
     }
     /**
      * <code>.pbmse.v1.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
      * @return Whether the header field is set.
      */
-    fun hasHeader(): kotlin.Boolean {
+    public fun hasHeader(): kotlin.Boolean {
       return _builder.hasHeader()
     }
 
     /**
      * <code>bytes content_encryption_key = 2 [json_name = "cek"];</code>
      */
-    var contentEncryptionKey: com.google.protobuf.ByteString
+    public var contentEncryptionKey: com.google.protobuf.ByteString
       @JvmName("getContentEncryptionKey")
       get() = _builder.getContentEncryptionKey()
       @JvmName("setContentEncryptionKey")
@@ -59,11 +59,11 @@ object EncryptionRecipientKt {
     /**
      * <code>bytes content_encryption_key = 2 [json_name = "cek"];</code>
      */
-    fun clearContentEncryptionKey() {
+    public fun clearContentEncryptionKey() {
       _builder.clearContentEncryptionKey()
     }
   }
 }
 @kotlin.jvm.JvmSynthetic
-inline fun trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.copy(block: trinsic.okapi.pbmse.v1.EncryptionRecipientKt.Dsl.() -> Unit): trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient =
+public inline fun trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.copy(block: trinsic.okapi.pbmse.v1.EncryptionRecipientKt.Dsl.() -> kotlin.Unit): trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient =
   trinsic.okapi.pbmse.v1.EncryptionRecipientKt.Dsl._create(this.toBuilder()).apply { block() }._build()

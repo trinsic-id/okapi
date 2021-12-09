@@ -4,15 +4,15 @@
 package trinsic.okapi.pbmse.v1;
 
 @kotlin.jvm.JvmSynthetic
-inline fun encryptionHeader(block: trinsic.okapi.pbmse.v1.EncryptionHeaderKt.Dsl.() -> Unit): trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader =
+public inline fun encryptionHeader(block: trinsic.okapi.pbmse.v1.EncryptionHeaderKt.Dsl.() -> kotlin.Unit): trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader =
   trinsic.okapi.pbmse.v1.EncryptionHeaderKt.Dsl._create(trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.newBuilder()).apply { block() }._build()
-object EncryptionHeaderKt {
+public object EncryptionHeaderKt {
   @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
   @com.google.protobuf.kotlin.ProtoDslMarker
-  class Dsl private constructor(
-    @kotlin.jvm.JvmField private val _builder: trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.Builder
+  public class Dsl private constructor(
+    private val _builder: trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.Builder
   ) {
-    companion object {
+    public companion object {
       @kotlin.jvm.JvmSynthetic
       @kotlin.PublishedApi
       internal fun _create(builder: trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.Builder): Dsl = Dsl(builder)
@@ -25,7 +25,7 @@ object EncryptionHeaderKt {
     /**
      * <code>.pbmse.v1.EncryptionMode mode = 1 [json_name = "enc"];</code>
      */
-    var mode: trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode
+    public var mode: trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode
       @JvmName("getMode")
       get() = _builder.getMode()
       @JvmName("setMode")
@@ -35,14 +35,14 @@ object EncryptionHeaderKt {
     /**
      * <code>.pbmse.v1.EncryptionMode mode = 1 [json_name = "enc"];</code>
      */
-    fun clearMode() {
+    public fun clearMode() {
       _builder.clearMode()
     }
 
     /**
      * <code>.pbmse.v1.EncryptionAlgorithm algorithm = 2 [json_name = "alg"];</code>
      */
-    var algorithm: trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm
+    public var algorithm: trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm
       @JvmName("getAlgorithm")
       get() = _builder.getAlgorithm()
       @JvmName("setAlgorithm")
@@ -52,14 +52,14 @@ object EncryptionHeaderKt {
     /**
      * <code>.pbmse.v1.EncryptionAlgorithm algorithm = 2 [json_name = "alg"];</code>
      */
-    fun clearAlgorithm() {
+    public fun clearAlgorithm() {
       _builder.clearAlgorithm()
     }
 
     /**
      * <code>string key_id = 3 [json_name = "kid"];</code>
      */
-    var keyId: kotlin.String
+    public var keyId: kotlin.String
       @JvmName("getKeyId")
       get() = _builder.getKeyId()
       @JvmName("setKeyId")
@@ -69,14 +69,14 @@ object EncryptionHeaderKt {
     /**
      * <code>string key_id = 3 [json_name = "kid"];</code>
      */
-    fun clearKeyId() {
+    public fun clearKeyId() {
       _builder.clearKeyId()
     }
 
     /**
      * <code>string sender_key_id = 4 [json_name = "skid"];</code>
      */
-    var senderKeyId: kotlin.String
+    public var senderKeyId: kotlin.String
       @JvmName("getSenderKeyId")
       get() = _builder.getSenderKeyId()
       @JvmName("setSenderKeyId")
@@ -86,11 +86,11 @@ object EncryptionHeaderKt {
     /**
      * <code>string sender_key_id = 4 [json_name = "skid"];</code>
      */
-    fun clearSenderKeyId() {
+    public fun clearSenderKeyId() {
       _builder.clearSenderKeyId()
     }
   }
 }
 @kotlin.jvm.JvmSynthetic
-inline fun trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.copy(block: trinsic.okapi.pbmse.v1.EncryptionHeaderKt.Dsl.() -> Unit): trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader =
+public inline fun trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.copy(block: trinsic.okapi.pbmse.v1.EncryptionHeaderKt.Dsl.() -> kotlin.Unit): trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader =
   trinsic.okapi.pbmse.v1.EncryptionHeaderKt.Dsl._create(this.toBuilder()).apply { block() }._build()

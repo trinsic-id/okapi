@@ -4,15 +4,15 @@
 package trinsic.okapi.security.v1;
 
 @kotlin.jvm.JvmSynthetic
-inline fun createOberonTokenRequest(block: trinsic.okapi.security.v1.CreateOberonTokenRequestKt.Dsl.() -> Unit): trinsic.okapi.security.v1.Security.CreateOberonTokenRequest =
+public inline fun createOberonTokenRequest(block: trinsic.okapi.security.v1.CreateOberonTokenRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.security.v1.Security.CreateOberonTokenRequest =
   trinsic.okapi.security.v1.CreateOberonTokenRequestKt.Dsl._create(trinsic.okapi.security.v1.Security.CreateOberonTokenRequest.newBuilder()).apply { block() }._build()
-object CreateOberonTokenRequestKt {
+public object CreateOberonTokenRequestKt {
   @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
   @com.google.protobuf.kotlin.ProtoDslMarker
-  class Dsl private constructor(
-    @kotlin.jvm.JvmField private val _builder: trinsic.okapi.security.v1.Security.CreateOberonTokenRequest.Builder
+  public class Dsl private constructor(
+    private val _builder: trinsic.okapi.security.v1.Security.CreateOberonTokenRequest.Builder
   ) {
-    companion object {
+    public companion object {
       @kotlin.jvm.JvmSynthetic
       @kotlin.PublishedApi
       internal fun _create(builder: trinsic.okapi.security.v1.Security.CreateOberonTokenRequest.Builder): Dsl = Dsl(builder)
@@ -29,7 +29,7 @@ object CreateOberonTokenRequestKt {
      *
      * <code>bytes sk = 1;</code>
      */
-    var sk: com.google.protobuf.ByteString
+    public var sk: com.google.protobuf.ByteString
       @JvmName("getSk")
       get() = _builder.getSk()
       @JvmName("setSk")
@@ -43,7 +43,7 @@ object CreateOberonTokenRequestKt {
      *
      * <code>bytes sk = 1;</code>
      */
-    fun clearSk() {
+    public fun clearSk() {
       _builder.clearSk()
     }
 
@@ -54,7 +54,7 @@ object CreateOberonTokenRequestKt {
      *
      * <code>bytes data = 2;</code>
      */
-    var data: com.google.protobuf.ByteString
+    public var data: com.google.protobuf.ByteString
       @JvmName("getData")
       get() = _builder.getData()
       @JvmName("setData")
@@ -68,7 +68,7 @@ object CreateOberonTokenRequestKt {
      *
      * <code>bytes data = 2;</code>
      */
-    fun clearData() {
+    public fun clearData() {
       _builder.clearData()
     }
 
@@ -77,7 +77,7 @@ object CreateOberonTokenRequestKt {
      * generics.
      */
     @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
-    class BlindingProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    public class BlindingProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
     /**
      * <pre>
      * optional blinding for the token
@@ -85,7 +85,7 @@ object CreateOberonTokenRequestKt {
      *
      * <code>repeated bytes blinding = 3;</code>
      */
-     val blinding: com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, BlindingProxy>
+     public val blinding: com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, BlindingProxy>
       @kotlin.jvm.JvmSynthetic
       get() = com.google.protobuf.kotlin.DslList(
         _builder.getBlindingList()
@@ -100,7 +100,7 @@ object CreateOberonTokenRequestKt {
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("addBlinding")
-    fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, BlindingProxy>.add(value: com.google.protobuf.ByteString) {
+    public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, BlindingProxy>.add(value: com.google.protobuf.ByteString) {
       _builder.addBlinding(value)
     }/**
      * <pre>
@@ -112,7 +112,8 @@ object CreateOberonTokenRequestKt {
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("plusAssignBlinding")
-    inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, BlindingProxy>.plusAssign(value: com.google.protobuf.ByteString) {
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, BlindingProxy>.plusAssign(value: com.google.protobuf.ByteString) {
       add(value)
     }/**
      * <pre>
@@ -124,7 +125,7 @@ object CreateOberonTokenRequestKt {
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("addAllBlinding")
-    fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, BlindingProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
+    public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, BlindingProxy>.addAll(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       _builder.addAllBlinding(values)
     }/**
      * <pre>
@@ -136,7 +137,8 @@ object CreateOberonTokenRequestKt {
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("plusAssignAllBlinding")
-    inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, BlindingProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, BlindingProxy>.plusAssign(values: kotlin.collections.Iterable<com.google.protobuf.ByteString>) {
       addAll(values)
     }/**
      * <pre>
@@ -149,7 +151,7 @@ object CreateOberonTokenRequestKt {
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("setBlinding")
-    operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, BlindingProxy>.set(index: kotlin.Int, value: com.google.protobuf.ByteString) {
+    public operator fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, BlindingProxy>.set(index: kotlin.Int, value: com.google.protobuf.ByteString) {
       _builder.setBlinding(index, value)
     }/**
      * <pre>
@@ -160,10 +162,10 @@ object CreateOberonTokenRequestKt {
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("clearBlinding")
-    fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, BlindingProxy>.clear() {
+    public fun com.google.protobuf.kotlin.DslList<com.google.protobuf.ByteString, BlindingProxy>.clear() {
       _builder.clearBlinding()
     }}
 }
 @kotlin.jvm.JvmSynthetic
-inline fun trinsic.okapi.security.v1.Security.CreateOberonTokenRequest.copy(block: trinsic.okapi.security.v1.CreateOberonTokenRequestKt.Dsl.() -> Unit): trinsic.okapi.security.v1.Security.CreateOberonTokenRequest =
+public inline fun trinsic.okapi.security.v1.Security.CreateOberonTokenRequest.copy(block: trinsic.okapi.security.v1.CreateOberonTokenRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.security.v1.Security.CreateOberonTokenRequest =
   trinsic.okapi.security.v1.CreateOberonTokenRequestKt.Dsl._create(this.toBuilder()).apply { block() }._build()

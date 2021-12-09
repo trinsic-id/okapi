@@ -4,15 +4,15 @@
 package trinsic.okapi.pbmse.v1;
 
 @kotlin.jvm.JvmSynthetic
-inline fun signedMessage(block: trinsic.okapi.pbmse.v1.SignedMessageKt.Dsl.() -> Unit): trinsic.okapi.pbmse.v1.Pbmse.SignedMessage =
+public inline fun signedMessage(block: trinsic.okapi.pbmse.v1.SignedMessageKt.Dsl.() -> kotlin.Unit): trinsic.okapi.pbmse.v1.Pbmse.SignedMessage =
   trinsic.okapi.pbmse.v1.SignedMessageKt.Dsl._create(trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.newBuilder()).apply { block() }._build()
-object SignedMessageKt {
+public object SignedMessageKt {
   @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
   @com.google.protobuf.kotlin.ProtoDslMarker
-  class Dsl private constructor(
-    @kotlin.jvm.JvmField private val _builder: trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder
+  public class Dsl private constructor(
+    private val _builder: trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder
   ) {
-    companion object {
+    public companion object {
       @kotlin.jvm.JvmSynthetic
       @kotlin.PublishedApi
       internal fun _create(builder: trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder): Dsl = Dsl(builder)
@@ -25,7 +25,7 @@ object SignedMessageKt {
     /**
      * <code>bytes payload = 1;</code>
      */
-    var payload: com.google.protobuf.ByteString
+    public var payload: com.google.protobuf.ByteString
       @JvmName("getPayload")
       get() = _builder.getPayload()
       @JvmName("setPayload")
@@ -35,7 +35,7 @@ object SignedMessageKt {
     /**
      * <code>bytes payload = 1;</code>
      */
-    fun clearPayload() {
+    public fun clearPayload() {
       _builder.clearPayload()
     }
 
@@ -44,11 +44,11 @@ object SignedMessageKt {
      * generics.
      */
     @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
-    class SignaturesProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    public class SignaturesProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
     /**
      * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
      */
-     val signatures: com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.Signature, SignaturesProxy>
+     public val signatures: com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.Signature, SignaturesProxy>
       @kotlin.jvm.JvmSynthetic
       get() = com.google.protobuf.kotlin.DslList(
         _builder.getSignaturesList()
@@ -59,7 +59,7 @@ object SignedMessageKt {
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("addSignatures")
-    fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.Signature, SignaturesProxy>.add(value: trinsic.okapi.pbmse.v1.Pbmse.Signature) {
+    public fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.Signature, SignaturesProxy>.add(value: trinsic.okapi.pbmse.v1.Pbmse.Signature) {
       _builder.addSignatures(value)
     }/**
      * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
@@ -67,7 +67,8 @@ object SignedMessageKt {
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("plusAssignSignatures")
-    inline operator fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.Signature, SignaturesProxy>.plusAssign(value: trinsic.okapi.pbmse.v1.Pbmse.Signature) {
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.Signature, SignaturesProxy>.plusAssign(value: trinsic.okapi.pbmse.v1.Pbmse.Signature) {
       add(value)
     }/**
      * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
@@ -75,7 +76,7 @@ object SignedMessageKt {
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("addAllSignatures")
-    fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.Signature, SignaturesProxy>.addAll(values: kotlin.collections.Iterable<trinsic.okapi.pbmse.v1.Pbmse.Signature>) {
+    public fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.Signature, SignaturesProxy>.addAll(values: kotlin.collections.Iterable<trinsic.okapi.pbmse.v1.Pbmse.Signature>) {
       _builder.addAllSignatures(values)
     }/**
      * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
@@ -83,7 +84,8 @@ object SignedMessageKt {
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("plusAssignAllSignatures")
-    inline operator fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.Signature, SignaturesProxy>.plusAssign(values: kotlin.collections.Iterable<trinsic.okapi.pbmse.v1.Pbmse.Signature>) {
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.Signature, SignaturesProxy>.plusAssign(values: kotlin.collections.Iterable<trinsic.okapi.pbmse.v1.Pbmse.Signature>) {
       addAll(values)
     }/**
      * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
@@ -92,17 +94,17 @@ object SignedMessageKt {
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("setSignatures")
-    operator fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.Signature, SignaturesProxy>.set(index: kotlin.Int, value: trinsic.okapi.pbmse.v1.Pbmse.Signature) {
+    public operator fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.Signature, SignaturesProxy>.set(index: kotlin.Int, value: trinsic.okapi.pbmse.v1.Pbmse.Signature) {
       _builder.setSignatures(index, value)
     }/**
      * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("clearSignatures")
-    fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.Signature, SignaturesProxy>.clear() {
+    public fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.Signature, SignaturesProxy>.clear() {
       _builder.clearSignatures()
     }}
 }
 @kotlin.jvm.JvmSynthetic
-inline fun trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.copy(block: trinsic.okapi.pbmse.v1.SignedMessageKt.Dsl.() -> Unit): trinsic.okapi.pbmse.v1.Pbmse.SignedMessage =
+public inline fun trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.copy(block: trinsic.okapi.pbmse.v1.SignedMessageKt.Dsl.() -> kotlin.Unit): trinsic.okapi.pbmse.v1.Pbmse.SignedMessage =
   trinsic.okapi.pbmse.v1.SignedMessageKt.Dsl._create(this.toBuilder()).apply { block() }._build()

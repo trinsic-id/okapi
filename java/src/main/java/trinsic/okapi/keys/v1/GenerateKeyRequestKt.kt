@@ -4,15 +4,15 @@
 package trinsic.okapi.keys.v1;
 
 @kotlin.jvm.JvmSynthetic
-inline fun generateKeyRequest(block: trinsic.okapi.keys.v1.GenerateKeyRequestKt.Dsl.() -> Unit): trinsic.okapi.keys.v1.Keys.GenerateKeyRequest =
+public inline fun generateKeyRequest(block: trinsic.okapi.keys.v1.GenerateKeyRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.keys.v1.Keys.GenerateKeyRequest =
   trinsic.okapi.keys.v1.GenerateKeyRequestKt.Dsl._create(trinsic.okapi.keys.v1.Keys.GenerateKeyRequest.newBuilder()).apply { block() }._build()
-object GenerateKeyRequestKt {
+public object GenerateKeyRequestKt {
   @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
   @com.google.protobuf.kotlin.ProtoDslMarker
-  class Dsl private constructor(
-    @kotlin.jvm.JvmField private val _builder: trinsic.okapi.keys.v1.Keys.GenerateKeyRequest.Builder
+  public class Dsl private constructor(
+    private val _builder: trinsic.okapi.keys.v1.Keys.GenerateKeyRequest.Builder
   ) {
-    companion object {
+    public companion object {
       @kotlin.jvm.JvmSynthetic
       @kotlin.PublishedApi
       internal fun _create(builder: trinsic.okapi.keys.v1.Keys.GenerateKeyRequest.Builder): Dsl = Dsl(builder)
@@ -25,7 +25,7 @@ object GenerateKeyRequestKt {
     /**
      * <code>bytes seed = 1;</code>
      */
-    var seed: com.google.protobuf.ByteString
+    public var seed: com.google.protobuf.ByteString
       @JvmName("getSeed")
       get() = _builder.getSeed()
       @JvmName("setSeed")
@@ -35,14 +35,14 @@ object GenerateKeyRequestKt {
     /**
      * <code>bytes seed = 1;</code>
      */
-    fun clearSeed() {
+    public fun clearSeed() {
       _builder.clearSeed()
     }
 
     /**
      * <code>.okapi.keys.v1.KeyType key_type = 2;</code>
      */
-    var keyType: trinsic.okapi.keys.v1.Keys.KeyType
+    public var keyType: trinsic.okapi.keys.v1.Keys.KeyType
       @JvmName("getKeyType")
       get() = _builder.getKeyType()
       @JvmName("setKeyType")
@@ -52,11 +52,11 @@ object GenerateKeyRequestKt {
     /**
      * <code>.okapi.keys.v1.KeyType key_type = 2;</code>
      */
-    fun clearKeyType() {
+    public fun clearKeyType() {
       _builder.clearKeyType()
     }
   }
 }
 @kotlin.jvm.JvmSynthetic
-inline fun trinsic.okapi.keys.v1.Keys.GenerateKeyRequest.copy(block: trinsic.okapi.keys.v1.GenerateKeyRequestKt.Dsl.() -> Unit): trinsic.okapi.keys.v1.Keys.GenerateKeyRequest =
+public inline fun trinsic.okapi.keys.v1.Keys.GenerateKeyRequest.copy(block: trinsic.okapi.keys.v1.GenerateKeyRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.keys.v1.Keys.GenerateKeyRequest =
   trinsic.okapi.keys.v1.GenerateKeyRequestKt.Dsl._create(this.toBuilder()).apply { block() }._build()
