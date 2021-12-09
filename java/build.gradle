@@ -45,10 +45,10 @@ repositories {
 
 dependencies {
     implementation 'org.jetbrains:annotations:22.0.0'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.8.1'
-    implementation group: 'com.google.protobuf', name: 'protobuf-java', version: '3.17.3'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.8.2'
+    implementation group: 'com.google.protobuf', name: 'protobuf-java', version: '3.19.1'
     implementation group: 'net.java.dev.jna', name: 'jna', version: '5.8.0'
 }
 
