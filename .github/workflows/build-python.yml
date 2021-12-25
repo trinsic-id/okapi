@@ -1,4 +1,4 @@
-name: Build Python SDK
+name: Python
 
 on:
   workflow_call:

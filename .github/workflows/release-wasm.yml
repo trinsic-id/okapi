@@ -1,4 +1,4 @@
-name: "Wasm (Release)"
+name: "Wasm (release)"
 
 on:
   workflow_dispatch:

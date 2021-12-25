@@ -1,4 +1,4 @@
-name: Release Ruby Gem
+name: Ruby (release)
 
 on:
   workflow_dispatch:
