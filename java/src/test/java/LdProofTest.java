@@ -13,6 +13,10 @@ import java.time.Instant;
 import java.util.HashMap;
 
 public class LdProofTest {
+    private static Value stringValue(String s) {
+        return Value.newBuilder().setStringValue(s).build();
+    }
+
     @Test
     public void testGenerateCapabilityInvocationProofWithJcs() throws InvalidProtocolBufferException, DidException {
         var proofDict = new HashMap<String, Value>();
@@ -40,8 +44,5 @@ public class LdProofTest {
 
         Assertions.assertNotNull(signedCapability);
         Assertions.assertNotNull(signedCapability.getSignedDocument());
-    }
-    private static Value stringValue(String s) {
-        return Value.newBuilder().setStringValue(s).build();
     }
 }
