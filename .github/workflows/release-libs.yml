@@ -1,4 +1,4 @@
-name: Release Platform Libraries
+name: Platform Libraries (release)
 
 on:
   workflow_dispatch:
