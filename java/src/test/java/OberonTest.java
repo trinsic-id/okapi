@@ -10,7 +10,7 @@ class OberonTest {
     @Test
     void testOberonDemo() throws InvalidProtocolBufferException, DidException {
         var key = Oberon.createKey(Security.CreateOberonKeyRequest.newBuilder().build());
-        final ByteString data = ByteString.copyFromUtf8( "alice");
+        final ByteString data = ByteString.copyFromUtf8("alice");
         final ByteString nonce = ByteString.copyFromUtf8("1234");
 
         var token = Oberon.createToken(Security.CreateOberonTokenRequest.newBuilder()
@@ -35,7 +35,7 @@ class OberonTest {
     @Test
     void testDemoWithBlinding() throws InvalidProtocolBufferException, DidException {
         var key = Oberon.createKey(Security.CreateOberonKeyRequest.newBuilder().build());
-        final ByteString data = ByteString.copyFromUtf8( "alice");
+        final ByteString data = ByteString.copyFromUtf8("alice");
         final ByteString nonce = ByteString.copyFromUtf8("1234");
         final ByteString issuer_2fa = ByteString.copyFromUtf8("issuer code");
 

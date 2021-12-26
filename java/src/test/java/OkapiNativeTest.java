@@ -13,12 +13,12 @@ import java.util.Base64;
 class OkapiNativeTest {
     @Test
     void generateKeyCall() throws DidException, InvalidProtocolBufferException {
-       Keys.GenerateKeyRequest request = Keys.GenerateKeyRequest.newBuilder()
+        Keys.GenerateKeyRequest request = Keys.GenerateKeyRequest.newBuilder()
                 .setKeyType(Keys.KeyType.KEY_TYPE_ED25519)
-                .setSeed(ByteString.copyFrom(new byte[]{1,2,3}))
+                .setSeed(ByteString.copyFrom(new byte[]{1, 2, 3}))
                 .build();
 
-        Keys.GenerateKeyResponse response= DidKey.generate(request);
+        Keys.GenerateKeyResponse response = DidKey.generate(request);
         Assertions.assertNotNull(response);
     }
 
@@ -28,7 +28,7 @@ class OkapiNativeTest {
                 .setKeyType(Keys.KeyType.KEY_TYPE_ED25519)
                 .build();
 
-        Keys.GenerateKeyResponse response= DidKey.generate(request);
+        Keys.GenerateKeyResponse response = DidKey.generate(request);
         var pk = assertValidKeyGenerated(response, null);
     }
 
@@ -50,12 +50,6 @@ class OkapiNativeTest {
         Assertions.assertThrows(DidException.class, () -> DidKey.generate(request));
     }
 
-    private class DataArgument {
-        public Keys.KeyType keyType;
-        public String keyTypeString;
-        public String seed;
-        public String response;
-    }
     private DataArgument getArguments(int index) {
         if (index == 1) {
             var arg = new DataArgument();
@@ -91,7 +85,7 @@ class OkapiNativeTest {
     }
 
     byte[] assertValidKeyGenerated(Keys.GenerateKeyResponse response, String crv) {
-        if (crv == null) crv ="Ed25519";
+        if (crv == null) crv = "Ed25519";
 
         Assertions.assertNotNull(response);
         var key = response.getKey(0);
@@ -101,8 +95,8 @@ class OkapiNativeTest {
         var x = Base64.getUrlDecoder().decode(base64Padding(key.getX()));
         var y = Base64.getUrlDecoder().decode(base64Padding(key.getY()));
         var publicKey = new byte[x.length + y.length];
-        System.arraycopy(x,0, publicKey, 0, x.length);
-        System.arraycopy(y,0, publicKey, x.length, y.length);
+        System.arraycopy(x, 0, publicKey, 0, x.length);
+        System.arraycopy(y, 0, publicKey, x.length, y.length);
         Assertions.assertNotNull(publicKey);
         Assertions.assertEquals(32, publicKey.length);
         var response64 = Base64.getUrlDecoder().decode(base64Padding(key.getD()));
@@ -118,5 +112,12 @@ class OkapiNativeTest {
         else if (stringShort == 3)
             s += "=";
         return s;
+    }
+
+    private static class DataArgument {
+        public Keys.KeyType keyType;
+        public String keyTypeString;
+        public String seed;
+        public String response;
     }
 }
