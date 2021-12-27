@@ -1,4 +1,4 @@
-name: Web Assembly
+name: Wasm
 
 on:
   workflow_call:
