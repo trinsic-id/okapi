@@ -1,4 +1,4 @@
-name: Release .NET SDK
+name: .NET (release)
 
 on:
   workflow_dispatch:
