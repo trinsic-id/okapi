@@ -20,6 +20,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Create tag
-         run: |
-          git tag "go/${{ github.event.inputs.packageVersion }}" master
-          git push "go/${{ github.event.inputs.packageVersion }}" origin
+          run: |
+            git tag "go/${{ github.event.inputs.packageVersion }}" master
+            git push "go/${{ github.event.inputs.packageVersion }}" origin
