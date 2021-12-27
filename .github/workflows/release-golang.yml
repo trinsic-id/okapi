@@ -1,4 +1,4 @@
-name: "Rust (release)"
+name: "Golang (release)"
 
 on:
   workflow_dispatch:
