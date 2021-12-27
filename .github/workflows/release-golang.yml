@@ -14,7 +14,7 @@ on:
       - completed
 
 jobs:
-  publish-go-tag:
+  publish_go_tag:
     name: Tag golnag
     runs-on: ubuntu-latest
     steps:
