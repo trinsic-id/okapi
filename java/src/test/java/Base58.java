@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Base58 {
 
     private static final char[] ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
@@ -6,15 +8,13 @@ public class Base58 {
     private static final int BASE_256 = 256;
 
     private static final int[] INDEXES = new int[128];
+
     static {
-        for (int i = 0; i < INDEXES.length; i++) {
-            INDEXES[i] = -1;
-        }
+        Arrays.fill(INDEXES, -1);
         for (int i = 0; i < ALPHABET.length; i++) {
             INDEXES[ALPHABET[i]] = i;
         }
     }
-
 
 
     public static String encode(byte[] input) {
