@@ -50,6 +50,7 @@ public class OkapiNative {
         if (nativeLibrary == null) {
             var libPath = getLibraryPath();
             System.setProperty("jna.library.path", libPath);
+            System.out.println("Native.load(" + libPath + ")");
             nativeLibrary = Native.load(libPath, IOkapiC.class);
         }
 
@@ -74,6 +75,11 @@ public class OkapiNative {
 
         var okapi_lib_path = System.getenv("LD_LIBRARY_PATH");
         System.out.println("LD_LIBRARY_PATH=" + okapi_lib_path);
+        // Macos makes things needlessly hard
+        if (okapi_lib_path == null) {
+            okapi_lib_path = System.getenv("DYLD_LIBRARY_PATH");
+            System.out.println("DYLD_LIBRARY_PATH=" + okapi_lib_path);
+        }
         if (okapi_lib_path != null && okapi_lib_path.strip().length() > 0) {
             for (var path: okapi_lib_path.split(File.pathSeparator)) {
                 var testPath = Paths.get(path, getLibraryName()).toAbsolutePath();
