@@ -1,5 +1,12 @@
 # Tools and libraries for managing digital identity
 
+[![Golang](https://github.com/trinsic-id/okapi/actions/workflows/build-golang.yml/badge.svg)](https://github.com/trinsic-id/okapi/actions/workflows/build-golang.yml)
+[![Java](https://github.com/trinsic-id/okapi/actions/workflows/build-java.yml/badge.svg)](https://github.com/trinsic-id/okapi/actions/workflows/build-java.yml)
+[![Platform Libraries](https://github.com/trinsic-id/okapi/actions/workflows/build-libs.yml/badge.svg)](https://github.com/trinsic-id/okapi/actions/workflows/build-libs.yml)
+[![Python](https://github.com/trinsic-id/okapi/actions/workflows/build-python.yml/badge.svg)](https://github.com/trinsic-id/okapi/actions/workflows/build-python.yml)
+[![Ruby](https://github.com/trinsic-id/okapi/actions/workflows/build-ruby.yml/badge.svg)](https://github.com/trinsic-id/okapi/actions/workflows/build-ruby.yml)
+[![Wasm](https://github.com/trinsic-id/okapi/actions/workflows/build-wasm.yml/badge.svg)](https://github.com/trinsic-id/okapi/actions/workflows/build-wasm.yml)
+
 This repo provides bindings in all popular languages for the core Okapi functionalities:
 
 - Support for working with `did:key` method
