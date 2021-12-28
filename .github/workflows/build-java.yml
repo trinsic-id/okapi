@@ -35,7 +35,7 @@ jobs:
       - name: Build with Gradle
         run: |
           python ../devops/build_sdks.py
-          gradle build
+          gradle build --stacktrace --info
         shell: pwsh
         working-directory: java
         env:
