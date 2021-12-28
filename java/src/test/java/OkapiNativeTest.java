@@ -1,14 +1,16 @@
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import trinsic.okapi.DidException;
 import trinsic.okapi.DidKey;
 import trinsic.okapi.keys.v1.Keys;
 
 import java.util.Base64;
+import java.util.stream.Stream;
 
 class OkapiNativeTest {
     @Test
@@ -50,29 +52,24 @@ class OkapiNativeTest {
         Assertions.assertThrows(DidException.class, () -> DidKey.generate(request));
     }
 
-    private DataArgument getArguments(int index) {
-        if (index == 1) {
-            var arg = new DataArgument();
-            arg.keyType = Keys.KeyType.KEY_TYPE_ED25519;
-            arg.keyTypeString = "Ed25519";
-            arg.seed = "4f66b355aa7b0980ff901f2295b9c562ac3061be4df86703eb28c612faae6578";
-            arg.response = "6fioC1zcDPyPEL19pXRS2E4iJ46zH7xP6uSgAaPdwDrx";
-            return arg;
-        } else if (index == 2) {
-            var arg = new DataArgument();
-            arg.keyType = Keys.KeyType.KEY_TYPE_X25519;
-            arg.keyTypeString = "X25519";
-            arg.seed = "9b29d42b38ddd52ed39c0ff70b39572a6eb9b3cac201918dc6d6a84b4c88d2a5";
-            arg.response = "3EK9AYXoUV4Unn5AjvYY39hyK91n7gg4ExC8rKKSUQXJ";
-            return arg;
-        }
-        return null;
+    private static @NotNull Stream<DataArgument> testGenerateKeyFromSeedArguments() {
+        var arg = new DataArgument();
+        arg.keyType = Keys.KeyType.KEY_TYPE_ED25519;
+        arg.keyTypeString = "Ed25519";
+        arg.seed = "4f66b355aa7b0980ff901f2295b9c562ac3061be4df86703eb28c612faae6578";
+        arg.response = "6fioC1zcDPyPEL19pXRS2E4iJ46zH7xP6uSgAaPdwDrx";
+        var arg2 = new DataArgument();
+        arg2.keyType = Keys.KeyType.KEY_TYPE_X25519;
+        arg2.keyTypeString = "X25519";
+        arg2.seed = "9b29d42b38ddd52ed39c0ff70b39572a6eb9b3cac201918dc6d6a84b4c88d2a5";
+        arg2.response = "3EK9AYXoUV4Unn5AjvYY39hyK91n7gg4ExC8rKKSUQXJ";
+
+        return Stream.of(arg, arg2);
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 2})
-    void testGenerateKeyFromSeed(int index) throws DidException, InvalidProtocolBufferException {
-        var args = getArguments(index);
+    @MethodSource("testGenerateKeyFromSeedArguments")
+    void testGenerateKeyFromSeed(DataArgument args) throws DidException, InvalidProtocolBufferException {
         assert args != null;
         var request = Keys.GenerateKeyRequest.newBuilder()
                 .setKeyType(args.keyType)

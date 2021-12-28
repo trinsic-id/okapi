@@ -47,8 +47,11 @@ public class OkapiNative {
 
     private static IOkapiC nativeLibrary = null;
     public synchronized static IOkapiC getNativeLibrary() {
-        if (nativeLibrary == null)
-            nativeLibrary = Native.load(getLibraryPath(), IOkapiC.class);
+        if (nativeLibrary == null) {
+            var libPath = getLibraryPath();
+            System.setProperty("jna.library.path", libPath);
+            nativeLibrary = Native.load(libPath, IOkapiC.class);
+        }
 
         return nativeLibrary;
     }
