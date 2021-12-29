@@ -41,8 +41,7 @@ jobs:
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
           LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
-          DYLD_FALLBACK_LIBRARY_PATH: "${{ github.workspace }}/libs"
-          DYLD_LIBRARY_PATH: "${{ github.workspace }}/libs"
+          JAVA_LIBRARY_PATH: "${{ github.workspace }}/libs" # https://stackoverflow.com/a/60128194 - MacOS doesn't allow LD_LIBRARY_PATH.
       - name: Upload Unit Test Results - Java
         if: always()
         uses: actions/upload-artifact@v2
