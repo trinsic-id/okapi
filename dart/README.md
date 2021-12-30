@@ -1,1 +1,1 @@
-A simple command-line application.
+Dart bindings for okapi binary
