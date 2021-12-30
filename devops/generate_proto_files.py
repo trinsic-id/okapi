@@ -16,11 +16,12 @@ def get_proto_files(dir_name: str = None) -> List[str]:
     return get_matching_files(dir_name, '*.proto')
 
 
-def get_matching_files(dir_name: str, extension: str) -> List[str]:
-    if not extension.startswith('*.'):
-        extension = f'*.{extension}'
-    search_glob = join(dir_name, '**', extension)
-    return [abspath(file_path) for file_path in glob.glob(search_glob, recursive=True)]
+def clean_proto_dir(language_proto_dir: str) -> None:
+    try:
+        shutil.rmtree(language_proto_dir)
+    except:
+        pass
+    os.mkdir(language_proto_dir)
 
 
 def join_args(args: Union[str, List[str], Dict[str, str]]) -> List[str]:
@@ -78,9 +79,10 @@ def update_java():
 
 def update_dart():
     language_path = get_language_dir('dart')
-    language_proto_path = join(language_path, 'proto')
+    language_proto_path = join(language_path, 'lib', 'proto')
     clean_proto_dir(language_proto_path)
     run_protoc({'dart_out': language_proto_path}, {}, get_proto_files())
+    run_protoc({'dart_out': language_proto_path}, {}, get_google_proto_files())
 
 
 def update_markdown():
