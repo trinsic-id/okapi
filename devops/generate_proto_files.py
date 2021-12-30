@@ -76,6 +76,13 @@ def update_java():
     run_protoc({'java_out': java_proto_path, 'kotlin_out': java_proto_path}, {}, get_proto_files())
 
 
+def update_dart():
+    language_path = get_language_dir('dart')
+    language_proto_path = join(language_path, 'proto')
+    clean_proto_dir(language_proto_path)
+    run_protoc({'dart_out': language_proto_path}, {}, get_proto_files())
+
+
 def update_markdown():
     lang_path = get_language_dir('docs')
     lang_proto_path = join(lang_path, 'reference', 'proto')
@@ -99,6 +106,7 @@ def main():
     update_golang()
     update_ruby()
     update_markdown()
+    update_dart()
     update_python()
     update_java()
 
