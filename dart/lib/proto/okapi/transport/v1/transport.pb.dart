@@ -13,7 +13,6 @@ import 'package:protobuf/protobuf.dart' as $pb;
 import '../../keys/v1/keys.pb.dart' as $2;
 import '../../../pbmse/v1/pbmse.pb.dart' as $0;
 
-import '../../../pbmse/v1/pbmse.pbenum.dart' as $0;
 
 class SignRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SignRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'okapi.transport.v1'), createEmptyInstance: create)

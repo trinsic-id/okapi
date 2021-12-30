@@ -23,7 +23,7 @@ class GenerateKeyRequest extends $pb.GeneratedMessage {
   ;
 
   GenerateKeyRequest._() : super();
-  factory GenerateKeyRequest({
+  factory GenerateKeyRequest($core.Set<$core.int> set, {
     $core.List<$core.int>? seed,
     KeyType? keyType,
   }) {

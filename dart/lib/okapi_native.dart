@@ -14,5 +14,5 @@ class ExternError extends ffi.Struct {
   external ffi.Pointer<ffi.Uint8> message;
 }
 
-typedef DidCommPack = ffi.Int32 Function(ByteBuffer, ffi.Pointer<ByteBuffer>, ffi.Pointer<ExternError>);
-
+typedef OkapiFunctionNative = ffi.Int32 Function(ByteBuffer, ffi.Pointer<ByteBuffer>, ffi.Pointer<ExternError>);
+typedef OkapiFunction = int Function(ByteBuffer, ffi.Pointer<ByteBuffer>, ffi.Pointer<ExternError>);
