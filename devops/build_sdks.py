@@ -16,6 +16,10 @@ except ImportError:
 import requests
 
 
+def get_language_dir(language_name: str) -> str:
+    return abspath(join(dirname(abspath(__file__)), '..', language_name))
+
+
 def parse_version_tag():
     raise NotImplementedError
 
@@ -68,7 +72,7 @@ def replace_line_if_needed(line: str, replace_lines: Dict[str, str]) -> str:
 
 def build_python(args) -> None:
     # Update version in setup.cfg
-    python_dir = abspath(join(dirname(__file__), '..', 'python'))
+    python_dir = get_language_dir('python')
     update_line(join(python_dir, 'setup.cfg'),
                 {'version = ': f'version = {get_package_versions(args)}'})
     copy_okapi_libs(abspath(join(python_dir, '..', 'libs')))
@@ -76,7 +80,7 @@ def build_python(args) -> None:
 
 def build_java(args) -> None:
     # Update version in setup.cfg
-    java_dir = abspath(join(dirname(__file__), '..', 'java'))
+    java_dir = get_language_dir('java')
     update_line(join(java_dir, 'build.gradle'),
                 {'def jarVersion': f'def jarVersion = "{get_package_versions(args)}"'})
     copy_okapi_libs(abspath(join(java_dir, '..', 'libs')))
@@ -84,7 +88,7 @@ def build_java(args) -> None:
 
 def build_ruby(args) -> None:
     # Update version in setup.cfg
-    ruby_dir = abspath(join(dirname(__file__), '..', 'ruby'))
+    ruby_dir = get_language_dir('ruby')
     update_line(join(ruby_dir, 'lib', 'version.rb'),
                 {'  VERSION =': f"  VERSION = '{get_package_versions(args)}'"})
     copy_okapi_libs(abspath(join(ruby_dir, '..', 'libs')))
@@ -93,7 +97,7 @@ def build_ruby(args) -> None:
 
 def build_golang(args) -> None:
     # Update version in setup.cfg
-    golang_dir = abspath(join(dirname(__file__), '..', 'go', 'okapi'))
+    golang_dir = join(get_language_dir('go'), 'okapi')
     # Copy in the binaries
     copy_okapi_libs(golang_dir, 'windows-gnu')
 
@@ -115,9 +119,6 @@ def get_github_version(github_token: str = None) -> str:
 def parse_arguments():
     parser = argparse.ArgumentParser(description='Process SDK building')
     parser.add_argument('--package-version', help='Manual override package version')
-    parser.add_argument('--run-tests', help='Run unit tests', action='store_true')
-    parser.add_argument('--make-package', help='Make the packages', action='store_true')
-    # TODO - allow specifying what to build?
     return parser.parse_args()
 
 
