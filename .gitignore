@@ -455,3 +455,5 @@ go/okapi/okapi.lib
 go/vendor/
 
 python/lib64
+
+.venv
