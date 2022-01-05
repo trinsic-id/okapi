@@ -17,7 +17,7 @@ This issue is tracking steps to complete a release ensuring all artifacts are co
   - [ ] Ensure code contributions and commits are included in the release description, either by utilizing the GitHub automatic options or entering them manually.
 - [ ] Swift Release &mdash; create new release in associated repository for Swift package at https://github.com/trinsic-id/okapi-swift. The release version in this repo follows a pattern that doesn't include leading `v`. Example release format is `1.2.0`.
 - [ ] External Tools
-  - [ ] Homebrew &mdash; TODO: Add details
+  - [ ] Homebrew &mdash; to create a new tap, follow the instructions at https://github.com/trinsic-id/homebrew-tap by making a new PR with the required information. This step depends on a release asset package.
   - [ ] Windows Package Manager (winger) &mdash; TODO: Add details
   - [ ] NixOS &mdash; TODO: Add details
 - [ ] Samples &mdash; if required, code samples at https://github.com/trinsic-id/okapi-examples should be updated to match the version
