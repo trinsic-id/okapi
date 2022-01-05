@@ -56,7 +56,9 @@ dpkg -i okapi_1.1.0_amd64.deb
 
 #### `win-get` for Windows
 
-TODO
+```
+winget install okapi
+```
 
 ## Library and API structure
 
