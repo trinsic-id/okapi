@@ -3,7 +3,7 @@ name: New Release Checklist
 about: Maintainers checklist for publishing new releases
 title: New Release Checklist - vX.X.0
 labels: ''
-assignees: ''
+assignees: 'fundthmcalculus tmarkovski'
 
 ---
 
