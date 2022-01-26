@@ -48,7 +48,7 @@ impl crate::LdProofs {
         let data = serde_jcs::to_vec(&unsigned_document).unwrap();
         let hashed = Sha256::digest(data.as_slice());
         let hashed_slice = hashed.as_slice();
-        let signature = did_key.sign(Payload::Buffer(hashed_slice.to_vec()));
+        let signature = did_key.sign(hashed_slice);
 
         // create the signature value and append it to the previously created proof
         unsigned_document.proof.signature_value = Some(::bs58::encode(signature).into_string());

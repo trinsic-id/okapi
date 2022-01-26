@@ -107,7 +107,7 @@ impl DIDComm {
         let key = unwrap_or_return!(&request.key, Error::MissingField("key not found"));
 
         let did_key: KeyPair = key.clone().into();
-        let signature = did_key.sign(Payload::Buffer(request.payload.clone()));
+        let signature = did_key.sign(&request.payload);
 
         Ok(SignResponse {
             message: Some(SignedMessage {
@@ -137,7 +137,7 @@ impl DIDComm {
         }
 
         let did_key: KeyPair = key.into();
-        let valid = did_key.verify(Payload::Buffer(message.payload), &signature.signature);
+        let valid = did_key.verify(&message.payload, &signature.signature);
 
         Ok(VerifyResponse {
             is_valid: valid.map_or_else(|_| false, |_| true),
