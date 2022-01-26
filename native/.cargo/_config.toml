@@ -1,11 +1,6 @@
 [source.crates-io]
 replace-with = "vendored-sources"
 
-[source."https://github.com/decentralized-identity/did-key.rs"]
-git = "https://github.com/decentralized-identity/did-key.rs"
-branch = "main"
-replace-with = "vendored-sources"
-
 [source."https://github.com/mikelodder7/oberon"]
 git = "https://github.com/mikelodder7/oberon"
 branch = "main"
