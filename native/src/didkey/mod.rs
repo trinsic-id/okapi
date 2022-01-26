@@ -73,7 +73,7 @@ impl crate::DIDKey {
             KeyType::Ed25519 => generate::<Ed25519KeyPair>(Some(request.seed.as_slice())),
             KeyType::X25519 => generate::<X25519KeyPair>(Some(request.seed.as_slice())),
             KeyType::P256 => generate::<P256KeyPair>(Some(request.seed.as_slice())),
-            KeyType::Bls12381g1g2 => generate::<Bls12381KeyPair>(Some(request.seed.as_slice())),
+            KeyType::Bls12381g1g2 => generate::<Bls12381KeyPairs>(Some(request.seed.as_slice())),
             KeyType::Secp256k1 => generate::<Secp256k1KeyPair>(Some(request.seed.as_slice())),
             KeyType::Unspecified => unimplemented!(),
         };
