@@ -57,9 +57,7 @@ def update_golang():
     go_path = get_language_dir('go')
     go_proto_path = join(go_path, 'okapiproto')
     clean_proto_dir(go_proto_path)
-    run_protoc({'go_out': go_proto_path, 'go-grpc_out': go_proto_path},
-               {'go_opt': 'module=github.com/trinsic-id/okapiproto'},
-               get_proto_files())
+    run_protoc({'go_out': go_proto_path}, {'go_opt': 'module=github.com/trinsic-id/okapiproto'}, get_proto_files())
 
 
 def update_ruby():
