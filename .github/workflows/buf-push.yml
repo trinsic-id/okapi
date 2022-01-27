@@ -43,5 +43,10 @@ jobs:
       - name: Compile proto files
         run: |
           python ./devops/generate_proto_files.py
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3.12.0
+      - name: Create pull request
+        uses: repo-sync/pull-request@v2
+        with:
+          destination_branch: "main"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          pr_label: "auto-pr"
+          pr_title: "Update Generated Protobuf Files"
