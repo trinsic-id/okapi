@@ -29,11 +29,15 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: ^1.16
       - name: Install Protoc
         uses: arduino/setup-protoc@v1
       - name: Install protobuf plugins
         run: |
-          go get google.golang.org/protobuf/cmd/protoc-gen-go@latest
+          go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
           pip install -r ./devops/requirements.txt
           echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
       - name: Compile proto files
