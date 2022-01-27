@@ -58,11 +58,8 @@ def update_golang():
     go_proto_path = join(go_path, 'okapiproto')
     clean_proto_dir(go_proto_path)
     run_protoc({'go_out': go_proto_path, 'go-grpc_out': go_proto_path},
-               {'go_opt': 'module=github.com/trinsic-id/okapiproto',
-                'go-grpc_opt': 'module=github.com/trinsic-id/okapiproto'},
+               {'go_opt': 'module=github.com/trinsic-id/okapiproto'},
                get_proto_files())
-    # Remove example grpc
-    os.remove(join(go_proto_path, 'examples_grpc.pb.go'))
 
 
 def update_ruby():
