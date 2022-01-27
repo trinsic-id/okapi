@@ -1,0 +1,2 @@
+betterproto[compiler]
+grpcio-tools

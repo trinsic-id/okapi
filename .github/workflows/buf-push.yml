@@ -19,3 +19,34 @@ jobs:
         with:
           input: 'proto'
           buf_token: ${{ secrets.BUF_BUILD_TOKEN }}
+
+  compile_proto:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: ^1.16
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v1
+      - name: Install protobuf plugins
+        run: |
+          go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+          pip install -r ./devops/requirements.txt
+          echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
+      - name: Compile proto files
+        run: |
+          git checkout -b update-protobuf-generated-files
+          python ./devops/generate_proto_files.py
+      - name: Create pull request
+        uses: repo-sync/pull-request@v2.6.1
+        with:
+          destination_branch: "main"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          pr_label: "auto-pr"
+          pr_title: "Update Generated Protobuf Files"
