@@ -42,7 +42,6 @@ jobs:
           echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
       - name: Compile proto files
         run: |
-          git checkout main
           git checkout -b update-protobuf-generated-files
           python ./devops/generate_proto_files.py
       - name: Create pull request
