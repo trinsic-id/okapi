@@ -113,7 +113,6 @@ def main():
     update_golang()
     update_ruby()
     update_java()
-    # update_swift()
     update_python()
 
 

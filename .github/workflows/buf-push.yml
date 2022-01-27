@@ -19,3 +19,18 @@ jobs:
         with:
           input: 'proto'
           buf_token: ${{ secrets.BUF_BUILD_TOKEN }}
+
+  compile_proto:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: Compile proto files
+        run: |
+          python ../devops/generate_proto_files.py
+        working-directory: python
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3.12.0
