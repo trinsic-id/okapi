@@ -38,6 +38,7 @@ jobs:
       - name: Install protobuf plugins
         run: |
           go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+          go install google.golang.org/protobuf/cmd/protoc-gen-go-grpc@latest
           pip install -r ./devops/requirements.txt
           echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
       - name: Compile proto files
