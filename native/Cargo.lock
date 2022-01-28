@@ -930,8 +930,8 @@ checksum = "546c37ac5d9e56f55e73b677106873d9d9f5190605e41a856503623648488cae"
 
 [[package]]
 name = "oberon"
-version = "1.0.1"
-source = "git+https://github.com/mikelodder7/oberon?branch=main#83d0157cbc693132fd56c52308d012fe94e70083"
+version = "1.1.0"
+source = "git+https://github.com/mikelodder7/oberon#fdc2e57e9b11386aa6b2726679a2f534405ba494"
 dependencies = [
  "bls12_381_plus 0.5.2",
  "digest",
