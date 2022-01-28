@@ -1,3 +1,5 @@
+use rand::thread_rng;
+
 use crate::{didcomm::Error, proto::security::*, MessageFormatter, Oberon};
 
 #[test]
@@ -188,12 +190,8 @@ fn test_validate_proof() {
 
 #[test]
 fn oberon_demo() {
-    let sk = oberon::SecretKey::from_bytes(&[
-        16, 133, 126, 11, 192, 153, 22, 14, 53, 214, 99, 40, 66, 194, 96, 30, 19, 86, 137, 107, 150, 49, 104, 202, 209, 80, 128, 182, 15, 154, 34, 57, 100, 51,
-        175, 108, 12, 56, 6, 76, 46, 173, 247, 255, 184, 165, 228, 127, 145, 65, 171, 195, 44, 164, 3, 16, 132, 43, 108, 82, 63, 136, 116, 3, 93, 1, 226, 152,
-        197, 152, 61, 212, 185, 32, 195, 211, 37, 206, 242, 31, 72, 79, 83, 71, 197, 102, 202, 129, 95, 19, 105, 34, 22, 46, 124, 94,
-    ])
-    .unwrap();
+    let mut rng = thread_rng();
+    let sk = oberon::SecretKey::new(&mut rng);
     let pk = oberon::PublicKey::from(&sk);
 
     let data = b"test data to generate tokens".to_vec();
@@ -210,7 +208,7 @@ fn oberon_demo() {
         token: token.token.clone(),
         data: data.clone(),
         nonce: nonce.clone(),
-        blinding: Vec::new(),
+        blinding: vec![],
     })
     .unwrap();
 
