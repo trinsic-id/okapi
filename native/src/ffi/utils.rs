@@ -26,7 +26,6 @@ pub unsafe extern "C" fn didcomm_string_free(s: *mut std::os::raw::c_char) {
     });
 }
 
-
 #[no_mangle]
 pub extern "C" fn okapi_bytebuffer_free(v: ByteBuffer) {
     // Note: This should never happen, but in the case of a bug aborting
