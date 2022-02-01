@@ -36,6 +36,11 @@ jobs:
           workflow: "build-libs.yml"
           path: ./libs
           branch: main
+      - uses: trinsic-id/set-version@v0.1
+        id: setversion
+        with:
+          githubToken: ${{ secrets.API_GITHUB_TOKEN }}
+          overrideVersion: ${{ github.event.inputs.packageVersion }}
       - name: Publish package
         run: |
           python ../devops/build_sdks.py --package-version=${{ github.event.inputs.packageVersion }}
