@@ -44,7 +44,7 @@ jobs:
       - name: Publish package
         run: |
           python ../devops/build_sdks.py --package-version=${{ steps.setversion.outputs.packageVersion }}
-          gradle publish
+          gradle build
         working-directory: java
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -52,11 +52,10 @@ jobs:
           DYLD_FALLBACK_LIBRARY_PATH: "${{ github.workspace }}/libs"
           DYLD_LIBRARY_PATH: "${{ github.workspace }}/libs"
 
-      - name: Upload to Release
-        uses: svenstaro/upload-release-action@2.2.1
+      - uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file_glob: true
-          file: ./java/build/libs/*.jar
+          file: ./java/build/libs/trinsic-okapi-${{ steps.setversion.outputs.packageVersion }}.jar
           asset_name: trinsic-okapi-${{ steps.setversion.outputs.packageVersion }}.jar
           tag: ${{ steps.setversion.outputs.releaseVersion }}
+          overwrite: true
