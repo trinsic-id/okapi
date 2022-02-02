@@ -36,6 +36,11 @@ jobs:
           workflow: "build-libs.yml"
           path: ./libs
           branch: main
+      - uses: trinsic-id/set-version@v0.1
+        id: setversion
+        with:
+          githubToken: ${{ secrets.API_GITHUB_TOKEN }}
+          overrideVersion: ${{ github.event.inputs.packageVersion }}
       - name: Publish package
         run: |
           python ../devops/build_sdks.py --package-version=${{ github.event.inputs.packageVersion }}
@@ -46,3 +51,13 @@ jobs:
           LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
           DYLD_FALLBACK_LIBRARY_PATH: "${{ github.workspace }}/libs"
           DYLD_LIBRARY_PATH: "${{ github.workspace }}/libs"
+
+      - name: Upload to Release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./java/build/libs/trinsic-okapi-${{ steps.setversion.outputs.packageVersion }}.jar
+          asset_name: trinsic-okapi-${{ steps.setversion.outputs.packageVersion }}.jar
+          tag: ${{ steps.setversion.outputs.releaseVersion }}
+          overwrite: false
+          body: "Trinsic Okapi JAR File"
