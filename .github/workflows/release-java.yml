@@ -43,7 +43,7 @@ jobs:
           overrideVersion: ${{ github.event.inputs.packageVersion }}
       - name: Publish package
         run: |
-          python ../devops/build_sdks.py --package-version=${{ github.event.inputs.packageVersion }}
+          python ../devops/build_sdks.py --package-version=${{ steps.setversion.outputs.packageVersion }}
           gradle publish
         working-directory: java
         env:
