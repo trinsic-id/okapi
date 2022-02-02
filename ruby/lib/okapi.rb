@@ -59,7 +59,13 @@ module Okapi
 
     full_path = library_name
     full_path = File.expand_path(File.join(library_path, library_name)) unless library_path.nil?
-    ffi_lib full_path
+    begin
+      ffi_lib full_path
+    rescue
+      # Get the environment variable RUBY_DLL_PATH on all platforms as a failsafe, MacOS system integrity protection, I'm looking at you.
+      full_path = File.expand_path(File.join(ENV['RUBY_DLL_PATH'], library_name))
+      ffi_lib full_path
+    end
 
     attach_function :didkey_generate, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
     attach_function :didkey_resolve, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
