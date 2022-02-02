@@ -44,7 +44,7 @@ jobs:
       - name: Publish package
         run: |
           python ../devops/build_sdks.py --package-version=${{ steps.setversion.outputs.packageVersion }}
-          gradle build
+          gradle jar
         working-directory: java
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
