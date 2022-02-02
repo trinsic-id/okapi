@@ -56,7 +56,7 @@ jobs:
         uses: svenstaro/upload-release-action@2.2.1
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./java/build/libs/trinsic-okapi-${{ steps.setversion.outputs.packageVersion }}.jar
+          file_glob: true
+          file: ./java/build/libs/*.jar
           asset_name: trinsic-okapi-${{ steps.setversion.outputs.packageVersion }}.jar
           tag: ${{ steps.setversion.outputs.releaseVersion }}
-          overwrite: false
