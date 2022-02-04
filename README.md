@@ -115,6 +115,12 @@ var key = DIDKey.generate(request);
 - `create_proof`
 - `verify_proof`
 
+## Development
+
+### Compile Protobuf
+
+Some languages have support for compiling the protobuf definitions directly (.NET, node, rust), some (Java, Go, Python, Ruby) require use of a separate Python script located `./devops/generate_proto_files.py`. The github action [Push to buf.build](https://github.com/trinsic-id/okapi/actions/workflows/buf-push.yml) will also create a branch called `update-protobuf-generated-files` with any changes.
+
 ## Stats
 
 ![Alt](https://repobeats.axiom.co/api/embed/f64200b2f13d2626a24009a65396d0db46fb1dc8.svg "Repobeats analytics image")
