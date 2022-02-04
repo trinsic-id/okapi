@@ -42,6 +42,8 @@ jobs:
       - name: Compile proto files
         run: |
           git checkout -b update-protobuf-generated-files
+          git config --global user.name 'Github Action Runner'
+          git config --global user.email 'trinsic.github.bot@users.noreply.github.com'
           python ./devops/generate_proto_files.py
           git add .
           git commit -m "Proto file changes"
