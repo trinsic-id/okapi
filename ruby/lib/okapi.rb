@@ -61,7 +61,7 @@ module Okapi
     full_path = File.expand_path(File.join(library_path, library_name)) unless library_path.nil?
     begin
       ffi_lib full_path
-    rescue
+    rescue LoadError
       # Get the environment variable RUBY_DLL_PATH on all platforms as a failsafe, MacOS system integrity protection, I'm looking at you.
       full_path = File.expand_path(File.join(ENV['RUBY_DLL_PATH'], library_name))
       ffi_lib full_path
