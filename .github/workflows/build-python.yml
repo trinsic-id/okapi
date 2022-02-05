@@ -19,11 +19,11 @@ on:
 jobs:
   build-and-test-python:
     name: Test Python code
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os-artifact[0] }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-latest, windows-latest, macos-latest ]
+        os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows], [macos-latest, macos] ]
         python-version: [3.7, 3.8, 3.9, '3.10' ]
     steps:
       - uses: actions/checkout@v2
@@ -31,7 +31,9 @@ jobs:
         uses: dawidd6/action-download-artifact@v2.14.0
         with:
           workflow: "build-libs.yml"
-          path: ./libs
+          path: ./libs/${{ matrix.os-artifact[1] }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          name: ${{ matrix.os-artifact[1] }}
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
@@ -51,7 +53,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: Python ${{ matrix.python-version }} Unit Test Results (${{ matrix.os }})
+          name: Python ${{ matrix.python-version }} Unit Test Results (${{ matrix.os-artifact[0] }})
           path: 'python/test_output*.xml'
 
   publish-test-results-python:
