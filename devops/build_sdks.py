@@ -150,7 +150,7 @@ def build_java_docs(args):
 def build_dotnet_docs(args) -> None:
     # https://github.com/Doraku/DefaultDocumentation
     # dotnet tool install DefaultDocumentation.Console -g
-    assembly_file = './dotnet/Trinsic/bin/Debug/net6.0/Trinsic.dll'
+    assembly_file = './dotnet/Library/Okapi/bin/Debug/net6.0/okapi.dll'
     output_doc_folder = './docs/reference/dotnet'
     clean_dir(abspath(join(get_sdk_dir(), output_doc_folder)))
     subprocess.Popen(f"defaultdocumentation --AssemblyFilePath {assembly_file} --OutputDirectoryPath {output_doc_folder} --FileNameMode Name --GeneratedPages Namespaces",
