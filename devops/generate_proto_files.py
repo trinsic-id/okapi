@@ -5,57 +5,10 @@ import glob
 import itertools
 import logging
 import os
-from platform import system
-import urllib.request
 from os.path import abspath, join, dirname
 from typing import List, Dict, Union
 
-from build_sdks import update_line, clean_dir, get_language_dir
-
-
-def protoc_plugin_versions(key: str = None) -> Union[str, Dict[str, str]]:
-    version_dict = {'java': '1.42.1', 'kotlin': '1.2.0', 'mkdocs': 'v1.5.0'}
-    if key:
-        return version_dict[key]
-    else:
-        return version_dict
-
-
-def plugin_path() -> str:
-    return abspath(join(dirname(__file__), 'protoc-plugins'))
-
-
-def java_plugin() -> str:
-    return abspath(join(plugin_path(), 'protoc-gen-grpc-java.exe'))
-
-
-def kotlin_plugin() -> str:
-    return abspath(join(plugin_path(), f'protoc-gen-grpc-kotlin.{"cmd" if system() == "Windows" else "sh"}'))
-
-
-def download_protoc_plugins() -> None:
-    clean_dir(plugin_path())
-    kotlin_jar = join(plugin_path(), 'protoc-gen-grpc-kotlin.jar')
-
-    java_plugin_version = protoc_plugin_versions("java")
-    kotlin_plugin_version = protoc_plugin_versions("kotlin")
-    urllib.request.urlretrieve(
-        f'https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/{java_plugin_version}/protoc-gen-grpc-java-{java_plugin_version}-{system().lower()}-x86_64.exe',
-        java_plugin())
-    urllib.request.urlretrieve(
-        f'https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-kotlin/{kotlin_plugin_version}/protoc-gen-grpc-kotlin-{kotlin_plugin_version}-jdk7.jar',
-        kotlin_jar)
-
-    with open(kotlin_plugin(), 'w') as fid:
-        if system().lower() == 'windows':
-            fid.write(f'@java.exe -jar "{kotlin_jar}" %*')
-        else:
-            fid.write(f'#!/usr/bin/env sh\n'
-                      f'java -jar {kotlin_jar} "$@"')
-
-    if system().lower() == "linux":
-        os.system(f"chmod +x {java_plugin()}")
-        os.system(f"chmod +x {kotlin_plugin()}")
+from build_sdks import clean_dir, get_language_dir
 
 
 def get_proto_files(dir_name: str = None) -> List[str]:
@@ -137,7 +90,7 @@ def update_python():
     :return:
     """
     # Remove everything under output directory
-    python_proto_path = join(get_language_dir('python'), "trinsic", "proto")
+    python_proto_path = join(get_language_dir('python'), "trinsicokapi", "proto")
     clean_dir(python_proto_path)
     # Inject an empty python code file path to mimic the first argument.
     run_protoc({'python_betterproto_out': python_proto_path}, {}, proto_files=get_proto_files())
@@ -145,7 +98,6 @@ def update_python():
 
 def main():
     logging.getLogger().setLevel(logging.INFO)
-    download_protoc_plugins()
     update_golang()
     update_ruby()
     update_markdown()

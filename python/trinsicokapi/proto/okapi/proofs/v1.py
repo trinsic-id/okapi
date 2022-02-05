@@ -4,7 +4,9 @@
 from dataclasses import dataclass
 
 import betterproto
-from betterproto.grpc.grpclib_server import ServiceBase
+
+from .google import protobuf
+from .okapi.keys import v1
 
 
 class LdSuite(betterproto.Enum):
@@ -12,35 +14,29 @@ class LdSuite(betterproto.Enum):
     LD_SUITE_JCSED25519SIGNATURE2020 = 1
 
 
-@dataclass(eq=False, repr=False)
+@dataclass
 class CreateProofRequest(betterproto.Message):
     # The input JSON document that will be used to create the LD Proof. This
     # document must also contain a "proof" object, with the desired values filled
     # in.
-    document: "betterproto_lib_google_protobuf.Struct" = betterproto.message_field(1)
+    document: protobuf.Struct = betterproto.message_field(1)
     # The signer of the proof. This field must include the 'kid' in full URI
     # format. Example:  did:example:alice#key-1
-    key: "__keys_v1__.JsonWebKey" = betterproto.message_field(3)
+    key: v1.JsonWebKey = betterproto.message_field(3)
     # The LD Suite to use to produce this proof
     suite: "LdSuite" = betterproto.enum_field(4)
 
 
-@dataclass(eq=False, repr=False)
+@dataclass
 class CreateProofResponse(betterproto.Message):
-    signed_document: "betterproto_lib_google_protobuf.Struct" = (
-        betterproto.message_field(1)
-    )
+    signed_document: protobuf.Struct = betterproto.message_field(1)
 
 
-@dataclass(eq=False, repr=False)
+@dataclass
 class VerifyProofRequest(betterproto.Message):
     pass
 
 
-@dataclass(eq=False, repr=False)
+@dataclass
 class VerifyProofResponse(betterproto.Message):
     pass
-
-
-from ...keys import v1 as __keys_v1__
-import betterproto.lib.google.protobuf as betterproto_lib_google_protobuf
