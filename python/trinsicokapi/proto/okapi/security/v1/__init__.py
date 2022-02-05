@@ -5,16 +5,17 @@ from dataclasses import dataclass
 from typing import List
 
 import betterproto
+from betterproto.grpc.grpclib_server import ServiceBase
 
 
-@dataclass
+@dataclass(eq=False, repr=False)
 class CreateOberonKeyRequest(betterproto.Message):
     """Create an Oberon Compatible Secret Key"""
 
     seed: bytes = betterproto.bytes_field(1)
 
 
-@dataclass
+@dataclass(eq=False, repr=False)
 class CreateOberonKeyResponse(betterproto.Message):
     """Contains the oberon secret key bytes"""
 
@@ -22,7 +23,7 @@ class CreateOberonKeyResponse(betterproto.Message):
     pk: bytes = betterproto.bytes_field(3)
 
 
-@dataclass
+@dataclass(eq=False, repr=False)
 class CreateOberonTokenRequest(betterproto.Message):
     """Create a new oberon token"""
 
@@ -31,14 +32,14 @@ class CreateOberonTokenRequest(betterproto.Message):
     blinding: List[bytes] = betterproto.bytes_field(3)
 
 
-@dataclass
+@dataclass(eq=False, repr=False)
 class CreateOberonTokenResponse(betterproto.Message):
     """Contains the token with optional blinding"""
 
     token: bytes = betterproto.bytes_field(1)
 
 
-@dataclass
+@dataclass(eq=False, repr=False)
 class CreateOberonProofRequest(betterproto.Message):
     """Create a proof that holder knows the token"""
 
@@ -48,14 +49,14 @@ class CreateOberonProofRequest(betterproto.Message):
     nonce: bytes = betterproto.bytes_field(4)
 
 
-@dataclass
+@dataclass(eq=False, repr=False)
 class CreateOberonProofResponse(betterproto.Message):
     """Contains the token proof"""
 
     proof: bytes = betterproto.bytes_field(2)
 
 
-@dataclass
+@dataclass(eq=False, repr=False)
 class VerifyOberonProofRequest(betterproto.Message):
     """Verify the presented proof is valid"""
 
@@ -65,14 +66,14 @@ class VerifyOberonProofRequest(betterproto.Message):
     pk: bytes = betterproto.bytes_field(4)
 
 
-@dataclass
+@dataclass(eq=False, repr=False)
 class VerifyOberonProofResponse(betterproto.Message):
     """Contains the status of the proof validation"""
 
     valid: bool = betterproto.bool_field(1)
 
 
-@dataclass
+@dataclass(eq=False, repr=False)
 class BlindOberonTokenRequest(betterproto.Message):
     """Blind an oberon token"""
 
@@ -80,14 +81,14 @@ class BlindOberonTokenRequest(betterproto.Message):
     blinding: List[bytes] = betterproto.bytes_field(2)
 
 
-@dataclass
+@dataclass(eq=False, repr=False)
 class BlindOberonTokenResponse(betterproto.Message):
     """Contains the blinded token reply"""
 
     token: bytes = betterproto.bytes_field(1)
 
 
-@dataclass
+@dataclass(eq=False, repr=False)
 class UnBlindOberonTokenRequest(betterproto.Message):
     """UnBlind an oberon token"""
 
@@ -95,7 +96,7 @@ class UnBlindOberonTokenRequest(betterproto.Message):
     blinding: List[bytes] = betterproto.bytes_field(2)
 
 
-@dataclass
+@dataclass(eq=False, repr=False)
 class UnBlindOberonTokenResponse(betterproto.Message):
     """Contains the unblinded token reply"""
 

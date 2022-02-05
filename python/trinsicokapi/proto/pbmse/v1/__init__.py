@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from typing import List
 
 import betterproto
+from betterproto.grpc.grpclib_server import ServiceBase
 
 
 class EncryptionMode(betterproto.Enum):
@@ -19,7 +20,7 @@ class EncryptionAlgorithm(betterproto.Enum):
     ENCRYPTION_ALGORITHM_AES_GCM = 2
 
 
-@dataclass
+@dataclass(eq=False, repr=False)
 class SignedMessage(betterproto.Message):
     """JWS Protocol buffer message signing and encryption"""
 
@@ -27,19 +28,19 @@ class SignedMessage(betterproto.Message):
     signatures: List["Signature"] = betterproto.message_field(2)
 
 
-@dataclass
+@dataclass(eq=False, repr=False)
 class Signature(betterproto.Message):
     header: bytes = betterproto.bytes_field(1)
     signature: bytes = betterproto.bytes_field(3)
 
 
-@dataclass
+@dataclass(eq=False, repr=False)
 class SignatureHeader(betterproto.Message):
     algorithm: str = betterproto.string_field(1)
     key_id: str = betterproto.string_field(2)
 
 
-@dataclass
+@dataclass(eq=False, repr=False)
 class EncryptedMessage(betterproto.Message):
     iv: bytes = betterproto.bytes_field(1)
     aad: bytes = betterproto.bytes_field(2)
@@ -48,7 +49,7 @@ class EncryptedMessage(betterproto.Message):
     recipients: List["EncryptionRecipient"] = betterproto.message_field(5)
 
 
-@dataclass
+@dataclass(eq=False, repr=False)
 class EncryptionHeader(betterproto.Message):
     mode: "EncryptionMode" = betterproto.enum_field(1)
     algorithm: "EncryptionAlgorithm" = betterproto.enum_field(2)
@@ -56,7 +57,7 @@ class EncryptionHeader(betterproto.Message):
     sender_key_id: str = betterproto.string_field(4)
 
 
-@dataclass
+@dataclass(eq=False, repr=False)
 class EncryptionRecipient(betterproto.Message):
     header: "EncryptionHeader" = betterproto.message_field(1)
     content_encryption_key: bytes = betterproto.bytes_field(2)
