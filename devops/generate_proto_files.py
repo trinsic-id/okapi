@@ -2,72 +2,71 @@
 Generate the language bindings from the proto files.
 """
 import glob
+import itertools
+import logging
 import os
-import shutil
 from os.path import abspath, join, dirname
-from typing import List, Dict
-import pkg_resources
-from grpc_tools import protoc
+from typing import List, Dict, Union
 
-
-def get_language_dir(language_name: str) -> str:
-    """
-    Get the directory for the given language SDK
-    :param language_name: The language directory
-    :return: Absolute path to the given language SDK
-    """
-    return abspath(join(dirname(abspath(__file__)), '..', language_name))
+from build_sdks import clean_dir, get_language_dir
 
 
 def get_proto_files(dir_name: str = None) -> List[str]:
     dir_name = dir_name or get_language_dir('proto')
-    proto_search_glob = join(dir_name, '**', '*.proto')
-    return [abspath(file_path) for file_path in glob.glob(proto_search_glob, recursive=True)]
+    return get_matching_files(dir_name, '*.proto')
 
 
-def clean_proto_dir(language_proto_dir: str) -> None:
-    try:
-        shutil.rmtree(language_proto_dir)
-    except:
-        pass
-    os.mkdir(language_proto_dir)
+def get_matching_files(dir_name: str, extension: str) -> List[str]:
+    if not extension.startswith('*.'):
+        extension = f'*.{extension}'
+    search_glob = join(dir_name, '**', extension)
+    return [abspath(file_path) for file_path in glob.glob(search_glob, recursive=True)]
 
 
-def join_args(args: Dict[str, str]) -> str:
-    return " ".join([f'--{key}="{value}"' for (key, value) in args.items()]) if args else ''
+def join_args(args: Union[str, List[str], Dict[str, str]]) -> List[str]:
+    if isinstance(args, dict):
+        return [f'--{key}="{value}"' for (key, value) in args.items()] if args else []
+    elif isinstance(args, list):
+        return args
+    else:
+        return [args]
 
 
 def run_protoc(language_options: Dict[str, str] = None,
-               custom_options: Dict[str, str] = None,
-               proto_files: List[str] = None,
+               custom_options: Union[List[str], Dict[str, str]] = None,
+               proto_files: Union[List[str], str] = None,
                plugin: str = None,
                protoc_executable: str = 'protoc') -> None:
-    language_arg_string = join_args(language_options)
     proto_path_string = f'--proto_path="{get_language_dir("proto")}"'
-    custom_options_string = join_args(custom_options)
-    proto_files_string = " ".join(proto_files)
     plugin_string = f'--plugin={plugin}' if plugin else ''
-    protoc_command = f'{protoc_executable} {plugin_string} {proto_path_string} {language_arg_string} {custom_options_string} {proto_files_string}'
-    print(protoc_command)
-    if os.system(protoc_command) != 0:
-        raise Exception("Protoc failed")
+    command_args = [protoc_executable, plugin_string, proto_path_string, join_args(language_options), join_args(custom_options)]
+    command_args.extend(join_args(proto_files))
+    # Regularize 2D array and flatten
+    command_args = [arg_list if isinstance(arg_list, list) else [arg_list] for arg_list in command_args ]
+    command_args = list(itertools.chain(*command_args))
+    # Strip blank arguments because protoc WILL DIE, and do so passive aggresive
+    command_args = [arg for arg in command_args if arg]
+    logging.info(command_args)
+    if os.system(" ".join(command_args)) != 0:
+        raise Exception("protoc failed")
 
 
 def update_golang():
     go_path = get_language_dir('go')
     go_proto_path = join(go_path, 'okapiproto')
-    clean_proto_dir(go_proto_path)
+    clean_dir(go_proto_path)
     run_protoc({'go_out': go_proto_path}, {'go_opt': 'module=github.com/trinsic-id/okapiproto'}, get_proto_files())
 
 
 def update_ruby():
     ruby_path = get_language_dir('ruby')
     ruby_proto_path = join(ruby_path, 'lib')
-    # TODO - clean selectively
+    # Clean selectively
+    clean_dir(join(ruby_proto_path, 'okapi'))
+    clean_dir(join(ruby_proto_path, 'pbmse'))
     run_protoc({'ruby_out': ruby_proto_path}, {}, get_proto_files())
-    # TODO - Ruby type specifications
-    os.system(f"rbs prototype rb {join(ruby_proto_path, '**', '*.rb')} > {join(ruby_proto_path, 'signatures.rbs')}")
-    # run_protoc({'rbs_out': ruby_proto_path}, {}, get_proto_files())
+    # Ruby type specifications
+    run_protoc({'rbi_out': f"{ruby_proto_path}"}, {}, get_proto_files())
 
 
 def update_java():
@@ -77,11 +76,10 @@ def update_java():
     run_protoc({'java_out': java_proto_path, 'kotlin_out': java_proto_path}, {}, get_proto_files())
 
 
-def update_swift():
-    swift_path = get_language_dir('swift')
-    swift_proto_path = join(swift_path, 'Okapi', 'Sources', 'OkapiSwift', 'proto')
-    clean_proto_dir(swift_proto_path)
-    run_protoc({'swift_out': swift_proto_path}, {'swift_opt': "Visibility=Public"}, get_proto_files())
+def update_markdown():
+    lang_path = get_language_dir('docs')
+    lang_proto_path = join(lang_path, 'reference', 'proto')
+    run_protoc({'doc_out': lang_proto_path}, {'doc_opt': 'markdown,index.md'}, get_proto_files())
 
 
 def update_python():
@@ -90,25 +88,19 @@ def update_python():
     :return:
     """
     # Remove everything under output directory
-    python_proto_path = join(get_language_dir('python'), 'trinsicokapi', "proto")
-    clean_proto_dir(python_proto_path)
-    # Paths for proto compilation
-    file_path = abspath(dirname(abspath(__file__)))
-    base_path = abspath(join(file_path, '..', 'proto'))
-    # Come up with better locations, import google defaults from the package location (see code in protoc.main)
-    proto_include = pkg_resources.resource_filename('grpc_tools', '_proto').replace("lib", "Lib")
+    python_proto_path = join(get_language_dir('python'), "trinsicokapi", "proto")
+    clean_dir(python_proto_path)
     # Inject an empty python code file path to mimic the first argument.
-    base_command = ['', '-I', get_language_dir('proto'), f'--python_betterproto_out={python_proto_path}']
-    base_command.extend(get_proto_files())
-    base_command.append(f'-I{proto_include}')
-    protoc.main(base_command)
+    run_protoc({'python_betterproto_out': python_proto_path}, {}, proto_files=get_proto_files())
 
 
 def main():
+    logging.getLogger().setLevel(logging.INFO)
     update_golang()
     update_ruby()
-    update_java()
+    update_markdown()
     update_python()
+    update_java()
 
 
 if __name__ == "__main__":
