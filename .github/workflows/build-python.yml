@@ -27,6 +27,12 @@ jobs:
         python-version: [3.7, 3.8, 3.9, '3.10' ]
     steps:
       - uses: actions/checkout@v2
+      - name: Cache python dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ hashFiles('./python/requirements.txt') }}
+            
       - name: Download workflow artifact
         uses: dawidd6/action-download-artifact@v2.14.0
         with:
@@ -40,7 +46,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Build, Test, Pack
         run: |
-          python -m pip install -r requirements.txt
+          python -m pip install --upgrade --upgrade-strategy eager -r requirements.txt
           python -m pip install pytest pytest-cov
           python ../devops/build_sdks.py
           python -m pytest --cache-clear ./tests --junitxml=test_output.xml --cov=.
