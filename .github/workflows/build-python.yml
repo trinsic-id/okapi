@@ -31,11 +31,7 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Cache python dependencies
-        uses: actions/cache@v2
-        with:
-          path: ${{ env.pythonLocation }}
-          key: ${{ env.pythonLocation }}-${{ hashFiles('./python/requirements.txt') }}
+          cache: 'pip'
             
       - name: Download workflow artifact
         uses: dawidd6/action-download-artifact@v2.14.0
