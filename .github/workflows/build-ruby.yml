@@ -24,10 +24,13 @@ jobs:
         uses: ruby/setup-ruby@v1.76.0
         with:
           ruby-version: ${{ matrix.ruby-version }}
+          bundler-cache: true
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
+          cache: 'pip'
+
       - name: Download workflow artifact
         uses: dawidd6/action-download-artifact@v2.14.0
         with:
