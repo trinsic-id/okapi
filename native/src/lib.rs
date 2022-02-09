@@ -45,6 +45,8 @@ pub mod oberon;
 pub mod proto;
 #[cfg(test)]
 mod tests;
+#[cfg(feature = "hashing")]
+pub mod hashing;
 
 pub mod google {
     pub mod protobuf {
