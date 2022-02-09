@@ -287,5 +287,8 @@ pub mod proofs {
 pub mod security {
     pub use crate::proto::okapi::okapi_security::*;
 }
+pub mod hashing {
+    pub use crate::proto::okapi::okapi_hashing::*;
+}
 pub mod okapi;
 pub mod pbmse;

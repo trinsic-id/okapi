@@ -11,6 +11,7 @@ edition = "2018"
 build = false
 
 [dependencies]
+arrayvec = "0.7.2"
 chacha20poly1305 = "0.7.0"
 ffi-support = "0.4"
 prost = "0.9"

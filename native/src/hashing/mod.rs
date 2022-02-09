@@ -1,86 +1,56 @@
-use hashing::*;
-use serde::{Deserialize, Serialize};
-use serde_json::Value;
-use sha2::{Digest, Sha256};
 use std::convert::TryFrom;
+use arrayvec::ArrayVec;
+use std::str;
 
 use crate::{didcomm::Error, proto::okapi::okapi_hashing::*};
 
-const SIGNATURE_NAME: &str = "JcsEd25519Signature2020";
-
 impl crate::Hashing {
     pub fn blake3_hash<'a>(request: &Blake3HashRequest) -> Result<Blake3HashResponse, Error<'a>> {
-        let key = request.key.clone().unwrap();
-        let mut data = request.data.clone().unwrap();
-
+        let data = request.data.clone();
         // Hash the provided data
-
-
-        Ok(CreateProofResponse {
-            signed_document: Some(unsigned_document.into()),
+        let hash1 = blake3::hash(data.as_slice());
+        Ok(Blake3HashResponse {
+            output: hash1.as_bytes().to_vec(),
         })
     }
 
-    pub fn verify_proof<'a>(_request: &VerifyProofRequest) -> Result<VerifyProofResponse, Error<'a>> {
-        todo!()
+    pub fn blake3_keyed_hash<'a>(request: &Blake3HashRequest) -> Result<Blake3HashResponse, Error<'a>> {
+        let mut key_vec = ArrayVec::<u8, 32>::new();
+        key_vec.copy_from_slice(request.key.as_ref().unwrap().as_slice());
+        let data = request.data.clone();
+        // Hash the provided data
+        let hash1 = blake3::keyed_hash(<&[u8; 32]>::try_from(key_vec.as_slice()).unwrap(), data.as_slice());
+        Ok(Blake3HashResponse {
+            output: hash1.as_bytes().to_vec(),
+        })
     }
-}
 
-impl From<&Struct> for JcsEd25519Signature2020 {
-    fn from(graph: &Struct) -> Self {
-        let serialized = serde_json::to_vec(graph).unwrap();
-        serde_json::from_slice(serialized.as_slice()).unwrap()
-    }
-}
-
-impl From<JcsEd25519Signature2020> for Struct {
-    fn from(graph: JcsEd25519Signature2020) -> Self {
-        let serialized = serde_json::to_vec(&graph).unwrap();
-        serde_json::from_slice(serialized.as_slice()).unwrap()
+    pub fn blake3_derive_key<'a>(request: &Blake3DeriveKeyRequest) -> Result<Blake3DeriveKeyResponse, Error<'a>> {
+        let context = request.context.clone();
+        let key_material = request.key_material.clone();
+        // Hash the provided data
+        let hash1 = blake3::derive_key(str::from_utf8(context.as_slice()).unwrap(), key_material.as_slice());
+        Ok(Blake3DeriveKeyResponse {
+            output: hash1.to_vec(),
+        })
     }
 }
 
 #[cfg(test)]
 mod test {
-    use did_key::*;
-
-    use crate::proto::keys::JsonWebKey;
-    use crate::proto::proofs::{CreateProofRequest, LdSuite};
-    use crate::{proto::google_protobuf::Struct, LdProofs};
 
     #[test]
-    fn test_jcs_signature() {
-        let key = did_key::generate::<Ed25519KeyPair>(None);
-        let document = key.get_did_document(CONFIG_LD_PRIVATE);
+    fn test_blake3_hash() {
+        println!("{}", "");
+    }
 
-        let jwk: JsonWebKey = key
-            .get_verification_methods(CONFIG_JOSE_PRIVATE, document.id.as_str())
-            .first()
-            .unwrap()
-            .to_owned()
-            .into();
+    #[test]
+    fn test_blake3_keyed_hash() {
+        println!("{}", "");
+    }
 
-        let input: Struct = serde_json::from_str(
-            r#"{
-                "@context": "https://schema.org",
-                "firstName": "Alice",
-                "lastName": "Wonderland",
-                "proof": {
-                    "proofPurpose": "assertionMethod",
-                    "created": "2021-03-01T20:21:34Z",
-                    "capabilityChain": [ "https://example.com/caps/1" ]
-                }
-            }"#,
-        )
-            .unwrap();
-
-        let request = CreateProofRequest {
-            key: Some(jwk),
-            suite: LdSuite::Jcsed25519signature2020 as i32,
-            document: Some(input),
-        };
-        let response = LdProofs::create_proof(&request).unwrap();
-
-        println!("{}", serde_json::to_string_pretty(&response.signed_document).unwrap())
+    #[test]
+    fn test_blake3_derive_key() {
+        println!("{}", "");
     }
 }

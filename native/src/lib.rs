@@ -6,6 +6,7 @@ pub struct DIDComm {}
 pub struct DIDKey {}
 pub struct LdProofs {}
 pub struct Oberon {}
+pub struct Hashing {}
 
 #[allow(clippy::ptr_arg)]
 pub trait MessageFormatter {
