@@ -38,10 +38,16 @@ impl crate::Hashing {
 
 #[cfg(test)]
 mod test {
+    use crate::Hashing;
+    use crate::proto::hashing::Blake3HashRequest;
 
     #[test]
     fn test_blake3_hash() {
-        println!("{}", "");
+        let data = "Hello, world!";
+        let request = Blake3HashRequest{data: data.as_bytes().to_vec(), key: None };
+        let response = Hashing::blake3_hash(&request).unwrap();
+        let hash_data = blake3::hash(data.as_bytes());
+        assert_eq!(response.output.as_slice(), hash_data.as_bytes())
     }
 
     #[test]
