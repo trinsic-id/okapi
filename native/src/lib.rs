@@ -1,4 +1,5 @@
 extern crate ffi_support;
+extern crate core;
 
 use prost::{DecodeError, Message};
 
@@ -6,6 +7,7 @@ pub struct DIDComm {}
 pub struct DIDKey {}
 pub struct LdProofs {}
 pub struct Oberon {}
+pub struct Hashing {}
 
 #[allow(clippy::ptr_arg)]
 pub trait MessageFormatter {
@@ -45,6 +47,8 @@ pub mod oberon;
 pub mod proto;
 #[cfg(test)]
 mod tests;
+#[cfg(feature = "hashing")]
+pub mod hashing;
 
 pub mod google {
     pub mod protobuf {
