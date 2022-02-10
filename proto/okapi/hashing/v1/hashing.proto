@@ -12,7 +12,7 @@ message Blake3HashRequest {
 }
 
 message Blake3HashResponse {
-    bytes output = 1;
+    bytes digest = 1;
 }
 
 message Blake3KeyedHashRequest {
@@ -21,7 +21,7 @@ message Blake3KeyedHashRequest {
 }
 
 message Blake3KeyedHashResponse {
-    bytes output = 1;
+    bytes digest = 1;
 }
 
 message Blake3DeriveKeyRequest {
@@ -30,5 +30,5 @@ message Blake3DeriveKeyRequest {
 }
 
 message Blake3DeriveKeyResponse {
-    bytes output = 1;
+    bytes digest = 1;
 }

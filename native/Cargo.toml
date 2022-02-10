@@ -7,8 +7,8 @@ edition = "2018"
 # cause vendored libraries to fail compilation due
 # to dependency on protoc compiler
 # if you need to compile .proto files, use this line:
-build = "build.rs"
-#build = false
+#build = "build.rs"
+build = false
 
 [dependencies]
 chacha20poly1305 = "0.7.0"

@@ -9,7 +9,7 @@ impl crate::Hashing {
         // Hash the provided data
         let hash1 = blake3::hash(data.as_slice());
         Ok(Blake3HashResponse {
-            output: hash1.as_bytes().to_vec(),
+            digest: hash1.as_bytes().to_vec(),
         })
     }
 
@@ -21,7 +21,7 @@ impl crate::Hashing {
         // Hash the provided data
         let hash1 = blake3::keyed_hash(key_slice, data.as_slice());
         Ok(Blake3KeyedHashResponse {
-            output: hash1.as_bytes().to_vec(),
+            digest: hash1.as_bytes().to_vec(),
         })
     }
 
@@ -31,7 +31,7 @@ impl crate::Hashing {
         // Hash the provided data
         let hash1 = blake3::derive_key(str::from_utf8(context.as_slice()).unwrap(), key_material.as_slice());
         Ok(Blake3DeriveKeyResponse {
-            output: hash1.to_vec(),
+            digest: hash1.to_vec(),
         })
     }
 }
@@ -48,7 +48,7 @@ mod test {
         let request = Blake3HashRequest{data: data.as_bytes().to_vec() };
         let response = Hashing::blake3_hash(&request).unwrap();
         let hash_data = blake3::hash(data.as_bytes());
-        assert_eq!(response.output.as_slice(), hash_data.as_bytes())
+        assert_eq!(response.digest.as_slice(), hash_data.as_bytes())
     }
 
     #[test]
@@ -58,7 +58,7 @@ mod test {
         let request = Blake3KeyedHashRequest{data: data.as_bytes().to_vec(), key: key_str.as_bytes().to_vec() };
         let response = Hashing::blake3_keyed_hash(&request).unwrap();
         let hash_data = blake3::keyed_hash(<&[u8; 32]>::try_from(key_str.as_bytes()).unwrap(), data.as_bytes());
-        assert_eq!(response.output.as_slice(), hash_data.as_bytes())
+        assert_eq!(response.digest.as_slice(), hash_data.as_bytes())
     }
 
     #[test]
@@ -76,6 +76,6 @@ mod test {
         let request = Blake3DeriveKeyRequest{context: context.as_bytes().to_vec(), key_material: data.as_bytes().to_vec()};
         let response = Hashing::blake3_derive_key(&request).unwrap();
         let hash_data = blake3::derive_key(&*context, data.as_bytes());
-        assert_eq!(response.output.as_slice(), hash_data)
+        assert_eq!(response.digest.as_slice(), hash_data)
     }
 }

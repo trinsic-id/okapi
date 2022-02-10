@@ -8,7 +8,7 @@ pub struct Blake3HashRequest {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Blake3HashResponse {
     #[prost(bytes="vec", tag="1")]
-    pub output: ::prost::alloc::vec::Vec<u8>,
+    pub digest: ::prost::alloc::vec::Vec<u8>,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -22,7 +22,7 @@ pub struct Blake3KeyedHashRequest {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Blake3KeyedHashResponse {
     #[prost(bytes="vec", tag="1")]
-    pub output: ::prost::alloc::vec::Vec<u8>,
+    pub digest: ::prost::alloc::vec::Vec<u8>,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -36,5 +36,5 @@ pub struct Blake3DeriveKeyRequest {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Blake3DeriveKeyResponse {
     #[prost(bytes="vec", tag="1")]
-    pub output: ::prost::alloc::vec::Vec<u8>,
+    pub digest: ::prost::alloc::vec::Vec<u8>,
 }
