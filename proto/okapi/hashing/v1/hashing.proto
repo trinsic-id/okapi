@@ -9,10 +9,18 @@ option java_package = "trinsic.okapi.hashing.v1";
 
 message Blake3HashRequest {
     bytes data = 1;
-    optional bytes key = 2;
 }
 
 message Blake3HashResponse {
+    bytes output = 1;
+}
+
+message Blake3KeyedHashRequest {
+    bytes data = 1;
+    bytes key = 2;
+}
+
+message Blake3KeyedHashResponse {
     bytes output = 1;
 }
 
