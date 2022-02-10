@@ -1010,7 +1010,6 @@ dependencies = [
 name = "okapi"
 version = "0.1.0"
 dependencies = [
- "arrayvec",
  "base64 0.13.0",
  "blake3",
  "bs58 0.3.1",
