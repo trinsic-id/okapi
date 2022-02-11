@@ -90,3 +90,7 @@ int32_t blake3_keyed_hash(struct ByteBuffer request,
 int32_t blake3_derive_key(struct ByteBuffer request,
                           struct ByteBuffer *response,
                           struct ExternError *err);
+
+int32_t sha256_hash(struct ByteBuffer request,
+                    struct ByteBuffer *response,
+                    struct ExternError *err);
