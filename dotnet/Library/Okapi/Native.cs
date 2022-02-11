@@ -68,18 +68,34 @@ internal class Native
 
     #endregion
 
+    #region Hashing
+
+    [DllImport(LibraryName, CharSet = CharSet.Auto, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+    internal static extern int blake3_hash(ByteBuffer request, out ByteBuffer response, out ExternError error);
+
+    [DllImport(LibraryName, CharSet = CharSet.Auto, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+    internal static extern int blake3_keyed_hash(ByteBuffer request, out ByteBuffer response, out ExternError error);
+
+    [DllImport(LibraryName, CharSet = CharSet.Auto, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+    internal static extern int blake3_derive_key(ByteBuffer request, out ByteBuffer response, out ExternError error);
+
+    #endregion
+
 
     #region Ld Proofs
 
     [DllImport(LibraryName, CharSet = CharSet.Auto, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-    internal static extern int ldproofs_create_proof(ByteBuffer request, out ByteBuffer response, out ExternError error);
+    internal static extern int
+        ldproofs_create_proof(ByteBuffer request, out ByteBuffer response, out ExternError error);
 
     [DllImport(LibraryName, CharSet = CharSet.Auto, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-    internal static extern int ldproofs_verify_proof(ByteBuffer request, out ByteBuffer response, out ExternError error);
+    internal static extern int
+        ldproofs_verify_proof(ByteBuffer request, out ByteBuffer response, out ExternError error);
 
     #endregion
 
     #region Oberon
+
     [DllImport(LibraryName, CharSet = CharSet.Auto, BestFitMapping = false, ThrowOnUnmappableChar = true)]
     internal static extern int oberon_create_key(ByteBuffer request, out ByteBuffer response, out ExternError error);
 
