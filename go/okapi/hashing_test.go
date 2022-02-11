@@ -7,6 +7,22 @@ import (
 	"testing"
 )
 
+func TestSHA256Hash(t *testing.T) {
+	assert := assert.New(t)
+	h := Hashing()
+
+	request := okapiproto.SHA256HashRequest{}
+	request.Data = []byte("4113")
+
+	response, err := h.Sha256Hash(&request)
+	assert.Nil(err)
+	assert.NotNil(response.Digest)
+	responseHash := hex.EncodeToString(response.Digest)
+	expectedHash := "71b3af35d9d53d24e7462177da41b8acd5e2ef4afc333dd9272cb2ab8743b3db"
+
+	assert.Equal(expectedHash[0:len(responseHash)], responseHash)
+}
+
 func TestBlake3Hash(t *testing.T) {
 	assert := assert.New(t)
 	h := Hashing()

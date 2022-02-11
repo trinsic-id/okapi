@@ -318,6 +318,100 @@ func (x *Blake3DeriveKeyResponse) GetDigest() []byte {
 	return nil
 }
 
+type SHA256HashRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Data []byte `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"`
+}
+
+func (x *SHA256HashRequest) Reset() {
+	*x = SHA256HashRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_okapi_hashing_v1_hashing_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SHA256HashRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SHA256HashRequest) ProtoMessage() {}
+
+func (x *SHA256HashRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_okapi_hashing_v1_hashing_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SHA256HashRequest.ProtoReflect.Descriptor instead.
+func (*SHA256HashRequest) Descriptor() ([]byte, []int) {
+	return file_okapi_hashing_v1_hashing_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *SHA256HashRequest) GetData() []byte {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+type SHA256HashResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Digest []byte `protobuf:"bytes,1,opt,name=digest,proto3" json:"digest,omitempty"`
+}
+
+func (x *SHA256HashResponse) Reset() {
+	*x = SHA256HashResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_okapi_hashing_v1_hashing_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SHA256HashResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SHA256HashResponse) ProtoMessage() {}
+
+func (x *SHA256HashResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_okapi_hashing_v1_hashing_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SHA256HashResponse.ProtoReflect.Descriptor instead.
+func (*SHA256HashResponse) Descriptor() ([]byte, []int) {
+	return file_okapi_hashing_v1_hashing_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *SHA256HashResponse) GetDigest() []byte {
+	if x != nil {
+		return x.Digest
+	}
+	return nil
+}
+
 var File_okapi_hashing_v1_hashing_proto protoreflect.FileDescriptor
 
 var file_okapi_hashing_v1_hashing_proto_rawDesc = []byte{
@@ -345,12 +439,18 @@ var file_okapi_hashing_v1_hashing_proto_rawDesc = []byte{
 	0x69, 0x61, 0x6c, 0x22, 0x31, 0x0a, 0x17, 0x42, 0x6c, 0x61, 0x6b, 0x65, 0x33, 0x44, 0x65, 0x72,
 	0x69, 0x76, 0x65, 0x4b, 0x65, 0x79, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16,
 	0x0a, 0x06, 0x64, 0x69, 0x67, 0x65, 0x73, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0c, 0x52, 0x06,
-	0x64, 0x69, 0x67, 0x65, 0x73, 0x74, 0x42, 0x4f, 0x0a, 0x18, 0x74, 0x72, 0x69, 0x6e, 0x73, 0x69,
-	0x63, 0x2e, 0x6f, 0x6b, 0x61, 0x70, 0x69, 0x2e, 0x68, 0x61, 0x73, 0x68, 0x69, 0x6e, 0x67, 0x2e,
-	0x76, 0x31, 0x5a, 0x20, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x74,
-	0x72, 0x69, 0x6e, 0x73, 0x69, 0x63, 0x2d, 0x69, 0x64, 0x2f, 0x6f, 0x6b, 0x61, 0x70, 0x69, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0xaa, 0x02, 0x10, 0x4f, 0x6b, 0x61, 0x70, 0x69, 0x2e, 0x48, 0x61, 0x73,
-	0x68, 0x69, 0x6e, 0x67, 0x2e, 0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x64, 0x69, 0x67, 0x65, 0x73, 0x74, 0x22, 0x27, 0x0a, 0x11, 0x53, 0x48, 0x41, 0x32, 0x35, 0x36,
+	0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x64,
+	0x61, 0x74, 0x61, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0c, 0x52, 0x04, 0x64, 0x61, 0x74, 0x61, 0x22,
+	0x2c, 0x0a, 0x12, 0x53, 0x48, 0x41, 0x32, 0x35, 0x36, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x64, 0x69, 0x67, 0x65, 0x73, 0x74, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x0c, 0x52, 0x06, 0x64, 0x69, 0x67, 0x65, 0x73, 0x74, 0x42, 0x4f, 0x0a,
+	0x18, 0x74, 0x72, 0x69, 0x6e, 0x73, 0x69, 0x63, 0x2e, 0x6f, 0x6b, 0x61, 0x70, 0x69, 0x2e, 0x68,
+	0x61, 0x73, 0x68, 0x69, 0x6e, 0x67, 0x2e, 0x76, 0x31, 0x5a, 0x20, 0x67, 0x69, 0x74, 0x68, 0x75,
+	0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x74, 0x72, 0x69, 0x6e, 0x73, 0x69, 0x63, 0x2d, 0x69, 0x64,
+	0x2f, 0x6f, 0x6b, 0x61, 0x70, 0x69, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0xaa, 0x02, 0x10, 0x4f, 0x6b,
+	0x61, 0x70, 0x69, 0x2e, 0x48, 0x61, 0x73, 0x68, 0x69, 0x6e, 0x67, 0x2e, 0x56, 0x31, 0x62, 0x06,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -365,7 +465,7 @@ func file_okapi_hashing_v1_hashing_proto_rawDescGZIP() []byte {
 	return file_okapi_hashing_v1_hashing_proto_rawDescData
 }
 
-var file_okapi_hashing_v1_hashing_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_okapi_hashing_v1_hashing_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_okapi_hashing_v1_hashing_proto_goTypes = []interface{}{
 	(*Blake3HashRequest)(nil),       // 0: okapi.hashing.v1.Blake3HashRequest
 	(*Blake3HashResponse)(nil),      // 1: okapi.hashing.v1.Blake3HashResponse
@@ -373,6 +473,8 @@ var file_okapi_hashing_v1_hashing_proto_goTypes = []interface{}{
 	(*Blake3KeyedHashResponse)(nil), // 3: okapi.hashing.v1.Blake3KeyedHashResponse
 	(*Blake3DeriveKeyRequest)(nil),  // 4: okapi.hashing.v1.Blake3DeriveKeyRequest
 	(*Blake3DeriveKeyResponse)(nil), // 5: okapi.hashing.v1.Blake3DeriveKeyResponse
+	(*SHA256HashRequest)(nil),       // 6: okapi.hashing.v1.SHA256HashRequest
+	(*SHA256HashResponse)(nil),      // 7: okapi.hashing.v1.SHA256HashResponse
 }
 var file_okapi_hashing_v1_hashing_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -460,6 +562,30 @@ func file_okapi_hashing_v1_hashing_proto_init() {
 				return nil
 			}
 		}
+		file_okapi_hashing_v1_hashing_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SHA256HashRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_okapi_hashing_v1_hashing_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SHA256HashResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -467,7 +593,7 @@ func file_okapi_hashing_v1_hashing_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_okapi_hashing_v1_hashing_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

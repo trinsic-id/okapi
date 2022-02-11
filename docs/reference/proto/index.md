@@ -15,6 +15,8 @@
     - [Blake3HashResponse](#okapi.hashing.v1.Blake3HashResponse)
     - [Blake3KeyedHashRequest](#okapi.hashing.v1.Blake3KeyedHashRequest)
     - [Blake3KeyedHashResponse](#okapi.hashing.v1.Blake3KeyedHashResponse)
+    - [SHA256HashRequest](#okapi.hashing.v1.SHA256HashRequest)
+    - [SHA256HashResponse](#okapi.hashing.v1.SHA256HashResponse)
   
 - [okapi/keys/v1/keys.proto](#okapi/keys/v1/keys.proto)
     - [GenerateKeyRequest](#okapi.keys.v1.GenerateKeyRequest)
@@ -202,6 +204,36 @@
 <a name="okapi.hashing.v1.Blake3KeyedHashResponse"></a>
 
 ### Blake3KeyedHashResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| digest | [bytes](#bytes) |  |  |
+
+
+
+
+
+
+<a name="okapi.hashing.v1.SHA256HashRequest"></a>
+
+### SHA256HashRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| data | [bytes](#bytes) |  |  |
+
+
+
+
+
+
+<a name="okapi.hashing.v1.SHA256HashResponse"></a>
+
+### SHA256HashResponse
 
 
 

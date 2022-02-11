@@ -96,6 +96,8 @@ public class OkapiNative {
 
         int ldproofs_create_proof(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
 
+        int sha256_hash(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
+
         int blake3_hash(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
 
         int blake3_keyed_hash(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);

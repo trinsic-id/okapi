@@ -393,3 +393,123 @@ class Okapi::Hashing::V1::Blake3DeriveKeyResponse
   def to_h
   end
 end
+
+class Okapi::Hashing::V1::SHA256HashRequest
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Okapi::Hashing::V1::SHA256HashRequest) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Okapi::Hashing::V1::SHA256HashRequest).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Okapi::Hashing::V1::SHA256HashRequest) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Okapi::Hashing::V1::SHA256HashRequest, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      data: T.nilable(String)
+    ).void
+  end
+  def initialize(
+    data: ""
+  )
+  end
+
+  sig { returns(String) }
+  def data
+  end
+
+  sig { params(value: String).void }
+  def data=(value)
+  end
+
+  sig { void }
+  def clear_data
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Okapi::Hashing::V1::SHA256HashResponse
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Okapi::Hashing::V1::SHA256HashResponse) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Okapi::Hashing::V1::SHA256HashResponse).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Okapi::Hashing::V1::SHA256HashResponse) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Okapi::Hashing::V1::SHA256HashResponse, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      digest: T.nilable(String)
+    ).void
+  end
+  def initialize(
+    digest: ""
+  )
+  end
+
+  sig { returns(String) }
+  def digest
+  end
+
+  sig { params(value: String).void }
+  def digest=(value)
+  end
+
+  sig { void }
+  def clear_digest
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end

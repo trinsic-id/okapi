@@ -23,6 +23,14 @@ public class HashingTests
     private readonly byte[] data = { 0, 1, 2 };
 
     [Fact]
+    public void TestSha256Hash()
+    {
+        var request = new SHA256HashRequest() { Data = ByteString.CopyFromUtf8("4113") };
+        var response = Sha256.Hash(request);
+        Assert.Equal("71b3af35d9d53d24e7462177da41b8acd5e2ef4afc333dd9272cb2ab8743b3db", response.Digest.ToLowerCaseHex());
+    }
+    
+    [Fact]
     public void TestBlake3Hash()
     {
         var request = new Blake3HashRequest { Data = ByteString.CopyFrom(data) };

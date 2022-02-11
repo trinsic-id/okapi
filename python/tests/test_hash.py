@@ -3,7 +3,7 @@ import unittest
 
 from trinsicokapi import hashing
 from trinsicokapi.proto.okapi.hashing.v1 import Blake3HashRequest, Blake3HashResponse, Blake3KeyedHashRequest, \
-    Blake3KeyedHashResponse, Blake3DeriveKeyRequest, Blake3DeriveKeyResponse
+    Blake3KeyedHashResponse, Blake3DeriveKeyRequest, Blake3DeriveKeyResponse, Sha256HashRequest, Sha256HashResponse
 
 
 def base64_padding(base_64: str) -> str:
@@ -17,6 +17,19 @@ def base64_padding(base_64: str) -> str:
 
 
 class HashTests(unittest.TestCase):
+    def test_sha256_hash(self):
+        request = Sha256HashRequest()
+        # Taken from here: https://raw.githubusercontent.com/BLAKE3-team/BLAKE3/master/test_vectors/test_vectors.json
+        request.data = bytes("4113", "utf-8")
+
+        response = hashing.sha256_hash(request)
+        self.assertIsNotNone(response)
+        self.assertIsInstance(response, Sha256HashResponse)
+        response_hex = base64.b16encode(response.digest).decode('utf-8').lower()
+        expected = "71b3af35d9d53d24e7462177da41b8acd5e2ef4afc333dd9272cb2ab8743b3db"
+        expected_trim = expected[:len(response_hex)]
+        self.assertEqual(expected_trim, response_hex)
+
     def test_blake3_hash(self):
         request = Blake3HashRequest()
         # Taken from here: https://raw.githubusercontent.com/BLAKE3-team/BLAKE3/master/test_vectors/test_vectors.json

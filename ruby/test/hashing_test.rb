@@ -42,4 +42,15 @@ class HashTest < Minitest::Test
     assert !response.digest.nil?
     assert derive_key.start_with?(response.digest.unpack1('H*'))
   end
+
+  def test_sha256_hash
+    hash = '71b3af35d9d53d24e7462177da41b8acd5e2ef4afc333dd9272cb2ab8743b3db'
+
+    request = Hashing_V1::SHA256HashRequest.new(data: '4113')
+    response = Okapi::Hashing.sha256_hash(request)
+
+    assert !response.nil?
+    assert !response.digest.nil?
+    assert_equal(hash, response.digest.unpack1('H*'))
+  end
 end

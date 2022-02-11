@@ -37,3 +37,13 @@ class Blake3DeriveKeyRequest(betterproto.Message):
 @dataclass(eq=False, repr=False)
 class Blake3DeriveKeyResponse(betterproto.Message):
     digest: bytes = betterproto.bytes_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class Sha256HashRequest(betterproto.Message):
+    data: bytes = betterproto.bytes_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class Sha256HashResponse(betterproto.Message):
+    digest: bytes = betterproto.bytes_field(1)
