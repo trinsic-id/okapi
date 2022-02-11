@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Okapi
+namespace Okapi;
+
+[StructLayout(LayoutKind.Sequential)]
+internal struct ByteBuffer
 {
-    [StructLayout(LayoutKind.Sequential)]
-    internal struct ByteBuffer
-    {
-        public long Length;
-        public IntPtr Data;
-    }
+    public long Length;
+    public IntPtr Data;
 }

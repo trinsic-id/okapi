@@ -1,20 +1,26 @@
-using Google.Protobuf;
 using Okapi.Transport.V1;
 
-namespace Okapi.Transport
+namespace Okapi.Transport;
+
+public static class DIDComm
 {
-    public static class DIDComm
+    public static PackResponse Pack(PackRequest request)
     {
-        public static PackResponse Pack(PackRequest request) =>
-            Native.Call<PackRequest, PackResponse>(request, Native.didcomm_pack);
+        return Native.Call<PackRequest, PackResponse>(request, Native.didcomm_pack);
+    }
 
-        public static UnpackResponse Unpack(UnpackRequest request) =>
-            Native.Call<UnpackRequest, UnpackResponse>(request, Native.didcomm_unpack);
+    public static UnpackResponse Unpack(UnpackRequest request)
+    {
+        return Native.Call<UnpackRequest, UnpackResponse>(request, Native.didcomm_unpack);
+    }
 
-        public static SignResponse Sign(SignRequest request) =>
-            Native.Call<SignRequest, SignResponse>(request, Native.didcomm_sign);
+    public static SignResponse Sign(SignRequest request)
+    {
+        return Native.Call<SignRequest, SignResponse>(request, Native.didcomm_sign);
+    }
 
-        public static VerifyResponse Verify(VerifyRequest request) =>
-            Native.Call<VerifyRequest, VerifyResponse>(request, Native.didcomm_verify);
+    public static VerifyResponse Verify(VerifyRequest request)
+    {
+        return Native.Call<VerifyRequest, VerifyResponse>(request, Native.didcomm_verify);
     }
 }

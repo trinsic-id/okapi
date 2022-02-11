@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Okapi
+namespace Okapi;
+
+[StructLayout(LayoutKind.Sequential)]
+internal struct ExternError
 {
-    [StructLayout(LayoutKind.Sequential)]
-    internal struct ExternError
-    {
-        internal int Code;
-        internal IntPtr Message;
-    }
+    internal int Code;
+    internal IntPtr Message;
 }

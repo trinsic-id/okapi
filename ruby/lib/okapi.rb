@@ -8,11 +8,12 @@ require 'okapi/proofs/v1/proofs_pb'
 require 'okapi/transport/v1/transport_pb'
 require 'okapi/security/v1/security_pb'
 
-Transport_V1 = Okapi::Transport::V1
+Examples_V1 = Okapi::Examples::V1
+Hashing_V1 = Okapi::Hashing::V1
 Keys_V1 = Okapi::Keys::V1
 Proofs_V1 = Okapi::Proofs::V1
-Examples_V1 = Okapi::Examples::V1
 Security_V1 = Okapi::Security::V1
+Transport_V1 = Okapi::Transport::V1
 
 module Okapi
   extend FFI::Library
@@ -84,6 +85,10 @@ module Okapi
     attach_function :oberon_unblind_token, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
     attach_function :oberon_create_proof, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
     attach_function :oberon_verify_proof, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
+
+    attach_function :blake3_hash, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
+    attach_function :blake3_keyed_hash, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
+    attach_function :blake3_derive_key, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
 
     attach_function :okapi_bytebuffer_free, [ByteBuffer.by_value], :int
     attach_function :okapi_string_free, [:pointer], :int
@@ -212,6 +217,23 @@ module Okapi
     def self.verify_proof(request)
       Okapi.verify_type(request, Security_V1::VerifyOberonProofRequest)
       Okapi.ffi_call('oberon_verify_proof', request, Security_V1::VerifyOberonProofResponse)
+    end
+  end
+
+  module Hashing
+    def self.blake3_hash(request)
+      Okapi.verify_type(request, Hashing_V1::Blake3HashRequest)
+      Okapi.ffi_call('blake3_hash', request, Hashing_V1::Blake3HashResponse)
+    end
+
+    def self.blake3_keyed_hash(request)
+      Okapi.verify_type(request, Hashing_V1::Blake3KeyedHashRequest)
+      Okapi.ffi_call('blake3_keyed_hash', request, Hashing_V1::Blake3KeyedHashResponse)
+    end
+
+    def self.blake3_derive_key(request)
+      Okapi.verify_type(request, Hashing_V1::Blake3DeriveKeyRequest)
+      Okapi.ffi_call('blake3_derive_key', request, Hashing_V1::Blake3DeriveKeyResponse)
     end
   end
 end

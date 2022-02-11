@@ -3,6 +3,7 @@
 require_relative 'test_helper'
 require 'okapi/keys/v1/keys_pb'
 require 'okapi/security/v1/security_pb'
+require 'okapi/hashing/v1/hashing_pb'
 require 'okapi'
 require 'version'
 require 'base64'
