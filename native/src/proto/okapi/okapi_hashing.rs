@@ -38,3 +38,15 @@ pub struct Blake3DeriveKeyResponse {
     #[prost(bytes="vec", tag="1")]
     pub digest: ::prost::alloc::vec::Vec<u8>,
 }
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Sha256HashRequest {
+    #[prost(bytes="vec", tag="1")]
+    pub data: ::prost::alloc::vec::Vec<u8>,
+}
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Sha256HashResponse {
+    #[prost(bytes="vec", tag="1")]
+    pub digest: ::prost::alloc::vec::Vec<u8>,
+}
