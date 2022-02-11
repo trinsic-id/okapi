@@ -1,5 +1,6 @@
 use std::convert::TryFrom;
 use std::str;
+use sha2::Digest;
 
 use crate::{didcomm::Error, proto::okapi::okapi_hashing::*};
 
@@ -34,13 +35,35 @@ impl crate::Hashing {
             digest: hash1.to_vec(),
         })
     }
+
+    pub fn sha256_hash<'a>(request: &Sha256HashRequest) -> Result<Sha256HashResponse, Error<'a>> {
+        let data = request.data.clone();
+        // Hash the provided data
+        let mut hasher = sha2::Sha256::new();
+        hasher.update(data.as_slice());
+        Ok(Sha256HashResponse {
+            digest: hasher.finalize().to_vec(),
+        })
+    }
 }
 
 #[cfg(test)]
 mod test {
     use std::convert::TryFrom;
+    use sha2::Digest;
     use crate::{Hashing};
-    use crate::proto::hashing::{Blake3DeriveKeyRequest, Blake3HashRequest, Blake3KeyedHashRequest};
+    use crate::proto::hashing::{Blake3DeriveKeyRequest, Blake3HashRequest, Blake3KeyedHashRequest, Sha256HashRequest};
+
+    #[test]
+    fn test_sha256_hash() {
+        let data = "Hello, world!";
+        let request = Sha256HashRequest{data: data.as_bytes().to_vec() };
+        let response = Hashing::sha256_hash(&request).unwrap();
+        let mut hasher = sha2::Sha256::new();
+        hasher.update(data.as_bytes());
+        let hash_data = hasher.finalize();
+        assert_eq!(response.digest.as_slice(), hash_data.to_vec().as_slice())
+    }
 
     #[test]
     fn test_blake3_hash() {
