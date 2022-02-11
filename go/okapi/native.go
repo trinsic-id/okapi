@@ -34,6 +34,16 @@ func (d *DidError) Error() string {
 
 type okapiCall func(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32
 
+func blake3Hash(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+	return int32(C.blake3_hash(request, response, err))
+}
+func blake3KeyedHash(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+	return int32(C.blake3_keyed_hash(request, response, err))
+}
+func blake3DeriveKey(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
+	return int32(C.blake3_derive_key(request, response, err))
+}
+
 func didcommPack(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
 	return int32(C.didcomm_pack(request, response, err))
 }

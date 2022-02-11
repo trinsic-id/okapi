@@ -34,23 +34,27 @@ public class HashingTests
     [Fact]
     public void TestBlake3KeyedHash()
     {
-        var request = new Blake3KeyedHashRequest { Data = ByteString.CopyFrom(data), Key = ByteString.CopyFromUtf8(key) };
+        var request = new Blake3KeyedHashRequest
+            { Data = ByteString.CopyFrom(data), Key = ByteString.CopyFromUtf8(key) };
         var response = Blake3.KeyedHash(request);
         Assert.StartsWith(response.Digest.ToLowerCaseHex(),
             keyed_hash);
     }
-    
+
     [Fact]
     public void TestBlake3DeriveKey()
     {
-        var request = new Blake3DeriveKeyRequest { KeyMaterial = ByteString.CopyFrom(data), Context = ByteString.CopyFromUtf8(context_string) };
+        var request = new Blake3DeriveKeyRequest
+            { KeyMaterial = ByteString.CopyFrom(data), Context = ByteString.CopyFromUtf8(context_string) };
         var response = Blake3.DeriveKey(request);
-        Assert.StartsWith(response.Digest.ToLowerCaseHex(),derive_key);
+        Assert.StartsWith(response.Digest.ToLowerCaseHex(), derive_key);
     }
 }
 
 public static class Extensions
 {
-    public static string ToLowerCaseHex(this ByteString self) =>
-        BitConverter.ToString(self.ToByteArray()).Replace("-", "").ToLowerInvariant();
+    public static string ToLowerCaseHex(this ByteString self)
+    {
+        return BitConverter.ToString(self.ToByteArray()).Replace("-", "").ToLowerInvariant();
+    }
 }
