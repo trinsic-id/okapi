@@ -8,6 +8,14 @@
   
     - [SecureExampleService](#okapi.examples.v1.SecureExampleService)
   
+- [okapi/hashing/v1/hashing.proto](#okapi/hashing/v1/hashing.proto)
+    - [Blake3DeriveKeyRequest](#okapi.hashing.v1.Blake3DeriveKeyRequest)
+    - [Blake3DeriveKeyResponse](#okapi.hashing.v1.Blake3DeriveKeyResponse)
+    - [Blake3HashRequest](#okapi.hashing.v1.Blake3HashRequest)
+    - [Blake3HashResponse](#okapi.hashing.v1.Blake3HashResponse)
+    - [Blake3KeyedHashRequest](#okapi.hashing.v1.Blake3KeyedHashRequest)
+    - [Blake3KeyedHashResponse](#okapi.hashing.v1.Blake3KeyedHashResponse)
+  
 - [okapi/keys/v1/keys.proto](#okapi/keys/v1/keys.proto)
     - [GenerateKeyRequest](#okapi.keys.v1.GenerateKeyRequest)
     - [GenerateKeyResponse](#okapi.keys.v1.GenerateKeyResponse)
@@ -102,6 +110,114 @@
 | ----------- | ------------ | ------------- | ------------|
 | Unary | [.pbmse.v1.EncryptedMessage](#pbmse.v1.EncryptedMessage) | [.pbmse.v1.EncryptedMessage](#pbmse.v1.EncryptedMessage) |  |
 | ServerStreaming | [.pbmse.v1.EncryptedMessage](#pbmse.v1.EncryptedMessage) | [.pbmse.v1.EncryptedMessage](#pbmse.v1.EncryptedMessage) stream |  |
+
+ 
+
+
+
+<a name="okapi/hashing/v1/hashing.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## okapi/hashing/v1/hashing.proto
+
+
+
+<a name="okapi.hashing.v1.Blake3DeriveKeyRequest"></a>
+
+### Blake3DeriveKeyRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| context | [bytes](#bytes) |  |  |
+| key_material | [bytes](#bytes) |  |  |
+
+
+
+
+
+
+<a name="okapi.hashing.v1.Blake3DeriveKeyResponse"></a>
+
+### Blake3DeriveKeyResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| digest | [bytes](#bytes) |  |  |
+
+
+
+
+
+
+<a name="okapi.hashing.v1.Blake3HashRequest"></a>
+
+### Blake3HashRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| data | [bytes](#bytes) |  |  |
+
+
+
+
+
+
+<a name="okapi.hashing.v1.Blake3HashResponse"></a>
+
+### Blake3HashResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| digest | [bytes](#bytes) |  |  |
+
+
+
+
+
+
+<a name="okapi.hashing.v1.Blake3KeyedHashRequest"></a>
+
+### Blake3KeyedHashRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| data | [bytes](#bytes) |  |  |
+| key | [bytes](#bytes) |  |  |
+
+
+
+
+
+
+<a name="okapi.hashing.v1.Blake3KeyedHashResponse"></a>
+
+### Blake3KeyedHashResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| digest | [bytes](#bytes) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
 
  
 
