@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 import trinsic.okapi.DidException;
 import trinsic.okapi.hashing.v1.Hashing;
 
-import java.io.UnsupportedEncodingException;
-
 public class HashingTest {
     private static final byte[] data = {0, 1, 2};
     private static final String key = "whats the Elvish word for friend";
@@ -30,9 +28,16 @@ public class HashingTest {
     }
 
     @Test
-    void testBlake3DeriveKey() throws DidException, InvalidProtocolBufferException, UnsupportedEncodingException {
+    void testBlake3DeriveKey() throws DidException, InvalidProtocolBufferException {
         var request = Hashing.Blake3DeriveKeyRequest.newBuilder().setKeyMaterial(ByteString.copyFrom(data)).setContext(ByteString.copyFromUtf8(context)).build();
         var response = trinsic.okapi.Hashing.blake3_derive_key(request);
         Assertions.assertTrue(deriveKey.startsWith(Hex.bytesToHex(response.getDigest().toByteArray())));
+    }
+
+    @Test
+    void testSHA256() throws DidException, InvalidProtocolBufferException {
+        var request = Hashing.SHA256HashRequest.newBuilder().setData(ByteString.copyFromUtf8("4113")).build();
+        var response = trinsic.okapi.Hashing.sha256_hash(request);
+        Assertions.assertEquals("71b3af35d9d53d24e7462177da41b8acd5e2ef4afc333dd9272cb2ab8743b3db", Hex.bytesToHex(response.getDigest().toByteArray()));
     }
 }

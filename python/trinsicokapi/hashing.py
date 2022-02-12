@@ -3,6 +3,11 @@ from trinsicokapi.wrapper import _typed_wrap_and_call
 from trinsicokapi.proto.okapi.hashing.v1 import *
 
 
+def sha256_hash(request: Sha256HashRequest) -> Sha256HashResponse:
+    response = _typed_wrap_and_call("sha256_hash", request, Sha256HashResponse)
+    return response
+
+
 def blake3_hash(request: Blake3HashRequest) -> Blake3HashResponse:
     response = _typed_wrap_and_call("blake3_hash", request, Blake3HashResponse)
     return response

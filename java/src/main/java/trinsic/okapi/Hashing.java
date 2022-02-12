@@ -29,5 +29,14 @@ public class Hashing extends OkapiNative {
         errBuffer.raiseError(result);
         return trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse.parseFrom(bufferToByteArray(responseBuffer));
     }
+
+    public static trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse sha256_hash(trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest request) throws DidException, InvalidProtocolBufferException {
+        OkapiByteBuffer.ByValue requestBuffer = messageToBuffer(request);
+        OkapiByteBuffer responseBuffer = new OkapiByteBuffer();
+        ExternError errBuffer = new ExternError();
+        var result = getNativeLibrary().sha256_hash(requestBuffer, responseBuffer, errBuffer);
+        errBuffer.raiseError(result);
+        return trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse.parseFrom(bufferToByteArray(responseBuffer));
+    }
 }
 

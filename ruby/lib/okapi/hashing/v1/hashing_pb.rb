@@ -25,6 +25,12 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "okapi.hashing.v1.Blake3DeriveKeyResponse" do
       optional :digest, :bytes, 1
     end
+    add_message "okapi.hashing.v1.SHA256HashRequest" do
+      optional :data, :bytes, 1
+    end
+    add_message "okapi.hashing.v1.SHA256HashResponse" do
+      optional :digest, :bytes, 1
+    end
   end
 end
 
@@ -37,6 +43,8 @@ module Okapi
       Blake3KeyedHashResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("okapi.hashing.v1.Blake3KeyedHashResponse").msgclass
       Blake3DeriveKeyRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("okapi.hashing.v1.Blake3DeriveKeyRequest").msgclass
       Blake3DeriveKeyResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("okapi.hashing.v1.Blake3DeriveKeyResponse").msgclass
+      SHA256HashRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("okapi.hashing.v1.SHA256HashRequest").msgclass
+      SHA256HashResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("okapi.hashing.v1.SHA256HashResponse").msgclass
     end
   end
 end

@@ -90,6 +90,8 @@ module Okapi
     attach_function :blake3_keyed_hash, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
     attach_function :blake3_derive_key, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
 
+    attach_function :sha256_hash, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
+
     attach_function :okapi_bytebuffer_free, [ByteBuffer.by_value], :int
     attach_function :okapi_string_free, [:pointer], :int
   end
@@ -234,6 +236,11 @@ module Okapi
     def self.blake3_derive_key(request)
       Okapi.verify_type(request, Hashing_V1::Blake3DeriveKeyRequest)
       Okapi.ffi_call('blake3_derive_key', request, Hashing_V1::Blake3DeriveKeyResponse)
+    end
+
+    def self.sha256_hash(request)
+      Okapi.verify_type(request, Hashing_V1::SHA256HashRequest)
+      Okapi.ffi_call('sha256_hash', request, Hashing_V1::SHA256HashResponse)
     end
   end
 end

@@ -5,6 +5,7 @@ import (
 )
 
 type Hasher interface {
+	Sha256Hash(request *okapiproto.SHA256HashRequest) (*okapiproto.SHA256HashResponse, error)
 	Blake3Hash(request *okapiproto.Blake3HashRequest) (*okapiproto.Blake3HashResponse, error)
 	Blake3KeyedHash(request *okapiproto.Blake3KeyedHashRequest) (*okapiproto.Blake3KeyedHashResponse, error)
 	Blake3DeriveKey(request *okapiproto.Blake3DeriveKeyRequest) (*okapiproto.Blake3DeriveKeyResponse, error)
@@ -15,6 +16,12 @@ func Hashing() Hasher {
 }
 
 type hasher struct{}
+
+func (h *hasher) Sha256Hash(request *okapiproto.SHA256HashRequest) (*okapiproto.SHA256HashResponse, error) {
+	response := okapiproto.SHA256HashResponse{}
+	err := callOkapiNative(request, &response, sha256Hash)
+	return &response, err
+}
 
 func (h *hasher) Blake3Hash(request *okapiproto.Blake3HashRequest) (*okapiproto.Blake3HashResponse, error) {
 	response := okapiproto.Blake3HashResponse{}

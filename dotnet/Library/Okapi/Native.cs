@@ -71,6 +71,9 @@ internal class Native
     #region Hashing
 
     [DllImport(LibraryName, CharSet = CharSet.Auto, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+    internal static extern int sha256_hash(ByteBuffer request, out ByteBuffer response, out ExternError error);
+    
+    [DllImport(LibraryName, CharSet = CharSet.Auto, BestFitMapping = false, ThrowOnUnmappableChar = true)]
     internal static extern int blake3_hash(ByteBuffer request, out ByteBuffer response, out ExternError error);
 
     [DllImport(LibraryName, CharSet = CharSet.Auto, BestFitMapping = false, ThrowOnUnmappableChar = true)]
