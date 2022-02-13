@@ -24,6 +24,13 @@ jobs:
           path: ./libs/${{ matrix.os-artifact[1] }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           name: ${{ matrix.os-artifact[1] }}
+      - name: Download C header artifact
+        uses: dawidd6/action-download-artifact@v2.17.0
+        with:
+          workflow: "build-libs.yml"
+          path: ./libs/${{ matrix.os-artifact[1] }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          name: C_header
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
