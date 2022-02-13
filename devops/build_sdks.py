@@ -41,6 +41,13 @@ def get_os_arch_path(extract_dir, windows_path):
     return copy_from
 
 
+
+def set_env_var(name, value):
+    env_file = os.getenv('GITHUB_ENV')
+    with open(env_file, "a") as file:
+        file.write(f"{name}={value}")
+
+
 def copy_okapi_libs(copy_to: str, windows_path='windows'):
     okapi_dir = abspath(join(dirname(__file__), '..'))
     copy_from = get_os_arch_path(okapi_dir, windows_path)
@@ -121,8 +128,10 @@ def build_ruby(args) -> None:
 
 
 def build_golang(args) -> None:
-    # Update version in setup.cfg
+    # Copy in Okapi libraries to the $GOLANG_LD_PATH directory
     golang_dir = abspath(join(get_language_dir('go'), 'okapi'))
+    set_env_var("GOLANG_LD_PATH", golang_dir)
+
     # Copy in the binaries
     copy_okapi_libs(golang_dir, 'windows-gnu')
 
