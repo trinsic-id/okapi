@@ -28,16 +28,30 @@ jobs:
         with:
           python-version: 3.9
       - name: Download workflow artifact
-        uses: dawidd6/action-download-artifact@v2.14.0
+        uses: dawidd6/action-download-artifact@v2.17.0
         with:
           workflow: "build-libs.yml"
           path: ./libs/${{ matrix.os-artifact[1] }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           name: ${{ matrix.os-artifact[1] }}
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: Set up Node (docs)
+        run: |
+          npm install groovydoc-to-markdown
+        shell: pwsh
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'
+      - name: Set up Dotnet (docs)
+        run: |
+          dotnet tool install DefaultDocumentation.Console -g
+        shell: pwsh
       - name: Build with Gradle
         run: |
-          python ../devops/build_sdks.py
-          gradle build
+          python ../devops/build_sdks.py --language=java
+          gradle build   
         shell: pwsh
         working-directory: java
         env:

@@ -4,6 +4,7 @@ import (
 	"github.com/trinsic-id/okapi/go/okapiproto"
 )
 
+// Hasher implements Blake3 and Sha2 hash functions
 type Hasher interface {
 	Sha256Hash(request *okapiproto.SHA256HashRequest) (*okapiproto.SHA256HashResponse, error)
 	Blake3Hash(request *okapiproto.Blake3HashRequest) (*okapiproto.Blake3HashResponse, error)
@@ -11,6 +12,7 @@ type Hasher interface {
 	Blake3DeriveKey(request *okapiproto.Blake3DeriveKeyRequest) (*okapiproto.Blake3DeriveKeyResponse, error)
 }
 
+// Hashing implements Blake3 and Sha2 hash functions
 func Hashing() Hasher {
 	return &hasher{}
 }
