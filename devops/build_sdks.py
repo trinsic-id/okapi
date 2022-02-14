@@ -198,7 +198,7 @@ def build_go_docs(args):
             if isdir(sub_folder):
                 _, folder_name = split(sub_folder)
                 write_doc_file(sub_folder, folder_name)
-
+    
     write_doc_file(get_language_dir('go'), 'index')
 
 
@@ -207,6 +207,8 @@ def parse_arguments():
     parser.add_argument('--package-version', help='Manual override package version')
     parser.add_argument('--language', help='Comma-separated languages to build', default='all')
     return parser.parse_args()
+
+
 def main():
     # Get command line arguments
     args = parse_arguments()
