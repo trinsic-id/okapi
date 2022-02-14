@@ -38,12 +38,19 @@ jobs:
           path: ./libs/${{ matrix.os-artifact[1] }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           name: ${{ matrix.os-artifact[1] }}
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'
+      - name: Set up Dotnet (docs)
+        run: |
+          dotnet tool install DefaultDocumentation.Console -g
+        shell: pwsh
       - name: Build and run tests
         run: |
           gem install bundler
           gem install rspec
           bundle install
-          python ../devops/build_sdks.py
+          python ../devops/build_sdks.py --language=ruby
           bundle exec rake
           rake test
           exit 0

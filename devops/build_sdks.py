@@ -153,7 +153,12 @@ def get_github_version(github_token: str = None) -> str:
 def build_java_docs(args):
     # https://github.com/fchastanet/groovydoc-to-markdown
     # npm install in the root of sdk
-    subprocess.Popen(r'node ./node_modules/groovydoc-to-markdown/src/doc2md.js  ./java java ./docs/reference/java', cwd=get_sdk_dir() ).wait()
+    subprocess.Popen(
+        [
+            'node', './node_modules/groovydoc-to-markdown/src/doc2md.js',
+            './java', 'java', './docs/reference/java'
+        ], cwd=get_sdk_dir() 
+    ).wait()
 
 
 def build_dotnet_docs(args) -> None:
@@ -162,26 +167,38 @@ def build_dotnet_docs(args) -> None:
     assembly_file = './dotnet/Library/Okapi/bin/Debug/net6.0/okapi.dll'
     output_doc_folder = './docs/reference/dotnet'
     clean_dir(abspath(join(get_sdk_dir(), output_doc_folder)))
-    subprocess.Popen(f"defaultdocumentation --AssemblyFilePath {assembly_file} --OutputDirectoryPath {output_doc_folder} --FileNameMode Name --GeneratedPages Namespaces",
-                     cwd=get_sdk_dir()).wait()
+    subprocess.Popen(
+        [
+            "defaultdocumentation",
+            "--AssemblyFilePath", assembly_file,
+            "--OutputDirectoryPath", output_doc_folder,
+            "--FileNameMode", "Name",
+            "--GeneratedPages", "Namespaces",
+        ],
+        cwd=get_sdk_dir()
+    ).wait()
 
 
 def build_go_docs(args):
     # https://github.com/posener/goreadme
     # go get github.com/posener/goreadme/cmd/goreadme
-    goreadme_args = r'-recursive -functions -methods -types -variabless'  # Yes, that's a duplicated s, it's on purpose.
+    goreadme_args = ['-recursive', '-functions', '-methods', '-types', '-variabless']  # Yes, that's a duplicated s, it's on purpose.
     doc_path = abspath(join(get_language_dir('docs'), 'reference', 'go'))
 
     def write_doc_file(input_path: str, output_file: str):
         logging.info(f"goreadme(input={input_path}, output={output_file})")
+        print(f"goreadme(input={input_path}, output={output_file})")
         with open(join(doc_path, f'{output_file}.md'), 'w') as output:
-            subprocess.Popen(rf'goreadme {goreadme_args}', cwd=input_path, stdout=output).wait()
+            subprocess.Popen(
+                ['goreadme', *goreadme_args], 
+                cwd=input_path, stdout=output
+            ).wait()
         # Handle the subdirectories
         for sub_folder in glob.glob(join(input_path, '**')):
             if isdir(sub_folder):
                 _, folder_name = split(sub_folder)
                 write_doc_file(sub_folder, folder_name)
-    
+
     write_doc_file(get_language_dir('go'), 'index')
 
 
@@ -190,8 +207,6 @@ def parse_arguments():
     parser.add_argument('--package-version', help='Manual override package version')
     parser.add_argument('--language', help='Comma-separated languages to build', default='all')
     return parser.parse_args()
-
-
 def main():
     # Get command line arguments
     args = parse_arguments()
@@ -202,14 +217,14 @@ def main():
         build_python(args)
     if build_all or 'java' in langs_to_build:
         build_java(args)
+        build_java_docs(args)
     if build_all or 'ruby' in langs_to_build:
         build_ruby(args)
     if build_all or 'golang' in langs_to_build:
         build_golang(args)
-    if 'docs' in langs_to_build:
-        build_java_docs(args)
-        build_dotnet_docs(args)
         build_go_docs(args)
+    if build_all or 'docs' in langs_to_build:
+        build_dotnet_docs(args)
 
 
 if __name__ == "__main__":

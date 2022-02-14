@@ -39,8 +39,28 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'
+      - name: Set up Dotnet (docs)
+        run: |
+          dotnet tool install DefaultDocumentation.Console -g
+        shell: pwsh
       # Set up Okapi-specific Go runtime. Includes setting GOLANG_LD_PATH env var.
       - name: Set up Go (Okapi)
+        run: |
+          go version
+          go install golang.org/x/lint/golint@latest
+          go install github.com/jstemmer/go-junit-report@latest
+          go get github.com/posener/goreadme/cmd/goreadme
+          python ../../devops/build_sdks.py --language=golang
+        shell: pwsh
+        working-directory: go/okapi
+        env:
+          GO111MODULE: on
+      - name: Build and Test Golang
+        run: |
+          go build      - name: Set up Go (Okapi)
         run: |
           go version
           go install golang.org/x/lint/golint@latest
