@@ -206,7 +206,7 @@ def main():
         build_ruby(args)
     if build_all or 'golang' in langs_to_build:
         build_golang(args)
-    if build_all or 'docs' in langs_to_build:
+    if 'docs' in langs_to_build:
         build_java_docs(args)
         build_dotnet_docs(args)
         build_go_docs(args)
