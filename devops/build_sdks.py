@@ -219,13 +219,13 @@ def main():
         build_python(args)
     if build_all or 'java' in langs_to_build:
         build_java(args)
-        build_java_docs(args)
     if build_all or 'ruby' in langs_to_build:
         build_ruby(args)
     if build_all or 'golang' in langs_to_build:
         build_golang(args)
-        build_go_docs(args)
     if build_all or 'docs' in langs_to_build:
+        build_java_docs(args)
+        build_go_docs(args)
         build_dotnet_docs(args)
 
 
