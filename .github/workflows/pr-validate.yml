@@ -57,43 +57,43 @@ jobs:
 
   build-dotnet:
     name: ".NET"
-    uses: trinsic-id/okapi/.github/workflows/build-dotnet.yml@main
+    uses: trinsic-id/okapi/.github/workflows/build-dotnet.yml
     needs: changes
     if: needs.changes.outputs.dotnet == 'true'
 
   build-wasm:
     name: Wasm
-    uses: trinsic-id/okapi/.github/workflows/build-wasm.yml@main
+    uses: trinsic-id/okapi/.github/workflows/build-wasm.yml
     needs: changes
     if: needs.changes.outputs.wasm == 'true'
 
   build-python:
     name: Python
-    uses: trinsic-id/okapi/.github/workflows/build-python.yml@main
+    uses: trinsic-id/okapi/.github/workflows/build-python.yml
     needs: changes
     if: needs.changes.outputs.python == 'true'
 
   build-go:
     name: Go
-    uses: trinsic-id/okapi/.github/workflows/build-golang.yml@main
+    uses: trinsic-id/okapi/.github/workflows/build-golang.yml
     needs: changes
     if: needs.changes.outputs.go == 'true'
 
   build-java:
     name: Java
-    uses: trinsic-id/okapi/.github/workflows/build-java.yml@main
+    uses: trinsic-id/okapi/.github/workflows/build-java.yml
     needs: changes
     if: needs.changes.outputs.java == 'true'
 
   build-native:
     name: Native
-    uses: trinsic-id/okapi/.github/workflows/build-libs.yml@main
+    uses: trinsic-id/okapi/.github/workflows/build-libs.yml
     needs: changes
     if: needs.changes.outputs.native == 'true'
 
   build-ruby:
     name: Ruby
-    uses: trinsic-id/okapi/.github/workflows/build-ruby.yml@main
+    uses: trinsic-id/okapi/.github/workflows/build-ruby.yml
     needs: changes
     if: needs.changes.outputs.ruby == 'true'
 
