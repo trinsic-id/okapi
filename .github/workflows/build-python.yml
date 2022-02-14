@@ -4,10 +4,13 @@ on:
   workflow_call:
   workflow_dispatch:
   pull_request:
+    branches:
+      - main
     paths:
       - "python/**"
       - "proto/**"
       - ".github/workflows/*python*"
+      - "devops/**"
   push:
     branches:
       - main
@@ -15,6 +18,7 @@ on:
       - "python/**"
       - "proto/**"
       - ".github/workflows/*python*"
+      - "devops/**"
 
 jobs:
   build-and-test-python:

@@ -3,9 +3,20 @@ name: Golang
 on:
   workflow_call:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - "go/**"
+      - "proto/**"
+      - ".github/workflows/*golang*"
+      - "devops/**"
   push:
     branches:
       - main
+    paths:
+      - "go/**"
+      - "proto/**"
+      - ".github/workflows/*golang*"
+      - "devops/**"
 
 jobs:
   build-and-test-golang:

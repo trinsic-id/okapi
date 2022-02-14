@@ -3,9 +3,22 @@ name: .NET
 on:
   workflow_call:
   workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "dotnet/**"
+      - "proto/**"
+      - ".github/workflows/*dotnet*"
+      - "devops/**"
   push:
     branches:
       - main
+    paths:
+      - "dotnet/**"
+      - "proto/**"
+      - ".github/workflows/*dotnet*"
+      - "devops/**"
 
 jobs:
   build-and-test-dotnet:
