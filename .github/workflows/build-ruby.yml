@@ -3,9 +3,20 @@ name: Ruby
 on:
   workflow_call:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - "ruby/**"
+      - "proto/**"
+      - ".github/workflows/*ruby*"
+      - "devops/**"
   push:
     branches:
       - main
+    paths:
+      - "ruby/**"
+      - "proto/**"
+      - ".github/workflows/*ruby*"
+      - "devops/**"
 
 jobs:
   build-and-test-ruby:
@@ -38,13 +49,6 @@ jobs:
           path: ./libs/${{ matrix.os-artifact[1] }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           name: ${{ matrix.os-artifact[1] }}
-      - uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '6.0.x'
-      - name: Set up Dotnet (docs)
-        run: |
-          dotnet tool install DefaultDocumentation.Console -g
-        shell: pwsh
       - name: Build and run tests
         run: |
           gem install bundler
@@ -53,7 +57,6 @@ jobs:
           python ../devops/build_sdks.py --language=ruby
           bundle exec rake
           rake test
-          exit 0
         shell: pwsh
         working-directory: ruby
         env:
