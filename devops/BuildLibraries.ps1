@@ -109,7 +109,8 @@ try {
             # https://github.com/rust-lang/rust/issues/41750#issuecomment-312510034
             $env:EMMAKEN_CFLAGS="-s ERROR_ON_UNDEFINED_SYMBOLS=0 --no-entry"
             rustup target add wasm32-unknown-emscripten
-            cargo build --release --target wasm32-unknown-emscripten
+            cargo build --release --target wasm32-unknown-emscripten -Z build-std=std,panic-abort
+            # wasm-opt -Oz okapi.wasm --output okapi2.wasm --dce
             Copy-Item -Path .\target\wasm32-unknown-emscripten\release\libokapi.a -Destination $TargetOutput
             break
         }

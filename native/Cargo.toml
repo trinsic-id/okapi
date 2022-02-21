@@ -10,6 +10,11 @@ edition = "2018"
 #build = "build.rs"
 build = false
 
+[profile.release]
+opt-level = "z"
+codegen-units = 1
+lto = true
+
 [dependencies]
 chacha20poly1305 = "0.7.0"
 ffi-support = "0.4"
