@@ -1,11 +1,10 @@
 import ctypes
-import distutils.ccompiler
 import os
 import platform
 import threading
 from ctypes import CDLL
 from ctypes.util import find_library
-from typing import Type, Optional, List, Any, Dict, Union, TypeVar, Iterator
+from typing import Type, Optional, List, Any, Dict, Union, TypeVar
 
 import betterproto
 
@@ -43,7 +42,8 @@ def find_native_lib() -> str:
     if lib_path:
         return lib_path
     lib_name = "okapi"
-    # Allow for manual override and then manually check, since LINUX Python doesn't always work. :(
+    # Allow for manual override and then manually check,
+    # since LINUX Python doesn't always work. :(
     found_lib_path = _check_path(
         os.getenv('LD_LIBRARY_PATH', ''), lib_name
     ) or find_library(lib_name)
@@ -52,7 +52,8 @@ def find_native_lib() -> str:
 
 def load_library() -> CDLL:
     global OKAPI_NATIVE
-    # Python multithreading is super primitive due to the GIL. All we need to do is prevent double copying.
+    # Python multithreading is super primitive due to the GIL.
+    # All we need to do is prevent double copying.
     # https://opensource.com/article/17/4/grok-gil
     with okapi_loader_lock:
         if OKAPI_NATIVE['library'] is None:
