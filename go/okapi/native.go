@@ -13,6 +13,7 @@ import (
 	"unsafe"
 )
 
+// NativeError indicates a native protocol error
 type NativeError struct {
 	Message       string
 	InternalError error
@@ -22,6 +23,7 @@ func (o NativeError) Error() string {
 	return fmt.Sprintf("Error:%s  InternalError:%v", o.Message, o.InternalError)
 }
 
+// DidError indicates a DID protocol error
 type DidError struct {
 	Code         int
 	FunctionName string

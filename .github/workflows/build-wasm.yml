@@ -2,10 +2,21 @@ name: Wasm
 
 on:
   workflow_call:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "wasm/**"
+      - "proto/**"
+      - ".github/workflows/*wasm*"
+      - "devops/**"
   push:
     branches:
       - main
-  workflow_dispatch:
+    paths:
+      - "wasm/**"
+      - "proto/**"
+      - ".github/workflows/*wasm*"
+      - "devops/**"
 
 jobs:
   build_test:

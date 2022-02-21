@@ -6,9 +6,20 @@ on:
   schedule:
     # Do it twice a day to guarantee that the binaries never expire and give the "couldn't download artifact" run error in other jobs
     - cron: "* */12 * * *"
+  pull_request:
+    paths:
+      - "native/**"
+      - "proto/**"
+      - ".github/workflows/*libs*"
+      - "devops/**"
   push:
     branches:
       - main
+    paths:
+      - "native/**"
+      - "proto/**"
+      - ".github/workflows/*libs*"
+      - "devops/**"
 
 jobs:
   build_windows:

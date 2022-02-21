@@ -3,9 +3,22 @@ name: .NET
 on:
   workflow_call:
   workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "dotnet/**"
+      - "proto/**"
+      - ".github/workflows/*dotnet*"
+      - "devops/**"
   push:
     branches:
       - main
+    paths:
+      - "dotnet/**"
+      - "proto/**"
+      - ".github/workflows/*dotnet*"
+      - "devops/**"
 
 jobs:
   build-and-test-dotnet:
@@ -20,7 +33,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
       - name: Download workflow artifact
-        uses: dawidd6/action-download-artifact@v2.14.0
+        uses: dawidd6/action-download-artifact@v2.17.0
         with:
           workflow: "build-libs.yml"
           path: ./libs

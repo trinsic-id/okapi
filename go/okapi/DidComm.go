@@ -4,6 +4,7 @@ import (
 	"github.com/trinsic-id/okapi/go/okapiproto"
 )
 
+// DidCommer implements the DIDComm Messaging protocol
 type DidCommer interface {
 	Pack(request *okapiproto.PackRequest) (*okapiproto.PackResponse, error)
 	Unpack(request *okapiproto.UnpackRequest) (*okapiproto.UnpackResponse, error)
@@ -11,6 +12,7 @@ type DidCommer interface {
 	Verify(request *okapiproto.VerifyRequest) (*okapiproto.VerifyResponse, error)
 }
 
+// DidComm implements the DIDComm Messaging protocol
 func DidComm() DidCommer {
 	return &didComm{}
 }

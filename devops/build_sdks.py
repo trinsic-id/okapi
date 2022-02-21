@@ -41,6 +41,13 @@ def get_os_arch_path(extract_dir, windows_path):
     return copy_from
 
 
+
+def set_env_var(name, value):
+    env_file = os.getenv('GITHUB_ENV')
+    with open(env_file, "a") as file:
+        file.write(f"{name}={value}")
+
+
 def copy_okapi_libs(copy_to: str, windows_path='windows'):
     okapi_dir = abspath(join(dirname(__file__), '..'))
     copy_from = get_os_arch_path(okapi_dir, windows_path)
@@ -121,8 +128,10 @@ def build_ruby(args) -> None:
 
 
 def build_golang(args) -> None:
-    # Update version in setup.cfg
+    # Copy in Okapi libraries to the $GOLANG_LD_PATH directory
     golang_dir = abspath(join(get_language_dir('go'), 'okapi'))
+    set_env_var("GOLANG_LD_PATH", golang_dir)
+
     # Copy in the binaries
     copy_okapi_libs(golang_dir, 'windows-gnu')
 
@@ -144,7 +153,12 @@ def get_github_version(github_token: str = None) -> str:
 def build_java_docs(args):
     # https://github.com/fchastanet/groovydoc-to-markdown
     # npm install in the root of sdk
-    subprocess.Popen(r'node ./node_modules/groovydoc-to-markdown/src/doc2md.js  ./java java ./docs/reference/java', cwd=get_sdk_dir() ).wait()
+    subprocess.Popen(
+        [
+            'node', './node_modules/groovydoc-to-markdown/src/doc2md.js',
+            './java', 'java', './docs/reference/java'
+        ], cwd=get_sdk_dir() 
+    ).wait()
 
 
 def build_dotnet_docs(args) -> None:
@@ -153,20 +167,32 @@ def build_dotnet_docs(args) -> None:
     assembly_file = './dotnet/Library/Okapi/bin/Debug/net6.0/okapi.dll'
     output_doc_folder = './docs/reference/dotnet'
     clean_dir(abspath(join(get_sdk_dir(), output_doc_folder)))
-    subprocess.Popen(f"defaultdocumentation --AssemblyFilePath {assembly_file} --OutputDirectoryPath {output_doc_folder} --FileNameMode Name --GeneratedPages Namespaces",
-                     cwd=get_sdk_dir()).wait()
+    subprocess.Popen(
+        [
+            "defaultdocumentation",
+            "--AssemblyFilePath", assembly_file,
+            "--OutputDirectoryPath", output_doc_folder,
+            "--FileNameMode", "Name",
+            "--GeneratedPages", "Namespaces",
+        ],
+        cwd=get_sdk_dir()
+    ).wait()
 
 
 def build_go_docs(args):
     # https://github.com/posener/goreadme
     # go get github.com/posener/goreadme/cmd/goreadme
-    goreadme_args = r'-recursive -functions -methods -types -variabless'  # Yes, that's a duplicated s, it's on purpose.
+    goreadme_args = ['-recursive', '-functions', '-methods', '-types', '-variabless']  # Yes, that's a duplicated s, it's on purpose.
     doc_path = abspath(join(get_language_dir('docs'), 'reference', 'go'))
 
     def write_doc_file(input_path: str, output_file: str):
         logging.info(f"goreadme(input={input_path}, output={output_file})")
+        print(f"goreadme(input={input_path}, output={output_file})")
         with open(join(doc_path, f'{output_file}.md'), 'w') as output:
-            subprocess.Popen(rf'goreadme {goreadme_args}', cwd=input_path, stdout=output).wait()
+            subprocess.Popen(
+                ['goreadme', *goreadme_args], 
+                cwd=input_path, stdout=output
+            ).wait()
         # Handle the subdirectories
         for sub_folder in glob.glob(join(input_path, '**')):
             if isdir(sub_folder):
@@ -199,8 +225,8 @@ def main():
         build_golang(args)
     if build_all or 'docs' in langs_to_build:
         build_java_docs(args)
-        build_dotnet_docs(args)
         build_go_docs(args)
+        build_dotnet_docs(args)
 
 
 if __name__ == "__main__":
