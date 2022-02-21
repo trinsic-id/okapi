@@ -1,4 +1,9 @@
-from trinsicokapi.proto.okapi.keys.v1 import GenerateKeyRequest, GenerateKeyResponse, ResolveResponse, ResolveRequest
+from trinsicokapi.proto.okapi.keys.v1 import (
+    GenerateKeyRequest,
+    GenerateKeyResponse,
+    ResolveResponse,
+    ResolveRequest,
+)
 from trinsicokapi.wrapper import _typed_wrap_and_call
 
 

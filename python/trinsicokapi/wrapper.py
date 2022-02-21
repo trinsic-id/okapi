@@ -9,8 +9,7 @@ from typing import Type, Optional, List, Any, Dict, Union, TypeVar, Iterator
 
 import betterproto
 
-OKAPI_NATIVE: Dict[str, Union[str, CDLL]] = {'library_path': '',
-                                             'library': None}
+OKAPI_NATIVE: Dict[str, Union[str, CDLL]] = {'library_path': '', 'library': None}
 okapi_loader_lock = threading.Lock()
 
 
@@ -45,7 +44,9 @@ def find_native_lib() -> str:
         return lib_path
     lib_name = "okapi"
     # Allow for manual override and then manually check, since LINUX Python doesn't always work. :(
-    found_lib_path = _check_path(os.getenv('LD_LIBRARY_PATH', ''), lib_name) or find_library(lib_name)
+    found_lib_path = _check_path(
+        os.getenv('LD_LIBRARY_PATH', ''), lib_name
+    ) or find_library(lib_name)
     return found_lib_path
 
 
@@ -75,10 +76,8 @@ class OkapiError(Exception):
 
 class ByteBuffer(ctypes.Structure):
     """Buffer allocated by the native library"""
-    _fields_ = [
-        ("len", ctypes.c_int64),
-        ("data", ctypes.POINTER(ctypes.c_uint8))
-    ]
+
+    _fields_ = [("len", ctypes.c_int64), ("data", ctypes.POINTER(ctypes.c_uint8))]
 
     @property
     def raw(self) -> ctypes.Array:
@@ -100,21 +99,22 @@ class ByteBuffer(ctypes.Structure):
     def create_from(obj: bytes) -> 'ByteBuffer':
         request_buffer = ByteBuffer()
         request_buffer.len = len(obj)
-        request_buffer.data = (ctypes.c_ubyte * request_buffer.len).from_buffer_copy(obj)
+        request_buffer.data = (ctypes.c_ubyte * request_buffer.len).from_buffer_copy(
+            obj
+        )
         return request_buffer
 
 
 class ExternError(ctypes.Structure):
-    _fields_ = [
-        ("code", ctypes.c_int32),
-        ("message", ctypes.POINTER(ctypes.c_char))
-    ]
+    _fields_ = [("code", ctypes.c_int32), ("message", ctypes.POINTER(ctypes.c_char))]
 
     def __repr__(self):
         return f"code={self.code} message={self.get_message if self.code != 0 else ''}"
 
     def free(self):
-        func = _wrap_native_function("okapi_string_free", arg_types=[ctypes.POINTER(ctypes.c_char)])
+        func = _wrap_native_function(
+            "okapi_string_free", arg_types=[ctypes.POINTER(ctypes.c_char)]
+        )
         func(self.message)
 
     @property
@@ -129,11 +129,19 @@ class ExternError(ctypes.Structure):
             raise OkapiError(self.code, string_copy)
 
 
-def _wrap_native_function(function_name: str, *, arg_types: Optional[List[Any]] = None,
-                          return_type: Optional[Any] = None):
+def _wrap_native_function(
+    function_name: str,
+    *,
+    arg_types: Optional[List[Any]] = None,
+    return_type: Optional[Any] = None,
+):
     library_function = getattr(load_library(), function_name)
     # Defaults coercion
-    arg_types = arg_types or [ByteBuffer, ctypes.POINTER(ByteBuffer), ctypes.POINTER(ExternError)]
+    arg_types = arg_types or [
+        ByteBuffer,
+        ctypes.POINTER(ByteBuffer),
+        ctypes.POINTER(ExternError),
+    ]
     return_type = return_type or ctypes.c_int32
 
     library_function.argtypes = arg_types
@@ -156,7 +164,9 @@ def _ffi_wrap_and_call(function_name: str, request_buffer: ByteBuffer) -> bytes:
 T_response = TypeVar('T_response', bound=betterproto.Message)
 
 
-def _typed_wrap_and_call(function_name, request: betterproto.Message, response_type: Type[T_response]) -> T_response:
+def _typed_wrap_and_call(
+    function_name, request: betterproto.Message, response_type: Type[T_response]
+) -> T_response:
     buffer = _ffi_wrap_and_call(function_name, ByteBuffer.create_from(bytes(request)))
     output_object = response_type().parse(buffer)
     return output_object
