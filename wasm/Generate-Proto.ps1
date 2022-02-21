@@ -1,6 +1,9 @@
 # Generate protobuf files for JS and TS
 param($OutDir = './packages/okapi-proto/src/proto')
 
+# Windows
+#$PROTOC_GEN_TS_PATH = Resolve-Path "./node_modules/.bin/protoc-gen-ts.cmd"
+#$GRPC_TOOLS_NODE_PROTOC = Resolve-Path "./node_modules/.bin/grpc_tools_node_protoc.cmd"
 $PROTOC_GEN_TS_PATH = Resolve-Path "./node_modules/.bin/protoc-gen-ts"
 $GRPC_TOOLS_NODE_PROTOC = Resolve-Path "./node_modules/.bin/grpc_tools_node_protoc"
 $OUTPUT_DIR = $OutDir
