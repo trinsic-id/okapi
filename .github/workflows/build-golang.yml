@@ -62,10 +62,16 @@ jobs:
         working-directory: go/okapi
         env:
           GO111MODULE: on
+      - name: Run linters
+        uses: wearerequired/lint-action@v1.11.1
+        with:
+          golint_dir: go/
+          gofmt_dir: go/
+          golint: true
+          gofmt: true
       - name: Build and Test Golang
         run: |
           go build
-          golint
           go test -v -exec "env DYLD_LIBRARY_PATH=${{ env.GOLANG_LD_PATH }}" | go-junit-report > test_output.xml
         shell: pwsh
         working-directory: go/okapi
