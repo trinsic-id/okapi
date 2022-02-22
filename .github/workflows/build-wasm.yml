@@ -37,3 +37,10 @@ jobs:
       - run: npm run start
       - run: npm run build
       - run: npm run test
+      - name: Run linters
+        uses: wearerequired/lint-action@v1.11.1
+        with:
+          eslint: true
+          prettier: true
+          eslint_dir: wasm/
+          prettier_dir: wasm/
