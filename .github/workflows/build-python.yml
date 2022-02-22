@@ -44,17 +44,17 @@ jobs:
           path: ./libs/${{ matrix.os-artifact[1] }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           name: ${{ matrix.os-artifact[1] }}
+
       - name: Install Python dependencies
-        run: |
-          pip install black flake8 pytest pytest-cov
-          pip install --upgrade --upgrade-strategy eager -r requirements.txt
+        run: pip install --upgrade --upgrade-strategy eager -r requirements.txt
         shell: pwsh
         working-directory: python
 
       - name: Run linters
         uses: wearerequired/lint-action@v1.11.1
         with:
-          python_dir: python/
+          black_dir: python/
+          flake8_dir: python/
           black: true
           flake8: true
       
