@@ -109,6 +109,7 @@ try {
             # https://github.com/rust-lang/rust/issues/41750#issuecomment-312510034
             $env:EMMAKEN_CFLAGS="-s ERROR_ON_UNDEFINED_SYMBOLS=0 --no-entry"
             rustup toolchain install nightly --allow-downgrade
+            rustup component add rust-src --toolchain nightly-x86_64-apple-darwin
             rustup target add wasm32-unknown-emscripten
             cargo +nightly build --release --target wasm32-unknown-emscripten -Z build-std=std,panic-abort
             # wasm-opt -Oz okapi.wasm --output okapi2.wasm --dce
