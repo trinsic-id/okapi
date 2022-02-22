@@ -44,9 +44,15 @@ jobs:
         run: |
           dotnet workload install ios
           dotnet workload install maccatalyst
+          dotnet tool install -g dotnet-format
           ./BuildAndTest.ps1
         working-directory: ./dotnet
         shell: pwsh
+      - name: Run linters
+        uses: wearerequired/lint-action@v1.11.1
+        with:
+          dotnet_format: true
+          dotnet_format_dir: dotnet/
       - name: Upload Unit Test Results - .NET
         if: always()
         uses: actions/upload-artifact@v2

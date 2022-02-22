@@ -50,11 +50,9 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
-      # Set up Okapi-specific Go runtime. Includes setting GOLANG_LD_PATH env var.
       - name: Set up Go (Okapi)
         run: |
           go version
-          go install golang.org/x/lint/golint@latest
           go install github.com/jstemmer/go-junit-report@latest
           go install github.com/posener/goreadme/cmd/goreadme@latest
           python ../../devops/build_sdks.py --language=golang
@@ -62,10 +60,16 @@ jobs:
         working-directory: go/okapi
         env:
           GO111MODULE: on
+      # Gofmt disabled because gofmt is arrogant about line endings in git.
+      # - name: Run linters
+      #   uses: wearerequired/lint-action@v1.11.1
+      #   with:
+      #     gofmt_dir: go/
+      #     gofmt: true
+      # Set up Okapi-specific Go runtime. Includes setting GOLANG_LD_PATH env var.
       - name: Build and Test Golang
         run: |
           go build
-          golint
           go test -v -exec "env DYLD_LIBRARY_PATH=${{ env.GOLANG_LD_PATH }}" | go-junit-report > test_output.xml
         shell: pwsh
         working-directory: go/okapi

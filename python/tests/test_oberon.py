@@ -1,9 +1,14 @@
 import unittest
 
 from trinsicokapi import oberon
-from trinsicokapi.proto.okapi.security.v1 import CreateOberonKeyRequest, CreateOberonTokenRequest, \
-    CreateOberonProofRequest, \
-    VerifyOberonProofRequest, UnBlindOberonTokenRequest, BlindOberonTokenRequest
+from trinsicokapi.proto.okapi.security.v1 import (
+    CreateOberonKeyRequest,
+    CreateOberonTokenRequest,
+    CreateOberonProofRequest,
+    VerifyOberonProofRequest,
+    UnBlindOberonTokenRequest,
+    BlindOberonTokenRequest,
+)
 
 
 class OberonTests(unittest.TestCase):
@@ -13,8 +18,14 @@ class OberonTests(unittest.TestCase):
         nonce = bytes("1234", "utf8")
 
         token = oberon.create_token(CreateOberonTokenRequest(data=data, sk=key.sk))
-        proof = oberon.create_proof(CreateOberonProofRequest(data=data, nonce=nonce, token=token.token))
-        result = oberon.verify_proof(VerifyOberonProofRequest(data=data, nonce=nonce, pk=key.pk, proof=proof.proof))
+        proof = oberon.create_proof(
+            CreateOberonProofRequest(data=data, nonce=nonce, token=token.token)
+        )
+        result = oberon.verify_proof(
+            VerifyOberonProofRequest(
+                data=data, nonce=nonce, pk=key.pk, proof=proof.proof
+            )
+        )
 
         self.assertTrue(result.valid, "Proof should verify")
 
@@ -34,9 +45,15 @@ class OberonTests(unittest.TestCase):
         token = oberon.unblind_token(unblind_request)
 
         # Holder prepares a proof without blinding
-        proof = oberon.create_proof(CreateOberonProofRequest(data=data, nonce=nonce, token=token.token))
+        proof = oberon.create_proof(
+            CreateOberonProofRequest(data=data, nonce=nonce, token=token.token)
+        )
         # Verifier verifies the proof
-        result = oberon.verify_proof(VerifyOberonProofRequest(data=data, nonce=nonce, pk=key.pk, proof=proof.proof))
+        result = oberon.verify_proof(
+            VerifyOberonProofRequest(
+                data=data, nonce=nonce, pk=key.pk, proof=proof.proof
+            )
+        )
         self.assertTrue(result.valid)
 
         # Holder blinds the token with a personal pin
@@ -45,18 +62,30 @@ class OberonTests(unittest.TestCase):
         blind_request.blinding.append(user_pin)
 
         user_blinded_token = oberon.blind_token(blind_request)
-        proof_request = CreateOberonProofRequest(data=data, nonce=nonce, token=user_blinded_token.token)
+        proof_request = CreateOberonProofRequest(
+            data=data, nonce=nonce, token=user_blinded_token.token
+        )
         proof_request.blinding.append(user_pin)
         proof = oberon.create_proof(proof_request)
         # Verifier verifies the proof
-        result = oberon.verify_proof(VerifyOberonProofRequest(data=data, nonce=nonce, pk=key.pk, proof=proof.proof))
+        result = oberon.verify_proof(
+            VerifyOberonProofRequest(
+                data=data, nonce=nonce, pk=key.pk, proof=proof.proof
+            )
+        )
         self.assertTrue(result.valid)
 
         # Bad actor creates a proof with incorrect blinding pin
-        proof_request = CreateOberonProofRequest(data=data, nonce=nonce, token=user_blinded_token.token)
+        proof_request = CreateOberonProofRequest(
+            data=data, nonce=nonce, token=user_blinded_token.token
+        )
         proof_request.blinding.append(bytes("invalid pin", "utf8"))
 
         proof = oberon.create_proof(proof_request)
         # Verifies tries to verify proof, fails
-        result = oberon.verify_proof(VerifyOberonProofRequest(data=data, nonce=nonce, pk=key.pk, proof=proof.proof))
+        result = oberon.verify_proof(
+            VerifyOberonProofRequest(
+                data=data, nonce=nonce, pk=key.pk, proof=proof.proof
+            )
+        )
         self.assertFalse(result.valid)
