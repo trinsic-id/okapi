@@ -35,6 +35,7 @@ jobs:
         with:
           eslint: true
           eslint_dir: wasm/
+          eslint_args: "--ext .ts,.tsx"
       - uses: jetli/wasm-pack-action@v0.3.0
         with:
           version: 'latest'
