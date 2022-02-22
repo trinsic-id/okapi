@@ -131,3 +131,42 @@ export class Oberon {
     );
   }
 }
+
+export class Hashing {
+  static blake3Hash(
+      request: proto.Blake3HashRequest
+  ): Promise<proto.Blake3HashResponse> {
+    return Promise.resolve(
+        proto.Blake3HashResponse.deserializeBinary(
+            native.blake3_hash(request.serializeBinary())
+        )
+    );
+  }
+  static blake3KeyedHash(
+      request: proto.Blake3KeyedHashRequest
+  ): Promise<proto.Blake3KeyedHashResponse> {
+    return Promise.resolve(
+        proto.Blake3KeyedHashResponse.deserializeBinary(
+            native.blake3_keyed_hash(request.serializeBinary())
+        )
+    );
+  }
+  static blake3DeriveKey(
+      request: proto.Blake3DeriveKeyRequest
+  ): Promise<proto.Blake3DeriveKeyResponse> {
+    return Promise.resolve(
+        proto.Blake3DeriveKeyResponse.deserializeBinary(
+            native.blake3_derive_key(request.serializeBinary())
+        )
+    );
+  }
+  static sha256Hash(
+      request: proto.SHA256HashRequest
+  ): Promise<proto.SHA256HashResponse> {
+    return Promise.resolve(
+        proto.SHA256HashResponse.deserializeBinary(
+            native.sha256_hash(request.serializeBinary())
+        )
+    );
+  }
+}
