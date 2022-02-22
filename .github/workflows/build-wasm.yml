@@ -37,9 +37,9 @@ jobs:
         uses: wearerequired/lint-action@v1.11.1
         with:
           eslint: true
-          prettier: true
+          # prettier: true
           eslint_dir: wasm/
-          prettier_dir: wasm/
+          # prettier_dir: wasm/
       - run: |
           rustup toolchain uninstall stable
           rustup toolchain install stable
