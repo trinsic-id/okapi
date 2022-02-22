@@ -22,7 +22,8 @@
   },
   "devDependencies": {
     "@types/google-protobuf": "^3.7.4",
-    "copyfiles": "^2.4.1"
+    "copyfiles": "^2.4.1",
+    "recursive-copy": "^2.0.14"
   },
   "repository": {
     "type": "git",
