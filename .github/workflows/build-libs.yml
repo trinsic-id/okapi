@@ -28,7 +28,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2.4.0
         with:
           submodules: "true"
       - name: Run build script
@@ -46,7 +46,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2.4.0
         with:
           submodules: "true"
       - name: Run build script
@@ -64,7 +64,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2.4.0
         with:
           submodules: "true"
 
@@ -88,7 +88,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2.4.0
         with:
           submodules: "true"
 
@@ -112,7 +112,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2.4.0
         with:
           submodules: "true"
       - name: Setup Xcode version
@@ -153,7 +153,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2.4.0
         with:
           submodules: "true"
 
@@ -171,7 +171,7 @@ jobs:
     if: "! contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2.4.0
 
       - run: ./devops/BuildLibraries.ps1 -Platform Android -OutLocation ./libs/android
         shell: pwsh
@@ -185,7 +185,7 @@ jobs:
     if: "! contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2.4.0
       - run: |
           brew update
           brew install emscripten

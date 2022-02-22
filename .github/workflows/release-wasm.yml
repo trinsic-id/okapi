@@ -19,7 +19,7 @@ jobs:
         working-directory: ./wasm
         shell: pwsh
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2.4.0
       - uses: jetli/wasm-pack-action@v0.3.0
         with:
           version: 'latest'

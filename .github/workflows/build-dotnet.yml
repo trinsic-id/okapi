@@ -31,7 +31,7 @@ jobs:
       #   os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows], [macos-latest, macos] ]
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2.4.0
       - name: Download workflow artifact
         uses: dawidd6/action-download-artifact@v2.17.0
         with:
