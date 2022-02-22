@@ -111,7 +111,7 @@ try {
             rustup toolchain install nightly --allow-downgrade
             rustup component add rust-src --toolchain nightly-x86_64-apple-darwin
             rustup target add wasm32-unknown-emscripten
-            cargo +nightly build --release --target wasm32-unknown-emscripten -Z build-std=std,panic-abort
+            cargo +nightly build --release --target wasm32-unknown-emscripten -Z build-std=std,panic_abort
             # wasm-opt -Oz okapi.wasm --output okapi2.wasm --dce
             Copy-Item -Path .\target\wasm32-unknown-emscripten\release\libokapi.a -Destination $TargetOutput
             break
