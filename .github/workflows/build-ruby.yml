@@ -53,6 +53,7 @@ jobs:
         run: |
           gem install bundler
           gem install rspec
+          gem install rubocop
           bundle install
           python ../devops/build_sdks.py --language=ruby
           bundle exec rake
@@ -65,6 +66,11 @@ jobs:
           DYLD_FALLBACK_LIBRARY_PATH: "${{ github.workspace }}/libs"
           DYLD_LIBRARY_PATH: "${{ github.workspace }}/libs"
           LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
+      - name: Run linters
+        uses: wearerequired/lint-action@v1.11.1
+        with:
+          rubocop_dir: ruby/
+          rubocop: true
       - name: Upload Unit Test Results - Ruby
         if: always()
         uses: actions/upload-artifact@v2

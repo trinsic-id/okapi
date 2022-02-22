@@ -4,3 +4,7 @@ grpcio-tools~=1.43.0
 grpclib~=0.4.2
 requests~=2.27.1
 setuptools~=60.5.0
+black
+flake8
+pytest
+pytest-cov

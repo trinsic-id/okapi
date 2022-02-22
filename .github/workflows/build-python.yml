@@ -44,10 +44,22 @@ jobs:
           path: ./libs/${{ matrix.os-artifact[1] }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           name: ${{ matrix.os-artifact[1] }}
+
+      - name: Install Python dependencies
+        run: pip install --upgrade --upgrade-strategy eager -r requirements.txt
+        shell: pwsh
+        working-directory: python
+
+      - name: Run linters
+        uses: wearerequired/lint-action@v1.11.1
+        with:
+          black_dir: python/
+          flake8_dir: python/
+          black: true
+          flake8: true
+      
       - name: Build, Test, Pack
         run: |
-          python -m pip install --upgrade --upgrade-strategy eager -r requirements.txt
-          python -m pip install pytest pytest-cov
           python ../devops/build_sdks.py --language=python
           python -m pytest --cache-clear ./tests --junitxml=test_output.xml --cov=.
         shell: pwsh
