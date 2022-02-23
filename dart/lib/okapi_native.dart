@@ -21,6 +21,8 @@ class ExternError extends ffi.Struct {
 
 typedef OkapiFunctionNative = ffi.Int32 Function(OkapiByteBuffer, ffi.Pointer<OkapiByteBuffer>, ffi.Pointer<ExternError>);
 typedef OkapiFunction = int Function(OkapiByteBuffer, ffi.Pointer<OkapiByteBuffer>, ffi.Pointer<ExternError>);
+typedef OkapiFreeFunctionNative = ffi.Void Function(OkapiByteBuffer);
+typedef OkapiFreeFunction = void Function(OkapiByteBuffer);
 
 Pointer<Uint8> byteDataToPointer(ByteData byteData) {
   final uint8List = byteData.buffer.asUint8List();
