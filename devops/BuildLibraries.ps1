@@ -110,6 +110,7 @@ try {
             $env:EMMAKEN_CFLAGS="-s ERROR_ON_UNDEFINED_SYMBOLS=0 --no-entry"
             rustup target add wasm32-unknown-emscripten
             cargo build --release --target wasm32-unknown-emscripten
+            strip .\target\wasm32-unknown-emscripten\release\libokapi.a
             Copy-Item -Path .\target\wasm32-unknown-emscripten\release\libokapi.a -Destination $TargetOutput
             break
         }
