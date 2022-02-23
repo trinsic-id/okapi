@@ -76,7 +76,6 @@ try {
             # Create the fat binaries.
             lipo -create "./target/x86_64-apple-darwin/release/libokapi.a" "./target/aarch64-apple-darwin/release/libokapi.a" -output "$TargetOutput/libokapi.a"
             lipo -create "./target/x86_64-apple-darwin/release/libokapi.dylib" "./target/aarch64-apple-darwin/release/libokapi.dylib" -output "$TargetOutput/libokapi.dylib"
-            strip "$TargetOutput/libokapi.a"
             break
         }
         iOS {
@@ -100,8 +99,7 @@ try {
             # Create the fat binaries, cargo-lipo doesn't support ios sim aarch64
             lipo -create "./target/x86_64-apple-ios/release/libokapi.a" "./target/aarch64-apple-ios-sim/release/libokapi.a" -output "$TargetOutput/libokapi_simulator.a"
             lipo -create "./target/x86_64-apple-ios-macabi/release/libokapi.a" "./target/aarch64-apple-ios-macabi/release/libokapi.a" -output "$TargetOutput/libokapi_maccatalyst.a"
-            strip "$TargetOutput/libokapi_simulator.a"
-            strip "$TargetOutput/libokapi_maccatalyst.a"
+            
             Copy-Item -Path "./target/aarch64-apple-ios/release/libokapi.a" -Destination "$TargetOutput/libokapi.a"
             break
         }
@@ -118,7 +116,7 @@ try {
             $env:EMMAKEN_CFLAGS="-s ERROR_ON_UNDEFINED_SYMBOLS=0 --no-entry"
             rustup target add wasm32-unknown-emscripten
             cargo build --release --target wasm32-unknown-emscripten
-            strip .\target\wasm32-unknown-emscripten\release\libokapi.a
+            strip ./target/wasm32-unknown-emscripten/release/libokapi.a
             Copy-Item -Path .\target\wasm32-unknown-emscripten\release\libokapi.a -Destination $TargetOutput
             break
         }
