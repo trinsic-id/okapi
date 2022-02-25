@@ -2,6 +2,7 @@ package okapi
 
 import "github.com/trinsic-id/okapi/go/okapiproto"
 
+// Oberoner implements Oberon authentication
 type Oberoner interface {
 	CreateKey(request *okapiproto.CreateOberonKeyRequest) (*okapiproto.CreateOberonKeyResponse, error)
 	CreateToken(request *okapiproto.CreateOberonTokenRequest) (*okapiproto.CreateOberonTokenResponse, error)
@@ -11,6 +12,7 @@ type Oberoner interface {
 	VerifyProof(request *okapiproto.VerifyOberonProofRequest) (*okapiproto.VerifyOberonProofResponse, error)
 }
 
+// Oberon implements Oberon authentication
 func Oberon() Oberoner {
 	return &oberon{}
 }

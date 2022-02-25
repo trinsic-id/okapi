@@ -1,5 +1,13 @@
-from trinsicokapi.proto.okapi.transport.v1 import VerifyRequest, SignRequest, UnpackRequest, PackRequest, PackResponse, \
-    UnpackResponse, SignResponse, VerifyResponse
+from trinsicokapi.proto.okapi.transport.v1 import (
+    VerifyRequest,
+    SignRequest,
+    UnpackRequest,
+    PackRequest,
+    PackResponse,
+    UnpackResponse,
+    SignResponse,
+    VerifyResponse,
+)
 from trinsicokapi.wrapper import _typed_wrap_and_call
 
 

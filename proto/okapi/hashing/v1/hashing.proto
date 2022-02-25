@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package okapi.hashing.v1;
+
+option csharp_namespace = "Okapi.Hashing.V1";
+option go_package = "github.com/trinsic-id/okapiproto";
+option java_package = "trinsic.okapi.hashing.v1";
+
+
+message Blake3HashRequest {
+    bytes data = 1;
+}
+
+message Blake3HashResponse {
+    bytes digest = 1;
+}
+
+message Blake3KeyedHashRequest {
+    bytes data = 1;
+    bytes key = 2;
+}
+
+message Blake3KeyedHashResponse {
+    bytes digest = 1;
+}
+
+message Blake3DeriveKeyRequest {
+    bytes context = 1;
+    bytes key_material = 2;
+}
+
+message Blake3DeriveKeyResponse {
+    bytes digest = 1;
+}
+
+message SHA256HashRequest {
+    bytes data = 1;
+}
+
+message SHA256HashResponse {
+    bytes digest = 1;
+}

@@ -168,7 +168,7 @@ fn test_validate_proof() {
     };
 
     let rep = crate::Oberon::verify(&req).unwrap();
-    assert!(rep.valid == true);
+    assert_eq!(rep.valid, true);
 
     let req = VerifyOberonProofRequest {
         proof: vec![
@@ -187,7 +187,7 @@ fn test_validate_proof() {
     };
 
     let rep = crate::Oberon::verify(&req).unwrap();
-    assert!(rep.valid == false);
+    assert_eq!(rep.valid, false);
 }
 
 #[test]

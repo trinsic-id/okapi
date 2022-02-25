@@ -3,26 +3,46 @@ name: Golang
 on:
   workflow_call:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - "go/**"
+      - "proto/**"
+      - ".github/workflows/*golang*"
+      - "devops/**"
   push:
     branches:
       - main
+    paths:
+      - "go/**"
+      - "proto/**"
+      - ".github/workflows/*golang*"
+      - "devops/**"
 
 jobs:
   build-and-test-golang:
     name: Build, Test
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os-artifact[0] }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-latest, windows-latest, macos-latest ]
+        os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows-gnu], [macos-latest, macos] ]
     steps:
       - uses: actions/checkout@v2
       - name: Download workflow artifact
-        uses: dawidd6/action-download-artifact@v2.14.0
+        uses: dawidd6/action-download-artifact@v2.17.0
         with:
           workflow: "build-libs.yml"
-          path: ./libs
-      - name: Set up Go
+          path: ./libs/${{ matrix.os-artifact[1] }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          name: ${{ matrix.os-artifact[1] }}
+      - name: Download C header artifact
+        uses: dawidd6/action-download-artifact@v2.17.0
+        with:
+          workflow: "build-libs.yml"
+          path: ./libs/${{ matrix.os-artifact[1] }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          name: C_header
+      - name: Set up Go (default)
         uses: actions/setup-go@v2
         with:
           go-version: ^1.16
@@ -30,27 +50,39 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
-      - name: Build and Test Golang
+      - name: Set up Go (Okapi)
         run: |
           go version
-          go install golang.org/x/lint/golint@latest
           go install github.com/jstemmer/go-junit-report@latest
-          python ../../devops/build_sdks.py
-          go build
-          golint
-          go test -v | go-junit-report > test_output.xml
+          go install github.com/posener/goreadme/cmd/goreadme@latest
+          python ../../devops/build_sdks.py --language=golang
         shell: pwsh
         working-directory: go/okapi
         env:
-          LD_LIBRARY_PATH: "${{ github.workspace }}/go/okapi"
-          DYLD_FALLBACK_LIBRARY_PATH: "${{ github.workspace }}/go/okapi"
-          DYLD_LIBRARY_PATH: "${{ github.workspace }}/go/okapi"
+          GO111MODULE: on
+      # Gofmt disabled because gofmt is arrogant about line endings in git.
+      # - name: Run linters
+      #   uses: wearerequired/lint-action@v1.11.1
+      #   with:
+      #     gofmt_dir: go/
+      #     gofmt: true
+      # Set up Okapi-specific Go runtime. Includes setting GOLANG_LD_PATH env var.
+      - name: Build and Test Golang
+        run: |
+          go build
+          go test -v -exec "env DYLD_LIBRARY_PATH=${{ env.GOLANG_LD_PATH }}" | go-junit-report > test_output.xml
+        shell: pwsh
+        working-directory: go/okapi
+        env:
+          LD_LIBRARY_PATH: ${{ env.GOLANG_LD_PATH }}
+          DYLD_FALLBACK_LIBRARY_PATH: ${{ env.GOLANG_LD_PATH }}
+          DYLD_LIBRARY_PATH: ${{ env.GOLANG_LD_PATH }}
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
       - name: Upload Unit Test Results - Golang
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: Golang Unit Test Results (${{ matrix.os }})
+          name: Golang Unit Test Results (${{ matrix.os-artifact[0] }})
           path: 'go/okapi/test_output*.xml'
 
   publish-test-results-golang:

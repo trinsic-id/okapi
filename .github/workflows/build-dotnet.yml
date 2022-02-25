@@ -3,9 +3,22 @@ name: .NET
 on:
   workflow_call:
   workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "dotnet/**"
+      - "proto/**"
+      - ".github/workflows/*dotnet*"
+      - "devops/**"
   push:
     branches:
       - main
+    paths:
+      - "dotnet/**"
+      - "proto/**"
+      - ".github/workflows/*dotnet*"
+      - "devops/**"
 
 jobs:
   build-and-test-dotnet:
@@ -18,9 +31,9 @@ jobs:
       #   os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows], [macos-latest, macos] ]
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2.4.0
       - name: Download workflow artifact
-        uses: dawidd6/action-download-artifact@v2.14.0
+        uses: dawidd6/action-download-artifact@v2.17.0
         with:
           workflow: "build-libs.yml"
           path: ./libs
@@ -31,9 +44,15 @@ jobs:
         run: |
           dotnet workload install ios
           dotnet workload install maccatalyst
+          dotnet tool install -g dotnet-format
           ./BuildAndTest.ps1
         working-directory: ./dotnet
         shell: pwsh
+      - name: Run linters
+        uses: wearerequired/lint-action@v1.11.1
+        with:
+          dotnet_format: true
+          dotnet_format_dir: dotnet/
       - name: Upload Unit Test Results - .NET
         if: always()
         uses: actions/upload-artifact@v2

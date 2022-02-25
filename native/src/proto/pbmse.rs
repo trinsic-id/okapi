@@ -1,3 +1,5 @@
+mod pbmse;
+
 /// JWS
 /// Protocol buffer message signing and encryption
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]

@@ -42,11 +42,9 @@ jobs:
       - name: Compile proto files
         run: |
           git checkout -b update-protobuf-generated-files
+          git config --global user.name 'Github Action Runner'
+          git config --global user.email 'trinsic.github.bot@users.noreply.github.com'
           python ./devops/generate_proto_files.py
-      - name: Create pull request
-        uses: repo-sync/pull-request@v2.6.1
-        with:
-          destination_branch: "main"
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          pr_label: "auto-pr"
-          pr_title: "Update Generated Protobuf Files"
+          git add .
+          git commit -m "Proto file changes"
+          git push --set-upstream origin update-protobuf-generated-files

@@ -4,7 +4,12 @@ import unittest
 import base58
 
 from trinsicokapi import didkey
-from trinsicokapi.proto.okapi.keys.v1 import GenerateKeyRequest, KeyType, GenerateKeyResponse, ResolveRequest
+from trinsicokapi.proto.okapi.keys.v1 import (
+    GenerateKeyRequest,
+    KeyType,
+    GenerateKeyResponse,
+    ResolveRequest,
+)
 from trinsicokapi.wrapper import OkapiError
 
 
@@ -64,11 +69,20 @@ class KeyTests(unittest.TestCase):
         self.assertEqual('failed to execute function', err.exception.message)
 
     def test_generate_key_from_seed(self):
-        data_arguments = [(KeyType.KEY_TYPE_ED25519, "Ed25519",
-                           "4f66b355aa7b0980ff901f2295b9c562ac3061be4df86703eb28c612faae6578",
-                           "6fioC1zcDPyPEL19pXRS2E4iJ46zH7xP6uSgAaPdwDrx"),
-                          (KeyType.KEY_TYPE_X25519, "X25519", "9b29d42b38ddd52ed39c0ff70b39572a6eb9b3cac201918dc6d6a84b4c88d2a5",
-                           "3EK9AYXoUV4Unn5AjvYY39hyK91n7gg4ExC8rKKSUQXJ")]
+        data_arguments = [
+            (
+                KeyType.KEY_TYPE_ED25519,
+                "Ed25519",
+                "4f66b355aa7b0980ff901f2295b9c562ac3061be4df86703eb28c612faae6578",
+                "6fioC1zcDPyPEL19pXRS2E4iJ46zH7xP6uSgAaPdwDrx",
+            ),
+            (
+                KeyType.KEY_TYPE_X25519,
+                "X25519",
+                "9b29d42b38ddd52ed39c0ff70b39572a6eb9b3cac201918dc6d6a84b4c88d2a5",
+                "3EK9AYXoUV4Unn5AjvYY39hyK91n7gg4ExC8rKKSUQXJ",
+            ),
+        ]
         for argument in data_arguments:
             with self.subTest(f"Testing argument set={argument}"):
                 request = GenerateKeyRequest()

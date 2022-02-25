@@ -1,81 +1,82 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <AssemblyName>Okapi.Net</AssemblyName>
-    <PackageId>Okapi.Net</PackageId>
+    <PropertyGroup>
+        <AssemblyName>Okapi.Net</AssemblyName>
+        <PackageId>Okapi.Net</PackageId>
     <TargetFrameworks>net6.0;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
-    <LangVersion>latest</LangVersion>
-    <SkipNativeLibsCopy>false</SkipNativeLibsCopy>
-  </PropertyGroup>
+        <LangVersion>latest</LangVersion>
+        <SkipNativeLibsCopy>false</SkipNativeLibsCopy>
+    </PropertyGroup>
 
-  <PropertyGroup>
-    <DebugSymbols>true</DebugSymbols>
-    <EmbedAllSources>true</EmbedAllSources>
-    <DebugType>portable</DebugType>
-  </PropertyGroup>
+    <PropertyGroup>
+        <DebugSymbols>true</DebugSymbols>
+        <EmbedAllSources>true</EmbedAllSources>
+        <DebugType>portable</DebugType>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Google.Protobuf" Version="3.17.3" />
-    <PackageReference Include="Grpc" Version="2.38.0"  PrivateAssets="All" />
-    <PackageReference Include="Grpc.Tools" Version="2.38.0" PrivateAssets="All" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Google.Protobuf" Version="3.17.3"/>
+        <PackageReference Include="Grpc" Version="2.38.0" PrivateAssets="All"/>
+        <PackageReference Include="Grpc.Tools" Version="2.38.0" PrivateAssets="All"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <Protobuf Include="..\..\..\proto\okapi\keys\v1\keys.proto" Link="Protobuf/keys.proto" ProtoRoot="..\..\..\proto" />
-    <Protobuf Include="..\..\..\proto\okapi\transport\v1\transport.proto" Link="Protobuf/transport.proto" ProtoRoot="..\..\..\proto" />
-    <Protobuf Include="..\..\..\proto\okapi\proofs\v1\proofs.proto" Link="Protobuf/proofs.proto" ProtoRoot="..\..\..\proto" />
-    <Protobuf Include="..\..\..\proto\okapi\security\v1\security.proto" Link="Protobuf/security.proto" ProtoRoot="..\..\..\proto"/>
-    <Protobuf Include="..\..\..\proto\pbmse\v1\pbmse.proto" Link="Protobuf/pbmse/pbmse.proto" ProtoRoot="..\..\..\proto" />
-    <Protobuf Include="..\..\..\proto\okapi\examples\v1\examples.proto" Link="Protobuf/examples.proto" ProtoRoot="..\..\..\proto" />
-  </ItemGroup>
+    <ItemGroup>
+        <Protobuf Include="..\..\..\proto\okapi\keys\v1\keys.proto" Link="Protobuf/keys.proto" ProtoRoot="..\..\..\proto"/>
+        <Protobuf Include="..\..\..\proto\okapi\transport\v1\transport.proto" Link="Protobuf/transport.proto" ProtoRoot="..\..\..\proto"/>
+        <Protobuf Include="..\..\..\proto\okapi\proofs\v1\proofs.proto" Link="Protobuf/proofs.proto" ProtoRoot="..\..\..\proto"/>
+        <Protobuf Include="..\..\..\proto\okapi\security\v1\security.proto" Link="Protobuf/security.proto" ProtoRoot="..\..\..\proto"/>
+        <Protobuf Include="..\..\..\proto\pbmse\v1\pbmse.proto" Link="Protobuf/pbmse/pbmse.proto" ProtoRoot="..\..\..\proto"/>
+        <Protobuf Include="..\..\..\proto\okapi\examples\v1\examples.proto" Link="Protobuf/examples.proto" ProtoRoot="..\..\..\proto"/>
+        <Protobuf Include="..\..\..\proto\okapi\hashing\v1\hashing.proto" Link="Protobuf/hashing.proto" ProtoRoot="..\..\..\proto"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\..\..\libs\macos\libokapi.dylib" PackagePath="native/macos/libokapi.dylib" Pack="true" Visible="false" />
-    <None Include="..\..\..\libs\ios\libokapi.a" PackagePath="native/ios/libokapi.a" Pack="true" Visible="false" />
-    <None Include="..\..\..\libs\ios\libokapi_simulator.a" PackagePath="native/ios/libokapi_simulator.a" Pack="true" Visible="false" />
-    <None Include="..\..\..\libs\ios\libokapi_maccatalyst.a" PackagePath="native/ios/libokapi_maccatalyst.a" Pack="true" Visible="false" />
-    <None Include="..\..\..\libs\linux\libokapi.so" PackagePath="native/linux/libokapi.so" Pack="true" Visible="false" />
-    <None Include="..\..\..\libs\windows\okapi.dll" PackagePath="native/windows/okapi.dll" Pack="true" Visible="false" />
-    <None Include="..\..\..\libs\android\arm64-v8a\libokapi.so" PackagePath="native/android/arm64-v8a/libokapi.so" Pack="true" Visible="false" />
-    <None Include="..\..\..\libs\android\armeabi-v7a\libokapi.so" PackagePath="native/android/armeabi-v7a/libokapi.so" Pack="true" Visible="false" />
-    <None Include="..\..\..\libs\android\x86\libokapi.so" PackagePath="native/android/x86/libokapi.so" Pack="true" Visible="false" />
-    <!-- copy the wasm file as "okapi.a", not "libokapi.a" as DllImport for Blazor doesn't strip the "lib" prefix as native platforms do *shrug* -->
-    <None Include="..\..\..\libs\wasm\libokapi.a" PackagePath="native/wasm/okapi.a" Pack="true" Visible="false" />
-  </ItemGroup>
+    <ItemGroup>
+        <None Include="..\..\..\libs\macos\libokapi.dylib" PackagePath="native/macos/libokapi.dylib" Pack="true" Visible="false"/>
+        <None Include="..\..\..\libs\ios\libokapi.a" PackagePath="native/ios/libokapi.a" Pack="true" Visible="false"/>
+        <None Include="..\..\..\libs\ios\libokapi_simulator.a" PackagePath="native/ios/libokapi_simulator.a" Pack="true" Visible="false"/>
+        <None Include="..\..\..\libs\ios\libokapi_maccatalyst.a" PackagePath="native/ios/libokapi_maccatalyst.a" Pack="true" Visible="false"/>
+        <None Include="..\..\..\libs\linux\libokapi.so" PackagePath="native/linux/libokapi.so" Pack="true" Visible="false"/>
+        <None Include="..\..\..\libs\windows\okapi.dll" PackagePath="native/windows/okapi.dll" Pack="true" Visible="false"/>
+        <None Include="..\..\..\libs\android\arm64-v8a\libokapi.so" PackagePath="native/android/arm64-v8a/libokapi.so" Pack="true" Visible="false"/>
+        <None Include="..\..\..\libs\android\armeabi-v7a\libokapi.so" PackagePath="native/android/armeabi-v7a/libokapi.so" Pack="true" Visible="false"/>
+        <None Include="..\..\..\libs\android\x86\libokapi.so" PackagePath="native/android/x86/libokapi.so" Pack="true" Visible="false"/>
+        <!-- copy the wasm file as "okapi.a", not "libokapi.a" as DllImport for Blazor doesn't strip the "lib" prefix as native platforms do *shrug* -->
+        <None Include="..\..\..\libs\wasm\libokapi.a" PackagePath="native/wasm/okapi.a" Pack="true" Visible="false"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <Content Include="build\net\Okapi.Net.targets" Pack="true" PackagePath="build/net6.0" Visible="false" />
-    <Content Include="build\ios\Okapi.Net.targets" Pack="true" PackagePath="build/net6.0-ios15.0" Visible="false" />
-    <Content Include="build\android\Okapi.Net.targets" Pack="true" PackagePath="build/net6.0-android31.0" Visible="false" />
-    <Content Include="build\maccatalyst\Okapi.Net.targets" Pack="true" PackagePath="build/net6.0-maccatalyst15.0" Visible="false" />
-  </ItemGroup>
+    <ItemGroup>
+        <Content Include="build\net\Okapi.Net.targets" Pack="true" PackagePath="build/net6.0" Visible="false"/>
+        <Content Include="build\ios\Okapi.Net.targets" Pack="true" PackagePath="build/net6.0-ios15.0" Visible="false"/>
+        <Content Include="build\android\Okapi.Net.targets" Pack="true" PackagePath="build/net6.0-android31.0" Visible="false"/>
+        <Content Include="build\maccatalyst\Okapi.Net.targets" Pack="true" PackagePath="build/net6.0-maccatalyst15.0" Visible="false"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <None Update="build\net\Okapi.Net.targets" Visible="false" />
-    <None Update="build\ios\Okapi.Net.targets" Visible="false" />
-    <None Update="build\maccatalyst\Okapi.Net.targets" Visible="false" />
-    <None Update="build\android\Okapi.Net.targets" Visible="false" />
-  </ItemGroup>
+    <ItemGroup>
+        <None Update="build\net\Okapi.Net.targets" Visible="false"/>
+        <None Update="build\ios\Okapi.Net.targets" Visible="false"/>
+        <None Update="build\maccatalyst\Okapi.Net.targets" Visible="false"/>
+        <None Update="build\android\Okapi.Net.targets" Visible="false"/>
+    </ItemGroup>
 
-  <ItemGroup Condition="'$(SkipNativeLibsCopy)' != 'true'">
-    <Content Include="..\..\..\libs\windows\okapi.dll" Condition="'$([MSBuild]::IsOsPlatform(Windows))'">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>okapi.dll</Link>
-      <Visible>false</Visible>
-      <Pack>false</Pack>
-    </Content>
-    <Content Include="..\..\..\libs\linux\libokapi.so" Condition="'$([MSBuild]::IsOsPlatform(Linux))'">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>libokapi.so</Link>
-      <Visible>false</Visible>
-      <Pack>false</Pack>
-    </Content>
-    <Content Include="..\..\..\libs\macos\libokapi.dylib" Condition="'$([MSBuild]::IsOsPlatform(OSX))'">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>libokapi.dylib</Link>
-      <Visible>false</Visible>
-      <Pack>false</Pack>
-    </Content>
-  </ItemGroup>
+    <ItemGroup Condition="'$(SkipNativeLibsCopy)' != 'true'">
+        <Content Include="..\..\..\libs\windows\okapi.dll" Condition="'$([MSBuild]::IsOsPlatform(Windows))'">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Link>okapi.dll</Link>
+            <Visible>false</Visible>
+            <Pack>false</Pack>
+        </Content>
+        <Content Include="..\..\..\libs\linux\libokapi.so" Condition="'$([MSBuild]::IsOsPlatform(Linux))'">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Link>libokapi.so</Link>
+            <Visible>false</Visible>
+            <Pack>false</Pack>
+        </Content>
+        <Content Include="..\..\..\libs\macos\libokapi.dylib" Condition="'$([MSBuild]::IsOsPlatform(OSX))'">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Link>libokapi.dylib</Link>
+            <Visible>false</Visible>
+            <Pack>false</Pack>
+        </Content>
+    </ItemGroup>
 
 </Project>

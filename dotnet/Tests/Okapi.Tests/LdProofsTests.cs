@@ -10,45 +10,49 @@ using Okapi.Proofs;
 using Okapi.Proofs.V1;
 using Xunit;
 
-namespace Okapi.Tests
+namespace Okapi.Tests;
+
+public class LdProofsTests
 {
-    public class LdProofsTests
+    [Fact]
+    public void GenerateCapabilityInvocationProofWithJcs()
     {
-        [Fact]
-        public void GenerateCapabilityInvocationProofWithJcs()
+        var capability = new JObject
         {
-            var capability = new JObject
+            { "@context", "https://w3id.org/security/v2" },
+            { "target", "urn:trinsic:wallets:noop" },
             {
-                { "@context", "https://w3id.org/security/v2" },
-                { "target", "urn:trinsic:wallets:noop" },
-                { "proof", new JObject
+                "proof", new JObject
                 {
                     { "created", DateTime.UtcNow.ToString("s") }
-                } }
-            };
+                }
+            }
+        };
 
-            var key = DIDKey.Generate(new GenerateKeyRequest { KeyType = KeyType.Ed25519 });
-            var signingKey = key.Key.First(x => x.Crv == "Ed25519");
+        var key = DIDKey.Generate(new GenerateKeyRequest { KeyType = KeyType.Ed25519 });
+        var signingKey = key.Key.First(x => x.Crv == "Ed25519");
 
-            var signedCapability = LDProofs.CreateProof(new CreateProofRequest
-            {
-                Key = signingKey,
-                Document = capability.ToStruct(),
-                Suite = LdSuite.Jcsed25519Signature2020
-            });
+        var signedCapability = LDProofs.CreateProof(new CreateProofRequest
+        {
+            Key = signingKey,
+            Document = capability.ToStruct(),
+            Suite = LdSuite.Jcsed25519Signature2020
+        });
 
-            signedCapability.Should().NotBeNull();
-            signedCapability.SignedDocument.Should().NotBeNull();
-        }
+        signedCapability.Should().NotBeNull();
+        signedCapability.SignedDocument.Should().NotBeNull();
     }
+}
 
-    public static class JTokenExtensions
+public static class JTokenExtensions
+{
+    /// <summary>
+    ///     Converts to struct.
+    /// </summary>
+    /// <param name="jobj">The jobj.</param>
+    /// <returns></returns>
+    public static Struct ToStruct(this JToken token)
     {
-        /// <summary>
-        /// Converts to struct.
-        /// </summary>
-        /// <param name="jobj">The jobj.</param>
-        /// <returns></returns>
-        public static Struct ToStruct(this JToken token) => JsonParser.Default.Parse<Struct>(token.ToString());
+        return JsonParser.Default.Parse<Struct>(token.ToString());
     }
 }

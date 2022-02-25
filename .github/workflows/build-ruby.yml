@@ -3,20 +3,31 @@ name: Ruby
 on:
   workflow_call:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - "ruby/**"
+      - "proto/**"
+      - ".github/workflows/*ruby*"
+      - "devops/**"
   push:
     branches:
       - main
+    paths:
+      - "ruby/**"
+      - "proto/**"
+      - ".github/workflows/*ruby*"
+      - "devops/**"
 
 jobs:
   build-and-test-ruby:
     name: Build, Test
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os-artifact[0] }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-latest, windows-latest, macos-10.15 ]
+        os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows], [macos-latest, macos] ]
         # Due to https://github.com/actions/runner/issues/849, we have to use quotes for '3.0'
-        ruby-version: [ '3.0' ]
+        ruby-version: [ '2.6', '2.7', '3.0' ]
 
     steps:
       - uses: actions/checkout@v2
@@ -24,24 +35,29 @@ jobs:
         uses: ruby/setup-ruby@v1.76.0
         with:
           ruby-version: ${{ matrix.ruby-version }}
+          bundler-cache: true
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
+          cache: 'pip'
+
       - name: Download workflow artifact
-        uses: dawidd6/action-download-artifact@v2.14.0
+        uses: dawidd6/action-download-artifact@v2.17.0
         with:
           workflow: "build-libs.yml"
-          path: ./libs
+          path: ./libs/${{ matrix.os-artifact[1] }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          name: ${{ matrix.os-artifact[1] }}
       - name: Build and run tests
         run: |
           gem install bundler
           gem install rspec
+          gem install rubocop
           bundle install
-          python ../devops/build_sdks.py
+          python ../devops/build_sdks.py --language=ruby
           bundle exec rake
           rake test
-          exit 0
         shell: pwsh
         working-directory: ruby
         env:
@@ -50,11 +66,16 @@ jobs:
           DYLD_FALLBACK_LIBRARY_PATH: "${{ github.workspace }}/libs"
           DYLD_LIBRARY_PATH: "${{ github.workspace }}/libs"
           LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
+      - name: Run linters
+        uses: wearerequired/lint-action@v1.11.1
+        with:
+          rubocop_dir: ruby/
+          rubocop: true
       - name: Upload Unit Test Results - Ruby
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name:  Ruby ${{ matrix.ruby-version }} Unit Test Results (${{ matrix.os }})
+          name:  Ruby ${{ matrix.ruby-version }} Unit Test Results (${{ matrix.os-artifact[0] }})
           path: 'ruby/test/reports/TEST-*.xml'
 
   publish-test-results-ruby:

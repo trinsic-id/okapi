@@ -41,6 +41,7 @@ fn compile_protobuf_files() {
             &[
                 "../proto/okapi/transport/v1/transport.proto",
                 "../proto/okapi/examples/v1/examples.proto",
+                "../proto/okapi/hashing/v1/hashing.proto",
                 "../proto/okapi/keys/v1/keys.proto",
                 "../proto/okapi/proofs/v1/proofs.proto",
                 "../proto/okapi/security/v1/security.proto",
@@ -52,6 +53,7 @@ fn compile_protobuf_files() {
 
     copy("okapi.examples.v1.rs", "./src/proto/okapi/okapi_examples.rs").unwrap();
     copy("okapi.keys.v1.rs", "./src/proto/okapi/okapi_keys.rs").unwrap();
+    copy("okapi.hashing.v1.rs", "./src/proto/okapi/okapi_hashing.rs").unwrap();
     copy("okapi.transport.v1.rs", "./src/proto/okapi/okapi_transport.rs").unwrap();
     copy("okapi.proofs.v1.rs", "./src/proto/okapi/okapi_proofs.rs").unwrap();
     copy("okapi.security.v1.rs", "./src/proto/okapi/okapi_security.rs").unwrap();
@@ -59,6 +61,7 @@ fn compile_protobuf_files() {
     copy("pbmse.v1.rs", "./src/proto/pbmse.rs").unwrap();
     remove_file("okapi.examples.v1.rs").unwrap();
     remove_file("okapi.keys.v1.rs").unwrap();
+    remove_file("okapi.hashing.v1.rs").unwrap();
     remove_file("okapi.transport.v1.rs").unwrap();
     remove_file("okapi.proofs.v1.rs").unwrap();
     remove_file("okapi.security.v1.rs").unwrap();

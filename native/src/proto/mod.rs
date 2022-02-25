@@ -91,22 +91,6 @@ impl<'de> Visitor<'de> for Value {
         write!(formatter, "unrecognized value")
     }
 
-    fn visit_map<A>(self, map: A) -> Result<Self::Value, A::Error>
-    where
-        A: de::MapAccess<'de>,
-    {
-        let mut fields: HashMap<String, Value> = HashMap::new();
-        let mut map = map;
-
-        while let Some((k, v)) = map.next_entry().unwrap() {
-            fields.insert(k, v);
-        }
-
-        Ok(Value {
-            kind: Some(Kind::StructValue(Struct { fields })),
-        })
-    }
-
     fn visit_bool<E>(self, v: bool) -> Result<Self::Value, E>
     where
         E: Error,
@@ -134,21 +118,21 @@ impl<'de> Visitor<'de> for Value {
         })
     }
 
-    fn visit_unit<E>(self) -> Result<Self::Value, E>
-    where
-        E: Error,
-    {
-        Ok(Value {
-            kind: Some(Kind::NullValue(0)),
-        })
-    }
-
     fn visit_str<E>(self, v: &str) -> Result<Self::Value, E>
     where
         E: Error,
     {
         Ok(Value {
             kind: Some(Kind::StringValue(v.to_string())),
+        })
+    }
+
+    fn visit_unit<E>(self) -> Result<Self::Value, E>
+    where
+        E: Error,
+    {
+        Ok(Value {
+            kind: Some(Kind::NullValue(0)),
         })
     }
 
@@ -165,6 +149,22 @@ impl<'de> Visitor<'de> for Value {
 
         Ok(Value {
             kind: Some(Kind::ListValue(ListValue { values })),
+        })
+    }
+
+    fn visit_map<A>(self, map: A) -> Result<Self::Value, A::Error>
+    where
+        A: de::MapAccess<'de>,
+    {
+        let mut fields: HashMap<String, Value> = HashMap::new();
+        let mut map = map;
+
+        while let Some((k, v)) = map.next_entry().unwrap() {
+            fields.insert(k, v);
+        }
+
+        Ok(Value {
+            kind: Some(Kind::StructValue(Struct { fields })),
         })
     }
 }
@@ -286,6 +286,9 @@ pub mod proofs {
 }
 pub mod security {
     pub use crate::proto::okapi::okapi_security::*;
+}
+pub mod hashing {
+    pub use crate::proto::okapi::okapi_hashing::*;
 }
 pub mod okapi;
 pub mod pbmse;
