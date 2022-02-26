@@ -67,6 +67,7 @@ def update_ruby():
     run_protoc({'ruby_out': ruby_proto_path}, {}, get_proto_files())
     # Ruby type specifications
     run_protoc({'rbi_out': f"{ruby_proto_path}"}, {}, get_proto_files())
+    run_protoc({'rbs_out': f"{ruby_proto_path}"}, {}, get_proto_files())
 
 
 def update_java():
