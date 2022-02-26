@@ -48,6 +48,7 @@ fn compile_protobuf_files() {
             ],
             &["../proto", "../proto/pbmse/v1/"],
         )
+        .format(true)
         .unwrap();
 
     copy("okapi.examples.v1.rs", "./src/proto/okapi/okapi_examples.rs").unwrap();

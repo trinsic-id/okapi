@@ -30,12 +30,14 @@ jobs:
         # ESLint and Prettier must be in `package.json`
       - name: Install Node.js dependencies
         run: npm ci
+      # - name: Run linters
+      #   uses: wearerequired/lint-action@v1.11.1
+      #   with:
+      #     eslint: true
+      #     eslint_dir: wasm/
+      #     eslint_args: "--ext .ts,.tsx"
       - name: Run linters
-        uses: wearerequired/lint-action@v1.11.1
-        with:
-          eslint: true
-          eslint_dir: wasm/
-          eslint_args: "--ext .ts,.tsx"
+        run: npm run lint
       - uses: jetli/wasm-pack-action@v0.3.0
         with:
           version: 'latest'

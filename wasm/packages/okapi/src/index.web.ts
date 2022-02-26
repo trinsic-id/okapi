@@ -1,6 +1,7 @@
 import * as proto from "@trinsic/okapi-proto";
 export * from "@trinsic/okapi-proto";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let native: any;
 let initalized = false;
 async function initialize() {
