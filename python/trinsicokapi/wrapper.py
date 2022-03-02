@@ -56,8 +56,14 @@ def find_native_lib() -> str:
     lib_name = "okapi"
     # Allow for manual override and then manually check,
     # since LINUX Python doesn't always work. :(
-    found_lib_path = _check_path(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'libs')), lib_name) or \
-        _check_path(os.getenv('LD_LIBRARY_PATH', ''), lib_name) or find_library(lib_name)
+    found_lib_path = (
+        _check_path(
+            os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'libs')),
+            lib_name,
+        )
+        or _check_path(os.getenv('LD_LIBRARY_PATH', ''), lib_name)
+        or find_library(lib_name)
+    )
     return found_lib_path
 
 
