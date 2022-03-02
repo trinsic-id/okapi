@@ -33,7 +33,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'base58', '~> 0.2.3'
   spec.add_development_dependency 'minitest', '~> 5.14'
   spec.add_development_dependency 'minitest-reporters', '~>1.4'
-  spec.add_development_dependency 'rbs', '~> 1.8'
   spec.add_development_dependency 'simplecov', '~> 0.21'
   spec.add_development_dependency 'simplecov-cobertura', '~> 1.4'
 end
