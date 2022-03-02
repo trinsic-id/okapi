@@ -39,7 +39,7 @@ jobs:
         run: |
           gem install bundler
           bundle install
-          python ../devops/build_sdks.py --package-version=${{ github.event.inputs.packageVersion }}
+          python ../devops/build_sdks.py --package-version=${{ github.event.inputs.packageVersion }} --language=ruby
 
           mkdir -p $HOME/.gem
           touch $HOME/.gem/credentials
