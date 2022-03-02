@@ -140,7 +140,7 @@ def build_ruby(args) -> None:
                 {'  VERSION =': f"  VERSION = '{get_package_versions(args)}'"})
     # TODO - Support Ruby on ARM
     copy_okapi_file(abspath(join(dirname(__file__), '..','libs','windows','okapi.dll')),abspath(join(ruby_dir,'libs','windows')))
-    copy_okapi_file(abspath(join(dirname(__file__), '..','libs','macos','libokapi.so')), abspath(join(ruby_dir,'libs','macos')))
+    copy_okapi_file(abspath(join(dirname(__file__), '..','libs','macos','libokapi.dylib')), abspath(join(ruby_dir,'libs','macos')))
     copy_okapi_file(abspath(join(dirname(__file__), '..','libs','linux','libokapi.so')), abspath(join(ruby_dir,'libs','linux')))
 
 

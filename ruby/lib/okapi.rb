@@ -51,8 +51,7 @@ module Okapi
     # MacOS system integrity protection, I'm looking at you.
     possible_library_paths = [File.expand_path(File.join(__dir__, '..', 'libs', library_directory, library_name)),
                               library_name,
-                              File.expand_path(File.join(library_path || '', library_name)),
-                              File.expand_path(File.join(ENV['RUBY_DLL_PATH'], library_name))]
+                              File.expand_path(File.join(library_path || '', library_name))]
     possible_library_paths.each do |lib_path|
       puts("Attempting to load binary: #{lib_path}")
       ffi_lib lib_path

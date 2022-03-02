@@ -52,20 +52,14 @@ jobs:
       - name: Build and run tests
         run: |
           gem install bundler
-          gem install rspec
           gem install rubocop
           bundle install
           python ../devops/build_sdks.py --language=ruby
           bundle exec rake
-          rake test
         shell: pwsh
         working-directory: ruby
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
-          RUBY_DLL_PATH: "${{ github.workspace }}/libs"  # Required for Ruby on Windows
-          DYLD_FALLBACK_LIBRARY_PATH: "${{ github.workspace }}/libs"
-          DYLD_LIBRARY_PATH: "${{ github.workspace }}/libs"
-          LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
       - name: Run linters
         uses: wearerequired/lint-action@v1.11.1
         with:
