@@ -61,6 +61,14 @@ def copy_okapi_libs(copy_to: str, windows_path='windows'):
         pass
 
 
+def copy_okapi_file(copy_from: str, copy_to: str):
+    try:
+        clean_dir(copy_to)
+        shutil.copy2(copy_from, copy_to)
+    except FileNotFoundError:
+        pass
+
+
 def clean_dir(language_dir: str) -> None:
     logging.info(f"Cleaning directory={language_dir}")
     try:
@@ -107,7 +115,10 @@ def build_python(args) -> None:
     python_dir = get_language_dir('python')
     update_line(join(python_dir, 'setup.cfg'),
                 {'version = ': f'version = {get_package_versions(args)}'})
-    copy_okapi_libs(abspath(join(python_dir, '..', 'libs')))
+    # TODO - Support ARM
+    copy_okapi_file(abspath(join(dirname(__file__), '..','libs','windows','okapi.dll')),abspath(join(python_dir,'libs','windows')))
+    copy_okapi_file(abspath(join(dirname(__file__), '..','libs','macos','libokapi.dylib')), abspath(join(python_dir,'libs','macos')))
+    copy_okapi_file(abspath(join(dirname(__file__), '..','libs','linux','libokapi.so')), abspath(join(python_dir,'libs','linux')))
 
 
 def build_java(args) -> None:
