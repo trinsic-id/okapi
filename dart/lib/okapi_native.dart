@@ -1,37 +1,101 @@
-import 'dart:ffi' as ffi;
-
 import 'dart:ffi';
+import 'dart:io' show Platform, Directory;
 import 'dart:typed_data';
 
 import 'package:ffi/ffi.dart';
+import 'package:path/path.dart' as path;
+import 'package:protobuf/protobuf.dart' as $pb;
 
-class OkapiByteBuffer extends ffi.Struct {
-  @ffi.Int64()
+class OkapiByteBuffer extends Struct {
+  @Int64()
   external int len;
-  external ffi.Pointer<ffi.Uint8> data;
+  external Pointer<Uint8> data;
 }
 
-typedef ErrorCode = ffi.Int32;
+typedef ErrorCode = Int32;
 
-class ExternError extends ffi.Struct {
+class ExternError extends Struct {
   @ErrorCode()
   external int code;
-  external ffi.Pointer<ffi.Int8> message;
+  external Pointer<Utf8> message;
 }
 
-typedef OkapiFunctionNative = ffi.Int32 Function(OkapiByteBuffer, ffi.Pointer<OkapiByteBuffer>, ffi.Pointer<ExternError>);
-typedef OkapiFunction = int Function(OkapiByteBuffer, ffi.Pointer<OkapiByteBuffer>, ffi.Pointer<ExternError>);
-typedef OkapiFreeFunctionNative = ffi.Void Function(OkapiByteBuffer);
+typedef OkapiFunctionNative = Int32 Function(
+    OkapiByteBuffer, Pointer<OkapiByteBuffer>, Pointer<ExternError>);
+typedef OkapiFunction = int Function(
+    OkapiByteBuffer, Pointer<OkapiByteBuffer>, Pointer<ExternError>);
+typedef OkapiFreeFunctionNative = Void Function(OkapiByteBuffer);
 typedef OkapiFreeFunction = void Function(OkapiByteBuffer);
 
-Pointer<Uint8> byteDataToPointer(ByteData byteData) {
-  final uint8List = byteData.buffer.asUint8List();
-  final length = uint8List.lengthInBytes;
-  final result = calloc<Uint8>(length);
+class OkapiNative {
+  static final DynamicLibrary library = loadNativeLibrary();
+  static final okapiByteBufferFree = OkapiNative.library
+      .lookupFunction<OkapiFreeFunctionNative, OkapiFreeFunction>(
+          'okapi_bytebuffer_free');
 
-  for (var i = 0; i < length; ++i) {
-    result[i] = uint8List[i];
+  static T nativeCall<T extends $pb.GeneratedMessage>(Function nativeFunction, $pb.GeneratedMessage request, T response ) {
+    final requestBuffer = createRequestBuffer(request);
+    final responseBuffer = calloc<OkapiByteBuffer>(sizeOf<OkapiByteBuffer>());
+    final err = calloc<ExternError>(sizeOf<ExternError>());
+    final returnValue = nativeFunction(requestBuffer.ref, responseBuffer, err);
+    final errCode = err.ref.code;
+    if (errCode != 0) {
+      final errString = err.ref.message.toDartString();
+      throw Exception("Okapi native error code={$errCode}, message={$errString}");
+    }
+
+    response.mergeFromBuffer(
+        responseBuffer.ref.data.asTypedList(responseBuffer.ref.len));
+    print("Return value {$returnValue}, response={$response}");
+    // Free native and managed memory
+    freeNativeMemory(requestBuffer, okapiByteBufferFree, responseBuffer);
+    return response;
   }
 
-  return result;
+  static DynamicLibrary loadNativeLibrary() {
+    String libraryName = "";
+    if (Platform.isWindows) {
+      libraryName = path.join("windows", "okapi.dll");
+    } else if (Platform.isLinux) {
+      libraryName = path.join("linux", "libokapi.so");
+    } else if (Platform.isMacOS) {
+      libraryName = path.join("macos", "libokapi.so");
+    }
+    // TODO - Support Android, and maybe iOS?
+    var libraryPath =
+        path.join(Directory.current.path, '..', 'libs', libraryName);
+
+    final nativeLib = DynamicLibrary.open(libraryPath);
+    return nativeLib;
+  }
+
+  static Pointer<Uint8> byteDataToPointer(ByteData byteData) {
+    final uint8List = byteData.buffer.asUint8List();
+    final length = uint8List.lengthInBytes;
+    final result = calloc<Uint8>(length);
+
+    for (var i = 0; i < length; ++i) {
+      result[i] = uint8List[i];
+    }
+
+    return result;
+  }
+
+  static void freeNativeMemory(
+      Pointer<OkapiByteBuffer> requestBuffer,
+      OkapiFreeFunction okapiByteBufferFree,
+      Pointer<OkapiByteBuffer> responseBuffer) {
+    calloc.free(requestBuffer.ref.data);
+    calloc.free(requestBuffer);
+    okapiByteBufferFree(responseBuffer.ref);
+  }
+
+  static Pointer<OkapiByteBuffer> createRequestBuffer($pb.GeneratedMessage request) {
+    final Pointer<OkapiByteBuffer> requestBuffer =
+        calloc<OkapiByteBuffer>(sizeOf<OkapiByteBuffer>());
+    requestBuffer.ref.len = request.writeToBuffer().buffer.lengthInBytes;
+    requestBuffer.ref.data =
+        byteDataToPointer(request.writeToBuffer().buffer.asByteData());
+    return requestBuffer;
+  }
 }

@@ -16,12 +16,11 @@ def get_proto_files(dir_name: str = None) -> List[str]:
     return get_matching_files(dir_name, '*.proto')
 
 
-def clean_proto_dir(language_proto_dir: str) -> None:
-    try:
-        shutil.rmtree(language_proto_dir)
-    except:
-        pass
-    os.mkdir(language_proto_dir)
+def get_matching_files(dir_name: str, extension: str) -> List[str]:
+    if not extension.startswith('*.'):
+        extension = f'*.{extension}'
+    search_glob = join(dir_name, '**', extension)
+    return [abspath(file_path) for file_path in glob.glob(search_glob, recursive=True)]
 
 
 def join_args(args: Union[str, List[str], Dict[str, str]]) -> List[str]:
@@ -36,11 +35,13 @@ def join_args(args: Union[str, List[str], Dict[str, str]]) -> List[str]:
 def run_protoc(language_options: Dict[str, str] = None,
                custom_options: Union[List[str], Dict[str, str]] = None,
                proto_files: Union[List[str], str] = None,
+               *,
                plugin: str = None,
                protoc_executable: str = 'protoc') -> None:
     proto_path_string = f'--proto_path="{get_language_dir("proto")}"'
     plugin_string = f'--plugin={plugin}' if plugin else ''
-    command_args = [protoc_executable, plugin_string, proto_path_string, join_args(language_options), join_args(custom_options)]
+    google_proto_path = f'--proto_path="c:\\bin\\google"'
+    command_args = [protoc_executable, plugin_string, proto_path_string, google_proto_path, join_args(language_options), join_args(custom_options)]
     command_args.extend(join_args(proto_files))
     # Regularize 2D array and flatten
     command_args = [arg_list if isinstance(arg_list, list) else [arg_list] for arg_list in command_args ]
@@ -73,16 +74,16 @@ def update_ruby():
 def update_java():
     java_path = get_language_dir('java')
     java_proto_path = join(java_path, 'src', 'main', 'java')
-    # clean_proto_dir(java_proto_path)
+    # clean_dir(java_proto_path)
     run_protoc({'java_out': java_proto_path, 'kotlin_out': java_proto_path}, {}, get_proto_files())
 
 
 def update_dart():
     language_path = get_language_dir('dart')
     language_proto_path = join(language_path, 'lib', 'proto')
-    clean_proto_dir(language_proto_path)
+    clean_dir(language_proto_path)
     run_protoc({'dart_out': language_proto_path}, {}, get_proto_files())
-    run_protoc({'dart_out': language_proto_path}, {}, get_google_proto_files())
+    # run_protoc({'dart_out': language_proto_path}, {}, get_proto_files(dir_name='c:/bin/google'))
 
 
 def update_markdown():
