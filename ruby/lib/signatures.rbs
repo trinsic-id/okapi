@@ -98,11 +98,11 @@ Transport_V1: untyped
 
 Keys_V1: untyped
 
-Proofs_V1: untyped
+Okapi::Proofs::V1: untyped
 
 Examples_V1: untyped
 
-Security_V1: untyped
+Okapi::Security::V1: untyped
 
 module Okapi
   extend FFI::Library
