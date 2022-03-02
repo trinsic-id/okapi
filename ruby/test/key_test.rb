@@ -15,7 +15,7 @@ class KeyTest < Minitest::Test
 
   def test_generate_key
     request = Okapi::Keys::V1::GenerateKeyRequest.new(key_type: Okapi::Keys::V1::KeyType::KEY_TYPE_ED25519,
-                                              seed: "\x01\x02\x03")
+                                                      seed: "\x01\x02\x03")
     assert !request.nil?
 
     response = Okapi::DidKey.generate(request)

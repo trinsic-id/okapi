@@ -19,9 +19,10 @@ class OberonTest < Minitest::Test
 
     token = Okapi::Oberon.create_token(Okapi::Security::V1::CreateOberonTokenRequest.new(data: data, sk: key.sk))
     proof = Okapi::Oberon.create_proof(Okapi::Security::V1::CreateOberonProofRequest.new(data: data, nonce: nonce,
-                                                                          token: token.token))
-    result = Okapi::Oberon.verify_proof(Okapi::Security::V1::VerifyOberonProofRequest.new(data: data, nonce: nonce, pk: key.pk,
-                                                                           proof: proof.proof))
+                                                                                         token: token.token))
+    result = Okapi::Oberon.verify_proof(Okapi::Security::V1::VerifyOberonProofRequest.new(data: data, nonce: nonce,
+                                                                                          pk: key.pk,
+                                                                                          proof: proof.proof))
 
     assert result.valid == true
   end
@@ -46,10 +47,11 @@ class OberonTest < Minitest::Test
 
     # Holder prepares a proof with blinding
     proof = Okapi::Oberon.create_proof(Okapi::Security::V1::CreateOberonProofRequest.new(data: data, nonce: nonce,
-                                                                          token: token.token))
+                                                                                         token: token.token))
     # Verifier verifies the proof
-    result = Okapi::Oberon.verify_proof(Okapi::Security::V1::VerifyOberonProofRequest.new(data: data, nonce: nonce, pk: key.pk,
-                                                                           proof: proof.proof))
+    result = Okapi::Oberon.verify_proof(Okapi::Security::V1::VerifyOberonProofRequest.new(data: data, nonce: nonce,
+                                                                                          pk: key.pk,
+                                                                                          proof: proof.proof))
     assert result.valid == true
 
     # holder blinds the token with a personal pin
@@ -59,23 +61,27 @@ class OberonTest < Minitest::Test
     user_blinded_token = Okapi::Oberon.blind_token(blind_request)
 
     # Holder prepares a proof using the pin binding
-    proof_request = Okapi::Security::V1::CreateOberonProofRequest.new(data: data, nonce: nonce, token: user_blinded_token.token)
+    proof_request = Okapi::Security::V1::CreateOberonProofRequest.new(data: data, nonce: nonce,
+                                                                      token: user_blinded_token.token)
     proof_request.blinding += [user_pin]
     proof = Okapi::Oberon.create_proof(proof_request)
 
     # Verifier verifies the proof
-    result = Okapi::Oberon.verify_proof(Okapi::Security::V1::VerifyOberonProofRequest.new(data: data, nonce: nonce, pk: key.pk,
-                                                                           proof: proof.proof))
+    result = Okapi::Oberon.verify_proof(Okapi::Security::V1::VerifyOberonProofRequest.new(data: data, nonce: nonce,
+                                                                                          pk: key.pk,
+                                                                                          proof: proof.proof))
     assert result.valid == true
 
     # Bad actor creates a proof with incorrect blinding pin
-    proof_request = Okapi::Security::V1::CreateOberonProofRequest.new(data: data, nonce: nonce, token: user_blinded_token.token)
+    proof_request = Okapi::Security::V1::CreateOberonProofRequest.new(data: data, nonce: nonce,
+                                                                      token: user_blinded_token.token)
     proof_request.blinding += ['invalid pin']
     proof = Okapi::Oberon.create_proof(proof_request)
 
     # verifier tries to verify proof, fails
-    result = Okapi::Oberon.verify_proof(Okapi::Security::V1::VerifyOberonProofRequest.new(data: data, nonce: nonce, pk: key.pk,
-                                                                           proof: proof.proof))
+    result = Okapi::Oberon.verify_proof(Okapi::Security::V1::VerifyOberonProofRequest.new(data: data, nonce: nonce,
+                                                                                          pk: key.pk,
+                                                                                          proof: proof.proof))
     assert result.valid == false
   end
   # rubocop:enable Metrics/MethodLength

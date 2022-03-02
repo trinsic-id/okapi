@@ -29,9 +29,10 @@ class LdProofsTest < Minitest::Test
     request.key_type = Okapi::Keys::V1::KeyType::KEY_TYPE_ED25519
     response = Okapi::DidKey.generate(request)
     signing_key = response.key.select { |x| x.crv == 'Ed25519' }[0]
+    sign_suite = Okapi::Proofs::V1::LdSuite::LD_SUITE_JCSED25519SIGNATURE2020
 
     proof_request = Okapi::Proofs::V1::CreateProofRequest.new(document: capability_struct, key: signing_key,
-                                                              suite: Okapi::Proofs::V1::LdSuite::LD_SUITE_JCSED25519SIGNATURE2020)
+                                                              suite: sign_suite)
 
     signed_capability = Okapi::LdProofs.create(proof_request)
     assert !signed_capability.nil?
