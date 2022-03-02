@@ -1,26 +1,14 @@
 # frozen_string_literal: true
 
-require_relative 'ld_proofs'
 require 'ffi'
 require 'os'
-require 'okapi/keys/v1/keys_pb'
-require 'okapi/examples/v1/examples_pb'
-require 'okapi/proofs/v1/proofs_pb'
-require 'okapi/transport/v1/transport_pb'
-require 'okapi/security/v1/security_pb'
-
-Examples_V1 = Okapi::Examples::V1
-Hashing_V1 = Okapi::Hashing::V1
-Keys_V1 = Okapi::Keys::V1
-Proofs_V1 = Okapi::Proofs::V1
-Security_V1 = Okapi::Security::V1
-Transport_V1 = Okapi::Transport::V1
 
 # Okapi wrapper module
 module Okapi
   extend FFI::Library
   @library_path = nil
   @library_linked = false
+
   def self.library_path
     @library_path
   end
@@ -31,7 +19,7 @@ module Okapi
 
   def self.library_directory
     return 'windows' if OS.windows?
-    return 'linux' if OS.linux?
+    return 'linux' if OS.linux? # TODO: Support linux on ARM
     return 'macos' if OS.mac?
 
     raise NotImplementedError
@@ -46,13 +34,11 @@ module Okapi
   end
 
   class ByteBuffer < FFI::Struct
-    layout :len, :int64,
-           :data, :pointer
+    layout :len, :int64, :data, :pointer
   end
 
   class ExternError < FFI::Struct
-    layout :code, :int32,
-           :message, :string
+    layout :code, :int32, :message, :string
   end
 
   # rubocop:disable Metrics/MethodLength
@@ -61,16 +47,17 @@ module Okapi
     return if @library_linked
 
     @library_linked = true
-
-    full_path = library_name
-    full_path = File.expand_path(File.join(library_path, library_name)) unless library_path.nil?
-    begin
-      ffi_lib full_path
+    # Get the environment variable RUBY_DLL_PATH on all platforms as a failsafe,
+    # MacOS system integrity protection, I'm looking at you.
+    possible_library_paths = [File.expand_path(File.join(__dir__, '..', 'libs', library_directory, library_name)),
+                              library_name,
+                              File.expand_path(File.join(library_path || '', library_name))]
+    possible_library_paths.each do |lib_path|
+      puts("Attempting to load binary: #{lib_path}")
+      ffi_lib lib_path
+      break
     rescue LoadError
-      # Get the environment variable RUBY_DLL_PATH on all platforms as a failsafe,
-      # MacOS system integrity protection, I'm looking at you.
-      full_path = File.expand_path(File.join(ENV['RUBY_DLL_PATH'], library_name))
-      ffi_lib full_path
+      # Ignored
     end
 
     attach_function :didkey_generate, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
@@ -118,6 +105,7 @@ module Okapi
     byte_buffer_free(response_buffer)
     response
   end
+
   # rubocop:enable Metrics/MethodLength
   # rubocop:enable Metrics/AbcSize
 

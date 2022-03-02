@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module Okapi
-  VERSION = '1.2.0'
+  VERSION = '1.4.0'
 end
