@@ -61,6 +61,21 @@ def copy_okapi_libs(copy_to: str, windows_path='windows'):
         pass
 
 
+def deep_copy_okapi_libs(copy_to: str):
+    copy_from = abspath(join(dirname(__file__), '..','libs'))
+    logging.info(f"Copying okapi libs from: {copy_from}\nto: {copy_to}")
+    shutil.rmtree(copy_to, ignore_errors=True)
+    shutil.copytree(copy_from, copy_to)
+
+
+def copy_okapi_file(copy_from: str, copy_to: str):
+    try:
+        clean_dir(copy_to)
+        shutil.copy2(copy_from, copy_to)
+    except FileNotFoundError:
+        pass
+
+
 def clean_dir(language_dir: str) -> None:
     logging.info(f"Cleaning directory={language_dir}")
     try:
@@ -123,8 +138,10 @@ def build_ruby(args) -> None:
     ruby_dir = get_language_dir('ruby')
     update_line(join(ruby_dir, 'lib', 'version.rb'),
                 {'  VERSION =': f"  VERSION = '{get_package_versions(args)}'"})
-    copy_okapi_libs(abspath(join(ruby_dir, '..', 'libs')))
-    copy_okapi_libs(ruby_dir)  # Ruby FFI loads from current directory first, this enables macos
+    # TODO - Support Ruby on ARM
+    copy_okapi_file(abspath(join(dirname(__file__), '..','libs','windows','okapi.dll')),abspath(join(ruby_dir,'libs','windows')))
+    copy_okapi_file(abspath(join(dirname(__file__), '..','libs','macos','libokapi.so')), abspath(join(ruby_dir,'libs','macos')))
+    copy_okapi_file(abspath(join(dirname(__file__), '..','libs','linux','libokapi.so')), abspath(join(ruby_dir,'libs','linux')))
 
 
 def build_golang(args) -> None:
