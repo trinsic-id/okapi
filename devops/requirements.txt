@@ -1,2 +1,4 @@
 betterproto[compiler]
 grpcio-tools
+requests~=2.27.1
+PyYAML~=6.0
