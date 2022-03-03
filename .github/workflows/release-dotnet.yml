@@ -41,7 +41,7 @@ jobs:
 
       - name: Create Nuget package
         run: |
-          python ../devops/build_sdks.py --package-version=${{ steps.setversion.outputs.packageVersion }} --language=dotnet
+          python ../../../devops/build_sdks.py --package-version=${{ steps.setversion.outputs.packageVersion }} --language=dotnet
           dotnet workload install ios
           dotnet workload install maccatalyst
           dotnet restore
