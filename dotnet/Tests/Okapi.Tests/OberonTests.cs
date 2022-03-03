@@ -2,6 +2,7 @@
 using Okapi.Security;
 using Okapi.Security.V1;
 using Xunit;
+using System.Linq;
 
 namespace Okapi.Tests;
 
@@ -103,6 +104,8 @@ public class OberonTests
         proofRequest.Blinding.Add(userPin);
 
         proof = Oberon.CreateProof(proofRequest);
+
+        Assert.Equal(256, proof.Proof.Count());
 
         // Verifier verifies the proof
         result = Oberon.VerifyProof(new VerifyOberonProofRequest
