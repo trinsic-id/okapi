@@ -1,6 +1,7 @@
 import ctypes
 import os
 import platform
+import sys
 import threading
 from ctypes import CDLL
 from ctypes.util import find_library
@@ -61,6 +62,7 @@ def find_native_lib() -> str:
             os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'libs')),
             lib_name,
         )
+        or _check_path(os.path.join(sys.prefix, 'libs'), lib_name)
         or _check_path(os.getenv('LD_LIBRARY_PATH', ''), lib_name)
         or find_library(lib_name)
     )
