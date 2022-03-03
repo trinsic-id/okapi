@@ -19,13 +19,13 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@master
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'
       - name: Set up Python 3.9
         uses: actions/setup-python@v1
         with:
           python-version: 3.9
-      - uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '6.0.x'
       - uses: trinsic-id/set-version@v0.1
         id: setversion
         with:

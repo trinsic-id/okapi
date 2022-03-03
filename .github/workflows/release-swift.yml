@@ -21,17 +21,33 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2.4.0
 
-      - name: Download workflow artifact
-        uses: dawidd6/action-download-artifact@v2.17.0
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v1
         with:
-          workflow: "build-libs.yml"
-          path: ./libs
+          python-version: 3.9
+      - uses: trinsic-id/set-version@v0.1
+        id: setversion
+        with:
+          githubToken: ${{ secrets.API_GITHUB_TOKEN }}
+          overrideVersion: ${{ github.event.inputs.packageVersion }}
+      - name: release-downloader
+        uses: robinraju/release-downloader@v1.3
+        with:
+          repository: trinsic-id/okapi
+          latest: true
+          token: ${{ secrets.API_GITHUB_TOKEN }}
+          fileName: "libs.zip"
 
       - uses: trinsic-id/set-version@v0.1
         id: setversion
         with:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}
           overrideVersion: ${{ github.event.inputs.packageVersion }}
+      - run: |
+          python ./devops/build_sdks.py --package-version=${{ steps.setversion.outputs.packageVersion }} --language=none
+        working-directory: ./
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Framework
         run: |
