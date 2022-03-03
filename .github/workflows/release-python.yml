@@ -26,6 +26,7 @@ jobs:
       - name: release-downloader
         uses: robinraju/release-downloader@v1.3
         with:
+          repository: trinsic-id/okapi
           latest: true
           token: ${{ secrets.API_GITHUB_TOKEN }}
           fileName: "libs.zip"
