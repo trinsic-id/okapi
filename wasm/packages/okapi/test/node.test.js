@@ -29,6 +29,8 @@ test("create and verify oberon token", async (t) => {
     new CreateOberonProofRequest().setToken(token.getToken()).setData(id).setNonce(nonce)
   );
 
+  t.is(256, proof.getProof_asU8().length);
+
   var result = await Oberon.verifyProof(
     new VerifyOberonProofRequest().setData(id).setNonce(nonce).setProof(proof.getProof()).setPk(key.getPk())
   );
