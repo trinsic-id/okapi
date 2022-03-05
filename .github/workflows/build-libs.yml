@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
   schedule:
     # Do it twice a day to guarantee that the binaries never expire and give the "couldn't download artifact" run error in other jobs
-    - cron: "* */12 * * *"
+    - cron: "5 */12 * * *"
   pull_request:
     paths:
       - "native/**"
