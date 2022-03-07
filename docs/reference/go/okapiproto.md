@@ -79,6 +79,10 @@ var File_okapi_examples_v1_examples_proto protoreflect.FileDescriptor
 ```
 
 ```golang
+var File_okapi_hashing_v1_hashing_proto protoreflect.FileDescriptor
+```
+
+```golang
 var File_okapi_keys_v1_keys_proto protoreflect.FileDescriptor
 ```
 
@@ -129,6 +133,194 @@ Deprecated: Use BasicMessage.ProtoReflect.Descriptor instead.
 #### func (*BasicMessage) [String](/examples.pb.go#L40)
 
 `func (x *BasicMessage) String() string`
+
+### type [Blake3DeriveKeyRequest](/hashing.pb.go#L219)
+
+`type Blake3DeriveKeyRequest struct { ... }`
+
+#### func (*Blake3DeriveKeyRequest) [Descriptor](/hashing.pb.go#L256)
+
+`func (*Blake3DeriveKeyRequest) Descriptor() ([]byte, []int)`
+
+Deprecated: Use Blake3DeriveKeyRequest.ProtoReflect.Descriptor instead.
+
+#### func (*Blake3DeriveKeyRequest) [GetContext](/hashing.pb.go#L260)
+
+`func (x *Blake3DeriveKeyRequest) GetContext() []byte`
+
+#### func (*Blake3DeriveKeyRequest) [GetKeyMaterial](/hashing.pb.go#L267)
+
+`func (x *Blake3DeriveKeyRequest) GetKeyMaterial() []byte`
+
+#### func (*Blake3DeriveKeyRequest) [ProtoMessage](/hashing.pb.go#L241)
+
+`func (*Blake3DeriveKeyRequest) ProtoMessage()`
+
+#### func (*Blake3DeriveKeyRequest) [ProtoReflect](/hashing.pb.go#L243)
+
+`func (x *Blake3DeriveKeyRequest) ProtoReflect() protoreflect.Message`
+
+#### func (*Blake3DeriveKeyRequest) [Reset](/hashing.pb.go#L228)
+
+`func (x *Blake3DeriveKeyRequest) Reset()`
+
+#### func (*Blake3DeriveKeyRequest) [String](/hashing.pb.go#L237)
+
+`func (x *Blake3DeriveKeyRequest) String() string`
+
+### type [Blake3DeriveKeyResponse](/hashing.pb.go#L274)
+
+`type Blake3DeriveKeyResponse struct { ... }`
+
+#### func (*Blake3DeriveKeyResponse) [Descriptor](/hashing.pb.go#L310)
+
+`func (*Blake3DeriveKeyResponse) Descriptor() ([]byte, []int)`
+
+Deprecated: Use Blake3DeriveKeyResponse.ProtoReflect.Descriptor instead.
+
+#### func (*Blake3DeriveKeyResponse) [GetDigest](/hashing.pb.go#L314)
+
+`func (x *Blake3DeriveKeyResponse) GetDigest() []byte`
+
+#### func (*Blake3DeriveKeyResponse) [ProtoMessage](/hashing.pb.go#L295)
+
+`func (*Blake3DeriveKeyResponse) ProtoMessage()`
+
+#### func (*Blake3DeriveKeyResponse) [ProtoReflect](/hashing.pb.go#L297)
+
+`func (x *Blake3DeriveKeyResponse) ProtoReflect() protoreflect.Message`
+
+#### func (*Blake3DeriveKeyResponse) [Reset](/hashing.pb.go#L282)
+
+`func (x *Blake3DeriveKeyResponse) Reset()`
+
+#### func (*Blake3DeriveKeyResponse) [String](/hashing.pb.go#L291)
+
+`func (x *Blake3DeriveKeyResponse) String() string`
+
+### type [Blake3HashRequest](/hashing.pb.go#L23)
+
+`type Blake3HashRequest struct { ... }`
+
+#### func (*Blake3HashRequest) [Descriptor](/hashing.pb.go#L59)
+
+`func (*Blake3HashRequest) Descriptor() ([]byte, []int)`
+
+Deprecated: Use Blake3HashRequest.ProtoReflect.Descriptor instead.
+
+#### func (*Blake3HashRequest) [GetData](/hashing.pb.go#L63)
+
+`func (x *Blake3HashRequest) GetData() []byte`
+
+#### func (*Blake3HashRequest) [ProtoMessage](/hashing.pb.go#L44)
+
+`func (*Blake3HashRequest) ProtoMessage()`
+
+#### func (*Blake3HashRequest) [ProtoReflect](/hashing.pb.go#L46)
+
+`func (x *Blake3HashRequest) ProtoReflect() protoreflect.Message`
+
+#### func (*Blake3HashRequest) [Reset](/hashing.pb.go#L31)
+
+`func (x *Blake3HashRequest) Reset()`
+
+#### func (*Blake3HashRequest) [String](/hashing.pb.go#L40)
+
+`func (x *Blake3HashRequest) String() string`
+
+### type [Blake3HashResponse](/hashing.pb.go#L70)
+
+`type Blake3HashResponse struct { ... }`
+
+#### func (*Blake3HashResponse) [Descriptor](/hashing.pb.go#L106)
+
+`func (*Blake3HashResponse) Descriptor() ([]byte, []int)`
+
+Deprecated: Use Blake3HashResponse.ProtoReflect.Descriptor instead.
+
+#### func (*Blake3HashResponse) [GetDigest](/hashing.pb.go#L110)
+
+`func (x *Blake3HashResponse) GetDigest() []byte`
+
+#### func (*Blake3HashResponse) [ProtoMessage](/hashing.pb.go#L91)
+
+`func (*Blake3HashResponse) ProtoMessage()`
+
+#### func (*Blake3HashResponse) [ProtoReflect](/hashing.pb.go#L93)
+
+`func (x *Blake3HashResponse) ProtoReflect() protoreflect.Message`
+
+#### func (*Blake3HashResponse) [Reset](/hashing.pb.go#L78)
+
+`func (x *Blake3HashResponse) Reset()`
+
+#### func (*Blake3HashResponse) [String](/hashing.pb.go#L87)
+
+`func (x *Blake3HashResponse) String() string`
+
+### type [Blake3KeyedHashRequest](/hashing.pb.go#L117)
+
+`type Blake3KeyedHashRequest struct { ... }`
+
+#### func (*Blake3KeyedHashRequest) [Descriptor](/hashing.pb.go#L154)
+
+`func (*Blake3KeyedHashRequest) Descriptor() ([]byte, []int)`
+
+Deprecated: Use Blake3KeyedHashRequest.ProtoReflect.Descriptor instead.
+
+#### func (*Blake3KeyedHashRequest) [GetData](/hashing.pb.go#L158)
+
+`func (x *Blake3KeyedHashRequest) GetData() []byte`
+
+#### func (*Blake3KeyedHashRequest) [GetKey](/hashing.pb.go#L165)
+
+`func (x *Blake3KeyedHashRequest) GetKey() []byte`
+
+#### func (*Blake3KeyedHashRequest) [ProtoMessage](/hashing.pb.go#L139)
+
+`func (*Blake3KeyedHashRequest) ProtoMessage()`
+
+#### func (*Blake3KeyedHashRequest) [ProtoReflect](/hashing.pb.go#L141)
+
+`func (x *Blake3KeyedHashRequest) ProtoReflect() protoreflect.Message`
+
+#### func (*Blake3KeyedHashRequest) [Reset](/hashing.pb.go#L126)
+
+`func (x *Blake3KeyedHashRequest) Reset()`
+
+#### func (*Blake3KeyedHashRequest) [String](/hashing.pb.go#L135)
+
+`func (x *Blake3KeyedHashRequest) String() string`
+
+### type [Blake3KeyedHashResponse](/hashing.pb.go#L172)
+
+`type Blake3KeyedHashResponse struct { ... }`
+
+#### func (*Blake3KeyedHashResponse) [Descriptor](/hashing.pb.go#L208)
+
+`func (*Blake3KeyedHashResponse) Descriptor() ([]byte, []int)`
+
+Deprecated: Use Blake3KeyedHashResponse.ProtoReflect.Descriptor instead.
+
+#### func (*Blake3KeyedHashResponse) [GetDigest](/hashing.pb.go#L212)
+
+`func (x *Blake3KeyedHashResponse) GetDigest() []byte`
+
+#### func (*Blake3KeyedHashResponse) [ProtoMessage](/hashing.pb.go#L193)
+
+`func (*Blake3KeyedHashResponse) ProtoMessage()`
+
+#### func (*Blake3KeyedHashResponse) [ProtoReflect](/hashing.pb.go#L195)
+
+`func (x *Blake3KeyedHashResponse) ProtoReflect() protoreflect.Message`
+
+#### func (*Blake3KeyedHashResponse) [Reset](/hashing.pb.go#L180)
+
+`func (x *Blake3KeyedHashResponse) Reset()`
+
+#### func (*Blake3KeyedHashResponse) [String](/hashing.pb.go#L189)
+
+`func (x *Blake3KeyedHashResponse) String() string`
 
 ### type [BlindOberonTokenRequest](/security.pb.go#L483)
 
@@ -1039,6 +1231,66 @@ Deprecated: Use ResolveResponse.ProtoReflect.Descriptor instead.
 #### func (*ResolveResponse) [String](/keys.pb.go#L257)
 
 `func (x *ResolveResponse) String() string`
+
+### type [SHA256HashRequest](/hashing.pb.go#L321)
+
+`type SHA256HashRequest struct { ... }`
+
+#### func (*SHA256HashRequest) [Descriptor](/hashing.pb.go#L357)
+
+`func (*SHA256HashRequest) Descriptor() ([]byte, []int)`
+
+Deprecated: Use SHA256HashRequest.ProtoReflect.Descriptor instead.
+
+#### func (*SHA256HashRequest) [GetData](/hashing.pb.go#L361)
+
+`func (x *SHA256HashRequest) GetData() []byte`
+
+#### func (*SHA256HashRequest) [ProtoMessage](/hashing.pb.go#L342)
+
+`func (*SHA256HashRequest) ProtoMessage()`
+
+#### func (*SHA256HashRequest) [ProtoReflect](/hashing.pb.go#L344)
+
+`func (x *SHA256HashRequest) ProtoReflect() protoreflect.Message`
+
+#### func (*SHA256HashRequest) [Reset](/hashing.pb.go#L329)
+
+`func (x *SHA256HashRequest) Reset()`
+
+#### func (*SHA256HashRequest) [String](/hashing.pb.go#L338)
+
+`func (x *SHA256HashRequest) String() string`
+
+### type [SHA256HashResponse](/hashing.pb.go#L368)
+
+`type SHA256HashResponse struct { ... }`
+
+#### func (*SHA256HashResponse) [Descriptor](/hashing.pb.go#L404)
+
+`func (*SHA256HashResponse) Descriptor() ([]byte, []int)`
+
+Deprecated: Use SHA256HashResponse.ProtoReflect.Descriptor instead.
+
+#### func (*SHA256HashResponse) [GetDigest](/hashing.pb.go#L408)
+
+`func (x *SHA256HashResponse) GetDigest() []byte`
+
+#### func (*SHA256HashResponse) [ProtoMessage](/hashing.pb.go#L389)
+
+`func (*SHA256HashResponse) ProtoMessage()`
+
+#### func (*SHA256HashResponse) [ProtoReflect](/hashing.pb.go#L391)
+
+`func (x *SHA256HashResponse) ProtoReflect() protoreflect.Message`
+
+#### func (*SHA256HashResponse) [Reset](/hashing.pb.go#L376)
+
+`func (x *SHA256HashResponse) Reset()`
+
+#### func (*SHA256HashResponse) [String](/hashing.pb.go#L385)
+
+`func (x *SHA256HashResponse) String() string`
 
 ### type [SignRequest](/transport.pb.go#L23)
 
