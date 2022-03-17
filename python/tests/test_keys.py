@@ -3,6 +3,7 @@ import unittest
 
 import base58
 
+from tests import okapi_demo
 from trinsicokapi import didkey
 from trinsicokapi.proto.okapi.keys.v1 import (
     GenerateKeyRequest,
@@ -45,6 +46,9 @@ class KeyTests(unittest.TestCase):
         key = 'did:key:z6Mkt6QT8FPajKXDrtMefkjxRQENd9wFzKkDFomdQAVFzpzm#z6LSfDq6DuofPeZUqNEmdZsxpvfHvSoUXGEWFhw7JHk4cynN'
         response = didkey.resolve(ResolveRequest(did=key))
         self.assertIsNotNone(response)
+
+    def test_okapi_demo(self):
+        okapi_demo.run()
 
     def assert_valid_key_generated(self, response, crv="Ed25519") -> bytes:
         self.assertIsNotNone(response)
