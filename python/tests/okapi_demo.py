@@ -1,6 +1,7 @@
 from trinsicokapi import didkey
 from trinsicokapi.proto.okapi.keys.v1 import GenerateKeyRequest, KeyType
 
+
 def run():
     request = GenerateKeyRequest()
     request.key_type = KeyType.KEY_TYPE_ED25519
