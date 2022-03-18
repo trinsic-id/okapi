@@ -1,4 +1,5 @@
 use crate::{didcomm::Error, proto::security::*};
+use fluid::prelude::*;
 
 #[test]
 fn test_create_token() {
@@ -348,4 +349,25 @@ fn test_create_key_with_seed() {
 
     let result = crate::Oberon::key(&req);
     assert!(result.is_ok())
+}
+
+#[theory]
+#[case("hOoRQJZxtIZRAy1eM44YRrQ3i0Twoj_P6DtjlXPWOydIV4XJ92m8NLmpBKnHtY3ti8MoyvtYY45mfrfFP4sasxhdPfUhOwqplEmqGXoRoNO-TTNjxZeca72tfH1iuGw6qLbAUQAToO8rgGAJuYPTiiF0BdbtYjbu2RFCziOdcWsoQe1T7GRsnVbMN7HRbPjUFQibRYTQcLLuB9lF2pEsCgdv5SXGA2aH9WPun7XUP4yPfvh_egfbCAXGL_OvJrX0CYyHoxTDX71LKRkB103UjzjHq_JCkPSlpjUJqh_7EHK6mGM53_wPMyG_g4TczXdYQtqU8WhUjNxbFczHASimKQ", "Cip1cm46dHJpbnNpYzp3YWxsZXRzOllLOTJpZWplVnUxQTc2NnRCRG1LSjkSJDhiNzY3OWQwLTBhYjQtNDI2NC05ZWRhLTllZmU3YzIyNGM5YiIedXJuOnRyaW5zaWM6ZWNvc3lzdGVtczpkZWZhdWx0", "CMrg_Zv5LxIgdGCUnrSwDhyPG9GXv-i3njnv7T61I1UrNSGmf4aKYf0")]
+#[case("qZsvheQFAWkTOluPtGye0OcW6LMKoLZH7V85pcgkZkr78wfhRFI9a8hA19mSptSghHtR_GiHtxPDDKPslaQfdbZSN7t4TC1CxjMzORG8SR2qDdfTIjSkqvsEJDr9u2cAkUttILq8qxzdpGvnKKSn5k2uLdlyr4_FRXK4vGwNxcmoByKwWH4oWfVEWvPnfSWqAqq7h-7eECB2PZcOSDdKTcq_uVBn9it57d8rFHmDBMlFe5-DQemo3GIE-_rthm-EOnolYQx34kxDJwZ90d13_5wjl4vPf8ndic5V12R21jDUmNn0-r0qULfMi6IODjg7mKubPVS-HIeXFPo2TAlBRQ", "Cip1cm46dHJpbnNpYzp3YWxsZXRzOllLOTJpZWplVnUxQTc2NnRCRG1LSjkSJDhiNzY3OWQwLTBhYjQtNDI2NC05ZWRhLTllZmU3YzIyNGM5YiIedXJuOnRyaW5zaWM6ZWNvc3lzdGVtczpkZWZhdWx0", "CKLg_Zv5LxIgc2HyPDZ2kwuNOohKaLyO4CPkwJZpRxh3bt2zt3om9kU")]
+#[case("tn7RIvUrbAyFyGhI994P-mLy_h98xa8HaEVq8DZBqeE2BlHNWViT46DBQE46xY7wtfyYcDrKCsfYNwevObMjQmvXuRlq84d3tPNDQkvo_dwgAVSojUD-l-3BZHcyImxTtIi4gayN98h5pxY0280QBTyvEej1cY9wEOJ6faTb0PBUaGh3RLBAq3fBnF0CbMJ9DRPGYsFa_tNcMzQSMsDHTPbizDxW9bY5YVDshDdXuvKuPCYJLJAky9qi0ctfI-p1bzCNK9fZu5RjZ8F_rmcmV6RY0RHEx0e9EmVSFfaW8jbaaN3y0mUZvgeVE72qrvYKwQaOWzxMuY-nDhJoZEt7FA", "Cip1cm46dHJpbnNpYzp3YWxsZXRzOlJLTVpqWVg1NTJjbldEQXF1cm0zMXgSJGRkZGU2NzM0LTNjMzktNDQwMy1iZTQ1LTQwNTAwMjFlMTI0YSIedXJuOnRyaW5zaWM6ZWNvc3lzdGVtczpkZWZhdWx0", "CKCzhZz5LxIg8jYp8vEg3Bw9l6Kv6RggYuhUdGVJVGmKBTW9JIu_Ob0")]
+fn test_verify_paylods(proof: &str, data: &str, nonce: &str) {
+    use base64::{decode_config, URL_SAFE};
+
+    let pk = bs58::decode("2wQq1DG6dzqwE9DfjN7Y81p4Kx5gbsjQ4cC7VwxdGyc4DXRYyN66Z9zG4QDpJ5zz6UjZSQMWWgAPKubwc1hXTaz7jHcMECSSNQquraYkvo7ey2hEqNSjFA5HB8hL9JDNxNpKutakJcTmQfgfGDHdWJvakvDAMRwTSZ3wAjSk1BUQ1WcHxzFBbmihAjuRn271zVfd8B6ws8WLm1vzRD49674RYRA2pAjD7KzUEb3NuCtKDFTQBYuezCwE8v4fdMnDfcmXzEmyFSWVfrvNYikHtecs6Nqg2ambUDhCjHFMKxL5RmaVwS22AjXPuXp8BsHc3gnv5MRYqRbCzFF8B41kmrCFArMkrqu5Lzbk8gL6UeTw4aNGEkfZ3Kah3Qv179nU9n9PNWBQ8o").into_vec().unwrap();
+
+    let req = VerifyOberonProofRequest {
+        proof: decode_config(proof, URL_SAFE).unwrap(),
+        data: decode_config(data, URL_SAFE).unwrap(),
+        nonce: decode_config(nonce, URL_SAFE).unwrap(),
+        pk: pk,
+    };
+
+    let response = crate::Oberon::verify(&req).unwrap();
+
+    assert!(response.valid)
 }
