@@ -107,7 +107,7 @@ try {
 
         Wasm {
             # https://github.com/rust-lang/rust/issues/41750#issuecomment-312510034
-            $env:EMMAKEN_CFLAGS="-s ERROR_ON_UNDEFINED_SYMBOLS=0 --no-entry"
+            $env:EMCC_CFLAGS="-s ERROR_ON_UNDEFINED_SYMBOLS=0 --no-entry"
             rustup target add wasm32-unknown-emscripten
             cargo build --release --target wasm32-unknown-emscripten
             Copy-Item -Path .\target\wasm32-unknown-emscripten\release\libokapi.a -Destination $TargetOutput
