@@ -33,11 +33,11 @@ def _check_path(path_string: str, lib_name: str) -> str:
     lib_name = f"{lib_prefix}{lib_name}.{lib_extension}"
     for path in path_string.split(os.pathsep):
         test_path = os.path.join(path, lib_name)
-        print(f'Attempting to load binary: ${test_path}')
+        print(f'Attempting to load binary: {test_path}')
         if os.path.exists(test_path):
             return test_path
         test_path = os.path.join(path, _platform_dir(), lib_name)
-        print(f'Attempting to load binary: ${test_path}')
+        print(f'Attempting to load binary: {test_path}')
         if os.path.exists(test_path):
             return test_path
     return ""
