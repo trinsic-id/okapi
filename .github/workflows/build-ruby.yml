@@ -27,12 +27,12 @@ jobs:
       matrix:
         os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows], [macos-latest, macos] ]
         # Due to https://github.com/actions/runner/issues/849, we have to use quotes for '3.0'
-        ruby-version: [ '2.6', '2.7', '3.0' ]
+        ruby-version: [ '2.6', '2.7', '3.0', '3.1' ]
 
     steps:
       - uses: actions/checkout@v2
       - name: Set up Ruby
-        uses: ruby/setup-ruby@v1.76.0
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby-version }}
           bundler-cache: true
