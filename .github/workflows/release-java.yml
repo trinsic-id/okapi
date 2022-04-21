@@ -7,8 +7,6 @@ on:
         description: 'Version to build'
         required: true
         default: ''
-  # release:
-  #   types: [published]
   workflow_run:
     workflows: ["Release Platform Libraries"]
     branches: [main, "v?.*"]
