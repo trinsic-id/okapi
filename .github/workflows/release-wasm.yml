@@ -2,6 +2,11 @@ name: "Wasm (release)"
 
 on:
   workflow_dispatch:
+    inputs:
+      packageVersion:
+        description: 'Version to build'
+        required: true
+        default: ''
   workflow_run:
     workflows: ["Release Platform Libraries"]
     branches: ["main", "v?.*"]
@@ -27,18 +32,14 @@ jobs:
           rustup toolchain uninstall stable
           rustup toolchain install stable
           rustup toolchain install stable --target wasm32-unknown-unknown
-      - name: Generate Package Version
-        run: |
-          $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/okapi/releases/latest' `
-            -Headers @{ "Authorization" = "Token $env:API_GITHUB_TOKEN"} | ConvertFrom-Json
-          $version = $json.tag_name.Trim("v")
-          echo "PACKAGE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
-        shell: pwsh
-        env:
-          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+      - uses: trinsic-id/set-version@v0.1
+        id: setversion
+        with:
+          githubToken: ${{ secrets.API_GITHUB_TOKEN }}
+          overrideVersion: ${{ github.event.inputs.packageVersion }}
       - run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
       - run: |
           npm run start
-          npx lerna version $env:PACKAGE_VERSION --no-git-tag-version --yes
+          npx lerna version ${{ steps.setversion.outputs.packageVersion }} --no-git-tag-version --yes
           npm run build
-          npx lerna publish $env:PACKAGE_VERSION --no-git-tag-version --yes --no-verify-access
+          npx lerna publish ${{ steps.setversion.outputs.packageVersion }} --no-git-tag-version --yes --no-verify-access

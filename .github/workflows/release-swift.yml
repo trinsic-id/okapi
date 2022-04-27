@@ -6,7 +6,7 @@ on:
       packageVersion:
         description: 'Version to build'
         required: true
-        default: 'v1.0.0'
+        default: ''
   workflow_run:
     workflows: ["Release Platform Libraries"]
     branches: ["main", "v?.*"]
@@ -25,11 +25,6 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: 3.9
-      - uses: trinsic-id/set-version@v0.1
-        id: setversion
-        with:
-          githubToken: ${{ secrets.API_GITHUB_TOKEN }}
-          overrideVersion: ${{ github.event.inputs.packageVersion }}
       - name: release-downloader
         uses: robinraju/release-downloader@v1.3
         with:
