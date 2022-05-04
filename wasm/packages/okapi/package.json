@@ -14,6 +14,8 @@
     "build": "npm run build:node && npm run build:browser",
     "build:node": "npx tsc -p tsconfig.node.json",
     "build:browser": "npx tsc -p tsconfig.browser.json",
+    "build:wasm:node": "npx wasm-pack build --target nodejs",
+    "build:wasm:browser": "npx wasm-pack build --target bundler",
     "test": "ts-node ./node_modules/jasmine/bin/jasmine --config=./spec/support/jasmine.json"
   },
   "author": "Tomislav Markovski",
