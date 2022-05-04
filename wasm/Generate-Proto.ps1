@@ -1,5 +1,5 @@
 # Generate protobuf files for JS and TS
-param($OutDir = "$PSScriptRoot/packages/okapi-proto/src/proto")
+param($OutDir = "$PSScriptRoot/packages/okapi/src/proto")
 
 $PROTOC_GEN_TS_PATH = Resolve-Path "$PSScriptRoot/node_modules/.bin/protoc-gen-ts_proto$(If ($IsWindows) {'.cmd'} Else {''})"
 # For mac, `brew install protobuf`

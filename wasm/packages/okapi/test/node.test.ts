@@ -1,44 +1,60 @@
 import {
   Blake3HashRequest,
-  CreateOberonKeyRequest, CreateOberonProofRequest,
+  CreateOberonKeyRequest,
+  CreateOberonProofRequest,
   CreateOberonTokenRequest,
   DIDKey,
-  GenerateKeyRequest, Hashing, KeyType, Oberon, VerifyOberonProofRequest
+  GenerateKeyRequest,
+  Hashing,
+  KeyType,
+  Oberon
 } from "../src";
 
-const test = require("ava");
+describe("Node Okapi Tests", () => {
+  it("generate bls key", async t => {
+    const response = await DIDKey.generate(
+      GenerateKeyRequest.fromPartial({ keyType: KeyType.KEY_TYPE_BLS12381G1G2 })
+    );
 
+    expect(response).not.toBeNull();
+    expect(response).not.toBeUndefined();
+  });
 
-test("generate bls key", async (t) => {
-  const response = await DIDKey.generate(new GenerateKeyRequest().setKeyType(KeyType.KEY_TYPE_BLS12381G1G2));
+  it("create and verify oberon token", async t => {
+    const key = await Oberon.createKey(CreateOberonKeyRequest.fromPartial({}));
+    const id = Buffer.from("me@example.com");
+    const nonce = Buffer.from("123");
 
-  t.not(response, null);
-  t.not(response, undefined);
+    const token = await Oberon.createToken(
+      CreateOberonTokenRequest.fromPartial({ sk: key.sk, data: id })
+    );
+    expect(token).not.toBeNull();
+
+    const proof = await Oberon.createProof(
+      CreateOberonProofRequest.fromPartial({
+        token: token.token,
+        data: id,
+        nonce: nonce
+      })
+    );
+
+    expect(proof.proof.length).toBe(256);
+
+    const result = await Oberon.verifyProof({
+      data: id,
+      nonce: nonce,
+      proof: proof.proof,
+      pk: key.pk
+    });
+
+    expect(result.valid).toBeTrue();
+  });
+
+  it("run blake3 hash", async t => {
+    const response = await Hashing.blake3Hash(
+      Blake3HashRequest.fromPartial({data: Uint8Array.from([1,2,3])})
+    );
+    expect(response).not.toBeNull();
+    expect(response).not.toBeUndefined();
+  });
 });
-
-test("create and verify oberon token", async (t) => {
-  const key = await Oberon.createKey(new CreateOberonKeyRequest());
-  const id = Buffer.from("me@example.com");
-  const nonce = Buffer.from("123");
-
-  const token = await Oberon.createToken(new CreateOberonTokenRequest().setData(id).setSk(key.getSk()));
-  t.not(token, null);
-
-  const proof = await Oberon.createProof(
-      new CreateOberonProofRequest().setToken(token.getToken()).setData(id).setNonce(nonce)
-  );
-
-  t.is(proof.getProof_asU8().length, 256);
-
-  const result = await Oberon.verifyProof(
-      new VerifyOberonProofRequest().setData(id).setNonce(nonce).setProof(proof.getProof()).setPk(key.getPk())
-  );
-
-  t.true(result.getValid());
-});
-
-test("run blake3 hash", async (t) => {
-  const response = await Hashing.blake3Hash(new Blake3HashRequest().setData([1,2,3]));
-  t.not(response, null);
-  t.not(response, undefined);
-})

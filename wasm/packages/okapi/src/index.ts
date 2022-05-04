@@ -1,23 +1,26 @@
-import * as native from "@trinsic/okapi-node";
-import * as proto from "@trinsic/okapi-proto";
-export * from "@trinsic/okapi-proto";
+import * as proto from "./proto";
+
+export * from "./proto";
 
 export class DIDKey {
   static generate(
     request: proto.GenerateKeyRequest
   ): Promise<proto.GenerateKeyResponse> {
     return Promise.resolve(
-      proto.GenerateKeyResponse.deserializeBinary(
-        native.didkey_generate(request.serializeBinary())
+      proto.GenerateKeyResponse.decode(
+        native.didkey_generate(
+          proto.GenerateKeyRequest.encode(request).finish()
+        )
       )
     );
   }
+
   static resolve(
     request: proto.ResolveRequest
   ): Promise<proto.ResolveResponse> {
     return Promise.resolve(
-      proto.ResolveResponse.deserializeBinary(
-        native.didkey_resolve(request.serializeBinary())
+      proto.ResolveResponse.decode(
+        native.didkey_resolve(proto.ResolveRequest.encode(request).finish())
       )
     );
   }
@@ -26,29 +29,32 @@ export class DIDKey {
 export class DIDComm {
   static pack(request: proto.PackRequest): Promise<proto.PackResponse> {
     return Promise.resolve(
-      proto.PackResponse.deserializeBinary(
-        native.didcomm_pack(request.serializeBinary())
+      proto.PackResponse.decode(
+        native.didcomm_pack(proto.PackRequest.encode(request).finish())
       )
     );
   }
+
   static unpack(request: proto.UnpackRequest): Promise<proto.UnpackResponse> {
     return Promise.resolve(
-      proto.UnpackResponse.deserializeBinary(
-        native.didcomm_unpack(request.serializeBinary())
+      proto.UnpackResponse.decode(
+        native.didcomm_unpack(proto.UnpackRequest.encode(request).finish())
       )
     );
   }
+
   static sign(request: proto.SignRequest): Promise<proto.SignResponse> {
     return Promise.resolve(
-      proto.SignResponse.deserializeBinary(
-        native.didcomm_sign(request.serializeBinary())
+      proto.SignResponse.decode(
+        native.didcomm_sign(proto.SignRequest.encode(request).finish())
       )
     );
   }
+
   static verify(request: proto.VerifyRequest): Promise<proto.VerifyResponse> {
     return Promise.resolve(
-      proto.VerifyResponse.deserializeBinary(
-        native.didcomm_verify(request.serializeBinary())
+      proto.VerifyResponse.decode(
+        native.didcomm_verify(proto.VerifyRequest.encode(request).finish())
       )
     );
   }
@@ -59,17 +65,22 @@ export class LdProofs {
     request: proto.CreateProofRequest
   ): Promise<proto.CreateProofResponse> {
     return Promise.resolve(
-      proto.CreateProofResponse.deserializeBinary(
-        native.ldproofs_create_proof(request.serializeBinary())
+      proto.CreateProofResponse.decode(
+        native.ldproofs_create_proof(
+          proto.CreateProofRequest.encode(request).finish()
+        )
       )
     );
   }
+
   static convert(
     request: proto.VerifyProofRequest
   ): Promise<proto.VerifyProofResponse> {
     return Promise.resolve(
-      proto.VerifyProofResponse.deserializeBinary(
-        native.ldproofs_verify_proof(request.serializeBinary())
+      proto.VerifyProofResponse.decode(
+        native.ldproofs_verify_proof(
+          proto.VerifyProofRequest.encode(request).finish()
+        )
       )
     );
   }
@@ -80,53 +91,70 @@ export class Oberon {
     request: proto.CreateOberonKeyRequest
   ): Promise<proto.CreateOberonKeyResponse> {
     return Promise.resolve(
-      proto.CreateOberonKeyResponse.deserializeBinary(
-        native.oberon_create_key(request.serializeBinary())
+      proto.CreateOberonKeyResponse.decode(
+        native.oberon_create_key(
+          proto.CreateOberonKeyRequest.encode(request).finish()
+        )
       )
     );
   }
+
   static createToken(
     request: proto.CreateOberonTokenRequest
   ): Promise<proto.CreateOberonTokenResponse> {
     return Promise.resolve(
-      proto.CreateOberonTokenResponse.deserializeBinary(
-        native.oberon_create_token(request.serializeBinary())
+      proto.CreateOberonTokenResponse.decode(
+        native.oberon_create_token(
+          proto.CreateOberonTokenRequest.encode(request).finish()
+        )
       )
     );
   }
+
   static createProof(
     request: proto.CreateOberonProofRequest
   ): Promise<proto.CreateOberonProofResponse> {
     return Promise.resolve(
-      proto.CreateOberonProofResponse.deserializeBinary(
-        native.oberon_create_proof(request.serializeBinary())
+      proto.CreateOberonProofResponse.decode(
+        native.oberon_create_proof(
+          proto.CreateOberonProofRequest.encode(request).finish()
+        )
       )
     );
   }
+
   static verifyProof(
     request: proto.VerifyOberonProofRequest
   ): Promise<proto.VerifyOberonProofResponse> {
     return Promise.resolve(
-      proto.VerifyOberonProofResponse.deserializeBinary(
-        native.oberon_verify_proof(request.serializeBinary())
+      proto.VerifyOberonProofResponse.decode(
+        native.oberon_verify_proof(
+          proto.VerifyOberonProofRequest.encode(request).finish()
+        )
       )
     );
   }
+
   static blindToken(
     request: proto.BlindOberonTokenRequest
   ): Promise<proto.BlindOberonTokenResponse> {
     return Promise.resolve(
-      proto.BlindOberonTokenResponse.deserializeBinary(
-        native.oberon_blind_token(request.serializeBinary())
+      proto.BlindOberonTokenResponse.decode(
+        native.oberon_blind_token(
+          proto.GenerateKeyRequest.encode(request).finish()
+        )
       )
     );
   }
+
   static unblindToken(
     request: proto.UnBlindOberonTokenRequest
   ): Promise<proto.UnBlindOberonTokenResponse> {
     return Promise.resolve(
-      proto.UnBlindOberonTokenResponse.deserializeBinary(
-        native.oberon_unblind_token(request.serializeBinary())
+      proto.UnBlindOberonTokenResponse.decode(
+        native.oberon_unblind_token(
+          proto.UnBlindOberonTokenRequest.encode(request).finish()
+        )
       )
     );
   }
@@ -134,39 +162,46 @@ export class Oberon {
 
 export class Hashing {
   static blake3Hash(
-      request: proto.Blake3HashRequest
+    request: proto.Blake3HashRequest
   ): Promise<proto.Blake3HashResponse> {
     return Promise.resolve(
-        proto.Blake3HashResponse.deserializeBinary(
-            native.blake3_hash(request.serializeBinary())
-        )
+      proto.Blake3HashResponse.decode(
+        native.blake3_hash(proto.Blake3HashRequest.encode(request).finish())
+      )
     );
   }
+
   static blake3KeyedHash(
-      request: proto.Blake3KeyedHashRequest
+    request: proto.Blake3KeyedHashRequest
   ): Promise<proto.Blake3KeyedHashResponse> {
     return Promise.resolve(
-        proto.Blake3KeyedHashResponse.deserializeBinary(
-            native.blake3_keyed_hash(request.serializeBinary())
+      proto.Blake3KeyedHashResponse.decode(
+        native.blake3_keyed_hash(
+          proto.Blake3KeyedHashRequest.encode(request).finish()
         )
+      )
     );
   }
+
   static blake3DeriveKey(
-      request: proto.Blake3DeriveKeyRequest
+    request: proto.Blake3DeriveKeyRequest
   ): Promise<proto.Blake3DeriveKeyResponse> {
     return Promise.resolve(
-        proto.Blake3DeriveKeyResponse.deserializeBinary(
-            native.blake3_derive_key(request.serializeBinary())
+      proto.Blake3DeriveKeyResponse.decode(
+        native.blake3_derive_key(
+          proto.Blake3DeriveKeyRequest.encode(request).finish()
         )
+      )
     );
   }
+
   static sha256Hash(
-      request: proto.SHA256HashRequest
+    request: proto.SHA256HashRequest
   ): Promise<proto.SHA256HashResponse> {
     return Promise.resolve(
-        proto.SHA256HashResponse.deserializeBinary(
-            native.sha256_hash(request.serializeBinary())
-        )
+      proto.SHA256HashResponse.decode(
+        native.sha256_hash(proto.SHA256HashRequest.encode(request).finish())
+      )
     );
   }
 }

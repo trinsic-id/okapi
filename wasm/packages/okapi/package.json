@@ -19,10 +19,8 @@
   "author": "Tomislav Markovski",
   "license": "ISC",
   "dependencies": {
-    "@trinsic/okapi-node": "^1.0.0-preview.27",
-    "@trinsic/okapi-proto": "^1.0.0-preview.27",
-    "@trinsic/okapi-web": "^1.0.0-preview.27",
-    "google-protobuf": "^3.20.1"
+    "google-protobuf": "^3.20.1",
+    "long": "^5.2.0"
   },
   "devDependencies": {
     "@types/google-protobuf": "^3.7.4",
