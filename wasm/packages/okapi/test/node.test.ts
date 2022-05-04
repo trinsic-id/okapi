@@ -1,16 +1,13 @@
-const test = require("ava");
-const {
-  DIDKey,
-  GenerateKeyRequest,
+import {
   Blake3HashRequest,
-  CreateOberonKeyRequest,
+  CreateOberonKeyRequest, CreateOberonProofRequest,
   CreateOberonTokenRequest,
-  CreateOberonProofRequest,
-  VerifyOberonProofRequest,
-  KeyType,
-  Oberon,
-  Hashing,
-} = require("../lib/index.js");
+  DIDKey,
+  GenerateKeyRequest, Hashing, KeyType, Oberon, VerifyOberonProofRequest
+} from "../src";
+
+const test = require("ava");
+
 
 test("generate bls key", async (t) => {
   const response = await DIDKey.generate(new GenerateKeyRequest().setKeyType(KeyType.KEY_TYPE_BLS12381G1G2));

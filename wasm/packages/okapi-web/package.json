@@ -1,7 +1,7 @@
 {
   "name": "@trinsic/okapi-web",
   "version": "1.0.0-preview.27",
-  "description": "> TODO: description",
+  "description": "WASM Package wrapping the okapi native binaries",
   "author": "Tomislav Markovski <tomislav@trinsic.id>",
   "homepage": "https://github.com/trinsic-id/okapi#readme",
   "license": "ISC",

@@ -1,7 +1,7 @@
 {
   "name": "@trinsic/okapi",
   "version": "1.0.0-preview.27",
-  "description": "",
+  "description": "Okapi native binaries wrapper for node and web.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "browser": {
@@ -14,7 +14,7 @@
     "build": "npm run build:node && npm run build:browser",
     "build:node": "npx tsc -p tsconfig.node.json",
     "build:browser": "npx tsc -p tsconfig.browser.json",
-    "test": "ava --verbose"
+    "test": "ts-node ./node_modules/jasmine/bin/jasmine --config=./spec/support/jasmine.json"
   },
   "author": "Tomislav Markovski",
   "license": "ISC",
@@ -22,12 +22,12 @@
     "@trinsic/okapi-node": "^1.0.0-preview.27",
     "@trinsic/okapi-proto": "^1.0.0-preview.27",
     "@trinsic/okapi-web": "^1.0.0-preview.27",
-    "google-protobuf": "^3.14.0-rc.3"
+    "google-protobuf": "^3.20.1"
   },
   "devDependencies": {
     "@types/google-protobuf": "^3.7.4",
     "@types/node": "^14.14.7",
-    "ava": "^3.15.0",
+    "jasmine": "^4.1.0",
     "copyfiles": "^2.4.0",
     "recursive-copy-cli": "^1.0.20",
     "esm": "^3.2.25",
@@ -38,10 +38,5 @@
     "type": "git",
     "url": "https://github.com/trinsic-id/okapi.git",
     "directory": "wasm/packages/okapi"
-  },
-  "ava": {
-    "require": [
-      "esm"
-    ]
   }
 }

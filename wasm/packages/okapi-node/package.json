@@ -1,7 +1,7 @@
 {
   "name": "@trinsic/okapi-node",
   "version": "1.0.0-preview.27",
-  "description": "> TODO: description",
+  "description": "Okapi native binaries wrapper for node",
   "author": "Tomislav Markovski <tomislav@trinsic.id>",
   "homepage": "https://github.com/trinsic-id/okapi#readme",
   "license": "ISC",
