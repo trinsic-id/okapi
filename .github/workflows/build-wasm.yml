@@ -26,7 +26,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
-        target: [ 'node', 'web' ]
+        target: [ 'node', 'browser' ]
     defaults:
       run:
         working-directory: ./wasm
