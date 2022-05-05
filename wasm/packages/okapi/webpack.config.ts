@@ -13,6 +13,9 @@ const config: Configuration = {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         loader: "ts-loader",
+        options: {
+          configFile: 'tsconfig.browser.json'
+        }
       }
     ],
   },
