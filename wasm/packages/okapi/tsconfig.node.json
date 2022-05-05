@@ -2,16 +2,13 @@
   "compilerOptions": {
     "target": "es2017",
     "module": "commonjs",
+    "moduleResolution": "node",
     "declaration": true,
     "sourceMap": true,
-    "outDir": "lib",
+    "outDir": "./lib",
     "strict": true,
     "esModuleInterop": true,
-    "typeRoots": [
-      "./src",
-      "./node_modules/@types",
-      "./src/proto"
-    ],
+    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
   "include": [ "./src/index.ts" ],
