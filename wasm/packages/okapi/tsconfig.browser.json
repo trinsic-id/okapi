@@ -13,5 +13,5 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": ["./src/index.web.ts"],
-  "exclude": ["node_modules", "lib", "test"]
+  "exclude": ["node_modules", "lib", "test", "./src/index.ts"]
 }

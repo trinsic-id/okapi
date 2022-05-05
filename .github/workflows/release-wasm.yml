@@ -39,7 +39,9 @@ jobs:
           overrideVersion: ${{ github.event.inputs.packageVersion }}
       - run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
       - run: |
-          npm run start
-          npx lerna version ${{ steps.setversion.outputs.packageVersion }} --no-git-tag-version --yes
+          npm install
+          npm version ${{ steps.setversion.outputs.packageVersion }} --no-git-tag-version --yes
           npm run build
-          npx lerna publish ${{ steps.setversion.outputs.packageVersion }} --no-git-tag-version --yes --no-verify-access
+          npm publish ${{ steps.setversion.outputs.packageVersion }} --no-git-tag-version --yes --no-verify-access
+        shell: pwsh
+        working-directory: ./wasm/packages/okapi

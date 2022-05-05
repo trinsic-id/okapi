@@ -1,5 +1,5 @@
 import * as proto from "./proto";
-import * as native from "./native/okapi_wasm";
+import * as native from "./native_node/okapi_wasm";
 
 export * from "./proto";
 

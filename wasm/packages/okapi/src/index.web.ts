@@ -9,7 +9,7 @@ let initialized = false;
 async function initialize() {
     if (!initialized) {
         // TODO - Import the okapi web wasm directly
-        native = await import("./native/okapi_wasm");
+        native = await import("./native_browser/okapi_wasm");
         initialized = true;
     }
 }
