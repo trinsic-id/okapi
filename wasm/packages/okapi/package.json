@@ -15,7 +15,7 @@
     "build:proto": "pwsh ./Generate-Proto.ps1",
     "build:node": "npx tsc -p tsconfig.node.json",
     "build:browser": "npx tsc -p tsconfig.browser.json",
-    "build:wasm:node": "pwsh ./node_modules/.bin/wasm-pack.ps1 build --target nodejs",
+    "build:wasm:node": "npx wasm-pack build --target nodejs",
     "build:wasm:browser": "npx wasm-pack build --target bundler",
     "test": "ts-node ./node_modules/jasmine/bin/jasmine --config=./spec/support/jasmine.json"
   },
