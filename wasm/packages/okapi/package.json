@@ -11,7 +11,7 @@
     "lib/*"
   ],
   "scripts": {
-    "build": "npm run build:node && npm run build:browser",
+    "build": "npm run build:proto && npm run build:node && npm run build:browser",
     "build:proto": "pwsh ./Generate-Proto.ps1",
     "build:node": "npx tsc -p tsconfig.node.json",
     "build:browser": "npx tsc -p tsconfig.browser.json",
