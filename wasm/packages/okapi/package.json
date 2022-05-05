@@ -4,9 +4,6 @@
   "description": "Okapi native binaries wrapper for node and web.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "browser": {
-    "./lib/index.js": "./lib/index.web.js"
-  },
   "files": [
     "lib/*"
   ],

@@ -26,6 +26,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
+        node-version: [ 14, 16 ]
         target: [ 'node', 'browser' ]
     defaults:
       run:
@@ -35,6 +36,10 @@ jobs:
       - uses: jetli/wasm-pack-action@v0.3.0
         with:
           version: 'latest'
+      - uses: actions/setup-node@v3
+        name: Setup Node v${{ matrix.node-version }}
+        with:
+          node-version: ${{ matrix.node-version }}
       - run: |
           rustup toolchain uninstall stable
           rustup toolchain install stable

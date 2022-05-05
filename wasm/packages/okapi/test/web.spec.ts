@@ -8,7 +8,7 @@ import {
   Hashing,
   KeyType,
   Oberon
-} from "../src/index.web";
+} from "../src";
 
 describe("Web Okapi Tests", () => {
   it("generate bls key", async ()=> {
