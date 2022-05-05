@@ -15,10 +15,10 @@
     "build:proto": "pwsh ./Generate-Proto.ps1",
     "build:node": "npx tsc -p tsconfig.node.json",
     "build:browser": "npx tsc -p tsconfig.browser.json",
-    "build:wasm:node": "npx wasm-pack build --target nodejs",
-    "build:wasm:browser": "npx wasm-pack build --target bundler",
-    "build:copy": "copyfiles -u 3 ../../pkg/okapi* src/native/ && rimraf ../../pkg/",
-    "test": "ts-node ./node_modules/jasmine/bin/jasmine --config=./spec/support/jasmine.json"
+    "build:wasm:node": "npx wasm-pack build --target nodejs --out-dir packages/okapi/src/native && npm run build:clean",
+    "build:wasm:browser": "npx wasm-pack build --target bundler --out-dir packages/okapi/src/native && npm run build:clean",
+    "build:clean": "rimraf ./src/native/package.json ./src/native/README.md ./src/native/.gitignore ./src/native/LICENSE",
+    "test": "ts-node --project tsconfig.node.json ./node_modules/jasmine/bin/jasmine --config=./spec/support/jasmine.json"
   },
   "author": "Tomislav Markovski",
   "license": "ISC",
@@ -28,8 +28,11 @@
   },
   "devDependencies": {
     "@types/google-protobuf": "^3.7.4",
-    "@types/node": "^14.14.7",
+    "@types/jasmine": "^4.0.3",
+    "@types/node": "^17.0.31",
     "jasmine": "^4.1.0",
+    "jasmine-core": "^4.1.0",
+    "jasmine-spec-reporter": "^7.0.0",
     "copyfiles": "^2.4.0",
     "recursive-copy-cli": "^1.0.20",
     "esm": "^3.2.25",

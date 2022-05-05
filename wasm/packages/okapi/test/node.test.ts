@@ -11,7 +11,7 @@ import {
 } from "../src";
 
 describe("Node Okapi Tests", () => {
-  it("generate bls key", async t => {
+  it("generate bls key", async ()=> {
     const response = await DIDKey.generate(
       GenerateKeyRequest.fromPartial({ keyType: KeyType.KEY_TYPE_BLS12381G1G2 })
     );
@@ -20,7 +20,7 @@ describe("Node Okapi Tests", () => {
     expect(response).not.toBeUndefined();
   });
 
-  it("create and verify oberon token", async t => {
+  it("create and verify oberon token", async () => {
     const key = await Oberon.createKey(CreateOberonKeyRequest.fromPartial({}));
     const id = Buffer.from("me@example.com");
     const nonce = Buffer.from("123");
@@ -50,7 +50,7 @@ describe("Node Okapi Tests", () => {
     expect(result.valid).toBeTrue();
   });
 
-  it("run blake3 hash", async t => {
+  it("run blake3 hash", async () => {
     const response = await Hashing.blake3Hash(
       Blake3HashRequest.fromPartial({data: Uint8Array.from([1,2,3])})
     );

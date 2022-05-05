@@ -1,4 +1,5 @@
 import * as proto from "./proto";
+import * as native from "./native/okapi_wasm";
 
 export * from "./proto";
 
@@ -141,7 +142,7 @@ export class Oberon {
     return Promise.resolve(
       proto.BlindOberonTokenResponse.decode(
         native.oberon_blind_token(
-          proto.GenerateKeyRequest.encode(request).finish()
+          proto.BlindOberonTokenRequest.encode(request).finish()
         )
       )
     );
