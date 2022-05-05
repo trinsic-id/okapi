@@ -45,6 +45,11 @@ jobs:
           rustup toolchain uninstall stable
           rustup toolchain install stable
           rustup toolchain install stable --target wasm32-unknown-unknown
-      - run: npm run start
-      - run: npm run build
-      - run: npm run test
+      - run: |
+          npm run start
+          npm run build:node
+          npm run test:node
+          npm run build:browser
+          npm run test:browser
+        shell: pwsh
+        working-directory: ./wasm/packages/okapi
