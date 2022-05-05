@@ -8,7 +8,8 @@ let initialized = false;
 
 async function initialize() {
     if (!initialized) {
-        native = await import("@trinsic/okapi-web");
+        // TODO - Import the okapi web wasm directly
+        // native = await import("@trinsic/okapi-web");
         initialized = true;
     }
 }

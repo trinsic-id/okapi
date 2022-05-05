@@ -17,6 +17,7 @@
     "build:browser": "npx tsc -p tsconfig.browser.json",
     "build:wasm:node": "npx wasm-pack build --target nodejs",
     "build:wasm:browser": "npx wasm-pack build --target bundler",
+    "build:copy": "copyfiles -u 3 ../../pkg/okapi* src/native/ && rimraf ../../pkg/",
     "test": "ts-node ./node_modules/jasmine/bin/jasmine --config=./spec/support/jasmine.json"
   },
   "author": "Tomislav Markovski",
