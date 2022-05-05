@@ -21,7 +21,21 @@
     "test:node": "ts-node --project tsconfig.node.json ./node_modules/jasmine/bin/jasmine --config=./spec/support/jasmine.json",
     "test:browser": "karma start"
   },
-  "author": "Tomislav Markovski",
+  "author": "Trinsic",
+  "contributors": [
+    {
+      "name": "Michael Black",
+      "email": "michaelblack117@gmail.com"
+    },
+    {
+      "name": "Tomislav Markovski",
+      "email": "tmarkovski@gmail.com"
+    },
+    {
+      "name": "Scott Phillips",
+      "email": "polygonguru@gmail.com"
+    }
+  ],
   "license": "ISC",
   "dependencies": {
     "google-protobuf": "^3.20.1",
