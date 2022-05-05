@@ -21,7 +21,12 @@ on:
 jobs:
   build_test:
     name: Build, Test
-    runs-on: macos-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
+        target: [ 'node', 'web' ]
     defaults:
       run:
         working-directory: ./wasm
@@ -37,9 +42,7 @@ jobs:
       - run: |
           npm install
           npm run build:proto
-          npm run build:wasm:node
-          npm run test:node
-          npm run build:wasm:browser
-          npm run test:browser
+          npm run build:wasm:${{ matrix.target }}
+          npm run test:${{ matrix.target }}
         shell: pwsh
         working-directory: ./wasm/packages/okapi
