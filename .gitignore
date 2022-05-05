@@ -458,3 +458,5 @@ python/lib64
 
 .venv
 wasm/packages/okapi/src/native/okapi_wasm_bg.wasm
+wasm/packages/okapi/src/native_browser/
+wasm/packages/okapi/src/native_node/
