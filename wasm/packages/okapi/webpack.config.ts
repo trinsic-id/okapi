@@ -1,5 +1,6 @@
 import { resolve } from "path";
 import { Configuration, ProvidePlugin, SourceMapDevToolPlugin } from "webpack";
+import * as path from "path";
 
 const config: Configuration = {
   mode: "development",
@@ -20,6 +21,10 @@ const config: Configuration = {
     ],
   },
   resolve: {
+    alias: {
+      [path.resolve(__dirname, "src/native_node/okapi_wasm.js")]:
+          path.resolve(__dirname, "src/native_browser/okapi_wasm.js")
+    },
     extensions: [".ts", ".js"],
     fallback: {
       buffer: require.resolve("buffer")
