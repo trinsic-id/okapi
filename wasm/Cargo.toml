@@ -3,6 +3,9 @@ name = "okapi-wasm"
 version = "0.1.0"
 authors = ["Tomislav Markovski <tomislav@trinsic.id>"]
 edition = "2018"
+description = "WASM Bindings for Okapi"
+repository = "https://github.com/trinsic-id/okapi/tree/main/wasm"
+license = "Apache 2.0"
 
 [lib]
 name = "okapi_wasm"

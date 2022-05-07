@@ -1,0 +1,14 @@
+{
+  "srcDir": "./src",
+  "specDir": "./test",
+  "specFiles": ["**/*.spec.ts"],
+  "helpers": ["./test/helpers/jasmine-helper.ts"],
+  "env": {
+    "stopSpecOnExpectationFailure": false,
+    "stopOnSpecFailure": false,
+    "random": true
+  },
+  "browser": {
+    "name": "chrome"
+  }
+}
