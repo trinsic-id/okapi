@@ -1,6 +1,6 @@
 {
   "name": "@trinsic/okapi",
-  "version": "1.5.0",
+  "version": "1.0.0",
   "description": "Okapi native binaries wrapper for node and web.",
   "browser": {
     "./lib/native_node/okapi_wasm.js": "./lib/native_browser/okapi_wasm.js",
