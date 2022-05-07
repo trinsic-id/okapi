@@ -1,27 +1,16 @@
 import * as proto from "./proto";
 export * from "./proto";
 // Type information for exported functions
-// import * as native from "./native_browser/okapi_wasm"
+// import * as native from "./native_node/okapi_wasm"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let native: any;
 let initialized = false;
 
-function isNode(): boolean {
-  return (
-    typeof process !== "undefined" &&
-    typeof process.release !== "undefined" &&
-    process.release.name === "node"
-  );
-}
-
 async function initialize() {
   if (!initialized) {
-    if (isNode()) {
-      native = await import("./native_node/okapi_wasm");
-    } else {
-      native = await import("./native_browser/okapi_wasm");
-    }
+    // Using the package.json "browser" tag, we can override this to use the `native_web` version.
+    native = await import("./native_node/okapi_wasm");
     initialized = true;
   }
 }
