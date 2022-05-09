@@ -15,3 +15,5 @@ dependencies:
 dev_dependencies:
   lints: ^1.0.0
   test: ^1.21.1
+  convert: any
+  fast_base58: any

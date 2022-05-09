@@ -33,7 +33,8 @@ class OkapiNative {
       .lookupFunction<OkapiFreeFunctionNative, OkapiFreeFunction>(
           'okapi_bytebuffer_free');
 
-  static T nativeCall<T extends $pb.GeneratedMessage>(Function nativeFunction, $pb.GeneratedMessage request, T response ) {
+  static T nativeCall<T extends $pb.GeneratedMessage>(
+      Function nativeFunction, $pb.GeneratedMessage request, T response) {
     final requestBuffer = createRequestBuffer(request);
     final responseBuffer = calloc<OkapiByteBuffer>(sizeOf<OkapiByteBuffer>());
     final err = calloc<ExternError>(sizeOf<ExternError>());
@@ -41,19 +42,21 @@ class OkapiNative {
     final errCode = err.ref.code;
     if (errCode != 0) {
       final errString = err.ref.message.toDartString();
-      throw Exception("Okapi native error code={$errCode}, message={$errString}");
+      throw Exception(
+          "Okapi native error code={$errCode}, message={$errString}");
     }
 
     response.mergeFromBuffer(
         responseBuffer.ref.data.asTypedList(responseBuffer.ref.len));
-    print("Return value {$returnValue}, response={$response}");
     // Free native and managed memory
     freeNativeMemory(requestBuffer, okapiByteBufferFree, responseBuffer);
     return response;
   }
 
   static DynamicLibrary loadNativeLibrary() {
-    // TODO - Support LD_LIBRARY_PATH
+    // Support LD_LIBRARY_PATH
+    String libraryPath = Platform.environment["LD_LIBRARY_PATH"] ??
+        path.join(Directory.current.path, '..', 'libs');
     String libraryName = "";
     if (Platform.isWindows) {
       libraryName = path.join("windows", "okapi.dll");
@@ -63,7 +66,7 @@ class OkapiNative {
       libraryName = path.join("macos", "libokapi.so");
     }
     // TODO - Support Android, and maybe iOS?
-    var libraryPath = path.join(Directory.current.path, '..', 'libs', libraryName);
+    libraryPath = path.join(libraryPath, libraryName);
     final nativeLib = DynamicLibrary.open(libraryPath);
     return nativeLib;
   }
@@ -89,7 +92,8 @@ class OkapiNative {
     okapiByteBufferFree(responseBuffer.ref);
   }
 
-  static Pointer<OkapiByteBuffer> createRequestBuffer($pb.GeneratedMessage request) {
+  static Pointer<OkapiByteBuffer> createRequestBuffer(
+      $pb.GeneratedMessage request) {
     final Pointer<OkapiByteBuffer> requestBuffer =
         calloc<OkapiByteBuffer>(sizeOf<OkapiByteBuffer>());
     requestBuffer.ref.len = request.writeToBuffer().buffer.lengthInBytes;
