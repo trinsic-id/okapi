@@ -53,6 +53,7 @@ class OkapiNative {
   }
 
   static DynamicLibrary loadNativeLibrary() {
+    // TODO - Support LD_LIBRARY_PATH
     String libraryName = "";
     if (Platform.isWindows) {
       libraryName = path.join("windows", "okapi.dll");
@@ -62,9 +63,7 @@ class OkapiNative {
       libraryName = path.join("macos", "libokapi.so");
     }
     // TODO - Support Android, and maybe iOS?
-    var libraryPath =
-        path.join(Directory.current.path, '..', 'libs', libraryName);
-
+    var libraryPath = path.join(Directory.current.path, '..', 'libs', libraryName);
     final nativeLib = DynamicLibrary.open(libraryPath);
     return nativeLib;
   }
