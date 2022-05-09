@@ -65,7 +65,6 @@ jobs:
         shell: pwsh
         working-directory: python
         env:
-          LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
       - name: Upload Unit Test Results - Python
         if: always()

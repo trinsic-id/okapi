@@ -82,6 +82,9 @@ class OberonTests(unittest.TestCase):
         proof_request.blinding.append(bytes("invalid pin", "utf8"))
 
         proof = oberon.create_proof(proof_request)
+
+        self.assertEqual(256, len(proof.proof))
+
         # Verifies tries to verify proof, fails
         result = oberon.verify_proof(
             VerifyOberonProofRequest(

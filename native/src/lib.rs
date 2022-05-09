@@ -1,5 +1,5 @@
-extern crate ffi_support;
 extern crate core;
+extern crate ffi_support;
 
 use prost::{DecodeError, Message};
 
@@ -42,13 +42,13 @@ pub mod didcomm;
 pub mod didkey;
 #[cfg(feature = "ffi")]
 mod ffi;
+#[cfg(feature = "hashing")]
+pub mod hashing;
 mod ldproofs;
 pub mod oberon;
 pub mod proto;
 #[cfg(test)]
 mod tests;
-#[cfg(feature = "hashing")]
-pub mod hashing;
 
 pub mod google {
     pub mod protobuf {

@@ -30,6 +30,7 @@ func TestOberonDemo(t *testing.T) {
 		Pk:    key.Pk,
 	})
 
+	assert.Equal(t, 256, len(proof.Proof))
 	assert.True(t, result.Valid)
 }
 

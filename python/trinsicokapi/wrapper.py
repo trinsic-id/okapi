@@ -1,6 +1,7 @@
 import ctypes
 import os
 import platform
+import sys
 import threading
 from ctypes import CDLL
 from ctypes.util import find_library
@@ -32,21 +33,39 @@ def _check_path(path_string: str, lib_name: str) -> str:
     lib_name = f"{lib_prefix}{lib_name}.{lib_extension}"
     for path in path_string.split(os.pathsep):
         test_path = os.path.join(path, lib_name)
+        print(f'Attempting to load binary: {test_path}')
+        if os.path.exists(test_path):
+            return test_path
+        test_path = os.path.join(path, _platform_dir(), lib_name)
+        print(f'Attempting to load binary: {test_path}')
         if os.path.exists(test_path):
             return test_path
     return ""
 
 
+def _platform_dir() -> str:
+    # TODO - Linux on ARM?
+    platforms = {'Windows': 'windows', 'Darwin': 'macos', 'Linux': 'linux'}
+    return platforms[platform.system()]
+
+
 def find_native_lib() -> str:
+    global OKAPI_NATIVE
     lib_path = OKAPI_NATIVE['library_path']
     if lib_path:
         return lib_path
     lib_name = "okapi"
     # Allow for manual override and then manually check,
     # since LINUX Python doesn't always work. :(
-    found_lib_path = _check_path(
-        os.getenv('LD_LIBRARY_PATH', ''), lib_name
-    ) or find_library(lib_name)
+    found_lib_path = (
+        _check_path(
+            os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'libs')),
+            lib_name,
+        )
+        or _check_path(os.path.join(sys.prefix, 'libs'), lib_name)
+        or _check_path(os.getenv('LD_LIBRARY_PATH', ''), lib_name)
+        or find_library(lib_name)
+    )
     return found_lib_path
 
 

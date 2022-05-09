@@ -1,4 +1,5 @@
 use crate::{didcomm::Error, proto::security::*};
+use fluid::prelude::*;
 
 #[test]
 fn test_create_token() {
@@ -118,7 +119,7 @@ fn test_create_proof() {
     };
 
     let rep = crate::Oberon::proof(&req).unwrap();
-    assert_eq!(rep.proof.len(), 96)
+    assert!(rep.proof.len() == 256)
 }
 
 #[test]
@@ -153,9 +154,14 @@ fn test_validate_proof() {
 
     let req = VerifyOberonProofRequest {
         proof: vec![
-            148, 26, 138, 47, 5, 101, 166, 140, 15, 231, 239, 156, 37, 104, 58, 76, 41, 99, 93, 66, 100, 248, 238, 124, 208, 81, 235, 184, 36, 67, 184, 28,
-            198, 11, 69, 138, 249, 64, 31, 145, 216, 101, 3, 101, 164, 25, 52, 102, 144, 234, 121, 207, 211, 137, 160, 114, 251, 73, 38, 9, 207, 93, 52, 55,
-            10, 174, 114, 99, 147, 123, 224, 6, 88, 47, 44, 12, 149, 22, 2, 237, 68, 0, 94, 30, 114, 244, 186, 147, 95, 243, 255, 51, 131, 122, 8, 26,
+            130, 238, 45, 55, 228, 150, 97, 190, 87, 39, 221, 146, 194, 203, 34, 50, 251, 19, 241, 33, 252, 218, 229, 140, 153, 243, 162, 45, 212, 127, 213,
+            11, 164, 217, 190, 142, 196, 36, 93, 110, 138, 181, 36, 168, 133, 154, 157, 52, 139, 253, 219, 54, 129, 76, 76, 118, 106, 174, 67, 2, 190, 250,
+            209, 19, 134, 186, 21, 22, 86, 135, 245, 84, 123, 58, 138, 153, 46, 9, 111, 179, 136, 248, 125, 232, 27, 64, 82, 241, 136, 234, 158, 186, 227, 182,
+            165, 140, 178, 97, 55, 38, 28, 28, 170, 219, 212, 12, 15, 134, 35, 220, 138, 108, 38, 125, 16, 56, 39, 199, 105, 191, 94, 253, 99, 164, 90, 179,
+            153, 230, 1, 121, 24, 236, 88, 85, 46, 119, 226, 239, 13, 237, 17, 187, 36, 240, 6, 100, 93, 52, 228, 165, 186, 206, 83, 125, 223, 169, 138, 82,
+            150, 2, 148, 108, 217, 83, 16, 43, 235, 155, 217, 8, 57, 182, 20, 111, 125, 86, 56, 238, 247, 127, 192, 53, 200, 24, 238, 228, 206, 6, 141, 15,
+            170, 229, 154, 175, 15, 182, 199, 80, 186, 59, 0, 74, 41, 46, 105, 65, 92, 94, 203, 9, 121, 189, 192, 83, 143, 175, 72, 187, 12, 3, 130, 62, 130,
+            69, 52, 97, 106, 59, 193, 155, 121, 146, 35, 16, 140, 19, 11, 42, 87, 75, 109, 82, 210, 160, 170, 170, 88, 104, 116, 139, 87, 233, 245, 46, 146, 1,
         ],
         data: b"test data to generate tokens".to_vec(),
         nonce: b"123456789012345678901234567890".to_vec(),
@@ -167,9 +173,14 @@ fn test_validate_proof() {
 
     let req = VerifyOberonProofRequest {
         proof: vec![
-            148, 26, 138, 47, 5, 101, 166, 140, 15, 231, 239, 156, 37, 104, 58, 76, 41, 99, 93, 66, 100, 248, 238, 124, 208, 81, 235, 184, 36, 67, 184, 28,
-            198, 11, 69, 138, 249, 64, 31, 145, 216, 101, 3, 101, 164, 25, 52, 102, 144, 234, 121, 207, 211, 137, 160, 114, 251, 73, 38, 9, 207, 93, 52, 55,
-            10, 174, 114, 99, 147, 123, 224, 6, 88, 47, 44, 12, 149, 22, 2, 237, 68, 0, 94, 30, 114, 244, 186, 147, 95, 243, 255, 51, 131, 122, 8, 26,
+            130, 238, 45, 55, 228, 150, 97, 190, 87, 39, 221, 146, 194, 203, 34, 50, 251, 19, 241, 33, 252, 218, 229, 140, 153, 243, 162, 45, 212, 127, 213,
+            11, 164, 217, 190, 142, 196, 36, 93, 110, 138, 181, 36, 168, 133, 154, 157, 52, 139, 253, 219, 54, 129, 76, 76, 118, 106, 174, 67, 2, 190, 250,
+            209, 19, 134, 186, 21, 22, 86, 135, 245, 84, 123, 58, 138, 153, 46, 9, 111, 179, 136, 248, 125, 232, 27, 64, 82, 241, 136, 234, 158, 186, 227, 182,
+            165, 140, 178, 97, 55, 38, 28, 28, 170, 219, 212, 12, 15, 134, 35, 220, 138, 108, 38, 125, 16, 56, 39, 199, 105, 191, 94, 253, 99, 164, 90, 179,
+            153, 230, 1, 121, 24, 236, 88, 85, 46, 119, 226, 239, 13, 237, 17, 187, 36, 240, 6, 100, 93, 52, 228, 165, 186, 206, 83, 125, 223, 169, 138, 82,
+            150, 2, 148, 108, 217, 83, 16, 43, 235, 155, 217, 8, 57, 182, 20, 111, 125, 86, 56, 238, 247, 127, 192, 53, 200, 24, 238, 228, 206, 6, 141, 15,
+            170, 229, 154, 175, 15, 182, 199, 80, 186, 59, 0, 74, 41, 46, 105, 65, 92, 94, 203, 9, 121, 189, 192, 83, 143, 175, 72, 187, 12, 3, 130, 62, 130,
+            69, 52, 97, 106, 59, 193, 155, 121, 146, 35, 16, 140, 19, 11, 42, 87, 75, 109, 82, 210, 160, 170, 170, 88, 104, 116, 139, 87, 233, 245, 46, 146, 1,
         ],
         data: b"test data to generate tokens".to_vec(),
         nonce: b"asdf".to_vec(),
@@ -178,6 +189,45 @@ fn test_validate_proof() {
 
     let rep = crate::Oberon::verify(&req).unwrap();
     assert_eq!(rep.valid, false);
+}
+
+#[test]
+fn oberon_demo() {
+    let sk = oberon::SecretKey::from_bytes(&[
+        16, 133, 126, 11, 192, 153, 22, 14, 53, 214, 99, 40, 66, 194, 96, 30, 19, 86, 137, 107, 150, 49, 104, 202, 209, 80, 128, 182, 15, 154, 34, 57, 100, 51,
+        175, 108, 12, 56, 6, 76, 46, 173, 247, 255, 184, 165, 228, 127, 145, 65, 171, 195, 44, 164, 3, 16, 132, 43, 108, 82, 63, 136, 116, 3, 93, 1, 226, 152,
+        197, 152, 61, 212, 185, 32, 195, 211, 37, 206, 242, 31, 72, 79, 83, 71, 197, 102, 202, 129, 95, 19, 105, 34, 22, 46, 124, 94,
+    ])
+    .unwrap();
+    let pk = oberon::PublicKey::from(&sk);
+
+    let data = b"test data to generate tokens".to_vec();
+    let nonce = b"123456789012345678901234567890".to_vec();
+
+    let token = crate::Oberon::token(&CreateOberonTokenRequest {
+        sk: sk.to_bytes().to_vec(),
+        data: data.clone(),
+        blinding: vec![],
+    })
+    .unwrap();
+
+    let proof = crate::Oberon::proof(&CreateOberonProofRequest {
+        token: token.token.clone(),
+        data: data.clone(),
+        nonce: nonce.clone(),
+        blinding: vec![],
+    })
+    .unwrap();
+
+    let verify = crate::Oberon::verify(&VerifyOberonProofRequest {
+        proof: proof.proof.clone(),
+        data: data.clone(),
+        nonce: nonce.clone(),
+        pk: pk.to_bytes().to_vec(),
+    })
+    .unwrap();
+
+    assert!(verify.valid);
 }
 
 #[test]
@@ -299,4 +349,25 @@ fn test_create_key_with_seed() {
 
     let result = crate::Oberon::key(&req);
     assert!(result.is_ok())
+}
+
+#[theory]
+#[case("hOoRQJZxtIZRAy1eM44YRrQ3i0Twoj_P6DtjlXPWOydIV4XJ92m8NLmpBKnHtY3ti8MoyvtYY45mfrfFP4sasxhdPfUhOwqplEmqGXoRoNO-TTNjxZeca72tfH1iuGw6qLbAUQAToO8rgGAJuYPTiiF0BdbtYjbu2RFCziOdcWsoQe1T7GRsnVbMN7HRbPjUFQibRYTQcLLuB9lF2pEsCgdv5SXGA2aH9WPun7XUP4yPfvh_egfbCAXGL_OvJrX0CYyHoxTDX71LKRkB103UjzjHq_JCkPSlpjUJqh_7EHK6mGM53_wPMyG_g4TczXdYQtqU8WhUjNxbFczHASimKQ", "Cip1cm46dHJpbnNpYzp3YWxsZXRzOllLOTJpZWplVnUxQTc2NnRCRG1LSjkSJDhiNzY3OWQwLTBhYjQtNDI2NC05ZWRhLTllZmU3YzIyNGM5YiIedXJuOnRyaW5zaWM6ZWNvc3lzdGVtczpkZWZhdWx0", "CMrg_Zv5LxIgdGCUnrSwDhyPG9GXv-i3njnv7T61I1UrNSGmf4aKYf0")]
+#[case("qZsvheQFAWkTOluPtGye0OcW6LMKoLZH7V85pcgkZkr78wfhRFI9a8hA19mSptSghHtR_GiHtxPDDKPslaQfdbZSN7t4TC1CxjMzORG8SR2qDdfTIjSkqvsEJDr9u2cAkUttILq8qxzdpGvnKKSn5k2uLdlyr4_FRXK4vGwNxcmoByKwWH4oWfVEWvPnfSWqAqq7h-7eECB2PZcOSDdKTcq_uVBn9it57d8rFHmDBMlFe5-DQemo3GIE-_rthm-EOnolYQx34kxDJwZ90d13_5wjl4vPf8ndic5V12R21jDUmNn0-r0qULfMi6IODjg7mKubPVS-HIeXFPo2TAlBRQ", "Cip1cm46dHJpbnNpYzp3YWxsZXRzOllLOTJpZWplVnUxQTc2NnRCRG1LSjkSJDhiNzY3OWQwLTBhYjQtNDI2NC05ZWRhLTllZmU3YzIyNGM5YiIedXJuOnRyaW5zaWM6ZWNvc3lzdGVtczpkZWZhdWx0", "CKLg_Zv5LxIgc2HyPDZ2kwuNOohKaLyO4CPkwJZpRxh3bt2zt3om9kU")]
+#[case("tn7RIvUrbAyFyGhI994P-mLy_h98xa8HaEVq8DZBqeE2BlHNWViT46DBQE46xY7wtfyYcDrKCsfYNwevObMjQmvXuRlq84d3tPNDQkvo_dwgAVSojUD-l-3BZHcyImxTtIi4gayN98h5pxY0280QBTyvEej1cY9wEOJ6faTb0PBUaGh3RLBAq3fBnF0CbMJ9DRPGYsFa_tNcMzQSMsDHTPbizDxW9bY5YVDshDdXuvKuPCYJLJAky9qi0ctfI-p1bzCNK9fZu5RjZ8F_rmcmV6RY0RHEx0e9EmVSFfaW8jbaaN3y0mUZvgeVE72qrvYKwQaOWzxMuY-nDhJoZEt7FA", "Cip1cm46dHJpbnNpYzp3YWxsZXRzOlJLTVpqWVg1NTJjbldEQXF1cm0zMXgSJGRkZGU2NzM0LTNjMzktNDQwMy1iZTQ1LTQwNTAwMjFlMTI0YSIedXJuOnRyaW5zaWM6ZWNvc3lzdGVtczpkZWZhdWx0", "CKCzhZz5LxIg8jYp8vEg3Bw9l6Kv6RggYuhUdGVJVGmKBTW9JIu_Ob0")]
+fn test_verify_paylods(proof: &str, data: &str, nonce: &str) {
+    use base64::{decode_config, URL_SAFE};
+
+    let pk = bs58::decode("2wQq1DG6dzqwE9DfjN7Y81p4Kx5gbsjQ4cC7VwxdGyc4DXRYyN66Z9zG4QDpJ5zz6UjZSQMWWgAPKubwc1hXTaz7jHcMECSSNQquraYkvo7ey2hEqNSjFA5HB8hL9JDNxNpKutakJcTmQfgfGDHdWJvakvDAMRwTSZ3wAjSk1BUQ1WcHxzFBbmihAjuRn271zVfd8B6ws8WLm1vzRD49674RYRA2pAjD7KzUEb3NuCtKDFTQBYuezCwE8v4fdMnDfcmXzEmyFSWVfrvNYikHtecs6Nqg2ambUDhCjHFMKxL5RmaVwS22AjXPuXp8BsHc3gnv5MRYqRbCzFF8B41kmrCFArMkrqu5Lzbk8gL6UeTw4aNGEkfZ3Kah3Qv179nU9n9PNWBQ8o").into_vec().unwrap();
+
+    let req = VerifyOberonProofRequest {
+        proof: decode_config(proof, URL_SAFE).unwrap(),
+        data: decode_config(data, URL_SAFE).unwrap(),
+        nonce: decode_config(nonce, URL_SAFE).unwrap(),
+        pk: pk,
+    };
+
+    let response = crate::Oberon::verify(&req).unwrap();
+
+    assert!(response.valid)
 }

@@ -910,8 +910,9 @@ checksum = "546c37ac5d9e56f55e73b677106873d9d9f5190605e41a856503623648488cae"
 
 [[package]]
 name = "oberon"
-version = "1.0.0-pre3"
-source = "git+https://github.com/mikelodder7/oberon?branch=main#c12812be6f575ff2340694733a7e622a41a11cca"
+version = "1.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1b528f5cced41e52f873d3fc1cd86eb8b2d4abd91a25d62b344de9bfd8d23e56"
 dependencies = [
  "bls12_381_plus 0.5.1",
  "digest 0.9.0",

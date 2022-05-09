@@ -23,11 +23,22 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: 3.9
+      - uses: trinsic-id/set-version@v0.1
+        id: setversion
+        with:
+          githubToken: ${{ secrets.API_GITHUB_TOKEN }}
+          overrideVersion: ${{ github.event.inputs.packageVersion }}
+      - name: release-downloader
+        uses: robinraju/release-downloader@v1.3
+        with:
+          repository: trinsic-id/okapi
+          latest: true
+          token: ${{ secrets.API_GITHUB_TOKEN }}
+          fileName: "libs.zip"
       - name: Build, Test, Pack
         run: |
           python -m pip install -r requirements.txt
-          python -m pip install build
-          python ../devops/build_sdks.py --package-version=${{ github.event.inputs.packageVersion }}
+          python ../devops/build_sdks.py --package-version=${{ steps.setversion.outputs.packageVersion }} --language=python
           python -m build --sdist --wheel --outdir dist/ .
         shell: pwsh
         working-directory: python

@@ -6,7 +6,7 @@ on:
       packageVersion:
         description: 'Version to build'
         required: true
-        default: 'v1.0.0'
+        default: ''
   workflow_run:
     workflows: ["Release Platform Libraries"]
     branches: ["main", "v?.*"]
@@ -21,5 +21,5 @@ jobs:
       - uses: actions/checkout@v2
       - name: Create tag
         run: |
-          git tag "go/${{ github.event.inputs.packageVersion }}" master
+          git tag "go/${{ github.event.inputs.packageVersion }}" main
           git push "go/${{ github.event.inputs.packageVersion }}" origin

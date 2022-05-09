@@ -457,3 +457,5 @@ go/vendor/
 python/lib64
 
 .venv
+wasm/packages/okapi/src/native_browser/
+wasm/packages/okapi/src/native_node/

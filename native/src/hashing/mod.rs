@@ -1,6 +1,6 @@
+use sha2::Digest;
 use std::convert::TryFrom;
 use std::str;
-use sha2::Digest;
 
 use crate::{didcomm::Error, proto::okapi::okapi_hashing::*};
 
@@ -31,9 +31,7 @@ impl crate::Hashing {
         let key_material = request.key_material.clone();
         // Hash the provided data
         let hash1 = blake3::derive_key(str::from_utf8(context.as_slice()).unwrap(), key_material.as_slice());
-        Ok(Blake3DeriveKeyResponse {
-            digest: hash1.to_vec(),
-        })
+        Ok(Blake3DeriveKeyResponse { digest: hash1.to_vec() })
     }
 
     pub fn sha256_hash<'a>(request: &Sha256HashRequest) -> Result<Sha256HashResponse, Error<'a>> {
@@ -49,15 +47,17 @@ impl crate::Hashing {
 
 #[cfg(test)]
 mod test {
-    use std::convert::TryFrom;
-    use sha2::Digest;
-    use crate::{Hashing};
     use crate::proto::hashing::{Blake3DeriveKeyRequest, Blake3HashRequest, Blake3KeyedHashRequest, Sha256HashRequest};
+    use crate::Hashing;
+    use sha2::Digest;
+    use std::convert::TryFrom;
 
     #[test]
     fn test_sha256_hash() {
         let data = "Hello, world!";
-        let request = Sha256HashRequest{data: data.as_bytes().to_vec() };
+        let request = Sha256HashRequest {
+            data: data.as_bytes().to_vec(),
+        };
         let response = Hashing::sha256_hash(&request).unwrap();
         let mut hasher = sha2::Sha256::new();
         hasher.update(data.as_bytes());
@@ -68,7 +68,9 @@ mod test {
     #[test]
     fn test_blake3_hash() {
         let data = "Hello, world!";
-        let request = Blake3HashRequest{data: data.as_bytes().to_vec() };
+        let request = Blake3HashRequest {
+            data: data.as_bytes().to_vec(),
+        };
         let response = Hashing::blake3_hash(&request).unwrap();
         let hash_data = blake3::hash(data.as_bytes());
         assert_eq!(response.digest.as_slice(), hash_data.as_bytes())
@@ -78,7 +80,10 @@ mod test {
     fn test_blake3_keyed_hash() {
         let data = "Hello, world!";
         let key_str = format!("{:_<32}", "4113"); // Required to be 32-bytes
-        let request = Blake3KeyedHashRequest{data: data.as_bytes().to_vec(), key: key_str.as_bytes().to_vec() };
+        let request = Blake3KeyedHashRequest {
+            data: data.as_bytes().to_vec(),
+            key: key_str.as_bytes().to_vec(),
+        };
         let response = Hashing::blake3_keyed_hash(&request).unwrap();
         let hash_data = blake3::keyed_hash(<&[u8; 32]>::try_from(key_str.as_bytes()).unwrap(), data.as_bytes());
         assert_eq!(response.digest.as_slice(), hash_data.as_bytes())
@@ -88,7 +93,10 @@ mod test {
     fn test_blake3_keyed_hash_invalid_size() {
         let data = "Hello, world!";
         let key_str = format!("{:_<16}", "4113"); // Required to be 32-bytes
-        let request = Blake3KeyedHashRequest{data: data.as_bytes().to_vec(), key: key_str.as_bytes().to_vec() };
+        let request = Blake3KeyedHashRequest {
+            data: data.as_bytes().to_vec(),
+            key: key_str.as_bytes().to_vec(),
+        };
         assert!(Hashing::blake3_keyed_hash(&request).is_err());
     }
 
@@ -96,7 +104,10 @@ mod test {
     fn test_blake3_derive_key() {
         let data = "Hello, world!";
         let context = "EARTH:USA";
-        let request = Blake3DeriveKeyRequest{context: context.as_bytes().to_vec(), key_material: data.as_bytes().to_vec()};
+        let request = Blake3DeriveKeyRequest {
+            context: context.as_bytes().to_vec(),
+            key_material: data.as_bytes().to_vec(),
+        };
         let response = Hashing::blake3_derive_key(&request).unwrap();
         let hash_data = blake3::derive_key(&*context, data.as_bytes());
         assert_eq!(response.digest.as_slice(), hash_data)

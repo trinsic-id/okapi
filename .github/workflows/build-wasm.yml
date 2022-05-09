@@ -21,28 +21,33 @@ on:
 jobs:
   build_test:
     name: Build, Test
-    runs-on: macos-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ ubuntu-latest, macos-latest ]  # windows-latest has issues with wasm-pack.exe
+        node-version: [ 14, 16 ]
+        target: [ 'node', 'browser' ]
     defaults:
       run:
         working-directory: ./wasm
     steps:
-      - uses: actions/checkout@v2.4.0
-        # ESLint and Prettier must be in `package.json`
-      - name: Install Node.js dependencies
-        run: npm ci
-      - name: Run linters
-        uses: wearerequired/lint-action@v1.11.1
-        with:
-          eslint: true
-          eslint_dir: wasm/
-          eslint_args: "--ext .ts,.tsx"
+      - uses: actions/checkout@v3
       - uses: jetli/wasm-pack-action@v0.3.0
         with:
           version: 'latest'
+      - uses: actions/setup-node@v3
+        name: Setup Node v${{ matrix.node-version }}
+        with:
+          node-version: ${{ matrix.node-version }}
       - run: |
           rustup toolchain uninstall stable
           rustup toolchain install stable
           rustup toolchain install stable --target wasm32-unknown-unknown
-      - run: npm run start
-      - run: npm run build
-      - run: npm run test
+      - run: |
+          npm install
+          npm run build:proto
+          npm run build:wasm:${{ matrix.target }}
+          npm run test:${{ matrix.target }}
+        shell: pwsh
+        working-directory: ./wasm/packages/okapi

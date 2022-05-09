@@ -6,7 +6,7 @@ on:
       packageVersion:
         description: 'Version to build'
         required: true
-        default: 'v1.0.0'
+        default: ''
   workflow_run:
     workflows: ["Release Platform Libraries"]
     branches: ["main", "v?.*"]
