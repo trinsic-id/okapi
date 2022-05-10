@@ -3,7 +3,7 @@
 //  source: google/protobuf/descriptor.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_this,unused_import,unused_shown_name
+// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
 import 'dart:core' as $core;
 
@@ -1613,6 +1613,7 @@ class FieldOptions extends $pb.GeneratedMessage {
     ..aOB(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lazy')
     ..e<FieldOptions_JSType>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'jstype', $pb.PbFieldType.OE, defaultOrMaker: FieldOptions_JSType.JS_NORMAL, valueOf: FieldOptions_JSType.valueOf, enumValues: FieldOptions_JSType.values)
     ..aOB(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'weak')
+    ..aOB(15, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'unverifiedLazy')
     ..pc<UninterpretedOption>(999, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'uninterpretedOption', $pb.PbFieldType.PM, subBuilder: UninterpretedOption.create)
     ..hasExtensions = true
   ;
@@ -1625,6 +1626,7 @@ class FieldOptions extends $pb.GeneratedMessage {
     $core.bool? lazy,
     FieldOptions_JSType? jstype,
     $core.bool? weak,
+    $core.bool? unverifiedLazy,
     $core.Iterable<UninterpretedOption>? uninterpretedOption,
   }) {
     final _result = create();
@@ -1645,6 +1647,9 @@ class FieldOptions extends $pb.GeneratedMessage {
     }
     if (weak != null) {
       _result.weak = weak;
+    }
+    if (unverifiedLazy != null) {
+      _result.unverifiedLazy = unverifiedLazy;
     }
     if (uninterpretedOption != null) {
       _result.uninterpretedOption.addAll(uninterpretedOption);
@@ -1726,8 +1731,17 @@ class FieldOptions extends $pb.GeneratedMessage {
   @$pb.TagNumber(10)
   void clearWeak() => clearField(10);
 
+  @$pb.TagNumber(15)
+  $core.bool get unverifiedLazy => $_getBF(6);
+  @$pb.TagNumber(15)
+  set unverifiedLazy($core.bool v) { $_setBool(6, v); }
+  @$pb.TagNumber(15)
+  $core.bool hasUnverifiedLazy() => $_has(6);
+  @$pb.TagNumber(15)
+  void clearUnverifiedLazy() => clearField(15);
+
   @$pb.TagNumber(999)
-  $core.List<UninterpretedOption> get uninterpretedOption => $_getList(6);
+  $core.List<UninterpretedOption> get uninterpretedOption => $_getList(7);
 }
 
 class OneofOptions extends $pb.GeneratedMessage {
