@@ -66,7 +66,7 @@ class OkapiNative {
     } else if (Platform.isLinux) {
       libraryName = path.join("linux", "libokapi.so");
     } else if (Platform.isMacOS) {
-      libraryName = path.join("macos", "libokapi.so");
+      libraryName = path.join("macos", "libokapi.dylib");
     }
     // TODO - Support Android, and maybe iOS?
     libraryPath = path.join(libraryPath, libraryName);

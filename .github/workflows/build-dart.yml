@@ -58,3 +58,4 @@ jobs:
         working-directory: dart
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+          LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
