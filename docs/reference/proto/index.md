@@ -3,86 +3,86 @@
 
 ## Table of Contents
 
-- [okapi/examples/v1/examples.proto](#okapi/examples/v1/examples.proto)
-    - [BasicMessage](#okapi.examples.v1.BasicMessage)
+- [okapi/examples/v1/examples.proto](#okapi_examples_v1_examples-proto)
+    - [BasicMessage](#okapi-examples-v1-BasicMessage)
   
-    - [SecureExampleService](#okapi.examples.v1.SecureExampleService)
+    - [SecureExampleService](#okapi-examples-v1-SecureExampleService)
   
-- [okapi/hashing/v1/hashing.proto](#okapi/hashing/v1/hashing.proto)
-    - [Blake3DeriveKeyRequest](#okapi.hashing.v1.Blake3DeriveKeyRequest)
-    - [Blake3DeriveKeyResponse](#okapi.hashing.v1.Blake3DeriveKeyResponse)
-    - [Blake3HashRequest](#okapi.hashing.v1.Blake3HashRequest)
-    - [Blake3HashResponse](#okapi.hashing.v1.Blake3HashResponse)
-    - [Blake3KeyedHashRequest](#okapi.hashing.v1.Blake3KeyedHashRequest)
-    - [Blake3KeyedHashResponse](#okapi.hashing.v1.Blake3KeyedHashResponse)
-    - [SHA256HashRequest](#okapi.hashing.v1.SHA256HashRequest)
-    - [SHA256HashResponse](#okapi.hashing.v1.SHA256HashResponse)
+- [okapi/hashing/v1/hashing.proto](#okapi_hashing_v1_hashing-proto)
+    - [Blake3DeriveKeyRequest](#okapi-hashing-v1-Blake3DeriveKeyRequest)
+    - [Blake3DeriveKeyResponse](#okapi-hashing-v1-Blake3DeriveKeyResponse)
+    - [Blake3HashRequest](#okapi-hashing-v1-Blake3HashRequest)
+    - [Blake3HashResponse](#okapi-hashing-v1-Blake3HashResponse)
+    - [Blake3KeyedHashRequest](#okapi-hashing-v1-Blake3KeyedHashRequest)
+    - [Blake3KeyedHashResponse](#okapi-hashing-v1-Blake3KeyedHashResponse)
+    - [SHA256HashRequest](#okapi-hashing-v1-SHA256HashRequest)
+    - [SHA256HashResponse](#okapi-hashing-v1-SHA256HashResponse)
   
-- [okapi/keys/v1/keys.proto](#okapi/keys/v1/keys.proto)
-    - [GenerateKeyRequest](#okapi.keys.v1.GenerateKeyRequest)
-    - [GenerateKeyResponse](#okapi.keys.v1.GenerateKeyResponse)
-    - [JsonWebKey](#okapi.keys.v1.JsonWebKey)
-    - [ResolveRequest](#okapi.keys.v1.ResolveRequest)
-    - [ResolveResponse](#okapi.keys.v1.ResolveResponse)
+- [okapi/keys/v1/keys.proto](#okapi_keys_v1_keys-proto)
+    - [GenerateKeyRequest](#okapi-keys-v1-GenerateKeyRequest)
+    - [GenerateKeyResponse](#okapi-keys-v1-GenerateKeyResponse)
+    - [JsonWebKey](#okapi-keys-v1-JsonWebKey)
+    - [ResolveRequest](#okapi-keys-v1-ResolveRequest)
+    - [ResolveResponse](#okapi-keys-v1-ResolveResponse)
   
-    - [KeyType](#okapi.keys.v1.KeyType)
+    - [KeyType](#okapi-keys-v1-KeyType)
   
-- [okapi/proofs/v1/proofs.proto](#okapi/proofs/v1/proofs.proto)
-    - [CreateProofRequest](#okapi.proofs.v1.CreateProofRequest)
-    - [CreateProofResponse](#okapi.proofs.v1.CreateProofResponse)
-    - [VerifyProofRequest](#okapi.proofs.v1.VerifyProofRequest)
-    - [VerifyProofResponse](#okapi.proofs.v1.VerifyProofResponse)
+- [okapi/proofs/v1/proofs.proto](#okapi_proofs_v1_proofs-proto)
+    - [CreateProofRequest](#okapi-proofs-v1-CreateProofRequest)
+    - [CreateProofResponse](#okapi-proofs-v1-CreateProofResponse)
+    - [VerifyProofRequest](#okapi-proofs-v1-VerifyProofRequest)
+    - [VerifyProofResponse](#okapi-proofs-v1-VerifyProofResponse)
   
-    - [LdSuite](#okapi.proofs.v1.LdSuite)
+    - [LdSuite](#okapi-proofs-v1-LdSuite)
   
-- [okapi/security/v1/security.proto](#okapi/security/v1/security.proto)
-    - [BlindOberonTokenRequest](#okapi.security.v1.BlindOberonTokenRequest)
-    - [BlindOberonTokenResponse](#okapi.security.v1.BlindOberonTokenResponse)
-    - [CreateOberonKeyRequest](#okapi.security.v1.CreateOberonKeyRequest)
-    - [CreateOberonKeyResponse](#okapi.security.v1.CreateOberonKeyResponse)
-    - [CreateOberonProofRequest](#okapi.security.v1.CreateOberonProofRequest)
-    - [CreateOberonProofResponse](#okapi.security.v1.CreateOberonProofResponse)
-    - [CreateOberonTokenRequest](#okapi.security.v1.CreateOberonTokenRequest)
-    - [CreateOberonTokenResponse](#okapi.security.v1.CreateOberonTokenResponse)
-    - [UnBlindOberonTokenRequest](#okapi.security.v1.UnBlindOberonTokenRequest)
-    - [UnBlindOberonTokenResponse](#okapi.security.v1.UnBlindOberonTokenResponse)
-    - [VerifyOberonProofRequest](#okapi.security.v1.VerifyOberonProofRequest)
-    - [VerifyOberonProofResponse](#okapi.security.v1.VerifyOberonProofResponse)
+- [okapi/security/v1/security.proto](#okapi_security_v1_security-proto)
+    - [BlindOberonTokenRequest](#okapi-security-v1-BlindOberonTokenRequest)
+    - [BlindOberonTokenResponse](#okapi-security-v1-BlindOberonTokenResponse)
+    - [CreateOberonKeyRequest](#okapi-security-v1-CreateOberonKeyRequest)
+    - [CreateOberonKeyResponse](#okapi-security-v1-CreateOberonKeyResponse)
+    - [CreateOberonProofRequest](#okapi-security-v1-CreateOberonProofRequest)
+    - [CreateOberonProofResponse](#okapi-security-v1-CreateOberonProofResponse)
+    - [CreateOberonTokenRequest](#okapi-security-v1-CreateOberonTokenRequest)
+    - [CreateOberonTokenResponse](#okapi-security-v1-CreateOberonTokenResponse)
+    - [UnBlindOberonTokenRequest](#okapi-security-v1-UnBlindOberonTokenRequest)
+    - [UnBlindOberonTokenResponse](#okapi-security-v1-UnBlindOberonTokenResponse)
+    - [VerifyOberonProofRequest](#okapi-security-v1-VerifyOberonProofRequest)
+    - [VerifyOberonProofResponse](#okapi-security-v1-VerifyOberonProofResponse)
   
-- [okapi/transport/v1/transport.proto](#okapi/transport/v1/transport.proto)
-    - [CoreMessage](#okapi.transport.v1.CoreMessage)
-    - [PackRequest](#okapi.transport.v1.PackRequest)
-    - [PackResponse](#okapi.transport.v1.PackResponse)
-    - [SignRequest](#okapi.transport.v1.SignRequest)
-    - [SignResponse](#okapi.transport.v1.SignResponse)
-    - [UnpackRequest](#okapi.transport.v1.UnpackRequest)
-    - [UnpackResponse](#okapi.transport.v1.UnpackResponse)
-    - [VerifyRequest](#okapi.transport.v1.VerifyRequest)
-    - [VerifyResponse](#okapi.transport.v1.VerifyResponse)
+- [okapi/transport/v1/transport.proto](#okapi_transport_v1_transport-proto)
+    - [CoreMessage](#okapi-transport-v1-CoreMessage)
+    - [PackRequest](#okapi-transport-v1-PackRequest)
+    - [PackResponse](#okapi-transport-v1-PackResponse)
+    - [SignRequest](#okapi-transport-v1-SignRequest)
+    - [SignResponse](#okapi-transport-v1-SignResponse)
+    - [UnpackRequest](#okapi-transport-v1-UnpackRequest)
+    - [UnpackResponse](#okapi-transport-v1-UnpackResponse)
+    - [VerifyRequest](#okapi-transport-v1-VerifyRequest)
+    - [VerifyResponse](#okapi-transport-v1-VerifyResponse)
   
-- [pbmse/v1/pbmse.proto](#pbmse/v1/pbmse.proto)
-    - [EncryptedMessage](#pbmse.v1.EncryptedMessage)
-    - [EncryptionHeader](#pbmse.v1.EncryptionHeader)
-    - [EncryptionRecipient](#pbmse.v1.EncryptionRecipient)
-    - [Signature](#pbmse.v1.Signature)
-    - [SignatureHeader](#pbmse.v1.SignatureHeader)
-    - [SignedMessage](#pbmse.v1.SignedMessage)
+- [pbmse/v1/pbmse.proto](#pbmse_v1_pbmse-proto)
+    - [EncryptedMessage](#pbmse-v1-EncryptedMessage)
+    - [EncryptionHeader](#pbmse-v1-EncryptionHeader)
+    - [EncryptionRecipient](#pbmse-v1-EncryptionRecipient)
+    - [Signature](#pbmse-v1-Signature)
+    - [SignatureHeader](#pbmse-v1-SignatureHeader)
+    - [SignedMessage](#pbmse-v1-SignedMessage)
   
-    - [EncryptionAlgorithm](#pbmse.v1.EncryptionAlgorithm)
-    - [EncryptionMode](#pbmse.v1.EncryptionMode)
+    - [EncryptionAlgorithm](#pbmse-v1-EncryptionAlgorithm)
+    - [EncryptionMode](#pbmse-v1-EncryptionMode)
   
 - [Scalar Value Types](#scalar-value-types)
 
 
 
-<a name="okapi/examples/v1/examples.proto"></a>
+<a name="okapi_examples_v1_examples-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## okapi/examples/v1/examples.proto
 
 
 
-<a name="okapi.examples.v1.BasicMessage"></a>
+<a name="okapi-examples-v1-BasicMessage"></a>
 
 ### BasicMessage
 
@@ -103,28 +103,28 @@
  
 
 
-<a name="okapi.examples.v1.SecureExampleService"></a>
+<a name="okapi-examples-v1-SecureExampleService"></a>
 
 ### SecureExampleService
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Unary | [.pbmse.v1.EncryptedMessage](#pbmse.v1.EncryptedMessage) | [.pbmse.v1.EncryptedMessage](#pbmse.v1.EncryptedMessage) |  |
-| ServerStreaming | [.pbmse.v1.EncryptedMessage](#pbmse.v1.EncryptedMessage) | [.pbmse.v1.EncryptedMessage](#pbmse.v1.EncryptedMessage) stream |  |
+| Unary | [.pbmse.v1.EncryptedMessage](#pbmse-v1-EncryptedMessage) | [.pbmse.v1.EncryptedMessage](#pbmse-v1-EncryptedMessage) |  |
+| ServerStreaming | [.pbmse.v1.EncryptedMessage](#pbmse-v1-EncryptedMessage) | [.pbmse.v1.EncryptedMessage](#pbmse-v1-EncryptedMessage) stream |  |
 
  
 
 
 
-<a name="okapi/hashing/v1/hashing.proto"></a>
+<a name="okapi_hashing_v1_hashing-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## okapi/hashing/v1/hashing.proto
 
 
 
-<a name="okapi.hashing.v1.Blake3DeriveKeyRequest"></a>
+<a name="okapi-hashing-v1-Blake3DeriveKeyRequest"></a>
 
 ### Blake3DeriveKeyRequest
 
@@ -140,7 +140,7 @@
 
 
 
-<a name="okapi.hashing.v1.Blake3DeriveKeyResponse"></a>
+<a name="okapi-hashing-v1-Blake3DeriveKeyResponse"></a>
 
 ### Blake3DeriveKeyResponse
 
@@ -155,7 +155,7 @@
 
 
 
-<a name="okapi.hashing.v1.Blake3HashRequest"></a>
+<a name="okapi-hashing-v1-Blake3HashRequest"></a>
 
 ### Blake3HashRequest
 
@@ -170,7 +170,7 @@
 
 
 
-<a name="okapi.hashing.v1.Blake3HashResponse"></a>
+<a name="okapi-hashing-v1-Blake3HashResponse"></a>
 
 ### Blake3HashResponse
 
@@ -185,7 +185,7 @@
 
 
 
-<a name="okapi.hashing.v1.Blake3KeyedHashRequest"></a>
+<a name="okapi-hashing-v1-Blake3KeyedHashRequest"></a>
 
 ### Blake3KeyedHashRequest
 
@@ -201,7 +201,7 @@
 
 
 
-<a name="okapi.hashing.v1.Blake3KeyedHashResponse"></a>
+<a name="okapi-hashing-v1-Blake3KeyedHashResponse"></a>
 
 ### Blake3KeyedHashResponse
 
@@ -216,7 +216,7 @@
 
 
 
-<a name="okapi.hashing.v1.SHA256HashRequest"></a>
+<a name="okapi-hashing-v1-SHA256HashRequest"></a>
 
 ### SHA256HashRequest
 
@@ -231,7 +231,7 @@
 
 
 
-<a name="okapi.hashing.v1.SHA256HashResponse"></a>
+<a name="okapi-hashing-v1-SHA256HashResponse"></a>
 
 ### SHA256HashResponse
 
@@ -255,14 +255,14 @@
 
 
 
-<a name="okapi/keys/v1/keys.proto"></a>
+<a name="okapi_keys_v1_keys-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## okapi/keys/v1/keys.proto
 
 
 
-<a name="okapi.keys.v1.GenerateKeyRequest"></a>
+<a name="okapi-keys-v1-GenerateKeyRequest"></a>
 
 ### GenerateKeyRequest
 
@@ -271,14 +271,14 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | seed | [bytes](#bytes) |  |  |
-| key_type | [KeyType](#okapi.keys.v1.KeyType) |  |  |
+| key_type | [KeyType](#okapi-keys-v1-KeyType) |  |  |
 
 
 
 
 
 
-<a name="okapi.keys.v1.GenerateKeyResponse"></a>
+<a name="okapi-keys-v1-GenerateKeyResponse"></a>
 
 ### GenerateKeyResponse
 
@@ -286,15 +286,15 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| key | [JsonWebKey](#okapi.keys.v1.JsonWebKey) | repeated |  |
-| did_document | [google.protobuf.Struct](#google.protobuf.Struct) |  |  |
+| key | [JsonWebKey](#okapi-keys-v1-JsonWebKey) | repeated |  |
+| did_document | [google.protobuf.Struct](#google-protobuf-Struct) |  |  |
 
 
 
 
 
 
-<a name="okapi.keys.v1.JsonWebKey"></a>
+<a name="okapi-keys-v1-JsonWebKey"></a>
 
 ### JsonWebKey
 
@@ -314,7 +314,7 @@
 
 
 
-<a name="okapi.keys.v1.ResolveRequest"></a>
+<a name="okapi-keys-v1-ResolveRequest"></a>
 
 ### ResolveRequest
 
@@ -329,7 +329,7 @@
 
 
 
-<a name="okapi.keys.v1.ResolveResponse"></a>
+<a name="okapi-keys-v1-ResolveResponse"></a>
 
 ### ResolveResponse
 
@@ -337,8 +337,8 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| did_document | [google.protobuf.Struct](#google.protobuf.Struct) |  |  |
-| keys | [JsonWebKey](#okapi.keys.v1.JsonWebKey) | repeated |  |
+| did_document | [google.protobuf.Struct](#google-protobuf-Struct) |  |  |
+| keys | [JsonWebKey](#okapi-keys-v1-JsonWebKey) | repeated |  |
 
 
 
@@ -347,7 +347,7 @@
  
 
 
-<a name="okapi.keys.v1.KeyType"></a>
+<a name="okapi-keys-v1-KeyType"></a>
 
 ### KeyType
 
@@ -370,14 +370,14 @@
 
 
 
-<a name="okapi/proofs/v1/proofs.proto"></a>
+<a name="okapi_proofs_v1_proofs-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## okapi/proofs/v1/proofs.proto
 
 
 
-<a name="okapi.proofs.v1.CreateProofRequest"></a>
+<a name="okapi-proofs-v1-CreateProofRequest"></a>
 
 ### CreateProofRequest
 
@@ -385,16 +385,16 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| document | [google.protobuf.Struct](#google.protobuf.Struct) |  | The input JSON document that will be used to create the LD Proof. This document must also contain a &#34;proof&#34; object, with the desired values filled in. |
-| key | [okapi.keys.v1.JsonWebKey](#okapi.keys.v1.JsonWebKey) |  | The signer of the proof. This field must include the &#39;kid&#39; in full URI format. Example: did:example:alice#key-1 |
-| suite | [LdSuite](#okapi.proofs.v1.LdSuite) |  | The LD Suite to use to produce this proof |
+| document | [google.protobuf.Struct](#google-protobuf-Struct) |  | The input JSON document that will be used to create the LD Proof. This document must also contain a &#34;proof&#34; object, with the desired values filled in. |
+| key | [okapi.keys.v1.JsonWebKey](#okapi-keys-v1-JsonWebKey) |  | The signer of the proof. This field must include the &#39;kid&#39; in full URI format. Example: did:example:alice#key-1 |
+| suite | [LdSuite](#okapi-proofs-v1-LdSuite) |  | The LD Suite to use to produce this proof |
 
 
 
 
 
 
-<a name="okapi.proofs.v1.CreateProofResponse"></a>
+<a name="okapi-proofs-v1-CreateProofResponse"></a>
 
 ### CreateProofResponse
 
@@ -402,14 +402,14 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| signed_document | [google.protobuf.Struct](#google.protobuf.Struct) |  |  |
+| signed_document | [google.protobuf.Struct](#google-protobuf-Struct) |  |  |
 
 
 
 
 
 
-<a name="okapi.proofs.v1.VerifyProofRequest"></a>
+<a name="okapi-proofs-v1-VerifyProofRequest"></a>
 
 ### VerifyProofRequest
 
@@ -419,7 +419,7 @@
 
 
 
-<a name="okapi.proofs.v1.VerifyProofResponse"></a>
+<a name="okapi-proofs-v1-VerifyProofResponse"></a>
 
 ### VerifyProofResponse
 
@@ -431,7 +431,7 @@
  
 
 
-<a name="okapi.proofs.v1.LdSuite"></a>
+<a name="okapi-proofs-v1-LdSuite"></a>
 
 ### LdSuite
 
@@ -450,7 +450,7 @@
 
 
 
-<a name="okapi/security/v1/security.proto"></a>
+<a name="okapi_security_v1_security-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## okapi/security/v1/security.proto
@@ -458,7 +458,7 @@ messages related to the oberon protocol
 See: https://github.com/mikelodder7/oberon
 
 
-<a name="okapi.security.v1.BlindOberonTokenRequest"></a>
+<a name="okapi-security-v1-BlindOberonTokenRequest"></a>
 
 ### BlindOberonTokenRequest
 Blind an oberon token
@@ -474,7 +474,7 @@ Blind an oberon token
 
 
 
-<a name="okapi.security.v1.BlindOberonTokenResponse"></a>
+<a name="okapi-security-v1-BlindOberonTokenResponse"></a>
 
 ### BlindOberonTokenResponse
 Contains the blinded token reply
@@ -489,7 +489,7 @@ Contains the blinded token reply
 
 
 
-<a name="okapi.security.v1.CreateOberonKeyRequest"></a>
+<a name="okapi-security-v1-CreateOberonKeyRequest"></a>
 
 ### CreateOberonKeyRequest
 Create an Oberon Compatible Secret Key
@@ -504,7 +504,7 @@ Create an Oberon Compatible Secret Key
 
 
 
-<a name="okapi.security.v1.CreateOberonKeyResponse"></a>
+<a name="okapi-security-v1-CreateOberonKeyResponse"></a>
 
 ### CreateOberonKeyResponse
 Contains the oberon secret key bytes
@@ -520,7 +520,7 @@ Contains the oberon secret key bytes
 
 
 
-<a name="okapi.security.v1.CreateOberonProofRequest"></a>
+<a name="okapi-security-v1-CreateOberonProofRequest"></a>
 
 ### CreateOberonProofRequest
 Create a proof that holder knows the token
@@ -538,7 +538,7 @@ Create a proof that holder knows the token
 
 
 
-<a name="okapi.security.v1.CreateOberonProofResponse"></a>
+<a name="okapi-security-v1-CreateOberonProofResponse"></a>
 
 ### CreateOberonProofResponse
 Contains the token proof
@@ -553,7 +553,7 @@ Contains the token proof
 
 
 
-<a name="okapi.security.v1.CreateOberonTokenRequest"></a>
+<a name="okapi-security-v1-CreateOberonTokenRequest"></a>
 
 ### CreateOberonTokenRequest
 Create a new oberon token
@@ -570,7 +570,7 @@ Create a new oberon token
 
 
 
-<a name="okapi.security.v1.CreateOberonTokenResponse"></a>
+<a name="okapi-security-v1-CreateOberonTokenResponse"></a>
 
 ### CreateOberonTokenResponse
 Contains the token with optional blinding
@@ -585,7 +585,7 @@ Contains the token with optional blinding
 
 
 
-<a name="okapi.security.v1.UnBlindOberonTokenRequest"></a>
+<a name="okapi-security-v1-UnBlindOberonTokenRequest"></a>
 
 ### UnBlindOberonTokenRequest
 UnBlind an oberon token
@@ -601,7 +601,7 @@ UnBlind an oberon token
 
 
 
-<a name="okapi.security.v1.UnBlindOberonTokenResponse"></a>
+<a name="okapi-security-v1-UnBlindOberonTokenResponse"></a>
 
 ### UnBlindOberonTokenResponse
 Contains the unblinded token reply
@@ -616,7 +616,7 @@ Contains the unblinded token reply
 
 
 
-<a name="okapi.security.v1.VerifyOberonProofRequest"></a>
+<a name="okapi-security-v1-VerifyOberonProofRequest"></a>
 
 ### VerifyOberonProofRequest
 Verify the presented proof is valid
@@ -634,7 +634,7 @@ Verify the presented proof is valid
 
 
 
-<a name="okapi.security.v1.VerifyOberonProofResponse"></a>
+<a name="okapi-security-v1-VerifyOberonProofResponse"></a>
 
 ### VerifyOberonProofResponse
 Contains the status of the proof validation
@@ -658,14 +658,14 @@ Contains the status of the proof validation
 
 
 
-<a name="okapi/transport/v1/transport.proto"></a>
+<a name="okapi_transport_v1_transport-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## okapi/transport/v1/transport.proto
 
 
 
-<a name="okapi.transport.v1.CoreMessage"></a>
+<a name="okapi-transport-v1-CoreMessage"></a>
 
 ### CoreMessage
 
@@ -686,7 +686,7 @@ Contains the status of the proof validation
 
 
 
-<a name="okapi.transport.v1.PackRequest"></a>
+<a name="okapi-transport-v1-PackRequest"></a>
 
 ### PackRequest
 
@@ -694,19 +694,19 @@ Contains the status of the proof validation
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| sender_key | [okapi.keys.v1.JsonWebKey](#okapi.keys.v1.JsonWebKey) |  |  |
-| receiver_key | [okapi.keys.v1.JsonWebKey](#okapi.keys.v1.JsonWebKey) |  |  |
+| sender_key | [okapi.keys.v1.JsonWebKey](#okapi-keys-v1-JsonWebKey) |  |  |
+| receiver_key | [okapi.keys.v1.JsonWebKey](#okapi-keys-v1-JsonWebKey) |  |  |
 | associated_data | [bytes](#bytes) |  |  |
 | plaintext | [bytes](#bytes) |  |  |
-| mode | [pbmse.v1.EncryptionMode](#pbmse.v1.EncryptionMode) |  |  |
-| algorithm | [pbmse.v1.EncryptionAlgorithm](#pbmse.v1.EncryptionAlgorithm) |  |  |
+| mode | [pbmse.v1.EncryptionMode](#pbmse-v1-EncryptionMode) |  |  |
+| algorithm | [pbmse.v1.EncryptionAlgorithm](#pbmse-v1-EncryptionAlgorithm) |  |  |
 
 
 
 
 
 
-<a name="okapi.transport.v1.PackResponse"></a>
+<a name="okapi-transport-v1-PackResponse"></a>
 
 ### PackResponse
 
@@ -714,14 +714,14 @@ Contains the status of the proof validation
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| message | [pbmse.v1.EncryptedMessage](#pbmse.v1.EncryptedMessage) |  |  |
+| message | [pbmse.v1.EncryptedMessage](#pbmse-v1-EncryptedMessage) |  |  |
 
 
 
 
 
 
-<a name="okapi.transport.v1.SignRequest"></a>
+<a name="okapi-transport-v1-SignRequest"></a>
 
 ### SignRequest
 
@@ -730,15 +730,15 @@ Contains the status of the proof validation
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | payload | [bytes](#bytes) |  |  |
-| key | [okapi.keys.v1.JsonWebKey](#okapi.keys.v1.JsonWebKey) |  |  |
-| append_to | [pbmse.v1.SignedMessage](#pbmse.v1.SignedMessage) |  |  |
+| key | [okapi.keys.v1.JsonWebKey](#okapi-keys-v1-JsonWebKey) |  |  |
+| append_to | [pbmse.v1.SignedMessage](#pbmse-v1-SignedMessage) |  |  |
 
 
 
 
 
 
-<a name="okapi.transport.v1.SignResponse"></a>
+<a name="okapi-transport-v1-SignResponse"></a>
 
 ### SignResponse
 
@@ -746,14 +746,14 @@ Contains the status of the proof validation
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| message | [pbmse.v1.SignedMessage](#pbmse.v1.SignedMessage) |  |  |
+| message | [pbmse.v1.SignedMessage](#pbmse-v1-SignedMessage) |  |  |
 
 
 
 
 
 
-<a name="okapi.transport.v1.UnpackRequest"></a>
+<a name="okapi-transport-v1-UnpackRequest"></a>
 
 ### UnpackRequest
 
@@ -761,16 +761,16 @@ Contains the status of the proof validation
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| sender_key | [okapi.keys.v1.JsonWebKey](#okapi.keys.v1.JsonWebKey) |  |  |
-| receiver_key | [okapi.keys.v1.JsonWebKey](#okapi.keys.v1.JsonWebKey) |  |  |
-| message | [pbmse.v1.EncryptedMessage](#pbmse.v1.EncryptedMessage) |  |  |
+| sender_key | [okapi.keys.v1.JsonWebKey](#okapi-keys-v1-JsonWebKey) |  |  |
+| receiver_key | [okapi.keys.v1.JsonWebKey](#okapi-keys-v1-JsonWebKey) |  |  |
+| message | [pbmse.v1.EncryptedMessage](#pbmse-v1-EncryptedMessage) |  |  |
 
 
 
 
 
 
-<a name="okapi.transport.v1.UnpackResponse"></a>
+<a name="okapi-transport-v1-UnpackResponse"></a>
 
 ### UnpackResponse
 
@@ -785,7 +785,7 @@ Contains the status of the proof validation
 
 
 
-<a name="okapi.transport.v1.VerifyRequest"></a>
+<a name="okapi-transport-v1-VerifyRequest"></a>
 
 ### VerifyRequest
 
@@ -793,15 +793,15 @@ Contains the status of the proof validation
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| message | [pbmse.v1.SignedMessage](#pbmse.v1.SignedMessage) |  |  |
-| key | [okapi.keys.v1.JsonWebKey](#okapi.keys.v1.JsonWebKey) |  |  |
+| message | [pbmse.v1.SignedMessage](#pbmse-v1-SignedMessage) |  |  |
+| key | [okapi.keys.v1.JsonWebKey](#okapi-keys-v1-JsonWebKey) |  |  |
 
 
 
 
 
 
-<a name="okapi.transport.v1.VerifyResponse"></a>
+<a name="okapi-transport-v1-VerifyResponse"></a>
 
 ### VerifyResponse
 
@@ -825,14 +825,14 @@ Contains the status of the proof validation
 
 
 
-<a name="pbmse/v1/pbmse.proto"></a>
+<a name="pbmse_v1_pbmse-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## pbmse/v1/pbmse.proto
 
 
 
-<a name="pbmse.v1.EncryptedMessage"></a>
+<a name="pbmse-v1-EncryptedMessage"></a>
 
 ### EncryptedMessage
 
@@ -844,14 +844,14 @@ Contains the status of the proof validation
 | aad | [bytes](#bytes) |  |  |
 | ciphertext | [bytes](#bytes) |  |  |
 | tag | [bytes](#bytes) |  |  |
-| recipients | [EncryptionRecipient](#pbmse.v1.EncryptionRecipient) | repeated |  |
+| recipients | [EncryptionRecipient](#pbmse-v1-EncryptionRecipient) | repeated |  |
 
 
 
 
 
 
-<a name="pbmse.v1.EncryptionHeader"></a>
+<a name="pbmse-v1-EncryptionHeader"></a>
 
 ### EncryptionHeader
 
@@ -859,8 +859,8 @@ Contains the status of the proof validation
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| mode | [EncryptionMode](#pbmse.v1.EncryptionMode) |  |  |
-| algorithm | [EncryptionAlgorithm](#pbmse.v1.EncryptionAlgorithm) |  |  |
+| mode | [EncryptionMode](#pbmse-v1-EncryptionMode) |  |  |
+| algorithm | [EncryptionAlgorithm](#pbmse-v1-EncryptionAlgorithm) |  |  |
 | key_id | [string](#string) |  |  |
 | sender_key_id | [string](#string) |  |  |
 
@@ -869,7 +869,7 @@ Contains the status of the proof validation
 
 
 
-<a name="pbmse.v1.EncryptionRecipient"></a>
+<a name="pbmse-v1-EncryptionRecipient"></a>
 
 ### EncryptionRecipient
 
@@ -877,7 +877,7 @@ Contains the status of the proof validation
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| header | [EncryptionHeader](#pbmse.v1.EncryptionHeader) |  |  |
+| header | [EncryptionHeader](#pbmse-v1-EncryptionHeader) |  |  |
 | content_encryption_key | [bytes](#bytes) |  |  |
 
 
@@ -885,7 +885,7 @@ Contains the status of the proof validation
 
 
 
-<a name="pbmse.v1.Signature"></a>
+<a name="pbmse-v1-Signature"></a>
 
 ### Signature
 
@@ -901,7 +901,7 @@ Contains the status of the proof validation
 
 
 
-<a name="pbmse.v1.SignatureHeader"></a>
+<a name="pbmse-v1-SignatureHeader"></a>
 
 ### SignatureHeader
 
@@ -917,7 +917,7 @@ Contains the status of the proof validation
 
 
 
-<a name="pbmse.v1.SignedMessage"></a>
+<a name="pbmse-v1-SignedMessage"></a>
 
 ### SignedMessage
 JWS
@@ -927,7 +927,7 @@ Protocol buffer message signing and encryption
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | payload | [bytes](#bytes) |  |  |
-| signatures | [Signature](#pbmse.v1.Signature) | repeated |  |
+| signatures | [Signature](#pbmse-v1-Signature) | repeated |  |
 
 
 
@@ -936,7 +936,7 @@ Protocol buffer message signing and encryption
  
 
 
-<a name="pbmse.v1.EncryptionAlgorithm"></a>
+<a name="pbmse-v1-EncryptionAlgorithm"></a>
 
 ### EncryptionAlgorithm
 
@@ -949,7 +949,7 @@ Protocol buffer message signing and encryption
 
 
 
-<a name="pbmse.v1.EncryptionMode"></a>
+<a name="pbmse-v1-EncryptionMode"></a>
 
 ### EncryptionMode
 

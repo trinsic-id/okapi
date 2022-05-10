@@ -8,12 +8,12 @@ environment:
 
 
 dependencies:
-  ffi: ^1.0.0
-  protobuf: ^2.0.1
-  path: ^1.8.1
+  ffi: any
+  protobuf: ^2.0.0
+  path: any
 
 dev_dependencies:
-  lints: ^1.0.0
-  test: ^1.21.1
+  lints: any
+  test: any
   convert: any
   fast_base58: any

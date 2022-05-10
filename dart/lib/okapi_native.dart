@@ -32,18 +32,20 @@ class OkapiNative {
   static final okapiByteBufferFree = OkapiNative.library
       .lookupFunction<OkapiFreeFunctionNative, OkapiFreeFunction>(
           'okapi_bytebuffer_free');
+  static final okapiStringFree = OkapiNative.library
+      .lookupFunction<OkapiFreeFunctionNative, OkapiFreeFunction>(
+          'okapi_string_free');
 
   static T nativeCall<T extends $pb.GeneratedMessage>(
       Function nativeFunction, $pb.GeneratedMessage request, T response) {
     final requestBuffer = createRequestBuffer(request);
     final responseBuffer = calloc<OkapiByteBuffer>(sizeOf<OkapiByteBuffer>());
     final err = calloc<ExternError>(sizeOf<ExternError>());
-    final returnValue = nativeFunction(requestBuffer.ref, responseBuffer, err);
+    nativeFunction(requestBuffer.ref, responseBuffer, err);
     final errCode = err.ref.code;
     if (errCode != 0) {
       final errString = err.ref.message.toDartString();
-      throw Exception(
-          "Okapi native error code={$errCode}, message={$errString}");
+      throw Exception("Okapi native error code=$errCode, message=$errString");
     }
 
     response.mergeFromBuffer(
@@ -71,9 +73,9 @@ class OkapiNative {
     return nativeLib;
   }
 
-  static Pointer<Uint8> byteDataToPointer(ByteData byteData) {
-    final uint8List = byteData.buffer.asUint8List();
-    final length = uint8List.lengthInBytes;
+  static Pointer<Uint8> byteDataToPointer(ByteBuffer byteBuffer) {
+    final uint8List = byteBuffer.asUint8List();
+    final length = byteBuffer.lengthInBytes;
     final result = calloc<Uint8>(length);
 
     for (var i = 0; i < length; ++i) {
@@ -96,9 +98,9 @@ class OkapiNative {
       $pb.GeneratedMessage request) {
     final Pointer<OkapiByteBuffer> requestBuffer =
         calloc<OkapiByteBuffer>(sizeOf<OkapiByteBuffer>());
-    requestBuffer.ref.len = request.writeToBuffer().buffer.lengthInBytes;
-    requestBuffer.ref.data =
-        byteDataToPointer(request.writeToBuffer().buffer.asByteData());
+    final buffer = request.writeToBuffer().buffer;
+    requestBuffer.ref.len = buffer.lengthInBytes;
+    requestBuffer.ref.data = byteDataToPointer(buffer);
     return requestBuffer;
   }
 }

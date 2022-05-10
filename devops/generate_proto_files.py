@@ -38,14 +38,16 @@ def run_protoc(
     proto_files: Union[List[str], str] = None,
     plugin: str = None,
     protoc_executable: str = "protoc",
+    proto_path: str = None
 ) -> None:
-    proto_path_string = f'--proto_path="{get_language_dir("proto")}"'
+    proto_path_string = f'--proto_path="{get_language_dir(proto_path or "proto")}"'
     plugin_string = f"--plugin={plugin}" if plugin else ""
     google_proto_path = f'--proto_path="c:\\bin\\google"'
     command_args = [
         protoc_executable,
         plugin_string,
         proto_path_string,
+        google_proto_path,
         join_args(language_options),
         join_args(custom_options),
     ]
@@ -101,8 +103,9 @@ def update_dart():
     language_path = get_language_dir('dart')
     language_proto_path = join(language_path, 'lib', 'proto')
     clean_dir(language_proto_path)
+    # https://github.com/google/protobuf.dart/tree/master/protoc_plugin#how-to-build-and-use
     run_protoc({'dart_out': language_proto_path}, {}, get_proto_files())
-    # run_protoc({'dart_out': language_proto_path}, {}, get_proto_files(dir_name='c:/bin/google'))
+    # run_protoc({'dart_out': language_proto_path}, {}, get_proto_files(dir_name='c:/bin/google'), proto_path='c:/bin/google')
 
 
 def update_markdown():
@@ -131,12 +134,12 @@ def update_python():
 
 def main():
     logging.getLogger().setLevel(logging.INFO)
-    update_golang()
-    update_ruby()
-    update_markdown()
+    # update_golang()
+    # update_ruby()
+    # update_markdown()
     update_dart()
-    update_python()
-    update_java()
+    # update_python()
+    # update_java()
 
 
 if __name__ == "__main__":

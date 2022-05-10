@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 import 'dart:typed_data';
 
 import 'package:convert/convert.dart';
@@ -7,13 +8,119 @@ import 'package:okapi_dart/proto/google/protobuf/struct.pb.dart';
 import 'package:okapi_dart/proto/okapi/hashing/v1/hashing.pb.dart';
 import 'package:okapi_dart/proto/okapi/keys/v1/keys.pb.dart';
 import 'package:okapi_dart/proto/okapi/proofs/v1/proofs.pb.dart';
+import 'package:okapi_dart/proto/okapi/security/v1/security.pb.dart';
 import 'package:test/test.dart';
 
-import '../didcomm.dart';
+import '../okapi.dart';
 
 void main() {
+  test('Dart bitness', () {
+    var size = sizeOf<IntPtr>()*8;
+    print('Dart bitness=$size');
+  });
   testDidKey();
   testHashing();
+  testLdProofs();
+  group('Oberon:', () {
+    test('Demo', () {
+      var key = Oberon.CreateKey(CreateOberonKeyRequest());
+      var data = Uint8List.fromList(utf8.encode('alice'));
+      var nonce = Uint8List.fromList(utf8.encode('1234'));
+
+      var createTokenRequest = CreateOberonTokenRequest(sk: key.sk, data: data);
+      var token = Oberon.CreateToken(createTokenRequest);
+
+      var createProofRequest = CreateOberonProofRequest(data: data, nonce: nonce, token: token.token);
+      var proof = Oberon.CreateProof(createProofRequest);
+
+      var verifyProofRequest = VerifyOberonProofRequest();
+      verifyProofRequest.data = data;
+      verifyProofRequest.nonce = nonce;
+      verifyProofRequest.pk = key.pk;
+      verifyProofRequest.proof = proof.proof;
+      var result = Oberon.VerifyProof(verifyProofRequest);
+      assert(result.valid);
+    });
+    test('Demo With Blinding', () {
+      var key = Oberon.CreateKey(CreateOberonKeyRequest());
+      var data = Uint8List.fromList(utf8.encode("alice"));
+      var nonce = Uint8List.fromList(utf8.encode("1234"));
+
+      var issuer2FA = Uint8List.fromList(utf8.encode("issuer code"));
+      var tokenRequest = CreateOberonTokenRequest();
+      tokenRequest.data = data;
+      tokenRequest.sk = key.sk;
+      tokenRequest.blinding.add(issuer2FA);
+      var blindedToken = Oberon.CreateToken(tokenRequest);
+
+      // Holder unblinds the token
+      var unblindRequest = UnBlindOberonTokenRequest();
+      unblindRequest.token = blindedToken.token;
+      unblindRequest.blinding.add(issuer2FA);
+      var token = Oberon.UnBlindToken(unblindRequest);
+
+      // Holder prepares a proof without blinding.
+      var proofRequest = CreateOberonProofRequest();
+      proofRequest.data = data;
+      proofRequest.nonce = nonce;
+      proofRequest.token = token.token;
+      var proof = Oberon.CreateProof(proofRequest);
+
+      // Verifier verifies the proof.
+      var verifyProof = VerifyOberonProofRequest();
+      verifyProof.data = data;
+      verifyProof.nonce = nonce;
+      verifyProof.pk = key.pk;
+      verifyProof.proof = proof.proof;
+      var result = Oberon.VerifyProof(verifyProof);
+      assert(result.valid);
+
+      // Holder blinds the token with a personal pin
+      var userPin = Uint8List.fromList(utf8.encode("0042"));
+      var blindRequest = BlindOberonTokenRequest();
+      blindRequest.token = token.token;
+      blindRequest.blinding.add(userPin);
+
+      var userBlindedToken = Oberon.BlindToken(blindRequest);
+      proofRequest = CreateOberonProofRequest();
+      proofRequest.data = data;
+      proofRequest.nonce = nonce;
+      proofRequest.token = userBlindedToken.token;
+      proofRequest.blinding.add(userPin);
+      proof = Oberon.CreateProof(proofRequest);
+      
+      // Verifier verifies the proof
+      verifyProof = VerifyOberonProofRequest();
+      verifyProof.data = data;
+      verifyProof.nonce = nonce;
+      verifyProof.pk = key.pk;
+      verifyProof.proof = proof.proof;
+      result = Oberon.VerifyProof(verifyProof);
+      assert(result.valid);
+
+      // Bad actor creates a proof with incorrect blinding pin
+      var invalidPin = Uint8List.fromList(utf8.encode("invalid pin"));
+      var badProofRequest = CreateOberonProofRequest();
+      badProofRequest.data = data;
+      badProofRequest.nonce = nonce;
+      badProofRequest.token = userBlindedToken.token;
+      badProofRequest.blinding.add(invalidPin);
+      var badProof = Oberon.CreateProof(badProofRequest);
+      assert(256 == badProof.proof.length);
+
+      // Verifier tries to verify proof, fails
+      var badVerifyProof = VerifyOberonProofRequest();
+      badVerifyProof.data = data;
+      badVerifyProof.nonce = nonce;
+      badVerifyProof.pk = key.pk;
+      badVerifyProof.proof = badProof.proof;
+      result = Oberon.VerifyProof(badVerifyProof);
+      assert(result.valid == false);
+    });
+  });
+}
+
+void testLdProofs() {
   group('LdProofs:', () {
     test('Generate Capability Invocation With JCS', () {
       var capabilityDictionary = {
@@ -36,7 +143,7 @@ void main() {
       proofRequest.suite = LdSuite.LD_SUITE_JCSED25519SIGNATURE2020;
 
       var signedCapability = LdProofs.createProof(proofRequest);
-      assert(signedCapability.signedDocument.hasRequiredFields());
+      assert(signedCapability.hasSignedDocument());
     });
   });
 }
