@@ -42,12 +42,10 @@ def run_protoc(
 ) -> None:
     proto_path_string = f'--proto_path="{get_language_dir(proto_path or "proto")}"'
     plugin_string = f"--plugin={plugin}" if plugin else ""
-    # google_proto_path = f'--proto_path="c:\\bin\\google"'
     command_args = [
         protoc_executable,
         plugin_string,
         proto_path_string,
-        # google_proto_path,
         join_args(language_options),
         join_args(custom_options),
     ]
@@ -134,12 +132,12 @@ def update_python():
 
 def main():
     logging.getLogger().setLevel(logging.INFO)
-    # update_golang()
-    # update_ruby()
-    # update_markdown()
+    update_golang()
+    update_ruby()
+    update_markdown()
     update_dart()
-    # update_python()
-    # update_java()
+    update_python()
+    update_java()
 
 
 if __name__ == "__main__":
