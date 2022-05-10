@@ -9,7 +9,7 @@ import 'package:protobuf/protobuf.dart' as $pb;
 class OkapiByteBuffer extends Struct {
   @Int64()
   external int len;
-  external Pointer<Uint8> data;
+  external Pointer<Int8> data;
 }
 
 typedef ErrorCode = Int32;
@@ -38,10 +38,11 @@ class OkapiNative {
 
   static T nativeCall<T extends $pb.GeneratedMessage>(
       Function nativeFunction, $pb.GeneratedMessage request, T response) {
-    final requestBuffer = createRequestBuffer(request);
-    final responseBuffer = calloc<OkapiByteBuffer>(sizeOf<OkapiByteBuffer>());
+    final requestBufferPtr = createRequestBuffer(request);
+    final responseBufferPtr =
+        calloc<OkapiByteBuffer>(sizeOf<OkapiByteBuffer>());
     final err = calloc<ExternError>(sizeOf<ExternError>());
-    nativeFunction(requestBuffer.ref, responseBuffer, err);
+    nativeFunction(requestBufferPtr.ref, responseBufferPtr, err);
     final errCode = err.ref.code;
     if (errCode != 0) {
       final errString = err.ref.message.toDartString();
@@ -49,9 +50,9 @@ class OkapiNative {
     }
 
     response.mergeFromBuffer(
-        responseBuffer.ref.data.asTypedList(responseBuffer.ref.len));
+        responseBufferPtr.ref.data.asTypedList(responseBufferPtr.ref.len));
     // Free native and managed memory
-    freeNativeMemory(requestBuffer, okapiByteBufferFree, responseBuffer);
+    freeNativeMemory(requestBufferPtr, okapiByteBufferFree, responseBufferPtr);
     return response;
   }
 
@@ -73,10 +74,10 @@ class OkapiNative {
     return nativeLib;
   }
 
-  static Pointer<Uint8> byteDataToPointer(ByteBuffer byteBuffer) {
-    final uint8List = byteBuffer.asUint8List();
+  static Pointer<Int8> byteDataToPointer(ByteBuffer byteBuffer) {
+    final uint8List = byteBuffer.asInt8List();
     final length = byteBuffer.lengthInBytes;
-    final result = calloc<Uint8>(length);
+    final result = calloc<Int8>(length);
 
     for (var i = 0; i < length; ++i) {
       result[i] = uint8List[i];
@@ -96,8 +97,7 @@ class OkapiNative {
 
   static Pointer<OkapiByteBuffer> createRequestBuffer(
       $pb.GeneratedMessage request) {
-    final Pointer<OkapiByteBuffer> requestBuffer =
-        calloc<OkapiByteBuffer>(sizeOf<OkapiByteBuffer>());
+    final Pointer<OkapiByteBuffer> requestBuffer = calloc<OkapiByteBuffer>();
     final buffer = request.writeToBuffer().buffer;
     requestBuffer.ref.len = buffer.lengthInBytes;
     requestBuffer.ref.data = byteDataToPointer(buffer);

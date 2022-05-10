@@ -1,3 +1,4 @@
+import base64
 import unittest
 
 from trinsicokapi import oberon
@@ -13,7 +14,7 @@ from trinsicokapi.proto.okapi.security.v1 import (
 
 class OberonTests(unittest.TestCase):
     def test_oberon_demo(self):
-        key = oberon.create_key(CreateOberonKeyRequest())
+        key = oberon.create_key(CreateOberonKeyRequest(seed=bytes([1, 2, 3])))
         data = bytes("alice", "utf8")
         nonce = bytes("1234", "utf8")
 

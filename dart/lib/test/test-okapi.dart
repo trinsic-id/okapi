@@ -23,7 +23,7 @@ void main() {
   testLdProofs();
   group('Oberon:', () {
     test('Demo', () {
-      var key = Oberon.CreateKey(CreateOberonKeyRequest());
+      var key = Oberon.CreateKey(CreateOberonKeyRequest(seed: [1,2,3]));
       var data = Uint8List.fromList(utf8.encode('alice'));
       var nonce = Uint8List.fromList(utf8.encode('1234'));
 
@@ -130,7 +130,6 @@ void testLdProofs() {
       };
       var capability = Struct();
       capability.mergeFromProto3Json(capabilityDictionary);
-      print(capability);
 
       var request = GenerateKeyRequest();
       request.keyType = KeyType.KEY_TYPE_ED25519;
