@@ -51,7 +51,7 @@ func TestDemoWithBlinding(t *testing.T) {
 	// Holder unblinds token
 	unblindRequest := okapiproto.UnBlindOberonTokenRequest{Token: blindedToken.Token}
 	unblindRequest.Blinding = append(unblindRequest.Blinding, issuer2fa)
-	token, _ := ob.UnblindToken(&unblindRequest)
+	token, _ := ob.UnBlindToken(&unblindRequest)
 
 	// Holder prepares a proof without blinding
 	proof, _ := ob.CreateProof(&okapiproto.CreateOberonProofRequest{Data: data, Nonce: nonce, Token: token.Token})

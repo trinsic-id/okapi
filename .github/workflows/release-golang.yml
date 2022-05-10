@@ -15,7 +15,7 @@ on:
 
 jobs:
   publish_go_tag:
-    name: Tag golnag
+    name: Tag golang
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

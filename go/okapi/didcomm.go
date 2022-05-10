@@ -21,24 +21,24 @@ type didComm struct{}
 
 func (d *didComm) Pack(request *okapiproto.PackRequest) (*okapiproto.PackResponse, error) {
 	response := okapiproto.PackResponse{}
-	err := callOkapiNative(request, &response, didcommPack)
+	err := callOkapiNative(request, &response, "didcomm_pack")
 	return &response, err
 }
 
 func (d *didComm) Unpack(request *okapiproto.UnpackRequest) (*okapiproto.UnpackResponse, error) {
 	response := okapiproto.UnpackResponse{}
-	err := callOkapiNative(request, &response, didcommUnpack)
+	err := callOkapiNative(request, &response, "didcomm_unpack")
 	return &response, err
 }
 
 func (d *didComm) Sign(request *okapiproto.SignRequest) (*okapiproto.SignResponse, error) {
 	response := okapiproto.SignResponse{}
-	err := callOkapiNative(request, &response, didcommSign)
+	err := callOkapiNative(request, &response, "didcomm_sign")
 	return &response, err
 }
 
 func (d *didComm) Verify(request *okapiproto.VerifyRequest) (*okapiproto.VerifyResponse, error) {
 	response := okapiproto.VerifyResponse{}
-	err := callOkapiNative(request, &response, didcommVerify)
+	err := callOkapiNative(request, &response, "didcomm_verify")
 	return &response, err
 }
