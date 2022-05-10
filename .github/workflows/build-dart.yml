@@ -31,7 +31,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Set up Dart
-        uses: actions/setup-dart@v1
+        uses: dart-lang/setup-dart@v1
             
       - name: Download workflow artifact
         uses: dawidd6/action-download-artifact@v2.17.0
