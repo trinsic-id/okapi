@@ -8,6 +8,7 @@ import (
 // #cgo LDFLAGS: -ldl
 // #include <dlfcn.h>
 // #include <stdlib.h>
+// #include <stdint.h>
 //
 // typedef struct ByteBuffer {
 //   int64_t len;
