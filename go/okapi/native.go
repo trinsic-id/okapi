@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"google.golang.org/protobuf/proto"
 	"runtime"
-	"syscall"
 	"unsafe"
 )
 
@@ -16,7 +15,7 @@ type NativeError struct {
 
 type ByteBuffer struct {
 	len  int64
-	data *byte
+	data *uint8
 }
 
 type ExternError struct {
@@ -45,31 +44,12 @@ func getLibraryName() string {
 	case "windows":
 		return "okapi.dll"
 	case "darwin":
-		return "libokapi.dylib"
+		return "/Users/scott/Documents/GitHub/okapi/libs/macos/libokapi.dylib"
 	case "linux":
 		return "libokapi.so"
 	default:
 		return "okapi"
 	}
-}
-
-func callOkapiNative(request proto.Message, response proto.Message, funcName string) error {
-	requestBuffer, responseBuffer, errorBuffer, err := createBuffersFromMessage(request)
-	if err != nil {
-		return wrapError("Failed to create buffers", err)
-	}
-	dll := syscall.MustLoadDLL(getLibraryName())
-	okapiFunc := dll.MustFindProc(funcName)
-	code, _, err := okapiFunc.Call(uintptr(unsafe.Pointer(&requestBuffer)), uintptr(unsafe.Pointer(&responseBuffer)), uintptr(unsafe.Pointer(&errorBuffer)))
-	if err != nil {
-		// TODO - Actually check the syscall.Errno to see if it's a real error
-		//return err
-	}
-	err = unmarshalResponse(responseBuffer, response)
-	if err != nil {
-		return wrapError("Failed to unmarshal response", err)
-	}
-	return createError(int32(code), errorBuffer)
 }
 
 func createBuffersFromMessage(requestMessage proto.Message) (ByteBuffer, ByteBuffer, ExternError, error) {
@@ -87,18 +67,19 @@ func unmarshalResponse(responseBuffer ByteBuffer, responseMessage proto.Message)
 	if e != nil {
 		return wrapError("Failed to unmarshal message to protobuf", e)
 	}
-	dll := syscall.MustLoadDLL("okapi.dll")
-	okapiFunc := dll.MustFindProc("okapi_bytebuffer_free")
-	_, _, _ = okapiFunc.Call(uintptr(unsafe.Pointer(&responseBuffer)))
+	err := byteBufferFree(responseBuffer)
+	if err != nil {
+		return err
+	}
 	return nil
 }
 
-func createError(code int32, err ExternError) error {
-	if code == 0 {
+func createError(err ExternError) error {
+	if err.code == 0 {
 		return nil
 	}
 	return &DidError{
-		Code:    int(code),
+		Code:    int(err.code),
 		Message: string(err.message),
 	}
 }
