@@ -43,7 +43,7 @@ func callOkapiNative(request proto.Message, response proto.Message, funcName str
 		return wrapError("Failed to create buffers", err)
 	}
 	libPtr, funcPtr := getFunctionPointer(funcName)
-	cReqBuf := C.ByteBuffer{len: C.longlong(requestBuffer.len), data: (*C.uchar)(unsafe.Pointer(requestBuffer.data))}
+	cReqBuf := C.ByteBuffer{len: C.int64_t(requestBuffer.len), data: (*C.uchar)(unsafe.Pointer(requestBuffer.data))}
 	cRespBuf := C.ByteBuffer{}
 	cErrBuf := C.ExternError{}
 	errNum := C.okapi_ffi(funcPtr, cReqBuf, &cRespBuf, &cErrBuf)
