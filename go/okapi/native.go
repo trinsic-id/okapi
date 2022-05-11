@@ -1,15 +1,9 @@
 package okapi
 
-// #cgo LDFLAGS: -L${SRCDIR} -lokapi
-// #cgo CFLAGS: -I${SRCDIR}
-// #cgo linux LDFLAGS: -ldl -lm
-// #cgo darwin LDFLAGS: -Wl,-rpath,\$ORIGIN
-// #include "okapi.h"
-import "C"
-
 import (
 	"fmt"
 	"google.golang.org/protobuf/proto"
+	"runtime"
 	"unsafe"
 )
 
@@ -17,6 +11,16 @@ import (
 type NativeError struct {
 	Message       string
 	InternalError error
+}
+
+type ByteBuffer struct {
+	len  int64
+	data *uint8
+}
+
+type ExternError struct {
+	code    int32
+	message []byte
 }
 
 func (o NativeError) Error() string {
@@ -34,107 +38,49 @@ func (d *DidError) Error() string {
 	return fmt.Sprintf("Error on call: %s() return code=%d message=%s", d.FunctionName, d.Code, d.Message)
 }
 
-type okapiCall func(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32
-
-func sha256Hash(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
-	return int32(C.sha256_hash(request, response, err))
-}
-func blake3Hash(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
-	return int32(C.blake3_hash(request, response, err))
-}
-func blake3KeyedHash(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
-	return int32(C.blake3_keyed_hash(request, response, err))
-}
-func blake3DeriveKey(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
-	return int32(C.blake3_derive_key(request, response, err))
-}
-
-func didcommPack(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
-	return int32(C.didcomm_pack(request, response, err))
-}
-func didcommUnpack(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
-	return int32(C.didcomm_unpack(request, response, err))
-}
-func didcommSign(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
-	return int32(C.didcomm_sign(request, response, err))
-}
-func didcommVerify(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
-	return int32(C.didcomm_verify(request, response, err))
-}
-
-func didkeyGenerate(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
-	return int32(C.didkey_generate(request, response, err))
-}
-func didkeyResolve(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
-	return int32(C.didkey_resolve(request, response, err))
-}
-
-func ldproofsCreateProof(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
-	return int32(C.ldproofs_create_proof(request, response, err))
-}
-func ldproofsVerifyProof(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
-	return int32(C.ldproofs_verify_proof(request, response, err))
-}
-
-func oberonCreateKey(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
-	return int32(C.oberon_create_key(request, response, err))
-}
-func oberonCreateToken(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
-	return int32(C.oberon_create_token(request, response, err))
-}
-func oberonBlindToken(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
-	return int32(C.oberon_blind_token(request, response, err))
-}
-func oberonUnBlindToken(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
-	return int32(C.oberon_unblind_token(request, response, err))
-}
-func oberonCreateProof(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
-	return int32(C.oberon_create_proof(request, response, err))
-}
-func oberonVerifyProof(request C.ByteBuffer, response *C.ByteBuffer, err *C.ExternError) int32 {
-	return int32(C.oberon_verify_proof(request, response, err))
-}
-
-func callOkapiNative(request proto.Message, response proto.Message, nativeFunc okapiCall) error {
-	requestBuffer, responseBuffer, errorBuffer, err := createBuffersFromMessage(request)
-	if err != nil {
-		return wrapError("Failed to create buffers", err)
+func getLibraryName() string {
+	os := runtime.GOOS
+	switch os {
+	case "windows":
+		return "okapi.dll"
+	case "darwin":
+		return "/Users/scott/Documents/GitHub/okapi/libs/macos/libokapi.dylib"
+	case "linux":
+		return "libokapi.so"
+	default:
+		return "okapi"
 	}
-	code := nativeFunc(requestBuffer, &responseBuffer, &errorBuffer)
-	err = unmarshalResponse(responseBuffer, response, requestBuffer)
-	if err != nil {
-		return wrapError("Failed to unmarshal response", err)
-	}
-	return createError(code, errorBuffer)
 }
 
-func createBuffersFromMessage(requestMessage proto.Message) (C.ByteBuffer, C.ByteBuffer, C.ExternError, error) {
+func createBuffersFromMessage(requestMessage proto.Message) (ByteBuffer, ByteBuffer, ExternError, error) {
 	out, e := proto.Marshal(requestMessage)
 	if e != nil {
-		return C.ByteBuffer{}, C.ByteBuffer{}, C.ExternError{}, wrapError("Failed to marshal message to protobuf", e)
+		return ByteBuffer{}, ByteBuffer{}, ExternError{}, wrapError("Failed to marshal message to protobuf", e)
 	}
 
 	requestBuffer, responseBuffer, err := allocateBuffers(out)
 	return requestBuffer, responseBuffer, err, nil
 }
 
-func unmarshalResponse(responseBuffer C.ByteBuffer, responseMessage proto.Message, requestBuffer C.ByteBuffer) error {
-	e := proto.Unmarshal(C.GoBytes(unsafe.Pointer(responseBuffer.data), C.int(responseBuffer.len)), responseMessage)
+func unmarshalResponse(responseBuffer ByteBuffer, responseMessage proto.Message) error {
+	e := proto.Unmarshal(unsafe.Slice(responseBuffer.data, responseBuffer.len), responseMessage)
 	if e != nil {
 		return wrapError("Failed to unmarshal message to protobuf", e)
 	}
-	C.free(unsafe.Pointer(requestBuffer.data))
-	C.okapi_bytebuffer_free(responseBuffer)
+	err := byteBufferFree(responseBuffer)
+	if err != nil {
+		return err
+	}
 	return nil
 }
 
-func createError(code int32, err C.ExternError) error {
-	if code == 0 {
+func createError(err ExternError) error {
+	if err.code == 0 {
 		return nil
 	}
 	return &DidError{
-		Code:    int(code),
-		Message: C.GoString(err.message),
+		Code:    int(err.code),
+		Message: string(err.message),
 	}
 }
 func wrapError(message string, internalError error) error {
@@ -144,9 +90,12 @@ func wrapError(message string, internalError error) error {
 	}
 }
 
-func allocateBuffers(out []byte) (C.ByteBuffer, C.ByteBuffer, C.ExternError) {
-	requestBuffer := C.ByteBuffer{len: C.int64_t(len(out)), data: (*C.uint8_t)(C.CBytes(out))}
-	responseBuffer := C.ByteBuffer{}
-	err := C.ExternError{}
+func allocateBuffers(out []byte) (ByteBuffer, ByteBuffer, ExternError) {
+	requestBuffer := ByteBuffer{len: int64(len(out))}
+	if len(out) > 0 {
+		requestBuffer.data = &out[0]
+	}
+	responseBuffer := ByteBuffer{}
+	err := ExternError{}
 	return requestBuffer, responseBuffer, err
 }

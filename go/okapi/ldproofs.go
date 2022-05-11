@@ -17,12 +17,12 @@ type ldProofs struct{}
 
 func (l *ldProofs) CreateProof(request *okapiproto.CreateProofRequest) (*okapiproto.CreateProofResponse, error) {
 	response := okapiproto.CreateProofResponse{}
-	err := callOkapiNative(request, &response, ldproofsCreateProof)
+	err := callOkapiNative(request, &response, "ldproofs_create_proof")
 	return &response, err
 }
 
 func (l *ldProofs) VerifyProof(request *okapiproto.VerifyProofRequest) (*okapiproto.VerifyProofResponse, error) {
 	response := okapiproto.VerifyProofResponse{}
-	err := callOkapiNative(request, &response, ldproofsVerifyProof)
+	err := callOkapiNative(request, &response, "ldproofs_verify_proof")
 	return &response, err
 }
