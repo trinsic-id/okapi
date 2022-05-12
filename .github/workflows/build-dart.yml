@@ -1,0 +1,61 @@
+name: Dart
+
+on:
+  workflow_call:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "dart/**"
+      - "proto/**"
+      - ".github/workflows/*dart*"
+      - "devops/**"
+  push:
+    branches:
+      - main
+    paths:
+      - "dart/**"
+      - "proto/**"
+      - ".github/workflows/*dart*"
+      - "devops/**"
+
+jobs:
+  build-and-test-dart:
+    name: Test Dart code
+    runs-on: ${{ matrix.os-artifact[0] }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows], [macos-latest, macos] ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+            
+      - name: Download workflow artifact
+        uses: dawidd6/action-download-artifact@v2.17.0
+        with:
+          workflow: "build-libs.yml"
+          path: ./libs/${{ matrix.os-artifact[1] }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          name: ${{ matrix.os-artifact[1] }}
+
+      - name: Install Dart dependencies
+        run: dart pub get
+        shell: pwsh
+        working-directory: dart
+      
+      - name: Build, Test, Pack
+        run: |
+          python ../devops/build_sdks.py --language=python
+          dart test ./lib/test/test-okapi.dart
+        shell: pwsh
+        working-directory: dart
+        env:
+          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+          LD_LIBRARY_PATH: "${{ github.workspace }}/libs"

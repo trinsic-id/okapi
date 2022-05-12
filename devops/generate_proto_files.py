@@ -38,8 +38,9 @@ def run_protoc(
     proto_files: Union[List[str], str] = None,
     plugin: str = None,
     protoc_executable: str = "protoc",
+    proto_path: str = None
 ) -> None:
-    proto_path_string = f'--proto_path="{get_language_dir("proto")}"'
+    proto_path_string = f'--proto_path="{get_language_dir(proto_path or "proto")}"'
     plugin_string = f"--plugin={plugin}" if plugin else ""
     command_args = [
         protoc_executable,
@@ -96,6 +97,15 @@ def update_java():
     )
 
 
+def update_dart():
+    language_path = get_language_dir('dart')
+    language_proto_path = join(language_path, 'lib', 'proto')
+    clean_dir(language_proto_path)
+    # https://github.com/google/protobuf.dart/tree/master/protoc_plugin#how-to-build-and-use
+    run_protoc({'dart_out': language_proto_path}, {}, get_proto_files())
+    run_protoc({'dart_out': language_proto_path}, {}, get_proto_files(dir_name='c:/bin/google'), proto_path='c:/bin')
+
+
 def update_markdown():
     lang_path = get_language_dir("docs")
     lang_proto_path = join(lang_path, "reference", "proto")
@@ -125,6 +135,7 @@ def main():
     update_golang()
     update_ruby()
     update_markdown()
+    update_dart()
     update_python()
     update_java()
 

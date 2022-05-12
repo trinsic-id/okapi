@@ -1,0 +1,19 @@
+name: okapi_dart
+description: Dart language bindings for okapi
+version: 0.1.0
+homepage: 'https://github.com/trinsic-id/okapi/'
+
+environment:
+  sdk: '>=2.15.1 <3.0.0'
+
+
+dependencies:
+  ffi: any
+  protobuf: ^2.0.0
+  path: any
+
+dev_dependencies:
+  lints: any
+  test: any
+  convert: any
+  fast_base58: any
