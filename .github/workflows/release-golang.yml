@@ -19,7 +19,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: trinsic-id/set-version@v0.1
+        id: setversion
+        with:
+          githubToken: ${{ secrets.API_GITHUB_TOKEN }}
+          overrideVersion: ${{ github.event.inputs.packageVersion }}
       - name: Create tag
         run: |
-          git tag "go/${{ github.event.inputs.packageVersion }}" main
-          git push "go/${{ github.event.inputs.packageVersion }}" origin
+          git tag "go/v${{ steps.setversion.outputs.packageVersion }}" main
+          git push origin "go/v${{ steps.setversion.outputs.packageVersion }}"
