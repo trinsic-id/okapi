@@ -33,6 +33,8 @@ jobs:
         working-directory: ./wasm
     steps:
       - uses: actions/checkout@v3
+      - name: Setup protoc
+        uses: arduino/setup-protoc@v1.1.2
       - uses: jetli/wasm-pack-action@v0.3.0
         with:
           version: 'latest'
