@@ -17,12 +17,12 @@ type didKey struct{}
 
 func (d *didKey) Generate(request *okapiproto.GenerateKeyRequest) (*okapiproto.GenerateKeyResponse, error) {
 	response := okapiproto.GenerateKeyResponse{}
-	err := callOkapiNative(request, &response, didkeyGenerate)
+	err := callOkapiNative(request, &response, "didkey_generate")
 	return &response, err
 }
 
 func (d *didKey) Resolve(request *okapiproto.ResolveRequest) (*okapiproto.ResolveResponse, error) {
 	response := okapiproto.ResolveResponse{}
-	err := callOkapiNative(request, &response, didkeyResolve)
+	err := callOkapiNative(request, &response, "didkey_resolve")
 	return &response, err
 }
