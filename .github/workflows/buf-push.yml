@@ -34,6 +34,8 @@ jobs:
           go-version: ^1.16
       - name: Install Protoc
         uses: arduino/setup-protoc@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Install protobuf plugins
         run: |
           go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
