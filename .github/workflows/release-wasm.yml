@@ -46,6 +46,6 @@ jobs:
           npm install
           npm version ${{ steps.setversion.outputs.packageVersion }} --no-git-tag-version --yes
           npm run build
-          npm publish ${{ steps.setversion.outputs.packageVersion }} --no-git-tag-version --yes --no-verify-access
+          npm publish --no-git-tag-version --yes --no-verify-access
         shell: pwsh
         working-directory: ./wasm/packages/okapi
