@@ -1,3 +1,4 @@
+// package.json in this directory because karma only supports commonjs modules
 import webpackConfig from "./webpack.config";
 import { Config, ConfigOptions } from "karma";
 
@@ -11,7 +12,7 @@ export default (config: Config): void => {
     ],
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: "./",
+    basePath: "..",
 
     singleRun: true,  // run and exit for CI pipelines, lol
 
