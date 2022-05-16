@@ -15,7 +15,7 @@ const config: Configuration = {
         exclude: /node_modules/,
         loader: "ts-loader",
         options: {
-          configFile: 'tsconfig.node.json'
+          configFile: 'tsconfig.json'
         }
       }
     ],
