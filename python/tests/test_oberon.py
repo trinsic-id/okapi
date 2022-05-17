@@ -1,4 +1,3 @@
-import base64
 import unittest
 
 from trinsicokapi import oberon
