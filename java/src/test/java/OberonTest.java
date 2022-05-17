@@ -34,6 +34,33 @@ class OberonTest {
     }
 
     @Test
+    void testVerifyToken() throws InvalidProtocolBufferException, DidException {
+        final ByteString data = ByteString.copyFromUtf8("4113");
+        final ByteString rightSeed = ByteString.copyFromUtf8("123");
+        final ByteString wrongSeed = ByteString.copyFromUtf8("012");
+
+        var rightKey = Oberon.createKey(Security.CreateOberonKeyRequest.newBuilder().setSeed(rightSeed).build());
+        var wrongKey = Oberon.createKey(Security.CreateOberonKeyRequest.newBuilder().setSeed(wrongSeed).build());
+
+        var token = Oberon.createToken(Security.CreateOberonTokenRequest.newBuilder()
+                .setData(data)
+                .setSk(rightKey.getSk())
+                .build());
+
+        var verifyRight = Oberon.verifyToken(Security.VerifyOberonTokenRequest.newBuilder()
+                .setToken(token.getToken())
+                .setData(data)
+                .setPk(rightKey.getPk()).build());
+        var verifyWrong = Oberon.verifyToken(Security.VerifyOberonTokenRequest.newBuilder()
+                .setToken(token.getToken())
+                .setData(data)
+                .setPk(wrongKey.getPk()).build());
+
+        Assertions.assertTrue(verifyRight.getValid());
+        Assertions.assertFalse(verifyWrong.getValid());
+    }
+
+    @Test
     void testDemoWithBlinding() throws InvalidProtocolBufferException, DidException {
         var key = Oberon.createKey(Security.CreateOberonKeyRequest.newBuilder().build());
         final ByteString data = ByteString.copyFromUtf8("alice");
