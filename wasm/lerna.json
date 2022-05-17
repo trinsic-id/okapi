@@ -1,6 +1,0 @@
-{
-  "packages": [
-    "packages/okapi*"
-  ],
-  "version": "1.0.0-preview.27"
-}

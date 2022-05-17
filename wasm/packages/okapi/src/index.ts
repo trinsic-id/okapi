@@ -10,7 +10,7 @@ let initialized = false;
 async function initialize() {
   if (!initialized) {
     // Using the package.json "browser" tag, we can override this to use the `native_web` version.
-    native = await import("./native_node/okapi_wasm");
+      native = await import("./native_node/okapi_wasm");
     initialized = true;
   }
 }

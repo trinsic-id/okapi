@@ -47,7 +47,7 @@ describe("Web Okapi Tests", () => {
       pk: key.pk
     });
 
-    expect(result.valid).toBeTrue();
+    expect(result.valid).toBeTruthy();
   });
 
   it("run blake3 hash", async () => {
