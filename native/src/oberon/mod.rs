@@ -1,7 +1,9 @@
-use crate::{didcomm::Error, proto::security::*};
+use std::convert::TryInto;
+
 use oberon;
 use rand::prelude::*;
-use std::convert::TryInto;
+
+use crate::{didcomm::Error, proto::security::*};
 
 impl crate::Oberon {
     pub fn key<'a>(request: &CreateOberonKeyRequest) -> Result<CreateOberonKeyResponse, Error<'a>> {
@@ -24,10 +26,11 @@ impl crate::Oberon {
             return Err(Error::InvalidField("must provide data"));
         }
 
-        let skbytes: [u8; oberon::SecretKey::BYTES] = match request.sk.as_slice().try_into() {
-            Ok(skbytes) => skbytes,
-            Err(_) => return Err(Error::InvalidField("invalid secret key provided")),
-        };
+        let skbytes: [u8; oberon::SecretKey::BYTES] = request
+            .sk
+            .as_slice()
+            .try_into()
+            .map_err(|_| Error::InvalidField("invalid secret key provided"))?;
 
         let sk = oberon::SecretKey::from(&skbytes);
         let mut token = match oberon::Token::new(&sk, &request.data) {
@@ -51,10 +54,7 @@ impl crate::Oberon {
             return Err(Error::InvalidField("must provide data"));
         }
 
-        let tokenbytes: [u8; oberon::Token::BYTES] = match request.token.as_slice().try_into() {
-            Ok(tokenbytes) => tokenbytes,
-            Err(_) => return Err(Error::InvalidField("invalid token provided")),
-        };
+        let tokenbytes: [u8; oberon::Token::BYTES] = request.token.as_slice().try_into().map_err(|_| Error::InvalidField("invalid token provided"))?;
 
         let tkn = oberon::Token::from_bytes(&tokenbytes);
         if tkn.is_none().into() {
@@ -80,20 +80,18 @@ impl crate::Oberon {
             return Err(Error::InvalidField("must provide data"));
         }
 
-        let pkbytes: [u8; oberon::PublicKey::BYTES] = match request.pk.as_slice().try_into() {
-            Ok(pkbytes) => pkbytes,
-            Err(_) => return Err(Error::InvalidField("invalid public key provided")),
-        };
+        let pkbytes: [u8; oberon::PublicKey::BYTES] = request
+            .pk
+            .as_slice()
+            .try_into()
+            .map_err(|_| Error::InvalidField("invalid public key provided"))?;
 
         let pk = oberon::PublicKey::from_bytes(&pkbytes);
         if pk.is_none().into() {
             return Err(Error::InvalidField("invalid public key provided"));
         }
 
-        let proofbytes: [u8; oberon::Proof::BYTES] = match request.proof.as_slice().try_into() {
-            Ok(proofbytes) => proofbytes,
-            Err(_) => return Err(Error::InvalidField("invalid proof provided")),
-        };
+        let proofbytes: [u8; oberon::Proof::BYTES] = request.proof.as_slice().try_into().map_err(|_| Error::InvalidField("invalid proof provided"))?;
 
         let proof = oberon::Proof::from_bytes(&proofbytes);
         if proof.is_none().into() {
@@ -106,10 +104,7 @@ impl crate::Oberon {
     }
 
     pub fn blind<'a>(request: &BlindOberonTokenRequest) -> Result<BlindOberonTokenResponse, Error<'a>> {
-        let tokenbytes: [u8; oberon::Token::BYTES] = match request.token.as_slice().try_into() {
-            Ok(tokenbytes) => tokenbytes,
-            Err(_) => return Err(Error::InvalidField("invalid token provided")),
-        };
+        let tokenbytes: [u8; oberon::Token::BYTES] = request.token.as_slice().try_into().map_err(|_| Error::InvalidField("invalid token provided"))?;
 
         let tkn = oberon::Token::from_bytes(&tokenbytes);
         if tkn.is_none().into() {
@@ -130,10 +125,7 @@ impl crate::Oberon {
     }
 
     pub fn unblind<'a>(request: &UnBlindOberonTokenRequest) -> Result<BlindOberonTokenResponse, Error<'a>> {
-        let tokenbytes: [u8; oberon::Token::BYTES] = match request.token.as_slice().try_into() {
-            Ok(tokenbytes) => tokenbytes,
-            Err(_) => return Err(Error::InvalidField("invalid token provided")),
-        };
+        let tokenbytes: [u8; oberon::Token::BYTES] = request.token.as_slice().try_into().map_err(|_| Error::InvalidField("invalid token provided"))?;
 
         let tkn = oberon::Token::from_bytes(&tokenbytes);
         if tkn.is_none().into() {
@@ -151,5 +143,36 @@ impl crate::Oberon {
         Ok(BlindOberonTokenResponse {
             token: tkn.to_bytes().to_vec(),
         })
+    }
+
+    pub fn verify_token<'a>(request: &VerifyOberonTokenRequest) -> Result<VerifyOberonTokenResponse, Error<'a>> {
+        if request.data.len() == 0 {
+            return Err(Error::InvalidField("must provide data"));
+        }
+
+        let pkbytes: [u8; oberon::PublicKey::BYTES] = request
+            .pk
+            .as_slice()
+            .try_into()
+            .map_err(|_| Error::InvalidField("invalid public key provided"))?;
+
+        let pk = oberon::PublicKey::from_bytes(&pkbytes);
+        if pk.is_none().into() {
+            return Err(Error::InvalidField("invalid public key provided"));
+        }
+
+        let tokenbytes: [u8; oberon::Token::BYTES] = request.token.as_slice().try_into().map_err(|_| Error::InvalidField("invalid token provided"))?;
+
+        let tkn = oberon::Token::from_bytes(&tokenbytes);
+        if tkn.is_none().into() {
+            return Err(Error::InvalidField("invalid token provided"));
+        }
+        let tkn = tkn.unwrap();
+        let pk = pk.unwrap();
+
+        let verify_result = tkn.verify(pk, &request.data);
+        let is_valid = bool::from(verify_result);
+
+        Ok(VerifyOberonTokenResponse { valid: is_valid })
     }
 }

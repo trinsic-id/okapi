@@ -78,3 +78,15 @@ message UnBlindOberonTokenRequest {
 message UnBlindOberonTokenResponse {
     bytes token = 1; // raw unblinded token bytes
 }
+
+// Verify that an oberon token comes from the desired issuer
+message VerifyOberonTokenRequest {
+    bytes token = 1; // raw token bytes
+    bytes pk = 2; // token is valid to this public key?
+    bytes data = 3; // public part of oberon protocol - can be any data
+}
+
+// Contains the verification result for the oberon token
+message VerifyOberonTokenResponse {
+    bool valid = 1; // token is valid to the public key
+}
