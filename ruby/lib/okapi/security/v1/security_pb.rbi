@@ -879,3 +879,151 @@ class Okapi::Security::V1::UnBlindOberonTokenResponse
   def to_h
   end
 end
+
+class Okapi::Security::V1::VerifyOberonTokenRequest
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Okapi::Security::V1::VerifyOberonTokenRequest) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Okapi::Security::V1::VerifyOberonTokenRequest).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Okapi::Security::V1::VerifyOberonTokenRequest) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Okapi::Security::V1::VerifyOberonTokenRequest, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      token: T.nilable(String),
+      pk: T.nilable(String),
+      data: T.nilable(String)
+    ).void
+  end
+  def initialize(
+    token: "",
+    pk: "",
+    data: ""
+  )
+  end
+
+  sig { returns(String) }
+  def token
+  end
+
+  sig { params(value: String).void }
+  def token=(value)
+  end
+
+  sig { void }
+  def clear_token
+  end
+
+  sig { returns(String) }
+  def pk
+  end
+
+  sig { params(value: String).void }
+  def pk=(value)
+  end
+
+  sig { void }
+  def clear_pk
+  end
+
+  sig { returns(String) }
+  def data
+  end
+
+  sig { params(value: String).void }
+  def data=(value)
+  end
+
+  sig { void }
+  def clear_data
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Okapi::Security::V1::VerifyOberonTokenResponse
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Okapi::Security::V1::VerifyOberonTokenResponse) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Okapi::Security::V1::VerifyOberonTokenResponse).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Okapi::Security::V1::VerifyOberonTokenResponse) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Okapi::Security::V1::VerifyOberonTokenResponse, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      valid: T.nilable(T::Boolean)
+    ).void
+  end
+  def initialize(
+    valid: false
+  )
+  end
+
+  sig { returns(T::Boolean) }
+  def valid
+  end
+
+  sig { params(value: T::Boolean).void }
+  def valid=(value)
+  end
+
+  sig { void }
+  def clear_valid
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end

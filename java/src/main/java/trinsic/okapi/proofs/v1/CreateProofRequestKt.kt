@@ -3,7 +3,7 @@
 
 package trinsic.okapi.proofs.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializecreateProofRequest")
 public inline fun createProofRequest(block: trinsic.okapi.proofs.v1.CreateProofRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.proofs.v1.Proofs.CreateProofRequest =
   trinsic.okapi.proofs.v1.CreateProofRequestKt.Dsl._create(trinsic.okapi.proofs.v1.Proofs.CreateProofRequest.newBuilder()).apply { block() }._build()
 public object CreateProofRequestKt {
@@ -141,3 +141,10 @@ public object CreateProofRequestKt {
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.proofs.v1.Proofs.CreateProofRequest.copy(block: trinsic.okapi.proofs.v1.CreateProofRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.proofs.v1.Proofs.CreateProofRequest =
   trinsic.okapi.proofs.v1.CreateProofRequestKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+
+val trinsic.okapi.proofs.v1.Proofs.CreateProofRequestOrBuilder.documentOrNull: com.google.protobuf.Struct?
+  get() = if (hasDocument()) getDocument() else null
+
+val trinsic.okapi.proofs.v1.Proofs.CreateProofRequestOrBuilder.keyOrNull: trinsic.okapi.keys.v1.Keys.JsonWebKey?
+  get() = if (hasKey()) getKey() else null
+

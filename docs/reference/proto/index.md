@@ -48,6 +48,8 @@
     - [UnBlindOberonTokenResponse](#okapi-security-v1-UnBlindOberonTokenResponse)
     - [VerifyOberonProofRequest](#okapi-security-v1-VerifyOberonProofRequest)
     - [VerifyOberonProofResponse](#okapi-security-v1-VerifyOberonProofResponse)
+    - [VerifyOberonTokenRequest](#okapi-security-v1-VerifyOberonTokenRequest)
+    - [VerifyOberonTokenResponse](#okapi-security-v1-VerifyOberonTokenResponse)
   
 - [okapi/transport/v1/transport.proto](#okapi_transport_v1_transport-proto)
     - [CoreMessage](#okapi-transport-v1-CoreMessage)
@@ -643,6 +645,38 @@ Contains the status of the proof validation
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | valid | [bool](#bool) |  | whether the given proof was valid |
+
+
+
+
+
+
+<a name="okapi-security-v1-VerifyOberonTokenRequest"></a>
+
+### VerifyOberonTokenRequest
+Verify that an oberon token comes from the desired issuer
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| token | [bytes](#bytes) |  | raw token bytes |
+| pk | [bytes](#bytes) |  | token is valid to this public key? |
+| data | [bytes](#bytes) |  | public part of oberon protocol - can be any data |
+
+
+
+
+
+
+<a name="okapi-security-v1-VerifyOberonTokenResponse"></a>
+
+### VerifyOberonTokenResponse
+Contains the verification result for the oberon token
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| valid | [bool](#bool) |  | token is valid to the public key |
 
 
 

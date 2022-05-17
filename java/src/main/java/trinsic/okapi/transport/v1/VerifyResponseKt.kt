@@ -3,7 +3,7 @@
 
 package trinsic.okapi.transport.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializeverifyResponse")
 public inline fun verifyResponse(block: trinsic.okapi.transport.v1.VerifyResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.VerifyResponse =
   trinsic.okapi.transport.v1.VerifyResponseKt.Dsl._create(trinsic.okapi.transport.v1.Transport.VerifyResponse.newBuilder()).apply { block() }._build()
 public object VerifyResponseKt {
@@ -43,3 +43,4 @@ public object VerifyResponseKt {
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.transport.v1.Transport.VerifyResponse.copy(block: trinsic.okapi.transport.v1.VerifyResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.VerifyResponse =
   trinsic.okapi.transport.v1.VerifyResponseKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+

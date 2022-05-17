@@ -52,6 +52,14 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "okapi.security.v1.UnBlindOberonTokenResponse" do
       optional :token, :bytes, 1
     end
+    add_message "okapi.security.v1.VerifyOberonTokenRequest" do
+      optional :token, :bytes, 1
+      optional :pk, :bytes, 2
+      optional :data, :bytes, 3
+    end
+    add_message "okapi.security.v1.VerifyOberonTokenResponse" do
+      optional :valid, :bool, 1
+    end
   end
 end
 
@@ -70,6 +78,8 @@ module Okapi
       BlindOberonTokenResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("okapi.security.v1.BlindOberonTokenResponse").msgclass
       UnBlindOberonTokenRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("okapi.security.v1.UnBlindOberonTokenRequest").msgclass
       UnBlindOberonTokenResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("okapi.security.v1.UnBlindOberonTokenResponse").msgclass
+      VerifyOberonTokenRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("okapi.security.v1.VerifyOberonTokenRequest").msgclass
+      VerifyOberonTokenResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("okapi.security.v1.VerifyOberonTokenResponse").msgclass
     end
   end
 end

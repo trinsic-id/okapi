@@ -101,3 +101,19 @@ class UnBlindOberonTokenResponse(betterproto.Message):
     """Contains the unblinded token reply"""
 
     token: bytes = betterproto.bytes_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class VerifyOberonTokenRequest(betterproto.Message):
+    """Verify that an oberon token comes from the desired issuer"""
+
+    token: bytes = betterproto.bytes_field(1)
+    pk: bytes = betterproto.bytes_field(2)
+    data: bytes = betterproto.bytes_field(3)
+
+
+@dataclass(eq=False, repr=False)
+class VerifyOberonTokenResponse(betterproto.Message):
+    """Contains the verification result for the oberon token"""
+
+    valid: bool = betterproto.bool_field(1)

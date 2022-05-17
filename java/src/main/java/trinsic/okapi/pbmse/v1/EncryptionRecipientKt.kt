@@ -3,7 +3,7 @@
 
 package trinsic.okapi.pbmse.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializeencryptionRecipient")
 public inline fun encryptionRecipient(block: trinsic.okapi.pbmse.v1.EncryptionRecipientKt.Dsl.() -> kotlin.Unit): trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient =
   trinsic.okapi.pbmse.v1.EncryptionRecipientKt.Dsl._create(trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.newBuilder()).apply { block() }._build()
 public object EncryptionRecipientKt {
@@ -67,3 +67,7 @@ public object EncryptionRecipientKt {
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.copy(block: trinsic.okapi.pbmse.v1.EncryptionRecipientKt.Dsl.() -> kotlin.Unit): trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient =
   trinsic.okapi.pbmse.v1.EncryptionRecipientKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+
+val trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipientOrBuilder.headerOrNull: trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader?
+  get() = if (hasHeader()) getHeader() else null
+

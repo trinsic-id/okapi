@@ -3,7 +3,7 @@
 
 package trinsic.okapi.examples.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializebasicMessage")
 public inline fun basicMessage(block: trinsic.okapi.examples.v1.BasicMessageKt.Dsl.() -> kotlin.Unit): trinsic.okapi.examples.v1.Examples.BasicMessage =
   trinsic.okapi.examples.v1.BasicMessageKt.Dsl._create(trinsic.okapi.examples.v1.Examples.BasicMessage.newBuilder()).apply { block() }._build()
 public object BasicMessageKt {
@@ -43,3 +43,4 @@ public object BasicMessageKt {
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.examples.v1.Examples.BasicMessage.copy(block: trinsic.okapi.examples.v1.BasicMessageKt.Dsl.() -> kotlin.Unit): trinsic.okapi.examples.v1.Examples.BasicMessage =
   trinsic.okapi.examples.v1.BasicMessageKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+

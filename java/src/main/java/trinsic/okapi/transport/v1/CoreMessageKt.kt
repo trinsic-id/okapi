@@ -3,7 +3,7 @@
 
 package trinsic.okapi.transport.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializecoreMessage")
 public inline fun coreMessage(block: trinsic.okapi.transport.v1.CoreMessageKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.CoreMessage =
   trinsic.okapi.transport.v1.CoreMessageKt.Dsl._create(trinsic.okapi.transport.v1.Transport.CoreMessage.newBuilder()).apply { block() }._build()
 public object CoreMessageKt {
@@ -198,3 +198,4 @@ public object CoreMessageKt {
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.transport.v1.Transport.CoreMessage.copy(block: trinsic.okapi.transport.v1.CoreMessageKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.CoreMessage =
   trinsic.okapi.transport.v1.CoreMessageKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+

@@ -3,7 +3,7 @@
 
 package trinsic.okapi.pbmse.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializesignatureHeader")
 public inline fun signatureHeader(block: trinsic.okapi.pbmse.v1.SignatureHeaderKt.Dsl.() -> kotlin.Unit): trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader =
   trinsic.okapi.pbmse.v1.SignatureHeaderKt.Dsl._create(trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader.newBuilder()).apply { block() }._build()
 public object SignatureHeaderKt {
@@ -60,3 +60,4 @@ public object SignatureHeaderKt {
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader.copy(block: trinsic.okapi.pbmse.v1.SignatureHeaderKt.Dsl.() -> kotlin.Unit): trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader =
   trinsic.okapi.pbmse.v1.SignatureHeaderKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+

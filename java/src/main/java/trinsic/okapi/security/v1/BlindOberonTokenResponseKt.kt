@@ -3,7 +3,7 @@
 
 package trinsic.okapi.security.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializeblindOberonTokenResponse")
 public inline fun blindOberonTokenResponse(block: trinsic.okapi.security.v1.BlindOberonTokenResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.security.v1.Security.BlindOberonTokenResponse =
   trinsic.okapi.security.v1.BlindOberonTokenResponseKt.Dsl._create(trinsic.okapi.security.v1.Security.BlindOberonTokenResponse.newBuilder()).apply { block() }._build()
 public object BlindOberonTokenResponseKt {
@@ -51,3 +51,4 @@ public object BlindOberonTokenResponseKt {
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.security.v1.Security.BlindOberonTokenResponse.copy(block: trinsic.okapi.security.v1.BlindOberonTokenResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.security.v1.Security.BlindOberonTokenResponse =
   trinsic.okapi.security.v1.BlindOberonTokenResponseKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+

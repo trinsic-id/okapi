@@ -3,7 +3,7 @@
 
 package trinsic.okapi.keys.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializegenerateKeyResponse")
 public inline fun generateKeyResponse(block: trinsic.okapi.keys.v1.GenerateKeyResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.keys.v1.Keys.GenerateKeyResponse =
   trinsic.okapi.keys.v1.GenerateKeyResponseKt.Dsl._create(trinsic.okapi.keys.v1.Keys.GenerateKeyResponse.newBuilder()).apply { block() }._build()
 public object GenerateKeyResponseKt {
@@ -44,7 +44,8 @@ public object GenerateKeyResponseKt {
     @kotlin.jvm.JvmName("addKey")
     public fun com.google.protobuf.kotlin.DslList<trinsic.okapi.keys.v1.Keys.JsonWebKey, KeyProxy>.add(value: trinsic.okapi.keys.v1.Keys.JsonWebKey) {
       _builder.addKey(value)
-    }/**
+    }
+    /**
      * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
      * @param value The key to add.
      */
@@ -53,7 +54,8 @@ public object GenerateKeyResponseKt {
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<trinsic.okapi.keys.v1.Keys.JsonWebKey, KeyProxy>.plusAssign(value: trinsic.okapi.keys.v1.Keys.JsonWebKey) {
       add(value)
-    }/**
+    }
+    /**
      * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
      * @param values The key to add.
      */
@@ -61,7 +63,8 @@ public object GenerateKeyResponseKt {
     @kotlin.jvm.JvmName("addAllKey")
     public fun com.google.protobuf.kotlin.DslList<trinsic.okapi.keys.v1.Keys.JsonWebKey, KeyProxy>.addAll(values: kotlin.collections.Iterable<trinsic.okapi.keys.v1.Keys.JsonWebKey>) {
       _builder.addAllKey(values)
-    }/**
+    }
+    /**
      * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
      * @param values The key to add.
      */
@@ -70,7 +73,8 @@ public object GenerateKeyResponseKt {
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<trinsic.okapi.keys.v1.Keys.JsonWebKey, KeyProxy>.plusAssign(values: kotlin.collections.Iterable<trinsic.okapi.keys.v1.Keys.JsonWebKey>) {
       addAll(values)
-    }/**
+    }
+    /**
      * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
      * @param index The index to set the value at.
      * @param value The key to set.
@@ -79,7 +83,8 @@ public object GenerateKeyResponseKt {
     @kotlin.jvm.JvmName("setKey")
     public operator fun com.google.protobuf.kotlin.DslList<trinsic.okapi.keys.v1.Keys.JsonWebKey, KeyProxy>.set(index: kotlin.Int, value: trinsic.okapi.keys.v1.Keys.JsonWebKey) {
       _builder.setKey(index, value)
-    }/**
+    }
+    /**
      * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
      */
     @kotlin.jvm.JvmSynthetic
@@ -87,6 +92,8 @@ public object GenerateKeyResponseKt {
     public fun com.google.protobuf.kotlin.DslList<trinsic.okapi.keys.v1.Keys.JsonWebKey, KeyProxy>.clear() {
       _builder.clearKey()
     }
+
+
     /**
      * <code>.google.protobuf.Struct did_document = 2;</code>
      */
@@ -115,3 +122,7 @@ public object GenerateKeyResponseKt {
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.keys.v1.Keys.GenerateKeyResponse.copy(block: trinsic.okapi.keys.v1.GenerateKeyResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.keys.v1.Keys.GenerateKeyResponse =
   trinsic.okapi.keys.v1.GenerateKeyResponseKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+
+val trinsic.okapi.keys.v1.Keys.GenerateKeyResponseOrBuilder.didDocumentOrNull: com.google.protobuf.Struct?
+  get() = if (hasDidDocument()) getDidDocument() else null
+

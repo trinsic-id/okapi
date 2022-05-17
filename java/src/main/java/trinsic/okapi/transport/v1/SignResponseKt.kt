@@ -3,7 +3,7 @@
 
 package trinsic.okapi.transport.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializesignResponse")
 public inline fun signResponse(block: trinsic.okapi.transport.v1.SignResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.SignResponse =
   trinsic.okapi.transport.v1.SignResponseKt.Dsl._create(trinsic.okapi.transport.v1.Transport.SignResponse.newBuilder()).apply { block() }._build()
 public object SignResponseKt {
@@ -50,3 +50,7 @@ public object SignResponseKt {
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.transport.v1.Transport.SignResponse.copy(block: trinsic.okapi.transport.v1.SignResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.SignResponse =
   trinsic.okapi.transport.v1.SignResponseKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+
+val trinsic.okapi.transport.v1.Transport.SignResponseOrBuilder.messageOrNull: trinsic.okapi.pbmse.v1.Pbmse.SignedMessage?
+  get() = if (hasMessage()) getMessage() else null
+

@@ -3,7 +3,7 @@
 
 package trinsic.okapi.hashing.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializesHA256HashRequest")
 public inline fun sHA256HashRequest(block: trinsic.okapi.hashing.v1.SHA256HashRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest =
   trinsic.okapi.hashing.v1.SHA256HashRequestKt.Dsl._create(trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest.newBuilder()).apply { block() }._build()
 public object SHA256HashRequestKt {
@@ -43,3 +43,4 @@ public object SHA256HashRequestKt {
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest.copy(block: trinsic.okapi.hashing.v1.SHA256HashRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest =
   trinsic.okapi.hashing.v1.SHA256HashRequestKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+

@@ -3,7 +3,7 @@
 
 package trinsic.okapi.keys.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializejsonWebKey")
 public inline fun jsonWebKey(block: trinsic.okapi.keys.v1.JsonWebKeyKt.Dsl.() -> kotlin.Unit): trinsic.okapi.keys.v1.Keys.JsonWebKey =
   trinsic.okapi.keys.v1.JsonWebKeyKt.Dsl._create(trinsic.okapi.keys.v1.Keys.JsonWebKey.newBuilder()).apply { block() }._build()
 public object JsonWebKeyKt {
@@ -152,3 +152,4 @@ public object JsonWebKeyKt {
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.keys.v1.Keys.JsonWebKey.copy(block: trinsic.okapi.keys.v1.JsonWebKeyKt.Dsl.() -> kotlin.Unit): trinsic.okapi.keys.v1.Keys.JsonWebKey =
   trinsic.okapi.keys.v1.JsonWebKeyKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+

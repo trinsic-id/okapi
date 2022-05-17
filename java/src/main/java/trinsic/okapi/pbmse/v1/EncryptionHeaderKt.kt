@@ -3,7 +3,7 @@
 
 package trinsic.okapi.pbmse.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializeencryptionHeader")
 public inline fun encryptionHeader(block: trinsic.okapi.pbmse.v1.EncryptionHeaderKt.Dsl.() -> kotlin.Unit): trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader =
   trinsic.okapi.pbmse.v1.EncryptionHeaderKt.Dsl._create(trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.newBuilder()).apply { block() }._build()
 public object EncryptionHeaderKt {
@@ -94,3 +94,4 @@ public object EncryptionHeaderKt {
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.copy(block: trinsic.okapi.pbmse.v1.EncryptionHeaderKt.Dsl.() -> kotlin.Unit): trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader =
   trinsic.okapi.pbmse.v1.EncryptionHeaderKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+

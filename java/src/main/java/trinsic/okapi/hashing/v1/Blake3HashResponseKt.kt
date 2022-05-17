@@ -3,7 +3,7 @@
 
 package trinsic.okapi.hashing.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializeblake3HashResponse")
 public inline fun blake3HashResponse(block: trinsic.okapi.hashing.v1.Blake3HashResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse =
   trinsic.okapi.hashing.v1.Blake3HashResponseKt.Dsl._create(trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse.newBuilder()).apply { block() }._build()
 public object Blake3HashResponseKt {
@@ -43,3 +43,4 @@ public object Blake3HashResponseKt {
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse.copy(block: trinsic.okapi.hashing.v1.Blake3HashResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse =
   trinsic.okapi.hashing.v1.Blake3HashResponseKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+

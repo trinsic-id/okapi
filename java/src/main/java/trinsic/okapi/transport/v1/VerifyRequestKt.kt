@@ -3,7 +3,7 @@
 
 package trinsic.okapi.transport.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializeverifyRequest")
 public inline fun verifyRequest(block: trinsic.okapi.transport.v1.VerifyRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.VerifyRequest =
   trinsic.okapi.transport.v1.VerifyRequestKt.Dsl._create(trinsic.okapi.transport.v1.Transport.VerifyRequest.newBuilder()).apply { block() }._build()
 public object VerifyRequestKt {
@@ -74,3 +74,10 @@ public object VerifyRequestKt {
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.transport.v1.Transport.VerifyRequest.copy(block: trinsic.okapi.transport.v1.VerifyRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.VerifyRequest =
   trinsic.okapi.transport.v1.VerifyRequestKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+
+val trinsic.okapi.transport.v1.Transport.VerifyRequestOrBuilder.messageOrNull: trinsic.okapi.pbmse.v1.Pbmse.SignedMessage?
+  get() = if (hasMessage()) getMessage() else null
+
+val trinsic.okapi.transport.v1.Transport.VerifyRequestOrBuilder.keyOrNull: trinsic.okapi.keys.v1.Keys.JsonWebKey?
+  get() = if (hasKey()) getKey() else null
+
