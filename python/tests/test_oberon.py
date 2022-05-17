@@ -41,7 +41,7 @@ class OberonTests(unittest.TestCase):
 
         assert oberon.verify_token(
             VerifyOberonTokenRequest(token=token_response.token, pk=right_key.pk, data=data)).valid
-        assert oberon.verify_token(
+        assert not oberon.verify_token(
             VerifyOberonTokenRequest(token=token_response.token, pk=wrong_key.pk, data=data)).valid
 
     def test_demo_with_blinding(self):
