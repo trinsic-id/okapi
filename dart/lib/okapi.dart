@@ -74,6 +74,9 @@ class Oberon {
   static final _oberonUnBlindToken = OkapiNative.library
       .lookupFunction<OkapiFunctionNative, OkapiFunction>(
           'oberon_unblind_token');
+  static final _oberonVerifyToken = OkapiNative.library
+      .lookupFunction<OkapiFunctionNative, OkapiFunction>(
+      'oberon_verify_token');
   static final _oberonVerifyProof = OkapiNative.library
       .lookupFunction<OkapiFunctionNative, OkapiFunction>(
           'oberon_verify_proof');
@@ -97,6 +100,10 @@ class Oberon {
           UnBlindOberonTokenRequest request) =>
       OkapiNative.nativeCall(
           _oberonUnBlindToken, request, UnBlindOberonTokenResponse());
+  static VerifyOberonTokenResponse VerifyToken(
+      VerifyOberonTokenRequest request) =>
+      OkapiNative.nativeCall(
+          _oberonVerifyToken, request, VerifyOberonTokenResponse());
   static VerifyOberonProofResponse VerifyProof(
           VerifyOberonProofRequest request) =>
       OkapiNative.nativeCall(
