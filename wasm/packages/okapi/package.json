@@ -1,7 +1,6 @@
 {
   "name": "@trinsic/okapi",
   "version": "1.0.0",
-  "type": "module",
   "description": "Okapi native binaries wrapper for node and web.",
   "browser": {
     "./lib/native_node/okapi_wasm.js": "./lib/native_browser/okapi_wasm.js",
@@ -13,10 +12,9 @@
     "lib/*"
   ],
   "scripts": {
-    "build": "npm run build:proto && npm run build:wasm && npm run build:node && npm run build:browser",
+    "build": "npm run build:proto && npm run build:wasm && npm run build:node",
     "build:proto": "pwsh ./Generate-Proto.ps1",
-    "build:node": "npx tsc -p tsconfig.json && copyfiles -u 1 src/native_node/* ./lib",
-    "build:browser": "npx tsc -p tsconfig.json && copyfiles -u 1 src/native_browser/* ./lib",
+    "build:node": "npx tsc -p tsconfig.json && copyfiles -u 1 src/native_*/* ./lib",
     "build:wasm": "npm run build:wasm:node && npm run build:wasm:browser",
     "build:wasm:node": "npx wasm-pack build --target nodejs --out-dir packages/okapi/src/native_node && npm run build:clean",
     "build:wasm:browser": "npx wasm-pack build --target bundler --out-dir packages/okapi/src/native_browser && npm run build:clean",
