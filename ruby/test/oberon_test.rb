@@ -36,8 +36,12 @@ class OberonTest < Minitest::Test
     wrong_key = Okapi::Oberon.create_key(Okapi::Security::V1::CreateOberonKeyRequest.new(seed: other_seed))
 
     token = Okapi::Oberon.create_token(Okapi::Security::V1::CreateOberonTokenRequest.new(data: data, sk: right_key.sk))
-    right_verify = Okapi::Oberon.verify_token(Okapi::Security::V1::VerifyOberonTokenRequest.new(data: data, pk: right_key.pk, token: token.token))
-    wrong_verify = Okapi::Oberon.verify_token(Okapi::Security::V1::VerifyOberonTokenRequest.new(data: data, pk: wrong_key.pk, token: token.token))
+    right_verify = Okapi::Oberon.verify_token(Okapi::Security::V1::VerifyOberonTokenRequest.new(data: data,
+                                                                                                pk: right_key.pk,
+                                                                                                token: token.token))
+    wrong_verify = Okapi::Oberon.verify_token(Okapi::Security::V1::VerifyOberonTokenRequest.new(data: data,
+                                                                                                pk: wrong_key.pk,
+                                                                                                token: token.token))
 
     assert right_verify.valid
     assert !wrong_verify.valid
