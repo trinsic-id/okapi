@@ -22,6 +22,11 @@ pub extern "C" fn oberon_unblind_token(request: ByteBuffer, response: &mut ByteB
 }
 
 #[no_mangle]
+pub extern "C" fn oberon_verify_token(request: ByteBuffer, response: &mut ByteBuffer, err: &mut ExternError) -> i32 {
+    c_impl!(VerifyOberonTokenRequest, Oberon, verify_token, request, response, err)
+}
+
+#[no_mangle]
 pub extern "C" fn oberon_create_proof(request: ByteBuffer, response: &mut ByteBuffer, err: &mut ExternError) -> i32 {
     c_impl!(CreateOberonProofRequest, Oberon, proof, request, response, err)
 }
