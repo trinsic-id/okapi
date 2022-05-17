@@ -76,7 +76,8 @@ module.exports = async (config) => {
             resolve: {
                 alias: {
                     [path.resolve(__dirname, "../src/native_node/okapi_wasm.js")]:
-                        path.resolve(__dirname, "../src/native_browser/okapi_wasm.js")
+                        path.resolve(__dirname, "../src/native_browser/okapi_wasm.js"),
+                    [path.resolve(__dirname, "../src/native_node/okapi_wasm_bg.wasm")]: path.resolve(__dirname, "../src/native_browser/okapi_wasm_bg.wasm"),
                 },
                 extensions: [".ts", ".js"],
                 fallback: {

@@ -4,7 +4,7 @@
   "description": "Okapi native binaries wrapper for node and web.",
   "browser": {
     "./lib/native_node/okapi_wasm.js": "./lib/native_browser/okapi_wasm.js",
-    "./lib/native_node/okapi_wasm_bg.wasm": false
+    "./lib/native_node/okapi_wasm_bg.wasm": "./lib/native_browser/okapi_wasm_bg.wasm"
   },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
