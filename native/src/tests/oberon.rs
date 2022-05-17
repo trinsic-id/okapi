@@ -336,18 +336,33 @@ fn test_unblind_token() {
 
 #[test]
 fn test_verify_token() {
-    let data = vec![4,1,1,3];
-    let req = CreateOberonKeyRequest { seed: vec![1,2,3] };
+    let data = vec![4, 1, 1, 3];
+    let req = CreateOberonKeyRequest { seed: vec![1, 2, 3] };
     let key_resp = crate::Oberon::key(&req).unwrap();
-    let token = crate::Oberon::token(&CreateOberonTokenRequest { sk: key_resp.sk, data: data.clone(), blinding: vec![] }).unwrap();
+    let token = crate::Oberon::token(&CreateOberonTokenRequest {
+        sk: key_resp.sk,
+        data: data.clone(),
+        blinding: vec![],
+    })
+    .unwrap();
 
     // Verify with proper public key
-    let key_verify_good = crate::Oberon::verify_token(&VerifyOberonTokenRequest{token: token.token.clone(), pk: key_resp.pk.clone(), data: data.clone() }).unwrap();
+    let key_verify_good = crate::Oberon::verify_token(&VerifyOberonTokenRequest {
+        token: token.token.clone(),
+        pk: key_resp.pk.clone(),
+        data: data.clone(),
+    })
+    .unwrap();
     assert_eq!(key_verify_good.valid, true);
 
     // Verify with improper public key
-    let wrong_key = crate::Oberon::key(&CreateOberonKeyRequest{seed:vec![0,1,2]}).unwrap();
-    let key_verify_bad = crate::Oberon::verify_token(&VerifyOberonTokenRequest{token: token.token.clone(), pk: wrong_key.pk.clone(), data: data.clone() }).unwrap();
+    let wrong_key = crate::Oberon::key(&CreateOberonKeyRequest { seed: vec![0, 1, 2] }).unwrap();
+    let key_verify_bad = crate::Oberon::verify_token(&VerifyOberonTokenRequest {
+        token: token.token.clone(),
+        pk: wrong_key.pk.clone(),
+        data: data.clone(),
+    })
+    .unwrap();
     assert_eq!(key_verify_bad.valid, false);
 }
 
