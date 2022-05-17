@@ -44,7 +44,7 @@ func getLibraryName() string {
 	case "windows":
 		return "okapi.dll"
 	case "darwin":
-		return "/Users/scott/Documents/GitHub/okapi/libs/macos/libokapi.dylib"
+		return "libokapi.dylib"
 	case "linux":
 		return "libokapi.so"
 	default:

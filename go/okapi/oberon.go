@@ -8,6 +8,7 @@ type Oberoner interface {
 	CreateToken(request *okapiproto.CreateOberonTokenRequest) (*okapiproto.CreateOberonTokenResponse, error)
 	BlindToken(request *okapiproto.BlindOberonTokenRequest) (*okapiproto.BlindOberonTokenResponse, error)
 	UnBlindToken(request *okapiproto.UnBlindOberonTokenRequest) (*okapiproto.UnBlindOberonTokenResponse, error)
+	VerifyToken(request *okapiproto.VerifyOberonTokenRequest) (*okapiproto.VerifyOberonTokenResponse, error)
 	CreateProof(request *okapiproto.CreateOberonProofRequest) (*okapiproto.CreateOberonProofResponse, error)
 	VerifyProof(request *okapiproto.VerifyOberonProofRequest) (*okapiproto.VerifyOberonProofResponse, error)
 }
@@ -18,6 +19,12 @@ func Oberon() Oberoner {
 }
 
 type oberon struct{}
+
+func (d *oberon) VerifyToken(request *okapiproto.VerifyOberonTokenRequest) (*okapiproto.VerifyOberonTokenResponse, error) {
+	response := okapiproto.VerifyOberonTokenResponse{}
+	err := callOkapiNative(request, &response, "oberon_verify_token")
+	return &response, err
+}
 
 func (d *oberon) CreateKey(request *okapiproto.CreateOberonKeyRequest) (*okapiproto.CreateOberonKeyResponse, error) {
 	response := okapiproto.CreateOberonKeyResponse{}

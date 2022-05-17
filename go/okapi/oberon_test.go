@@ -34,6 +34,36 @@ func TestOberonDemo(t *testing.T) {
 	assert.True(t, result.Valid)
 }
 
+func TestVerifyToken(t *testing.T) {
+	ob := Oberon()
+
+	data := []byte("4113")
+	seed := []byte("123")
+	otherSeed := []byte("012")
+
+	rightKey, _ := ob.CreateKey(&okapiproto.CreateOberonKeyRequest{Seed: seed})
+	wrongKey, _ := ob.CreateKey(&okapiproto.CreateOberonKeyRequest{Seed: otherSeed})
+
+	token, _ := ob.CreateToken(&okapiproto.CreateOberonTokenRequest{
+		Sk:   rightKey.Sk,
+		Data: data,
+	})
+
+	rightResult, _ := ob.VerifyToken(&okapiproto.VerifyOberonTokenRequest{
+		Token: token.Token,
+		Pk:    rightKey.Pk,
+		Data:  data,
+	})
+	assert.True(t, rightResult.Valid)
+
+	wrongResult, _ := ob.VerifyToken(&okapiproto.VerifyOberonTokenRequest{
+		Token: token.Token,
+		Pk:    wrongKey.Pk,
+		Data:  data,
+	})
+	assert.False(t, wrongResult.Valid)
+}
+
 func TestDemoWithBlinding(t *testing.T) {
 	ob := Oberon()
 
