@@ -21,13 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Protobuf Include="..\..\..\proto\okapi\keys\v1\keys.proto" Link="Protobuf/keys.proto" ProtoRoot="..\..\..\proto"/>
-        <Protobuf Include="..\..\..\proto\okapi\transport\v1\transport.proto" Link="Protobuf/transport.proto" ProtoRoot="..\..\..\proto"/>
-        <Protobuf Include="..\..\..\proto\okapi\proofs\v1\proofs.proto" Link="Protobuf/proofs.proto" ProtoRoot="..\..\..\proto"/>
-        <Protobuf Include="..\..\..\proto\okapi\security\v1\security.proto" Link="Protobuf/security.proto" ProtoRoot="..\..\..\proto"/>
-        <Protobuf Include="..\..\..\proto\pbmse\v1\pbmse.proto" Link="Protobuf/pbmse/pbmse.proto" ProtoRoot="..\..\..\proto"/>
-        <Protobuf Include="..\..\..\proto\okapi\examples\v1\examples.proto" Link="Protobuf/examples.proto" ProtoRoot="..\..\..\proto"/>
-        <Protobuf Include="..\..\..\proto\okapi\hashing\v1\hashing.proto" Link="Protobuf/hashing.proto" ProtoRoot="..\..\..\proto"/>
+        <Protobuf Include="..\..\..\proto\**\*.proto" Link="Protobuf/keys.proto" ProtoRoot="..\..\..\proto"/>
     </ItemGroup>
 
     <ItemGroup>

@@ -39,6 +39,39 @@ public class OberonTests
 
         Assert.True(result.Valid);
     }
+    
+    [Fact]
+    public void TestVerifyToken()
+    {
+        var data = ByteString.CopyFromUtf8("4113");
+        var seed = ByteString.CopyFromUtf8("123");
+        var otherSeed = ByteString.CopyFromUtf8("012");
+        
+        var rightKey = Oberon.CreateKey(new() {Seed = seed});
+        var wrongKey = Oberon.CreateKey(new() {Seed = otherSeed});
+        
+        var token = Oberon.CreateToken(new CreateOberonTokenRequest
+        {
+            Data = data,
+            Sk = rightKey.Sk
+        });
+
+        var rightResult = Oberon.VerifyToken(new ()
+        {
+            Data = data,
+            Pk = rightKey.Pk,
+            Token = token.Token
+        });
+        Assert.True(rightResult.Valid);
+        
+        var wrongResult = Oberon.VerifyToken(new ()
+        {
+            Data = data,
+            Pk = wrongKey.Pk,
+            Token = token.Token
+        });
+        Assert.False(wrongResult.Valid);
+    }
 
     [Fact]
     public void TestDemoWithBlinding()

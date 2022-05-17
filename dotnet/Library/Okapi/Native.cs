@@ -116,6 +116,9 @@ internal class Native
 
     [DllImport(LibraryName, CharSet = CharSet.Auto, BestFitMapping = false, ThrowOnUnmappableChar = true)]
     internal static extern int oberon_unblind_token(ByteBuffer request, out ByteBuffer response, out ExternError error);
+    
+    [DllImport(LibraryName, CharSet = CharSet.Auto, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+    internal static extern int oberon_verify_token(ByteBuffer request, out ByteBuffer response, out ExternError error);
 
     #endregion
 }
