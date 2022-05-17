@@ -41,6 +41,19 @@ void main() {
       var result = Oberon.VerifyProof(verifyProofRequest);
       assert(result.valid);
     });
+    test('VerifyToken', () {
+      var rightKey = Oberon.CreateKey(CreateOberonKeyRequest(seed: [1,2,3]));
+      var wrongKey = Oberon.CreateKey(CreateOberonKeyRequest(seed: [0,1,2]));
+      var data = Uint8List.fromList(utf8.encode('4113'));
+
+      var token = Oberon.CreateToken(CreateOberonTokenRequest(sk: rightKey.sk, data: data));
+
+      var verifyRight = Oberon.VerifyToken(VerifyOberonTokenRequest(token: token.token, pk: rightKey.pk, data: data));
+      var verifyWrong = Oberon.VerifyToken(VerifyOberonTokenRequest(token: token.token, pk: wrongKey.pk, data: data));
+
+      assert(verifyRight.valid);
+      assert(!verifyWrong.valid);
+    });
     test('Demo With Blinding', () {
       var key = Oberon.CreateKey(CreateOberonKeyRequest());
       var data = Uint8List.fromList(utf8.encode("alice"));

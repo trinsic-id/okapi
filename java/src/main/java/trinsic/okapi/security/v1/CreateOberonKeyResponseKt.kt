@@ -3,7 +3,7 @@
 
 package trinsic.okapi.security.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializecreateOberonKeyResponse")
 public inline fun createOberonKeyResponse(block: trinsic.okapi.security.v1.CreateOberonKeyResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.security.v1.Security.CreateOberonKeyResponse =
   trinsic.okapi.security.v1.CreateOberonKeyResponseKt.Dsl._create(trinsic.okapi.security.v1.Security.CreateOberonKeyResponse.newBuilder()).apply { block() }._build()
 public object CreateOberonKeyResponseKt {
@@ -76,3 +76,4 @@ public object CreateOberonKeyResponseKt {
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.security.v1.Security.CreateOberonKeyResponse.copy(block: trinsic.okapi.security.v1.CreateOberonKeyResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.security.v1.Security.CreateOberonKeyResponse =
   trinsic.okapi.security.v1.CreateOberonKeyResponseKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+

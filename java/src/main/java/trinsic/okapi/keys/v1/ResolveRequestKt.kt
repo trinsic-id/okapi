@@ -3,7 +3,7 @@
 
 package trinsic.okapi.keys.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializeresolveRequest")
 public inline fun resolveRequest(block: trinsic.okapi.keys.v1.ResolveRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.keys.v1.Keys.ResolveRequest =
   trinsic.okapi.keys.v1.ResolveRequestKt.Dsl._create(trinsic.okapi.keys.v1.Keys.ResolveRequest.newBuilder()).apply { block() }._build()
 public object ResolveRequestKt {
@@ -43,3 +43,4 @@ public object ResolveRequestKt {
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.keys.v1.Keys.ResolveRequest.copy(block: trinsic.okapi.keys.v1.ResolveRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.keys.v1.Keys.ResolveRequest =
   trinsic.okapi.keys.v1.ResolveRequestKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+

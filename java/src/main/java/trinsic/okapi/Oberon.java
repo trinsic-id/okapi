@@ -40,6 +40,15 @@ public class Oberon extends OkapiNative {
         return Security.UnBlindOberonTokenResponse.parseFrom(bufferToByteArray(responseBuffer));
     }
 
+    public static Security.VerifyOberonTokenResponse verifyToken(Security.VerifyOberonTokenRequest request) throws DidException, InvalidProtocolBufferException {
+        OkapiByteBuffer.ByValue requestBuffer = messageToBuffer(request);
+        OkapiByteBuffer responseBuffer = new OkapiByteBuffer();
+        ExternError errBuffer = new ExternError();
+        var result = getNativeLibrary().oberon_verify_token(requestBuffer, responseBuffer, errBuffer);
+        errBuffer.raiseError(result);
+        return Security.VerifyOberonTokenResponse.parseFrom(bufferToByteArray(responseBuffer));
+    }
+
     public static Security.CreateOberonProofResponse createProof(Security.CreateOberonProofRequest request) throws DidException, InvalidProtocolBufferException {
         OkapiByteBuffer.ByValue requestBuffer = messageToBuffer(request);
         OkapiByteBuffer responseBuffer = new OkapiByteBuffer();

@@ -3,7 +3,7 @@
 
 package trinsic.okapi.security.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializecreateOberonTokenRequest")
 public inline fun createOberonTokenRequest(block: trinsic.okapi.security.v1.CreateOberonTokenRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.security.v1.Security.CreateOberonTokenRequest =
   trinsic.okapi.security.v1.CreateOberonTokenRequestKt.Dsl._create(trinsic.okapi.security.v1.Security.CreateOberonTokenRequest.newBuilder()).apply { block() }._build()
 public object CreateOberonTokenRequestKt {
@@ -169,3 +169,4 @@ public object CreateOberonTokenRequestKt {
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.security.v1.Security.CreateOberonTokenRequest.copy(block: trinsic.okapi.security.v1.CreateOberonTokenRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.security.v1.Security.CreateOberonTokenRequest =
   trinsic.okapi.security.v1.CreateOberonTokenRequestKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+

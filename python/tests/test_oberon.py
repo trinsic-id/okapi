@@ -8,6 +8,7 @@ from trinsicokapi.proto.okapi.security.v1 import (
     VerifyOberonProofRequest,
     UnBlindOberonTokenRequest,
     BlindOberonTokenRequest,
+    VerifyOberonTokenRequest,
 )
 
 
@@ -28,6 +29,29 @@ class OberonTests(unittest.TestCase):
         )
 
         self.assertTrue(result.valid, "Proof should verify")
+
+    def test_oberon_verify_token(self):
+        data = bytes("4113", "utf8")
+        seed = bytes("123", "utf8")
+        other_seed = bytes("012", "utf8")
+
+        right_key = oberon.create_key(CreateOberonKeyRequest(seed=seed))
+        wrong_key = oberon.create_key(CreateOberonKeyRequest(seed=other_seed))
+
+        token_response = oberon.create_token(
+            CreateOberonTokenRequest(sk=right_key.sk, data=data)
+        )
+
+        assert oberon.verify_token(
+            VerifyOberonTokenRequest(
+                token=token_response.token, pk=right_key.pk, data=data
+            )
+        ).valid
+        assert not oberon.verify_token(
+            VerifyOberonTokenRequest(
+                token=token_response.token, pk=wrong_key.pk, data=data
+            )
+        ).valid
 
     def test_demo_with_blinding(self):
         key = oberon.create_key(CreateOberonKeyRequest())

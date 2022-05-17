@@ -75,6 +75,7 @@ module Okapi
     attach_function :oberon_create_token, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
     attach_function :oberon_blind_token, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
     attach_function :oberon_unblind_token, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
+    attach_function :oberon_verify_token, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
     attach_function :oberon_create_proof, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
     attach_function :oberon_verify_proof, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
 

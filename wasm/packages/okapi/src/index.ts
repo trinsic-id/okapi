@@ -167,6 +167,17 @@ export class Oberon {
       )
     );
   }
+
+  static async verifyToken(
+      request: proto.VerifyOberonTokenRequest
+  ): Promise<proto.VerifyOberonTokenResponse> {
+    await initialize();
+    return proto.VerifyOberonTokenResponse.decode(
+        native.oberon_verify_token(
+            proto.VerifyOberonTokenRequest.encode(request).finish()
+        )
+    );
+  }
 }
 
 export class Hashing {

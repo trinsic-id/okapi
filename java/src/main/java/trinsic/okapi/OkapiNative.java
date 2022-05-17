@@ -114,6 +114,8 @@ public class OkapiNative {
 
         int oberon_unblind_token(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
 
+        int oberon_verify_token(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
+
         int oberon_create_proof(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
 
         int oberon_verify_proof(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);

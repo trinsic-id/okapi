@@ -3,7 +3,7 @@
 
 package trinsic.okapi.pbmse.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializeencryptedMessage")
 public inline fun encryptedMessage(block: trinsic.okapi.pbmse.v1.EncryptedMessageKt.Dsl.() -> kotlin.Unit): trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage =
   trinsic.okapi.pbmse.v1.EncryptedMessageKt.Dsl._create(trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.newBuilder()).apply { block() }._build()
 public object EncryptedMessageKt {
@@ -112,7 +112,8 @@ public object EncryptedMessageKt {
     @kotlin.jvm.JvmName("addRecipients")
     public fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient, RecipientsProxy>.add(value: trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient) {
       _builder.addRecipients(value)
-    }/**
+    }
+    /**
      * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
      * @param value The recipients to add.
      */
@@ -121,7 +122,8 @@ public object EncryptedMessageKt {
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient, RecipientsProxy>.plusAssign(value: trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient) {
       add(value)
-    }/**
+    }
+    /**
      * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
      * @param values The recipients to add.
      */
@@ -129,7 +131,8 @@ public object EncryptedMessageKt {
     @kotlin.jvm.JvmName("addAllRecipients")
     public fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient, RecipientsProxy>.addAll(values: kotlin.collections.Iterable<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient>) {
       _builder.addAllRecipients(values)
-    }/**
+    }
+    /**
      * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
      * @param values The recipients to add.
      */
@@ -138,7 +141,8 @@ public object EncryptedMessageKt {
     @Suppress("NOTHING_TO_INLINE")
     public inline operator fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient, RecipientsProxy>.plusAssign(values: kotlin.collections.Iterable<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient>) {
       addAll(values)
-    }/**
+    }
+    /**
      * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
      * @param index The index to set the value at.
      * @param value The recipients to set.
@@ -147,15 +151,19 @@ public object EncryptedMessageKt {
     @kotlin.jvm.JvmName("setRecipients")
     public operator fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient, RecipientsProxy>.set(index: kotlin.Int, value: trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient) {
       _builder.setRecipients(index, value)
-    }/**
+    }
+    /**
      * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("clearRecipients")
     public fun com.google.protobuf.kotlin.DslList<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient, RecipientsProxy>.clear() {
       _builder.clearRecipients()
-    }}
+    }
+
+  }
 }
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.copy(block: trinsic.okapi.pbmse.v1.EncryptedMessageKt.Dsl.() -> kotlin.Unit): trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage =
   trinsic.okapi.pbmse.v1.EncryptedMessageKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+

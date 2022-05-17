@@ -703,3 +703,125 @@ class UnBlindOberonTokenResponse extends $pb.GeneratedMessage {
   void clearToken() => clearField(1);
 }
 
+class VerifyOberonTokenRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'VerifyOberonTokenRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'okapi.security.v1'), createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'token', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pk', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'data', $pb.PbFieldType.OY)
+    ..hasRequiredFields = false
+  ;
+
+  VerifyOberonTokenRequest._() : super();
+  factory VerifyOberonTokenRequest({
+    $core.List<$core.int>? token,
+    $core.List<$core.int>? pk,
+    $core.List<$core.int>? data,
+  }) {
+    final _result = create();
+    if (token != null) {
+      _result.token = token;
+    }
+    if (pk != null) {
+      _result.pk = pk;
+    }
+    if (data != null) {
+      _result.data = data;
+    }
+    return _result;
+  }
+  factory VerifyOberonTokenRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory VerifyOberonTokenRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  VerifyOberonTokenRequest clone() => VerifyOberonTokenRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  VerifyOberonTokenRequest copyWith(void Function(VerifyOberonTokenRequest) updates) => super.copyWith((message) => updates(message as VerifyOberonTokenRequest)) as VerifyOberonTokenRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static VerifyOberonTokenRequest create() => VerifyOberonTokenRequest._();
+  VerifyOberonTokenRequest createEmptyInstance() => create();
+  static $pb.PbList<VerifyOberonTokenRequest> createRepeated() => $pb.PbList<VerifyOberonTokenRequest>();
+  @$core.pragma('dart2js:noInline')
+  static VerifyOberonTokenRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<VerifyOberonTokenRequest>(create);
+  static VerifyOberonTokenRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<$core.int> get token => $_getN(0);
+  @$pb.TagNumber(1)
+  set token($core.List<$core.int> v) { $_setBytes(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasToken() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearToken() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.List<$core.int> get pk => $_getN(1);
+  @$pb.TagNumber(2)
+  set pk($core.List<$core.int> v) { $_setBytes(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPk() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPk() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.List<$core.int> get data => $_getN(2);
+  @$pb.TagNumber(3)
+  set data($core.List<$core.int> v) { $_setBytes(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasData() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearData() => clearField(3);
+}
+
+class VerifyOberonTokenResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'VerifyOberonTokenResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'okapi.security.v1'), createEmptyInstance: create)
+    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'valid')
+    ..hasRequiredFields = false
+  ;
+
+  VerifyOberonTokenResponse._() : super();
+  factory VerifyOberonTokenResponse({
+    $core.bool? valid,
+  }) {
+    final _result = create();
+    if (valid != null) {
+      _result.valid = valid;
+    }
+    return _result;
+  }
+  factory VerifyOberonTokenResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory VerifyOberonTokenResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  VerifyOberonTokenResponse clone() => VerifyOberonTokenResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  VerifyOberonTokenResponse copyWith(void Function(VerifyOberonTokenResponse) updates) => super.copyWith((message) => updates(message as VerifyOberonTokenResponse)) as VerifyOberonTokenResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static VerifyOberonTokenResponse create() => VerifyOberonTokenResponse._();
+  VerifyOberonTokenResponse createEmptyInstance() => create();
+  static $pb.PbList<VerifyOberonTokenResponse> createRepeated() => $pb.PbList<VerifyOberonTokenResponse>();
+  @$core.pragma('dart2js:noInline')
+  static VerifyOberonTokenResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<VerifyOberonTokenResponse>(create);
+  static VerifyOberonTokenResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.bool get valid => $_getBF(0);
+  @$pb.TagNumber(1)
+  set valid($core.bool v) { $_setBool(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasValid() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearValid() => clearField(1);
+}
+

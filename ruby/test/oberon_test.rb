@@ -27,6 +27,26 @@ class OberonTest < Minitest::Test
     assert result.valid == true
   end
 
+  def test_verify_token
+    data = '4113'
+    seed = '123'
+    other_seed = '012'
+
+    right_key = Okapi::Oberon.create_key(Okapi::Security::V1::CreateOberonKeyRequest.new(seed: seed))
+    wrong_key = Okapi::Oberon.create_key(Okapi::Security::V1::CreateOberonKeyRequest.new(seed: other_seed))
+
+    token = Okapi::Oberon.create_token(Okapi::Security::V1::CreateOberonTokenRequest.new(data: data, sk: right_key.sk))
+    right_verify = Okapi::Oberon.verify_token(Okapi::Security::V1::VerifyOberonTokenRequest.new(data: data,
+                                                                                                pk: right_key.pk,
+                                                                                                token: token.token))
+    wrong_verify = Okapi::Oberon.verify_token(Okapi::Security::V1::VerifyOberonTokenRequest.new(data: data,
+                                                                                                pk: wrong_key.pk,
+                                                                                                token: token.token))
+
+    assert right_verify.valid
+    assert !wrong_verify.valid
+  end
+
   # rubocop:disable Metrics/MethodLength
   # rubocop:disable Metrics/AbcSize
   def test_demo_with_blinding

@@ -3,7 +3,7 @@
 
 package trinsic.okapi.transport.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializepackResponse")
 public inline fun packResponse(block: trinsic.okapi.transport.v1.PackResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.PackResponse =
   trinsic.okapi.transport.v1.PackResponseKt.Dsl._create(trinsic.okapi.transport.v1.Transport.PackResponse.newBuilder()).apply { block() }._build()
 public object PackResponseKt {
@@ -50,3 +50,7 @@ public object PackResponseKt {
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.transport.v1.Transport.PackResponse.copy(block: trinsic.okapi.transport.v1.PackResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.PackResponse =
   trinsic.okapi.transport.v1.PackResponseKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+
+val trinsic.okapi.transport.v1.Transport.PackResponseOrBuilder.messageOrNull: trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage?
+  get() = if (hasMessage()) getMessage() else null
+

@@ -26,7 +26,7 @@ func callOkapiNative(request proto.Message, response proto.Message, funcName str
 }
 
 func byteBufferFree(responseBuffer ByteBuffer) error {
-	dll := syscall.MustLoadDLL("okapi.dll")
+	dll := syscall.MustLoadDLL(getLibraryName())
 	okapiFunc := dll.MustFindProc("okapi_bytebuffer_free")
 	_, _, err := okapiFunc.Call(uintptr(unsafe.Pointer(&responseBuffer)))
 	if err != syscall.Errno(0x0) {

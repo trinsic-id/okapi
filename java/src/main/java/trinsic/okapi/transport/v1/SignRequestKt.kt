@@ -3,7 +3,7 @@
 
 package trinsic.okapi.transport.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializesignRequest")
 public inline fun signRequest(block: trinsic.okapi.transport.v1.SignRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.SignRequest =
   trinsic.okapi.transport.v1.SignRequestKt.Dsl._create(trinsic.okapi.transport.v1.Transport.SignRequest.newBuilder()).apply { block() }._build()
 public object SignRequestKt {
@@ -91,3 +91,10 @@ public object SignRequestKt {
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.transport.v1.Transport.SignRequest.copy(block: trinsic.okapi.transport.v1.SignRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.SignRequest =
   trinsic.okapi.transport.v1.SignRequestKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+
+val trinsic.okapi.transport.v1.Transport.SignRequestOrBuilder.keyOrNull: trinsic.okapi.keys.v1.Keys.JsonWebKey?
+  get() = if (hasKey()) getKey() else null
+
+val trinsic.okapi.transport.v1.Transport.SignRequestOrBuilder.appendToOrNull: trinsic.okapi.pbmse.v1.Pbmse.SignedMessage?
+  get() = if (hasAppendTo()) getAppendTo() else null
+

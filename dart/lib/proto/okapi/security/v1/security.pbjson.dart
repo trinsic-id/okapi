@@ -139,3 +139,25 @@ const UnBlindOberonTokenResponse$json = const {
 
 /// Descriptor for `UnBlindOberonTokenResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List unBlindOberonTokenResponseDescriptor = $convert.base64Decode('ChpVbkJsaW5kT2Jlcm9uVG9rZW5SZXNwb25zZRIUCgV0b2tlbhgBIAEoDFIFdG9rZW4=');
+@$core.Deprecated('Use verifyOberonTokenRequestDescriptor instead')
+const VerifyOberonTokenRequest$json = const {
+  '1': 'VerifyOberonTokenRequest',
+  '2': const [
+    const {'1': 'token', '3': 1, '4': 1, '5': 12, '10': 'token'},
+    const {'1': 'pk', '3': 2, '4': 1, '5': 12, '10': 'pk'},
+    const {'1': 'data', '3': 3, '4': 1, '5': 12, '10': 'data'},
+  ],
+};
+
+/// Descriptor for `VerifyOberonTokenRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List verifyOberonTokenRequestDescriptor = $convert.base64Decode('ChhWZXJpZnlPYmVyb25Ub2tlblJlcXVlc3QSFAoFdG9rZW4YASABKAxSBXRva2VuEg4KAnBrGAIgASgMUgJwaxISCgRkYXRhGAMgASgMUgRkYXRh');
+@$core.Deprecated('Use verifyOberonTokenResponseDescriptor instead')
+const VerifyOberonTokenResponse$json = const {
+  '1': 'VerifyOberonTokenResponse',
+  '2': const [
+    const {'1': 'valid', '3': 1, '4': 1, '5': 8, '10': 'valid'},
+  ],
+};
+
+/// Descriptor for `VerifyOberonTokenResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List verifyOberonTokenResponseDescriptor = $convert.base64Decode('ChlWZXJpZnlPYmVyb25Ub2tlblJlc3BvbnNlEhQKBXZhbGlkGAEgASgIUgV2YWxpZA==');

@@ -3,7 +3,7 @@
 
 package trinsic.okapi.pbmse.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializesignature")
 public inline fun signature(block: trinsic.okapi.pbmse.v1.SignatureKt.Dsl.() -> kotlin.Unit): trinsic.okapi.pbmse.v1.Pbmse.Signature =
   trinsic.okapi.pbmse.v1.SignatureKt.Dsl._create(trinsic.okapi.pbmse.v1.Pbmse.Signature.newBuilder()).apply { block() }._build()
 public object SignatureKt {
@@ -60,3 +60,4 @@ public object SignatureKt {
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.pbmse.v1.Pbmse.Signature.copy(block: trinsic.okapi.pbmse.v1.SignatureKt.Dsl.() -> kotlin.Unit): trinsic.okapi.pbmse.v1.Pbmse.Signature =
   trinsic.okapi.pbmse.v1.SignatureKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+

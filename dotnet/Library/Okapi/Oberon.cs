@@ -33,4 +33,9 @@ public static class Oberon
     {
         return Native.Call<UnBlindOberonTokenRequest, UnBlindOberonTokenResponse>(request, Native.oberon_unblind_token);
     }
+    
+    public static VerifyOberonTokenResponse VerifyToken(VerifyOberonTokenRequest request)
+    {
+        return Native.Call<VerifyOberonTokenRequest, VerifyOberonTokenResponse>(request, Native.oberon_verify_token);
+    }
 }

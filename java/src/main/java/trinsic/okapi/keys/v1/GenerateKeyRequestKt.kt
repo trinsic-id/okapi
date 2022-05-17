@@ -3,7 +3,7 @@
 
 package trinsic.okapi.keys.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializegenerateKeyRequest")
 public inline fun generateKeyRequest(block: trinsic.okapi.keys.v1.GenerateKeyRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.keys.v1.Keys.GenerateKeyRequest =
   trinsic.okapi.keys.v1.GenerateKeyRequestKt.Dsl._create(trinsic.okapi.keys.v1.Keys.GenerateKeyRequest.newBuilder()).apply { block() }._build()
 public object GenerateKeyRequestKt {
@@ -60,3 +60,4 @@ public object GenerateKeyRequestKt {
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.keys.v1.Keys.GenerateKeyRequest.copy(block: trinsic.okapi.keys.v1.GenerateKeyRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.keys.v1.Keys.GenerateKeyRequest =
   trinsic.okapi.keys.v1.GenerateKeyRequestKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+

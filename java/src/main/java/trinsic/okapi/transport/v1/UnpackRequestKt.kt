@@ -3,7 +3,7 @@
 
 package trinsic.okapi.transport.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializeunpackRequest")
 public inline fun unpackRequest(block: trinsic.okapi.transport.v1.UnpackRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.UnpackRequest =
   trinsic.okapi.transport.v1.UnpackRequestKt.Dsl._create(trinsic.okapi.transport.v1.Transport.UnpackRequest.newBuilder()).apply { block() }._build()
 public object UnpackRequestKt {
@@ -98,3 +98,13 @@ public object UnpackRequestKt {
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.transport.v1.Transport.UnpackRequest.copy(block: trinsic.okapi.transport.v1.UnpackRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.UnpackRequest =
   trinsic.okapi.transport.v1.UnpackRequestKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+
+val trinsic.okapi.transport.v1.Transport.UnpackRequestOrBuilder.senderKeyOrNull: trinsic.okapi.keys.v1.Keys.JsonWebKey?
+  get() = if (hasSenderKey()) getSenderKey() else null
+
+val trinsic.okapi.transport.v1.Transport.UnpackRequestOrBuilder.receiverKeyOrNull: trinsic.okapi.keys.v1.Keys.JsonWebKey?
+  get() = if (hasReceiverKey()) getReceiverKey() else null
+
+val trinsic.okapi.transport.v1.Transport.UnpackRequestOrBuilder.messageOrNull: trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage?
+  get() = if (hasMessage()) getMessage() else null
+

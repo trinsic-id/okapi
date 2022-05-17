@@ -3,7 +3,7 @@
 
 package trinsic.okapi.proofs.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializecreateProofResponse")
 public inline fun createProofResponse(block: trinsic.okapi.proofs.v1.CreateProofResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.proofs.v1.Proofs.CreateProofResponse =
   trinsic.okapi.proofs.v1.CreateProofResponseKt.Dsl._create(trinsic.okapi.proofs.v1.Proofs.CreateProofResponse.newBuilder()).apply { block() }._build()
 public object CreateProofResponseKt {
@@ -50,3 +50,7 @@ public object CreateProofResponseKt {
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.proofs.v1.Proofs.CreateProofResponse.copy(block: trinsic.okapi.proofs.v1.CreateProofResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.proofs.v1.Proofs.CreateProofResponse =
   trinsic.okapi.proofs.v1.CreateProofResponseKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+
+val trinsic.okapi.proofs.v1.Proofs.CreateProofResponseOrBuilder.signedDocumentOrNull: com.google.protobuf.Struct?
+  get() = if (hasSignedDocument()) getSignedDocument() else null
+

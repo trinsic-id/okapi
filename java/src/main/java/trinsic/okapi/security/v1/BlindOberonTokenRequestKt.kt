@@ -3,7 +3,7 @@
 
 package trinsic.okapi.security.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializeblindOberonTokenRequest")
 public inline fun blindOberonTokenRequest(block: trinsic.okapi.security.v1.BlindOberonTokenRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.security.v1.Security.BlindOberonTokenRequest =
   trinsic.okapi.security.v1.BlindOberonTokenRequestKt.Dsl._create(trinsic.okapi.security.v1.Security.BlindOberonTokenRequest.newBuilder()).apply { block() }._build()
 public object BlindOberonTokenRequestKt {
@@ -144,3 +144,4 @@ public object BlindOberonTokenRequestKt {
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.security.v1.Security.BlindOberonTokenRequest.copy(block: trinsic.okapi.security.v1.BlindOberonTokenRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.security.v1.Security.BlindOberonTokenRequest =
   trinsic.okapi.security.v1.BlindOberonTokenRequestKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+

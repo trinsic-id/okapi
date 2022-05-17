@@ -3,7 +3,7 @@
 
 package trinsic.okapi.proofs.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializeverifyProofRequest")
 public inline fun verifyProofRequest(block: trinsic.okapi.proofs.v1.VerifyProofRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest =
   trinsic.okapi.proofs.v1.VerifyProofRequestKt.Dsl._create(trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest.newBuilder()).apply { block() }._build()
 public object VerifyProofRequestKt {
@@ -26,3 +26,4 @@ public object VerifyProofRequestKt {
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest.copy(block: trinsic.okapi.proofs.v1.VerifyProofRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest =
   trinsic.okapi.proofs.v1.VerifyProofRequestKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+

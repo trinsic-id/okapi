@@ -11,6 +11,8 @@ from trinsicokapi.proto.okapi.security.v1 import (
     UnBlindOberonTokenResponse,
     VerifyOberonProofResponse,
     VerifyOberonProofRequest,
+    VerifyOberonTokenRequest,
+    VerifyOberonTokenResponse,
 )
 from trinsicokapi.wrapper import _typed_wrap_and_call
 
@@ -33,6 +35,12 @@ def create_token(request: CreateOberonTokenRequest) -> CreateOberonTokenResponse
 
 def blind_token(request: BlindOberonTokenRequest) -> BlindOberonTokenResponse:
     return _typed_wrap_and_call("oberon_blind_token", request, BlindOberonTokenResponse)
+
+
+def verify_token(request: VerifyOberonTokenRequest) -> VerifyOberonTokenResponse:
+    return _typed_wrap_and_call(
+        "oberon_verify_token", request, VerifyOberonTokenResponse
+    )
 
 
 def unblind_token(request: UnBlindOberonTokenRequest) -> UnBlindOberonTokenResponse:

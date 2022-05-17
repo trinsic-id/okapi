@@ -3,7 +3,7 @@
 
 package trinsic.okapi.transport.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializepackRequest")
 public inline fun packRequest(block: trinsic.okapi.transport.v1.PackRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.PackRequest =
   trinsic.okapi.transport.v1.PackRequestKt.Dsl._create(trinsic.okapi.transport.v1.Transport.PackRequest.newBuilder()).apply { block() }._build()
 public object PackRequestKt {
@@ -142,3 +142,10 @@ public object PackRequestKt {
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.transport.v1.Transport.PackRequest.copy(block: trinsic.okapi.transport.v1.PackRequestKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.PackRequest =
   trinsic.okapi.transport.v1.PackRequestKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+
+val trinsic.okapi.transport.v1.Transport.PackRequestOrBuilder.senderKeyOrNull: trinsic.okapi.keys.v1.Keys.JsonWebKey?
+  get() = if (hasSenderKey()) getSenderKey() else null
+
+val trinsic.okapi.transport.v1.Transport.PackRequestOrBuilder.receiverKeyOrNull: trinsic.okapi.keys.v1.Keys.JsonWebKey?
+  get() = if (hasReceiverKey()) getReceiverKey() else null
+

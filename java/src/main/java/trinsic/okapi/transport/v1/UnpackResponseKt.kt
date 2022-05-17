@@ -3,7 +3,7 @@
 
 package trinsic.okapi.transport.v1;
 
-@kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("-initializeunpackResponse")
 public inline fun unpackResponse(block: trinsic.okapi.transport.v1.UnpackResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.UnpackResponse =
   trinsic.okapi.transport.v1.UnpackResponseKt.Dsl._create(trinsic.okapi.transport.v1.Transport.UnpackResponse.newBuilder()).apply { block() }._build()
 public object UnpackResponseKt {
@@ -43,3 +43,4 @@ public object UnpackResponseKt {
 @kotlin.jvm.JvmSynthetic
 public inline fun trinsic.okapi.transport.v1.Transport.UnpackResponse.copy(block: trinsic.okapi.transport.v1.UnpackResponseKt.Dsl.() -> kotlin.Unit): trinsic.okapi.transport.v1.Transport.UnpackResponse =
   trinsic.okapi.transport.v1.UnpackResponseKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+

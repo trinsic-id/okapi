@@ -31,3 +31,8 @@ pub fn oberon_blind_token(request: Uint8Array) -> Result<Uint8Array, JsValue> {
 pub fn oberon_unblind_token(request: Uint8Array) -> Result<Uint8Array, JsValue> {
     impl_invoke!(UnBlindOberonTokenRequest, Oberon, unblind, request)
 }
+
+#[wasm_bindgen]
+pub fn oberon_verify_token(request: Uint8Array) -> Result<Uint8Array, JsValue> {
+    impl_invoke!(VerifyOberonTokenRequest, Oberon, verify_token, request)
+}
