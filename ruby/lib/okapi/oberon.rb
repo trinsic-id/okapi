@@ -23,6 +23,11 @@ module Okapi
       Okapi.ffi_call('oberon_unblind_token', request, Okapi::Security::V1::UnBlindOberonTokenResponse)
     end
 
+    def self.verify_token(request)
+      Okapi.verify_type(request, Okapi::Security::V1::VerifyOberonTokenRequest)
+      Okapi.ffi_call('oberon_verify_token', request, Okapi::Security::V1::VerifyOberonTokenResponse)
+    end
+
     def self.create_proof(request)
       Okapi.verify_type(request, Okapi::Security::V1::CreateOberonProofRequest)
       Okapi.ffi_call('oberon_create_proof', request, Okapi::Security::V1::CreateOberonProofResponse)
