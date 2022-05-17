@@ -101,6 +101,22 @@ export interface UnBlindOberonTokenResponse {
   token: Uint8Array;
 }
 
+/** Verify that an oberon token comes from the desired issuer */
+export interface VerifyOberonTokenRequest {
+  /** raw token bytes */
+  token: Uint8Array;
+  /** token is valid to this public key? */
+  pk: Uint8Array;
+  /** public part of oberon protocol - can be any data */
+  data: Uint8Array;
+}
+
+/** Contains the verification result for the oberon token */
+export interface VerifyOberonTokenResponse {
+  /** token is valid to the public key */
+  valid: boolean;
+}
+
 function createBaseCreateOberonKeyRequest(): CreateOberonKeyRequest {
   return { seed: new Uint8Array() };
 }
@@ -1004,6 +1020,155 @@ export const UnBlindOberonTokenResponse = {
   ): UnBlindOberonTokenResponse {
     const message = createBaseUnBlindOberonTokenResponse();
     message.token = object.token ?? new Uint8Array();
+    return message;
+  },
+};
+
+function createBaseVerifyOberonTokenRequest(): VerifyOberonTokenRequest {
+  return {
+    token: new Uint8Array(),
+    pk: new Uint8Array(),
+    data: new Uint8Array(),
+  };
+}
+
+export const VerifyOberonTokenRequest = {
+  encode(
+    message: VerifyOberonTokenRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.token.length !== 0) {
+      writer.uint32(10).bytes(message.token);
+    }
+    if (message.pk.length !== 0) {
+      writer.uint32(18).bytes(message.pk);
+    }
+    if (message.data.length !== 0) {
+      writer.uint32(26).bytes(message.data);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): VerifyOberonTokenRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseVerifyOberonTokenRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.token = reader.bytes();
+          break;
+        case 2:
+          message.pk = reader.bytes();
+          break;
+        case 3:
+          message.data = reader.bytes();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): VerifyOberonTokenRequest {
+    return {
+      token: isSet(object.token)
+        ? bytesFromBase64(object.token)
+        : new Uint8Array(),
+      pk: isSet(object.pk) ? bytesFromBase64(object.pk) : new Uint8Array(),
+      data: isSet(object.data)
+        ? bytesFromBase64(object.data)
+        : new Uint8Array(),
+    };
+  },
+
+  toJSON(message: VerifyOberonTokenRequest): unknown {
+    const obj: any = {};
+    message.token !== undefined &&
+      (obj.token = base64FromBytes(
+        message.token !== undefined ? message.token : new Uint8Array()
+      ));
+    message.pk !== undefined &&
+      (obj.pk = base64FromBytes(
+        message.pk !== undefined ? message.pk : new Uint8Array()
+      ));
+    message.data !== undefined &&
+      (obj.data = base64FromBytes(
+        message.data !== undefined ? message.data : new Uint8Array()
+      ));
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<VerifyOberonTokenRequest>
+  ): VerifyOberonTokenRequest {
+    const message = createBaseVerifyOberonTokenRequest();
+    message.token = object.token ?? new Uint8Array();
+    message.pk = object.pk ?? new Uint8Array();
+    message.data = object.data ?? new Uint8Array();
+    return message;
+  },
+};
+
+function createBaseVerifyOberonTokenResponse(): VerifyOberonTokenResponse {
+  return { valid: false };
+}
+
+export const VerifyOberonTokenResponse = {
+  encode(
+    message: VerifyOberonTokenResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.valid === true) {
+      writer.uint32(8).bool(message.valid);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): VerifyOberonTokenResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseVerifyOberonTokenResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.valid = reader.bool();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): VerifyOberonTokenResponse {
+    return {
+      valid: isSet(object.valid) ? Boolean(object.valid) : false,
+    };
+  },
+
+  toJSON(message: VerifyOberonTokenResponse): unknown {
+    const obj: any = {};
+    message.valid !== undefined && (obj.valid = message.valid);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<VerifyOberonTokenResponse>
+  ): VerifyOberonTokenResponse {
+    const message = createBaseVerifyOberonTokenResponse();
+    message.valid = object.valid ?? false;
     return message;
   },
 };

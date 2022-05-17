@@ -1,10 +1,19 @@
-from trinsicokapi.proto.okapi.security.v1 import (CreateOberonKeyRequest, CreateOberonKeyResponse,
-                                                  CreateOberonProofRequest, CreateOberonProofResponse,
-                                                  CreateOberonTokenRequest, CreateOberonTokenResponse,
-                                                  BlindOberonTokenResponse, BlindOberonTokenRequest,
-                                                  UnBlindOberonTokenRequest, UnBlindOberonTokenResponse,
-                                                  VerifyOberonProofResponse, VerifyOberonProofRequest,
-                                                  VerifyOberonTokenRequest, VerifyOberonTokenResponse, )
+from trinsicokapi.proto.okapi.security.v1 import (
+    CreateOberonKeyRequest,
+    CreateOberonKeyResponse,
+    CreateOberonProofRequest,
+    CreateOberonProofResponse,
+    CreateOberonTokenRequest,
+    CreateOberonTokenResponse,
+    BlindOberonTokenResponse,
+    BlindOberonTokenRequest,
+    UnBlindOberonTokenRequest,
+    UnBlindOberonTokenResponse,
+    VerifyOberonProofResponse,
+    VerifyOberonProofRequest,
+    VerifyOberonTokenRequest,
+    VerifyOberonTokenResponse,
+)
 from trinsicokapi.wrapper import _typed_wrap_and_call
 
 
@@ -13,11 +22,15 @@ def create_key(request: CreateOberonKeyRequest) -> CreateOberonKeyResponse:
 
 
 def create_proof(request: CreateOberonProofRequest) -> CreateOberonProofResponse:
-    return _typed_wrap_and_call("oberon_create_proof", request, CreateOberonProofResponse)
+    return _typed_wrap_and_call(
+        "oberon_create_proof", request, CreateOberonProofResponse
+    )
 
 
 def create_token(request: CreateOberonTokenRequest) -> CreateOberonTokenResponse:
-    return _typed_wrap_and_call("oberon_create_token", request, CreateOberonTokenResponse)
+    return _typed_wrap_and_call(
+        "oberon_create_token", request, CreateOberonTokenResponse
+    )
 
 
 def blind_token(request: BlindOberonTokenRequest) -> BlindOberonTokenResponse:
@@ -25,12 +38,18 @@ def blind_token(request: BlindOberonTokenRequest) -> BlindOberonTokenResponse:
 
 
 def verify_token(request: VerifyOberonTokenRequest) -> VerifyOberonTokenResponse:
-    return _typed_wrap_and_call("oberon_verify_token", request, VerifyOberonTokenResponse)
+    return _typed_wrap_and_call(
+        "oberon_verify_token", request, VerifyOberonTokenResponse
+    )
 
 
 def unblind_token(request: UnBlindOberonTokenRequest) -> UnBlindOberonTokenResponse:
-    return _typed_wrap_and_call("oberon_unblind_token", request, UnBlindOberonTokenResponse)
+    return _typed_wrap_and_call(
+        "oberon_unblind_token", request, UnBlindOberonTokenResponse
+    )
 
 
 def verify_proof(request: VerifyOberonProofRequest) -> VerifyOberonProofResponse:
-    return _typed_wrap_and_call("oberon_verify_proof", request, VerifyOberonProofResponse)
+    return _typed_wrap_and_call(
+        "oberon_verify_proof", request, VerifyOberonProofResponse
+    )

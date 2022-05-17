@@ -7,7 +7,8 @@ from trinsicokapi.proto.okapi.security.v1 import (
     CreateOberonProofRequest,
     VerifyOberonProofRequest,
     UnBlindOberonTokenRequest,
-    BlindOberonTokenRequest, VerifyOberonTokenRequest,
+    BlindOberonTokenRequest,
+    VerifyOberonTokenRequest,
 )
 
 
@@ -37,12 +38,20 @@ class OberonTests(unittest.TestCase):
         right_key = oberon.create_key(CreateOberonKeyRequest(seed=seed))
         wrong_key = oberon.create_key(CreateOberonKeyRequest(seed=other_seed))
 
-        token_response = oberon.create_token(CreateOberonTokenRequest(sk=right_key.sk, data=data))
+        token_response = oberon.create_token(
+            CreateOberonTokenRequest(sk=right_key.sk, data=data)
+        )
 
         assert oberon.verify_token(
-            VerifyOberonTokenRequest(token=token_response.token, pk=right_key.pk, data=data)).valid
+            VerifyOberonTokenRequest(
+                token=token_response.token, pk=right_key.pk, data=data
+            )
+        ).valid
         assert not oberon.verify_token(
-            VerifyOberonTokenRequest(token=token_response.token, pk=wrong_key.pk, data=data)).valid
+            VerifyOberonTokenRequest(
+                token=token_response.token, pk=wrong_key.pk, data=data
+            )
+        ).valid
 
     def test_demo_with_blinding(self):
         key = oberon.create_key(CreateOberonKeyRequest())
