@@ -76,7 +76,7 @@ export class DIDComm {
 }
 
 export class LdProofs {
-  static async generate(
+  static async createProof(
     request: proto.CreateProofRequest
   ): Promise<proto.CreateProofResponse> {
     await initialize();
@@ -84,18 +84,6 @@ export class LdProofs {
     return proto.CreateProofResponse.decode(
       native.ldproofs_create_proof(
         proto.CreateProofRequest.encode(request).finish()
-      )
-    );
-  }
-
-  static async convert(
-    request: proto.VerifyProofRequest
-  ): Promise<proto.VerifyProofResponse> {
-    await initialize();
-
-    return proto.VerifyProofResponse.decode(
-      native.ldproofs_verify_proof(
-        proto.VerifyProofRequest.encode(request).finish()
       )
     );
   }

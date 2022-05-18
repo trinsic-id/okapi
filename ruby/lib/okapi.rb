@@ -69,7 +69,6 @@ module Okapi
     attach_function :didcomm_verify, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
 
     attach_function :ldproofs_create_proof, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
-    attach_function :ldproofs_verify_proof, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
 
     attach_function :oberon_create_key, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
     attach_function :oberon_create_token, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int

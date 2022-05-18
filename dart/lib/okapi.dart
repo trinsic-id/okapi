@@ -47,17 +47,10 @@ class LdProofs {
   static final _ldproofsCreateProof = OkapiNative.library
       .lookupFunction<OkapiFunctionNative, OkapiFunction>(
           'ldproofs_create_proof');
-  static final _ldproofsVerifyProof = OkapiNative.library
-      .lookupFunction<OkapiFunctionNative, OkapiFunction>(
-          'ldproofs_verify_proof');
 
   static CreateProofResponse createProof(CreateProofRequest request) =>
       OkapiNative.nativeCall(
           _ldproofsCreateProof, request, CreateProofResponse());
-
-  static VerifyProofResponse verifyProof(VerifyProofRequest request) =>
-      OkapiNative.nativeCall(
-          _ldproofsVerifyProof, request, VerifyProofResponse());
 }
 
 class Oberon {
@@ -76,7 +69,7 @@ class Oberon {
           'oberon_unblind_token');
   static final _oberonVerifyToken = OkapiNative.library
       .lookupFunction<OkapiFunctionNative, OkapiFunction>(
-      'oberon_verify_token');
+          'oberon_verify_token');
   static final _oberonVerifyProof = OkapiNative.library
       .lookupFunction<OkapiFunctionNative, OkapiFunction>(
           'oberon_verify_proof');
@@ -101,7 +94,7 @@ class Oberon {
       OkapiNative.nativeCall(
           _oberonUnBlindToken, request, UnBlindOberonTokenResponse());
   static VerifyOberonTokenResponse VerifyToken(
-      VerifyOberonTokenRequest request) =>
+          VerifyOberonTokenRequest request) =>
       OkapiNative.nativeCall(
           _oberonVerifyToken, request, VerifyOberonTokenResponse());
   static VerifyOberonProofResponse VerifyProof(

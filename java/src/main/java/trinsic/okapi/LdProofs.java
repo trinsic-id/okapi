@@ -12,13 +12,4 @@ public class LdProofs extends OkapiNative {
         errBuffer.raiseError(result);
         return Proofs.CreateProofResponse.parseFrom(bufferToByteArray(responseBuffer));
     }
-
-    public static Proofs.VerifyProofResponse verifyProof(Proofs.VerifyProofRequest request) throws DidException, InvalidProtocolBufferException {
-        OkapiByteBuffer.ByValue requestBuffer = messageToBuffer(request);
-        OkapiByteBuffer responseBuffer = new OkapiByteBuffer();
-        ExternError errBuffer = new ExternError();
-        var result = getNativeLibrary().ldproofs_verify_proof(requestBuffer, responseBuffer, errBuffer);
-        errBuffer.raiseError(result);
-        return Proofs.VerifyProofResponse.parseFrom(bufferToByteArray(responseBuffer));
-    }
 }

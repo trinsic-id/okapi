@@ -13,9 +13,4 @@ public static class LDProofs
     {
         return Native.Call<CreateProofRequest, CreateProofResponse>(request, Native.ldproofs_create_proof);
     }
-
-    public static VerifyProofResponse VerifyProof(VerifyProofRequest request)
-    {
-        return Native.Call<VerifyProofRequest, VerifyProofResponse>(request, Native.ldproofs_verify_proof);
-    }
 }
