@@ -98,3 +98,5 @@ void didcomm_string_free(char *s);
 void okapi_bytebuffer_free(struct ByteBuffer v);
 
 void okapi_string_free(char *s);
+
+const char *okapi_version(void);

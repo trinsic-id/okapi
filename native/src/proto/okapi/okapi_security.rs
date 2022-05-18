@@ -128,22 +128,24 @@ pub struct UnBlindOberonTokenResponse {
     pub token: ::prost::alloc::vec::Vec<u8>,
 }
 /// Verify that an oberon token comes from the desired issuer
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VerifyOberonTokenRequest {
     /// raw token bytes
-    #[prost(bytes = "vec", tag = "1")]
+    #[prost(bytes="vec", tag="1")]
     pub token: ::prost::alloc::vec::Vec<u8>,
     /// token is valid to this public key?
-    #[prost(bytes = "vec", tag = "2")]
+    #[prost(bytes="vec", tag="2")]
     pub pk: ::prost::alloc::vec::Vec<u8>,
     /// public part of oberon protocol - can be any data
-    #[prost(bytes = "vec", tag = "3")]
+    #[prost(bytes="vec", tag="3")]
     pub data: ::prost::alloc::vec::Vec<u8>,
 }
 /// Contains the verification result for the oberon token
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VerifyOberonTokenResponse {
     /// token is valid to the public key
-    #[prost(bool, tag = "1")]
+    #[prost(bool, tag="1")]
     pub valid: bool,
 }
