@@ -104,8 +104,6 @@ public class OkapiNative {
 
         int blake3_derive_key(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
 
-        int ldproofs_verify_proof(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
-
         int oberon_create_key(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
 
         int oberon_create_token(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);

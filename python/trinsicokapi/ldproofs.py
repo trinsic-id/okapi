@@ -12,10 +12,3 @@ def create(request: CreateProofRequest) -> CreateProofResponse:
         "ldproofs_create_proof", request, CreateProofResponse
     )
     return response
-
-
-def verify(request: VerifyProofRequest) -> VerifyProofResponse:
-    response = _typed_wrap_and_call(
-        "ldproofs_verify_proof", request, VerifyProofResponse
-    )
-    return response
