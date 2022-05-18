@@ -8,6 +8,7 @@ edition = "2018"
 # to dependency on protoc compiler
 # if you need to compile .proto files, use this line:
 build = "build.rs"
+
 #build = false
 
 [dependencies]

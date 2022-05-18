@@ -1,10 +1,9 @@
-/// Request custom metadata about the native okapi binaries
+/// Request custom metadata about the native okapi binaries - cannot get cargo env vars at runtime
+///
+/// repeated string variables = 1; // optional field, can contain any of the cargo env vars
 #[derive(::serde::Serialize, ::serde::Deserialize)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MetadataRequest {
-    /// optional field, can contain any of the cargo env vars
-    #[prost(string, repeated, tag="1")]
-    pub variables: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
 /// Metadata information about the native okapi binaries. Always returns the version information
 #[derive(::serde::Serialize, ::serde::Deserialize)]
@@ -19,9 +18,18 @@ pub struct MetadataResponse {
     /// Minor version
     #[prost(int32, tag="3")]
     pub version_minor: i32,
-    /// etc
-    ///
-    /// will include any non default requested variables
-    #[prost(map="string, string", tag="10")]
-    pub variables: ::std::collections::HashMap<::prost::alloc::string::String, ::prost::alloc::string::String>,
+    /// Patch release version
+    #[prost(int32, tag="4")]
+    pub version_patch: i32,
+    /// https://doc.rust-lang.org/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-crates
+    #[prost(string, tag="10")]
+    pub target_family: ::prost::alloc::string::String,
+    #[prost(string, tag="11")]
+    pub target_os: ::prost::alloc::string::String,
+    #[prost(string, tag="12")]
+    pub target_arch: ::prost::alloc::string::String,
+    #[prost(string, tag="13")]
+    pub target_vendor: ::prost::alloc::string::String,
+    #[prost(string, tag="14")]
+    pub target_env: ::prost::alloc::string::String,
 }
