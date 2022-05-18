@@ -57,10 +57,6 @@ impl crate::LdProofs {
             signed_document: Some(unsigned_document.into()),
         })
     }
-
-    pub fn verify_proof<'a>(_request: &VerifyProofRequest) -> Result<VerifyProofResponse, Error<'a>> {
-        todo!()
-    }
 }
 
 impl From<&Struct> for JcsEd25519Signature2020 {
