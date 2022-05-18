@@ -121,5 +121,7 @@ public class OkapiNative {
         void okapi_bytebuffer_free(OkapiByteBuffer.ByValue v);
 
         void okapi_string_free(com.sun.jna.Pointer s);
+
+        com.sun.jna.Pointer okapi_version();
     }
 }
