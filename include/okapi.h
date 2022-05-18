@@ -63,6 +63,10 @@ int32_t ldproofs_verify_proof(struct ByteBuffer request,
                               struct ByteBuffer *response,
                               struct ExternError *err);
 
+int32_t okapi_metadata(struct ByteBuffer request,
+                       struct ByteBuffer *response,
+                       struct ExternError *err);
+
 int32_t oberon_create_key(struct ByteBuffer request,
                           struct ByteBuffer *response,
                           struct ExternError *err);
@@ -98,5 +102,3 @@ void didcomm_string_free(char *s);
 void okapi_bytebuffer_free(struct ByteBuffer v);
 
 void okapi_string_free(char *s);
-
-const char *okapi_version(void);

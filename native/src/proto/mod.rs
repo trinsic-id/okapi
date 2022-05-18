@@ -292,3 +292,6 @@ pub mod hashing {
 }
 pub mod okapi;
 pub mod pbmse;
+pub mod metadata {
+    pub use crate::proto::okapi::okapi_metadata::*;
+}

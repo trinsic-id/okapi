@@ -1,6 +1,5 @@
-use std::ffi::CString;
-use std::os::raw::c_char;
 use ffi_support::ByteBuffer;
+use std::os::raw::c_char;
 
 // TODO: Cargo build doesn't expand these correctly with cbindgen, manually expanded below.
 // define_string_destructor!(didcomm_string_free2);
@@ -46,14 +45,4 @@ pub unsafe extern "C" fn okapi_string_free(s: *mut c_char) {
             ffi_support::destroy_c_string(s)
         }
     });
-}
-
-#[no_mangle]
-pub extern "C" fn okapi_version() -> *const c_char {
-    // TODO - Insert git commit ID
-    const PKG_VERSION: Option<&str> = option_env!("CARGO_PKG_VERSION");
-    let rust_str = CString::new(PKG_VERSION.unwrap()).unwrap();
-    let c_ver = rust_str.as_ptr();
-    std::mem::forget(rust_str);
-    return c_ver
 }

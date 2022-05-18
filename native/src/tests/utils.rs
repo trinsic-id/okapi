@@ -1,8 +1,8 @@
-use std::ffi::{CStr};
-use crate::{ffi::utils::*};
+use crate::Metadata;
+use crate::proto::metadata::MetadataRequest;
+
 #[test]
 fn test_return_version() {
-    let version_cstring = okapi_version();
-    let version_rust_string = unsafe {CStr::from_ptr(version_cstring).to_str().unwrap() };
-    assert_eq!(version_rust_string.to_string(), "0.1.0")
+    let version_metadata = Metadata::get_metadata(&MetadataRequest{ variables: vec![] }).unwrap();
+    assert_eq!(version_metadata.version, "0.1.0")
 }

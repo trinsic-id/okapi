@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package okapi.metadata;
+
+option csharp_namespace = "Okapi.Metadata";
+option go_package = "github.com/trinsic-id/okapiproto";
+option java_package = "trinsic.okapi.metadata";
+// Request custom metadata about the native okapi binaries
+message MetadataRequest {
+    repeated string variables = 1; // optional field, can contain any of the cargo env vars
+ }
+
+ // Metadata information about the native okapi binaries. Always returns the version information
+message MetadataResponse {
+  string version = 1; // The full version string from okapi
+  int32 version_major = 2; // Major version
+  int32 version_minor = 3; // Minor version
+  // etc
+  map<string, string> variables = 10; // will include any non default requested variables
+}
