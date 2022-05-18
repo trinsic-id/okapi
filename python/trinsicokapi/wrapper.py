@@ -83,6 +83,22 @@ def load_library() -> CDLL:
     return OKAPI_NATIVE['library']
 
 
+def okapi_version() -> str:
+    func = _wrap_native_function("okapi_version", arg_types=[], return_type=ctypes.POINTER(ctypes.c_char))
+    version_ptr = func()
+    # Copy into python memory space and then free the rust-side string
+    version_str = str(ctypes.string_at(version_ptr).decode("utf8"))
+    okapi_string_free(version_ptr)
+    return version_str
+
+
+def okapi_string_free(c_string: ctypes.POINTER(ctypes.c_char)) -> None:
+    func = _wrap_native_function(
+        "okapi_string_free", arg_types=[ctypes.POINTER(ctypes.c_char)]
+    )
+    func(c_string)
+
+
 class OkapiError(Exception):
     """Wrapper for Okapi errors"""
 
@@ -132,10 +148,7 @@ class ExternError(ctypes.Structure):
         return f"code={self.code} message={self.get_message if self.code != 0 else ''}"
 
     def free(self):
-        func = _wrap_native_function(
-            "okapi_string_free", arg_types=[ctypes.POINTER(ctypes.c_char)]
-        )
-        func(self.message)
+        okapi_string_free(self.message)
 
     @property
     def get_message(self) -> str:
@@ -157,11 +170,12 @@ def _wrap_native_function(
 ):
     library_function = getattr(load_library(), function_name)
     # Defaults coercion
-    arg_types = arg_types or [
-        ByteBuffer,
-        ctypes.POINTER(ByteBuffer),
-        ctypes.POINTER(ExternError),
-    ]
+    if arg_types is None:
+        arg_types = [
+            ByteBuffer,
+            ctypes.POINTER(ByteBuffer),
+            ctypes.POINTER(ExternError),
+        ]
     return_type = return_type or ctypes.c_int32
 
     library_function.argtypes = arg_types

@@ -1,4 +1,4 @@
-from trinsicokapi import didkey
+from trinsicokapi import didkey, wrapper
 from trinsicokapi.proto.okapi.keys.v1 import GenerateKeyRequest, KeyType
 
 
@@ -9,6 +9,7 @@ def run():
 
     key_response = didkey.generate(request)
     print(key_response.key)
+    print(f"version={wrapper.okapi_version()}")
 
 
 if __name__ == "__main__":
