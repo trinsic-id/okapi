@@ -3,6 +3,11 @@
 
 ## Table of Contents
 
+- [okapi/metadata.proto](#okapi_metadata-proto)
+    - [MetadataRequest](#okapi-metadata-MetadataRequest)
+    - [MetadataResponse](#okapi-metadata-MetadataResponse)
+    - [MetadataResponse.VariablesEntry](#okapi-metadata-MetadataResponse-VariablesEntry)
+  
 - [okapi/examples/v1/examples.proto](#okapi_examples_v1_examples-proto)
     - [BasicMessage](#okapi-examples-v1-BasicMessage)
   
@@ -79,6 +84,73 @@
     - [EncryptionMode](#pbmse-v1-EncryptionMode)
   
 - [Scalar Value Types](#scalar-value-types)
+
+
+
+<a name="okapi_metadata-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## okapi/metadata.proto
+
+
+
+<a name="okapi-metadata-MetadataRequest"></a>
+
+### MetadataRequest
+Request custom metadata about the native okapi binaries
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| variables | [string](#string) | repeated | optional field, can contain any of the cargo env vars |
+
+
+
+
+
+
+<a name="okapi-metadata-MetadataResponse"></a>
+
+### MetadataResponse
+Metadata information about the native okapi binaries. Always returns the version information
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| version | [string](#string) |  | The full version string from okapi |
+| version_major | [int32](#int32) |  | Major version |
+| version_minor | [int32](#int32) |  | Minor version |
+| variables | [MetadataResponse.VariablesEntry](#okapi-metadata-MetadataResponse-VariablesEntry) | repeated | etc
+
+will include any non default requested variables |
+
+
+
+
+
+
+<a name="okapi-metadata-MetadataResponse-VariablesEntry"></a>
+
+### MetadataResponse.VariablesEntry
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| key | [string](#string) |  |  |
+| value | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
 
 
 

@@ -42,15 +42,20 @@ func okapiVersion() (string, error) {
 	ver_ptr, _, err := okapiFunc.Call()
 	if err != syscall.Errno(0x0) {
 		// Actually check the syscall.Errno to see if it's a real error
-		return nil, err
+		return "", err
 	}
-	return nil
+	ver_str := *(*string)(unsafe.Pointer(ver_ptr))
+	err = okapiStringFree(ver_ptr)
+	if err != nil {
+		return "", err
+	}
+	return ver_str, nil
 }
 
-func okapiStringFree() error {
+func okapiStringFree(s uintptr) error {
 	dll := syscall.MustLoadDLL(getLibraryName())
 	okapiFunc := dll.MustFindProc("okapi_string_free")
-	_, _, err := okapiFunc.Call(uintptr(unsafe.Pointer(&responseBuffer)))
+	_, _, err := okapiFunc.Call(s)
 	if err != syscall.Errno(0x0) {
 		// Actually check the syscall.Errno to see if it's a real error
 		return err
