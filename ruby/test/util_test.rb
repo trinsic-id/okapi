@@ -11,6 +11,7 @@ class UtilsTest < Minitest::Test
     Okapi.load_native_library
   end
 
+  # rubocop:disable Metrics/AbcSize
   def test_version
     metadata_response = Okapi::Utils.version
     assert !metadata_response.nil?
@@ -20,4 +21,5 @@ class UtilsTest < Minitest::Test
     assert !metadata_response.version_patch.nil?
     puts("okapi version=#{metadata_response.version}")
   end
+  # rubocop:enable Metrics/AbcSize
 end

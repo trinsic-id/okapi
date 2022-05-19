@@ -60,6 +60,7 @@ jobs:
         working-directory: ruby
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+          RUBY_DLL_PATH: ./libs/${{ matrix.os-artifact[1] }}
       - name: Run linters
         uses: wearerequired/lint-action@v1.11.1
         with:
