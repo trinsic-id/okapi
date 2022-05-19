@@ -9,7 +9,7 @@ from typing import Type, Optional, List, Any, Dict, Union, TypeVar
 
 import betterproto
 
-OKAPI_NATIVE: Dict[str, Union[str, CDLL]] = {'library_path': '', 'library': None}
+OKAPI_NATIVE: Dict[str, Union[str, CDLL]] = {"library_path": "", "library": None}
 okapi_loader_lock = threading.Lock()
 
 
@@ -17,7 +17,7 @@ def set_library_path(path: str):
     """Set the exact path of the library, including the file, to load"""
     global OKAPI_NATIVE
     with okapi_loader_lock:
-        OKAPI_NATIVE['library_path'] = path
+        OKAPI_NATIVE["library_path"] = path
 
 
 def _check_path(path_string: str, lib_name: str) -> str:
@@ -33,11 +33,11 @@ def _check_path(path_string: str, lib_name: str) -> str:
     lib_name = f"{lib_prefix}{lib_name}.{lib_extension}"
     for path in path_string.split(os.pathsep):
         test_path = os.path.join(path, lib_name)
-        print(f'Attempting to load binary: {test_path}')
+        print(f"Attempting to load binary: {test_path}")
         if os.path.exists(test_path):
             return test_path
         test_path = os.path.join(path, _platform_dir(), lib_name)
-        print(f'Attempting to load binary: {test_path}')
+        print(f"Attempting to load binary: {test_path}")
         if os.path.exists(test_path):
             return test_path
     return ""
@@ -45,13 +45,13 @@ def _check_path(path_string: str, lib_name: str) -> str:
 
 def _platform_dir() -> str:
     # TODO - Linux on ARM?
-    platforms = {'Windows': 'windows', 'Darwin': 'macos', 'Linux': 'linux'}
+    platforms = {"Windows": "windows", "Darwin": "macos", "Linux": "linux"}
     return platforms[platform.system()]
 
 
 def find_native_lib() -> str:
     global OKAPI_NATIVE
-    lib_path = OKAPI_NATIVE['library_path']
+    lib_path = OKAPI_NATIVE["library_path"]
     if lib_path:
         return lib_path
     lib_name = "okapi"
@@ -59,11 +59,11 @@ def find_native_lib() -> str:
     # since LINUX Python doesn't always work. :(
     found_lib_path = (
         _check_path(
-            os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'libs')),
+            os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "libs")),
             lib_name,
         )
-        or _check_path(os.path.join(sys.prefix, 'libs'), lib_name)
-        or _check_path(os.getenv('LD_LIBRARY_PATH', ''), lib_name)
+        or _check_path(os.path.join(sys.prefix, "libs"), lib_name)
+        or _check_path(os.getenv("LD_LIBRARY_PATH", ""), lib_name)
         or find_library(lib_name)
     )
     return found_lib_path
@@ -75,16 +75,18 @@ def load_library() -> CDLL:
     # All we need to do is prevent double copying.
     # https://opensource.com/article/17/4/grok-gil
     with okapi_loader_lock:
-        if OKAPI_NATIVE['library'] is None:
+        if OKAPI_NATIVE["library"] is None:
             load_lib_path = find_native_lib()
             if not load_lib_path:
                 raise RuntimeError(f"Could find library:{load_lib_path}")
-            OKAPI_NATIVE['library'] = CDLL(load_lib_path)
-    return OKAPI_NATIVE['library']
+            OKAPI_NATIVE["library"] = CDLL(load_lib_path)
+    return OKAPI_NATIVE["library"]
 
 
 def okapi_version() -> str:
-    func = _wrap_native_function("okapi_version", arg_types=[], return_type=ctypes.POINTER(ctypes.c_char))
+    func = _wrap_native_function(
+        "okapi_version", arg_types=[], return_type=ctypes.POINTER(ctypes.c_char)
+    )
     version_ptr = func()
     # Copy into python memory space and then free the rust-side string
     version_str = str(ctypes.string_at(version_ptr).decode("utf8"))
@@ -132,7 +134,7 @@ class ByteBuffer(ctypes.Structure):
         func(self)
 
     @staticmethod
-    def create_from(obj: bytes) -> 'ByteBuffer':
+    def create_from(obj: bytes) -> "ByteBuffer":
         request_buffer = ByteBuffer()
         request_buffer.len = len(obj)
         request_buffer.data = (ctypes.c_ubyte * request_buffer.len).from_buffer_copy(
@@ -152,7 +154,7 @@ class ExternError(ctypes.Structure):
 
     @property
     def get_message(self) -> str:
-        return ctypes.string_at(self.message).decode('utf-8')
+        return ctypes.string_at(self.message).decode("utf-8")
 
     def raise_error_if_needed(self):
         """Raise an exception if one was returned"""
@@ -195,7 +197,7 @@ def _ffi_wrap_and_call(function_name: str, request_buffer: ByteBuffer) -> bytes:
     return byte_data
 
 
-T_response = TypeVar('T_response', bound=betterproto.Message)
+T_response = TypeVar("T_response", bound=betterproto.Message)
 
 
 def _typed_wrap_and_call(

@@ -43,7 +43,7 @@ class KeyTests(unittest.TestCase):
         self.assert_valid_key_generated(response)
 
     def test_resolve_key(self):
-        key = 'did:key:z6Mkt6QT8FPajKXDrtMefkjxRQENd9wFzKkDFomdQAVFzpzm#z6LSfDq6DuofPeZUqNEmdZsxpvfHvSoUXGEWFhw7JHk4cynN'
+        key = "did:key:z6Mkt6QT8FPajKXDrtMefkjxRQENd9wFzKkDFomdQAVFzpzm#z6LSfDq6DuofPeZUqNEmdZsxpvfHvSoUXGEWFhw7JHk4cynN"
         response = didkey.resolve(ResolveRequest(did=key))
         self.assertIsNotNone(response)
 
@@ -70,7 +70,7 @@ class KeyTests(unittest.TestCase):
         with self.assertRaises(OkapiError) as err:
             didkey.generate(request)
         print(err.exception.message)
-        self.assertEqual('failed to execute function', err.exception.message)
+        self.assertEqual("failed to execute function", err.exception.message)
 
     def test_generate_key_from_seed(self):
         data_arguments = [
@@ -95,8 +95,8 @@ class KeyTests(unittest.TestCase):
                 response = didkey.generate(request)
 
                 pk = self.assert_valid_key_generated(response, argument[1])
-                self.assertEqual(argument[3], base58.b58encode(pk).decode('utf-8'))
+                self.assertEqual(argument[3], base58.b58encode(pk).decode("utf-8"))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

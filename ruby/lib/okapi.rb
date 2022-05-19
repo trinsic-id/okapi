@@ -86,7 +86,7 @@ module Okapi
 
     attach_function :okapi_bytebuffer_free, args=[ByteBuffer.by_value], returns=:void
     attach_function :okapi_string_free, args=[:pointer], returns=:void
-    attach_function :okapi_version, args=[], returns=:string
+    attach_function :okapi_version, args=[ByteBuffer.by_ref], returns=:int
   end
 
   def self.ffi_call(function, request, response_klass)
@@ -122,10 +122,6 @@ module Okapi
   def self.string_free(ptr)
     verify_type(ptr, Fiddle::Pointer)
     okapi_string_free(ptr)
-  end
-
-  def self.version
-    okapi_version
   end
 
   # Wrapping error for failures in the native code

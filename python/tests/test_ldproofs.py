@@ -36,5 +36,5 @@ class LdProofsTests(unittest.TestCase):
         self.assertIsNotNone(signed_capability.signed_document)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
