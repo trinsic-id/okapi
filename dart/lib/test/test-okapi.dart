@@ -15,22 +15,35 @@ import '../okapi.dart';
 
 void main() {
   test('Dart bitness', () {
-    var size = sizeOf<IntPtr>()*8;
+    var size = sizeOf<IntPtr>() * 8;
     print('Dart bitness=$size');
+  });
+  test('Get Metadata', () {
+    var metadataResponse = Metadata.getMetadata();
+    assert(metadataResponse.version.isNotEmpty);
+    // Default local build version is 0.1.0, we just need to ensure SOMETHING isn't 0
+    assert(metadataResponse.versionMajor != 0 ||
+        metadataResponse.versionMinor != 0 ||
+        metadataResponse.versionPatch != 0);
   });
   testDidKey();
   testHashing();
   testLdProofs();
+  testOberon();
+}
+
+void testOberon() {
   group('Oberon:', () {
     test('Demo', () {
-      var key = Oberon.CreateKey(CreateOberonKeyRequest(seed: [1,2,3]));
+      var key = Oberon.CreateKey(CreateOberonKeyRequest(seed: [1, 2, 3]));
       var data = Uint8List.fromList(utf8.encode('alice'));
       var nonce = Uint8List.fromList(utf8.encode('1234'));
 
       var createTokenRequest = CreateOberonTokenRequest(sk: key.sk, data: data);
       var token = Oberon.CreateToken(createTokenRequest);
 
-      var createProofRequest = CreateOberonProofRequest(data: data, nonce: nonce, token: token.token);
+      var createProofRequest = CreateOberonProofRequest(
+          data: data, nonce: nonce, token: token.token);
       var proof = Oberon.CreateProof(createProofRequest);
 
       var verifyProofRequest = VerifyOberonProofRequest();
@@ -42,14 +55,17 @@ void main() {
       assert(result.valid);
     });
     test('VerifyToken', () {
-      var rightKey = Oberon.CreateKey(CreateOberonKeyRequest(seed: [1,2,3]));
-      var wrongKey = Oberon.CreateKey(CreateOberonKeyRequest(seed: [0,1,2]));
+      var rightKey = Oberon.CreateKey(CreateOberonKeyRequest(seed: [1, 2, 3]));
+      var wrongKey = Oberon.CreateKey(CreateOberonKeyRequest(seed: [0, 1, 2]));
       var data = Uint8List.fromList(utf8.encode('4113'));
 
-      var token = Oberon.CreateToken(CreateOberonTokenRequest(sk: rightKey.sk, data: data));
+      var token = Oberon.CreateToken(
+          CreateOberonTokenRequest(sk: rightKey.sk, data: data));
 
-      var verifyRight = Oberon.VerifyToken(VerifyOberonTokenRequest(token: token.token, pk: rightKey.pk, data: data));
-      var verifyWrong = Oberon.VerifyToken(VerifyOberonTokenRequest(token: token.token, pk: wrongKey.pk, data: data));
+      var verifyRight = Oberon.VerifyToken(VerifyOberonTokenRequest(
+          token: token.token, pk: rightKey.pk, data: data));
+      var verifyWrong = Oberon.VerifyToken(VerifyOberonTokenRequest(
+          token: token.token, pk: wrongKey.pk, data: data));
 
       assert(verifyRight.valid);
       assert(!verifyWrong.valid);
@@ -101,7 +117,7 @@ void main() {
       proofRequest.token = userBlindedToken.token;
       proofRequest.blinding.add(userPin);
       proof = Oberon.CreateProof(proofRequest);
-      
+
       // Verifier verifies the proof
       verifyProof = VerifyOberonProofRequest();
       verifyProof.data = data;

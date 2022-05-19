@@ -60,33 +60,44 @@ module Okapi
       # Ignored
     end
 
-    attach_function :didkey_generate, args=[ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], returns=:int
-    attach_function :didkey_resolve, args=[ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], returns=:int
+    attach_function :didkey_generate, args = [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref],
+                    returns = :int
+    attach_function :didkey_resolve, args = [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], returns = :int
 
-    attach_function :didcomm_pack, args=[ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], returns=:int
-    attach_function :didcomm_unpack, args=[ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], returns=:int
-    attach_function :didcomm_sign, args=[ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], returns=:int
-    attach_function :didcomm_verify, args=[ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], returns=:int
+    attach_function :didcomm_pack, args = [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], returns = :int
+    attach_function :didcomm_unpack, args = [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], returns = :int
+    attach_function :didcomm_sign, args = [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], returns = :int
+    attach_function :didcomm_verify, args = [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], returns = :int
 
-    attach_function :ldproofs_create_proof, args=[ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], returns=:int
+    attach_function :ldproofs_create_proof, args = [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref],
+                    returns = :int
 
-    attach_function :oberon_create_key, args=[ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], returns=:int
-    attach_function :oberon_create_token, args=[ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], returns=:int
-    attach_function :oberon_blind_token, args=[ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], returns=:int
-    attach_function :oberon_unblind_token, args=[ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], returns=:int
-    attach_function :oberon_verify_token, args=[ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], returns=:int
-    attach_function :oberon_create_proof, args=[ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], returns=:int
-    attach_function :oberon_verify_proof, args=[ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], returns=:int
+    attach_function :oberon_create_key, args = [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref],
+                    returns = :int
+    attach_function :oberon_create_token, args = [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref],
+                    returns = :int
+    attach_function :oberon_blind_token, args = [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref],
+                    returns = :int
+    attach_function :oberon_unblind_token, args = [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref],
+                    returns = :int
+    attach_function :oberon_verify_token, args = [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref],
+                    returns = :int
+    attach_function :oberon_create_proof, args = [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref],
+                    returns = :int
+    attach_function :oberon_verify_proof, args = [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref],
+                    returns = :int
 
-    attach_function :blake3_hash, args=[ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], returns=:int
-    attach_function :blake3_keyed_hash, args=[ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], returns=:int
-    attach_function :blake3_derive_key, args=[ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], returns=:int
+    attach_function :blake3_hash, args = [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], returns = :int
+    attach_function :blake3_keyed_hash, args = [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref],
+                    returns = :int
+    attach_function :blake3_derive_key, args = [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref],
+                    returns = :int
+    attach_function :sha256_hash, args = [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], returns = :int
 
-    attach_function :sha256_hash, args=[ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], returns=:int
+    attach_function :okapi_metadata, args = [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], returns = :int
 
-    attach_function :okapi_bytebuffer_free, args=[ByteBuffer.by_value], returns=:void
-    attach_function :okapi_string_free, args=[:pointer], returns=:void
-    attach_function :okapi_version, args=[ByteBuffer.by_ref], returns=:int
+    attach_function :okapi_bytebuffer_free, args = [ByteBuffer.by_value], returns = :void
+    attach_function :okapi_string_free, args = [:pointer], returns = :void
   end
 
   def self.ffi_call(function, request, response_klass)

@@ -12,7 +12,7 @@ class UtilsTest < Minitest::Test
   end
 
   def test_version
-    metadata_response = Okapi::Utils::version
+    metadata_response = Okapi::Utils.version
     assert !metadata_response.nil?
     assert !metadata_response.version.nil?
     assert !metadata_response.version_major.nil?

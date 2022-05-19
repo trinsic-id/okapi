@@ -83,17 +83,6 @@ def load_library() -> CDLL:
     return OKAPI_NATIVE["library"]
 
 
-def okapi_version() -> str:
-    func = _wrap_native_function(
-        "okapi_version", arg_types=[], return_type=ctypes.POINTER(ctypes.c_char)
-    )
-    version_ptr = func()
-    # Copy into python memory space and then free the rust-side string
-    version_str = str(ctypes.string_at(version_ptr).decode("utf8"))
-    okapi_string_free(version_ptr)
-    return version_str
-
-
 def okapi_string_free(c_string: ctypes.POINTER(ctypes.c_char)) -> None:
     func = _wrap_native_function(
         "okapi_string_free", arg_types=[ctypes.POINTER(ctypes.c_char)]

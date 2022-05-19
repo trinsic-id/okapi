@@ -1,8 +1,6 @@
 from trinsicokapi.proto.okapi.proofs.v1 import (
     CreateProofRequest,
     CreateProofResponse,
-    VerifyProofResponse,
-    VerifyProofRequest,
 )
 from trinsicokapi.wrapper import _typed_wrap_and_call
 
