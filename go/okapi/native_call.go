@@ -4,7 +4,6 @@ package okapi
 
 import (
 	"github.com/coreos/pkg/dlopen"
-	"syscall"
 	"unsafe"
 )
 
@@ -106,16 +105,5 @@ func cByteBufferFree(cRespBuf C.ByteBuffer) error {
 		}
 	}(libPtr)
 	C.okapi_bytebuffer_free(funcPtr, cRespBuf)
-	return nil
-}
-
-func okapiStringFree(s uintptr) error {
-	dll := syscall.MustLoadDLL(getLibraryPath())
-	okapiFunc := dll.MustFindProc("okapi_string_free")
-	_, _, err := okapiFunc.Call(s)
-	if err != syscall.Errno(0x0) {
-		// Actually check the syscall.Errno to see if it's a real error
-		return err
-	}
 	return nil
 }
