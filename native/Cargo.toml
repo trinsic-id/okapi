@@ -1,7 +1,7 @@
 [package]
 name = "okapi"
 version = "0.1.0"
-authors = ["Tomislav Markovski <tomislav@trinsic.id>"]
+authors = ["Tomislav Markovski <tomislav@trinsic.id>", "Scott Phillips <scott.phillips@trinsic.id>"]
 edition = "2018"
 # ensure this is not checked in as "true" as it will
 # cause vendored libraries to fail compilation due
@@ -49,7 +49,7 @@ wasm-bindgen-test = "0.3.13"
 
 [package.metadata.deb]
 maintainer = "Tomislav Markovski <tomislav@trinsic.id>"
-copyright = "2021, Trinsic <hello@trinsic.id>"
+copyright = "2021-2022, Trinsic <hello@trinsic.id>"
 license-file = ["../LICENSE", "4"]
 extended-description = """\
 Collection of tools that support workflows for \

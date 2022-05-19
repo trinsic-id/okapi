@@ -45,6 +45,7 @@ fn compile_protobuf_files() {
                 "../proto/okapi/keys/v1/keys.proto",
                 "../proto/okapi/proofs/v1/proofs.proto",
                 "../proto/okapi/security/v1/security.proto",
+                "../proto/okapi/metadata/metadata.proto",
             ],
             &["../proto", "../proto/pbmse/v1/"],
         )
@@ -56,6 +57,7 @@ fn compile_protobuf_files() {
     copy("okapi.transport.v1.rs", "./src/proto/okapi/okapi_transport.rs").unwrap();
     copy("okapi.proofs.v1.rs", "./src/proto/okapi/okapi_proofs.rs").unwrap();
     copy("okapi.security.v1.rs", "./src/proto/okapi/okapi_security.rs").unwrap();
+    copy("okapi.metadata.rs", "./src/proto/okapi/okapi_metadata.rs").unwrap();
     copy("google.protobuf.rs", "./src/proto/google_protobuf.rs").unwrap();
     copy("pbmse.v1.rs", "./src/proto/pbmse.rs").unwrap();
     remove_file("okapi.examples.v1.rs").unwrap();
@@ -64,6 +66,7 @@ fn compile_protobuf_files() {
     remove_file("okapi.transport.v1.rs").unwrap();
     remove_file("okapi.proofs.v1.rs").unwrap();
     remove_file("okapi.security.v1.rs").unwrap();
+    remove_file("okapi.metadata.rs").unwrap();
     remove_file("google.protobuf.rs").unwrap();
     remove_file("pbmse.v1.rs").unwrap();
 }

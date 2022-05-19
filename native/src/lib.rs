@@ -8,6 +8,7 @@ pub struct DIDKey {}
 pub struct LdProofs {}
 pub struct Oberon {}
 pub struct Hashing {}
+pub struct Metadata {}
 
 #[allow(clippy::ptr_arg)]
 pub trait MessageFormatter {
@@ -44,7 +45,8 @@ pub mod didkey;
 mod ffi;
 #[cfg(feature = "hashing")]
 pub mod hashing;
-mod ldproofs;
+pub mod ldproofs;
+pub mod metadata;
 pub mod oberon;
 pub mod proto;
 #[cfg(test)]

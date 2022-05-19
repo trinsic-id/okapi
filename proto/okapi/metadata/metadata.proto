@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package okapi.metadata;
+
+option csharp_namespace = "Okapi.Metadata";
+option go_package = "github.com/trinsic-id/okapiproto";
+option java_package = "trinsic.okapi.metadata";
+// Request custom metadata about the native okapi binaries - cannot get cargo env vars at runtime
+message MetadataRequest {
+    // repeated string variables = 1; // optional field, can contain any of the cargo env vars
+}
+
+ // Metadata information about the native okapi binaries. Always returns the version information
+message MetadataResponse {
+  string version = 1; // The full version string from okapi
+  int32 version_major = 2; // Major version
+  int32 version_minor = 3; // Minor version
+  int32 version_patch = 4; // Patch release version
+
+  // https://doc.rust-lang.org/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-crates
+  string target_family = 10;
+  string target_os = 11;
+  string target_arch = 12;
+  string target_vendor = 13;
+  string target_env = 14;
+}

@@ -1,4 +1,5 @@
 use ffi_support::ByteBuffer;
+use std::os::raw::c_char;
 
 // TODO: Cargo build doesn't expand these correctly with cbindgen, manually expanded below.
 // define_string_destructor!(didcomm_string_free2);
@@ -15,7 +16,7 @@ pub extern "C" fn didcomm_byte_buffer_free(v: ByteBuffer) {
 
 #[no_mangle]
 #[deprecated]
-pub unsafe extern "C" fn didcomm_string_free(s: *mut std::os::raw::c_char) {
+pub unsafe extern "C" fn didcomm_string_free(s: *mut c_char) {
     // Note: This should never happen, but in the case of a bug aborting
     // here is better than the badness that happens if we unwind across
     // the FFI boundary.
@@ -35,7 +36,7 @@ pub extern "C" fn okapi_bytebuffer_free(v: ByteBuffer) {
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn okapi_string_free(s: *mut std::os::raw::c_char) {
+pub unsafe extern "C" fn okapi_string_free(s: *mut c_char) {
     // Note: This should never happen, but in the case of a bug aborting
     // here is better than the badness that happens if we unwind across
     // the FFI boundary.
