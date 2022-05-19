@@ -1,17 +1,13 @@
 name: "Wasm (release)"
 
 on:
+  workflow_call:
   workflow_dispatch:
     inputs:
       packageVersion:
         description: 'Version to build'
         required: true
-        default: ''  # For beta release: v1.0.0-beta.N  N=beta number https://kevinkreuzer.medium.com/publishing-a-beta-or-alpha-version-to-npm-46035b630dd7
-  workflow_run:
-    workflows: ["Release Platform Libraries"]
-    branches: ["main", "v?.*"]
-    types:
-      - completed
+        default: ''  # For beta release: v1.0.0-rc[N]  N=release candidate number https://kevinkreuzer.medium.com/publishing-a-beta-or-alpha-version-to-npm-46035b630dd7
 
 jobs:
   publish_npm:
