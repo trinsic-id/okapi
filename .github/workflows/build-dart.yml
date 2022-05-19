@@ -53,7 +53,7 @@ jobs:
       - name: Build, Test, Pack
         run: |
           python ../devops/build_sdks.py --language=dart
-          dart test ./lib/test/test-okapi.dart
+          dart test ./test/test-okapi.dart
         shell: pwsh
         working-directory: dart
         env:
