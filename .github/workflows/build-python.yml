@@ -66,7 +66,7 @@ jobs:
         working-directory: python
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
-          LD_LIBRARY_PATH: ./libs/${{ matrix.os-artifact[1] }}
+          LD_LIBRARY_PATH: "${{ github.workspace }}/libs/${{ matrix.os-artifact[1] }}"
       - name: Upload Unit Test Results - Python
         if: always()
         uses: actions/upload-artifact@v2
