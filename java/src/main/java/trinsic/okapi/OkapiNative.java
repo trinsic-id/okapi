@@ -118,10 +118,10 @@ public class OkapiNative {
 
         int oberon_verify_proof(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
 
+        int okapi_metadata(OkapiByteBuffer.ByValue request, OkapiByteBuffer response, ExternError err);
+
         void okapi_bytebuffer_free(OkapiByteBuffer.ByValue v);
 
         void okapi_string_free(com.sun.jna.Pointer s);
-
-        com.sun.jna.Pointer okapi_version();
     }
 }

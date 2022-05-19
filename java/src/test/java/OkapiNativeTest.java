@@ -7,7 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import trinsic.okapi.DidException;
 import trinsic.okapi.DidKey;
-import trinsic.okapi.OkapiUtils;
+import trinsic.okapi.OkapiMetadata;
 import trinsic.okapi.keys.v1.Keys;
 
 import java.util.Base64;
@@ -15,10 +15,9 @@ import java.util.stream.Stream;
 
 class OkapiNativeTest {
     @Test
-    void testOkapiVersion() {
-        var version = OkapiUtils.version();
-        Assertions.assertNotNull(version);
-        Assertions.assertTrue(version.trim().length() > 0);
+    void testOkapiVersion() throws InvalidProtocolBufferException, DidException {
+        var metadataResponse = OkapiMetadata.getMetadata();
+        Assertions.assertNotNull(metadataResponse.getVersion());
     }
     @Test
     void generateKeyCall() throws DidException, InvalidProtocolBufferException {
