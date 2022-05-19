@@ -55,7 +55,7 @@ jobs:
           gem install rubocop
           bundle install
           python ../devops/build_sdks.py --language=ruby
-          bundle exec rake
+          bundle exec rake --trace
         shell: pwsh
         working-directory: ruby
         env:

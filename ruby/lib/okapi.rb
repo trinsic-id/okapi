@@ -50,10 +50,10 @@ module Okapi
     # Get the environment variable RUBY_DLL_PATH on all platforms as a failsafe,
     # MacOS system integrity protection, I'm looking at you.
     possible_library_paths = [File.expand_path(File.join(__dir__, '..', 'libs', library_directory, library_name)),
-                              File.expand_path(File.join(ENV['LD_LIBRARY_PATH'], library_directory, library_name)),
-                              File.expand_path(File.join(ENV['LD_LIBRARY_PATH'], library_name)),
-                              File.expand_path(File.join(ENV['RUBY_DLL_PATH'], library_directory, library_name)),
-                              File.expand_path(File.join(ENV['RUBY_DLL_PATH'], library_name)),
+                              File.expand_path(File.join(ENV['LD_LIBRARY_PATH'] || '', library_directory, library_name)),
+                              File.expand_path(File.join(ENV['LD_LIBRARY_PATH'] || '', library_name)),
+                              File.expand_path(File.join(ENV['RUBY_DLL_PATH'] || '', library_directory, library_name)),
+                              File.expand_path(File.join(ENV['RUBY_DLL_PATH'] || '', library_name)),
                               library_name,
                               File.expand_path(File.join(library_path || '', library_name))]
     possible_library_paths.each do |lib_path|

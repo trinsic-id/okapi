@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'base64', '~> 0.1.0'
   spec.add_dependency 'ffi', '~> 1.15'
-  spec.add_dependency 'google-protobuf', '~> 3.19'
+  spec.add_dependency 'google-protobuf', '~> 3.20'
   spec.add_dependency 'os', '~> 1.1'
   spec.add_dependency 'rake', '~> 13.0'
   spec.add_dependency 'rexml', '~> 3.2'
