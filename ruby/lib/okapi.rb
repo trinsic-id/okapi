@@ -3,6 +3,7 @@
 require 'ffi'
 require 'os'
 
+# rubocop:disable Metrics/ModuleLength
 # Okapi wrapper module
 module Okapi
   extend FFI::Library
@@ -49,7 +50,14 @@ module Okapi
     @library_linked = true
     # Get the environment variable RUBY_DLL_PATH on all platforms as a failsafe,
     # MacOS system integrity protection, I'm looking at you.
+    ld_lib_path = ENV['LD_LIBRARY_PATH'] || ''
+    ruby_dll_path = ENV['RUBY_DLL_PATH'] || ''
     possible_library_paths = [File.expand_path(File.join(__dir__, '..', 'libs', library_directory, library_name)),
+                              File.expand_path(File.join(ld_lib_path, library_directory,
+                                                         library_name)),
+                              File.expand_path(File.join(ld_lib_path, library_name)),
+                              File.expand_path(File.join(ruby_dll_path, library_directory, library_name)),
+                              File.expand_path(File.join(ruby_dll_path, library_name)),
                               library_name,
                               File.expand_path(File.join(library_path || '', library_name))]
     possible_library_paths.each do |lib_path|
@@ -60,7 +68,8 @@ module Okapi
       # Ignored
     end
 
-    attach_function :didkey_generate, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
+    attach_function :didkey_generate, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref],
+                    :int
     attach_function :didkey_resolve, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
 
     attach_function :didcomm_pack, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
@@ -68,24 +77,35 @@ module Okapi
     attach_function :didcomm_sign, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
     attach_function :didcomm_verify, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
 
-    attach_function :ldproofs_create_proof, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
+    attach_function :ldproofs_create_proof, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref],
+                    :int
 
-    attach_function :oberon_create_key, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
-    attach_function :oberon_create_token, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
-    attach_function :oberon_blind_token, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
-    attach_function :oberon_unblind_token, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
-    attach_function :oberon_verify_token, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
-    attach_function :oberon_create_proof, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
-    attach_function :oberon_verify_proof, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
+    attach_function :oberon_create_key, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref],
+                    :int
+    attach_function :oberon_create_token, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref],
+                    :int
+    attach_function :oberon_blind_token, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref],
+                    :int
+    attach_function :oberon_unblind_token, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref],
+                    :int
+    attach_function :oberon_verify_token, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref],
+                    :int
+    attach_function :oberon_create_proof, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref],
+                    :int
+    attach_function :oberon_verify_proof, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref],
+                    :int
 
     attach_function :blake3_hash, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
-    attach_function :blake3_keyed_hash, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
-    attach_function :blake3_derive_key, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
-
+    attach_function :blake3_keyed_hash, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref],
+                    :int
+    attach_function :blake3_derive_key, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref],
+                    :int
     attach_function :sha256_hash, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
 
-    attach_function :okapi_bytebuffer_free, [ByteBuffer.by_value], :int
-    attach_function :okapi_string_free, [:pointer], :int
+    attach_function :okapi_metadata, [ByteBuffer.by_value, ByteBuffer.by_ref, ExternError.by_ref], :int
+
+    attach_function :okapi_bytebuffer_free, [ByteBuffer.by_value], :void
+    attach_function :okapi_string_free, [:pointer], :void
   end
 
   def self.ffi_call(function, request, response_klass)
@@ -105,7 +125,6 @@ module Okapi
     byte_buffer_free(response_buffer)
     response
   end
-
   # rubocop:enable Metrics/MethodLength
   # rubocop:enable Metrics/AbcSize
 
@@ -135,3 +154,4 @@ module Okapi
     end
   end
 end
+# rubocop:enable Metrics/ModuleLength

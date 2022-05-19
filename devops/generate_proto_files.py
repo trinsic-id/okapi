@@ -38,7 +38,7 @@ def run_protoc(
     proto_files: Union[List[str], str] = None,
     plugin: str = None,
     protoc_executable: str = "protoc",
-    proto_path: str = None
+    proto_path: str = None,
 ) -> None:
     proto_path_string = f'--proto_path="{get_language_dir(proto_path or "proto")}"'
     plugin_string = f"--plugin={plugin}" if plugin else ""
@@ -77,8 +77,11 @@ def update_golang():
 def update_ruby():
     ruby_path = get_language_dir("ruby")
     ruby_proto_path = join(ruby_path, "lib")
+    okapi_dir = join(ruby_proto_path, 'okapi')
+    services_subfolders = [f.path for f in os.scandir(okapi_dir) if f.is_dir()]
+    for folder in services_subfolders:
+        clean_dir(folder)
     # Clean selectively
-    clean_dir(join(ruby_proto_path, "okapi"))
     clean_dir(join(ruby_proto_path, "pbmse"))
     run_protoc({"ruby_out": ruby_proto_path}, {}, get_proto_files())
     # Ruby type specifications
@@ -98,12 +101,17 @@ def update_java():
 
 
 def update_dart():
-    language_path = get_language_dir('dart')
-    language_proto_path = join(language_path, 'lib', 'proto')
+    language_path = get_language_dir("dart")
+    language_proto_path = join(language_path, "lib", "proto")
     clean_dir(language_proto_path)
     # https://github.com/google/protobuf.dart/tree/master/protoc_plugin#how-to-build-and-use
-    run_protoc({'dart_out': language_proto_path}, {}, get_proto_files())
-    run_protoc({'dart_out': language_proto_path}, {}, get_proto_files(dir_name='c:/bin/google'), proto_path='c:/bin')
+    run_protoc({"dart_out": language_proto_path}, {}, get_proto_files())
+    run_protoc(
+        {"dart_out": language_proto_path},
+        {},
+        get_proto_files(dir_name="c:/bin/google"),
+        proto_path="c:/bin",
+    )
 
 
 def update_markdown():

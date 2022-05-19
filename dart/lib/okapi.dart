@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'package:okapi_dart/okapi_native.dart';
 import 'package:okapi_dart/proto/okapi/hashing/v1/hashing.pb.dart';
 import 'package:okapi_dart/proto/okapi/keys/v1/keys.pb.dart';
+import 'package:okapi_dart/proto/okapi/metadata/metadata.pb.dart';
 import 'package:okapi_dart/proto/okapi/proofs/v1/proofs.pb.dart';
 import 'package:okapi_dart/proto/okapi/security/v1/security.pb.dart';
 import 'package:okapi_dart/proto/okapi/transport/v1/transport.pb.dart';
@@ -125,4 +126,14 @@ class Hashing {
           _blake3DeriveKey, request, Blake3DeriveKeyResponse());
   static SHA256HashResponse sha256Hash(SHA256HashRequest request) =>
       OkapiNative.nativeCall(_sha256Hash, request, SHA256HashResponse());
+}
+
+class Metadata {
+  static final _metadataGetMetadata = OkapiNative.library
+      .lookupFunction<OkapiFunctionNative, OkapiFunction>(
+      'okapi_metadata');
+
+  static MetadataResponse getMetadata() =>
+      OkapiNative.nativeCall(
+          _metadataGetMetadata, MetadataRequest(), MetadataResponse());
 }

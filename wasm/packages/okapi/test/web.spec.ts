@@ -2,12 +2,12 @@ import {
   Blake3HashRequest,
   CreateOberonKeyRequest,
   CreateOberonProofRequest,
-  CreateOberonTokenRequest,
   DIDKey,
   GenerateKeyRequest,
   Hashing,
   KeyType,
   Oberon,
+  OkapiMetadata,
 } from "../src";
 
 describe("Web Okapi Tests", () => {
@@ -33,13 +33,21 @@ describe("Web Okapi Tests", () => {
       blinding: [],
     });
 
-    expect(token).not.toBeNull()
+    expect(token).not.toBeNull();
 
-    const verifyRight = await Oberon.verifyToken({data: data, pk: rightKey.pk, token: token.token})
-    const verifyWrong = await Oberon.verifyToken({data: data, pk: wrongKey.pk, token: token.token})
+    const verifyRight = await Oberon.verifyToken({
+      data: data,
+      pk: rightKey.pk,
+      token: token.token,
+    });
+    const verifyWrong = await Oberon.verifyToken({
+      data: data,
+      pk: wrongKey.pk,
+      token: token.token,
+    });
 
-    expect(verifyRight.valid).toBeTruthy()
-    expect(verifyWrong.valid).toBeFalsy()
+    expect(verifyRight.valid).toBeTruthy();
+    expect(verifyWrong.valid).toBeFalsy();
   });
 
   it("create and verify oberon token", async () => {
@@ -80,5 +88,14 @@ describe("Web Okapi Tests", () => {
     );
     expect(response).not.toBeNull();
     expect(response).not.toBeUndefined();
+  });
+
+  it("has legitimate metadata", async () => {
+    const response = await OkapiMetadata.getMetadata();
+    expect(response).not.toBeNull();
+    expect(response).not.toBeUndefined();
+    expect(response.version).not.toBeNull();
+    expect(response.version).not.toBeUndefined();
+    expect(response.version.trim().length > 0).toBeTruthy();
   });
 });

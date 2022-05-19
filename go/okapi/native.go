@@ -1,9 +1,13 @@
 package okapi
 
 import (
+	"errors"
 	"fmt"
 	"google.golang.org/protobuf/proto"
+	"os"
+	"path"
 	"runtime"
+	"strings"
 	"unsafe"
 )
 
@@ -38,18 +42,41 @@ func (d *DidError) Error() string {
 	return fmt.Sprintf("Error on call: %s() return code=%d message=%s", d.FunctionName, d.Code, d.Message)
 }
 
-func getLibraryName() string {
+func getLibraryName() (string, string) {
 	os := runtime.GOOS
+	// TODO - ARM support
 	switch os {
 	case "windows":
-		return "okapi.dll"
+		return "windows", "okapi.dll"
 	case "darwin":
-		return "libokapi.dylib"
+		return "macos", "libokapi.dylib"
 	case "linux":
-		return "libokapi.so"
+		return "linux", "libokapi.so"
 	default:
-		return "okapi"
+		return "", "okapi"
 	}
+}
+
+func getLibraryPath() string {
+	libFolder, libName := getLibraryName()
+	ldLibPath := os.Getenv("LD_LIBRARY_PATH")
+	// TODO - Check the appropriate folders
+	checkPaths := []string{
+		path.Join(".", libName),
+		path.Join(".", libFolder, libName),
+		path.Join(ldLibPath, libName),
+		path.Join(ldLibPath, libFolder, libName),
+	}
+
+	for _, checkPath := range checkPaths {
+		if _, err := os.Stat(checkPath); errors.Is(err, os.ErrNotExist) {
+			continue
+		} else {
+			// Return this path
+			return checkPath
+		}
+	}
+	panic(fmt.Sprintf("could not find necessary okapi binary. paths searched:\n%s", strings.Join(checkPaths, "\n")))
 }
 
 func createBuffersFromMessage(requestMessage proto.Message) (ByteBuffer, ByteBuffer, ExternError, error) {

@@ -209,3 +209,13 @@ export class Hashing {
     );
   }
 }
+
+export class OkapiMetadata {
+  static async getMetadata(): Promise<proto.MetadataResponse> {
+    await initialize();
+    const request = proto.MetadataRequest.fromPartial({});
+    return proto.MetadataResponse.decode(
+        native.sha256_hash(proto.MetadataRequest.encode(request).finish())
+    );
+  }
+}

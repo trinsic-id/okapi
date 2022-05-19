@@ -30,7 +30,6 @@
 - [okapi/metadata/metadata.proto](#okapi_metadata_metadata-proto)
     - [MetadataRequest](#okapi-metadata-MetadataRequest)
     - [MetadataResponse](#okapi-metadata-MetadataResponse)
-    - [MetadataResponse.VariablesEntry](#okapi-metadata-MetadataResponse-VariablesEntry)
   
 - [okapi/proofs/v1/proofs.proto](#okapi_proofs_v1_proofs-proto)
     - [CreateProofRequest](#okapi-proofs-v1-CreateProofRequest)
@@ -387,12 +386,9 @@
 <a name="okapi-metadata-MetadataRequest"></a>
 
 ### MetadataRequest
-Request custom metadata about the native okapi binaries
+Request custom metadata about the native okapi binaries - cannot get cargo env vars at runtime
 
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| variables | [string](#string) | repeated | optional field, can contain any of the cargo env vars |
+repeated string variables = 1; // optional field, can contain any of the cargo env vars
 
 
 
@@ -410,25 +406,12 @@ Metadata information about the native okapi binaries. Always returns the version
 | version | [string](#string) |  | The full version string from okapi |
 | version_major | [int32](#int32) |  | Major version |
 | version_minor | [int32](#int32) |  | Minor version |
-| variables | [MetadataResponse.VariablesEntry](#okapi-metadata-MetadataResponse-VariablesEntry) | repeated | etc
-
-will include any non default requested variables |
-
-
-
-
-
-
-<a name="okapi-metadata-MetadataResponse-VariablesEntry"></a>
-
-### MetadataResponse.VariablesEntry
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| key | [string](#string) |  |  |
-| value | [string](#string) |  |  |
+| version_patch | [int32](#int32) |  | Patch release version |
+| target_family | [string](#string) |  | https://doc.rust-lang.org/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-crates |
+| target_os | [string](#string) |  |  |
+| target_arch | [string](#string) |  |  |
+| target_vendor | [string](#string) |  |  |
+| target_env | [string](#string) |  |  |
 
 
 
