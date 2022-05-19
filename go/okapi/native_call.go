@@ -4,6 +4,7 @@ package okapi
 
 import (
 	"github.com/coreos/pkg/dlopen"
+	"syscall"
 	"unsafe"
 )
 
