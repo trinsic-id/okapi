@@ -35,6 +35,9 @@ internal class Native
 
     [DllImport(LibraryName, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
     internal static extern void okapi_bytebuffer_free(ByteBuffer data);
+    
+    [DllImport(LibraryName, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+    internal static extern int okapi_metadata(ByteBuffer request, out ByteBuffer response, out ExternError error);
 
     #endregion
 
@@ -83,8 +86,7 @@ internal class Native
     internal static extern int blake3_derive_key(ByteBuffer request, out ByteBuffer response, out ExternError error);
 
     #endregion
-
-
+    
     #region Ld Proofs
 
     [DllImport(LibraryName, CharSet = CharSet.Auto, BestFitMapping = false, ThrowOnUnmappableChar = true)]
