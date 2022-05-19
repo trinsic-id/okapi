@@ -108,23 +108,6 @@ func cByteBufferFree(cRespBuf C.ByteBuffer) error {
 	return nil
 }
 
-func okapiVersion() (string, error) {
-	funcName := "okapi_version"
-	libPtr, funcPtr := getFunctionPointer(funcName)
-	defer func(libPtr *dlopen.LibHandle) {
-		err := libPtr.Close()
-		if err != nil {
-			panic(err)
-		}
-	}(libPtr)
-	ver_str := *(*string)(unsafe.Pointer(ver_ptr))
-	err = okapiStringFree(ver_ptr)
-	if err != nil {
-		return "", err
-	}
-	return ver_str, nil
-}
-
 func okapiStringFree(s uintptr) error {
 	dll := syscall.MustLoadDLL(getLibraryName())
 	okapiFunc := dll.MustFindProc("okapi_string_free")

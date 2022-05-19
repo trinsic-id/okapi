@@ -36,22 +36,6 @@ func byteBufferFree(responseBuffer ByteBuffer) error {
 	return nil
 }
 
-func okapiVersion() (string, error) {
-	dll := syscall.MustLoadDLL(getLibraryName())
-	okapiFunc := dll.MustFindProc("okapi_version")
-	ver_ptr, _, err := okapiFunc.Call()
-	if err != syscall.Errno(0x0) {
-		// Actually check the syscall.Errno to see if it's a real error
-		return "", err
-	}
-	ver_str := *(*string)(unsafe.Pointer(ver_ptr))
-	err = okapiStringFree(ver_ptr)
-	if err != nil {
-		return "", err
-	}
-	return ver_str, nil
-}
-
 func okapiStringFree(s uintptr) error {
 	dll := syscall.MustLoadDLL(getLibraryName())
 	okapiFunc := dll.MustFindProc("okapi_string_free")
