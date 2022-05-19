@@ -191,7 +191,7 @@ def build_dart(args) -> None:
     dart_dir = get_language_dir('dart')
     update_line(
         join(dart_dir, "pubspec.yaml"),
-        {"version: 0.1.0": f'version: "{get_package_versions(args)}"'},
+        {"version:": f'version: "{get_package_versions(args)}"'},
     )
 
 
