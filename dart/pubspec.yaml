@@ -8,9 +8,10 @@ environment:
 
 
 dependencies:
-  ffi: any
+  ffi: ^1.1.2
   protobuf: ^2.0.0
-  path: any
+  path: ^1.8.1
+  fixnum: ^1.0.1
 
 dev_dependencies:
   lints: any
