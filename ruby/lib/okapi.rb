@@ -3,6 +3,7 @@
 require 'ffi'
 require 'os'
 
+# rubocop:disable Metrics/ModuleLength
 # Okapi wrapper module
 module Okapi
   extend FFI::Library
@@ -49,11 +50,14 @@ module Okapi
     @library_linked = true
     # Get the environment variable RUBY_DLL_PATH on all platforms as a failsafe,
     # MacOS system integrity protection, I'm looking at you.
+    ld_lib_path = ENV['LD_LIBRARY_PATH'] || ''
+    ruby_dll_path = ENV['RUBY_DLL_PATH'] || ''
     possible_library_paths = [File.expand_path(File.join(__dir__, '..', 'libs', library_directory, library_name)),
-                              File.expand_path(File.join(ENV['LD_LIBRARY_PATH'] || '', library_directory, library_name)),
-                              File.expand_path(File.join(ENV['LD_LIBRARY_PATH'] || '', library_name)),
-                              File.expand_path(File.join(ENV['RUBY_DLL_PATH'] || '', library_directory, library_name)),
-                              File.expand_path(File.join(ENV['RUBY_DLL_PATH'] || '', library_name)),
+                              File.expand_path(File.join(ld_lib_path, library_directory,
+                                                         library_name)),
+                              File.expand_path(File.join(ld_lib_path, library_name)),
+                              File.expand_path(File.join(ruby_dll_path, library_directory, library_name)),
+                              File.expand_path(File.join(ruby_dll_path, library_name)),
                               library_name,
                               File.expand_path(File.join(library_path || '', library_name))]
     possible_library_paths.each do |lib_path|
@@ -121,7 +125,6 @@ module Okapi
     byte_buffer_free(response_buffer)
     response
   end
-
   # rubocop:enable Metrics/MethodLength
   # rubocop:enable Metrics/AbcSize
 
@@ -151,3 +154,4 @@ module Okapi
     end
   end
 end
+# rubocop:enable Metrics/ModuleLength
