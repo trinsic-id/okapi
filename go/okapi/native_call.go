@@ -76,7 +76,7 @@ func callOkapiNative(request proto.Message, response proto.Message, funcName str
 }
 
 func getFunctionPointer(funcName string) (*dlopen.LibHandle, unsafe.Pointer) {
-	libPtr, err := dlopen.GetHandle([]string{getLibraryName()})
+	libPtr, err := dlopen.GetHandle([]string{getLibraryPath()})
 	if err != nil {
 		panic(err)
 	}
@@ -109,7 +109,7 @@ func cByteBufferFree(cRespBuf C.ByteBuffer) error {
 }
 
 func okapiStringFree(s uintptr) error {
-	dll := syscall.MustLoadDLL(getLibraryName())
+	dll := syscall.MustLoadDLL(getLibraryPath())
 	okapiFunc := dll.MustFindProc("okapi_string_free")
 	_, _, err := okapiFunc.Call(s)
 	if err != syscall.Errno(0x0) {

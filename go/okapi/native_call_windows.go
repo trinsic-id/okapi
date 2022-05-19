@@ -11,7 +11,7 @@ func callOkapiNative(request proto.Message, response proto.Message, funcName str
 	if err != nil {
 		return wrapError("Failed to create buffers", err)
 	}
-	dll := syscall.MustLoadDLL(getLibraryName())
+	dll := syscall.MustLoadDLL(getLibraryPath())
 	okapiFunc := dll.MustFindProc(funcName)
 	_, _, err = okapiFunc.Call(uintptr(unsafe.Pointer(&requestBuffer)), uintptr(unsafe.Pointer(&responseBuffer)), uintptr(unsafe.Pointer(&errorBuffer)))
 	if err != syscall.Errno(0x0) {
@@ -26,7 +26,7 @@ func callOkapiNative(request proto.Message, response proto.Message, funcName str
 }
 
 func byteBufferFree(responseBuffer ByteBuffer) error {
-	dll := syscall.MustLoadDLL(getLibraryName())
+	dll := syscall.MustLoadDLL(getLibraryPath())
 	okapiFunc := dll.MustFindProc("okapi_bytebuffer_free")
 	_, _, err := okapiFunc.Call(uintptr(unsafe.Pointer(&responseBuffer)))
 	if err != syscall.Errno(0x0) {
@@ -37,7 +37,7 @@ func byteBufferFree(responseBuffer ByteBuffer) error {
 }
 
 func okapiStringFree(s uintptr) error {
-	dll := syscall.MustLoadDLL(getLibraryName())
+	dll := syscall.MustLoadDLL(getLibraryPath())
 	okapiFunc := dll.MustFindProc("okapi_string_free")
 	_, _, err := okapiFunc.Call(s)
 	if err != syscall.Errno(0x0) {
