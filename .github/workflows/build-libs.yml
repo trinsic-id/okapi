@@ -187,8 +187,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2.4.0
       - run: |
-          brew update
-          brew install emscripten
+          dotnet workload install wasm-tools
       - run: ./devops/BuildLibraries.ps1 -Platform Wasm -OutLocation ./libs/wasm
         shell: pwsh
       - uses: actions/upload-artifact@v2
