@@ -187,7 +187,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2.4.0
       - uses: mymindstorm/setup-emsdk@v11
-        version: '2.0.34'
+        with:
+          version: '2.0.34'
       - run: ./devops/BuildLibraries.ps1 -Platform Wasm -OutLocation ./libs/wasm
         shell: pwsh
       - uses: actions/upload-artifact@v2
