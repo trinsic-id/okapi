@@ -1,9 +1,9 @@
-name: Release Platform Libraries
+name: "Release Platform Libraries"
 
 on:
   workflow_dispatch:
   release:
-    types: [published]
+    types: [published, prereleased]
 
 jobs:
   publish_binaries_bundle:
@@ -33,3 +33,35 @@ jobs:
           tag: ${{ env.RELEASE_VERSION }}
           overwrite: true
           body: "Okapi binaries bundle"
+
+  release-dotnet-wrapper:
+    uses: ./.github/workflows/release-dotnet.yaml
+    needs: publish_binaries_bundle
+
+  release-golang-wrapper:
+    uses: ./.github/workflows/release-golang.yaml
+    needs: publish_binaries_bundle
+
+  release-java-wrapper:
+    uses: ./.github/workflows/release-java.yaml
+    needs: publish_binaries_bundle
+
+  release-python-wrapper:
+    uses: ./.github/workflows/release-python.yaml
+    needs: publish_binaries_bundle
+
+  release-ruby-wrapper:
+    uses: ./.github/workflows/release-ruby.yaml
+    needs: publish_binaries_bundle
+
+  release-rust-wrapper:
+    uses: ./.github/workflows/release-rust.yaml
+    needs: publish_binaries_bundle
+
+  release-swift-wrapper:
+    uses: ./.github/workflows/release-swift.yaml
+    needs: publish_binaries_bundle
+
+  release-wasm-wrapper:
+    uses: ./.github/workflows/release-wasm.yaml
+    needs: publish_binaries_bundle

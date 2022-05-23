@@ -1,17 +1,13 @@
 name: "Golang (release)"
 
 on:
+  workflow_call:
   workflow_dispatch:
     inputs:
       packageVersion:
         description: 'Version to build'
         required: true
         default: ''
-  workflow_run:
-    workflows: ["Release Platform Libraries"]
-    branches: ["main", "v?.*"]
-    types:
-      - completed
 
 jobs:
   publish_go_tag:
