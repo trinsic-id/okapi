@@ -183,11 +183,9 @@ jobs:
   build_wasm:
     name: Wasm (Emscripten)
     if: "! contains(github.event.head_commit.message, '[skip ci]')"
-    runs-on: macos-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2.4.0
-      - run: |
-          dotnet workload install wasm-tools
       - run: ./devops/BuildLibraries.ps1 -Platform Wasm -OutLocation ./libs/wasm
         shell: pwsh
       - uses: actions/upload-artifact@v2
