@@ -11,7 +11,7 @@ import 'package:okapi_dart/proto/okapi/proofs/v1/proofs.pb.dart';
 import 'package:okapi_dart/proto/okapi/security/v1/security.pb.dart';
 import 'package:test/test.dart';
 
-import '../okapi.dart';
+import '../lib/okapi.dart';
 
 void main() {
   test('Dart bitness', () {
