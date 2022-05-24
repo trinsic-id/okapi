@@ -8,6 +8,7 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
+
 @$core.Deprecated('Use keyTypeDescriptor instead')
 const KeyType$json = const {
   '1': 'KeyType',
@@ -22,29 +23,53 @@ const KeyType$json = const {
 };
 
 /// Descriptor for `KeyType`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List keyTypeDescriptor = $convert.base64Decode('CgdLZXlUeXBlEhgKFEtFWV9UWVBFX1VOU1BFQ0lGSUVEEAASFAoQS0VZX1RZUEVfRUQyNTUxORABEhMKD0tFWV9UWVBFX1gyNTUxORACEhEKDUtFWV9UWVBFX1AyNTYQAxIZChVLRVlfVFlQRV9CTFMxMjM4MUcxRzIQBBIWChJLRVlfVFlQRV9TRUNQMjU2SzEQBQ==');
+final $typed_data.Uint8List keyTypeDescriptor = $convert.base64Decode(
+    'CgdLZXlUeXBlEhgKFEtFWV9UWVBFX1VOU1BFQ0lGSUVEEAASFAoQS0VZX1RZUEVfRUQyNTUxORABEhMKD0tFWV9UWVBFX1gyNTUxORACEhEKDUtFWV9UWVBFX1AyNTYQAxIZChVLRVlfVFlQRV9CTFMxMjM4MUcxRzIQBBIWChJLRVlfVFlQRV9TRUNQMjU2SzEQBQ==');
 @$core.Deprecated('Use generateKeyRequestDescriptor instead')
 const GenerateKeyRequest$json = const {
   '1': 'GenerateKeyRequest',
   '2': const [
     const {'1': 'seed', '3': 1, '4': 1, '5': 12, '10': 'seed'},
-    const {'1': 'key_type', '3': 2, '4': 1, '5': 14, '6': '.okapi.keys.v1.KeyType', '10': 'keyType'},
+    const {
+      '1': 'key_type',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.okapi.keys.v1.KeyType',
+      '10': 'keyType'
+    },
   ],
 };
 
 /// Descriptor for `GenerateKeyRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List generateKeyRequestDescriptor = $convert.base64Decode('ChJHZW5lcmF0ZUtleVJlcXVlc3QSEgoEc2VlZBgBIAEoDFIEc2VlZBIxCghrZXlfdHlwZRgCIAEoDjIWLm9rYXBpLmtleXMudjEuS2V5VHlwZVIHa2V5VHlwZQ==');
+final $typed_data.Uint8List generateKeyRequestDescriptor = $convert.base64Decode(
+    'ChJHZW5lcmF0ZUtleVJlcXVlc3QSEgoEc2VlZBgBIAEoDFIEc2VlZBIxCghrZXlfdHlwZRgCIAEoDjIWLm9rYXBpLmtleXMudjEuS2V5VHlwZVIHa2V5VHlwZQ==');
 @$core.Deprecated('Use generateKeyResponseDescriptor instead')
 const GenerateKeyResponse$json = const {
   '1': 'GenerateKeyResponse',
   '2': const [
-    const {'1': 'key', '3': 1, '4': 3, '5': 11, '6': '.okapi.keys.v1.JsonWebKey', '10': 'key'},
-    const {'1': 'did_document', '3': 2, '4': 1, '5': 11, '6': '.google.protobuf.Struct', '10': 'didDocument'},
+    const {
+      '1': 'key',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.okapi.keys.v1.JsonWebKey',
+      '10': 'key'
+    },
+    const {
+      '1': 'did_document',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Struct',
+      '10': 'didDocument'
+    },
   ],
 };
 
 /// Descriptor for `GenerateKeyResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List generateKeyResponseDescriptor = $convert.base64Decode('ChNHZW5lcmF0ZUtleVJlc3BvbnNlEisKA2tleRgBIAMoCzIZLm9rYXBpLmtleXMudjEuSnNvbldlYktleVIDa2V5EjoKDGRpZF9kb2N1bWVudBgCIAEoCzIXLmdvb2dsZS5wcm90b2J1Zi5TdHJ1Y3RSC2RpZERvY3VtZW50');
+final $typed_data.Uint8List generateKeyResponseDescriptor = $convert.base64Decode(
+    'ChNHZW5lcmF0ZUtleVJlc3BvbnNlEisKA2tleRgBIAMoCzIZLm9rYXBpLmtleXMudjEuSnNvbldlYktleVIDa2V5EjoKDGRpZF9kb2N1bWVudBgCIAEoCzIXLmdvb2dsZS5wcm90b2J1Zi5TdHJ1Y3RSC2RpZERvY3VtZW50');
 @$core.Deprecated('Use resolveRequestDescriptor instead')
 const ResolveRequest$json = const {
   '1': 'ResolveRequest',
@@ -54,18 +79,34 @@ const ResolveRequest$json = const {
 };
 
 /// Descriptor for `ResolveRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List resolveRequestDescriptor = $convert.base64Decode('Cg5SZXNvbHZlUmVxdWVzdBIQCgNkaWQYASABKAlSA2RpZA==');
+final $typed_data.Uint8List resolveRequestDescriptor =
+    $convert.base64Decode('Cg5SZXNvbHZlUmVxdWVzdBIQCgNkaWQYASABKAlSA2RpZA==');
 @$core.Deprecated('Use resolveResponseDescriptor instead')
 const ResolveResponse$json = const {
   '1': 'ResolveResponse',
   '2': const [
-    const {'1': 'did_document', '3': 1, '4': 1, '5': 11, '6': '.google.protobuf.Struct', '10': 'didDocument'},
-    const {'1': 'keys', '3': 2, '4': 3, '5': 11, '6': '.okapi.keys.v1.JsonWebKey', '10': 'keys'},
+    const {
+      '1': 'did_document',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Struct',
+      '10': 'didDocument'
+    },
+    const {
+      '1': 'keys',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.okapi.keys.v1.JsonWebKey',
+      '10': 'keys'
+    },
   ],
 };
 
 /// Descriptor for `ResolveResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List resolveResponseDescriptor = $convert.base64Decode('Cg9SZXNvbHZlUmVzcG9uc2USOgoMZGlkX2RvY3VtZW50GAEgASgLMhcuZ29vZ2xlLnByb3RvYnVmLlN0cnVjdFILZGlkRG9jdW1lbnQSLQoEa2V5cxgCIAMoCzIZLm9rYXBpLmtleXMudjEuSnNvbldlYktleVIEa2V5cw==');
+final $typed_data.Uint8List resolveResponseDescriptor = $convert.base64Decode(
+    'Cg9SZXNvbHZlUmVzcG9uc2USOgoMZGlkX2RvY3VtZW50GAEgASgLMhcuZ29vZ2xlLnByb3RvYnVmLlN0cnVjdFILZGlkRG9jdW1lbnQSLQoEa2V5cxgCIAMoCzIZLm9rYXBpLmtleXMudjEuSnNvbldlYktleVIEa2V5cw==');
 @$core.Deprecated('Use jsonWebKeyDescriptor instead')
 const JsonWebKey$json = const {
   '1': 'JsonWebKey',
@@ -80,4 +121,5 @@ const JsonWebKey$json = const {
 };
 
 /// Descriptor for `JsonWebKey`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List jsonWebKeyDescriptor = $convert.base64Decode('CgpKc29uV2ViS2V5EhAKA2tpZBgBIAEoCVIDa2lkEgwKAXgYAiABKAlSAXgSDAoBeRgDIAEoCVIBeRIMCgFkGAQgASgJUgFkEhAKA2NydhgFIAEoCVIDY3J2EhAKA2t0eRgGIAEoCVIDa3R5');
+final $typed_data.Uint8List jsonWebKeyDescriptor = $convert.base64Decode(
+    'CgpKc29uV2ViS2V5EhAKA2tpZBgBIAEoCVIDa2lkEgwKAXgYAiABKAlSAXgSDAoBeRgDIAEoCVIBeRIMCgFkGAQgASgJUgFkEhAKA2NydhgFIAEoCVIDY3J2EhAKA2t0eRgGIAEoCVIDa3R5');

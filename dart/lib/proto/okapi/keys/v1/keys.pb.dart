@@ -16,11 +16,31 @@ import 'keys.pbenum.dart';
 export 'keys.pbenum.dart';
 
 class GenerateKeyRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GenerateKeyRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'okapi.keys.v1'), createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'seed', $pb.PbFieldType.OY)
-    ..e<KeyType>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'keyType', $pb.PbFieldType.OE, defaultOrMaker: KeyType.KEY_TYPE_UNSPECIFIED, valueOf: KeyType.valueOf, enumValues: KeyType.values)
-    ..hasRequiredFields = false
-  ;
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'GenerateKeyRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'okapi.keys.v1'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'seed',
+        $pb.PbFieldType.OY)
+    ..e<KeyType>(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'keyType',
+        $pb.PbFieldType.OE,
+        defaultOrMaker: KeyType.KEY_TYPE_UNSPECIFIED,
+        valueOf: KeyType.valueOf,
+        enumValues: KeyType.values)
+    ..hasRequiredFields = false;
 
   GenerateKeyRequest._() : super();
   factory GenerateKeyRequest({
@@ -36,31 +56,40 @@ class GenerateKeyRequest extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory GenerateKeyRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory GenerateKeyRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  factory GenerateKeyRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory GenerateKeyRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   GenerateKeyRequest clone() => GenerateKeyRequest()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  GenerateKeyRequest copyWith(void Function(GenerateKeyRequest) updates) => super.copyWith((message) => updates(message as GenerateKeyRequest)) as GenerateKeyRequest; // ignore: deprecated_member_use
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  GenerateKeyRequest copyWith(void Function(GenerateKeyRequest) updates) =>
+      super.copyWith((message) => updates(message as GenerateKeyRequest))
+          as GenerateKeyRequest; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static GenerateKeyRequest create() => GenerateKeyRequest._();
   GenerateKeyRequest createEmptyInstance() => create();
-  static $pb.PbList<GenerateKeyRequest> createRepeated() => $pb.PbList<GenerateKeyRequest>();
+  static $pb.PbList<GenerateKeyRequest> createRepeated() =>
+      $pb.PbList<GenerateKeyRequest>();
   @$core.pragma('dart2js:noInline')
-  static GenerateKeyRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GenerateKeyRequest>(create);
+  static GenerateKeyRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GenerateKeyRequest>(create);
   static GenerateKeyRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.List<$core.int> get seed => $_getN(0);
   @$pb.TagNumber(1)
-  set seed($core.List<$core.int> v) { $_setBytes(0, v); }
+  set seed($core.List<$core.int> v) {
+    $_setBytes(0, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasSeed() => $_has(0);
   @$pb.TagNumber(1)
@@ -69,7 +98,10 @@ class GenerateKeyRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   KeyType get keyType => $_getN(1);
   @$pb.TagNumber(2)
-  set keyType(KeyType v) { setField(2, v); }
+  set keyType(KeyType v) {
+    setField(2, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasKeyType() => $_has(1);
   @$pb.TagNumber(2)
@@ -77,11 +109,29 @@ class GenerateKeyRequest extends $pb.GeneratedMessage {
 }
 
 class GenerateKeyResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GenerateKeyResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'okapi.keys.v1'), createEmptyInstance: create)
-    ..pc<JsonWebKey>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'key', $pb.PbFieldType.PM, subBuilder: JsonWebKey.create)
-    ..aOM<$1.Struct>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'didDocument', subBuilder: $1.Struct.create)
-    ..hasRequiredFields = false
-  ;
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'GenerateKeyResponse',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'okapi.keys.v1'),
+      createEmptyInstance: create)
+    ..pc<JsonWebKey>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'key',
+        $pb.PbFieldType.PM,
+        subBuilder: JsonWebKey.create)
+    ..aOM<$1.Struct>(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'didDocument',
+        subBuilder: $1.Struct.create)
+    ..hasRequiredFields = false;
 
   GenerateKeyResponse._() : super();
   factory GenerateKeyResponse({
@@ -97,25 +147,31 @@ class GenerateKeyResponse extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory GenerateKeyResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory GenerateKeyResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  factory GenerateKeyResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory GenerateKeyResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   GenerateKeyResponse clone() => GenerateKeyResponse()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  GenerateKeyResponse copyWith(void Function(GenerateKeyResponse) updates) => super.copyWith((message) => updates(message as GenerateKeyResponse)) as GenerateKeyResponse; // ignore: deprecated_member_use
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  GenerateKeyResponse copyWith(void Function(GenerateKeyResponse) updates) =>
+      super.copyWith((message) => updates(message as GenerateKeyResponse))
+          as GenerateKeyResponse; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static GenerateKeyResponse create() => GenerateKeyResponse._();
   GenerateKeyResponse createEmptyInstance() => create();
-  static $pb.PbList<GenerateKeyResponse> createRepeated() => $pb.PbList<GenerateKeyResponse>();
+  static $pb.PbList<GenerateKeyResponse> createRepeated() =>
+      $pb.PbList<GenerateKeyResponse>();
   @$core.pragma('dart2js:noInline')
-  static GenerateKeyResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GenerateKeyResponse>(create);
+  static GenerateKeyResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GenerateKeyResponse>(create);
   static GenerateKeyResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -124,7 +180,10 @@ class GenerateKeyResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $1.Struct get didDocument => $_getN(1);
   @$pb.TagNumber(2)
-  set didDocument($1.Struct v) { setField(2, v); }
+  set didDocument($1.Struct v) {
+    setField(2, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasDidDocument() => $_has(1);
   @$pb.TagNumber(2)
@@ -134,10 +193,21 @@ class GenerateKeyResponse extends $pb.GeneratedMessage {
 }
 
 class ResolveRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ResolveRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'okapi.keys.v1'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'did')
-    ..hasRequiredFields = false
-  ;
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'ResolveRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'okapi.keys.v1'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'did')
+    ..hasRequiredFields = false;
 
   ResolveRequest._() : super();
   factory ResolveRequest({
@@ -149,31 +219,40 @@ class ResolveRequest extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory ResolveRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ResolveRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  factory ResolveRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory ResolveRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   ResolveRequest clone() => ResolveRequest()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  ResolveRequest copyWith(void Function(ResolveRequest) updates) => super.copyWith((message) => updates(message as ResolveRequest)) as ResolveRequest; // ignore: deprecated_member_use
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  ResolveRequest copyWith(void Function(ResolveRequest) updates) =>
+      super.copyWith((message) => updates(message as ResolveRequest))
+          as ResolveRequest; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static ResolveRequest create() => ResolveRequest._();
   ResolveRequest createEmptyInstance() => create();
-  static $pb.PbList<ResolveRequest> createRepeated() => $pb.PbList<ResolveRequest>();
+  static $pb.PbList<ResolveRequest> createRepeated() =>
+      $pb.PbList<ResolveRequest>();
   @$core.pragma('dart2js:noInline')
-  static ResolveRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ResolveRequest>(create);
+  static ResolveRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ResolveRequest>(create);
   static ResolveRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get did => $_getSZ(0);
   @$pb.TagNumber(1)
-  set did($core.String v) { $_setString(0, v); }
+  set did($core.String v) {
+    $_setString(0, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasDid() => $_has(0);
   @$pb.TagNumber(1)
@@ -181,11 +260,29 @@ class ResolveRequest extends $pb.GeneratedMessage {
 }
 
 class ResolveResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ResolveResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'okapi.keys.v1'), createEmptyInstance: create)
-    ..aOM<$1.Struct>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'didDocument', subBuilder: $1.Struct.create)
-    ..pc<JsonWebKey>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'keys', $pb.PbFieldType.PM, subBuilder: JsonWebKey.create)
-    ..hasRequiredFields = false
-  ;
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'ResolveResponse',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'okapi.keys.v1'),
+      createEmptyInstance: create)
+    ..aOM<$1.Struct>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'didDocument',
+        subBuilder: $1.Struct.create)
+    ..pc<JsonWebKey>(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'keys',
+        $pb.PbFieldType.PM,
+        subBuilder: JsonWebKey.create)
+    ..hasRequiredFields = false;
 
   ResolveResponse._() : super();
   factory ResolveResponse({
@@ -201,31 +298,40 @@ class ResolveResponse extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory ResolveResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ResolveResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  factory ResolveResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory ResolveResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   ResolveResponse clone() => ResolveResponse()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  ResolveResponse copyWith(void Function(ResolveResponse) updates) => super.copyWith((message) => updates(message as ResolveResponse)) as ResolveResponse; // ignore: deprecated_member_use
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  ResolveResponse copyWith(void Function(ResolveResponse) updates) =>
+      super.copyWith((message) => updates(message as ResolveResponse))
+          as ResolveResponse; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static ResolveResponse create() => ResolveResponse._();
   ResolveResponse createEmptyInstance() => create();
-  static $pb.PbList<ResolveResponse> createRepeated() => $pb.PbList<ResolveResponse>();
+  static $pb.PbList<ResolveResponse> createRepeated() =>
+      $pb.PbList<ResolveResponse>();
   @$core.pragma('dart2js:noInline')
-  static ResolveResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ResolveResponse>(create);
+  static ResolveResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ResolveResponse>(create);
   static ResolveResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
   $1.Struct get didDocument => $_getN(0);
   @$pb.TagNumber(1)
-  set didDocument($1.Struct v) { setField(1, v); }
+  set didDocument($1.Struct v) {
+    setField(1, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasDidDocument() => $_has(0);
   @$pb.TagNumber(1)
@@ -238,15 +344,46 @@ class ResolveResponse extends $pb.GeneratedMessage {
 }
 
 class JsonWebKey extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'JsonWebKey', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'okapi.keys.v1'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'kid')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'x')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'y')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'd')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'crv')
-    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'kty')
-    ..hasRequiredFields = false
-  ;
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'JsonWebKey',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'okapi.keys.v1'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'kid')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'x')
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'y')
+    ..aOS(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'd')
+    ..aOS(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'crv')
+    ..aOS(
+        6,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'kty')
+    ..hasRequiredFields = false;
 
   JsonWebKey._() : super();
   factory JsonWebKey({
@@ -278,31 +415,39 @@ class JsonWebKey extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory JsonWebKey.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory JsonWebKey.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  factory JsonWebKey.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory JsonWebKey.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   JsonWebKey clone() => JsonWebKey()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  JsonWebKey copyWith(void Function(JsonWebKey) updates) => super.copyWith((message) => updates(message as JsonWebKey)) as JsonWebKey; // ignore: deprecated_member_use
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  JsonWebKey copyWith(void Function(JsonWebKey) updates) =>
+      super.copyWith((message) => updates(message as JsonWebKey))
+          as JsonWebKey; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static JsonWebKey create() => JsonWebKey._();
   JsonWebKey createEmptyInstance() => create();
   static $pb.PbList<JsonWebKey> createRepeated() => $pb.PbList<JsonWebKey>();
   @$core.pragma('dart2js:noInline')
-  static JsonWebKey getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<JsonWebKey>(create);
+  static JsonWebKey getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<JsonWebKey>(create);
   static JsonWebKey? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get kid => $_getSZ(0);
   @$pb.TagNumber(1)
-  set kid($core.String v) { $_setString(0, v); }
+  set kid($core.String v) {
+    $_setString(0, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasKid() => $_has(0);
   @$pb.TagNumber(1)
@@ -311,7 +456,10 @@ class JsonWebKey extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.String get x => $_getSZ(1);
   @$pb.TagNumber(2)
-  set x($core.String v) { $_setString(1, v); }
+  set x($core.String v) {
+    $_setString(1, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasX() => $_has(1);
   @$pb.TagNumber(2)
@@ -320,7 +468,10 @@ class JsonWebKey extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.String get y => $_getSZ(2);
   @$pb.TagNumber(3)
-  set y($core.String v) { $_setString(2, v); }
+  set y($core.String v) {
+    $_setString(2, v);
+  }
+
   @$pb.TagNumber(3)
   $core.bool hasY() => $_has(2);
   @$pb.TagNumber(3)
@@ -329,7 +480,10 @@ class JsonWebKey extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $core.String get d => $_getSZ(3);
   @$pb.TagNumber(4)
-  set d($core.String v) { $_setString(3, v); }
+  set d($core.String v) {
+    $_setString(3, v);
+  }
+
   @$pb.TagNumber(4)
   $core.bool hasD() => $_has(3);
   @$pb.TagNumber(4)
@@ -338,7 +492,10 @@ class JsonWebKey extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   $core.String get crv => $_getSZ(4);
   @$pb.TagNumber(5)
-  set crv($core.String v) { $_setString(4, v); }
+  set crv($core.String v) {
+    $_setString(4, v);
+  }
+
   @$pb.TagNumber(5)
   $core.bool hasCrv() => $_has(4);
   @$pb.TagNumber(5)
@@ -347,10 +504,12 @@ class JsonWebKey extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   $core.String get kty => $_getSZ(5);
   @$pb.TagNumber(6)
-  set kty($core.String v) { $_setString(5, v); }
+  set kty($core.String v) {
+    $_setString(5, v);
+  }
+
   @$pb.TagNumber(6)
   $core.bool hasKty() => $_has(5);
   @$pb.TagNumber(6)
   void clearKty() => clearField(6);
 }
-

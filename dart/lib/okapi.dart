@@ -130,10 +130,8 @@ class Hashing {
 
 class Metadata {
   static final _metadataGetMetadata = OkapiNative.library
-      .lookupFunction<OkapiFunctionNative, OkapiFunction>(
-      'okapi_metadata');
+      .lookupFunction<OkapiFunctionNative, OkapiFunction>('okapi_metadata');
 
-  static MetadataResponse getMetadata() =>
-      OkapiNative.nativeCall(
-          _metadataGetMetadata, MetadataRequest(), MetadataResponse());
+  static MetadataResponse getMetadata() => OkapiNative.nativeCall(
+      _metadataGetMetadata, MetadataRequest(), MetadataResponse());
 }

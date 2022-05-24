@@ -10,14 +10,38 @@ import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class KeyType extends $pb.ProtobufEnum {
-  static const KeyType KEY_TYPE_UNSPECIFIED = KeyType._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'KEY_TYPE_UNSPECIFIED');
-  static const KeyType KEY_TYPE_ED25519 = KeyType._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'KEY_TYPE_ED25519');
-  static const KeyType KEY_TYPE_X25519 = KeyType._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'KEY_TYPE_X25519');
-  static const KeyType KEY_TYPE_P256 = KeyType._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'KEY_TYPE_P256');
-  static const KeyType KEY_TYPE_BLS12381G1G2 = KeyType._(4, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'KEY_TYPE_BLS12381G1G2');
-  static const KeyType KEY_TYPE_SECP256K1 = KeyType._(5, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'KEY_TYPE_SECP256K1');
+  static const KeyType KEY_TYPE_UNSPECIFIED = KeyType._(
+      0,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'KEY_TYPE_UNSPECIFIED');
+  static const KeyType KEY_TYPE_ED25519 = KeyType._(
+      1,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'KEY_TYPE_ED25519');
+  static const KeyType KEY_TYPE_X25519 = KeyType._(
+      2,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'KEY_TYPE_X25519');
+  static const KeyType KEY_TYPE_P256 = KeyType._(
+      3,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'KEY_TYPE_P256');
+  static const KeyType KEY_TYPE_BLS12381G1G2 = KeyType._(
+      4,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'KEY_TYPE_BLS12381G1G2');
+  static const KeyType KEY_TYPE_SECP256K1 = KeyType._(
+      5,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'KEY_TYPE_SECP256K1');
 
-  static const $core.List<KeyType> values = <KeyType> [
+  static const $core.List<KeyType> values = <KeyType>[
     KEY_TYPE_UNSPECIFIED,
     KEY_TYPE_ED25519,
     KEY_TYPE_X25519,
@@ -26,9 +50,9 @@ class KeyType extends $pb.ProtobufEnum {
     KEY_TYPE_SECP256K1,
   ];
 
-  static final $core.Map<$core.int, KeyType> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static final $core.Map<$core.int, KeyType> _byValue =
+      $pb.ProtobufEnum.initByValue(values);
   static KeyType? valueOf($core.int value) => _byValue[value];
 
   const KeyType._($core.int v, $core.String n) : super(v, n);
 }
-
