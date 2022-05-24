@@ -9,9 +9,8 @@ import 'package:okapi_dart/proto/okapi/hashing/v1/hashing.pb.dart';
 import 'package:okapi_dart/proto/okapi/keys/v1/keys.pb.dart';
 import 'package:okapi_dart/proto/okapi/proofs/v1/proofs.pb.dart';
 import 'package:okapi_dart/proto/okapi/security/v1/security.pb.dart';
-import 'package:test/test.dart';
-
 import 'package:okapi_dart/okapi.dart';
+import 'package:test/test.dart';
 
 void main() {
   test('Dart bitness', () {

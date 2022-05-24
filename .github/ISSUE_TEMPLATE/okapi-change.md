@@ -1,6 +1,6 @@
 ---
 name: Okapi Change
-about: Changes to the Okapi language bindings
+about: Changes to the Okapi language bindings, eg a new function to wrap.
 title: ''
 labels: ''
 assignees: fundthmcalculus
@@ -13,7 +13,7 @@ Languages:
 - [ ] .NET
 - [ ] Go
 - [ ] Java
-- [ ] Node
+- [ ] Dart
 - [ ] Python
 - [ ] Ruby
 - [ ] Swift

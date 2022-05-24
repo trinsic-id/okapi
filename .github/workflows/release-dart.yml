@@ -1,0 +1,54 @@
+name: Dart (release)
+
+on:
+  workflow_dispatch:
+    inputs:
+      packageVersion:
+        description: 'Version to build'
+        required: true
+        default: ''
+  workflow_run:
+    workflows: ["Release Platform Libraries"]
+    branches: ["main", "v?.*"]
+    types:
+      - completed
+
+jobs:
+  release-dart:
+    name: Release Dart Package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - uses: trinsic-id/set-version@v0.1
+        id: setversion
+        with:
+          githubToken: ${{ secrets.API_GITHUB_TOKEN }}
+          overrideVersion: ${{ github.event.inputs.packageVersion }}      
+      - name: release-downloader
+        uses: robinraju/release-downloader@v1.3
+        with:
+          repository: trinsic-id/okapi
+          latest: true
+          token: ${{ secrets.API_GITHUB_TOKEN }}
+          fileName: "libs.zip"
+
+      - name: Install Dart dependencies
+        run: dart pub get
+        shell: pwsh
+        working-directory: dart
+      
+      - name: Build, Test, Pack
+        run: |
+          python ../devops/build_sdks.py --language=dart
+          dart pub publish --dry-run
+        shell: pwsh
+        working-directory: dart
+        env:
+          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+          LD_LIBRARY_PATH: "${{ github.workspace }}/libs"

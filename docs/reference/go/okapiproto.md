@@ -1677,6 +1677,78 @@ Deprecated: Use VerifyOberonProofResponse.ProtoReflect.Descriptor instead.
 
 `func (x *VerifyOberonProofResponse) String() string`
 
+### type [VerifyOberonTokenRequest](/security.pb.go#L691)
+
+`type VerifyOberonTokenRequest struct { ... }`
+
+Verify that an oberon token comes from the desired issuer
+
+#### func (*VerifyOberonTokenRequest) [Descriptor](/security.pb.go#L729)
+
+`func (*VerifyOberonTokenRequest) Descriptor() ([]byte, []int)`
+
+Deprecated: Use VerifyOberonTokenRequest.ProtoReflect.Descriptor instead.
+
+#### func (*VerifyOberonTokenRequest) [GetData](/security.pb.go#L747)
+
+`func (x *VerifyOberonTokenRequest) GetData() []byte`
+
+#### func (*VerifyOberonTokenRequest) [GetPk](/security.pb.go#L740)
+
+`func (x *VerifyOberonTokenRequest) GetPk() []byte`
+
+#### func (*VerifyOberonTokenRequest) [GetToken](/security.pb.go#L733)
+
+`func (x *VerifyOberonTokenRequest) GetToken() []byte`
+
+#### func (*VerifyOberonTokenRequest) [ProtoMessage](/security.pb.go#L714)
+
+`func (*VerifyOberonTokenRequest) ProtoMessage()`
+
+#### func (*VerifyOberonTokenRequest) [ProtoReflect](/security.pb.go#L716)
+
+`func (x *VerifyOberonTokenRequest) ProtoReflect() protoreflect.Message`
+
+#### func (*VerifyOberonTokenRequest) [Reset](/security.pb.go#L701)
+
+`func (x *VerifyOberonTokenRequest) Reset()`
+
+#### func (*VerifyOberonTokenRequest) [String](/security.pb.go#L710)
+
+`func (x *VerifyOberonTokenRequest) String() string`
+
+### type [VerifyOberonTokenResponse](/security.pb.go#L755)
+
+`type VerifyOberonTokenResponse struct { ... }`
+
+Contains the verification result for the oberon token
+
+#### func (*VerifyOberonTokenResponse) [Descriptor](/security.pb.go#L791)
+
+`func (*VerifyOberonTokenResponse) Descriptor() ([]byte, []int)`
+
+Deprecated: Use VerifyOberonTokenResponse.ProtoReflect.Descriptor instead.
+
+#### func (*VerifyOberonTokenResponse) [GetValid](/security.pb.go#L795)
+
+`func (x *VerifyOberonTokenResponse) GetValid() bool`
+
+#### func (*VerifyOberonTokenResponse) [ProtoMessage](/security.pb.go#L776)
+
+`func (*VerifyOberonTokenResponse) ProtoMessage()`
+
+#### func (*VerifyOberonTokenResponse) [ProtoReflect](/security.pb.go#L778)
+
+`func (x *VerifyOberonTokenResponse) ProtoReflect() protoreflect.Message`
+
+#### func (*VerifyOberonTokenResponse) [Reset](/security.pb.go#L763)
+
+`func (x *VerifyOberonTokenResponse) Reset()`
+
+#### func (*VerifyOberonTokenResponse) [String](/security.pb.go#L772)
+
+`func (x *VerifyOberonTokenResponse) String() string`
+
 ### type [VerifyProofRequest](/proofs.pb.go#L189)
 
 `type VerifyProofRequest struct { ... }`
