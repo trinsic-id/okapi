@@ -186,6 +186,15 @@ def build_golang(args) -> None:
     copy_okapi_libs(golang_dir, "windows-gnu")
 
 
+def build_dart(args) -> None:
+    # Copy in Okapi libraries to the $GOLANG_LD_PATH directory
+    dart_dir = get_language_dir('dart')
+    update_line(
+        join(dart_dir, "pubspec.yaml"),
+        {"version:": f'version: "{get_package_versions(args)}"'},
+    )
+
+
 def get_package_versions(args) -> str:
     return (args.package_version or get_github_version()).lstrip("v")
 
@@ -309,6 +318,8 @@ def main():
         continue_on_error(build_ruby, args)
     if build_all or "golang" in langs_to_build:
         continue_on_error(build_golang, args)
+    if build_all or "dart" in langs_to_build:
+        continue_on_error(build_dart, args)
     if build_all or "docs" in langs_to_build:
         continue_on_error(build_java_docs, args)
         continue_on_error(build_go_docs, args)
