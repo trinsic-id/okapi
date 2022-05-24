@@ -8,13 +8,15 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
+
 @$core.Deprecated('Use metadataRequestDescriptor instead')
 const MetadataRequest$json = const {
   '1': 'MetadataRequest',
 };
 
 /// Descriptor for `MetadataRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List metadataRequestDescriptor = $convert.base64Decode('Cg9NZXRhZGF0YVJlcXVlc3Q=');
+final $typed_data.Uint8List metadataRequestDescriptor =
+    $convert.base64Decode('Cg9NZXRhZGF0YVJlcXVlc3Q=');
 @$core.Deprecated('Use metadataResponseDescriptor instead')
 const MetadataResponse$json = const {
   '1': 'MetadataResponse',
@@ -32,4 +34,5 @@ const MetadataResponse$json = const {
 };
 
 /// Descriptor for `MetadataResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List metadataResponseDescriptor = $convert.base64Decode('ChBNZXRhZGF0YVJlc3BvbnNlEhgKB3ZlcnNpb24YASABKAlSB3ZlcnNpb24SIwoNdmVyc2lvbl9tYWpvchgCIAEoBVIMdmVyc2lvbk1ham9yEiMKDXZlcnNpb25fbWlub3IYAyABKAVSDHZlcnNpb25NaW5vchIjCg12ZXJzaW9uX3BhdGNoGAQgASgFUgx2ZXJzaW9uUGF0Y2gSIwoNdGFyZ2V0X2ZhbWlseRgKIAEoCVIMdGFyZ2V0RmFtaWx5EhsKCXRhcmdldF9vcxgLIAEoCVIIdGFyZ2V0T3MSHwoLdGFyZ2V0X2FyY2gYDCABKAlSCnRhcmdldEFyY2gSIwoNdGFyZ2V0X3ZlbmRvchgNIAEoCVIMdGFyZ2V0VmVuZG9yEh0KCnRhcmdldF9lbnYYDiABKAlSCXRhcmdldEVudg==');
+final $typed_data.Uint8List metadataResponseDescriptor = $convert.base64Decode(
+    'ChBNZXRhZGF0YVJlc3BvbnNlEhgKB3ZlcnNpb24YASABKAlSB3ZlcnNpb24SIwoNdmVyc2lvbl9tYWpvchgCIAEoBVIMdmVyc2lvbk1ham9yEiMKDXZlcnNpb25fbWlub3IYAyABKAVSDHZlcnNpb25NaW5vchIjCg12ZXJzaW9uX3BhdGNoGAQgASgFUgx2ZXJzaW9uUGF0Y2gSIwoNdGFyZ2V0X2ZhbWlseRgKIAEoCVIMdGFyZ2V0RmFtaWx5EhsKCXRhcmdldF9vcxgLIAEoCVIIdGFyZ2V0T3MSHwoLdGFyZ2V0X2FyY2gYDCABKAlSCnRhcmdldEFyY2gSIwoNdGFyZ2V0X3ZlbmRvchgNIAEoCVIMdGFyZ2V0VmVuZG9yEh0KCnRhcmdldF9lbnYYDiABKAlSCXRhcmdldEVudg==');
