@@ -35,33 +35,33 @@ jobs:
           body: "Okapi binaries bundle"
 
   release-dotnet-wrapper:
-    uses: ./.github/workflows/release-dotnet.yaml
+    uses: ./.github/workflows/release-dotnet.yml
     needs: publish_binaries_bundle
 
   release-golang-wrapper:
-    uses: ./.github/workflows/release-golang.yaml
+    uses: ./.github/workflows/release-golang.yml
     needs: publish_binaries_bundle
 
   release-java-wrapper:
-    uses: ./.github/workflows/release-java.yaml
+    uses: ./.github/workflows/release-java.yml
     needs: publish_binaries_bundle
 
   release-python-wrapper:
-    uses: ./.github/workflows/release-python.yaml
+    uses: ./.github/workflows/release-python.yml
     needs: publish_binaries_bundle
 
   release-ruby-wrapper:
-    uses: ./.github/workflows/release-ruby.yaml
+    uses: ./.github/workflows/release-ruby.yml
     needs: publish_binaries_bundle
 
   release-rust-wrapper:
-    uses: ./.github/workflows/release-rust.yaml
+    uses: ./.github/workflows/release-rust.yml
     needs: publish_binaries_bundle
 
   release-swift-wrapper:
-    uses: ./.github/workflows/release-swift.yaml
+    uses: ./.github/workflows/release-swift.yml
     needs: publish_binaries_bundle
 
   release-wasm-wrapper:
-    uses: ./.github/workflows/release-wasm.yaml
+    uses: ./.github/workflows/release-wasm.yml
     needs: publish_binaries_bundle
