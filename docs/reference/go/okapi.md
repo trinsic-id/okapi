@@ -2,7 +2,7 @@
 
 ## Types
 
-### type [ByteBuffer](/native.go#L16)
+### type [ByteBuffer](/native.go#L20)
 
 `type ByteBuffer struct { ... }`
 
@@ -12,13 +12,13 @@
 
 DidCommer implements the DIDComm Messaging protocol
 
-### type [DidError](/native.go#L31)
+### type [DidError](/native.go#L35)
 
 `type DidError struct { ... }`
 
 DidError indicates a DID protocol error
 
-#### func (*DidError) [Error](/native.go#L37)
+#### func (*DidError) [Error](/native.go#L41)
 
 `func (d *DidError) Error() string`
 
@@ -28,7 +28,7 @@ DidError indicates a DID protocol error
 
 DidKeyer is the interface that groups the did:key functions
 
-### type [ExternError](/native.go#L21)
+### type [ExternError](/native.go#L25)
 
 `type ExternError struct { ... }`
 
@@ -44,13 +44,13 @@ Hasher implements Blake3 and Sha2 hash functions
 
 LdProofer implements Linked-Data Proofs
 
-### type [NativeError](/native.go#L11)
+### type [NativeError](/native.go#L15)
 
 `type NativeError struct { ... }`
 
 NativeError indicates a native protocol error
 
-#### func (NativeError) [Error](/native.go#L26)
+#### func (NativeError) [Error](/native.go#L30)
 
 `func (o NativeError) Error() string`
 
@@ -59,6 +59,12 @@ NativeError indicates a native protocol error
 `type Oberoner interface { ... }`
 
 Oberoner implements Oberon authentication
+
+### type [OkapiMetadataer](/metadata.go#L6)
+
+`type OkapiMetadataer interface { ... }`
+
+Metadataer implements Linked-Data Proofs
 
 ---
 Readme created from Go doc with [goreadme](https://github.com/posener/goreadme)

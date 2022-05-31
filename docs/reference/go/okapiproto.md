@@ -87,6 +87,10 @@ var File_okapi_keys_v1_keys_proto protoreflect.FileDescriptor
 ```
 
 ```golang
+var File_okapi_metadata_metadata_proto protoreflect.FileDescriptor
+```
+
+```golang
 var File_okapi_proofs_v1_proofs_proto protoreflect.FileDescriptor
 ```
 
@@ -1087,6 +1091,98 @@ Deprecated: Use LdSuite.Descriptor instead.
 #### func (LdSuite) [Type](/proofs.pb.go#L57)
 
 `func (LdSuite) Type() protoreflect.EnumType`
+
+### type [MetadataRequest](/metadata.pb.go#L24)
+
+`type MetadataRequest struct { ... }`
+
+Request custom metadata about the native okapi binaries - cannot get cargo env vars at runtime
+
+#### func (*MetadataRequest) [Descriptor](/metadata.pb.go#L58)
+
+`func (*MetadataRequest) Descriptor() ([]byte, []int)`
+
+Deprecated: Use MetadataRequest.ProtoReflect.Descriptor instead.
+
+#### func (*MetadataRequest) [ProtoMessage](/metadata.pb.go#L43)
+
+`func (*MetadataRequest) ProtoMessage()`
+
+#### func (*MetadataRequest) [ProtoReflect](/metadata.pb.go#L45)
+
+`func (x *MetadataRequest) ProtoReflect() protoreflect.Message`
+
+#### func (*MetadataRequest) [Reset](/metadata.pb.go#L30)
+
+`func (x *MetadataRequest) Reset()`
+
+#### func (*MetadataRequest) [String](/metadata.pb.go#L39)
+
+`func (x *MetadataRequest) String() string`
+
+### type [MetadataResponse](/metadata.pb.go#L63)
+
+`type MetadataResponse struct { ... }`
+
+Metadata information about the native okapi binaries. Always returns the version information
+
+#### func (*MetadataResponse) [Descriptor](/metadata.pb.go#L108)
+
+`func (*MetadataResponse) Descriptor() ([]byte, []int)`
+
+Deprecated: Use MetadataResponse.ProtoReflect.Descriptor instead.
+
+#### func (*MetadataResponse) [GetTargetArch](/metadata.pb.go#L154)
+
+`func (x *MetadataResponse) GetTargetArch() string`
+
+#### func (*MetadataResponse) [GetTargetEnv](/metadata.pb.go#L168)
+
+`func (x *MetadataResponse) GetTargetEnv() string`
+
+#### func (*MetadataResponse) [GetTargetFamily](/metadata.pb.go#L140)
+
+`func (x *MetadataResponse) GetTargetFamily() string`
+
+#### func (*MetadataResponse) [GetTargetOs](/metadata.pb.go#L147)
+
+`func (x *MetadataResponse) GetTargetOs() string`
+
+#### func (*MetadataResponse) [GetTargetVendor](/metadata.pb.go#L161)
+
+`func (x *MetadataResponse) GetTargetVendor() string`
+
+#### func (*MetadataResponse) [GetVersion](/metadata.pb.go#L112)
+
+`func (x *MetadataResponse) GetVersion() string`
+
+#### func (*MetadataResponse) [GetVersionMajor](/metadata.pb.go#L119)
+
+`func (x *MetadataResponse) GetVersionMajor() int32`
+
+#### func (*MetadataResponse) [GetVersionMinor](/metadata.pb.go#L126)
+
+`func (x *MetadataResponse) GetVersionMinor() int32`
+
+#### func (*MetadataResponse) [GetVersionPatch](/metadata.pb.go#L133)
+
+`func (x *MetadataResponse) GetVersionPatch() int32`
+
+#### func (*MetadataResponse) [ProtoMessage](/metadata.pb.go#L93)
+
+`func (*MetadataResponse) ProtoMessage()`
+
+#### func (*MetadataResponse) [ProtoReflect](/metadata.pb.go#L95)
+
+`func (x *MetadataResponse) ProtoReflect() protoreflect.Message`
+
+#### func (*MetadataResponse) [Reset](/metadata.pb.go#L80)
+
+`func (x *MetadataResponse) Reset()`
+
+#### func (*MetadataResponse) [String](/metadata.pb.go#L89)
+
+`func (x *MetadataResponse) String() string`
 
 ### type [PackRequest](/transport.pb.go#L235)
 
