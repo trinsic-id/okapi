@@ -12,4 +12,4 @@ We support only the latest release of the okapi binaries, which is dependent on 
 
 ## Reporting a Vulnerability
 
-Contact any of the developers directly.
+Open an issue detailing the security concerns.
