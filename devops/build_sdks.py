@@ -77,7 +77,8 @@ def copy_okapi_file(copy_from: str, copy_to: str):
     try:
         clean_dir(copy_to)
         shutil.copy2(copy_from, copy_to)
-    except FileNotFoundError:
+    except FileNotFoundError as e:
+        logging.error(e)
         pass
 
 
@@ -85,9 +86,10 @@ def clean_dir(language_dir: str) -> None:
     logging.info(f"Cleaning directory={language_dir}")
     try:
         shutil.rmtree(language_dir)
-    except FileNotFoundError:
+    except FileNotFoundError as e:
+        logging.error(e)
         pass
-    os.mkdir(language_dir)
+    os.makedirs(language_dir, exist_ok=True)
 
 
 def update_line(file_name: str, replace_lines: Dict[str, str]) -> None:
@@ -289,7 +291,7 @@ def extract_libs_zip():
     # Look for a libs.zip file to extract
     libs_zip = abspath(join(dirname(__file__), "..", "libs.zip"))
     if exists(libs_zip):
-        print(f"Found released zip binary, extracting...")
+        logging.info(f"Found released zip binary, extracting...")
         with ZipFile(libs_zip) as zip_ref:
             zip_ref.extractall(abspath(join(dirname(__file__), "..")))
 
@@ -298,10 +300,11 @@ def continue_on_error(fcn, args) -> None:
     try:
         fcn(args)
     except Exception as e:
-        print(e)
+        logging.error(e)
 
 
 def main():
+    logging.getLogger().setLevel(logging.INFO)
     # Get command line arguments
     args = parse_arguments()
     langs_to_build = [lang.lower() for lang in (args.language + ",").split(",")]
