@@ -67,8 +67,11 @@ class OkapiNative {
       libraryName = path.join("linux", "libokapi.so");
     } else if (Platform.isMacOS) {
       libraryName = path.join("macos", "libokapi.dylib");
+    } else if (Platform.isAndroid) {
+      libraryPath = "";
+      libraryName = "libokapi.so";
     }
-    // TODO - Support Android, and maybe iOS?
+    // TODO - Support iOS?
     libraryPath = path.join(libraryPath, libraryName);
     final nativeLib = DynamicLibrary.open(libraryPath);
     return nativeLib;
