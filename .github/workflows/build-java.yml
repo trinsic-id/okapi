@@ -35,6 +35,7 @@ jobs:
         with:
           java-version: ${{ matrix.java-version }}
           distribution: 'temurin'
+          cache: 'gradle'
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
