@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description   = 'Okapi Ruby native binary bindings - including the required binaries for supported platforms'
   spec.homepage      = 'https://github.com/trinsic-id/okapi'
   spec.license       = 'MIT'
-  spec.required_ruby_version = Gem::Requirement.new('>= 2.5.0')
+  spec.required_ruby_version = Gem::Requirement.new('>= 2.6.0')
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = 'https://github.com/trinsic-id/okapi/ruby'
