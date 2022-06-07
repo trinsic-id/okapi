@@ -66,26 +66,3 @@ jobs:
         with:
           rubocop_dir: ruby/
           rubocop: true
-      - name: Upload Unit Test Results - Ruby
-        if: always()
-        uses: actions/upload-artifact@v2
-        with:
-          name:  Ruby ${{ matrix.ruby-version }} Unit Test Results (${{ matrix.os-artifact[0] }})
-          path: 'ruby/test/reports/TEST-*.xml'
-
-  publish-test-results-ruby:
-    name: Publish Test Results
-    needs: build-and-test-ruby
-    runs-on: ubuntu-latest
-    if: always()
-
-    steps:
-      - name: Download Artifacts
-        uses: actions/download-artifact@v2
-        with:
-          path: ruby_artifacts
-      - name: Publish Test Report - Ruby
-        uses: EnricoMi/publish-unit-test-result-action@v1.23
-        with:
-          files: 'ruby_artifacts/**/*.xml'
-          check_name: Ruby Test Report

@@ -53,27 +53,3 @@ jobs:
         with:
           dotnet_format: true
           dotnet_format_dir: dotnet/
-      - name: Upload Unit Test Results - .NET
-        if: always()
-        uses: actions/upload-artifact@v2
-        with:
-          # name: .NET Unit Test Results (${{ matrix.os-artifact[0] }})
-          name: .NET Unit Test Results
-          path: 'dotnet/Tests/Okapi.Tests/TestResults/test_output.xml'
-
-  publish-test-results-dotnet:
-    name: Publish Test Results
-    needs: build-and-test-dotnet
-    runs-on: ubuntu-latest
-    if: always()
-
-    steps:
-      - name: Download Artifacts
-        uses: actions/download-artifact@v2
-        with:
-          path: dotnet_artifacts
-      - name: Publish Test Report - .NET
-        uses: EnricoMi/publish-unit-test-result-action@v1.23
-        with:
-          files: 'dotnet_artifacts/**/*.xml'
-          check_name: .NET Test Report
