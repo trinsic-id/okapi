@@ -3,7 +3,6 @@
 require 'ffi'
 require 'os'
 
-# rubocop:disable Metrics/ModuleLength
 # Okapi wrapper module
 module Okapi
   extend FFI::Library
@@ -149,4 +148,3 @@ module Okapi
     end
   end
 end
-# rubocop:enable Metrics/ModuleLength
