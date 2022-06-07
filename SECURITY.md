@@ -12,4 +12,4 @@ We support only the latest release of the okapi binaries, which is dependent on 
 
 ## Reporting a Vulnerability
 
-Open an issue detailing the security concerns.
+Open an issue detailing the security concerns, or email `sec` + `ur` + `ity` [at] `trinsic.id`
