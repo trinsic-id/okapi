@@ -19,7 +19,7 @@ if ((Get-Command "$PROTOC" -ErrorAction SilentlyContinue) -eq $null)
 foreach ($Item in Get-ChildItem -Path $PROTO_DIR -Include *.proto -Recurse)
 {
     $File = $Item.FullName
-    $Expr = "$PROTOC --plugin=protoc-gen-ts=$PROTOC_GEN_TS_PATH --ts_proto_out=$OUTPUT_DIR --ts_proto_opt=esModuleInterop=true,outputServices=generic-definitions,useExactTypes=false,exportCommonSymbols=false -I $PROTO_DIR $File"
+    $Expr = "$PROTOC --plugin=protoc-gen-ts_proto=$PROTOC_GEN_TS_PATH --ts_proto_out=$OUTPUT_DIR --ts_proto_opt=esModuleInterop=true,outputServices=generic-definitions,useExactTypes=false,exportCommonSymbols=false -I $PROTO_DIR $File"
     Write-Output $Expr
     Invoke-Expression $Expr
 }
