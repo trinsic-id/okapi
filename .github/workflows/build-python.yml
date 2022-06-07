@@ -66,27 +66,4 @@ jobs:
         working-directory: python
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
-          LD_LIBRARY_PATH: "${{ github.workspace }}/libs/${{ matrix.os-artifact[1] }}"
-      - name: Upload Unit Test Results - Python
-        if: always()
-        uses: actions/upload-artifact@v2
-        with:
-          name: Python ${{ matrix.python-version }} Unit Test Results (${{ matrix.os-artifact[0] }})
-          path: 'python/test_output*.xml'
-
-  publish-test-results-python:
-    name: Publish Python Test Results
-    needs: build-and-test-python
-    runs-on: ubuntu-latest
-    if: always()
-
-    steps:
-      - name: Download Artifacts
-        uses: actions/download-artifact@v2
-        with:
-          path: python_artifacts
-      - name: Publish Test Report - Python
-        uses: EnricoMi/publish-unit-test-result-action@v1.23
-        with:
-          files: 'python_artifacts/**/*.xml'
-          check_name: Python Test Report
+          OKAPI_LIBRARY_PATH: "${{ github.workspace }}/libs/${{ matrix.os-artifact[1] }}"

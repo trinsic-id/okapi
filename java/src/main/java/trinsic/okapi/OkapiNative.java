@@ -4,7 +4,6 @@ import com.google.protobuf.GeneratedMessageV3;
 import com.sun.jna.Native;
 import com.sun.jna.Platform;
 
-import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -39,19 +38,12 @@ public class OkapiNative {
         if (overrideLibraryPath != null && overrideLibraryPath.strip().length() > 0)
             return Paths.get(overrideLibraryPath).toAbsolutePath().toString();
 
-        var okapi_lib_path = getLibPath("LD_LIBRARY_PATH", "");
-        okapi_lib_path = getLibPath("DYLD_LIBRARY_PATH", okapi_lib_path);
-        // Depending on if System Integrity Protection is enabled, MacOS won't allow the above environment variables.
-        // https://stackoverflow.com/a/60128194
-        okapi_lib_path = getLibPath("JAVA_LIBRARY_PATH", okapi_lib_path);
-        // Macos makes things needlessly hard
+        var okapi_lib_path = getLibPath("OKAPI_LIBRARY_PATH");
         if (okapi_lib_path != null && okapi_lib_path.strip().length() > 0) {
-            for (var path : okapi_lib_path.split(File.pathSeparator)) {
-                var testPath = Paths.get(path, getLibraryName()).toAbsolutePath();
-                System.out.println("test path=" + testPath);
-                if (Files.exists(testPath))
-                    return testPath.toString();
-            }
+            var testPath = Paths.get(okapi_lib_path, getLibraryName()).toAbsolutePath();
+            System.out.println("test path=" + testPath);
+            if (Files.exists(testPath))
+                return testPath.toString();
         }
         // System native path load
         return "okapi";
@@ -61,11 +53,9 @@ public class OkapiNative {
         overrideLibraryPath = path;
     }
 
-    private static String getLibPath(String envVar, String okapi_lib_path) {
-        if (okapi_lib_path == null || okapi_lib_path.strip().length() == 0) {
-            okapi_lib_path = System.getenv(envVar);
-            System.out.println(envVar + "=" + okapi_lib_path);
-        }
+    private static String getLibPath(String envVar) {
+        var okapi_lib_path = System.getenv(envVar);
+        System.out.println(envVar + "=" + okapi_lib_path);
         return okapi_lib_path;
     }
 

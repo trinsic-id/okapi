@@ -63,7 +63,7 @@ def find_native_lib() -> str:
             lib_name,
         )
         or _check_path(os.path.join(sys.prefix, "libs"), lib_name)
-        or _check_path(os.getenv("LD_LIBRARY_PATH", ""), lib_name)
+        or _check_path(os.getenv("OKAPI_LIBRARY_PATH", ""), lib_name)
         or find_library(lib_name)
     )
     return found_lib_path

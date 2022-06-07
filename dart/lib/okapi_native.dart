@@ -58,7 +58,7 @@ class OkapiNative {
 
   static DynamicLibrary loadNativeLibrary() {
     // Support LD_LIBRARY_PATH
-    String libraryPath = Platform.environment["LD_LIBRARY_PATH"] ??
+    String libraryPath = Platform.environment["OKAPI_LIBRARY_PATH"] ??
         path.join(Directory.current.path, '..', 'libs');
     String libraryName = "";
     if (Platform.isWindows) {
@@ -70,8 +70,10 @@ class OkapiNative {
     } else if (Platform.isAndroid) {
       libraryPath = "";
       libraryName = "libokapi.so";
+    } else if (Platform.isIOS) {
+      // iOS has everything compiled in.
+      return DynamicLibrary.process();
     }
-    // TODO - Support iOS?
     libraryPath = path.join(libraryPath, libraryName);
     final nativeLib = DynamicLibrary.open(libraryPath);
     return nativeLib;

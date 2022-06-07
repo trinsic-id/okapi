@@ -1,5 +1,5 @@
 AllCops:
   Exclude:
     - '**/*.rbi' # Don't look at sorbet type hints
-    - 'lib/okapi/**/*.rb' # don't check the generated code
-    - 'lib/pbmse/**/*.rb' # don't check the generated code
+    - 'lib/okapi/**/*_pb.rb' # don't check the generated code
+    - 'lib/pbmse/**/*_pb.rb' # don't check the generated code
