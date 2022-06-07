@@ -1,5 +1,5 @@
 AllCops:
+  TargetRubyVersion: 2.6
   Exclude:
     - '**/*.rbi' # Don't look at sorbet type hints
-    - 'lib/okapi/**/*_pb.rb' # don't check the generated code
-    - 'lib/pbmse/**/*_pb.rb' # don't check the generated code
+    - 'lib/**/*_pb.rb' # don't check the generated code
