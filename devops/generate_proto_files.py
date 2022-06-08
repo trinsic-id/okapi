@@ -286,12 +286,13 @@ def update_python():
 def update_dart():
     language_path = get_language_dir("dart")
     language_proto_path = join(language_path, "lib", "proto")
-    clean_dir(language_proto_path)
+    clean_dir(join(language_proto_path,"okapi"))
     # https://github.com/google/protobuf.dart/tree/master/protoc_plugin#how-to-build-and-use
     run_protoc(
         language_options={"dart_out": language_proto_path},
         proto_files=get_proto_files(),
     )
+    # TODO - Generate Dart google precompiled types
     subprocess.Popen(args="dart format .", cwd=language_path, shell=True).wait()
 
 
