@@ -303,7 +303,7 @@ def update_dart():
 
 
 def update_typescript():
-    language_path = get_language_dir("web")
+    language_path = get_language_dir("wasm")
 
     subprocess.Popen(
         args=f"prettier --write **/*.ts",
