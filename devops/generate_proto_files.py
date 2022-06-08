@@ -171,7 +171,7 @@ def run_protoc(
 
 def update_golang():
     language_path = get_language_dir("go")
-    go_proto_path = join(language_path, "proto")
+    go_proto_path = join(language_path, "okapiproto")
     clean_dir(go_proto_path)
     run_protoc(
         language_options={"go_out": go_proto_path, "go-grpc_out": go_proto_path},
