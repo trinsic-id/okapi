@@ -181,15 +181,12 @@ def update_golang():
     clean_dir(join(go_proto_path, "go"))
     # find and replace the sdk proto with okapi proto
     replace_pairs = {
-        'okapiproto "github.com/trinsic-id/sdk/go/okapiproto"': 'okapiproto "github.com/trinsic-id/okapi/go/okapiproto"',
-        '_ "services/options"': '_ "github.com/trinsic-id/sdk/go/proto/services/options"',
-        'account "services/account/v1/account"': 'account "github.com/trinsic-id/sdk/go/proto/services/account/v1/account"',
     }
     for file_name in glob.glob(join(go_proto_path, "**", "*.go"), recursive=True):
         update_line(file_name, replace_pairs)
 
     subprocess.Popen(
-        args="go fmt github.com/trinsic-id/sdk/...", cwd=language_path, shell=True
+        args="go fmt github.com/trinsic-id/okapi/...", cwd=language_path, shell=True
     ).wait()
 
 
@@ -356,7 +353,7 @@ def main():
         "ruby": update_ruby,
         "python": update_python,
         "java": update_java,
-        "docs": update_markdown,
+        # "docs": update_markdown,
         "dart": update_dart,
         "typescript": update_typescript,
         "none": update_none,
