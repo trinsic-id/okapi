@@ -186,16 +186,14 @@ def build_ruby(args) -> None:
 
 
 def build_golang(args) -> None:
-    # Copy in Okapi libraries to the $GOLANG_LD_PATH directory
+    # Copy in Okapi libraries
     golang_dir = abspath(join(get_language_dir("go"), "okapi"))
-    set_env_var("GOLANG_LD_PATH", golang_dir)
-
     # Copy in the binaries
     copy_okapi_libs(golang_dir, "windows-gnu")
 
 
 def build_dart(args) -> None:
-    # Copy in Okapi libraries to the $GOLANG_LD_PATH directory
+    # Copy in Okapi libraries
     dart_dir = get_language_dir("dart")
     update_line(
         join(dart_dir, "pubspec.yaml"),

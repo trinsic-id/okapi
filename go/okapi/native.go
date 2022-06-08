@@ -60,7 +60,7 @@ func getLibraryName() (string, string) {
 func getLibraryPath() string {
 	libFolder, libName := getLibraryName()
 	ldLibPath := os.Getenv("OKAPI_LIBRARY_PATH")
-	// TODO - Check the appropriate folders
+	// Check the appropriate folders
 	checkPaths := []string{
 		path.Join(".", libName),
 		path.Join(".", libFolder, libName),
