@@ -53,7 +53,8 @@ jobs:
       - name: Build, Test, Pack
         run: |
           python ../devops/build_sdks.py --language=dart
-          dart test ./test/test-okapi.dart
+          dart pub global activate coverage
+          dart run coverage:test_with_coverage
         shell: pwsh
         working-directory: dart
         env:
