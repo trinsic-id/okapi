@@ -197,13 +197,11 @@ def update_ruby():
     language_path = get_language_dir("ruby")
     lang_proto_path = join(language_path, "lib")
     # Clean selectively
-    services_dir = join(lang_proto_path, "services")
+    services_dir = join(lang_proto_path, "okapi")
     services_subfolders = [f.path for f in os.scandir(services_dir) if f.is_dir()]
     for folder in services_subfolders:
         clean_dir(folder)
 
-    clean_dir(join(lang_proto_path, "sdk"))
-    clean_dir(join(lang_proto_path, "pbmse"))
     run_protoc(
         language_options={"ruby_out": lang_proto_path, "grpc_out": lang_proto_path},
         proto_files=get_proto_files(),
