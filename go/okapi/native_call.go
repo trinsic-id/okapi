@@ -4,6 +4,7 @@ package okapi
 
 import (
 	"github.com/coreos/pkg/dlopen"
+	"runtime"
 	"unsafe"
 )
 
@@ -76,7 +77,11 @@ func callOkapiNative(request proto.Message, response proto.Message, funcName str
 }
 
 func getFunctionPointer(funcName string) (*dlopen.LibHandle, unsafe.Pointer) {
-	libPtr, err := dlopen.GetHandle([]string{getLibraryPath()})
+	libPath := []string{getLibraryPath()}
+	if runtime.GOOS == "linux" {
+		libPath = getLibraryCheckPaths()
+	}
+	libPtr, err := dlopen.GetHandle(libPath)
 	if err != nil {
 		panic(err)
 	}
