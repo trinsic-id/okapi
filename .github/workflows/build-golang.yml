@@ -35,13 +35,6 @@ jobs:
           path: ./libs/${{ matrix.os-artifact[1] }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           name: ${{ matrix.os-artifact[1] }}
-      - name: Download C header artifact
-        uses: dawidd6/action-download-artifact@v2.17.0
-        with:
-          workflow: "build-libs.yml"
-          path: ./libs/${{ matrix.os-artifact[1] }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          name: C_header
       - name: Set up Go (default)
         uses: actions/setup-go@v2
         with:
@@ -60,7 +53,7 @@ jobs:
         shell: pwsh
         working-directory: go/okapi
         env:
-          OKAPI_LIBRARY_PATH: ${{ env.GOLANG_LD_PATH }}
+          OKAPI_LIBRARY_PATH: "${{ github.workspace }}/libs"
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
           GO111MODULE: on
       - name: "Upload coverage to Codecov"
