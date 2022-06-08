@@ -7,6 +7,9 @@ from typing import List
 import betterproto
 from betterproto.grpc.grpclib_server import ServiceBase
 
+from ....pbmse import v1 as ___pbmse_v1__
+from ...keys import v1 as __keys_v1__
+
 
 @dataclass(eq=False, repr=False)
 class SignRequest(betterproto.Message):
@@ -67,7 +70,3 @@ class CoreMessage(betterproto.Message):
     from_: str = betterproto.string_field(5)
     created: int = betterproto.int64_field(6)
     expires: int = betterproto.int64_field(7)
-
-
-from ....pbmse import v1 as ___pbmse_v1__
-from ...keys import v1 as __keys_v1__

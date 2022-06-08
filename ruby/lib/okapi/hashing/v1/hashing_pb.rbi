@@ -2,10 +2,6 @@
 # source: okapi/hashing/v1/hashing.proto
 # typed: strict
 
-module Okapi; end
-module Okapi::Hashing; end
-module Okapi::Hashing::V1; end
-
 class Okapi::Hashing::V1::Blake3HashRequest
   include Google::Protobuf
   include Google::Protobuf::MessageExts

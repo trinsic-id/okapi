@@ -5,61 +5,65 @@ package trinsic.okapi.security.v1;
 
 public final class Security {
   private Security() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {}
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
   }
 
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
-  }
-  public interface CreateOberonKeyRequestOrBuilder extends
+  public interface CreateOberonKeyRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.security.v1.CreateOberonKeyRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * optional seed to generate deterministic keys
      * </pre>
      *
      * <code>bytes seed = 1;</code>
+     *
      * @return The seed.
      */
     com.google.protobuf.ByteString getSeed();
   }
   /**
+   *
+   *
    * <pre>
    * Create an Oberon Compatible Secret Key
    * </pre>
    *
    * Protobuf type {@code okapi.security.v1.CreateOberonKeyRequest}
    */
-  public static final class CreateOberonKeyRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class CreateOberonKeyRequest extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.security.v1.CreateOberonKeyRequest)
       CreateOberonKeyRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use CreateOberonKeyRequest.newBuilder() to construct.
     private CreateOberonKeyRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private CreateOberonKeyRequest() {
       seed_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new CreateOberonKeyRequest();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private CreateOberonKeyRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -78,18 +82,18 @@ public final class Security {
             case 0:
               done = true;
               break;
-            case 10: {
-
-              seed_ = input.readBytes();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 10:
+              {
+                seed_ = input.readBytes();
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -97,34 +101,39 @@ public final class Security {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonKeyRequest_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_CreateOberonKeyRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonKeyRequest_fieldAccessorTable
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_CreateOberonKeyRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.security.v1.Security.CreateOberonKeyRequest.class, trinsic.okapi.security.v1.Security.CreateOberonKeyRequest.Builder.class);
+              trinsic.okapi.security.v1.Security.CreateOberonKeyRequest.class,
+              trinsic.okapi.security.v1.Security.CreateOberonKeyRequest.Builder.class);
     }
 
     public static final int SEED_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString seed_;
     /**
+     *
+     *
      * <pre>
      * optional seed to generate deterministic keys
      * </pre>
      *
      * <code>bytes seed = 1;</code>
+     *
      * @return The seed.
      */
     @java.lang.Override
@@ -133,6 +142,7 @@ public final class Security {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -144,8 +154,7 @@ public final class Security {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!seed_.isEmpty()) {
         output.writeBytes(1, seed_);
       }
@@ -159,8 +168,7 @@ public final class Security {
 
       size = 0;
       if (!seed_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, seed_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(1, seed_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -170,15 +178,15 @@ public final class Security {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.security.v1.Security.CreateOberonKeyRequest)) {
         return super.equals(obj);
       }
-      trinsic.okapi.security.v1.Security.CreateOberonKeyRequest other = (trinsic.okapi.security.v1.Security.CreateOberonKeyRequest) obj;
+      trinsic.okapi.security.v1.Security.CreateOberonKeyRequest other =
+          (trinsic.okapi.security.v1.Security.CreateOberonKeyRequest) obj;
 
-      if (!getSeed()
-          .equals(other.getSeed())) return false;
+      if (!getSeed().equals(other.getSeed())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -198,87 +206,94 @@ public final class Security {
     }
 
     public static trinsic.okapi.security.v1.Security.CreateOberonKeyRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonKeyRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonKeyRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonKeyRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonKeyRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonKeyRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.security.v1.Security.CreateOberonKeyRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonKeyRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.security.v1.Security.CreateOberonKeyRequest parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.security.v1.Security.CreateOberonKeyRequest parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonKeyRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.security.v1.Security.CreateOberonKeyRequest parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonKeyRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonKeyRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.okapi.security.v1.Security.CreateOberonKeyRequest prototype) {
+
+    public static Builder newBuilder(
+        trinsic.okapi.security.v1.Security.CreateOberonKeyRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -288,27 +303,32 @@ public final class Security {
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Create an Oberon Compatible Secret Key
      * </pre>
      *
      * Protobuf type {@code okapi.security.v1.CreateOberonKeyRequest}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.security.v1.CreateOberonKeyRequest)
         trinsic.okapi.security.v1.Security.CreateOberonKeyRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonKeyRequest_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_CreateOberonKeyRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonKeyRequest_fieldAccessorTable
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_CreateOberonKeyRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.security.v1.Security.CreateOberonKeyRequest.class, trinsic.okapi.security.v1.Security.CreateOberonKeyRequest.Builder.class);
+                trinsic.okapi.security.v1.Security.CreateOberonKeyRequest.class,
+                trinsic.okapi.security.v1.Security.CreateOberonKeyRequest.Builder.class);
       }
 
       // Construct using trinsic.okapi.security.v1.Security.CreateOberonKeyRequest.newBuilder()
@@ -316,16 +336,15 @@ public final class Security {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -335,9 +354,9 @@ public final class Security {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonKeyRequest_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_CreateOberonKeyRequest_descriptor;
       }
 
       @java.lang.Override
@@ -356,7 +375,8 @@ public final class Security {
 
       @java.lang.Override
       public trinsic.okapi.security.v1.Security.CreateOberonKeyRequest buildPartial() {
-        trinsic.okapi.security.v1.Security.CreateOberonKeyRequest result = new trinsic.okapi.security.v1.Security.CreateOberonKeyRequest(this);
+        trinsic.okapi.security.v1.Security.CreateOberonKeyRequest result =
+            new trinsic.okapi.security.v1.Security.CreateOberonKeyRequest(this);
         result.seed_ = seed_;
         onBuilt();
         return result;
@@ -366,38 +386,41 @@ public final class Security {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.security.v1.Security.CreateOberonKeyRequest) {
-          return mergeFrom((trinsic.okapi.security.v1.Security.CreateOberonKeyRequest)other);
+          return mergeFrom((trinsic.okapi.security.v1.Security.CreateOberonKeyRequest) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -405,7 +428,8 @@ public final class Security {
       }
 
       public Builder mergeFrom(trinsic.okapi.security.v1.Security.CreateOberonKeyRequest other) {
-        if (other == trinsic.okapi.security.v1.Security.CreateOberonKeyRequest.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.security.v1.Security.CreateOberonKeyRequest.getDefaultInstance())
+          return this;
         if (other.getSeed() != com.google.protobuf.ByteString.EMPTY) {
           setSeed(other.getSeed());
         }
@@ -428,7 +452,8 @@ public final class Security {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.security.v1.Security.CreateOberonKeyRequest) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.security.v1.Security.CreateOberonKeyRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -440,11 +465,14 @@ public final class Security {
 
       private com.google.protobuf.ByteString seed_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       *
+       *
        * <pre>
        * optional seed to generate deterministic keys
        * </pre>
        *
        * <code>bytes seed = 1;</code>
+       *
        * @return The seed.
        */
       @java.lang.Override
@@ -452,37 +480,44 @@ public final class Security {
         return seed_;
       }
       /**
+       *
+       *
        * <pre>
        * optional seed to generate deterministic keys
        * </pre>
        *
        * <code>bytes seed = 1;</code>
+       *
        * @param value The seed to set.
        * @return This builder for chaining.
        */
       public Builder setSeed(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         seed_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * optional seed to generate deterministic keys
        * </pre>
        *
        * <code>bytes seed = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearSeed() {
-        
+
         seed_ = getDefaultInstance().getSeed();
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -495,12 +530,12 @@ public final class Security {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.security.v1.CreateOberonKeyRequest)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.security.v1.CreateOberonKeyRequest)
     private static final trinsic.okapi.security.v1.Security.CreateOberonKeyRequest DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.security.v1.Security.CreateOberonKeyRequest();
     }
@@ -509,16 +544,16 @@ public final class Security {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<CreateOberonKeyRequest>
-        PARSER = new com.google.protobuf.AbstractParser<CreateOberonKeyRequest>() {
-      @java.lang.Override
-      public CreateOberonKeyRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CreateOberonKeyRequest(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<CreateOberonKeyRequest> PARSER =
+        new com.google.protobuf.AbstractParser<CreateOberonKeyRequest>() {
+          @java.lang.Override
+          public CreateOberonKeyRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new CreateOberonKeyRequest(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<CreateOberonKeyRequest> parser() {
       return PARSER;
@@ -533,49 +568,58 @@ public final class Security {
     public trinsic.okapi.security.v1.Security.CreateOberonKeyRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface CreateOberonKeyResponseOrBuilder extends
+  public interface CreateOberonKeyResponseOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.security.v1.CreateOberonKeyResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * raw secret key bytes
      * </pre>
      *
      * <code>bytes sk = 2;</code>
+     *
      * @return The sk.
      */
     com.google.protobuf.ByteString getSk();
 
     /**
+     *
+     *
      * <pre>
      * raw public key bytes
      * </pre>
      *
      * <code>bytes pk = 3;</code>
+     *
      * @return The pk.
      */
     com.google.protobuf.ByteString getPk();
   }
   /**
+   *
+   *
    * <pre>
    * Contains the oberon secret key bytes
    * </pre>
    *
    * Protobuf type {@code okapi.security.v1.CreateOberonKeyResponse}
    */
-  public static final class CreateOberonKeyResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class CreateOberonKeyResponse extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.security.v1.CreateOberonKeyResponse)
       CreateOberonKeyResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use CreateOberonKeyResponse.newBuilder() to construct.
     private CreateOberonKeyResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private CreateOberonKeyResponse() {
       sk_ = com.google.protobuf.ByteString.EMPTY;
       pk_ = com.google.protobuf.ByteString.EMPTY;
@@ -583,16 +627,15 @@ public final class Security {
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new CreateOberonKeyResponse();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private CreateOberonKeyResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -611,23 +654,23 @@ public final class Security {
             case 0:
               done = true;
               break;
-            case 18: {
-
-              sk_ = input.readBytes();
-              break;
-            }
-            case 26: {
-
-              pk_ = input.readBytes();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 18:
+              {
+                sk_ = input.readBytes();
+                break;
               }
-              break;
-            }
+            case 26:
+              {
+                pk_ = input.readBytes();
+                break;
+              }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -635,34 +678,39 @@ public final class Security {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonKeyResponse_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_CreateOberonKeyResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonKeyResponse_fieldAccessorTable
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_CreateOberonKeyResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.security.v1.Security.CreateOberonKeyResponse.class, trinsic.okapi.security.v1.Security.CreateOberonKeyResponse.Builder.class);
+              trinsic.okapi.security.v1.Security.CreateOberonKeyResponse.class,
+              trinsic.okapi.security.v1.Security.CreateOberonKeyResponse.Builder.class);
     }
 
     public static final int SK_FIELD_NUMBER = 2;
     private com.google.protobuf.ByteString sk_;
     /**
+     *
+     *
      * <pre>
      * raw secret key bytes
      * </pre>
      *
      * <code>bytes sk = 2;</code>
+     *
      * @return The sk.
      */
     @java.lang.Override
@@ -673,11 +721,14 @@ public final class Security {
     public static final int PK_FIELD_NUMBER = 3;
     private com.google.protobuf.ByteString pk_;
     /**
+     *
+     *
      * <pre>
      * raw public key bytes
      * </pre>
      *
      * <code>bytes pk = 3;</code>
+     *
      * @return The pk.
      */
     @java.lang.Override
@@ -686,6 +737,7 @@ public final class Security {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -697,8 +749,7 @@ public final class Security {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!sk_.isEmpty()) {
         output.writeBytes(2, sk_);
       }
@@ -715,12 +766,10 @@ public final class Security {
 
       size = 0;
       if (!sk_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, sk_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(2, sk_);
       }
       if (!pk_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, pk_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(3, pk_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -730,17 +779,16 @@ public final class Security {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.security.v1.Security.CreateOberonKeyResponse)) {
         return super.equals(obj);
       }
-      trinsic.okapi.security.v1.Security.CreateOberonKeyResponse other = (trinsic.okapi.security.v1.Security.CreateOberonKeyResponse) obj;
+      trinsic.okapi.security.v1.Security.CreateOberonKeyResponse other =
+          (trinsic.okapi.security.v1.Security.CreateOberonKeyResponse) obj;
 
-      if (!getSk()
-          .equals(other.getSk())) return false;
-      if (!getPk()
-          .equals(other.getPk())) return false;
+      if (!getSk().equals(other.getSk())) return false;
+      if (!getPk().equals(other.getPk())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -762,87 +810,94 @@ public final class Security {
     }
 
     public static trinsic.okapi.security.v1.Security.CreateOberonKeyResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonKeyResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonKeyResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonKeyResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonKeyResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonKeyResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.security.v1.Security.CreateOberonKeyResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonKeyResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.security.v1.Security.CreateOberonKeyResponse parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.security.v1.Security.CreateOberonKeyResponse parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonKeyResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.security.v1.Security.CreateOberonKeyResponse parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonKeyResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonKeyResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.okapi.security.v1.Security.CreateOberonKeyResponse prototype) {
+
+    public static Builder newBuilder(
+        trinsic.okapi.security.v1.Security.CreateOberonKeyResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -852,27 +907,32 @@ public final class Security {
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Contains the oberon secret key bytes
      * </pre>
      *
      * Protobuf type {@code okapi.security.v1.CreateOberonKeyResponse}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.security.v1.CreateOberonKeyResponse)
         trinsic.okapi.security.v1.Security.CreateOberonKeyResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonKeyResponse_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_CreateOberonKeyResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonKeyResponse_fieldAccessorTable
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_CreateOberonKeyResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.security.v1.Security.CreateOberonKeyResponse.class, trinsic.okapi.security.v1.Security.CreateOberonKeyResponse.Builder.class);
+                trinsic.okapi.security.v1.Security.CreateOberonKeyResponse.class,
+                trinsic.okapi.security.v1.Security.CreateOberonKeyResponse.Builder.class);
       }
 
       // Construct using trinsic.okapi.security.v1.Security.CreateOberonKeyResponse.newBuilder()
@@ -880,16 +940,15 @@ public final class Security {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -901,13 +960,14 @@ public final class Security {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonKeyResponse_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_CreateOberonKeyResponse_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.okapi.security.v1.Security.CreateOberonKeyResponse getDefaultInstanceForType() {
+      public trinsic.okapi.security.v1.Security.CreateOberonKeyResponse
+          getDefaultInstanceForType() {
         return trinsic.okapi.security.v1.Security.CreateOberonKeyResponse.getDefaultInstance();
       }
 
@@ -922,7 +982,8 @@ public final class Security {
 
       @java.lang.Override
       public trinsic.okapi.security.v1.Security.CreateOberonKeyResponse buildPartial() {
-        trinsic.okapi.security.v1.Security.CreateOberonKeyResponse result = new trinsic.okapi.security.v1.Security.CreateOberonKeyResponse(this);
+        trinsic.okapi.security.v1.Security.CreateOberonKeyResponse result =
+            new trinsic.okapi.security.v1.Security.CreateOberonKeyResponse(this);
         result.sk_ = sk_;
         result.pk_ = pk_;
         onBuilt();
@@ -933,38 +994,41 @@ public final class Security {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.security.v1.Security.CreateOberonKeyResponse) {
-          return mergeFrom((trinsic.okapi.security.v1.Security.CreateOberonKeyResponse)other);
+          return mergeFrom((trinsic.okapi.security.v1.Security.CreateOberonKeyResponse) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -972,7 +1036,9 @@ public final class Security {
       }
 
       public Builder mergeFrom(trinsic.okapi.security.v1.Security.CreateOberonKeyResponse other) {
-        if (other == trinsic.okapi.security.v1.Security.CreateOberonKeyResponse.getDefaultInstance()) return this;
+        if (other
+            == trinsic.okapi.security.v1.Security.CreateOberonKeyResponse.getDefaultInstance())
+          return this;
         if (other.getSk() != com.google.protobuf.ByteString.EMPTY) {
           setSk(other.getSk());
         }
@@ -998,7 +1064,8 @@ public final class Security {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.security.v1.Security.CreateOberonKeyResponse) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.security.v1.Security.CreateOberonKeyResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1010,11 +1077,14 @@ public final class Security {
 
       private com.google.protobuf.ByteString sk_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       *
+       *
        * <pre>
        * raw secret key bytes
        * </pre>
        *
        * <code>bytes sk = 2;</code>
+       *
        * @return The sk.
        */
       @java.lang.Override
@@ -1022,33 +1092,39 @@ public final class Security {
         return sk_;
       }
       /**
+       *
+       *
        * <pre>
        * raw secret key bytes
        * </pre>
        *
        * <code>bytes sk = 2;</code>
+       *
        * @param value The sk to set.
        * @return This builder for chaining.
        */
       public Builder setSk(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         sk_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * raw secret key bytes
        * </pre>
        *
        * <code>bytes sk = 2;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearSk() {
-        
+
         sk_ = getDefaultInstance().getSk();
         onChanged();
         return this;
@@ -1056,11 +1132,14 @@ public final class Security {
 
       private com.google.protobuf.ByteString pk_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       *
+       *
        * <pre>
        * raw public key bytes
        * </pre>
        *
        * <code>bytes pk = 3;</code>
+       *
        * @return The pk.
        */
       @java.lang.Override
@@ -1068,37 +1147,44 @@ public final class Security {
         return pk_;
       }
       /**
+       *
+       *
        * <pre>
        * raw public key bytes
        * </pre>
        *
        * <code>bytes pk = 3;</code>
+       *
        * @param value The pk to set.
        * @return This builder for chaining.
        */
       public Builder setPk(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         pk_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * raw public key bytes
        * </pre>
        *
        * <code>bytes pk = 3;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearPk() {
-        
+
         pk_ = getDefaultInstance().getPk();
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1111,12 +1197,13 @@ public final class Security {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.security.v1.CreateOberonKeyResponse)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.security.v1.CreateOberonKeyResponse)
-    private static final trinsic.okapi.security.v1.Security.CreateOberonKeyResponse DEFAULT_INSTANCE;
+    private static final trinsic.okapi.security.v1.Security.CreateOberonKeyResponse
+        DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.security.v1.Security.CreateOberonKeyResponse();
     }
@@ -1125,16 +1212,16 @@ public final class Security {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<CreateOberonKeyResponse>
-        PARSER = new com.google.protobuf.AbstractParser<CreateOberonKeyResponse>() {
-      @java.lang.Override
-      public CreateOberonKeyResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CreateOberonKeyResponse(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<CreateOberonKeyResponse> PARSER =
+        new com.google.protobuf.AbstractParser<CreateOberonKeyResponse>() {
+          @java.lang.Override
+          public CreateOberonKeyResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new CreateOberonKeyResponse(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<CreateOberonKeyResponse> parser() {
       return PARSER;
@@ -1149,78 +1236,96 @@ public final class Security {
     public trinsic.okapi.security.v1.Security.CreateOberonKeyResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface CreateOberonTokenRequestOrBuilder extends
+  public interface CreateOberonTokenRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.security.v1.CreateOberonTokenRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * raw BLS key bytes
      * </pre>
      *
      * <code>bytes sk = 1;</code>
+     *
      * @return The sk.
      */
     com.google.protobuf.ByteString getSk();
 
     /**
+     *
+     *
      * <pre>
      * data is the public part of the oberon protocol and can be any data
      * </pre>
      *
      * <code>bytes data = 2;</code>
+     *
      * @return The data.
      */
     com.google.protobuf.ByteString getData();
 
     /**
+     *
+     *
      * <pre>
      * optional blinding for the token
      * </pre>
      *
      * <code>repeated bytes blinding = 3;</code>
+     *
      * @return A list containing the blinding.
      */
     java.util.List<com.google.protobuf.ByteString> getBlindingList();
     /**
+     *
+     *
      * <pre>
      * optional blinding for the token
      * </pre>
      *
      * <code>repeated bytes blinding = 3;</code>
+     *
      * @return The count of blinding.
      */
     int getBlindingCount();
     /**
+     *
+     *
      * <pre>
      * optional blinding for the token
      * </pre>
      *
      * <code>repeated bytes blinding = 3;</code>
+     *
      * @param index The index of the element to return.
      * @return The blinding at the given index.
      */
     com.google.protobuf.ByteString getBlinding(int index);
   }
   /**
+   *
+   *
    * <pre>
    * Create a new oberon token
    * </pre>
    *
    * Protobuf type {@code okapi.security.v1.CreateOberonTokenRequest}
    */
-  public static final class CreateOberonTokenRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class CreateOberonTokenRequest extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.security.v1.CreateOberonTokenRequest)
       CreateOberonTokenRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use CreateOberonTokenRequest.newBuilder() to construct.
     private CreateOberonTokenRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private CreateOberonTokenRequest() {
       sk_ = com.google.protobuf.ByteString.EMPTY;
       data_ = com.google.protobuf.ByteString.EMPTY;
@@ -1229,16 +1334,15 @@ public final class Security {
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new CreateOberonTokenRequest();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private CreateOberonTokenRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1258,31 +1362,32 @@ public final class Security {
             case 0:
               done = true;
               break;
-            case 10: {
-
-              sk_ = input.readBytes();
-              break;
-            }
-            case 18: {
-
-              data_ = input.readBytes();
-              break;
-            }
-            case 26: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                blinding_ = new java.util.ArrayList<com.google.protobuf.ByteString>();
-                mutable_bitField0_ |= 0x00000001;
+            case 10:
+              {
+                sk_ = input.readBytes();
+                break;
               }
-              blinding_.add(input.readBytes());
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 18:
+              {
+                data_ = input.readBytes();
+                break;
               }
-              break;
-            }
+            case 26:
+              {
+                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                  blinding_ = new java.util.ArrayList<com.google.protobuf.ByteString>();
+                  mutable_bitField0_ |= 0x00000001;
+                }
+                blinding_.add(input.readBytes());
+                break;
+              }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1290,8 +1395,7 @@ public final class Security {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
           blinding_ = java.util.Collections.unmodifiableList(blinding_); // C
@@ -1300,27 +1404,33 @@ public final class Security {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonTokenRequest_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_CreateOberonTokenRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonTokenRequest_fieldAccessorTable
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_CreateOberonTokenRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.security.v1.Security.CreateOberonTokenRequest.class, trinsic.okapi.security.v1.Security.CreateOberonTokenRequest.Builder.class);
+              trinsic.okapi.security.v1.Security.CreateOberonTokenRequest.class,
+              trinsic.okapi.security.v1.Security.CreateOberonTokenRequest.Builder.class);
     }
 
     public static final int SK_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString sk_;
     /**
+     *
+     *
      * <pre>
      * raw BLS key bytes
      * </pre>
      *
      * <code>bytes sk = 1;</code>
+     *
      * @return The sk.
      */
     @java.lang.Override
@@ -1331,11 +1441,14 @@ public final class Security {
     public static final int DATA_FIELD_NUMBER = 2;
     private com.google.protobuf.ByteString data_;
     /**
+     *
+     *
      * <pre>
      * data is the public part of the oberon protocol and can be any data
      * </pre>
      *
      * <code>bytes data = 2;</code>
+     *
      * @return The data.
      */
     @java.lang.Override
@@ -1346,35 +1459,43 @@ public final class Security {
     public static final int BLINDING_FIELD_NUMBER = 3;
     private java.util.List<com.google.protobuf.ByteString> blinding_;
     /**
+     *
+     *
      * <pre>
      * optional blinding for the token
      * </pre>
      *
      * <code>repeated bytes blinding = 3;</code>
+     *
      * @return A list containing the blinding.
      */
     @java.lang.Override
-    public java.util.List<com.google.protobuf.ByteString>
-        getBlindingList() {
+    public java.util.List<com.google.protobuf.ByteString> getBlindingList() {
       return blinding_;
     }
     /**
+     *
+     *
      * <pre>
      * optional blinding for the token
      * </pre>
      *
      * <code>repeated bytes blinding = 3;</code>
+     *
      * @return The count of blinding.
      */
     public int getBlindingCount() {
       return blinding_.size();
     }
     /**
+     *
+     *
      * <pre>
      * optional blinding for the token
      * </pre>
      *
      * <code>repeated bytes blinding = 3;</code>
+     *
      * @param index The index of the element to return.
      * @return The blinding at the given index.
      */
@@ -1383,6 +1504,7 @@ public final class Security {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1394,8 +1516,7 @@ public final class Security {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!sk_.isEmpty()) {
         output.writeBytes(1, sk_);
       }
@@ -1415,18 +1536,15 @@ public final class Security {
 
       size = 0;
       if (!sk_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, sk_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(1, sk_);
       }
       if (!data_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, data_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(2, data_);
       }
       {
         int dataSize = 0;
         for (int i = 0; i < blinding_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeBytesSizeNoTag(blinding_.get(i));
+          dataSize += com.google.protobuf.CodedOutputStream.computeBytesSizeNoTag(blinding_.get(i));
         }
         size += dataSize;
         size += 1 * getBlindingList().size();
@@ -1439,19 +1557,17 @@ public final class Security {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.security.v1.Security.CreateOberonTokenRequest)) {
         return super.equals(obj);
       }
-      trinsic.okapi.security.v1.Security.CreateOberonTokenRequest other = (trinsic.okapi.security.v1.Security.CreateOberonTokenRequest) obj;
+      trinsic.okapi.security.v1.Security.CreateOberonTokenRequest other =
+          (trinsic.okapi.security.v1.Security.CreateOberonTokenRequest) obj;
 
-      if (!getSk()
-          .equals(other.getSk())) return false;
-      if (!getData()
-          .equals(other.getData())) return false;
-      if (!getBlindingList()
-          .equals(other.getBlindingList())) return false;
+      if (!getSk().equals(other.getSk())) return false;
+      if (!getData().equals(other.getData())) return false;
+      if (!getBlindingList().equals(other.getBlindingList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1477,87 +1593,94 @@ public final class Security {
     }
 
     public static trinsic.okapi.security.v1.Security.CreateOberonTokenRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonTokenRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonTokenRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonTokenRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonTokenRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonTokenRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.security.v1.Security.CreateOberonTokenRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonTokenRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.security.v1.Security.CreateOberonTokenRequest parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.security.v1.Security.CreateOberonTokenRequest parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonTokenRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.security.v1.Security.CreateOberonTokenRequest parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonTokenRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonTokenRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.okapi.security.v1.Security.CreateOberonTokenRequest prototype) {
+
+    public static Builder newBuilder(
+        trinsic.okapi.security.v1.Security.CreateOberonTokenRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -1567,27 +1690,32 @@ public final class Security {
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Create a new oberon token
      * </pre>
      *
      * Protobuf type {@code okapi.security.v1.CreateOberonTokenRequest}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.security.v1.CreateOberonTokenRequest)
         trinsic.okapi.security.v1.Security.CreateOberonTokenRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonTokenRequest_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_CreateOberonTokenRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonTokenRequest_fieldAccessorTable
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_CreateOberonTokenRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.security.v1.Security.CreateOberonTokenRequest.class, trinsic.okapi.security.v1.Security.CreateOberonTokenRequest.Builder.class);
+                trinsic.okapi.security.v1.Security.CreateOberonTokenRequest.class,
+                trinsic.okapi.security.v1.Security.CreateOberonTokenRequest.Builder.class);
       }
 
       // Construct using trinsic.okapi.security.v1.Security.CreateOberonTokenRequest.newBuilder()
@@ -1595,16 +1723,15 @@ public final class Security {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -1618,13 +1745,14 @@ public final class Security {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonTokenRequest_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_CreateOberonTokenRequest_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.okapi.security.v1.Security.CreateOberonTokenRequest getDefaultInstanceForType() {
+      public trinsic.okapi.security.v1.Security.CreateOberonTokenRequest
+          getDefaultInstanceForType() {
         return trinsic.okapi.security.v1.Security.CreateOberonTokenRequest.getDefaultInstance();
       }
 
@@ -1639,7 +1767,8 @@ public final class Security {
 
       @java.lang.Override
       public trinsic.okapi.security.v1.Security.CreateOberonTokenRequest buildPartial() {
-        trinsic.okapi.security.v1.Security.CreateOberonTokenRequest result = new trinsic.okapi.security.v1.Security.CreateOberonTokenRequest(this);
+        trinsic.okapi.security.v1.Security.CreateOberonTokenRequest result =
+            new trinsic.okapi.security.v1.Security.CreateOberonTokenRequest(this);
         int from_bitField0_ = bitField0_;
         result.sk_ = sk_;
         result.data_ = data_;
@@ -1656,38 +1785,41 @@ public final class Security {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.security.v1.Security.CreateOberonTokenRequest) {
-          return mergeFrom((trinsic.okapi.security.v1.Security.CreateOberonTokenRequest)other);
+          return mergeFrom((trinsic.okapi.security.v1.Security.CreateOberonTokenRequest) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -1695,7 +1827,9 @@ public final class Security {
       }
 
       public Builder mergeFrom(trinsic.okapi.security.v1.Security.CreateOberonTokenRequest other) {
-        if (other == trinsic.okapi.security.v1.Security.CreateOberonTokenRequest.getDefaultInstance()) return this;
+        if (other
+            == trinsic.okapi.security.v1.Security.CreateOberonTokenRequest.getDefaultInstance())
+          return this;
         if (other.getSk() != com.google.protobuf.ByteString.EMPTY) {
           setSk(other.getSk());
         }
@@ -1731,7 +1865,9 @@ public final class Security {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.security.v1.Security.CreateOberonTokenRequest) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.security.v1.Security.CreateOberonTokenRequest)
+                  e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1740,15 +1876,19 @@ public final class Security {
         }
         return this;
       }
+
       private int bitField0_;
 
       private com.google.protobuf.ByteString sk_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       *
+       *
        * <pre>
        * raw BLS key bytes
        * </pre>
        *
        * <code>bytes sk = 1;</code>
+       *
        * @return The sk.
        */
       @java.lang.Override
@@ -1756,33 +1896,39 @@ public final class Security {
         return sk_;
       }
       /**
+       *
+       *
        * <pre>
        * raw BLS key bytes
        * </pre>
        *
        * <code>bytes sk = 1;</code>
+       *
        * @param value The sk to set.
        * @return This builder for chaining.
        */
       public Builder setSk(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         sk_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * raw BLS key bytes
        * </pre>
        *
        * <code>bytes sk = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearSk() {
-        
+
         sk_ = getDefaultInstance().getSk();
         onChanged();
         return this;
@@ -1790,11 +1936,14 @@ public final class Security {
 
       private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       *
+       *
        * <pre>
        * data is the public part of the oberon protocol and can be any data
        * </pre>
        *
        * <code>bytes data = 2;</code>
+       *
        * @return The data.
        */
       @java.lang.Override
@@ -1802,75 +1951,92 @@ public final class Security {
         return data_;
       }
       /**
+       *
+       *
        * <pre>
        * data is the public part of the oberon protocol and can be any data
        * </pre>
        *
        * <code>bytes data = 2;</code>
+       *
        * @param value The data to set.
        * @return This builder for chaining.
        */
       public Builder setData(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         data_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * data is the public part of the oberon protocol and can be any data
        * </pre>
        *
        * <code>bytes data = 2;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearData() {
-        
+
         data_ = getDefaultInstance().getData();
         onChanged();
         return this;
       }
 
-      private java.util.List<com.google.protobuf.ByteString> blinding_ = java.util.Collections.emptyList();
+      private java.util.List<com.google.protobuf.ByteString> blinding_ =
+          java.util.Collections.emptyList();
+
       private void ensureBlindingIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
           blinding_ = new java.util.ArrayList<com.google.protobuf.ByteString>(blinding_);
           bitField0_ |= 0x00000001;
-         }
+        }
       }
       /**
+       *
+       *
        * <pre>
        * optional blinding for the token
        * </pre>
        *
        * <code>repeated bytes blinding = 3;</code>
+       *
        * @return A list containing the blinding.
        */
-      public java.util.List<com.google.protobuf.ByteString>
-          getBlindingList() {
-        return ((bitField0_ & 0x00000001) != 0) ?
-                 java.util.Collections.unmodifiableList(blinding_) : blinding_;
+      public java.util.List<com.google.protobuf.ByteString> getBlindingList() {
+        return ((bitField0_ & 0x00000001) != 0)
+            ? java.util.Collections.unmodifiableList(blinding_)
+            : blinding_;
       }
       /**
+       *
+       *
        * <pre>
        * optional blinding for the token
        * </pre>
        *
        * <code>repeated bytes blinding = 3;</code>
+       *
        * @return The count of blinding.
        */
       public int getBlindingCount() {
         return blinding_.size();
       }
       /**
+       *
+       *
        * <pre>
        * optional blinding for the token
        * </pre>
        *
        * <code>repeated bytes blinding = 3;</code>
+       *
        * @param index The index of the element to return.
        * @return The blinding at the given index.
        */
@@ -1878,66 +2044,76 @@ public final class Security {
         return blinding_.get(index);
       }
       /**
+       *
+       *
        * <pre>
        * optional blinding for the token
        * </pre>
        *
        * <code>repeated bytes blinding = 3;</code>
+       *
        * @param index The index to set the value at.
        * @param value The blinding to set.
        * @return This builder for chaining.
        */
-      public Builder setBlinding(
-          int index, com.google.protobuf.ByteString value) {
+      public Builder setBlinding(int index, com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureBlindingIsMutable();
+          throw new NullPointerException();
+        }
+        ensureBlindingIsMutable();
         blinding_.set(index, value);
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * optional blinding for the token
        * </pre>
        *
        * <code>repeated bytes blinding = 3;</code>
+       *
        * @param value The blinding to add.
        * @return This builder for chaining.
        */
       public Builder addBlinding(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureBlindingIsMutable();
+          throw new NullPointerException();
+        }
+        ensureBlindingIsMutable();
         blinding_.add(value);
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * optional blinding for the token
        * </pre>
        *
        * <code>repeated bytes blinding = 3;</code>
+       *
        * @param values The blinding to add.
        * @return This builder for chaining.
        */
       public Builder addAllBlinding(
           java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
         ensureBlindingIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, blinding_);
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, blinding_);
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * optional blinding for the token
        * </pre>
        *
        * <code>repeated bytes blinding = 3;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearBlinding() {
@@ -1946,6 +2122,7 @@ public final class Security {
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1958,12 +2135,13 @@ public final class Security {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.security.v1.CreateOberonTokenRequest)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.security.v1.CreateOberonTokenRequest)
-    private static final trinsic.okapi.security.v1.Security.CreateOberonTokenRequest DEFAULT_INSTANCE;
+    private static final trinsic.okapi.security.v1.Security.CreateOberonTokenRequest
+        DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.security.v1.Security.CreateOberonTokenRequest();
     }
@@ -1972,16 +2150,16 @@ public final class Security {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<CreateOberonTokenRequest>
-        PARSER = new com.google.protobuf.AbstractParser<CreateOberonTokenRequest>() {
-      @java.lang.Override
-      public CreateOberonTokenRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CreateOberonTokenRequest(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<CreateOberonTokenRequest> PARSER =
+        new com.google.protobuf.AbstractParser<CreateOberonTokenRequest>() {
+          @java.lang.Override
+          public CreateOberonTokenRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new CreateOberonTokenRequest(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<CreateOberonTokenRequest> parser() {
       return PARSER;
@@ -1996,55 +2174,60 @@ public final class Security {
     public trinsic.okapi.security.v1.Security.CreateOberonTokenRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface CreateOberonTokenResponseOrBuilder extends
+  public interface CreateOberonTokenResponseOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.security.v1.CreateOberonTokenResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * raw token bytes
      * </pre>
      *
      * <code>bytes token = 1;</code>
+     *
      * @return The token.
      */
     com.google.protobuf.ByteString getToken();
   }
   /**
+   *
+   *
    * <pre>
-   * Contains the token with optional blinding 
+   * Contains the token with optional blinding
    * </pre>
    *
    * Protobuf type {@code okapi.security.v1.CreateOberonTokenResponse}
    */
-  public static final class CreateOberonTokenResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class CreateOberonTokenResponse extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.security.v1.CreateOberonTokenResponse)
       CreateOberonTokenResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use CreateOberonTokenResponse.newBuilder() to construct.
     private CreateOberonTokenResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private CreateOberonTokenResponse() {
       token_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new CreateOberonTokenResponse();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private CreateOberonTokenResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2063,18 +2246,18 @@ public final class Security {
             case 0:
               done = true;
               break;
-            case 10: {
-
-              token_ = input.readBytes();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 10:
+              {
+                token_ = input.readBytes();
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -2082,34 +2265,39 @@ public final class Security {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonTokenResponse_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_CreateOberonTokenResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonTokenResponse_fieldAccessorTable
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_CreateOberonTokenResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.security.v1.Security.CreateOberonTokenResponse.class, trinsic.okapi.security.v1.Security.CreateOberonTokenResponse.Builder.class);
+              trinsic.okapi.security.v1.Security.CreateOberonTokenResponse.class,
+              trinsic.okapi.security.v1.Security.CreateOberonTokenResponse.Builder.class);
     }
 
     public static final int TOKEN_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString token_;
     /**
+     *
+     *
      * <pre>
      * raw token bytes
      * </pre>
      *
      * <code>bytes token = 1;</code>
+     *
      * @return The token.
      */
     @java.lang.Override
@@ -2118,6 +2306,7 @@ public final class Security {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -2129,8 +2318,7 @@ public final class Security {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!token_.isEmpty()) {
         output.writeBytes(1, token_);
       }
@@ -2144,8 +2332,7 @@ public final class Security {
 
       size = 0;
       if (!token_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, token_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(1, token_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2155,15 +2342,15 @@ public final class Security {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.security.v1.Security.CreateOberonTokenResponse)) {
         return super.equals(obj);
       }
-      trinsic.okapi.security.v1.Security.CreateOberonTokenResponse other = (trinsic.okapi.security.v1.Security.CreateOberonTokenResponse) obj;
+      trinsic.okapi.security.v1.Security.CreateOberonTokenResponse other =
+          (trinsic.okapi.security.v1.Security.CreateOberonTokenResponse) obj;
 
-      if (!getToken()
-          .equals(other.getToken())) return false;
+      if (!getToken().equals(other.getToken())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2183,87 +2370,94 @@ public final class Security {
     }
 
     public static trinsic.okapi.security.v1.Security.CreateOberonTokenResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonTokenResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonTokenResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonTokenResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.security.v1.Security.CreateOberonTokenResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.okapi.security.v1.Security.CreateOberonTokenResponse parseFrom(
+        byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonTokenResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.security.v1.Security.CreateOberonTokenResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonTokenResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.security.v1.Security.CreateOberonTokenResponse parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.security.v1.Security.CreateOberonTokenResponse parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonTokenResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.security.v1.Security.CreateOberonTokenResponse parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonTokenResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonTokenResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.okapi.security.v1.Security.CreateOberonTokenResponse prototype) {
+
+    public static Builder newBuilder(
+        trinsic.okapi.security.v1.Security.CreateOberonTokenResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -2273,27 +2467,32 @@ public final class Security {
       return builder;
     }
     /**
+     *
+     *
      * <pre>
-     * Contains the token with optional blinding 
+     * Contains the token with optional blinding
      * </pre>
      *
      * Protobuf type {@code okapi.security.v1.CreateOberonTokenResponse}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.security.v1.CreateOberonTokenResponse)
         trinsic.okapi.security.v1.Security.CreateOberonTokenResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonTokenResponse_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_CreateOberonTokenResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonTokenResponse_fieldAccessorTable
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_CreateOberonTokenResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.security.v1.Security.CreateOberonTokenResponse.class, trinsic.okapi.security.v1.Security.CreateOberonTokenResponse.Builder.class);
+                trinsic.okapi.security.v1.Security.CreateOberonTokenResponse.class,
+                trinsic.okapi.security.v1.Security.CreateOberonTokenResponse.Builder.class);
       }
 
       // Construct using trinsic.okapi.security.v1.Security.CreateOberonTokenResponse.newBuilder()
@@ -2301,16 +2500,15 @@ public final class Security {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -2320,13 +2518,14 @@ public final class Security {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonTokenResponse_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_CreateOberonTokenResponse_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.okapi.security.v1.Security.CreateOberonTokenResponse getDefaultInstanceForType() {
+      public trinsic.okapi.security.v1.Security.CreateOberonTokenResponse
+          getDefaultInstanceForType() {
         return trinsic.okapi.security.v1.Security.CreateOberonTokenResponse.getDefaultInstance();
       }
 
@@ -2341,7 +2540,8 @@ public final class Security {
 
       @java.lang.Override
       public trinsic.okapi.security.v1.Security.CreateOberonTokenResponse buildPartial() {
-        trinsic.okapi.security.v1.Security.CreateOberonTokenResponse result = new trinsic.okapi.security.v1.Security.CreateOberonTokenResponse(this);
+        trinsic.okapi.security.v1.Security.CreateOberonTokenResponse result =
+            new trinsic.okapi.security.v1.Security.CreateOberonTokenResponse(this);
         result.token_ = token_;
         onBuilt();
         return result;
@@ -2351,38 +2551,41 @@ public final class Security {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.security.v1.Security.CreateOberonTokenResponse) {
-          return mergeFrom((trinsic.okapi.security.v1.Security.CreateOberonTokenResponse)other);
+          return mergeFrom((trinsic.okapi.security.v1.Security.CreateOberonTokenResponse) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -2390,7 +2593,9 @@ public final class Security {
       }
 
       public Builder mergeFrom(trinsic.okapi.security.v1.Security.CreateOberonTokenResponse other) {
-        if (other == trinsic.okapi.security.v1.Security.CreateOberonTokenResponse.getDefaultInstance()) return this;
+        if (other
+            == trinsic.okapi.security.v1.Security.CreateOberonTokenResponse.getDefaultInstance())
+          return this;
         if (other.getToken() != com.google.protobuf.ByteString.EMPTY) {
           setToken(other.getToken());
         }
@@ -2413,7 +2618,9 @@ public final class Security {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.security.v1.Security.CreateOberonTokenResponse) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.security.v1.Security.CreateOberonTokenResponse)
+                  e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2425,11 +2632,14 @@ public final class Security {
 
       private com.google.protobuf.ByteString token_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       *
+       *
        * <pre>
        * raw token bytes
        * </pre>
        *
        * <code>bytes token = 1;</code>
+       *
        * @return The token.
        */
       @java.lang.Override
@@ -2437,37 +2647,44 @@ public final class Security {
         return token_;
       }
       /**
+       *
+       *
        * <pre>
        * raw token bytes
        * </pre>
        *
        * <code>bytes token = 1;</code>
+       *
        * @param value The token to set.
        * @return This builder for chaining.
        */
       public Builder setToken(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         token_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * raw token bytes
        * </pre>
        *
        * <code>bytes token = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearToken() {
-        
+
         token_ = getDefaultInstance().getToken();
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -2480,30 +2697,32 @@ public final class Security {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.security.v1.CreateOberonTokenResponse)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.security.v1.CreateOberonTokenResponse)
-    private static final trinsic.okapi.security.v1.Security.CreateOberonTokenResponse DEFAULT_INSTANCE;
+    private static final trinsic.okapi.security.v1.Security.CreateOberonTokenResponse
+        DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.security.v1.Security.CreateOberonTokenResponse();
     }
 
-    public static trinsic.okapi.security.v1.Security.CreateOberonTokenResponse getDefaultInstance() {
+    public static trinsic.okapi.security.v1.Security.CreateOberonTokenResponse
+        getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<CreateOberonTokenResponse>
-        PARSER = new com.google.protobuf.AbstractParser<CreateOberonTokenResponse>() {
-      @java.lang.Override
-      public CreateOberonTokenResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CreateOberonTokenResponse(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<CreateOberonTokenResponse> PARSER =
+        new com.google.protobuf.AbstractParser<CreateOberonTokenResponse>() {
+          @java.lang.Override
+          public CreateOberonTokenResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new CreateOberonTokenResponse(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<CreateOberonTokenResponse> parser() {
       return PARSER;
@@ -2515,91 +2734,113 @@ public final class Security {
     }
 
     @java.lang.Override
-    public trinsic.okapi.security.v1.Security.CreateOberonTokenResponse getDefaultInstanceForType() {
+    public trinsic.okapi.security.v1.Security.CreateOberonTokenResponse
+        getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface CreateOberonProofRequestOrBuilder extends
+  public interface CreateOberonProofRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.security.v1.CreateOberonProofRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * data used to create the token
      * </pre>
      *
      * <code>bytes data = 1;</code>
+     *
      * @return The data.
      */
     com.google.protobuf.ByteString getData();
 
     /**
+     *
+     *
      * <pre>
      * token data
      * </pre>
      *
      * <code>bytes token = 2;</code>
+     *
      * @return The token.
      */
     com.google.protobuf.ByteString getToken();
 
     /**
+     *
+     *
      * <pre>
      * any blindings used to create the token
      * </pre>
      *
      * <code>repeated bytes blinding = 3;</code>
+     *
      * @return A list containing the blinding.
      */
     java.util.List<com.google.protobuf.ByteString> getBlindingList();
     /**
+     *
+     *
      * <pre>
      * any blindings used to create the token
      * </pre>
      *
      * <code>repeated bytes blinding = 3;</code>
+     *
      * @return The count of blinding.
      */
     int getBlindingCount();
     /**
+     *
+     *
      * <pre>
      * any blindings used to create the token
      * </pre>
      *
      * <code>repeated bytes blinding = 3;</code>
+     *
      * @param index The index of the element to return.
      * @return The blinding at the given index.
      */
     com.google.protobuf.ByteString getBlinding(int index);
 
     /**
+     *
+     *
      * <pre>
      * nonce for generating the proof
      * </pre>
      *
      * <code>bytes nonce = 4;</code>
+     *
      * @return The nonce.
      */
     com.google.protobuf.ByteString getNonce();
   }
   /**
+   *
+   *
    * <pre>
    * Create a proof that holder knows the token
    * </pre>
    *
    * Protobuf type {@code okapi.security.v1.CreateOberonProofRequest}
    */
-  public static final class CreateOberonProofRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class CreateOberonProofRequest extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.security.v1.CreateOberonProofRequest)
       CreateOberonProofRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use CreateOberonProofRequest.newBuilder() to construct.
     private CreateOberonProofRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private CreateOberonProofRequest() {
       data_ = com.google.protobuf.ByteString.EMPTY;
       token_ = com.google.protobuf.ByteString.EMPTY;
@@ -2609,16 +2850,15 @@ public final class Security {
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new CreateOberonProofRequest();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private CreateOberonProofRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2638,36 +2878,37 @@ public final class Security {
             case 0:
               done = true;
               break;
-            case 10: {
-
-              data_ = input.readBytes();
-              break;
-            }
-            case 18: {
-
-              token_ = input.readBytes();
-              break;
-            }
-            case 26: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                blinding_ = new java.util.ArrayList<com.google.protobuf.ByteString>();
-                mutable_bitField0_ |= 0x00000001;
+            case 10:
+              {
+                data_ = input.readBytes();
+                break;
               }
-              blinding_.add(input.readBytes());
-              break;
-            }
-            case 34: {
-
-              nonce_ = input.readBytes();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 18:
+              {
+                token_ = input.readBytes();
+                break;
               }
-              break;
-            }
+            case 26:
+              {
+                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                  blinding_ = new java.util.ArrayList<com.google.protobuf.ByteString>();
+                  mutable_bitField0_ |= 0x00000001;
+                }
+                blinding_.add(input.readBytes());
+                break;
+              }
+            case 34:
+              {
+                nonce_ = input.readBytes();
+                break;
+              }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -2675,8 +2916,7 @@ public final class Security {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
           blinding_ = java.util.Collections.unmodifiableList(blinding_); // C
@@ -2685,27 +2925,33 @@ public final class Security {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonProofRequest_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_CreateOberonProofRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonProofRequest_fieldAccessorTable
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_CreateOberonProofRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.security.v1.Security.CreateOberonProofRequest.class, trinsic.okapi.security.v1.Security.CreateOberonProofRequest.Builder.class);
+              trinsic.okapi.security.v1.Security.CreateOberonProofRequest.class,
+              trinsic.okapi.security.v1.Security.CreateOberonProofRequest.Builder.class);
     }
 
     public static final int DATA_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString data_;
     /**
+     *
+     *
      * <pre>
      * data used to create the token
      * </pre>
      *
      * <code>bytes data = 1;</code>
+     *
      * @return The data.
      */
     @java.lang.Override
@@ -2716,11 +2962,14 @@ public final class Security {
     public static final int TOKEN_FIELD_NUMBER = 2;
     private com.google.protobuf.ByteString token_;
     /**
+     *
+     *
      * <pre>
      * token data
      * </pre>
      *
      * <code>bytes token = 2;</code>
+     *
      * @return The token.
      */
     @java.lang.Override
@@ -2731,35 +2980,43 @@ public final class Security {
     public static final int BLINDING_FIELD_NUMBER = 3;
     private java.util.List<com.google.protobuf.ByteString> blinding_;
     /**
+     *
+     *
      * <pre>
      * any blindings used to create the token
      * </pre>
      *
      * <code>repeated bytes blinding = 3;</code>
+     *
      * @return A list containing the blinding.
      */
     @java.lang.Override
-    public java.util.List<com.google.protobuf.ByteString>
-        getBlindingList() {
+    public java.util.List<com.google.protobuf.ByteString> getBlindingList() {
       return blinding_;
     }
     /**
+     *
+     *
      * <pre>
      * any blindings used to create the token
      * </pre>
      *
      * <code>repeated bytes blinding = 3;</code>
+     *
      * @return The count of blinding.
      */
     public int getBlindingCount() {
       return blinding_.size();
     }
     /**
+     *
+     *
      * <pre>
      * any blindings used to create the token
      * </pre>
      *
      * <code>repeated bytes blinding = 3;</code>
+     *
      * @param index The index of the element to return.
      * @return The blinding at the given index.
      */
@@ -2770,11 +3027,14 @@ public final class Security {
     public static final int NONCE_FIELD_NUMBER = 4;
     private com.google.protobuf.ByteString nonce_;
     /**
+     *
+     *
      * <pre>
      * nonce for generating the proof
      * </pre>
      *
      * <code>bytes nonce = 4;</code>
+     *
      * @return The nonce.
      */
     @java.lang.Override
@@ -2783,6 +3043,7 @@ public final class Security {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -2794,8 +3055,7 @@ public final class Security {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!data_.isEmpty()) {
         output.writeBytes(1, data_);
       }
@@ -2818,25 +3078,21 @@ public final class Security {
 
       size = 0;
       if (!data_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, data_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(1, data_);
       }
       if (!token_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, token_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(2, token_);
       }
       {
         int dataSize = 0;
         for (int i = 0; i < blinding_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeBytesSizeNoTag(blinding_.get(i));
+          dataSize += com.google.protobuf.CodedOutputStream.computeBytesSizeNoTag(blinding_.get(i));
         }
         size += dataSize;
         size += 1 * getBlindingList().size();
       }
       if (!nonce_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, nonce_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(4, nonce_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2846,21 +3102,18 @@ public final class Security {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.security.v1.Security.CreateOberonProofRequest)) {
         return super.equals(obj);
       }
-      trinsic.okapi.security.v1.Security.CreateOberonProofRequest other = (trinsic.okapi.security.v1.Security.CreateOberonProofRequest) obj;
+      trinsic.okapi.security.v1.Security.CreateOberonProofRequest other =
+          (trinsic.okapi.security.v1.Security.CreateOberonProofRequest) obj;
 
-      if (!getData()
-          .equals(other.getData())) return false;
-      if (!getToken()
-          .equals(other.getToken())) return false;
-      if (!getBlindingList()
-          .equals(other.getBlindingList())) return false;
-      if (!getNonce()
-          .equals(other.getNonce())) return false;
+      if (!getData().equals(other.getData())) return false;
+      if (!getToken().equals(other.getToken())) return false;
+      if (!getBlindingList().equals(other.getBlindingList())) return false;
+      if (!getNonce().equals(other.getNonce())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2888,87 +3141,94 @@ public final class Security {
     }
 
     public static trinsic.okapi.security.v1.Security.CreateOberonProofRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonProofRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonProofRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonProofRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonProofRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonProofRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.security.v1.Security.CreateOberonProofRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonProofRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.security.v1.Security.CreateOberonProofRequest parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.security.v1.Security.CreateOberonProofRequest parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonProofRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.security.v1.Security.CreateOberonProofRequest parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonProofRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonProofRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.okapi.security.v1.Security.CreateOberonProofRequest prototype) {
+
+    public static Builder newBuilder(
+        trinsic.okapi.security.v1.Security.CreateOberonProofRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -2978,27 +3238,32 @@ public final class Security {
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Create a proof that holder knows the token
      * </pre>
      *
      * Protobuf type {@code okapi.security.v1.CreateOberonProofRequest}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.security.v1.CreateOberonProofRequest)
         trinsic.okapi.security.v1.Security.CreateOberonProofRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonProofRequest_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_CreateOberonProofRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonProofRequest_fieldAccessorTable
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_CreateOberonProofRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.security.v1.Security.CreateOberonProofRequest.class, trinsic.okapi.security.v1.Security.CreateOberonProofRequest.Builder.class);
+                trinsic.okapi.security.v1.Security.CreateOberonProofRequest.class,
+                trinsic.okapi.security.v1.Security.CreateOberonProofRequest.Builder.class);
       }
 
       // Construct using trinsic.okapi.security.v1.Security.CreateOberonProofRequest.newBuilder()
@@ -3006,16 +3271,15 @@ public final class Security {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -3031,13 +3295,14 @@ public final class Security {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonProofRequest_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_CreateOberonProofRequest_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.okapi.security.v1.Security.CreateOberonProofRequest getDefaultInstanceForType() {
+      public trinsic.okapi.security.v1.Security.CreateOberonProofRequest
+          getDefaultInstanceForType() {
         return trinsic.okapi.security.v1.Security.CreateOberonProofRequest.getDefaultInstance();
       }
 
@@ -3052,7 +3317,8 @@ public final class Security {
 
       @java.lang.Override
       public trinsic.okapi.security.v1.Security.CreateOberonProofRequest buildPartial() {
-        trinsic.okapi.security.v1.Security.CreateOberonProofRequest result = new trinsic.okapi.security.v1.Security.CreateOberonProofRequest(this);
+        trinsic.okapi.security.v1.Security.CreateOberonProofRequest result =
+            new trinsic.okapi.security.v1.Security.CreateOberonProofRequest(this);
         int from_bitField0_ = bitField0_;
         result.data_ = data_;
         result.token_ = token_;
@@ -3070,38 +3336,41 @@ public final class Security {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.security.v1.Security.CreateOberonProofRequest) {
-          return mergeFrom((trinsic.okapi.security.v1.Security.CreateOberonProofRequest)other);
+          return mergeFrom((trinsic.okapi.security.v1.Security.CreateOberonProofRequest) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -3109,7 +3378,9 @@ public final class Security {
       }
 
       public Builder mergeFrom(trinsic.okapi.security.v1.Security.CreateOberonProofRequest other) {
-        if (other == trinsic.okapi.security.v1.Security.CreateOberonProofRequest.getDefaultInstance()) return this;
+        if (other
+            == trinsic.okapi.security.v1.Security.CreateOberonProofRequest.getDefaultInstance())
+          return this;
         if (other.getData() != com.google.protobuf.ByteString.EMPTY) {
           setData(other.getData());
         }
@@ -3148,7 +3419,9 @@ public final class Security {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.security.v1.Security.CreateOberonProofRequest) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.security.v1.Security.CreateOberonProofRequest)
+                  e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3157,15 +3430,19 @@ public final class Security {
         }
         return this;
       }
+
       private int bitField0_;
 
       private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       *
+       *
        * <pre>
        * data used to create the token
        * </pre>
        *
        * <code>bytes data = 1;</code>
+       *
        * @return The data.
        */
       @java.lang.Override
@@ -3173,33 +3450,39 @@ public final class Security {
         return data_;
       }
       /**
+       *
+       *
        * <pre>
        * data used to create the token
        * </pre>
        *
        * <code>bytes data = 1;</code>
+       *
        * @param value The data to set.
        * @return This builder for chaining.
        */
       public Builder setData(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         data_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * data used to create the token
        * </pre>
        *
        * <code>bytes data = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearData() {
-        
+
         data_ = getDefaultInstance().getData();
         onChanged();
         return this;
@@ -3207,11 +3490,14 @@ public final class Security {
 
       private com.google.protobuf.ByteString token_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       *
+       *
        * <pre>
        * token data
        * </pre>
        *
        * <code>bytes token = 2;</code>
+       *
        * @return The token.
        */
       @java.lang.Override
@@ -3219,75 +3505,92 @@ public final class Security {
         return token_;
       }
       /**
+       *
+       *
        * <pre>
        * token data
        * </pre>
        *
        * <code>bytes token = 2;</code>
+       *
        * @param value The token to set.
        * @return This builder for chaining.
        */
       public Builder setToken(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         token_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * token data
        * </pre>
        *
        * <code>bytes token = 2;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearToken() {
-        
+
         token_ = getDefaultInstance().getToken();
         onChanged();
         return this;
       }
 
-      private java.util.List<com.google.protobuf.ByteString> blinding_ = java.util.Collections.emptyList();
+      private java.util.List<com.google.protobuf.ByteString> blinding_ =
+          java.util.Collections.emptyList();
+
       private void ensureBlindingIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
           blinding_ = new java.util.ArrayList<com.google.protobuf.ByteString>(blinding_);
           bitField0_ |= 0x00000001;
-         }
+        }
       }
       /**
+       *
+       *
        * <pre>
        * any blindings used to create the token
        * </pre>
        *
        * <code>repeated bytes blinding = 3;</code>
+       *
        * @return A list containing the blinding.
        */
-      public java.util.List<com.google.protobuf.ByteString>
-          getBlindingList() {
-        return ((bitField0_ & 0x00000001) != 0) ?
-                 java.util.Collections.unmodifiableList(blinding_) : blinding_;
+      public java.util.List<com.google.protobuf.ByteString> getBlindingList() {
+        return ((bitField0_ & 0x00000001) != 0)
+            ? java.util.Collections.unmodifiableList(blinding_)
+            : blinding_;
       }
       /**
+       *
+       *
        * <pre>
        * any blindings used to create the token
        * </pre>
        *
        * <code>repeated bytes blinding = 3;</code>
+       *
        * @return The count of blinding.
        */
       public int getBlindingCount() {
         return blinding_.size();
       }
       /**
+       *
+       *
        * <pre>
        * any blindings used to create the token
        * </pre>
        *
        * <code>repeated bytes blinding = 3;</code>
+       *
        * @param index The index of the element to return.
        * @return The blinding at the given index.
        */
@@ -3295,66 +3598,76 @@ public final class Security {
         return blinding_.get(index);
       }
       /**
+       *
+       *
        * <pre>
        * any blindings used to create the token
        * </pre>
        *
        * <code>repeated bytes blinding = 3;</code>
+       *
        * @param index The index to set the value at.
        * @param value The blinding to set.
        * @return This builder for chaining.
        */
-      public Builder setBlinding(
-          int index, com.google.protobuf.ByteString value) {
+      public Builder setBlinding(int index, com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureBlindingIsMutable();
+          throw new NullPointerException();
+        }
+        ensureBlindingIsMutable();
         blinding_.set(index, value);
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * any blindings used to create the token
        * </pre>
        *
        * <code>repeated bytes blinding = 3;</code>
+       *
        * @param value The blinding to add.
        * @return This builder for chaining.
        */
       public Builder addBlinding(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureBlindingIsMutable();
+          throw new NullPointerException();
+        }
+        ensureBlindingIsMutable();
         blinding_.add(value);
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * any blindings used to create the token
        * </pre>
        *
        * <code>repeated bytes blinding = 3;</code>
+       *
        * @param values The blinding to add.
        * @return This builder for chaining.
        */
       public Builder addAllBlinding(
           java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
         ensureBlindingIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, blinding_);
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, blinding_);
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * any blindings used to create the token
        * </pre>
        *
        * <code>repeated bytes blinding = 3;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearBlinding() {
@@ -3366,11 +3679,14 @@ public final class Security {
 
       private com.google.protobuf.ByteString nonce_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       *
+       *
        * <pre>
        * nonce for generating the proof
        * </pre>
        *
        * <code>bytes nonce = 4;</code>
+       *
        * @return The nonce.
        */
       @java.lang.Override
@@ -3378,37 +3694,44 @@ public final class Security {
         return nonce_;
       }
       /**
+       *
+       *
        * <pre>
        * nonce for generating the proof
        * </pre>
        *
        * <code>bytes nonce = 4;</code>
+       *
        * @param value The nonce to set.
        * @return This builder for chaining.
        */
       public Builder setNonce(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         nonce_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * nonce for generating the proof
        * </pre>
        *
        * <code>bytes nonce = 4;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearNonce() {
-        
+
         nonce_ = getDefaultInstance().getNonce();
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -3421,12 +3744,13 @@ public final class Security {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.security.v1.CreateOberonProofRequest)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.security.v1.CreateOberonProofRequest)
-    private static final trinsic.okapi.security.v1.Security.CreateOberonProofRequest DEFAULT_INSTANCE;
+    private static final trinsic.okapi.security.v1.Security.CreateOberonProofRequest
+        DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.security.v1.Security.CreateOberonProofRequest();
     }
@@ -3435,16 +3759,16 @@ public final class Security {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<CreateOberonProofRequest>
-        PARSER = new com.google.protobuf.AbstractParser<CreateOberonProofRequest>() {
-      @java.lang.Override
-      public CreateOberonProofRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CreateOberonProofRequest(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<CreateOberonProofRequest> PARSER =
+        new com.google.protobuf.AbstractParser<CreateOberonProofRequest>() {
+          @java.lang.Override
+          public CreateOberonProofRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new CreateOberonProofRequest(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<CreateOberonProofRequest> parser() {
       return PARSER;
@@ -3459,55 +3783,60 @@ public final class Security {
     public trinsic.okapi.security.v1.Security.CreateOberonProofRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface CreateOberonProofResponseOrBuilder extends
+  public interface CreateOberonProofResponseOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.security.v1.CreateOberonProofResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * raw proof bytes
      * </pre>
      *
      * <code>bytes proof = 2;</code>
+     *
      * @return The proof.
      */
     com.google.protobuf.ByteString getProof();
   }
   /**
+   *
+   *
    * <pre>
    * Contains the token proof
    * </pre>
    *
    * Protobuf type {@code okapi.security.v1.CreateOberonProofResponse}
    */
-  public static final class CreateOberonProofResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class CreateOberonProofResponse extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.security.v1.CreateOberonProofResponse)
       CreateOberonProofResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use CreateOberonProofResponse.newBuilder() to construct.
     private CreateOberonProofResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private CreateOberonProofResponse() {
       proof_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new CreateOberonProofResponse();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private CreateOberonProofResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -3526,18 +3855,18 @@ public final class Security {
             case 0:
               done = true;
               break;
-            case 18: {
-
-              proof_ = input.readBytes();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 18:
+              {
+                proof_ = input.readBytes();
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -3545,34 +3874,39 @@ public final class Security {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonProofResponse_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_CreateOberonProofResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonProofResponse_fieldAccessorTable
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_CreateOberonProofResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.security.v1.Security.CreateOberonProofResponse.class, trinsic.okapi.security.v1.Security.CreateOberonProofResponse.Builder.class);
+              trinsic.okapi.security.v1.Security.CreateOberonProofResponse.class,
+              trinsic.okapi.security.v1.Security.CreateOberonProofResponse.Builder.class);
     }
 
     public static final int PROOF_FIELD_NUMBER = 2;
     private com.google.protobuf.ByteString proof_;
     /**
+     *
+     *
      * <pre>
      * raw proof bytes
      * </pre>
      *
      * <code>bytes proof = 2;</code>
+     *
      * @return The proof.
      */
     @java.lang.Override
@@ -3581,6 +3915,7 @@ public final class Security {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -3592,8 +3927,7 @@ public final class Security {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!proof_.isEmpty()) {
         output.writeBytes(2, proof_);
       }
@@ -3607,8 +3941,7 @@ public final class Security {
 
       size = 0;
       if (!proof_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, proof_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(2, proof_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3618,15 +3951,15 @@ public final class Security {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.security.v1.Security.CreateOberonProofResponse)) {
         return super.equals(obj);
       }
-      trinsic.okapi.security.v1.Security.CreateOberonProofResponse other = (trinsic.okapi.security.v1.Security.CreateOberonProofResponse) obj;
+      trinsic.okapi.security.v1.Security.CreateOberonProofResponse other =
+          (trinsic.okapi.security.v1.Security.CreateOberonProofResponse) obj;
 
-      if (!getProof()
-          .equals(other.getProof())) return false;
+      if (!getProof().equals(other.getProof())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3646,87 +3979,94 @@ public final class Security {
     }
 
     public static trinsic.okapi.security.v1.Security.CreateOberonProofResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonProofResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonProofResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonProofResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.security.v1.Security.CreateOberonProofResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.okapi.security.v1.Security.CreateOberonProofResponse parseFrom(
+        byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonProofResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.security.v1.Security.CreateOberonProofResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonProofResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.security.v1.Security.CreateOberonProofResponse parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.security.v1.Security.CreateOberonProofResponse parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonProofResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.security.v1.Security.CreateOberonProofResponse parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonProofResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.security.v1.Security.CreateOberonProofResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.okapi.security.v1.Security.CreateOberonProofResponse prototype) {
+
+    public static Builder newBuilder(
+        trinsic.okapi.security.v1.Security.CreateOberonProofResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -3736,27 +4076,32 @@ public final class Security {
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Contains the token proof
      * </pre>
      *
      * Protobuf type {@code okapi.security.v1.CreateOberonProofResponse}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.security.v1.CreateOberonProofResponse)
         trinsic.okapi.security.v1.Security.CreateOberonProofResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonProofResponse_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_CreateOberonProofResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonProofResponse_fieldAccessorTable
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_CreateOberonProofResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.security.v1.Security.CreateOberonProofResponse.class, trinsic.okapi.security.v1.Security.CreateOberonProofResponse.Builder.class);
+                trinsic.okapi.security.v1.Security.CreateOberonProofResponse.class,
+                trinsic.okapi.security.v1.Security.CreateOberonProofResponse.Builder.class);
       }
 
       // Construct using trinsic.okapi.security.v1.Security.CreateOberonProofResponse.newBuilder()
@@ -3764,16 +4109,15 @@ public final class Security {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -3783,13 +4127,14 @@ public final class Security {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_CreateOberonProofResponse_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_CreateOberonProofResponse_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.okapi.security.v1.Security.CreateOberonProofResponse getDefaultInstanceForType() {
+      public trinsic.okapi.security.v1.Security.CreateOberonProofResponse
+          getDefaultInstanceForType() {
         return trinsic.okapi.security.v1.Security.CreateOberonProofResponse.getDefaultInstance();
       }
 
@@ -3804,7 +4149,8 @@ public final class Security {
 
       @java.lang.Override
       public trinsic.okapi.security.v1.Security.CreateOberonProofResponse buildPartial() {
-        trinsic.okapi.security.v1.Security.CreateOberonProofResponse result = new trinsic.okapi.security.v1.Security.CreateOberonProofResponse(this);
+        trinsic.okapi.security.v1.Security.CreateOberonProofResponse result =
+            new trinsic.okapi.security.v1.Security.CreateOberonProofResponse(this);
         result.proof_ = proof_;
         onBuilt();
         return result;
@@ -3814,38 +4160,41 @@ public final class Security {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.security.v1.Security.CreateOberonProofResponse) {
-          return mergeFrom((trinsic.okapi.security.v1.Security.CreateOberonProofResponse)other);
+          return mergeFrom((trinsic.okapi.security.v1.Security.CreateOberonProofResponse) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -3853,7 +4202,9 @@ public final class Security {
       }
 
       public Builder mergeFrom(trinsic.okapi.security.v1.Security.CreateOberonProofResponse other) {
-        if (other == trinsic.okapi.security.v1.Security.CreateOberonProofResponse.getDefaultInstance()) return this;
+        if (other
+            == trinsic.okapi.security.v1.Security.CreateOberonProofResponse.getDefaultInstance())
+          return this;
         if (other.getProof() != com.google.protobuf.ByteString.EMPTY) {
           setProof(other.getProof());
         }
@@ -3876,7 +4227,9 @@ public final class Security {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.security.v1.Security.CreateOberonProofResponse) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.security.v1.Security.CreateOberonProofResponse)
+                  e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3888,11 +4241,14 @@ public final class Security {
 
       private com.google.protobuf.ByteString proof_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       *
+       *
        * <pre>
        * raw proof bytes
        * </pre>
        *
        * <code>bytes proof = 2;</code>
+       *
        * @return The proof.
        */
       @java.lang.Override
@@ -3900,37 +4256,44 @@ public final class Security {
         return proof_;
       }
       /**
+       *
+       *
        * <pre>
        * raw proof bytes
        * </pre>
        *
        * <code>bytes proof = 2;</code>
+       *
        * @param value The proof to set.
        * @return This builder for chaining.
        */
       public Builder setProof(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         proof_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * raw proof bytes
        * </pre>
        *
        * <code>bytes proof = 2;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearProof() {
-        
+
         proof_ = getDefaultInstance().getProof();
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -3943,30 +4306,32 @@ public final class Security {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.security.v1.CreateOberonProofResponse)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.security.v1.CreateOberonProofResponse)
-    private static final trinsic.okapi.security.v1.Security.CreateOberonProofResponse DEFAULT_INSTANCE;
+    private static final trinsic.okapi.security.v1.Security.CreateOberonProofResponse
+        DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.security.v1.Security.CreateOberonProofResponse();
     }
 
-    public static trinsic.okapi.security.v1.Security.CreateOberonProofResponse getDefaultInstance() {
+    public static trinsic.okapi.security.v1.Security.CreateOberonProofResponse
+        getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<CreateOberonProofResponse>
-        PARSER = new com.google.protobuf.AbstractParser<CreateOberonProofResponse>() {
-      @java.lang.Override
-      public CreateOberonProofResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CreateOberonProofResponse(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<CreateOberonProofResponse> PARSER =
+        new com.google.protobuf.AbstractParser<CreateOberonProofResponse>() {
+          @java.lang.Override
+          public CreateOberonProofResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new CreateOberonProofResponse(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<CreateOberonProofResponse> parser() {
       return PARSER;
@@ -3978,72 +4343,88 @@ public final class Security {
     }
 
     @java.lang.Override
-    public trinsic.okapi.security.v1.Security.CreateOberonProofResponse getDefaultInstanceForType() {
+    public trinsic.okapi.security.v1.Security.CreateOberonProofResponse
+        getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface VerifyOberonProofRequestOrBuilder extends
+  public interface VerifyOberonProofRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.security.v1.VerifyOberonProofRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * raw proof bytes returned from CreateProof
      * </pre>
      *
      * <code>bytes proof = 1;</code>
+     *
      * @return The proof.
      */
     com.google.protobuf.ByteString getProof();
 
     /**
+     *
+     *
      * <pre>
      * data used to create the token
      * </pre>
      *
      * <code>bytes data = 2;</code>
+     *
      * @return The data.
      */
     com.google.protobuf.ByteString getData();
 
     /**
+     *
+     *
      * <pre>
      * nonce used to generate the proof
      * </pre>
      *
      * <code>bytes nonce = 3;</code>
+     *
      * @return The nonce.
      */
     com.google.protobuf.ByteString getNonce();
 
     /**
+     *
+     *
      * <pre>
      * public key that was used to generate the token
      * </pre>
      *
      * <code>bytes pk = 4;</code>
+     *
      * @return The pk.
      */
     com.google.protobuf.ByteString getPk();
   }
   /**
+   *
+   *
    * <pre>
    * Verify the presented proof is valid
    * </pre>
    *
    * Protobuf type {@code okapi.security.v1.VerifyOberonProofRequest}
    */
-  public static final class VerifyOberonProofRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class VerifyOberonProofRequest extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.security.v1.VerifyOberonProofRequest)
       VerifyOberonProofRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use VerifyOberonProofRequest.newBuilder() to construct.
     private VerifyOberonProofRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private VerifyOberonProofRequest() {
       proof_ = com.google.protobuf.ByteString.EMPTY;
       data_ = com.google.protobuf.ByteString.EMPTY;
@@ -4053,16 +4434,15 @@ public final class Security {
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new VerifyOberonProofRequest();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private VerifyOberonProofRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -4081,33 +4461,33 @@ public final class Security {
             case 0:
               done = true;
               break;
-            case 10: {
-
-              proof_ = input.readBytes();
-              break;
-            }
-            case 18: {
-
-              data_ = input.readBytes();
-              break;
-            }
-            case 26: {
-
-              nonce_ = input.readBytes();
-              break;
-            }
-            case 34: {
-
-              pk_ = input.readBytes();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 10:
+              {
+                proof_ = input.readBytes();
+                break;
               }
-              break;
-            }
+            case 18:
+              {
+                data_ = input.readBytes();
+                break;
+              }
+            case 26:
+              {
+                nonce_ = input.readBytes();
+                break;
+              }
+            case 34:
+              {
+                pk_ = input.readBytes();
+                break;
+              }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -4115,34 +4495,39 @@ public final class Security {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_VerifyOberonProofRequest_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_VerifyOberonProofRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_VerifyOberonProofRequest_fieldAccessorTable
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_VerifyOberonProofRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.security.v1.Security.VerifyOberonProofRequest.class, trinsic.okapi.security.v1.Security.VerifyOberonProofRequest.Builder.class);
+              trinsic.okapi.security.v1.Security.VerifyOberonProofRequest.class,
+              trinsic.okapi.security.v1.Security.VerifyOberonProofRequest.Builder.class);
     }
 
     public static final int PROOF_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString proof_;
     /**
+     *
+     *
      * <pre>
      * raw proof bytes returned from CreateProof
      * </pre>
      *
      * <code>bytes proof = 1;</code>
+     *
      * @return The proof.
      */
     @java.lang.Override
@@ -4153,11 +4538,14 @@ public final class Security {
     public static final int DATA_FIELD_NUMBER = 2;
     private com.google.protobuf.ByteString data_;
     /**
+     *
+     *
      * <pre>
      * data used to create the token
      * </pre>
      *
      * <code>bytes data = 2;</code>
+     *
      * @return The data.
      */
     @java.lang.Override
@@ -4168,11 +4556,14 @@ public final class Security {
     public static final int NONCE_FIELD_NUMBER = 3;
     private com.google.protobuf.ByteString nonce_;
     /**
+     *
+     *
      * <pre>
      * nonce used to generate the proof
      * </pre>
      *
      * <code>bytes nonce = 3;</code>
+     *
      * @return The nonce.
      */
     @java.lang.Override
@@ -4183,11 +4574,14 @@ public final class Security {
     public static final int PK_FIELD_NUMBER = 4;
     private com.google.protobuf.ByteString pk_;
     /**
+     *
+     *
      * <pre>
      * public key that was used to generate the token
      * </pre>
      *
      * <code>bytes pk = 4;</code>
+     *
      * @return The pk.
      */
     @java.lang.Override
@@ -4196,6 +4590,7 @@ public final class Security {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -4207,8 +4602,7 @@ public final class Security {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!proof_.isEmpty()) {
         output.writeBytes(1, proof_);
       }
@@ -4231,20 +4625,16 @@ public final class Security {
 
       size = 0;
       if (!proof_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, proof_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(1, proof_);
       }
       if (!data_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, data_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(2, data_);
       }
       if (!nonce_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, nonce_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(3, nonce_);
       }
       if (!pk_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, pk_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(4, pk_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4254,21 +4644,18 @@ public final class Security {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.security.v1.Security.VerifyOberonProofRequest)) {
         return super.equals(obj);
       }
-      trinsic.okapi.security.v1.Security.VerifyOberonProofRequest other = (trinsic.okapi.security.v1.Security.VerifyOberonProofRequest) obj;
+      trinsic.okapi.security.v1.Security.VerifyOberonProofRequest other =
+          (trinsic.okapi.security.v1.Security.VerifyOberonProofRequest) obj;
 
-      if (!getProof()
-          .equals(other.getProof())) return false;
-      if (!getData()
-          .equals(other.getData())) return false;
-      if (!getNonce()
-          .equals(other.getNonce())) return false;
-      if (!getPk()
-          .equals(other.getPk())) return false;
+      if (!getProof().equals(other.getProof())) return false;
+      if (!getData().equals(other.getData())) return false;
+      if (!getNonce().equals(other.getNonce())) return false;
+      if (!getPk().equals(other.getPk())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -4294,87 +4681,94 @@ public final class Security {
     }
 
     public static trinsic.okapi.security.v1.Security.VerifyOberonProofRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonProofRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonProofRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonProofRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonProofRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonProofRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.security.v1.Security.VerifyOberonProofRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonProofRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.security.v1.Security.VerifyOberonProofRequest parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.security.v1.Security.VerifyOberonProofRequest parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonProofRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.security.v1.Security.VerifyOberonProofRequest parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonProofRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonProofRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.okapi.security.v1.Security.VerifyOberonProofRequest prototype) {
+
+    public static Builder newBuilder(
+        trinsic.okapi.security.v1.Security.VerifyOberonProofRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -4384,27 +4778,32 @@ public final class Security {
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Verify the presented proof is valid
      * </pre>
      *
      * Protobuf type {@code okapi.security.v1.VerifyOberonProofRequest}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.security.v1.VerifyOberonProofRequest)
         trinsic.okapi.security.v1.Security.VerifyOberonProofRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_VerifyOberonProofRequest_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_VerifyOberonProofRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_VerifyOberonProofRequest_fieldAccessorTable
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_VerifyOberonProofRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.security.v1.Security.VerifyOberonProofRequest.class, trinsic.okapi.security.v1.Security.VerifyOberonProofRequest.Builder.class);
+                trinsic.okapi.security.v1.Security.VerifyOberonProofRequest.class,
+                trinsic.okapi.security.v1.Security.VerifyOberonProofRequest.Builder.class);
       }
 
       // Construct using trinsic.okapi.security.v1.Security.VerifyOberonProofRequest.newBuilder()
@@ -4412,16 +4811,15 @@ public final class Security {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -4437,13 +4835,14 @@ public final class Security {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_VerifyOberonProofRequest_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_VerifyOberonProofRequest_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.okapi.security.v1.Security.VerifyOberonProofRequest getDefaultInstanceForType() {
+      public trinsic.okapi.security.v1.Security.VerifyOberonProofRequest
+          getDefaultInstanceForType() {
         return trinsic.okapi.security.v1.Security.VerifyOberonProofRequest.getDefaultInstance();
       }
 
@@ -4458,7 +4857,8 @@ public final class Security {
 
       @java.lang.Override
       public trinsic.okapi.security.v1.Security.VerifyOberonProofRequest buildPartial() {
-        trinsic.okapi.security.v1.Security.VerifyOberonProofRequest result = new trinsic.okapi.security.v1.Security.VerifyOberonProofRequest(this);
+        trinsic.okapi.security.v1.Security.VerifyOberonProofRequest result =
+            new trinsic.okapi.security.v1.Security.VerifyOberonProofRequest(this);
         result.proof_ = proof_;
         result.data_ = data_;
         result.nonce_ = nonce_;
@@ -4471,38 +4871,41 @@ public final class Security {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.security.v1.Security.VerifyOberonProofRequest) {
-          return mergeFrom((trinsic.okapi.security.v1.Security.VerifyOberonProofRequest)other);
+          return mergeFrom((trinsic.okapi.security.v1.Security.VerifyOberonProofRequest) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -4510,7 +4913,9 @@ public final class Security {
       }
 
       public Builder mergeFrom(trinsic.okapi.security.v1.Security.VerifyOberonProofRequest other) {
-        if (other == trinsic.okapi.security.v1.Security.VerifyOberonProofRequest.getDefaultInstance()) return this;
+        if (other
+            == trinsic.okapi.security.v1.Security.VerifyOberonProofRequest.getDefaultInstance())
+          return this;
         if (other.getProof() != com.google.protobuf.ByteString.EMPTY) {
           setProof(other.getProof());
         }
@@ -4542,7 +4947,9 @@ public final class Security {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.security.v1.Security.VerifyOberonProofRequest) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.security.v1.Security.VerifyOberonProofRequest)
+                  e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -4554,11 +4961,14 @@ public final class Security {
 
       private com.google.protobuf.ByteString proof_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       *
+       *
        * <pre>
        * raw proof bytes returned from CreateProof
        * </pre>
        *
        * <code>bytes proof = 1;</code>
+       *
        * @return The proof.
        */
       @java.lang.Override
@@ -4566,33 +4976,39 @@ public final class Security {
         return proof_;
       }
       /**
+       *
+       *
        * <pre>
        * raw proof bytes returned from CreateProof
        * </pre>
        *
        * <code>bytes proof = 1;</code>
+       *
        * @param value The proof to set.
        * @return This builder for chaining.
        */
       public Builder setProof(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         proof_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * raw proof bytes returned from CreateProof
        * </pre>
        *
        * <code>bytes proof = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearProof() {
-        
+
         proof_ = getDefaultInstance().getProof();
         onChanged();
         return this;
@@ -4600,11 +5016,14 @@ public final class Security {
 
       private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       *
+       *
        * <pre>
        * data used to create the token
        * </pre>
        *
        * <code>bytes data = 2;</code>
+       *
        * @return The data.
        */
       @java.lang.Override
@@ -4612,33 +5031,39 @@ public final class Security {
         return data_;
       }
       /**
+       *
+       *
        * <pre>
        * data used to create the token
        * </pre>
        *
        * <code>bytes data = 2;</code>
+       *
        * @param value The data to set.
        * @return This builder for chaining.
        */
       public Builder setData(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         data_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * data used to create the token
        * </pre>
        *
        * <code>bytes data = 2;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearData() {
-        
+
         data_ = getDefaultInstance().getData();
         onChanged();
         return this;
@@ -4646,11 +5071,14 @@ public final class Security {
 
       private com.google.protobuf.ByteString nonce_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       *
+       *
        * <pre>
        * nonce used to generate the proof
        * </pre>
        *
        * <code>bytes nonce = 3;</code>
+       *
        * @return The nonce.
        */
       @java.lang.Override
@@ -4658,33 +5086,39 @@ public final class Security {
         return nonce_;
       }
       /**
+       *
+       *
        * <pre>
        * nonce used to generate the proof
        * </pre>
        *
        * <code>bytes nonce = 3;</code>
+       *
        * @param value The nonce to set.
        * @return This builder for chaining.
        */
       public Builder setNonce(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         nonce_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * nonce used to generate the proof
        * </pre>
        *
        * <code>bytes nonce = 3;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearNonce() {
-        
+
         nonce_ = getDefaultInstance().getNonce();
         onChanged();
         return this;
@@ -4692,11 +5126,14 @@ public final class Security {
 
       private com.google.protobuf.ByteString pk_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       *
+       *
        * <pre>
        * public key that was used to generate the token
        * </pre>
        *
        * <code>bytes pk = 4;</code>
+       *
        * @return The pk.
        */
       @java.lang.Override
@@ -4704,37 +5141,44 @@ public final class Security {
         return pk_;
       }
       /**
+       *
+       *
        * <pre>
        * public key that was used to generate the token
        * </pre>
        *
        * <code>bytes pk = 4;</code>
+       *
        * @param value The pk to set.
        * @return This builder for chaining.
        */
       public Builder setPk(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         pk_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * public key that was used to generate the token
        * </pre>
        *
        * <code>bytes pk = 4;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearPk() {
-        
+
         pk_ = getDefaultInstance().getPk();
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4747,12 +5191,13 @@ public final class Security {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.security.v1.VerifyOberonProofRequest)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.security.v1.VerifyOberonProofRequest)
-    private static final trinsic.okapi.security.v1.Security.VerifyOberonProofRequest DEFAULT_INSTANCE;
+    private static final trinsic.okapi.security.v1.Security.VerifyOberonProofRequest
+        DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.security.v1.Security.VerifyOberonProofRequest();
     }
@@ -4761,16 +5206,16 @@ public final class Security {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<VerifyOberonProofRequest>
-        PARSER = new com.google.protobuf.AbstractParser<VerifyOberonProofRequest>() {
-      @java.lang.Override
-      public VerifyOberonProofRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new VerifyOberonProofRequest(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<VerifyOberonProofRequest> PARSER =
+        new com.google.protobuf.AbstractParser<VerifyOberonProofRequest>() {
+          @java.lang.Override
+          public VerifyOberonProofRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new VerifyOberonProofRequest(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<VerifyOberonProofRequest> parser() {
       return PARSER;
@@ -4785,54 +5230,58 @@ public final class Security {
     public trinsic.okapi.security.v1.Security.VerifyOberonProofRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface VerifyOberonProofResponseOrBuilder extends
+  public interface VerifyOberonProofResponseOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.security.v1.VerifyOberonProofResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * whether the given proof was valid
      * </pre>
      *
      * <code>bool valid = 1;</code>
+     *
      * @return The valid.
      */
     boolean getValid();
   }
   /**
+   *
+   *
    * <pre>
    * Contains the status of the proof validation
    * </pre>
    *
    * Protobuf type {@code okapi.security.v1.VerifyOberonProofResponse}
    */
-  public static final class VerifyOberonProofResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class VerifyOberonProofResponse extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.security.v1.VerifyOberonProofResponse)
       VerifyOberonProofResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use VerifyOberonProofResponse.newBuilder() to construct.
     private VerifyOberonProofResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private VerifyOberonProofResponse() {
-    }
+
+    private VerifyOberonProofResponse() {}
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new VerifyOberonProofResponse();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private VerifyOberonProofResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -4851,18 +5300,18 @@ public final class Security {
             case 0:
               done = true;
               break;
-            case 8: {
-
-              valid_ = input.readBool();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 8:
+              {
+                valid_ = input.readBool();
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -4870,34 +5319,39 @@ public final class Security {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_VerifyOberonProofResponse_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_VerifyOberonProofResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_VerifyOberonProofResponse_fieldAccessorTable
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_VerifyOberonProofResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.security.v1.Security.VerifyOberonProofResponse.class, trinsic.okapi.security.v1.Security.VerifyOberonProofResponse.Builder.class);
+              trinsic.okapi.security.v1.Security.VerifyOberonProofResponse.class,
+              trinsic.okapi.security.v1.Security.VerifyOberonProofResponse.Builder.class);
     }
 
     public static final int VALID_FIELD_NUMBER = 1;
     private boolean valid_;
     /**
+     *
+     *
      * <pre>
      * whether the given proof was valid
      * </pre>
      *
      * <code>bool valid = 1;</code>
+     *
      * @return The valid.
      */
     @java.lang.Override
@@ -4906,6 +5360,7 @@ public final class Security {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -4917,8 +5372,7 @@ public final class Security {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (valid_ != false) {
         output.writeBool(1, valid_);
       }
@@ -4932,8 +5386,7 @@ public final class Security {
 
       size = 0;
       if (valid_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(1, valid_);
+        size += com.google.protobuf.CodedOutputStream.computeBoolSize(1, valid_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4943,15 +5396,15 @@ public final class Security {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.security.v1.Security.VerifyOberonProofResponse)) {
         return super.equals(obj);
       }
-      trinsic.okapi.security.v1.Security.VerifyOberonProofResponse other = (trinsic.okapi.security.v1.Security.VerifyOberonProofResponse) obj;
+      trinsic.okapi.security.v1.Security.VerifyOberonProofResponse other =
+          (trinsic.okapi.security.v1.Security.VerifyOberonProofResponse) obj;
 
-      if (getValid()
-          != other.getValid()) return false;
+      if (getValid() != other.getValid()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -4964,95 +5417,101 @@ public final class Security {
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + VALID_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getValid());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getValid());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
     public static trinsic.okapi.security.v1.Security.VerifyOberonProofResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonProofResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonProofResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonProofResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.security.v1.Security.VerifyOberonProofResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.okapi.security.v1.Security.VerifyOberonProofResponse parseFrom(
+        byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonProofResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.security.v1.Security.VerifyOberonProofResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonProofResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.security.v1.Security.VerifyOberonProofResponse parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.security.v1.Security.VerifyOberonProofResponse parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonProofResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.security.v1.Security.VerifyOberonProofResponse parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonProofResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonProofResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.okapi.security.v1.Security.VerifyOberonProofResponse prototype) {
+
+    public static Builder newBuilder(
+        trinsic.okapi.security.v1.Security.VerifyOberonProofResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -5062,27 +5521,32 @@ public final class Security {
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Contains the status of the proof validation
      * </pre>
      *
      * Protobuf type {@code okapi.security.v1.VerifyOberonProofResponse}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.security.v1.VerifyOberonProofResponse)
         trinsic.okapi.security.v1.Security.VerifyOberonProofResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_VerifyOberonProofResponse_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_VerifyOberonProofResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_VerifyOberonProofResponse_fieldAccessorTable
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_VerifyOberonProofResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.security.v1.Security.VerifyOberonProofResponse.class, trinsic.okapi.security.v1.Security.VerifyOberonProofResponse.Builder.class);
+                trinsic.okapi.security.v1.Security.VerifyOberonProofResponse.class,
+                trinsic.okapi.security.v1.Security.VerifyOberonProofResponse.Builder.class);
       }
 
       // Construct using trinsic.okapi.security.v1.Security.VerifyOberonProofResponse.newBuilder()
@@ -5090,16 +5554,15 @@ public final class Security {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -5109,13 +5572,14 @@ public final class Security {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_VerifyOberonProofResponse_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_VerifyOberonProofResponse_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.okapi.security.v1.Security.VerifyOberonProofResponse getDefaultInstanceForType() {
+      public trinsic.okapi.security.v1.Security.VerifyOberonProofResponse
+          getDefaultInstanceForType() {
         return trinsic.okapi.security.v1.Security.VerifyOberonProofResponse.getDefaultInstance();
       }
 
@@ -5130,7 +5594,8 @@ public final class Security {
 
       @java.lang.Override
       public trinsic.okapi.security.v1.Security.VerifyOberonProofResponse buildPartial() {
-        trinsic.okapi.security.v1.Security.VerifyOberonProofResponse result = new trinsic.okapi.security.v1.Security.VerifyOberonProofResponse(this);
+        trinsic.okapi.security.v1.Security.VerifyOberonProofResponse result =
+            new trinsic.okapi.security.v1.Security.VerifyOberonProofResponse(this);
         result.valid_ = valid_;
         onBuilt();
         return result;
@@ -5140,38 +5605,41 @@ public final class Security {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.security.v1.Security.VerifyOberonProofResponse) {
-          return mergeFrom((trinsic.okapi.security.v1.Security.VerifyOberonProofResponse)other);
+          return mergeFrom((trinsic.okapi.security.v1.Security.VerifyOberonProofResponse) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -5179,7 +5647,9 @@ public final class Security {
       }
 
       public Builder mergeFrom(trinsic.okapi.security.v1.Security.VerifyOberonProofResponse other) {
-        if (other == trinsic.okapi.security.v1.Security.VerifyOberonProofResponse.getDefaultInstance()) return this;
+        if (other
+            == trinsic.okapi.security.v1.Security.VerifyOberonProofResponse.getDefaultInstance())
+          return this;
         if (other.getValid() != false) {
           setValid(other.getValid());
         }
@@ -5202,7 +5672,9 @@ public final class Security {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.security.v1.Security.VerifyOberonProofResponse) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.security.v1.Security.VerifyOberonProofResponse)
+                  e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -5212,13 +5684,16 @@ public final class Security {
         return this;
       }
 
-      private boolean valid_ ;
+      private boolean valid_;
       /**
+       *
+       *
        * <pre>
        * whether the given proof was valid
        * </pre>
        *
        * <code>bool valid = 1;</code>
+       *
        * @return The valid.
        */
       @java.lang.Override
@@ -5226,34 +5701,41 @@ public final class Security {
         return valid_;
       }
       /**
+       *
+       *
        * <pre>
        * whether the given proof was valid
        * </pre>
        *
        * <code>bool valid = 1;</code>
+       *
        * @param value The valid to set.
        * @return This builder for chaining.
        */
       public Builder setValid(boolean value) {
-        
+
         valid_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * whether the given proof was valid
        * </pre>
        *
        * <code>bool valid = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearValid() {
-        
+
         valid_ = false;
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -5266,30 +5748,32 @@ public final class Security {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.security.v1.VerifyOberonProofResponse)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.security.v1.VerifyOberonProofResponse)
-    private static final trinsic.okapi.security.v1.Security.VerifyOberonProofResponse DEFAULT_INSTANCE;
+    private static final trinsic.okapi.security.v1.Security.VerifyOberonProofResponse
+        DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.security.v1.Security.VerifyOberonProofResponse();
     }
 
-    public static trinsic.okapi.security.v1.Security.VerifyOberonProofResponse getDefaultInstance() {
+    public static trinsic.okapi.security.v1.Security.VerifyOberonProofResponse
+        getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<VerifyOberonProofResponse>
-        PARSER = new com.google.protobuf.AbstractParser<VerifyOberonProofResponse>() {
-      @java.lang.Override
-      public VerifyOberonProofResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new VerifyOberonProofResponse(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<VerifyOberonProofResponse> PARSER =
+        new com.google.protobuf.AbstractParser<VerifyOberonProofResponse>() {
+          @java.lang.Override
+          public VerifyOberonProofResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new VerifyOberonProofResponse(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<VerifyOberonProofResponse> parser() {
       return PARSER;
@@ -5301,71 +5785,87 @@ public final class Security {
     }
 
     @java.lang.Override
-    public trinsic.okapi.security.v1.Security.VerifyOberonProofResponse getDefaultInstanceForType() {
+    public trinsic.okapi.security.v1.Security.VerifyOberonProofResponse
+        getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface BlindOberonTokenRequestOrBuilder extends
+  public interface BlindOberonTokenRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.security.v1.BlindOberonTokenRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * raw token bytes
      * </pre>
      *
      * <code>bytes token = 1;</code>
+     *
      * @return The token.
      */
     com.google.protobuf.ByteString getToken();
 
     /**
+     *
+     *
      * <pre>
      * blinding to apply to the token
      * </pre>
      *
      * <code>repeated bytes blinding = 2;</code>
+     *
      * @return A list containing the blinding.
      */
     java.util.List<com.google.protobuf.ByteString> getBlindingList();
     /**
+     *
+     *
      * <pre>
      * blinding to apply to the token
      * </pre>
      *
      * <code>repeated bytes blinding = 2;</code>
+     *
      * @return The count of blinding.
      */
     int getBlindingCount();
     /**
+     *
+     *
      * <pre>
      * blinding to apply to the token
      * </pre>
      *
      * <code>repeated bytes blinding = 2;</code>
+     *
      * @param index The index of the element to return.
      * @return The blinding at the given index.
      */
     com.google.protobuf.ByteString getBlinding(int index);
   }
   /**
+   *
+   *
    * <pre>
-   * Blind an oberon token 
+   * Blind an oberon token
    * </pre>
    *
    * Protobuf type {@code okapi.security.v1.BlindOberonTokenRequest}
    */
-  public static final class BlindOberonTokenRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class BlindOberonTokenRequest extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.security.v1.BlindOberonTokenRequest)
       BlindOberonTokenRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use BlindOberonTokenRequest.newBuilder() to construct.
     private BlindOberonTokenRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private BlindOberonTokenRequest() {
       token_ = com.google.protobuf.ByteString.EMPTY;
       blinding_ = java.util.Collections.emptyList();
@@ -5373,16 +5873,15 @@ public final class Security {
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new BlindOberonTokenRequest();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private BlindOberonTokenRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -5402,26 +5901,27 @@ public final class Security {
             case 0:
               done = true;
               break;
-            case 10: {
-
-              token_ = input.readBytes();
-              break;
-            }
-            case 18: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                blinding_ = new java.util.ArrayList<com.google.protobuf.ByteString>();
-                mutable_bitField0_ |= 0x00000001;
+            case 10:
+              {
+                token_ = input.readBytes();
+                break;
               }
-              blinding_.add(input.readBytes());
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 18:
+              {
+                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                  blinding_ = new java.util.ArrayList<com.google.protobuf.ByteString>();
+                  mutable_bitField0_ |= 0x00000001;
+                }
+                blinding_.add(input.readBytes());
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -5429,8 +5929,7 @@ public final class Security {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
           blinding_ = java.util.Collections.unmodifiableList(blinding_); // C
@@ -5439,27 +5938,33 @@ public final class Security {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_BlindOberonTokenRequest_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_BlindOberonTokenRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_BlindOberonTokenRequest_fieldAccessorTable
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_BlindOberonTokenRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.security.v1.Security.BlindOberonTokenRequest.class, trinsic.okapi.security.v1.Security.BlindOberonTokenRequest.Builder.class);
+              trinsic.okapi.security.v1.Security.BlindOberonTokenRequest.class,
+              trinsic.okapi.security.v1.Security.BlindOberonTokenRequest.Builder.class);
     }
 
     public static final int TOKEN_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString token_;
     /**
+     *
+     *
      * <pre>
      * raw token bytes
      * </pre>
      *
      * <code>bytes token = 1;</code>
+     *
      * @return The token.
      */
     @java.lang.Override
@@ -5470,35 +5975,43 @@ public final class Security {
     public static final int BLINDING_FIELD_NUMBER = 2;
     private java.util.List<com.google.protobuf.ByteString> blinding_;
     /**
+     *
+     *
      * <pre>
      * blinding to apply to the token
      * </pre>
      *
      * <code>repeated bytes blinding = 2;</code>
+     *
      * @return A list containing the blinding.
      */
     @java.lang.Override
-    public java.util.List<com.google.protobuf.ByteString>
-        getBlindingList() {
+    public java.util.List<com.google.protobuf.ByteString> getBlindingList() {
       return blinding_;
     }
     /**
+     *
+     *
      * <pre>
      * blinding to apply to the token
      * </pre>
      *
      * <code>repeated bytes blinding = 2;</code>
+     *
      * @return The count of blinding.
      */
     public int getBlindingCount() {
       return blinding_.size();
     }
     /**
+     *
+     *
      * <pre>
      * blinding to apply to the token
      * </pre>
      *
      * <code>repeated bytes blinding = 2;</code>
+     *
      * @param index The index of the element to return.
      * @return The blinding at the given index.
      */
@@ -5507,6 +6020,7 @@ public final class Security {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -5518,8 +6032,7 @@ public final class Security {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!token_.isEmpty()) {
         output.writeBytes(1, token_);
       }
@@ -5536,14 +6049,12 @@ public final class Security {
 
       size = 0;
       if (!token_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, token_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(1, token_);
       }
       {
         int dataSize = 0;
         for (int i = 0; i < blinding_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeBytesSizeNoTag(blinding_.get(i));
+          dataSize += com.google.protobuf.CodedOutputStream.computeBytesSizeNoTag(blinding_.get(i));
         }
         size += dataSize;
         size += 1 * getBlindingList().size();
@@ -5556,17 +6067,16 @@ public final class Security {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.security.v1.Security.BlindOberonTokenRequest)) {
         return super.equals(obj);
       }
-      trinsic.okapi.security.v1.Security.BlindOberonTokenRequest other = (trinsic.okapi.security.v1.Security.BlindOberonTokenRequest) obj;
+      trinsic.okapi.security.v1.Security.BlindOberonTokenRequest other =
+          (trinsic.okapi.security.v1.Security.BlindOberonTokenRequest) obj;
 
-      if (!getToken()
-          .equals(other.getToken())) return false;
-      if (!getBlindingList()
-          .equals(other.getBlindingList())) return false;
+      if (!getToken().equals(other.getToken())) return false;
+      if (!getBlindingList().equals(other.getBlindingList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -5590,87 +6100,94 @@ public final class Security {
     }
 
     public static trinsic.okapi.security.v1.Security.BlindOberonTokenRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.BlindOberonTokenRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.BlindOberonTokenRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.BlindOberonTokenRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.BlindOberonTokenRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.BlindOberonTokenRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.security.v1.Security.BlindOberonTokenRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.security.v1.Security.BlindOberonTokenRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.security.v1.Security.BlindOberonTokenRequest parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.security.v1.Security.BlindOberonTokenRequest parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.BlindOberonTokenRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.security.v1.Security.BlindOberonTokenRequest parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.security.v1.Security.BlindOberonTokenRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.security.v1.Security.BlindOberonTokenRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.okapi.security.v1.Security.BlindOberonTokenRequest prototype) {
+
+    public static Builder newBuilder(
+        trinsic.okapi.security.v1.Security.BlindOberonTokenRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -5680,27 +6197,32 @@ public final class Security {
       return builder;
     }
     /**
+     *
+     *
      * <pre>
-     * Blind an oberon token 
+     * Blind an oberon token
      * </pre>
      *
      * Protobuf type {@code okapi.security.v1.BlindOberonTokenRequest}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.security.v1.BlindOberonTokenRequest)
         trinsic.okapi.security.v1.Security.BlindOberonTokenRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_BlindOberonTokenRequest_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_BlindOberonTokenRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_BlindOberonTokenRequest_fieldAccessorTable
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_BlindOberonTokenRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.security.v1.Security.BlindOberonTokenRequest.class, trinsic.okapi.security.v1.Security.BlindOberonTokenRequest.Builder.class);
+                trinsic.okapi.security.v1.Security.BlindOberonTokenRequest.class,
+                trinsic.okapi.security.v1.Security.BlindOberonTokenRequest.Builder.class);
       }
 
       // Construct using trinsic.okapi.security.v1.Security.BlindOberonTokenRequest.newBuilder()
@@ -5708,16 +6230,15 @@ public final class Security {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -5729,13 +6250,14 @@ public final class Security {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_BlindOberonTokenRequest_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_BlindOberonTokenRequest_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.okapi.security.v1.Security.BlindOberonTokenRequest getDefaultInstanceForType() {
+      public trinsic.okapi.security.v1.Security.BlindOberonTokenRequest
+          getDefaultInstanceForType() {
         return trinsic.okapi.security.v1.Security.BlindOberonTokenRequest.getDefaultInstance();
       }
 
@@ -5750,7 +6272,8 @@ public final class Security {
 
       @java.lang.Override
       public trinsic.okapi.security.v1.Security.BlindOberonTokenRequest buildPartial() {
-        trinsic.okapi.security.v1.Security.BlindOberonTokenRequest result = new trinsic.okapi.security.v1.Security.BlindOberonTokenRequest(this);
+        trinsic.okapi.security.v1.Security.BlindOberonTokenRequest result =
+            new trinsic.okapi.security.v1.Security.BlindOberonTokenRequest(this);
         int from_bitField0_ = bitField0_;
         result.token_ = token_;
         if (((bitField0_ & 0x00000001) != 0)) {
@@ -5766,38 +6289,41 @@ public final class Security {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.security.v1.Security.BlindOberonTokenRequest) {
-          return mergeFrom((trinsic.okapi.security.v1.Security.BlindOberonTokenRequest)other);
+          return mergeFrom((trinsic.okapi.security.v1.Security.BlindOberonTokenRequest) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -5805,7 +6331,9 @@ public final class Security {
       }
 
       public Builder mergeFrom(trinsic.okapi.security.v1.Security.BlindOberonTokenRequest other) {
-        if (other == trinsic.okapi.security.v1.Security.BlindOberonTokenRequest.getDefaultInstance()) return this;
+        if (other
+            == trinsic.okapi.security.v1.Security.BlindOberonTokenRequest.getDefaultInstance())
+          return this;
         if (other.getToken() != com.google.protobuf.ByteString.EMPTY) {
           setToken(other.getToken());
         }
@@ -5838,7 +6366,8 @@ public final class Security {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.security.v1.Security.BlindOberonTokenRequest) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.security.v1.Security.BlindOberonTokenRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -5847,15 +6376,19 @@ public final class Security {
         }
         return this;
       }
+
       private int bitField0_;
 
       private com.google.protobuf.ByteString token_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       *
+       *
        * <pre>
        * raw token bytes
        * </pre>
        *
        * <code>bytes token = 1;</code>
+       *
        * @return The token.
        */
       @java.lang.Override
@@ -5863,75 +6396,92 @@ public final class Security {
         return token_;
       }
       /**
+       *
+       *
        * <pre>
        * raw token bytes
        * </pre>
        *
        * <code>bytes token = 1;</code>
+       *
        * @param value The token to set.
        * @return This builder for chaining.
        */
       public Builder setToken(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         token_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * raw token bytes
        * </pre>
        *
        * <code>bytes token = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearToken() {
-        
+
         token_ = getDefaultInstance().getToken();
         onChanged();
         return this;
       }
 
-      private java.util.List<com.google.protobuf.ByteString> blinding_ = java.util.Collections.emptyList();
+      private java.util.List<com.google.protobuf.ByteString> blinding_ =
+          java.util.Collections.emptyList();
+
       private void ensureBlindingIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
           blinding_ = new java.util.ArrayList<com.google.protobuf.ByteString>(blinding_);
           bitField0_ |= 0x00000001;
-         }
+        }
       }
       /**
+       *
+       *
        * <pre>
        * blinding to apply to the token
        * </pre>
        *
        * <code>repeated bytes blinding = 2;</code>
+       *
        * @return A list containing the blinding.
        */
-      public java.util.List<com.google.protobuf.ByteString>
-          getBlindingList() {
-        return ((bitField0_ & 0x00000001) != 0) ?
-                 java.util.Collections.unmodifiableList(blinding_) : blinding_;
+      public java.util.List<com.google.protobuf.ByteString> getBlindingList() {
+        return ((bitField0_ & 0x00000001) != 0)
+            ? java.util.Collections.unmodifiableList(blinding_)
+            : blinding_;
       }
       /**
+       *
+       *
        * <pre>
        * blinding to apply to the token
        * </pre>
        *
        * <code>repeated bytes blinding = 2;</code>
+       *
        * @return The count of blinding.
        */
       public int getBlindingCount() {
         return blinding_.size();
       }
       /**
+       *
+       *
        * <pre>
        * blinding to apply to the token
        * </pre>
        *
        * <code>repeated bytes blinding = 2;</code>
+       *
        * @param index The index of the element to return.
        * @return The blinding at the given index.
        */
@@ -5939,66 +6489,76 @@ public final class Security {
         return blinding_.get(index);
       }
       /**
+       *
+       *
        * <pre>
        * blinding to apply to the token
        * </pre>
        *
        * <code>repeated bytes blinding = 2;</code>
+       *
        * @param index The index to set the value at.
        * @param value The blinding to set.
        * @return This builder for chaining.
        */
-      public Builder setBlinding(
-          int index, com.google.protobuf.ByteString value) {
+      public Builder setBlinding(int index, com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureBlindingIsMutable();
+          throw new NullPointerException();
+        }
+        ensureBlindingIsMutable();
         blinding_.set(index, value);
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * blinding to apply to the token
        * </pre>
        *
        * <code>repeated bytes blinding = 2;</code>
+       *
        * @param value The blinding to add.
        * @return This builder for chaining.
        */
       public Builder addBlinding(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureBlindingIsMutable();
+          throw new NullPointerException();
+        }
+        ensureBlindingIsMutable();
         blinding_.add(value);
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * blinding to apply to the token
        * </pre>
        *
        * <code>repeated bytes blinding = 2;</code>
+       *
        * @param values The blinding to add.
        * @return This builder for chaining.
        */
       public Builder addAllBlinding(
           java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
         ensureBlindingIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, blinding_);
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, blinding_);
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * blinding to apply to the token
        * </pre>
        *
        * <code>repeated bytes blinding = 2;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearBlinding() {
@@ -6007,6 +6567,7 @@ public final class Security {
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -6019,12 +6580,13 @@ public final class Security {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.security.v1.BlindOberonTokenRequest)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.security.v1.BlindOberonTokenRequest)
-    private static final trinsic.okapi.security.v1.Security.BlindOberonTokenRequest DEFAULT_INSTANCE;
+    private static final trinsic.okapi.security.v1.Security.BlindOberonTokenRequest
+        DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.security.v1.Security.BlindOberonTokenRequest();
     }
@@ -6033,16 +6595,16 @@ public final class Security {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<BlindOberonTokenRequest>
-        PARSER = new com.google.protobuf.AbstractParser<BlindOberonTokenRequest>() {
-      @java.lang.Override
-      public BlindOberonTokenRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new BlindOberonTokenRequest(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<BlindOberonTokenRequest> PARSER =
+        new com.google.protobuf.AbstractParser<BlindOberonTokenRequest>() {
+          @java.lang.Override
+          public BlindOberonTokenRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new BlindOberonTokenRequest(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<BlindOberonTokenRequest> parser() {
       return PARSER;
@@ -6057,55 +6619,60 @@ public final class Security {
     public trinsic.okapi.security.v1.Security.BlindOberonTokenRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface BlindOberonTokenResponseOrBuilder extends
+  public interface BlindOberonTokenResponseOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.security.v1.BlindOberonTokenResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * raw blinded token bytes
      * </pre>
      *
      * <code>bytes token = 1;</code>
+     *
      * @return The token.
      */
     com.google.protobuf.ByteString getToken();
   }
   /**
+   *
+   *
    * <pre>
    * Contains the blinded token reply
    * </pre>
    *
    * Protobuf type {@code okapi.security.v1.BlindOberonTokenResponse}
    */
-  public static final class BlindOberonTokenResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class BlindOberonTokenResponse extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.security.v1.BlindOberonTokenResponse)
       BlindOberonTokenResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use BlindOberonTokenResponse.newBuilder() to construct.
     private BlindOberonTokenResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private BlindOberonTokenResponse() {
       token_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new BlindOberonTokenResponse();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private BlindOberonTokenResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -6124,18 +6691,18 @@ public final class Security {
             case 0:
               done = true;
               break;
-            case 10: {
-
-              token_ = input.readBytes();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 10:
+              {
+                token_ = input.readBytes();
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -6143,34 +6710,39 @@ public final class Security {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_BlindOberonTokenResponse_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_BlindOberonTokenResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_BlindOberonTokenResponse_fieldAccessorTable
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_BlindOberonTokenResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.security.v1.Security.BlindOberonTokenResponse.class, trinsic.okapi.security.v1.Security.BlindOberonTokenResponse.Builder.class);
+              trinsic.okapi.security.v1.Security.BlindOberonTokenResponse.class,
+              trinsic.okapi.security.v1.Security.BlindOberonTokenResponse.Builder.class);
     }
 
     public static final int TOKEN_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString token_;
     /**
+     *
+     *
      * <pre>
      * raw blinded token bytes
      * </pre>
      *
      * <code>bytes token = 1;</code>
+     *
      * @return The token.
      */
     @java.lang.Override
@@ -6179,6 +6751,7 @@ public final class Security {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -6190,8 +6763,7 @@ public final class Security {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!token_.isEmpty()) {
         output.writeBytes(1, token_);
       }
@@ -6205,8 +6777,7 @@ public final class Security {
 
       size = 0;
       if (!token_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, token_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(1, token_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -6216,15 +6787,15 @@ public final class Security {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.security.v1.Security.BlindOberonTokenResponse)) {
         return super.equals(obj);
       }
-      trinsic.okapi.security.v1.Security.BlindOberonTokenResponse other = (trinsic.okapi.security.v1.Security.BlindOberonTokenResponse) obj;
+      trinsic.okapi.security.v1.Security.BlindOberonTokenResponse other =
+          (trinsic.okapi.security.v1.Security.BlindOberonTokenResponse) obj;
 
-      if (!getToken()
-          .equals(other.getToken())) return false;
+      if (!getToken().equals(other.getToken())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -6244,87 +6815,94 @@ public final class Security {
     }
 
     public static trinsic.okapi.security.v1.Security.BlindOberonTokenResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.BlindOberonTokenResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.BlindOberonTokenResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.BlindOberonTokenResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.BlindOberonTokenResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.BlindOberonTokenResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.security.v1.Security.BlindOberonTokenResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.security.v1.Security.BlindOberonTokenResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.security.v1.Security.BlindOberonTokenResponse parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.security.v1.Security.BlindOberonTokenResponse parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.BlindOberonTokenResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.security.v1.Security.BlindOberonTokenResponse parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.security.v1.Security.BlindOberonTokenResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.security.v1.Security.BlindOberonTokenResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.okapi.security.v1.Security.BlindOberonTokenResponse prototype) {
+
+    public static Builder newBuilder(
+        trinsic.okapi.security.v1.Security.BlindOberonTokenResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -6334,27 +6912,32 @@ public final class Security {
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Contains the blinded token reply
      * </pre>
      *
      * Protobuf type {@code okapi.security.v1.BlindOberonTokenResponse}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.security.v1.BlindOberonTokenResponse)
         trinsic.okapi.security.v1.Security.BlindOberonTokenResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_BlindOberonTokenResponse_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_BlindOberonTokenResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_BlindOberonTokenResponse_fieldAccessorTable
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_BlindOberonTokenResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.security.v1.Security.BlindOberonTokenResponse.class, trinsic.okapi.security.v1.Security.BlindOberonTokenResponse.Builder.class);
+                trinsic.okapi.security.v1.Security.BlindOberonTokenResponse.class,
+                trinsic.okapi.security.v1.Security.BlindOberonTokenResponse.Builder.class);
       }
 
       // Construct using trinsic.okapi.security.v1.Security.BlindOberonTokenResponse.newBuilder()
@@ -6362,16 +6945,15 @@ public final class Security {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -6381,13 +6963,14 @@ public final class Security {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_BlindOberonTokenResponse_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_BlindOberonTokenResponse_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.okapi.security.v1.Security.BlindOberonTokenResponse getDefaultInstanceForType() {
+      public trinsic.okapi.security.v1.Security.BlindOberonTokenResponse
+          getDefaultInstanceForType() {
         return trinsic.okapi.security.v1.Security.BlindOberonTokenResponse.getDefaultInstance();
       }
 
@@ -6402,7 +6985,8 @@ public final class Security {
 
       @java.lang.Override
       public trinsic.okapi.security.v1.Security.BlindOberonTokenResponse buildPartial() {
-        trinsic.okapi.security.v1.Security.BlindOberonTokenResponse result = new trinsic.okapi.security.v1.Security.BlindOberonTokenResponse(this);
+        trinsic.okapi.security.v1.Security.BlindOberonTokenResponse result =
+            new trinsic.okapi.security.v1.Security.BlindOberonTokenResponse(this);
         result.token_ = token_;
         onBuilt();
         return result;
@@ -6412,38 +6996,41 @@ public final class Security {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.security.v1.Security.BlindOberonTokenResponse) {
-          return mergeFrom((trinsic.okapi.security.v1.Security.BlindOberonTokenResponse)other);
+          return mergeFrom((trinsic.okapi.security.v1.Security.BlindOberonTokenResponse) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -6451,7 +7038,9 @@ public final class Security {
       }
 
       public Builder mergeFrom(trinsic.okapi.security.v1.Security.BlindOberonTokenResponse other) {
-        if (other == trinsic.okapi.security.v1.Security.BlindOberonTokenResponse.getDefaultInstance()) return this;
+        if (other
+            == trinsic.okapi.security.v1.Security.BlindOberonTokenResponse.getDefaultInstance())
+          return this;
         if (other.getToken() != com.google.protobuf.ByteString.EMPTY) {
           setToken(other.getToken());
         }
@@ -6474,7 +7063,9 @@ public final class Security {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.security.v1.Security.BlindOberonTokenResponse) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.security.v1.Security.BlindOberonTokenResponse)
+                  e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -6486,11 +7077,14 @@ public final class Security {
 
       private com.google.protobuf.ByteString token_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       *
+       *
        * <pre>
        * raw blinded token bytes
        * </pre>
        *
        * <code>bytes token = 1;</code>
+       *
        * @return The token.
        */
       @java.lang.Override
@@ -6498,37 +7092,44 @@ public final class Security {
         return token_;
       }
       /**
+       *
+       *
        * <pre>
        * raw blinded token bytes
        * </pre>
        *
        * <code>bytes token = 1;</code>
+       *
        * @param value The token to set.
        * @return This builder for chaining.
        */
       public Builder setToken(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         token_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * raw blinded token bytes
        * </pre>
        *
        * <code>bytes token = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearToken() {
-        
+
         token_ = getDefaultInstance().getToken();
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -6541,12 +7142,13 @@ public final class Security {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.security.v1.BlindOberonTokenResponse)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.security.v1.BlindOberonTokenResponse)
-    private static final trinsic.okapi.security.v1.Security.BlindOberonTokenResponse DEFAULT_INSTANCE;
+    private static final trinsic.okapi.security.v1.Security.BlindOberonTokenResponse
+        DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.security.v1.Security.BlindOberonTokenResponse();
     }
@@ -6555,16 +7157,16 @@ public final class Security {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<BlindOberonTokenResponse>
-        PARSER = new com.google.protobuf.AbstractParser<BlindOberonTokenResponse>() {
-      @java.lang.Override
-      public BlindOberonTokenResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new BlindOberonTokenResponse(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<BlindOberonTokenResponse> PARSER =
+        new com.google.protobuf.AbstractParser<BlindOberonTokenResponse>() {
+          @java.lang.Override
+          public BlindOberonTokenResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new BlindOberonTokenResponse(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<BlindOberonTokenResponse> parser() {
       return PARSER;
@@ -6579,68 +7181,83 @@ public final class Security {
     public trinsic.okapi.security.v1.Security.BlindOberonTokenResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface UnBlindOberonTokenRequestOrBuilder extends
+  public interface UnBlindOberonTokenRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.security.v1.UnBlindOberonTokenRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * raw token bytes
      * </pre>
      *
      * <code>bytes token = 1;</code>
+     *
      * @return The token.
      */
     com.google.protobuf.ByteString getToken();
 
     /**
+     *
+     *
      * <pre>
      * blinding to remove from the token
      * </pre>
      *
      * <code>repeated bytes blinding = 2;</code>
+     *
      * @return A list containing the blinding.
      */
     java.util.List<com.google.protobuf.ByteString> getBlindingList();
     /**
+     *
+     *
      * <pre>
      * blinding to remove from the token
      * </pre>
      *
      * <code>repeated bytes blinding = 2;</code>
+     *
      * @return The count of blinding.
      */
     int getBlindingCount();
     /**
+     *
+     *
      * <pre>
      * blinding to remove from the token
      * </pre>
      *
      * <code>repeated bytes blinding = 2;</code>
+     *
      * @param index The index of the element to return.
      * @return The blinding at the given index.
      */
     com.google.protobuf.ByteString getBlinding(int index);
   }
   /**
+   *
+   *
    * <pre>
-   * UnBlind an oberon token 
+   * UnBlind an oberon token
    * </pre>
    *
    * Protobuf type {@code okapi.security.v1.UnBlindOberonTokenRequest}
    */
-  public static final class UnBlindOberonTokenRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class UnBlindOberonTokenRequest extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.security.v1.UnBlindOberonTokenRequest)
       UnBlindOberonTokenRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use UnBlindOberonTokenRequest.newBuilder() to construct.
     private UnBlindOberonTokenRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private UnBlindOberonTokenRequest() {
       token_ = com.google.protobuf.ByteString.EMPTY;
       blinding_ = java.util.Collections.emptyList();
@@ -6648,16 +7265,15 @@ public final class Security {
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new UnBlindOberonTokenRequest();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private UnBlindOberonTokenRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -6677,26 +7293,27 @@ public final class Security {
             case 0:
               done = true;
               break;
-            case 10: {
-
-              token_ = input.readBytes();
-              break;
-            }
-            case 18: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                blinding_ = new java.util.ArrayList<com.google.protobuf.ByteString>();
-                mutable_bitField0_ |= 0x00000001;
+            case 10:
+              {
+                token_ = input.readBytes();
+                break;
               }
-              blinding_.add(input.readBytes());
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 18:
+              {
+                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                  blinding_ = new java.util.ArrayList<com.google.protobuf.ByteString>();
+                  mutable_bitField0_ |= 0x00000001;
+                }
+                blinding_.add(input.readBytes());
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -6704,8 +7321,7 @@ public final class Security {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
           blinding_ = java.util.Collections.unmodifiableList(blinding_); // C
@@ -6714,27 +7330,33 @@ public final class Security {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_UnBlindOberonTokenRequest_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_UnBlindOberonTokenRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_UnBlindOberonTokenRequest_fieldAccessorTable
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_UnBlindOberonTokenRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest.class, trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest.Builder.class);
+              trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest.class,
+              trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest.Builder.class);
     }
 
     public static final int TOKEN_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString token_;
     /**
+     *
+     *
      * <pre>
      * raw token bytes
      * </pre>
      *
      * <code>bytes token = 1;</code>
+     *
      * @return The token.
      */
     @java.lang.Override
@@ -6745,35 +7367,43 @@ public final class Security {
     public static final int BLINDING_FIELD_NUMBER = 2;
     private java.util.List<com.google.protobuf.ByteString> blinding_;
     /**
+     *
+     *
      * <pre>
      * blinding to remove from the token
      * </pre>
      *
      * <code>repeated bytes blinding = 2;</code>
+     *
      * @return A list containing the blinding.
      */
     @java.lang.Override
-    public java.util.List<com.google.protobuf.ByteString>
-        getBlindingList() {
+    public java.util.List<com.google.protobuf.ByteString> getBlindingList() {
       return blinding_;
     }
     /**
+     *
+     *
      * <pre>
      * blinding to remove from the token
      * </pre>
      *
      * <code>repeated bytes blinding = 2;</code>
+     *
      * @return The count of blinding.
      */
     public int getBlindingCount() {
       return blinding_.size();
     }
     /**
+     *
+     *
      * <pre>
      * blinding to remove from the token
      * </pre>
      *
      * <code>repeated bytes blinding = 2;</code>
+     *
      * @param index The index of the element to return.
      * @return The blinding at the given index.
      */
@@ -6782,6 +7412,7 @@ public final class Security {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -6793,8 +7424,7 @@ public final class Security {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!token_.isEmpty()) {
         output.writeBytes(1, token_);
       }
@@ -6811,14 +7441,12 @@ public final class Security {
 
       size = 0;
       if (!token_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, token_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(1, token_);
       }
       {
         int dataSize = 0;
         for (int i = 0; i < blinding_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeBytesSizeNoTag(blinding_.get(i));
+          dataSize += com.google.protobuf.CodedOutputStream.computeBytesSizeNoTag(blinding_.get(i));
         }
         size += dataSize;
         size += 1 * getBlindingList().size();
@@ -6831,17 +7459,16 @@ public final class Security {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest)) {
         return super.equals(obj);
       }
-      trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest other = (trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest) obj;
+      trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest other =
+          (trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest) obj;
 
-      if (!getToken()
-          .equals(other.getToken())) return false;
-      if (!getBlindingList()
-          .equals(other.getBlindingList())) return false;
+      if (!getToken().equals(other.getToken())) return false;
+      if (!getBlindingList().equals(other.getBlindingList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -6865,87 +7492,94 @@ public final class Security {
     }
 
     public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest parseFrom(
+        byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest prototype) {
+
+    public static Builder newBuilder(
+        trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -6955,27 +7589,32 @@ public final class Security {
       return builder;
     }
     /**
+     *
+     *
      * <pre>
-     * UnBlind an oberon token 
+     * UnBlind an oberon token
      * </pre>
      *
      * Protobuf type {@code okapi.security.v1.UnBlindOberonTokenRequest}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.security.v1.UnBlindOberonTokenRequest)
         trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_UnBlindOberonTokenRequest_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_UnBlindOberonTokenRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_UnBlindOberonTokenRequest_fieldAccessorTable
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_UnBlindOberonTokenRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest.class, trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest.Builder.class);
+                trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest.class,
+                trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest.Builder.class);
       }
 
       // Construct using trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest.newBuilder()
@@ -6983,16 +7622,15 @@ public final class Security {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -7004,13 +7642,14 @@ public final class Security {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_UnBlindOberonTokenRequest_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_UnBlindOberonTokenRequest_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest getDefaultInstanceForType() {
+      public trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest
+          getDefaultInstanceForType() {
         return trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest.getDefaultInstance();
       }
 
@@ -7025,7 +7664,8 @@ public final class Security {
 
       @java.lang.Override
       public trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest buildPartial() {
-        trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest result = new trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest(this);
+        trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest result =
+            new trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest(this);
         int from_bitField0_ = bitField0_;
         result.token_ = token_;
         if (((bitField0_ & 0x00000001) != 0)) {
@@ -7041,38 +7681,41 @@ public final class Security {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest) {
-          return mergeFrom((trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest)other);
+          return mergeFrom((trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -7080,7 +7723,9 @@ public final class Security {
       }
 
       public Builder mergeFrom(trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest other) {
-        if (other == trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest.getDefaultInstance()) return this;
+        if (other
+            == trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest.getDefaultInstance())
+          return this;
         if (other.getToken() != com.google.protobuf.ByteString.EMPTY) {
           setToken(other.getToken());
         }
@@ -7113,7 +7758,9 @@ public final class Security {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest)
+                  e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -7122,15 +7769,19 @@ public final class Security {
         }
         return this;
       }
+
       private int bitField0_;
 
       private com.google.protobuf.ByteString token_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       *
+       *
        * <pre>
        * raw token bytes
        * </pre>
        *
        * <code>bytes token = 1;</code>
+       *
        * @return The token.
        */
       @java.lang.Override
@@ -7138,75 +7789,92 @@ public final class Security {
         return token_;
       }
       /**
+       *
+       *
        * <pre>
        * raw token bytes
        * </pre>
        *
        * <code>bytes token = 1;</code>
+       *
        * @param value The token to set.
        * @return This builder for chaining.
        */
       public Builder setToken(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         token_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * raw token bytes
        * </pre>
        *
        * <code>bytes token = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearToken() {
-        
+
         token_ = getDefaultInstance().getToken();
         onChanged();
         return this;
       }
 
-      private java.util.List<com.google.protobuf.ByteString> blinding_ = java.util.Collections.emptyList();
+      private java.util.List<com.google.protobuf.ByteString> blinding_ =
+          java.util.Collections.emptyList();
+
       private void ensureBlindingIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
           blinding_ = new java.util.ArrayList<com.google.protobuf.ByteString>(blinding_);
           bitField0_ |= 0x00000001;
-         }
+        }
       }
       /**
+       *
+       *
        * <pre>
        * blinding to remove from the token
        * </pre>
        *
        * <code>repeated bytes blinding = 2;</code>
+       *
        * @return A list containing the blinding.
        */
-      public java.util.List<com.google.protobuf.ByteString>
-          getBlindingList() {
-        return ((bitField0_ & 0x00000001) != 0) ?
-                 java.util.Collections.unmodifiableList(blinding_) : blinding_;
+      public java.util.List<com.google.protobuf.ByteString> getBlindingList() {
+        return ((bitField0_ & 0x00000001) != 0)
+            ? java.util.Collections.unmodifiableList(blinding_)
+            : blinding_;
       }
       /**
+       *
+       *
        * <pre>
        * blinding to remove from the token
        * </pre>
        *
        * <code>repeated bytes blinding = 2;</code>
+       *
        * @return The count of blinding.
        */
       public int getBlindingCount() {
         return blinding_.size();
       }
       /**
+       *
+       *
        * <pre>
        * blinding to remove from the token
        * </pre>
        *
        * <code>repeated bytes blinding = 2;</code>
+       *
        * @param index The index of the element to return.
        * @return The blinding at the given index.
        */
@@ -7214,66 +7882,76 @@ public final class Security {
         return blinding_.get(index);
       }
       /**
+       *
+       *
        * <pre>
        * blinding to remove from the token
        * </pre>
        *
        * <code>repeated bytes blinding = 2;</code>
+       *
        * @param index The index to set the value at.
        * @param value The blinding to set.
        * @return This builder for chaining.
        */
-      public Builder setBlinding(
-          int index, com.google.protobuf.ByteString value) {
+      public Builder setBlinding(int index, com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureBlindingIsMutable();
+          throw new NullPointerException();
+        }
+        ensureBlindingIsMutable();
         blinding_.set(index, value);
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * blinding to remove from the token
        * </pre>
        *
        * <code>repeated bytes blinding = 2;</code>
+       *
        * @param value The blinding to add.
        * @return This builder for chaining.
        */
       public Builder addBlinding(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureBlindingIsMutable();
+          throw new NullPointerException();
+        }
+        ensureBlindingIsMutable();
         blinding_.add(value);
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * blinding to remove from the token
        * </pre>
        *
        * <code>repeated bytes blinding = 2;</code>
+       *
        * @param values The blinding to add.
        * @return This builder for chaining.
        */
       public Builder addAllBlinding(
           java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
         ensureBlindingIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, blinding_);
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, blinding_);
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * blinding to remove from the token
        * </pre>
        *
        * <code>repeated bytes blinding = 2;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearBlinding() {
@@ -7282,6 +7960,7 @@ public final class Security {
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -7294,30 +7973,32 @@ public final class Security {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.security.v1.UnBlindOberonTokenRequest)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.security.v1.UnBlindOberonTokenRequest)
-    private static final trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest DEFAULT_INSTANCE;
+    private static final trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest
+        DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest();
     }
 
-    public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest getDefaultInstance() {
+    public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest
+        getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<UnBlindOberonTokenRequest>
-        PARSER = new com.google.protobuf.AbstractParser<UnBlindOberonTokenRequest>() {
-      @java.lang.Override
-      public UnBlindOberonTokenRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UnBlindOberonTokenRequest(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<UnBlindOberonTokenRequest> PARSER =
+        new com.google.protobuf.AbstractParser<UnBlindOberonTokenRequest>() {
+          @java.lang.Override
+          public UnBlindOberonTokenRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new UnBlindOberonTokenRequest(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<UnBlindOberonTokenRequest> parser() {
       return PARSER;
@@ -7329,58 +8010,65 @@ public final class Security {
     }
 
     @java.lang.Override
-    public trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest getDefaultInstanceForType() {
+    public trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest
+        getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface UnBlindOberonTokenResponseOrBuilder extends
+  public interface UnBlindOberonTokenResponseOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.security.v1.UnBlindOberonTokenResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * raw unblinded token bytes
      * </pre>
      *
      * <code>bytes token = 1;</code>
+     *
      * @return The token.
      */
     com.google.protobuf.ByteString getToken();
   }
   /**
+   *
+   *
    * <pre>
    * Contains the unblinded token reply
    * </pre>
    *
    * Protobuf type {@code okapi.security.v1.UnBlindOberonTokenResponse}
    */
-  public static final class UnBlindOberonTokenResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class UnBlindOberonTokenResponse
+      extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.security.v1.UnBlindOberonTokenResponse)
       UnBlindOberonTokenResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use UnBlindOberonTokenResponse.newBuilder() to construct.
     private UnBlindOberonTokenResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private UnBlindOberonTokenResponse() {
       token_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new UnBlindOberonTokenResponse();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private UnBlindOberonTokenResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -7399,18 +8087,18 @@ public final class Security {
             case 0:
               done = true;
               break;
-            case 10: {
-
-              token_ = input.readBytes();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 10:
+              {
+                token_ = input.readBytes();
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -7418,34 +8106,39 @@ public final class Security {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_UnBlindOberonTokenResponse_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_UnBlindOberonTokenResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_UnBlindOberonTokenResponse_fieldAccessorTable
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_UnBlindOberonTokenResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse.class, trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse.Builder.class);
+              trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse.class,
+              trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse.Builder.class);
     }
 
     public static final int TOKEN_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString token_;
     /**
+     *
+     *
      * <pre>
      * raw unblinded token bytes
      * </pre>
      *
      * <code>bytes token = 1;</code>
+     *
      * @return The token.
      */
     @java.lang.Override
@@ -7454,6 +8147,7 @@ public final class Security {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -7465,8 +8159,7 @@ public final class Security {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!token_.isEmpty()) {
         output.writeBytes(1, token_);
       }
@@ -7480,8 +8173,7 @@ public final class Security {
 
       size = 0;
       if (!token_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, token_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(1, token_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -7491,15 +8183,15 @@ public final class Security {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse)) {
         return super.equals(obj);
       }
-      trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse other = (trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse) obj;
+      trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse other =
+          (trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse) obj;
 
-      if (!getToken()
-          .equals(other.getToken())) return false;
+      if (!getToken().equals(other.getToken())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -7519,87 +8211,94 @@ public final class Security {
     }
 
     public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse parseFrom(
+        byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse prototype) {
+
+    public static Builder newBuilder(
+        trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -7609,27 +8308,32 @@ public final class Security {
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Contains the unblinded token reply
      * </pre>
      *
      * Protobuf type {@code okapi.security.v1.UnBlindOberonTokenResponse}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.security.v1.UnBlindOberonTokenResponse)
         trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_UnBlindOberonTokenResponse_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_UnBlindOberonTokenResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_UnBlindOberonTokenResponse_fieldAccessorTable
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_UnBlindOberonTokenResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse.class, trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse.Builder.class);
+                trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse.class,
+                trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse.Builder.class);
       }
 
       // Construct using trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse.newBuilder()
@@ -7637,16 +8341,15 @@ public final class Security {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -7656,13 +8359,14 @@ public final class Security {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_UnBlindOberonTokenResponse_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_UnBlindOberonTokenResponse_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse getDefaultInstanceForType() {
+      public trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse
+          getDefaultInstanceForType() {
         return trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse.getDefaultInstance();
       }
 
@@ -7677,7 +8381,8 @@ public final class Security {
 
       @java.lang.Override
       public trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse buildPartial() {
-        trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse result = new trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse(this);
+        trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse result =
+            new trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse(this);
         result.token_ = token_;
         onBuilt();
         return result;
@@ -7687,46 +8392,52 @@ public final class Security {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse) {
-          return mergeFrom((trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse)other);
+          return mergeFrom((trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse) other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse other) {
-        if (other == trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(
+          trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse other) {
+        if (other
+            == trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse.getDefaultInstance())
+          return this;
         if (other.getToken() != com.google.protobuf.ByteString.EMPTY) {
           setToken(other.getToken());
         }
@@ -7749,7 +8460,9 @@ public final class Security {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse)
+                  e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -7761,11 +8474,14 @@ public final class Security {
 
       private com.google.protobuf.ByteString token_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       *
+       *
        * <pre>
        * raw unblinded token bytes
        * </pre>
        *
        * <code>bytes token = 1;</code>
+       *
        * @return The token.
        */
       @java.lang.Override
@@ -7773,37 +8489,44 @@ public final class Security {
         return token_;
       }
       /**
+       *
+       *
        * <pre>
        * raw unblinded token bytes
        * </pre>
        *
        * <code>bytes token = 1;</code>
+       *
        * @param value The token to set.
        * @return This builder for chaining.
        */
       public Builder setToken(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         token_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * raw unblinded token bytes
        * </pre>
        *
        * <code>bytes token = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearToken() {
-        
+
         token_ = getDefaultInstance().getToken();
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -7816,30 +8539,32 @@ public final class Security {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.security.v1.UnBlindOberonTokenResponse)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.security.v1.UnBlindOberonTokenResponse)
-    private static final trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse DEFAULT_INSTANCE;
+    private static final trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse
+        DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse();
     }
 
-    public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse getDefaultInstance() {
+    public static trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse
+        getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<UnBlindOberonTokenResponse>
-        PARSER = new com.google.protobuf.AbstractParser<UnBlindOberonTokenResponse>() {
-      @java.lang.Override
-      public UnBlindOberonTokenResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UnBlindOberonTokenResponse(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<UnBlindOberonTokenResponse> PARSER =
+        new com.google.protobuf.AbstractParser<UnBlindOberonTokenResponse>() {
+          @java.lang.Override
+          public UnBlindOberonTokenResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new UnBlindOberonTokenResponse(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<UnBlindOberonTokenResponse> parser() {
       return PARSER;
@@ -7851,62 +8576,75 @@ public final class Security {
     }
 
     @java.lang.Override
-    public trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse getDefaultInstanceForType() {
+    public trinsic.okapi.security.v1.Security.UnBlindOberonTokenResponse
+        getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface VerifyOberonTokenRequestOrBuilder extends
+  public interface VerifyOberonTokenRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.security.v1.VerifyOberonTokenRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * raw token bytes
      * </pre>
      *
      * <code>bytes token = 1;</code>
+     *
      * @return The token.
      */
     com.google.protobuf.ByteString getToken();
 
     /**
+     *
+     *
      * <pre>
      * token is valid to this public key?
      * </pre>
      *
      * <code>bytes pk = 2;</code>
+     *
      * @return The pk.
      */
     com.google.protobuf.ByteString getPk();
 
     /**
+     *
+     *
      * <pre>
      * public part of oberon protocol - can be any data
      * </pre>
      *
      * <code>bytes data = 3;</code>
+     *
      * @return The data.
      */
     com.google.protobuf.ByteString getData();
   }
   /**
+   *
+   *
    * <pre>
    * Verify that an oberon token comes from the desired issuer
    * </pre>
    *
    * Protobuf type {@code okapi.security.v1.VerifyOberonTokenRequest}
    */
-  public static final class VerifyOberonTokenRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class VerifyOberonTokenRequest extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.security.v1.VerifyOberonTokenRequest)
       VerifyOberonTokenRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use VerifyOberonTokenRequest.newBuilder() to construct.
     private VerifyOberonTokenRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private VerifyOberonTokenRequest() {
       token_ = com.google.protobuf.ByteString.EMPTY;
       pk_ = com.google.protobuf.ByteString.EMPTY;
@@ -7915,16 +8653,15 @@ public final class Security {
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new VerifyOberonTokenRequest();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private VerifyOberonTokenRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -7943,28 +8680,28 @@ public final class Security {
             case 0:
               done = true;
               break;
-            case 10: {
-
-              token_ = input.readBytes();
-              break;
-            }
-            case 18: {
-
-              pk_ = input.readBytes();
-              break;
-            }
-            case 26: {
-
-              data_ = input.readBytes();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 10:
+              {
+                token_ = input.readBytes();
+                break;
               }
-              break;
-            }
+            case 18:
+              {
+                pk_ = input.readBytes();
+                break;
+              }
+            case 26:
+              {
+                data_ = input.readBytes();
+                break;
+              }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -7972,34 +8709,39 @@ public final class Security {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_VerifyOberonTokenRequest_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_VerifyOberonTokenRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_VerifyOberonTokenRequest_fieldAccessorTable
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_VerifyOberonTokenRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest.class, trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest.Builder.class);
+              trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest.class,
+              trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest.Builder.class);
     }
 
     public static final int TOKEN_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString token_;
     /**
+     *
+     *
      * <pre>
      * raw token bytes
      * </pre>
      *
      * <code>bytes token = 1;</code>
+     *
      * @return The token.
      */
     @java.lang.Override
@@ -8010,11 +8752,14 @@ public final class Security {
     public static final int PK_FIELD_NUMBER = 2;
     private com.google.protobuf.ByteString pk_;
     /**
+     *
+     *
      * <pre>
      * token is valid to this public key?
      * </pre>
      *
      * <code>bytes pk = 2;</code>
+     *
      * @return The pk.
      */
     @java.lang.Override
@@ -8025,11 +8770,14 @@ public final class Security {
     public static final int DATA_FIELD_NUMBER = 3;
     private com.google.protobuf.ByteString data_;
     /**
+     *
+     *
      * <pre>
      * public part of oberon protocol - can be any data
      * </pre>
      *
      * <code>bytes data = 3;</code>
+     *
      * @return The data.
      */
     @java.lang.Override
@@ -8038,6 +8786,7 @@ public final class Security {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -8049,8 +8798,7 @@ public final class Security {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!token_.isEmpty()) {
         output.writeBytes(1, token_);
       }
@@ -8070,16 +8818,13 @@ public final class Security {
 
       size = 0;
       if (!token_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, token_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(1, token_);
       }
       if (!pk_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, pk_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(2, pk_);
       }
       if (!data_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, data_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(3, data_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -8089,19 +8834,17 @@ public final class Security {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest)) {
         return super.equals(obj);
       }
-      trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest other = (trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest) obj;
+      trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest other =
+          (trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest) obj;
 
-      if (!getToken()
-          .equals(other.getToken())) return false;
-      if (!getPk()
-          .equals(other.getPk())) return false;
-      if (!getData()
-          .equals(other.getData())) return false;
+      if (!getToken().equals(other.getToken())) return false;
+      if (!getPk().equals(other.getPk())) return false;
+      if (!getData().equals(other.getData())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -8125,87 +8868,94 @@ public final class Security {
     }
 
     public static trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest prototype) {
+
+    public static Builder newBuilder(
+        trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -8215,27 +8965,32 @@ public final class Security {
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Verify that an oberon token comes from the desired issuer
      * </pre>
      *
      * Protobuf type {@code okapi.security.v1.VerifyOberonTokenRequest}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.security.v1.VerifyOberonTokenRequest)
         trinsic.okapi.security.v1.Security.VerifyOberonTokenRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_VerifyOberonTokenRequest_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_VerifyOberonTokenRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_VerifyOberonTokenRequest_fieldAccessorTable
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_VerifyOberonTokenRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest.class, trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest.Builder.class);
+                trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest.class,
+                trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest.Builder.class);
       }
 
       // Construct using trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest.newBuilder()
@@ -8243,16 +8998,15 @@ public final class Security {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -8266,13 +9020,14 @@ public final class Security {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_VerifyOberonTokenRequest_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_VerifyOberonTokenRequest_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest getDefaultInstanceForType() {
+      public trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest
+          getDefaultInstanceForType() {
         return trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest.getDefaultInstance();
       }
 
@@ -8287,7 +9042,8 @@ public final class Security {
 
       @java.lang.Override
       public trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest buildPartial() {
-        trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest result = new trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest(this);
+        trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest result =
+            new trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest(this);
         result.token_ = token_;
         result.pk_ = pk_;
         result.data_ = data_;
@@ -8299,38 +9055,41 @@ public final class Security {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest) {
-          return mergeFrom((trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest)other);
+          return mergeFrom((trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -8338,7 +9097,9 @@ public final class Security {
       }
 
       public Builder mergeFrom(trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest other) {
-        if (other == trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest.getDefaultInstance()) return this;
+        if (other
+            == trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest.getDefaultInstance())
+          return this;
         if (other.getToken() != com.google.protobuf.ByteString.EMPTY) {
           setToken(other.getToken());
         }
@@ -8367,7 +9128,9 @@ public final class Security {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest)
+                  e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -8379,11 +9142,14 @@ public final class Security {
 
       private com.google.protobuf.ByteString token_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       *
+       *
        * <pre>
        * raw token bytes
        * </pre>
        *
        * <code>bytes token = 1;</code>
+       *
        * @return The token.
        */
       @java.lang.Override
@@ -8391,33 +9157,39 @@ public final class Security {
         return token_;
       }
       /**
+       *
+       *
        * <pre>
        * raw token bytes
        * </pre>
        *
        * <code>bytes token = 1;</code>
+       *
        * @param value The token to set.
        * @return This builder for chaining.
        */
       public Builder setToken(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         token_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * raw token bytes
        * </pre>
        *
        * <code>bytes token = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearToken() {
-        
+
         token_ = getDefaultInstance().getToken();
         onChanged();
         return this;
@@ -8425,11 +9197,14 @@ public final class Security {
 
       private com.google.protobuf.ByteString pk_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       *
+       *
        * <pre>
        * token is valid to this public key?
        * </pre>
        *
        * <code>bytes pk = 2;</code>
+       *
        * @return The pk.
        */
       @java.lang.Override
@@ -8437,33 +9212,39 @@ public final class Security {
         return pk_;
       }
       /**
+       *
+       *
        * <pre>
        * token is valid to this public key?
        * </pre>
        *
        * <code>bytes pk = 2;</code>
+       *
        * @param value The pk to set.
        * @return This builder for chaining.
        */
       public Builder setPk(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         pk_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * token is valid to this public key?
        * </pre>
        *
        * <code>bytes pk = 2;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearPk() {
-        
+
         pk_ = getDefaultInstance().getPk();
         onChanged();
         return this;
@@ -8471,11 +9252,14 @@ public final class Security {
 
       private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
       /**
+       *
+       *
        * <pre>
        * public part of oberon protocol - can be any data
        * </pre>
        *
        * <code>bytes data = 3;</code>
+       *
        * @return The data.
        */
       @java.lang.Override
@@ -8483,37 +9267,44 @@ public final class Security {
         return data_;
       }
       /**
+       *
+       *
        * <pre>
        * public part of oberon protocol - can be any data
        * </pre>
        *
        * <code>bytes data = 3;</code>
+       *
        * @param value The data to set.
        * @return This builder for chaining.
        */
       public Builder setData(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         data_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * public part of oberon protocol - can be any data
        * </pre>
        *
        * <code>bytes data = 3;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearData() {
-        
+
         data_ = getDefaultInstance().getData();
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -8526,12 +9317,13 @@ public final class Security {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.security.v1.VerifyOberonTokenRequest)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.security.v1.VerifyOberonTokenRequest)
-    private static final trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest DEFAULT_INSTANCE;
+    private static final trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest
+        DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest();
     }
@@ -8540,16 +9332,16 @@ public final class Security {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<VerifyOberonTokenRequest>
-        PARSER = new com.google.protobuf.AbstractParser<VerifyOberonTokenRequest>() {
-      @java.lang.Override
-      public VerifyOberonTokenRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new VerifyOberonTokenRequest(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<VerifyOberonTokenRequest> PARSER =
+        new com.google.protobuf.AbstractParser<VerifyOberonTokenRequest>() {
+          @java.lang.Override
+          public VerifyOberonTokenRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new VerifyOberonTokenRequest(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<VerifyOberonTokenRequest> parser() {
       return PARSER;
@@ -8564,54 +9356,58 @@ public final class Security {
     public trinsic.okapi.security.v1.Security.VerifyOberonTokenRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface VerifyOberonTokenResponseOrBuilder extends
+  public interface VerifyOberonTokenResponseOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.security.v1.VerifyOberonTokenResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * token is valid to the public key
      * </pre>
      *
      * <code>bool valid = 1;</code>
+     *
      * @return The valid.
      */
     boolean getValid();
   }
   /**
+   *
+   *
    * <pre>
    * Contains the verification result for the oberon token
    * </pre>
    *
    * Protobuf type {@code okapi.security.v1.VerifyOberonTokenResponse}
    */
-  public static final class VerifyOberonTokenResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class VerifyOberonTokenResponse extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.security.v1.VerifyOberonTokenResponse)
       VerifyOberonTokenResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use VerifyOberonTokenResponse.newBuilder() to construct.
     private VerifyOberonTokenResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private VerifyOberonTokenResponse() {
-    }
+
+    private VerifyOberonTokenResponse() {}
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new VerifyOberonTokenResponse();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private VerifyOberonTokenResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -8630,18 +9426,18 @@ public final class Security {
             case 0:
               done = true;
               break;
-            case 8: {
-
-              valid_ = input.readBool();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 8:
+              {
+                valid_ = input.readBool();
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -8649,34 +9445,39 @@ public final class Security {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_VerifyOberonTokenResponse_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_VerifyOberonTokenResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_VerifyOberonTokenResponse_fieldAccessorTable
+      return trinsic.okapi.security.v1.Security
+          .internal_static_okapi_security_v1_VerifyOberonTokenResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse.class, trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse.Builder.class);
+              trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse.class,
+              trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse.Builder.class);
     }
 
     public static final int VALID_FIELD_NUMBER = 1;
     private boolean valid_;
     /**
+     *
+     *
      * <pre>
      * token is valid to the public key
      * </pre>
      *
      * <code>bool valid = 1;</code>
+     *
      * @return The valid.
      */
     @java.lang.Override
@@ -8685,6 +9486,7 @@ public final class Security {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -8696,8 +9498,7 @@ public final class Security {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (valid_ != false) {
         output.writeBool(1, valid_);
       }
@@ -8711,8 +9512,7 @@ public final class Security {
 
       size = 0;
       if (valid_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(1, valid_);
+        size += com.google.protobuf.CodedOutputStream.computeBoolSize(1, valid_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -8722,15 +9522,15 @@ public final class Security {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse)) {
         return super.equals(obj);
       }
-      trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse other = (trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse) obj;
+      trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse other =
+          (trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse) obj;
 
-      if (getValid()
-          != other.getValid()) return false;
+      if (getValid() != other.getValid()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -8743,95 +9543,101 @@ public final class Security {
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + VALID_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getValid());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getValid());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
     public static trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse parseFrom(
+        byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse prototype) {
+
+    public static Builder newBuilder(
+        trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -8841,27 +9647,32 @@ public final class Security {
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Contains the verification result for the oberon token
      * </pre>
      *
      * Protobuf type {@code okapi.security.v1.VerifyOberonTokenResponse}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.security.v1.VerifyOberonTokenResponse)
         trinsic.okapi.security.v1.Security.VerifyOberonTokenResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_VerifyOberonTokenResponse_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_VerifyOberonTokenResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_VerifyOberonTokenResponse_fieldAccessorTable
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_VerifyOberonTokenResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse.class, trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse.Builder.class);
+                trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse.class,
+                trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse.Builder.class);
       }
 
       // Construct using trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse.newBuilder()
@@ -8869,16 +9680,15 @@ public final class Security {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -8888,13 +9698,14 @@ public final class Security {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.security.v1.Security.internal_static_okapi_security_v1_VerifyOberonTokenResponse_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.security.v1.Security
+            .internal_static_okapi_security_v1_VerifyOberonTokenResponse_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse getDefaultInstanceForType() {
+      public trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse
+          getDefaultInstanceForType() {
         return trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse.getDefaultInstance();
       }
 
@@ -8909,7 +9720,8 @@ public final class Security {
 
       @java.lang.Override
       public trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse buildPartial() {
-        trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse result = new trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse(this);
+        trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse result =
+            new trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse(this);
         result.valid_ = valid_;
         onBuilt();
         return result;
@@ -8919,38 +9731,41 @@ public final class Security {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse) {
-          return mergeFrom((trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse)other);
+          return mergeFrom((trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -8958,7 +9773,9 @@ public final class Security {
       }
 
       public Builder mergeFrom(trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse other) {
-        if (other == trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse.getDefaultInstance()) return this;
+        if (other
+            == trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse.getDefaultInstance())
+          return this;
         if (other.getValid() != false) {
           setValid(other.getValid());
         }
@@ -8981,7 +9798,9 @@ public final class Security {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse)
+                  e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -8991,13 +9810,16 @@ public final class Security {
         return this;
       }
 
-      private boolean valid_ ;
+      private boolean valid_;
       /**
+       *
+       *
        * <pre>
        * token is valid to the public key
        * </pre>
        *
        * <code>bool valid = 1;</code>
+       *
        * @return The valid.
        */
       @java.lang.Override
@@ -9005,34 +9827,41 @@ public final class Security {
         return valid_;
       }
       /**
+       *
+       *
        * <pre>
        * token is valid to the public key
        * </pre>
        *
        * <code>bool valid = 1;</code>
+       *
        * @param value The valid to set.
        * @return This builder for chaining.
        */
       public Builder setValid(boolean value) {
-        
+
         valid_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * token is valid to the public key
        * </pre>
        *
        * <code>bool valid = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearValid() {
-        
+
         valid_ = false;
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -9045,30 +9874,32 @@ public final class Security {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.security.v1.VerifyOberonTokenResponse)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.security.v1.VerifyOberonTokenResponse)
-    private static final trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse DEFAULT_INSTANCE;
+    private static final trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse
+        DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse();
     }
 
-    public static trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse getDefaultInstance() {
+    public static trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse
+        getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<VerifyOberonTokenResponse>
-        PARSER = new com.google.protobuf.AbstractParser<VerifyOberonTokenResponse>() {
-      @java.lang.Override
-      public VerifyOberonTokenResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new VerifyOberonTokenResponse(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<VerifyOberonTokenResponse> PARSER =
+        new com.google.protobuf.AbstractParser<VerifyOberonTokenResponse>() {
+          @java.lang.Override
+          public VerifyOberonTokenResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new VerifyOberonTokenResponse(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<VerifyOberonTokenResponse> parser() {
       return PARSER;
@@ -9080,204 +9911,238 @@ public final class Security {
     }
 
     @java.lang.Override
-    public trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse getDefaultInstanceForType() {
+    public trinsic.okapi.security.v1.Security.VerifyOberonTokenResponse
+        getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_security_v1_CreateOberonKeyRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_security_v1_CreateOberonKeyRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_security_v1_CreateOberonKeyRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_security_v1_CreateOberonKeyResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_security_v1_CreateOberonKeyResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_security_v1_CreateOberonKeyResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_security_v1_CreateOberonTokenRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_security_v1_CreateOberonTokenRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_security_v1_CreateOberonTokenRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_security_v1_CreateOberonTokenResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_security_v1_CreateOberonTokenResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_security_v1_CreateOberonTokenResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_security_v1_CreateOberonProofRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_security_v1_CreateOberonProofRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_security_v1_CreateOberonProofRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_security_v1_CreateOberonProofResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_security_v1_CreateOberonProofResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_security_v1_CreateOberonProofResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_security_v1_VerifyOberonProofRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_security_v1_VerifyOberonProofRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_security_v1_VerifyOberonProofRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_security_v1_VerifyOberonProofResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_security_v1_VerifyOberonProofResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_security_v1_VerifyOberonProofResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_security_v1_BlindOberonTokenRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_security_v1_BlindOberonTokenRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_security_v1_BlindOberonTokenRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_security_v1_BlindOberonTokenResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_security_v1_BlindOberonTokenResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_security_v1_BlindOberonTokenResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_security_v1_UnBlindOberonTokenRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_security_v1_UnBlindOberonTokenRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_security_v1_UnBlindOberonTokenRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_security_v1_UnBlindOberonTokenResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_security_v1_UnBlindOberonTokenResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_security_v1_UnBlindOberonTokenResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_security_v1_VerifyOberonTokenRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_security_v1_VerifyOberonTokenRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_security_v1_VerifyOberonTokenRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_security_v1_VerifyOberonTokenResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_security_v1_VerifyOberonTokenResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_security_v1_VerifyOberonTokenResponse_fieldAccessorTable;
 
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
+  public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
+
+  private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
+
   static {
     java.lang.String[] descriptorData = {
-      "\n okapi/security/v1/security.proto\022\021okap" +
-      "i.security.v1\"&\n\026CreateOberonKeyRequest\022" +
-      "\014\n\004seed\030\001 \001(\014\"1\n\027CreateOberonKeyResponse" +
-      "\022\n\n\002sk\030\002 \001(\014\022\n\n\002pk\030\003 \001(\014\"F\n\030CreateOberon" +
-      "TokenRequest\022\n\n\002sk\030\001 \001(\014\022\014\n\004data\030\002 \001(\014\022\020" +
-      "\n\010blinding\030\003 \003(\014\"*\n\031CreateOberonTokenRes" +
-      "ponse\022\r\n\005token\030\001 \001(\014\"X\n\030CreateOberonProo" +
-      "fRequest\022\014\n\004data\030\001 \001(\014\022\r\n\005token\030\002 \001(\014\022\020\n" +
-      "\010blinding\030\003 \003(\014\022\r\n\005nonce\030\004 \001(\014\"*\n\031Create" +
-      "OberonProofResponse\022\r\n\005proof\030\002 \001(\014\"R\n\030Ve" +
-      "rifyOberonProofRequest\022\r\n\005proof\030\001 \001(\014\022\014\n" +
-      "\004data\030\002 \001(\014\022\r\n\005nonce\030\003 \001(\014\022\n\n\002pk\030\004 \001(\014\"*" +
-      "\n\031VerifyOberonProofResponse\022\r\n\005valid\030\001 \001" +
-      "(\010\":\n\027BlindOberonTokenRequest\022\r\n\005token\030\001" +
-      " \001(\014\022\020\n\010blinding\030\002 \003(\014\")\n\030BlindOberonTok" +
-      "enResponse\022\r\n\005token\030\001 \001(\014\"<\n\031UnBlindOber" +
-      "onTokenRequest\022\r\n\005token\030\001 \001(\014\022\020\n\010blindin" +
-      "g\030\002 \003(\014\"+\n\032UnBlindOberonTokenResponse\022\r\n" +
-      "\005token\030\001 \001(\014\"C\n\030VerifyOberonTokenRequest" +
-      "\022\r\n\005token\030\001 \001(\014\022\n\n\002pk\030\002 \001(\014\022\014\n\004data\030\003 \001(" +
-      "\014\"*\n\031VerifyOberonTokenResponse\022\r\n\005valid\030" +
-      "\001 \001(\010BQ\n\031trinsic.okapi.security.v1Z gith" +
-      "ub.com/trinsic-id/okapiproto\252\002\021Okapi.Sec" +
-      "urity.V1b\006proto3"
+      "\n"
+          + " okapi/security/v1/security.proto\022\021okapi.security.v1\"&\n"
+          + "\026CreateOberonKeyRequest\022\014\n"
+          + "\004seed\030\001 \001(\014\"1\n"
+          + "\027CreateOberonKeyResponse\022\n\n"
+          + "\002sk\030\002 \001(\014\022\n\n"
+          + "\002pk\030\003 \001(\014\"F\n"
+          + "\030CreateOberonTokenRequest\022\n\n"
+          + "\002sk\030\001 \001(\014\022\014\n"
+          + "\004data\030\002 \001(\014\022\020\n"
+          + "\010blinding\030\003 \003(\014\"*\n"
+          + "\031CreateOberonTokenResponse\022\r\n"
+          + "\005token\030\001 \001(\014\"X\n"
+          + "\030CreateOberonProofRequest\022\014\n"
+          + "\004data\030\001 \001(\014\022\r\n"
+          + "\005token\030\002 \001(\014\022\020\n"
+          + "\010blinding\030\003 \003(\014\022\r\n"
+          + "\005nonce\030\004 \001(\014\"*\n"
+          + "\031CreateOberonProofResponse\022\r\n"
+          + "\005proof\030\002 \001(\014\"R\n"
+          + "\030VerifyOberonProofRequest\022\r\n"
+          + "\005proof\030\001 \001(\014\022\014\n"
+          + "\004data\030\002 \001(\014\022\r\n"
+          + "\005nonce\030\003 \001(\014\022\n\n"
+          + "\002pk\030\004 \001(\014\"*\n"
+          + "\031VerifyOberonProofResponse\022\r\n"
+          + "\005valid\030\001 \001(\010\":\n"
+          + "\027BlindOberonTokenRequest\022\r\n"
+          + "\005token\030\001 \001(\014\022\020\n"
+          + "\010blinding\030\002 \003(\014\")\n"
+          + "\030BlindOberonTokenResponse\022\r\n"
+          + "\005token\030\001 \001(\014\"<\n"
+          + "\031UnBlindOberonTokenRequest\022\r\n"
+          + "\005token\030\001 \001(\014\022\020\n"
+          + "\010blinding\030\002 \003(\014\"+\n"
+          + "\032UnBlindOberonTokenResponse\022\r\n"
+          + "\005token\030\001 \001(\014\"C\n"
+          + "\030VerifyOberonTokenRequest\022\r\n"
+          + "\005token\030\001 \001(\014\022\n\n"
+          + "\002pk\030\002 \001(\014\022\014\n"
+          + "\004data\030\003 \001(\014\"*\n"
+          + "\031VerifyOberonTokenResponse\022\r\n"
+          + "\005valid\030\001 \001(\010BK\n"
+          + "\031trinsic.okapi.security.v1Z\032okap"
+          + "i/security/v1/security\252\002\021Okapi.Security.V1b\006proto3"
     };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-        });
+    descriptor =
+        com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
+            descriptorData, new com.google.protobuf.Descriptors.FileDescriptor[] {});
     internal_static_okapi_security_v1_CreateOberonKeyRequest_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_okapi_security_v1_CreateOberonKeyRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_security_v1_CreateOberonKeyRequest_descriptor,
-        new java.lang.String[] { "Seed", });
+        getDescriptor().getMessageTypes().get(0);
+    internal_static_okapi_security_v1_CreateOberonKeyRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_security_v1_CreateOberonKeyRequest_descriptor,
+            new java.lang.String[] {
+              "Seed",
+            });
     internal_static_okapi_security_v1_CreateOberonKeyResponse_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_okapi_security_v1_CreateOberonKeyResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_security_v1_CreateOberonKeyResponse_descriptor,
-        new java.lang.String[] { "Sk", "Pk", });
+        getDescriptor().getMessageTypes().get(1);
+    internal_static_okapi_security_v1_CreateOberonKeyResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_security_v1_CreateOberonKeyResponse_descriptor,
+            new java.lang.String[] {
+              "Sk", "Pk",
+            });
     internal_static_okapi_security_v1_CreateOberonTokenRequest_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_okapi_security_v1_CreateOberonTokenRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_security_v1_CreateOberonTokenRequest_descriptor,
-        new java.lang.String[] { "Sk", "Data", "Blinding", });
+        getDescriptor().getMessageTypes().get(2);
+    internal_static_okapi_security_v1_CreateOberonTokenRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_security_v1_CreateOberonTokenRequest_descriptor,
+            new java.lang.String[] {
+              "Sk", "Data", "Blinding",
+            });
     internal_static_okapi_security_v1_CreateOberonTokenResponse_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_okapi_security_v1_CreateOberonTokenResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_security_v1_CreateOberonTokenResponse_descriptor,
-        new java.lang.String[] { "Token", });
+        getDescriptor().getMessageTypes().get(3);
+    internal_static_okapi_security_v1_CreateOberonTokenResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_security_v1_CreateOberonTokenResponse_descriptor,
+            new java.lang.String[] {
+              "Token",
+            });
     internal_static_okapi_security_v1_CreateOberonProofRequest_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_okapi_security_v1_CreateOberonProofRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_security_v1_CreateOberonProofRequest_descriptor,
-        new java.lang.String[] { "Data", "Token", "Blinding", "Nonce", });
+        getDescriptor().getMessageTypes().get(4);
+    internal_static_okapi_security_v1_CreateOberonProofRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_security_v1_CreateOberonProofRequest_descriptor,
+            new java.lang.String[] {
+              "Data", "Token", "Blinding", "Nonce",
+            });
     internal_static_okapi_security_v1_CreateOberonProofResponse_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_okapi_security_v1_CreateOberonProofResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_security_v1_CreateOberonProofResponse_descriptor,
-        new java.lang.String[] { "Proof", });
+        getDescriptor().getMessageTypes().get(5);
+    internal_static_okapi_security_v1_CreateOberonProofResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_security_v1_CreateOberonProofResponse_descriptor,
+            new java.lang.String[] {
+              "Proof",
+            });
     internal_static_okapi_security_v1_VerifyOberonProofRequest_descriptor =
-      getDescriptor().getMessageTypes().get(6);
-    internal_static_okapi_security_v1_VerifyOberonProofRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_security_v1_VerifyOberonProofRequest_descriptor,
-        new java.lang.String[] { "Proof", "Data", "Nonce", "Pk", });
+        getDescriptor().getMessageTypes().get(6);
+    internal_static_okapi_security_v1_VerifyOberonProofRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_security_v1_VerifyOberonProofRequest_descriptor,
+            new java.lang.String[] {
+              "Proof", "Data", "Nonce", "Pk",
+            });
     internal_static_okapi_security_v1_VerifyOberonProofResponse_descriptor =
-      getDescriptor().getMessageTypes().get(7);
-    internal_static_okapi_security_v1_VerifyOberonProofResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_security_v1_VerifyOberonProofResponse_descriptor,
-        new java.lang.String[] { "Valid", });
+        getDescriptor().getMessageTypes().get(7);
+    internal_static_okapi_security_v1_VerifyOberonProofResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_security_v1_VerifyOberonProofResponse_descriptor,
+            new java.lang.String[] {
+              "Valid",
+            });
     internal_static_okapi_security_v1_BlindOberonTokenRequest_descriptor =
-      getDescriptor().getMessageTypes().get(8);
-    internal_static_okapi_security_v1_BlindOberonTokenRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_security_v1_BlindOberonTokenRequest_descriptor,
-        new java.lang.String[] { "Token", "Blinding", });
+        getDescriptor().getMessageTypes().get(8);
+    internal_static_okapi_security_v1_BlindOberonTokenRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_security_v1_BlindOberonTokenRequest_descriptor,
+            new java.lang.String[] {
+              "Token", "Blinding",
+            });
     internal_static_okapi_security_v1_BlindOberonTokenResponse_descriptor =
-      getDescriptor().getMessageTypes().get(9);
-    internal_static_okapi_security_v1_BlindOberonTokenResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_security_v1_BlindOberonTokenResponse_descriptor,
-        new java.lang.String[] { "Token", });
+        getDescriptor().getMessageTypes().get(9);
+    internal_static_okapi_security_v1_BlindOberonTokenResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_security_v1_BlindOberonTokenResponse_descriptor,
+            new java.lang.String[] {
+              "Token",
+            });
     internal_static_okapi_security_v1_UnBlindOberonTokenRequest_descriptor =
-      getDescriptor().getMessageTypes().get(10);
-    internal_static_okapi_security_v1_UnBlindOberonTokenRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_security_v1_UnBlindOberonTokenRequest_descriptor,
-        new java.lang.String[] { "Token", "Blinding", });
+        getDescriptor().getMessageTypes().get(10);
+    internal_static_okapi_security_v1_UnBlindOberonTokenRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_security_v1_UnBlindOberonTokenRequest_descriptor,
+            new java.lang.String[] {
+              "Token", "Blinding",
+            });
     internal_static_okapi_security_v1_UnBlindOberonTokenResponse_descriptor =
-      getDescriptor().getMessageTypes().get(11);
-    internal_static_okapi_security_v1_UnBlindOberonTokenResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_security_v1_UnBlindOberonTokenResponse_descriptor,
-        new java.lang.String[] { "Token", });
+        getDescriptor().getMessageTypes().get(11);
+    internal_static_okapi_security_v1_UnBlindOberonTokenResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_security_v1_UnBlindOberonTokenResponse_descriptor,
+            new java.lang.String[] {
+              "Token",
+            });
     internal_static_okapi_security_v1_VerifyOberonTokenRequest_descriptor =
-      getDescriptor().getMessageTypes().get(12);
-    internal_static_okapi_security_v1_VerifyOberonTokenRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_security_v1_VerifyOberonTokenRequest_descriptor,
-        new java.lang.String[] { "Token", "Pk", "Data", });
+        getDescriptor().getMessageTypes().get(12);
+    internal_static_okapi_security_v1_VerifyOberonTokenRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_security_v1_VerifyOberonTokenRequest_descriptor,
+            new java.lang.String[] {
+              "Token", "Pk", "Data",
+            });
     internal_static_okapi_security_v1_VerifyOberonTokenResponse_descriptor =
-      getDescriptor().getMessageTypes().get(13);
-    internal_static_okapi_security_v1_VerifyOberonTokenResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_security_v1_VerifyOberonTokenResponse_descriptor,
-        new java.lang.String[] { "Valid", });
+        getDescriptor().getMessageTypes().get(13);
+    internal_static_okapi_security_v1_VerifyOberonTokenResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_security_v1_VerifyOberonTokenResponse_descriptor,
+            new java.lang.String[] {
+              "Valid",
+            });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

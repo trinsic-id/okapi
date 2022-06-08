@@ -5,59 +5,57 @@ package trinsic.okapi.examples.v1;
 
 public final class Examples {
   private Examples() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {}
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
   }
 
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
-  }
-  public interface BasicMessageOrBuilder extends
+  public interface BasicMessageOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.examples.v1.BasicMessage)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>string text = 1;</code>
+     *
      * @return The text.
      */
     java.lang.String getText();
     /**
      * <code>string text = 1;</code>
+     *
      * @return The bytes for text.
      */
-    com.google.protobuf.ByteString
-        getTextBytes();
+    com.google.protobuf.ByteString getTextBytes();
   }
-  /**
-   * Protobuf type {@code okapi.examples.v1.BasicMessage}
-   */
-  public static final class BasicMessage extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code okapi.examples.v1.BasicMessage} */
+  public static final class BasicMessage extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.examples.v1.BasicMessage)
       BasicMessageOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use BasicMessage.newBuilder() to construct.
     private BasicMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private BasicMessage() {
       text_ = "";
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new BasicMessage();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private BasicMessage(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -76,19 +74,20 @@ public final class Examples {
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 10:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
 
-              text_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                text_ = s;
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -96,30 +95,33 @@ public final class Examples {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.examples.v1.Examples.internal_static_okapi_examples_v1_BasicMessage_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.examples.v1.Examples
+          .internal_static_okapi_examples_v1_BasicMessage_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.examples.v1.Examples.internal_static_okapi_examples_v1_BasicMessage_fieldAccessorTable
+      return trinsic.okapi.examples.v1.Examples
+          .internal_static_okapi_examples_v1_BasicMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.examples.v1.Examples.BasicMessage.class, trinsic.okapi.examples.v1.Examples.BasicMessage.Builder.class);
+              trinsic.okapi.examples.v1.Examples.BasicMessage.class,
+              trinsic.okapi.examples.v1.Examples.BasicMessage.Builder.class);
     }
 
     public static final int TEXT_FIELD_NUMBER = 1;
     private volatile java.lang.Object text_;
     /**
      * <code>string text = 1;</code>
+     *
      * @return The text.
      */
     @java.lang.Override
@@ -128,8 +130,7 @@ public final class Examples {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         text_ = s;
         return s;
@@ -137,16 +138,15 @@ public final class Examples {
     }
     /**
      * <code>string text = 1;</code>
+     *
      * @return The bytes for text.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getTextBytes() {
+    public com.google.protobuf.ByteString getTextBytes() {
       java.lang.Object ref = text_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         text_ = b;
         return b;
       } else {
@@ -155,6 +155,7 @@ public final class Examples {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -166,8 +167,7 @@ public final class Examples {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(text_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, text_);
       }
@@ -191,15 +191,15 @@ public final class Examples {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.examples.v1.Examples.BasicMessage)) {
         return super.equals(obj);
       }
-      trinsic.okapi.examples.v1.Examples.BasicMessage other = (trinsic.okapi.examples.v1.Examples.BasicMessage) obj;
+      trinsic.okapi.examples.v1.Examples.BasicMessage other =
+          (trinsic.okapi.examples.v1.Examples.BasicMessage) obj;
 
-      if (!getText()
-          .equals(other.getText())) return false;
+      if (!getText().equals(other.getText())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -219,87 +219,93 @@ public final class Examples {
     }
 
     public static trinsic.okapi.examples.v1.Examples.BasicMessage parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.examples.v1.Examples.BasicMessage parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.examples.v1.Examples.BasicMessage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.examples.v1.Examples.BasicMessage parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.examples.v1.Examples.BasicMessage parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.examples.v1.Examples.BasicMessage parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.examples.v1.Examples.BasicMessage parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.examples.v1.Examples.BasicMessage parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.examples.v1.Examples.BasicMessage parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.examples.v1.Examples.BasicMessage parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.examples.v1.Examples.BasicMessage parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.examples.v1.Examples.BasicMessage parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.examples.v1.Examples.BasicMessage parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.examples.v1.Examples.BasicMessage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.okapi.examples.v1.Examples.BasicMessage prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -308,24 +314,25 @@ public final class Examples {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code okapi.examples.v1.BasicMessage}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code okapi.examples.v1.BasicMessage} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.examples.v1.BasicMessage)
         trinsic.okapi.examples.v1.Examples.BasicMessageOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.examples.v1.Examples.internal_static_okapi_examples_v1_BasicMessage_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.examples.v1.Examples
+            .internal_static_okapi_examples_v1_BasicMessage_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.examples.v1.Examples.internal_static_okapi_examples_v1_BasicMessage_fieldAccessorTable
+        return trinsic.okapi.examples.v1.Examples
+            .internal_static_okapi_examples_v1_BasicMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.examples.v1.Examples.BasicMessage.class, trinsic.okapi.examples.v1.Examples.BasicMessage.Builder.class);
+                trinsic.okapi.examples.v1.Examples.BasicMessage.class,
+                trinsic.okapi.examples.v1.Examples.BasicMessage.Builder.class);
       }
 
       // Construct using trinsic.okapi.examples.v1.Examples.BasicMessage.newBuilder()
@@ -333,16 +340,15 @@ public final class Examples {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -352,9 +358,9 @@ public final class Examples {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.examples.v1.Examples.internal_static_okapi_examples_v1_BasicMessage_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.examples.v1.Examples
+            .internal_static_okapi_examples_v1_BasicMessage_descriptor;
       }
 
       @java.lang.Override
@@ -373,7 +379,8 @@ public final class Examples {
 
       @java.lang.Override
       public trinsic.okapi.examples.v1.Examples.BasicMessage buildPartial() {
-        trinsic.okapi.examples.v1.Examples.BasicMessage result = new trinsic.okapi.examples.v1.Examples.BasicMessage(this);
+        trinsic.okapi.examples.v1.Examples.BasicMessage result =
+            new trinsic.okapi.examples.v1.Examples.BasicMessage(this);
         result.text_ = text_;
         onBuilt();
         return result;
@@ -383,38 +390,41 @@ public final class Examples {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.examples.v1.Examples.BasicMessage) {
-          return mergeFrom((trinsic.okapi.examples.v1.Examples.BasicMessage)other);
+          return mergeFrom((trinsic.okapi.examples.v1.Examples.BasicMessage) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -422,7 +432,8 @@ public final class Examples {
       }
 
       public Builder mergeFrom(trinsic.okapi.examples.v1.Examples.BasicMessage other) {
-        if (other == trinsic.okapi.examples.v1.Examples.BasicMessage.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.examples.v1.Examples.BasicMessage.getDefaultInstance())
+          return this;
         if (!other.getText().isEmpty()) {
           text_ = other.text_;
           onChanged();
@@ -446,7 +457,8 @@ public final class Examples {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.examples.v1.Examples.BasicMessage) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.examples.v1.Examples.BasicMessage) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -459,13 +471,13 @@ public final class Examples {
       private java.lang.Object text_ = "";
       /**
        * <code>string text = 1;</code>
+       *
        * @return The text.
        */
       public java.lang.String getText() {
         java.lang.Object ref = text_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           text_ = s;
           return s;
@@ -475,15 +487,14 @@ public final class Examples {
       }
       /**
        * <code>string text = 1;</code>
+       *
        * @return The bytes for text.
        */
-      public com.google.protobuf.ByteString
-          getTextBytes() {
+      public com.google.protobuf.ByteString getTextBytes() {
         java.lang.Object ref = text_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           text_ = b;
           return b;
         } else {
@@ -492,45 +503,47 @@ public final class Examples {
       }
       /**
        * <code>string text = 1;</code>
+       *
        * @param value The text to set.
        * @return This builder for chaining.
        */
-      public Builder setText(
-          java.lang.String value) {
+      public Builder setText(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         text_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>string text = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearText() {
-        
+
         text_ = getDefaultInstance().getText();
         onChanged();
         return this;
       }
       /**
        * <code>string text = 1;</code>
+       *
        * @param value The bytes for text to set.
        * @return This builder for chaining.
        */
-      public Builder setTextBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setTextBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         text_ = value;
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -543,12 +556,12 @@ public final class Examples {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.examples.v1.BasicMessage)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.examples.v1.BasicMessage)
     private static final trinsic.okapi.examples.v1.Examples.BasicMessage DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.examples.v1.Examples.BasicMessage();
     }
@@ -557,16 +570,16 @@ public final class Examples {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<BasicMessage>
-        PARSER = new com.google.protobuf.AbstractParser<BasicMessage>() {
-      @java.lang.Override
-      public BasicMessage parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new BasicMessage(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<BasicMessage> PARSER =
+        new com.google.protobuf.AbstractParser<BasicMessage>() {
+          @java.lang.Override
+          public BasicMessage parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new BasicMessage(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<BasicMessage> parser() {
       return PARSER;
@@ -581,45 +594,45 @@ public final class Examples {
     public trinsic.okapi.examples.v1.Examples.BasicMessage getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_examples_v1_BasicMessage_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_examples_v1_BasicMessage_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_examples_v1_BasicMessage_fieldAccessorTable;
 
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
+  public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
+
+  private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
+
   static {
     java.lang.String[] descriptorData = {
-      "\n okapi/examples/v1/examples.proto\022\021okap" +
-      "i.examples.v1\032\024pbmse/v1/pbmse.proto\"\034\n\014B" +
-      "asicMessage\022\014\n\004text\030\001 \001(\t2\244\001\n\024SecureExam" +
-      "pleService\022?\n\005Unary\022\032.pbmse.v1.Encrypted" +
-      "Message\032\032.pbmse.v1.EncryptedMessage\022K\n\017S" +
-      "erverStreaming\022\032.pbmse.v1.EncryptedMessa" +
-      "ge\032\032.pbmse.v1.EncryptedMessage0\001BQ\n\031trin" +
-      "sic.okapi.examples.v1Z github.com/trinsi" +
-      "c-id/okapiproto\252\002\021Okapi.Examples.V1b\006pro" +
-      "to3"
+      "\n okapi/examples/v1/examples.proto\022\021okap"
+          + "i.examples.v1\032\024pbmse/v1/pbmse.proto\"\034\n\014B"
+          + "asicMessage\022\014\n\004text\030\001 \001(\t2\244\001\n\024SecureExam"
+          + "pleService\022?\n\005Unary\022\032.pbmse.v1.Encrypted"
+          + "Message\032\032.pbmse.v1.EncryptedMessage\022K\n\017S"
+          + "erverStreaming\022\032.pbmse.v1.EncryptedMessa"
+          + "ge\032\032.pbmse.v1.EncryptedMessage0\001BK\n\031trin"
+          + "sic.okapi.examples.v1Z\032okapi/examples/v1"
+          + "/examples\252\002\021Okapi.Examples.V1b\006proto3"
     };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-          trinsic.okapi.pbmse.v1.Pbmse.getDescriptor(),
-        });
+    descriptor =
+        com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
+            descriptorData,
+            new com.google.protobuf.Descriptors.FileDescriptor[] {
+              trinsic.okapi.pbmse.v1.Pbmse.getDescriptor(),
+            });
     internal_static_okapi_examples_v1_BasicMessage_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_okapi_examples_v1_BasicMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_examples_v1_BasicMessage_descriptor,
-        new java.lang.String[] { "Text", });
+        getDescriptor().getMessageTypes().get(0);
+    internal_static_okapi_examples_v1_BasicMessage_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_examples_v1_BasicMessage_descriptor,
+            new java.lang.String[] {
+              "Text",
+            });
     trinsic.okapi.pbmse.v1.Pbmse.getDescriptor();
   }
 

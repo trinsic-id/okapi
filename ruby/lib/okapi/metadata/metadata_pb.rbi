@@ -2,9 +2,6 @@
 # source: okapi/metadata/metadata.proto
 # typed: strict
 
-module Okapi; end
-module Okapi::Metadata; end
-
 class Okapi::Metadata::MetadataRequest
   include Google::Protobuf
   include Google::Protobuf::MessageExts
@@ -29,6 +26,9 @@ class Okapi::Metadata::MetadataRequest
   sig { returns(Google::Protobuf::Descriptor) }
   def self.descriptor
   end
+
+  sig {void}
+  def initialize; end
 
   sig { params(field: String).returns(T.untyped) }
   def [](field)

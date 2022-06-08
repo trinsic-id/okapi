@@ -5,48 +5,29 @@ package trinsic.okapi.pbmse.v1;
 
 public final class Pbmse {
   private Pbmse() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
-  }
 
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {}
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  /**
-   * Protobuf enum {@code pbmse.v1.EncryptionMode}
-   */
-  public enum EncryptionMode
-      implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>ENCRYPTION_MODE_UNSPECIFIED = 0;</code>
-     */
+  /** Protobuf enum {@code pbmse.v1.EncryptionMode} */
+  public enum EncryptionMode implements com.google.protobuf.ProtocolMessageEnum {
+    /** <code>ENCRYPTION_MODE_UNSPECIFIED = 0;</code> */
     ENCRYPTION_MODE_UNSPECIFIED(0),
-    /**
-     * <code>ENCRYPTION_MODE_DIRECT = 1;</code>
-     */
+    /** <code>ENCRYPTION_MODE_DIRECT = 1;</code> */
     ENCRYPTION_MODE_DIRECT(1),
-    /**
-     * <code>ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY = 2;</code>
-     */
+    /** <code>ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY = 2;</code> */
     ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY(2),
     UNRECOGNIZED(-1),
     ;
 
-    /**
-     * <code>ENCRYPTION_MODE_UNSPECIFIED = 0;</code>
-     */
+    /** <code>ENCRYPTION_MODE_UNSPECIFIED = 0;</code> */
     public static final int ENCRYPTION_MODE_UNSPECIFIED_VALUE = 0;
-    /**
-     * <code>ENCRYPTION_MODE_DIRECT = 1;</code>
-     */
+    /** <code>ENCRYPTION_MODE_DIRECT = 1;</code> */
     public static final int ENCRYPTION_MODE_DIRECT_VALUE = 1;
-    /**
-     * <code>ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY = 2;</code>
-     */
+    /** <code>ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY = 2;</code> */
     public static final int ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY_VALUE = 2;
-
 
     public final int getNumber() {
       if (this == UNRECOGNIZED) {
@@ -72,49 +53,49 @@ public final class Pbmse {
      */
     public static EncryptionMode forNumber(int value) {
       switch (value) {
-        case 0: return ENCRYPTION_MODE_UNSPECIFIED;
-        case 1: return ENCRYPTION_MODE_DIRECT;
-        case 2: return ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY;
-        default: return null;
+        case 0:
+          return ENCRYPTION_MODE_UNSPECIFIED;
+        case 1:
+          return ENCRYPTION_MODE_DIRECT;
+        case 2:
+          return ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY;
+        default:
+          return null;
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<EncryptionMode>
-        internalGetValueMap() {
+    public static com.google.protobuf.Internal.EnumLiteMap<EncryptionMode> internalGetValueMap() {
       return internalValueMap;
     }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        EncryptionMode> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<EncryptionMode>() {
-            public EncryptionMode findValueByNumber(int number) {
-              return EncryptionMode.forNumber(number);
-            }
-          };
 
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
+    private static final com.google.protobuf.Internal.EnumLiteMap<EncryptionMode> internalValueMap =
+        new com.google.protobuf.Internal.EnumLiteMap<EncryptionMode>() {
+          public EncryptionMode findValueByNumber(int number) {
+            return EncryptionMode.forNumber(number);
+          }
+        };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor getValueDescriptor() {
       if (this == UNRECOGNIZED) {
         throw new java.lang.IllegalStateException(
             "Can't get the descriptor of an unrecognized enum value.");
       }
       return getDescriptor().getValues().get(ordinal());
     }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
+
+    public final com.google.protobuf.Descriptors.EnumDescriptor getDescriptorForType() {
       return getDescriptor();
     }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
+
+    public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
       return trinsic.okapi.pbmse.v1.Pbmse.getDescriptor().getEnumTypes().get(0);
     }
 
     private static final EncryptionMode[] VALUES = values();
 
-    public static EncryptionMode valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+    public static EncryptionMode valueOf(com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
+        throw new java.lang.IllegalArgumentException("EnumValueDescriptor is not for this type.");
       }
       if (desc.getIndex() == -1) {
         return UNRECOGNIZED;
@@ -131,39 +112,23 @@ public final class Pbmse {
     // @@protoc_insertion_point(enum_scope:pbmse.v1.EncryptionMode)
   }
 
-  /**
-   * Protobuf enum {@code pbmse.v1.EncryptionAlgorithm}
-   */
-  public enum EncryptionAlgorithm
-      implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>ENCRYPTION_ALGORITHM_UNSPECIFIED = 0;</code>
-     */
+  /** Protobuf enum {@code pbmse.v1.EncryptionAlgorithm} */
+  public enum EncryptionAlgorithm implements com.google.protobuf.ProtocolMessageEnum {
+    /** <code>ENCRYPTION_ALGORITHM_UNSPECIFIED = 0;</code> */
     ENCRYPTION_ALGORITHM_UNSPECIFIED(0),
-    /**
-     * <code>ENCRYPTION_ALGORITHM_XCHACHA20POLY1305 = 1;</code>
-     */
+    /** <code>ENCRYPTION_ALGORITHM_XCHACHA20POLY1305 = 1;</code> */
     ENCRYPTION_ALGORITHM_XCHACHA20POLY1305(1),
-    /**
-     * <code>ENCRYPTION_ALGORITHM_AES_GCM = 2;</code>
-     */
+    /** <code>ENCRYPTION_ALGORITHM_AES_GCM = 2;</code> */
     ENCRYPTION_ALGORITHM_AES_GCM(2),
     UNRECOGNIZED(-1),
     ;
 
-    /**
-     * <code>ENCRYPTION_ALGORITHM_UNSPECIFIED = 0;</code>
-     */
+    /** <code>ENCRYPTION_ALGORITHM_UNSPECIFIED = 0;</code> */
     public static final int ENCRYPTION_ALGORITHM_UNSPECIFIED_VALUE = 0;
-    /**
-     * <code>ENCRYPTION_ALGORITHM_XCHACHA20POLY1305 = 1;</code>
-     */
+    /** <code>ENCRYPTION_ALGORITHM_XCHACHA20POLY1305 = 1;</code> */
     public static final int ENCRYPTION_ALGORITHM_XCHACHA20POLY1305_VALUE = 1;
-    /**
-     * <code>ENCRYPTION_ALGORITHM_AES_GCM = 2;</code>
-     */
+    /** <code>ENCRYPTION_ALGORITHM_AES_GCM = 2;</code> */
     public static final int ENCRYPTION_ALGORITHM_AES_GCM_VALUE = 2;
-
 
     public final int getNumber() {
       if (this == UNRECOGNIZED) {
@@ -189,10 +154,14 @@ public final class Pbmse {
      */
     public static EncryptionAlgorithm forNumber(int value) {
       switch (value) {
-        case 0: return ENCRYPTION_ALGORITHM_UNSPECIFIED;
-        case 1: return ENCRYPTION_ALGORITHM_XCHACHA20POLY1305;
-        case 2: return ENCRYPTION_ALGORITHM_AES_GCM;
-        default: return null;
+        case 0:
+          return ENCRYPTION_ALGORITHM_UNSPECIFIED;
+        case 1:
+          return ENCRYPTION_ALGORITHM_XCHACHA20POLY1305;
+        case 2:
+          return ENCRYPTION_ALGORITHM_AES_GCM;
+        default:
+          return null;
       }
     }
 
@@ -200,28 +169,28 @@ public final class Pbmse {
         internalGetValueMap() {
       return internalValueMap;
     }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        EncryptionAlgorithm> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<EncryptionAlgorithm>() {
-            public EncryptionAlgorithm findValueByNumber(int number) {
-              return EncryptionAlgorithm.forNumber(number);
-            }
-          };
 
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
+    private static final com.google.protobuf.Internal.EnumLiteMap<EncryptionAlgorithm>
+        internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<EncryptionAlgorithm>() {
+              public EncryptionAlgorithm findValueByNumber(int number) {
+                return EncryptionAlgorithm.forNumber(number);
+              }
+            };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor getValueDescriptor() {
       if (this == UNRECOGNIZED) {
         throw new java.lang.IllegalStateException(
             "Can't get the descriptor of an unrecognized enum value.");
       }
       return getDescriptor().getValues().get(ordinal());
     }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
+
+    public final com.google.protobuf.Descriptors.EnumDescriptor getDescriptorForType() {
       return getDescriptor();
     }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
+
+    public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
       return trinsic.okapi.pbmse.v1.Pbmse.getDescriptor().getEnumTypes().get(1);
     }
 
@@ -230,8 +199,7 @@ public final class Pbmse {
     public static EncryptionAlgorithm valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
+        throw new java.lang.IllegalArgumentException("EnumValueDescriptor is not for this type.");
       }
       if (desc.getIndex() == -1) {
         return UNRECOGNIZED;
@@ -248,41 +216,33 @@ public final class Pbmse {
     // @@protoc_insertion_point(enum_scope:pbmse.v1.EncryptionAlgorithm)
   }
 
-  public interface SignedMessageOrBuilder extends
+  public interface SignedMessageOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:pbmse.v1.SignedMessage)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>bytes payload = 1;</code>
+     *
      * @return The payload.
      */
     com.google.protobuf.ByteString getPayload();
 
-    /**
-     * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-     */
-    java.util.List<trinsic.okapi.pbmse.v1.Pbmse.Signature> 
-        getSignaturesList();
-    /**
-     * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-     */
+    /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
+    java.util.List<trinsic.okapi.pbmse.v1.Pbmse.Signature> getSignaturesList();
+    /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
     trinsic.okapi.pbmse.v1.Pbmse.Signature getSignatures(int index);
-    /**
-     * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-     */
+    /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
     int getSignaturesCount();
-    /**
-     * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-     */
-    java.util.List<? extends trinsic.okapi.pbmse.v1.Pbmse.SignatureOrBuilder> 
+    /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
+    java.util.List<? extends trinsic.okapi.pbmse.v1.Pbmse.SignatureOrBuilder>
         getSignaturesOrBuilderList();
-    /**
-     * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-     */
-    trinsic.okapi.pbmse.v1.Pbmse.SignatureOrBuilder getSignaturesOrBuilder(
-        int index);
+    /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
+    trinsic.okapi.pbmse.v1.Pbmse.SignatureOrBuilder getSignaturesOrBuilder(int index);
   }
   /**
+   *
+   *
    * <pre>
    * JWS
    * Protocol buffer message signing and encryption
@@ -290,15 +250,16 @@ public final class Pbmse {
    *
    * Protobuf type {@code pbmse.v1.SignedMessage}
    */
-  public static final class SignedMessage extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class SignedMessage extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:pbmse.v1.SignedMessage)
       SignedMessageOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use SignedMessage.newBuilder() to construct.
     private SignedMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private SignedMessage() {
       payload_ = com.google.protobuf.ByteString.EMPTY;
       signatures_ = java.util.Collections.emptyList();
@@ -306,16 +267,15 @@ public final class Pbmse {
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new SignedMessage();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private SignedMessage(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -335,27 +295,29 @@ public final class Pbmse {
             case 0:
               done = true;
               break;
-            case 10: {
-
-              payload_ = input.readBytes();
-              break;
-            }
-            case 18: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                signatures_ = new java.util.ArrayList<trinsic.okapi.pbmse.v1.Pbmse.Signature>();
-                mutable_bitField0_ |= 0x00000001;
+            case 10:
+              {
+                payload_ = input.readBytes();
+                break;
               }
-              signatures_.add(
-                  input.readMessage(trinsic.okapi.pbmse.v1.Pbmse.Signature.parser(), extensionRegistry));
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 18:
+              {
+                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                  signatures_ = new java.util.ArrayList<trinsic.okapi.pbmse.v1.Pbmse.Signature>();
+                  mutable_bitField0_ |= 0x00000001;
+                }
+                signatures_.add(
+                    input.readMessage(
+                        trinsic.okapi.pbmse.v1.Pbmse.Signature.parser(), extensionRegistry));
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -363,8 +325,7 @@ public final class Pbmse {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
           signatures_ = java.util.Collections.unmodifiableList(signatures_);
@@ -373,8 +334,8 @@ public final class Pbmse {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
       return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_SignedMessage_descriptor;
     }
 
@@ -383,13 +344,15 @@ public final class Pbmse {
         internalGetFieldAccessorTable() {
       return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_SignedMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.class, trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder.class);
+              trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.class,
+              trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder.class);
     }
 
     public static final int PAYLOAD_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString payload_;
     /**
      * <code>bytes payload = 1;</code>
+     *
      * @return The payload.
      */
     @java.lang.Override
@@ -399,45 +362,35 @@ public final class Pbmse {
 
     public static final int SIGNATURES_FIELD_NUMBER = 2;
     private java.util.List<trinsic.okapi.pbmse.v1.Pbmse.Signature> signatures_;
-    /**
-     * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-     */
+    /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
     @java.lang.Override
     public java.util.List<trinsic.okapi.pbmse.v1.Pbmse.Signature> getSignaturesList() {
       return signatures_;
     }
-    /**
-     * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-     */
+    /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
     @java.lang.Override
-    public java.util.List<? extends trinsic.okapi.pbmse.v1.Pbmse.SignatureOrBuilder> 
+    public java.util.List<? extends trinsic.okapi.pbmse.v1.Pbmse.SignatureOrBuilder>
         getSignaturesOrBuilderList() {
       return signatures_;
     }
-    /**
-     * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-     */
+    /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
     @java.lang.Override
     public int getSignaturesCount() {
       return signatures_.size();
     }
-    /**
-     * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-     */
+    /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
     @java.lang.Override
     public trinsic.okapi.pbmse.v1.Pbmse.Signature getSignatures(int index) {
       return signatures_.get(index);
     }
-    /**
-     * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-     */
+    /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
     @java.lang.Override
-    public trinsic.okapi.pbmse.v1.Pbmse.SignatureOrBuilder getSignaturesOrBuilder(
-        int index) {
+    public trinsic.okapi.pbmse.v1.Pbmse.SignatureOrBuilder getSignaturesOrBuilder(int index) {
       return signatures_.get(index);
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -449,8 +402,7 @@ public final class Pbmse {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!payload_.isEmpty()) {
         output.writeBytes(1, payload_);
       }
@@ -467,12 +419,10 @@ public final class Pbmse {
 
       size = 0;
       if (!payload_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, payload_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(1, payload_);
       }
       for (int i = 0; i < signatures_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, signatures_.get(i));
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, signatures_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -482,17 +432,16 @@ public final class Pbmse {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.pbmse.v1.Pbmse.SignedMessage)) {
         return super.equals(obj);
       }
-      trinsic.okapi.pbmse.v1.Pbmse.SignedMessage other = (trinsic.okapi.pbmse.v1.Pbmse.SignedMessage) obj;
+      trinsic.okapi.pbmse.v1.Pbmse.SignedMessage other =
+          (trinsic.okapi.pbmse.v1.Pbmse.SignedMessage) obj;
 
-      if (!getPayload()
-          .equals(other.getPayload())) return false;
-      if (!getSignaturesList()
-          .equals(other.getSignaturesList())) return false;
+      if (!getPayload().equals(other.getPayload())) return false;
+      if (!getSignaturesList().equals(other.getSignaturesList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -515,88 +464,94 @@ public final class Pbmse {
       return hash;
     }
 
-    public static trinsic.okapi.pbmse.v1.Pbmse.SignedMessage parseFrom(
-        java.nio.ByteBuffer data)
+    public static trinsic.okapi.pbmse.v1.Pbmse.SignedMessage parseFrom(java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.SignedMessage parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.SignedMessage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.SignedMessage parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.SignedMessage parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.SignedMessage parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.SignedMessage parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.SignedMessage parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.okapi.pbmse.v1.Pbmse.SignedMessage parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.SignedMessage parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.pbmse.v1.Pbmse.SignedMessage parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.SignedMessage parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.SignedMessage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.okapi.pbmse.v1.Pbmse.SignedMessage prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -606,6 +561,8 @@ public final class Pbmse {
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * JWS
      * Protocol buffer message signing and encryption
@@ -613,21 +570,23 @@ public final class Pbmse {
      *
      * Protobuf type {@code pbmse.v1.SignedMessage}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:pbmse.v1.SignedMessage)
         trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
         return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_SignedMessage_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_SignedMessage_fieldAccessorTable
+        return trinsic.okapi.pbmse.v1.Pbmse
+            .internal_static_pbmse_v1_SignedMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.class, trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder.class);
+                trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.class,
+                trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder.class);
       }
 
       // Construct using trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.newBuilder()
@@ -635,17 +594,17 @@ public final class Pbmse {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
           getSignaturesFieldBuilder();
         }
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -661,8 +620,7 @@ public final class Pbmse {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
         return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_SignedMessage_descriptor;
       }
 
@@ -682,7 +640,8 @@ public final class Pbmse {
 
       @java.lang.Override
       public trinsic.okapi.pbmse.v1.Pbmse.SignedMessage buildPartial() {
-        trinsic.okapi.pbmse.v1.Pbmse.SignedMessage result = new trinsic.okapi.pbmse.v1.Pbmse.SignedMessage(this);
+        trinsic.okapi.pbmse.v1.Pbmse.SignedMessage result =
+            new trinsic.okapi.pbmse.v1.Pbmse.SignedMessage(this);
         int from_bitField0_ = bitField0_;
         result.payload_ = payload_;
         if (signaturesBuilder_ == null) {
@@ -702,38 +661,41 @@ public final class Pbmse {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.pbmse.v1.Pbmse.SignedMessage) {
-          return mergeFrom((trinsic.okapi.pbmse.v1.Pbmse.SignedMessage)other);
+          return mergeFrom((trinsic.okapi.pbmse.v1.Pbmse.SignedMessage) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -763,9 +725,10 @@ public final class Pbmse {
               signaturesBuilder_ = null;
               signatures_ = other.signatures_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              signaturesBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getSignaturesFieldBuilder() : null;
+              signaturesBuilder_ =
+                  com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
+                      ? getSignaturesFieldBuilder()
+                      : null;
             } else {
               signaturesBuilder_.addAllMessages(other.signatures_);
             }
@@ -799,11 +762,13 @@ public final class Pbmse {
         }
         return this;
       }
+
       private int bitField0_;
 
       private com.google.protobuf.ByteString payload_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes payload = 1;</code>
+       *
        * @return The payload.
        */
       @java.lang.Override
@@ -812,44 +777,49 @@ public final class Pbmse {
       }
       /**
        * <code>bytes payload = 1;</code>
+       *
        * @param value The payload to set.
        * @return This builder for chaining.
        */
       public Builder setPayload(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         payload_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>bytes payload = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearPayload() {
-        
+
         payload_ = getDefaultInstance().getPayload();
         onChanged();
         return this;
       }
 
       private java.util.List<trinsic.okapi.pbmse.v1.Pbmse.Signature> signatures_ =
-        java.util.Collections.emptyList();
+          java.util.Collections.emptyList();
+
       private void ensureSignaturesIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
-          signatures_ = new java.util.ArrayList<trinsic.okapi.pbmse.v1.Pbmse.Signature>(signatures_);
+          signatures_ =
+              new java.util.ArrayList<trinsic.okapi.pbmse.v1.Pbmse.Signature>(signatures_);
           bitField0_ |= 0x00000001;
-         }
+        }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          trinsic.okapi.pbmse.v1.Pbmse.Signature, trinsic.okapi.pbmse.v1.Pbmse.Signature.Builder, trinsic.okapi.pbmse.v1.Pbmse.SignatureOrBuilder> signaturesBuilder_;
+              trinsic.okapi.pbmse.v1.Pbmse.Signature,
+              trinsic.okapi.pbmse.v1.Pbmse.Signature.Builder,
+              trinsic.okapi.pbmse.v1.Pbmse.SignatureOrBuilder>
+          signaturesBuilder_;
 
-      /**
-       * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-       */
+      /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
       public java.util.List<trinsic.okapi.pbmse.v1.Pbmse.Signature> getSignaturesList() {
         if (signaturesBuilder_ == null) {
           return java.util.Collections.unmodifiableList(signatures_);
@@ -857,9 +827,7 @@ public final class Pbmse {
           return signaturesBuilder_.getMessageList();
         }
       }
-      /**
-       * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-       */
+      /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
       public int getSignaturesCount() {
         if (signaturesBuilder_ == null) {
           return signatures_.size();
@@ -867,9 +835,7 @@ public final class Pbmse {
           return signaturesBuilder_.getCount();
         }
       }
-      /**
-       * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-       */
+      /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
       public trinsic.okapi.pbmse.v1.Pbmse.Signature getSignatures(int index) {
         if (signaturesBuilder_ == null) {
           return signatures_.get(index);
@@ -877,11 +843,8 @@ public final class Pbmse {
           return signaturesBuilder_.getMessage(index);
         }
       }
-      /**
-       * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-       */
-      public Builder setSignatures(
-          int index, trinsic.okapi.pbmse.v1.Pbmse.Signature value) {
+      /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
+      public Builder setSignatures(int index, trinsic.okapi.pbmse.v1.Pbmse.Signature value) {
         if (signaturesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -894,9 +857,7 @@ public final class Pbmse {
         }
         return this;
       }
-      /**
-       * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-       */
+      /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
       public Builder setSignatures(
           int index, trinsic.okapi.pbmse.v1.Pbmse.Signature.Builder builderForValue) {
         if (signaturesBuilder_ == null) {
@@ -908,9 +869,7 @@ public final class Pbmse {
         }
         return this;
       }
-      /**
-       * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-       */
+      /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
       public Builder addSignatures(trinsic.okapi.pbmse.v1.Pbmse.Signature value) {
         if (signaturesBuilder_ == null) {
           if (value == null) {
@@ -924,11 +883,8 @@ public final class Pbmse {
         }
         return this;
       }
-      /**
-       * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-       */
-      public Builder addSignatures(
-          int index, trinsic.okapi.pbmse.v1.Pbmse.Signature value) {
+      /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
+      public Builder addSignatures(int index, trinsic.okapi.pbmse.v1.Pbmse.Signature value) {
         if (signaturesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -941,11 +897,8 @@ public final class Pbmse {
         }
         return this;
       }
-      /**
-       * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-       */
-      public Builder addSignatures(
-          trinsic.okapi.pbmse.v1.Pbmse.Signature.Builder builderForValue) {
+      /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
+      public Builder addSignatures(trinsic.okapi.pbmse.v1.Pbmse.Signature.Builder builderForValue) {
         if (signaturesBuilder_ == null) {
           ensureSignaturesIsMutable();
           signatures_.add(builderForValue.build());
@@ -955,9 +908,7 @@ public final class Pbmse {
         }
         return this;
       }
-      /**
-       * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-       */
+      /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
       public Builder addSignatures(
           int index, trinsic.okapi.pbmse.v1.Pbmse.Signature.Builder builderForValue) {
         if (signaturesBuilder_ == null) {
@@ -969,24 +920,19 @@ public final class Pbmse {
         }
         return this;
       }
-      /**
-       * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-       */
+      /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
       public Builder addAllSignatures(
           java.lang.Iterable<? extends trinsic.okapi.pbmse.v1.Pbmse.Signature> values) {
         if (signaturesBuilder_ == null) {
           ensureSignaturesIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, signatures_);
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(values, signatures_);
           onChanged();
         } else {
           signaturesBuilder_.addAllMessages(values);
         }
         return this;
       }
-      /**
-       * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-       */
+      /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
       public Builder clearSignatures() {
         if (signaturesBuilder_ == null) {
           signatures_ = java.util.Collections.emptyList();
@@ -997,9 +943,7 @@ public final class Pbmse {
         }
         return this;
       }
-      /**
-       * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-       */
+      /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
       public Builder removeSignatures(int index) {
         if (signaturesBuilder_ == null) {
           ensureSignaturesIsMutable();
@@ -1010,70 +954,60 @@ public final class Pbmse {
         }
         return this;
       }
-      /**
-       * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-       */
-      public trinsic.okapi.pbmse.v1.Pbmse.Signature.Builder getSignaturesBuilder(
-          int index) {
+      /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
+      public trinsic.okapi.pbmse.v1.Pbmse.Signature.Builder getSignaturesBuilder(int index) {
         return getSignaturesFieldBuilder().getBuilder(index);
       }
-      /**
-       * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-       */
-      public trinsic.okapi.pbmse.v1.Pbmse.SignatureOrBuilder getSignaturesOrBuilder(
-          int index) {
+      /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
+      public trinsic.okapi.pbmse.v1.Pbmse.SignatureOrBuilder getSignaturesOrBuilder(int index) {
         if (signaturesBuilder_ == null) {
-          return signatures_.get(index);  } else {
+          return signatures_.get(index);
+        } else {
           return signaturesBuilder_.getMessageOrBuilder(index);
         }
       }
-      /**
-       * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-       */
-      public java.util.List<? extends trinsic.okapi.pbmse.v1.Pbmse.SignatureOrBuilder> 
-           getSignaturesOrBuilderList() {
+      /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
+      public java.util.List<? extends trinsic.okapi.pbmse.v1.Pbmse.SignatureOrBuilder>
+          getSignaturesOrBuilderList() {
         if (signaturesBuilder_ != null) {
           return signaturesBuilder_.getMessageOrBuilderList();
         } else {
           return java.util.Collections.unmodifiableList(signatures_);
         }
       }
-      /**
-       * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-       */
+      /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
       public trinsic.okapi.pbmse.v1.Pbmse.Signature.Builder addSignaturesBuilder() {
-        return getSignaturesFieldBuilder().addBuilder(
-            trinsic.okapi.pbmse.v1.Pbmse.Signature.getDefaultInstance());
+        return getSignaturesFieldBuilder()
+            .addBuilder(trinsic.okapi.pbmse.v1.Pbmse.Signature.getDefaultInstance());
       }
-      /**
-       * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-       */
-      public trinsic.okapi.pbmse.v1.Pbmse.Signature.Builder addSignaturesBuilder(
-          int index) {
-        return getSignaturesFieldBuilder().addBuilder(
-            index, trinsic.okapi.pbmse.v1.Pbmse.Signature.getDefaultInstance());
+      /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
+      public trinsic.okapi.pbmse.v1.Pbmse.Signature.Builder addSignaturesBuilder(int index) {
+        return getSignaturesFieldBuilder()
+            .addBuilder(index, trinsic.okapi.pbmse.v1.Pbmse.Signature.getDefaultInstance());
       }
-      /**
-       * <code>repeated .pbmse.v1.Signature signatures = 2;</code>
-       */
-      public java.util.List<trinsic.okapi.pbmse.v1.Pbmse.Signature.Builder> 
-           getSignaturesBuilderList() {
+      /** <code>repeated .pbmse.v1.Signature signatures = 2;</code> */
+      public java.util.List<trinsic.okapi.pbmse.v1.Pbmse.Signature.Builder>
+          getSignaturesBuilderList() {
         return getSignaturesFieldBuilder().getBuilderList();
       }
+
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          trinsic.okapi.pbmse.v1.Pbmse.Signature, trinsic.okapi.pbmse.v1.Pbmse.Signature.Builder, trinsic.okapi.pbmse.v1.Pbmse.SignatureOrBuilder> 
+              trinsic.okapi.pbmse.v1.Pbmse.Signature,
+              trinsic.okapi.pbmse.v1.Pbmse.Signature.Builder,
+              trinsic.okapi.pbmse.v1.Pbmse.SignatureOrBuilder>
           getSignaturesFieldBuilder() {
         if (signaturesBuilder_ == null) {
-          signaturesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              trinsic.okapi.pbmse.v1.Pbmse.Signature, trinsic.okapi.pbmse.v1.Pbmse.Signature.Builder, trinsic.okapi.pbmse.v1.Pbmse.SignatureOrBuilder>(
-                  signatures_,
-                  ((bitField0_ & 0x00000001) != 0),
-                  getParentForChildren(),
-                  isClean());
+          signaturesBuilder_ =
+              new com.google.protobuf.RepeatedFieldBuilderV3<
+                  trinsic.okapi.pbmse.v1.Pbmse.Signature,
+                  trinsic.okapi.pbmse.v1.Pbmse.Signature.Builder,
+                  trinsic.okapi.pbmse.v1.Pbmse.SignatureOrBuilder>(
+                  signatures_, ((bitField0_ & 0x00000001) != 0), getParentForChildren(), isClean());
           signatures_ = null;
         }
         return signaturesBuilder_;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1086,12 +1020,12 @@ public final class Pbmse {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:pbmse.v1.SignedMessage)
     }
 
     // @@protoc_insertion_point(class_scope:pbmse.v1.SignedMessage)
     private static final trinsic.okapi.pbmse.v1.Pbmse.SignedMessage DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.pbmse.v1.Pbmse.SignedMessage();
     }
@@ -1100,16 +1034,16 @@ public final class Pbmse {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<SignedMessage>
-        PARSER = new com.google.protobuf.AbstractParser<SignedMessage>() {
-      @java.lang.Override
-      public SignedMessage parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SignedMessage(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<SignedMessage> PARSER =
+        new com.google.protobuf.AbstractParser<SignedMessage>() {
+          @java.lang.Override
+          public SignedMessage parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new SignedMessage(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<SignedMessage> parser() {
       return PARSER;
@@ -1124,37 +1058,38 @@ public final class Pbmse {
     public trinsic.okapi.pbmse.v1.Pbmse.SignedMessage getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface SignatureOrBuilder extends
+  public interface SignatureOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:pbmse.v1.Signature)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>bytes header = 1;</code>
+     *
      * @return The header.
      */
     com.google.protobuf.ByteString getHeader();
 
     /**
      * <code>bytes signature = 3;</code>
+     *
      * @return The signature.
      */
     com.google.protobuf.ByteString getSignature();
   }
-  /**
-   * Protobuf type {@code pbmse.v1.Signature}
-   */
-  public static final class Signature extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code pbmse.v1.Signature} */
+  public static final class Signature extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:pbmse.v1.Signature)
       SignatureOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use Signature.newBuilder() to construct.
     private Signature(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private Signature() {
       header_ = com.google.protobuf.ByteString.EMPTY;
       signature_ = com.google.protobuf.ByteString.EMPTY;
@@ -1162,16 +1097,15 @@ public final class Pbmse {
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new Signature();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private Signature(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1190,23 +1124,23 @@ public final class Pbmse {
             case 0:
               done = true;
               break;
-            case 10: {
-
-              header_ = input.readBytes();
-              break;
-            }
-            case 26: {
-
-              signature_ = input.readBytes();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 10:
+              {
+                header_ = input.readBytes();
+                break;
               }
-              break;
-            }
+            case 26:
+              {
+                signature_ = input.readBytes();
+                break;
+              }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1214,15 +1148,14 @@ public final class Pbmse {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
       return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_Signature_descriptor;
     }
 
@@ -1231,13 +1164,15 @@ public final class Pbmse {
         internalGetFieldAccessorTable() {
       return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_Signature_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.pbmse.v1.Pbmse.Signature.class, trinsic.okapi.pbmse.v1.Pbmse.Signature.Builder.class);
+              trinsic.okapi.pbmse.v1.Pbmse.Signature.class,
+              trinsic.okapi.pbmse.v1.Pbmse.Signature.Builder.class);
     }
 
     public static final int HEADER_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString header_;
     /**
      * <code>bytes header = 1;</code>
+     *
      * @return The header.
      */
     @java.lang.Override
@@ -1249,6 +1184,7 @@ public final class Pbmse {
     private com.google.protobuf.ByteString signature_;
     /**
      * <code>bytes signature = 3;</code>
+     *
      * @return The signature.
      */
     @java.lang.Override
@@ -1257,6 +1193,7 @@ public final class Pbmse {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1268,8 +1205,7 @@ public final class Pbmse {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!header_.isEmpty()) {
         output.writeBytes(1, header_);
       }
@@ -1286,12 +1222,10 @@ public final class Pbmse {
 
       size = 0;
       if (!header_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, header_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(1, header_);
       }
       if (!signature_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, signature_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(3, signature_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1301,17 +1235,15 @@ public final class Pbmse {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.pbmse.v1.Pbmse.Signature)) {
         return super.equals(obj);
       }
       trinsic.okapi.pbmse.v1.Pbmse.Signature other = (trinsic.okapi.pbmse.v1.Pbmse.Signature) obj;
 
-      if (!getHeader()
-          .equals(other.getHeader())) return false;
-      if (!getSignature()
-          .equals(other.getSignature())) return false;
+      if (!getHeader().equals(other.getHeader())) return false;
+      if (!getSignature().equals(other.getSignature())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1332,88 +1264,94 @@ public final class Pbmse {
       return hash;
     }
 
-    public static trinsic.okapi.pbmse.v1.Pbmse.Signature parseFrom(
-        java.nio.ByteBuffer data)
+    public static trinsic.okapi.pbmse.v1.Pbmse.Signature parseFrom(java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.Signature parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.Signature parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.Signature parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.Signature parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.Signature parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.Signature parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.Signature parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.okapi.pbmse.v1.Pbmse.Signature parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.Signature parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.pbmse.v1.Pbmse.Signature parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.Signature parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.Signature parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.okapi.pbmse.v1.Pbmse.Signature prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -1422,15 +1360,13 @@ public final class Pbmse {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code pbmse.v1.Signature}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code pbmse.v1.Signature} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:pbmse.v1.Signature)
         trinsic.okapi.pbmse.v1.Pbmse.SignatureOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
         return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_Signature_descriptor;
       }
 
@@ -1439,7 +1375,8 @@ public final class Pbmse {
           internalGetFieldAccessorTable() {
         return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_Signature_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.pbmse.v1.Pbmse.Signature.class, trinsic.okapi.pbmse.v1.Pbmse.Signature.Builder.class);
+                trinsic.okapi.pbmse.v1.Pbmse.Signature.class,
+                trinsic.okapi.pbmse.v1.Pbmse.Signature.Builder.class);
       }
 
       // Construct using trinsic.okapi.pbmse.v1.Pbmse.Signature.newBuilder()
@@ -1447,16 +1384,15 @@ public final class Pbmse {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -1468,8 +1404,7 @@ public final class Pbmse {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
         return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_Signature_descriptor;
       }
 
@@ -1489,7 +1424,8 @@ public final class Pbmse {
 
       @java.lang.Override
       public trinsic.okapi.pbmse.v1.Pbmse.Signature buildPartial() {
-        trinsic.okapi.pbmse.v1.Pbmse.Signature result = new trinsic.okapi.pbmse.v1.Pbmse.Signature(this);
+        trinsic.okapi.pbmse.v1.Pbmse.Signature result =
+            new trinsic.okapi.pbmse.v1.Pbmse.Signature(this);
         result.header_ = header_;
         result.signature_ = signature_;
         onBuilt();
@@ -1500,38 +1436,41 @@ public final class Pbmse {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.pbmse.v1.Pbmse.Signature) {
-          return mergeFrom((trinsic.okapi.pbmse.v1.Pbmse.Signature)other);
+          return mergeFrom((trinsic.okapi.pbmse.v1.Pbmse.Signature) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -1578,6 +1517,7 @@ public final class Pbmse {
       private com.google.protobuf.ByteString header_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes header = 1;</code>
+       *
        * @return The header.
        */
       @java.lang.Override
@@ -1586,24 +1526,26 @@ public final class Pbmse {
       }
       /**
        * <code>bytes header = 1;</code>
+       *
        * @param value The header to set.
        * @return This builder for chaining.
        */
       public Builder setHeader(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         header_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>bytes header = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearHeader() {
-        
+
         header_ = getDefaultInstance().getHeader();
         onChanged();
         return this;
@@ -1612,6 +1554,7 @@ public final class Pbmse {
       private com.google.protobuf.ByteString signature_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes signature = 3;</code>
+       *
        * @return The signature.
        */
       @java.lang.Override
@@ -1620,28 +1563,31 @@ public final class Pbmse {
       }
       /**
        * <code>bytes signature = 3;</code>
+       *
        * @param value The signature to set.
        * @return This builder for chaining.
        */
       public Builder setSignature(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         signature_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>bytes signature = 3;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearSignature() {
-        
+
         signature_ = getDefaultInstance().getSignature();
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1654,12 +1600,12 @@ public final class Pbmse {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:pbmse.v1.Signature)
     }
 
     // @@protoc_insertion_point(class_scope:pbmse.v1.Signature)
     private static final trinsic.okapi.pbmse.v1.Pbmse.Signature DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.pbmse.v1.Pbmse.Signature();
     }
@@ -1668,16 +1614,16 @@ public final class Pbmse {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Signature>
-        PARSER = new com.google.protobuf.AbstractParser<Signature>() {
-      @java.lang.Override
-      public Signature parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Signature(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<Signature> PARSER =
+        new com.google.protobuf.AbstractParser<Signature>() {
+          @java.lang.Override
+          public Signature parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new Signature(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<Signature> parser() {
       return PARSER;
@@ -1692,49 +1638,50 @@ public final class Pbmse {
     public trinsic.okapi.pbmse.v1.Pbmse.Signature getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface SignatureHeaderOrBuilder extends
+  public interface SignatureHeaderOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:pbmse.v1.SignatureHeader)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>string algorithm = 1;</code>
+     *
      * @return The algorithm.
      */
     java.lang.String getAlgorithm();
     /**
      * <code>string algorithm = 1;</code>
+     *
      * @return The bytes for algorithm.
      */
-    com.google.protobuf.ByteString
-        getAlgorithmBytes();
+    com.google.protobuf.ByteString getAlgorithmBytes();
 
     /**
      * <code>string key_id = 2;</code>
+     *
      * @return The keyId.
      */
     java.lang.String getKeyId();
     /**
      * <code>string key_id = 2;</code>
+     *
      * @return The bytes for keyId.
      */
-    com.google.protobuf.ByteString
-        getKeyIdBytes();
+    com.google.protobuf.ByteString getKeyIdBytes();
   }
-  /**
-   * Protobuf type {@code pbmse.v1.SignatureHeader}
-   */
-  public static final class SignatureHeader extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code pbmse.v1.SignatureHeader} */
+  public static final class SignatureHeader extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:pbmse.v1.SignatureHeader)
       SignatureHeaderOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use SignatureHeader.newBuilder() to construct.
     private SignatureHeader(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private SignatureHeader() {
       algorithm_ = "";
       keyId_ = "";
@@ -1742,16 +1689,15 @@ public final class Pbmse {
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new SignatureHeader();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private SignatureHeader(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1770,25 +1716,27 @@ public final class Pbmse {
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 10:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
 
-              algorithm_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              keyId_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                algorithm_ = s;
+                break;
               }
-              break;
-            }
+            case 18:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                keyId_ = s;
+                break;
+              }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1796,30 +1744,32 @@ public final class Pbmse {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
       return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_SignatureHeader_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_SignatureHeader_fieldAccessorTable
+      return trinsic.okapi.pbmse.v1.Pbmse
+          .internal_static_pbmse_v1_SignatureHeader_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader.class, trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader.Builder.class);
+              trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader.class,
+              trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader.Builder.class);
     }
 
     public static final int ALGORITHM_FIELD_NUMBER = 1;
     private volatile java.lang.Object algorithm_;
     /**
      * <code>string algorithm = 1;</code>
+     *
      * @return The algorithm.
      */
     @java.lang.Override
@@ -1828,8 +1778,7 @@ public final class Pbmse {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         algorithm_ = s;
         return s;
@@ -1837,16 +1786,15 @@ public final class Pbmse {
     }
     /**
      * <code>string algorithm = 1;</code>
+     *
      * @return The bytes for algorithm.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getAlgorithmBytes() {
+    public com.google.protobuf.ByteString getAlgorithmBytes() {
       java.lang.Object ref = algorithm_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         algorithm_ = b;
         return b;
       } else {
@@ -1858,6 +1806,7 @@ public final class Pbmse {
     private volatile java.lang.Object keyId_;
     /**
      * <code>string key_id = 2;</code>
+     *
      * @return The keyId.
      */
     @java.lang.Override
@@ -1866,8 +1815,7 @@ public final class Pbmse {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         keyId_ = s;
         return s;
@@ -1875,16 +1823,15 @@ public final class Pbmse {
     }
     /**
      * <code>string key_id = 2;</code>
+     *
      * @return The bytes for keyId.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getKeyIdBytes() {
+    public com.google.protobuf.ByteString getKeyIdBytes() {
       java.lang.Object ref = keyId_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         keyId_ = b;
         return b;
       } else {
@@ -1893,6 +1840,7 @@ public final class Pbmse {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1904,8 +1852,7 @@ public final class Pbmse {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(algorithm_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, algorithm_);
       }
@@ -1935,17 +1882,16 @@ public final class Pbmse {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader)) {
         return super.equals(obj);
       }
-      trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader other = (trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader) obj;
+      trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader other =
+          (trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader) obj;
 
-      if (!getAlgorithm()
-          .equals(other.getAlgorithm())) return false;
-      if (!getKeyId()
-          .equals(other.getKeyId())) return false;
+      if (!getAlgorithm().equals(other.getAlgorithm())) return false;
+      if (!getKeyId().equals(other.getKeyId())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1966,88 +1912,94 @@ public final class Pbmse {
       return hash;
     }
 
-    public static trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader parseFrom(
-        java.nio.ByteBuffer data)
+    public static trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader parseFrom(java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -2056,24 +2008,24 @@ public final class Pbmse {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code pbmse.v1.SignatureHeader}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code pbmse.v1.SignatureHeader} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:pbmse.v1.SignatureHeader)
         trinsic.okapi.pbmse.v1.Pbmse.SignatureHeaderOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
         return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_SignatureHeader_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_SignatureHeader_fieldAccessorTable
+        return trinsic.okapi.pbmse.v1.Pbmse
+            .internal_static_pbmse_v1_SignatureHeader_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader.class, trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader.Builder.class);
+                trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader.class,
+                trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader.Builder.class);
       }
 
       // Construct using trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader.newBuilder()
@@ -2081,16 +2033,15 @@ public final class Pbmse {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -2102,8 +2053,7 @@ public final class Pbmse {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
         return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_SignatureHeader_descriptor;
       }
 
@@ -2123,7 +2073,8 @@ public final class Pbmse {
 
       @java.lang.Override
       public trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader buildPartial() {
-        trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader result = new trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader(this);
+        trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader result =
+            new trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader(this);
         result.algorithm_ = algorithm_;
         result.keyId_ = keyId_;
         onBuilt();
@@ -2134,38 +2085,41 @@ public final class Pbmse {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader) {
-          return mergeFrom((trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader)other);
+          return mergeFrom((trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -2214,13 +2168,13 @@ public final class Pbmse {
       private java.lang.Object algorithm_ = "";
       /**
        * <code>string algorithm = 1;</code>
+       *
        * @return The algorithm.
        */
       public java.lang.String getAlgorithm() {
         java.lang.Object ref = algorithm_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           algorithm_ = s;
           return s;
@@ -2230,15 +2184,14 @@ public final class Pbmse {
       }
       /**
        * <code>string algorithm = 1;</code>
+       *
        * @return The bytes for algorithm.
        */
-      public com.google.protobuf.ByteString
-          getAlgorithmBytes() {
+      public com.google.protobuf.ByteString getAlgorithmBytes() {
         java.lang.Object ref = algorithm_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           algorithm_ = b;
           return b;
         } else {
@@ -2247,41 +2200,42 @@ public final class Pbmse {
       }
       /**
        * <code>string algorithm = 1;</code>
+       *
        * @param value The algorithm to set.
        * @return This builder for chaining.
        */
-      public Builder setAlgorithm(
-          java.lang.String value) {
+      public Builder setAlgorithm(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         algorithm_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>string algorithm = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearAlgorithm() {
-        
+
         algorithm_ = getDefaultInstance().getAlgorithm();
         onChanged();
         return this;
       }
       /**
        * <code>string algorithm = 1;</code>
+       *
        * @param value The bytes for algorithm to set.
        * @return This builder for chaining.
        */
-      public Builder setAlgorithmBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setAlgorithmBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         algorithm_ = value;
         onChanged();
         return this;
@@ -2290,13 +2244,13 @@ public final class Pbmse {
       private java.lang.Object keyId_ = "";
       /**
        * <code>string key_id = 2;</code>
+       *
        * @return The keyId.
        */
       public java.lang.String getKeyId() {
         java.lang.Object ref = keyId_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           keyId_ = s;
           return s;
@@ -2306,15 +2260,14 @@ public final class Pbmse {
       }
       /**
        * <code>string key_id = 2;</code>
+       *
        * @return The bytes for keyId.
        */
-      public com.google.protobuf.ByteString
-          getKeyIdBytes() {
+      public com.google.protobuf.ByteString getKeyIdBytes() {
         java.lang.Object ref = keyId_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           keyId_ = b;
           return b;
         } else {
@@ -2323,45 +2276,47 @@ public final class Pbmse {
       }
       /**
        * <code>string key_id = 2;</code>
+       *
        * @param value The keyId to set.
        * @return This builder for chaining.
        */
-      public Builder setKeyId(
-          java.lang.String value) {
+      public Builder setKeyId(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         keyId_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>string key_id = 2;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearKeyId() {
-        
+
         keyId_ = getDefaultInstance().getKeyId();
         onChanged();
         return this;
       }
       /**
        * <code>string key_id = 2;</code>
+       *
        * @param value The bytes for keyId to set.
        * @return This builder for chaining.
        */
-      public Builder setKeyIdBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setKeyIdBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         keyId_ = value;
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -2374,12 +2329,12 @@ public final class Pbmse {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:pbmse.v1.SignatureHeader)
     }
 
     // @@protoc_insertion_point(class_scope:pbmse.v1.SignatureHeader)
     private static final trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader();
     }
@@ -2388,16 +2343,16 @@ public final class Pbmse {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<SignatureHeader>
-        PARSER = new com.google.protobuf.AbstractParser<SignatureHeader>() {
-      @java.lang.Override
-      public SignatureHeader parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SignatureHeader(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<SignatureHeader> PARSER =
+        new com.google.protobuf.AbstractParser<SignatureHeader>() {
+          @java.lang.Override
+          public SignatureHeader parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new SignatureHeader(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<SignatureHeader> parser() {
       return PARSER;
@@ -2412,73 +2367,64 @@ public final class Pbmse {
     public trinsic.okapi.pbmse.v1.Pbmse.SignatureHeader getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface EncryptedMessageOrBuilder extends
+  public interface EncryptedMessageOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:pbmse.v1.EncryptedMessage)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>bytes iv = 1 [json_name = "iv"];</code>
+     *
      * @return The iv.
      */
     com.google.protobuf.ByteString getIv();
 
     /**
      * <code>bytes aad = 2 [json_name = "aad"];</code>
+     *
      * @return The aad.
      */
     com.google.protobuf.ByteString getAad();
 
     /**
      * <code>bytes ciphertext = 3 [json_name = "ciphertext"];</code>
+     *
      * @return The ciphertext.
      */
     com.google.protobuf.ByteString getCiphertext();
 
     /**
      * <code>bytes tag = 4;</code>
+     *
      * @return The tag.
      */
     com.google.protobuf.ByteString getTag();
 
-    /**
-     * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-     */
-    java.util.List<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient> 
-        getRecipientsList();
-    /**
-     * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-     */
+    /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
+    java.util.List<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient> getRecipientsList();
+    /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
     trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient getRecipients(int index);
-    /**
-     * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-     */
+    /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
     int getRecipientsCount();
-    /**
-     * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-     */
-    java.util.List<? extends trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipientOrBuilder> 
+    /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
+    java.util.List<? extends trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipientOrBuilder>
         getRecipientsOrBuilderList();
-    /**
-     * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-     */
-    trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipientOrBuilder getRecipientsOrBuilder(
-        int index);
+    /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
+    trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipientOrBuilder getRecipientsOrBuilder(int index);
   }
-  /**
-   * Protobuf type {@code pbmse.v1.EncryptedMessage}
-   */
-  public static final class EncryptedMessage extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code pbmse.v1.EncryptedMessage} */
+  public static final class EncryptedMessage extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:pbmse.v1.EncryptedMessage)
       EncryptedMessageOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use EncryptedMessage.newBuilder() to construct.
     private EncryptedMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private EncryptedMessage() {
       iv_ = com.google.protobuf.ByteString.EMPTY;
       aad_ = com.google.protobuf.ByteString.EMPTY;
@@ -2489,16 +2435,15 @@ public final class Pbmse {
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new EncryptedMessage();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private EncryptedMessage(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2518,42 +2463,46 @@ public final class Pbmse {
             case 0:
               done = true;
               break;
-            case 10: {
-
-              iv_ = input.readBytes();
-              break;
-            }
-            case 18: {
-
-              aad_ = input.readBytes();
-              break;
-            }
-            case 26: {
-
-              ciphertext_ = input.readBytes();
-              break;
-            }
-            case 34: {
-
-              tag_ = input.readBytes();
-              break;
-            }
-            case 42: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                recipients_ = new java.util.ArrayList<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient>();
-                mutable_bitField0_ |= 0x00000001;
+            case 10:
+              {
+                iv_ = input.readBytes();
+                break;
               }
-              recipients_.add(
-                  input.readMessage(trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.parser(), extensionRegistry));
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 18:
+              {
+                aad_ = input.readBytes();
+                break;
               }
-              break;
-            }
+            case 26:
+              {
+                ciphertext_ = input.readBytes();
+                break;
+              }
+            case 34:
+              {
+                tag_ = input.readBytes();
+                break;
+              }
+            case 42:
+              {
+                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                  recipients_ =
+                      new java.util.ArrayList<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient>();
+                  mutable_bitField0_ |= 0x00000001;
+                }
+                recipients_.add(
+                    input.readMessage(
+                        trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.parser(),
+                        extensionRegistry));
+                break;
+              }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -2561,8 +2510,7 @@ public final class Pbmse {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
           recipients_ = java.util.Collections.unmodifiableList(recipients_);
@@ -2571,23 +2519,26 @@ public final class Pbmse {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
       return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_EncryptedMessage_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_EncryptedMessage_fieldAccessorTable
+      return trinsic.okapi.pbmse.v1.Pbmse
+          .internal_static_pbmse_v1_EncryptedMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.class, trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.Builder.class);
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.class,
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.Builder.class);
     }
 
     public static final int IV_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString iv_;
     /**
      * <code>bytes iv = 1 [json_name = "iv"];</code>
+     *
      * @return The iv.
      */
     @java.lang.Override
@@ -2599,6 +2550,7 @@ public final class Pbmse {
     private com.google.protobuf.ByteString aad_;
     /**
      * <code>bytes aad = 2 [json_name = "aad"];</code>
+     *
      * @return The aad.
      */
     @java.lang.Override
@@ -2610,6 +2562,7 @@ public final class Pbmse {
     private com.google.protobuf.ByteString ciphertext_;
     /**
      * <code>bytes ciphertext = 3 [json_name = "ciphertext"];</code>
+     *
      * @return The ciphertext.
      */
     @java.lang.Override
@@ -2621,6 +2574,7 @@ public final class Pbmse {
     private com.google.protobuf.ByteString tag_;
     /**
      * <code>bytes tag = 4;</code>
+     *
      * @return The tag.
      */
     @java.lang.Override
@@ -2630,38 +2584,28 @@ public final class Pbmse {
 
     public static final int RECIPIENTS_FIELD_NUMBER = 5;
     private java.util.List<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient> recipients_;
-    /**
-     * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-     */
+    /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
     @java.lang.Override
     public java.util.List<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient> getRecipientsList() {
       return recipients_;
     }
-    /**
-     * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-     */
+    /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
     @java.lang.Override
-    public java.util.List<? extends trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipientOrBuilder> 
+    public java.util.List<? extends trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipientOrBuilder>
         getRecipientsOrBuilderList() {
       return recipients_;
     }
-    /**
-     * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-     */
+    /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
     @java.lang.Override
     public int getRecipientsCount() {
       return recipients_.size();
     }
-    /**
-     * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-     */
+    /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
     @java.lang.Override
     public trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient getRecipients(int index) {
       return recipients_.get(index);
     }
-    /**
-     * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-     */
+    /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
     @java.lang.Override
     public trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipientOrBuilder getRecipientsOrBuilder(
         int index) {
@@ -2669,6 +2613,7 @@ public final class Pbmse {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -2680,8 +2625,7 @@ public final class Pbmse {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!iv_.isEmpty()) {
         output.writeBytes(1, iv_);
       }
@@ -2707,24 +2651,19 @@ public final class Pbmse {
 
       size = 0;
       if (!iv_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, iv_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(1, iv_);
       }
       if (!aad_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, aad_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(2, aad_);
       }
       if (!ciphertext_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, ciphertext_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(3, ciphertext_);
       }
       if (!tag_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, tag_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(4, tag_);
       }
       for (int i = 0; i < recipients_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, recipients_.get(i));
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(5, recipients_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2734,23 +2673,19 @@ public final class Pbmse {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage)) {
         return super.equals(obj);
       }
-      trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage other = (trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage) obj;
+      trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage other =
+          (trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage) obj;
 
-      if (!getIv()
-          .equals(other.getIv())) return false;
-      if (!getAad()
-          .equals(other.getAad())) return false;
-      if (!getCiphertext()
-          .equals(other.getCiphertext())) return false;
-      if (!getTag()
-          .equals(other.getTag())) return false;
-      if (!getRecipientsList()
-          .equals(other.getRecipientsList())) return false;
+      if (!getIv().equals(other.getIv())) return false;
+      if (!getAad().equals(other.getAad())) return false;
+      if (!getCiphertext().equals(other.getCiphertext())) return false;
+      if (!getTag().equals(other.getTag())) return false;
+      if (!getRecipientsList().equals(other.getRecipientsList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2779,88 +2714,94 @@ public final class Pbmse {
       return hash;
     }
 
-    public static trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage parseFrom(
-        java.nio.ByteBuffer data)
+    public static trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage parseFrom(java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -2869,24 +2810,24 @@ public final class Pbmse {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code pbmse.v1.EncryptedMessage}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code pbmse.v1.EncryptedMessage} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:pbmse.v1.EncryptedMessage)
         trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessageOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
         return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_EncryptedMessage_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_EncryptedMessage_fieldAccessorTable
+        return trinsic.okapi.pbmse.v1.Pbmse
+            .internal_static_pbmse_v1_EncryptedMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.class, trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.Builder.class);
+                trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.class,
+                trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.Builder.class);
       }
 
       // Construct using trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.newBuilder()
@@ -2894,17 +2835,17 @@ public final class Pbmse {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
           getRecipientsFieldBuilder();
         }
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -2926,8 +2867,7 @@ public final class Pbmse {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
         return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_EncryptedMessage_descriptor;
       }
 
@@ -2947,7 +2887,8 @@ public final class Pbmse {
 
       @java.lang.Override
       public trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage buildPartial() {
-        trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage result = new trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage(this);
+        trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage result =
+            new trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage(this);
         int from_bitField0_ = bitField0_;
         result.iv_ = iv_;
         result.aad_ = aad_;
@@ -2970,38 +2911,41 @@ public final class Pbmse {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage) {
-          return mergeFrom((trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage)other);
+          return mergeFrom((trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -3009,7 +2953,8 @@ public final class Pbmse {
       }
 
       public Builder mergeFrom(trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage other) {
-        if (other == trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.getDefaultInstance())
+          return this;
         if (other.getIv() != com.google.protobuf.ByteString.EMPTY) {
           setIv(other.getIv());
         }
@@ -3040,9 +2985,10 @@ public final class Pbmse {
               recipientsBuilder_ = null;
               recipients_ = other.recipients_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              recipientsBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getRecipientsFieldBuilder() : null;
+              recipientsBuilder_ =
+                  com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
+                      ? getRecipientsFieldBuilder()
+                      : null;
             } else {
               recipientsBuilder_.addAllMessages(other.recipients_);
             }
@@ -3076,11 +3022,13 @@ public final class Pbmse {
         }
         return this;
       }
+
       private int bitField0_;
 
       private com.google.protobuf.ByteString iv_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes iv = 1 [json_name = "iv"];</code>
+       *
        * @return The iv.
        */
       @java.lang.Override
@@ -3089,24 +3037,26 @@ public final class Pbmse {
       }
       /**
        * <code>bytes iv = 1 [json_name = "iv"];</code>
+       *
        * @param value The iv to set.
        * @return This builder for chaining.
        */
       public Builder setIv(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         iv_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>bytes iv = 1 [json_name = "iv"];</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearIv() {
-        
+
         iv_ = getDefaultInstance().getIv();
         onChanged();
         return this;
@@ -3115,6 +3065,7 @@ public final class Pbmse {
       private com.google.protobuf.ByteString aad_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes aad = 2 [json_name = "aad"];</code>
+       *
        * @return The aad.
        */
       @java.lang.Override
@@ -3123,24 +3074,26 @@ public final class Pbmse {
       }
       /**
        * <code>bytes aad = 2 [json_name = "aad"];</code>
+       *
        * @param value The aad to set.
        * @return This builder for chaining.
        */
       public Builder setAad(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         aad_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>bytes aad = 2 [json_name = "aad"];</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearAad() {
-        
+
         aad_ = getDefaultInstance().getAad();
         onChanged();
         return this;
@@ -3149,6 +3102,7 @@ public final class Pbmse {
       private com.google.protobuf.ByteString ciphertext_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes ciphertext = 3 [json_name = "ciphertext"];</code>
+       *
        * @return The ciphertext.
        */
       @java.lang.Override
@@ -3157,24 +3111,26 @@ public final class Pbmse {
       }
       /**
        * <code>bytes ciphertext = 3 [json_name = "ciphertext"];</code>
+       *
        * @param value The ciphertext to set.
        * @return This builder for chaining.
        */
       public Builder setCiphertext(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         ciphertext_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>bytes ciphertext = 3 [json_name = "ciphertext"];</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearCiphertext() {
-        
+
         ciphertext_ = getDefaultInstance().getCiphertext();
         onChanged();
         return this;
@@ -3183,6 +3139,7 @@ public final class Pbmse {
       private com.google.protobuf.ByteString tag_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes tag = 4;</code>
+       *
        * @return The tag.
        */
       @java.lang.Override
@@ -3191,44 +3148,50 @@ public final class Pbmse {
       }
       /**
        * <code>bytes tag = 4;</code>
+       *
        * @param value The tag to set.
        * @return This builder for chaining.
        */
       public Builder setTag(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         tag_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>bytes tag = 4;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearTag() {
-        
+
         tag_ = getDefaultInstance().getTag();
         onChanged();
         return this;
       }
 
       private java.util.List<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient> recipients_ =
-        java.util.Collections.emptyList();
+          java.util.Collections.emptyList();
+
       private void ensureRecipientsIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
-          recipients_ = new java.util.ArrayList<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient>(recipients_);
+          recipients_ =
+              new java.util.ArrayList<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient>(
+                  recipients_);
           bitField0_ |= 0x00000001;
-         }
+        }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient, trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.Builder, trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipientOrBuilder> recipientsBuilder_;
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient,
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.Builder,
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipientOrBuilder>
+          recipientsBuilder_;
 
-      /**
-       * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-       */
+      /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
       public java.util.List<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient> getRecipientsList() {
         if (recipientsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(recipients_);
@@ -3236,9 +3199,7 @@ public final class Pbmse {
           return recipientsBuilder_.getMessageList();
         }
       }
-      /**
-       * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-       */
+      /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
       public int getRecipientsCount() {
         if (recipientsBuilder_ == null) {
           return recipients_.size();
@@ -3246,9 +3207,7 @@ public final class Pbmse {
           return recipientsBuilder_.getCount();
         }
       }
-      /**
-       * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-       */
+      /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
       public trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient getRecipients(int index) {
         if (recipientsBuilder_ == null) {
           return recipients_.get(index);
@@ -3256,9 +3215,7 @@ public final class Pbmse {
           return recipientsBuilder_.getMessage(index);
         }
       }
-      /**
-       * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-       */
+      /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
       public Builder setRecipients(
           int index, trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient value) {
         if (recipientsBuilder_ == null) {
@@ -3273,9 +3230,7 @@ public final class Pbmse {
         }
         return this;
       }
-      /**
-       * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-       */
+      /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
       public Builder setRecipients(
           int index, trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.Builder builderForValue) {
         if (recipientsBuilder_ == null) {
@@ -3287,9 +3242,7 @@ public final class Pbmse {
         }
         return this;
       }
-      /**
-       * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-       */
+      /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
       public Builder addRecipients(trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient value) {
         if (recipientsBuilder_ == null) {
           if (value == null) {
@@ -3303,9 +3256,7 @@ public final class Pbmse {
         }
         return this;
       }
-      /**
-       * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-       */
+      /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
       public Builder addRecipients(
           int index, trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient value) {
         if (recipientsBuilder_ == null) {
@@ -3320,9 +3271,7 @@ public final class Pbmse {
         }
         return this;
       }
-      /**
-       * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-       */
+      /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
       public Builder addRecipients(
           trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.Builder builderForValue) {
         if (recipientsBuilder_ == null) {
@@ -3334,9 +3283,7 @@ public final class Pbmse {
         }
         return this;
       }
-      /**
-       * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-       */
+      /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
       public Builder addRecipients(
           int index, trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.Builder builderForValue) {
         if (recipientsBuilder_ == null) {
@@ -3348,24 +3295,19 @@ public final class Pbmse {
         }
         return this;
       }
-      /**
-       * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-       */
+      /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
       public Builder addAllRecipients(
           java.lang.Iterable<? extends trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient> values) {
         if (recipientsBuilder_ == null) {
           ensureRecipientsIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, recipients_);
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(values, recipients_);
           onChanged();
         } else {
           recipientsBuilder_.addAllMessages(values);
         }
         return this;
       }
-      /**
-       * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-       */
+      /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
       public Builder clearRecipients() {
         if (recipientsBuilder_ == null) {
           recipients_ = java.util.Collections.emptyList();
@@ -3376,9 +3318,7 @@ public final class Pbmse {
         }
         return this;
       }
-      /**
-       * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-       */
+      /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
       public Builder removeRecipients(int index) {
         if (recipientsBuilder_ == null) {
           ensureRecipientsIsMutable();
@@ -3389,70 +3329,64 @@ public final class Pbmse {
         }
         return this;
       }
-      /**
-       * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-       */
+      /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
       public trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.Builder getRecipientsBuilder(
           int index) {
         return getRecipientsFieldBuilder().getBuilder(index);
       }
-      /**
-       * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-       */
+      /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
       public trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipientOrBuilder getRecipientsOrBuilder(
           int index) {
         if (recipientsBuilder_ == null) {
-          return recipients_.get(index);  } else {
+          return recipients_.get(index);
+        } else {
           return recipientsBuilder_.getMessageOrBuilder(index);
         }
       }
-      /**
-       * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-       */
-      public java.util.List<? extends trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipientOrBuilder> 
-           getRecipientsOrBuilderList() {
+      /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
+      public java.util.List<? extends trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipientOrBuilder>
+          getRecipientsOrBuilderList() {
         if (recipientsBuilder_ != null) {
           return recipientsBuilder_.getMessageOrBuilderList();
         } else {
           return java.util.Collections.unmodifiableList(recipients_);
         }
       }
-      /**
-       * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-       */
+      /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
       public trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.Builder addRecipientsBuilder() {
-        return getRecipientsFieldBuilder().addBuilder(
-            trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.getDefaultInstance());
+        return getRecipientsFieldBuilder()
+            .addBuilder(trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.getDefaultInstance());
       }
-      /**
-       * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-       */
+      /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
       public trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.Builder addRecipientsBuilder(
           int index) {
-        return getRecipientsFieldBuilder().addBuilder(
-            index, trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.getDefaultInstance());
+        return getRecipientsFieldBuilder()
+            .addBuilder(
+                index, trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.getDefaultInstance());
       }
-      /**
-       * <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code>
-       */
-      public java.util.List<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.Builder> 
-           getRecipientsBuilderList() {
+      /** <code>repeated .pbmse.v1.EncryptionRecipient recipients = 5;</code> */
+      public java.util.List<trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.Builder>
+          getRecipientsBuilderList() {
         return getRecipientsFieldBuilder().getBuilderList();
       }
+
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient, trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.Builder, trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipientOrBuilder> 
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient,
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.Builder,
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipientOrBuilder>
           getRecipientsFieldBuilder() {
         if (recipientsBuilder_ == null) {
-          recipientsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient, trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.Builder, trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipientOrBuilder>(
-                  recipients_,
-                  ((bitField0_ & 0x00000001) != 0),
-                  getParentForChildren(),
-                  isClean());
+          recipientsBuilder_ =
+              new com.google.protobuf.RepeatedFieldBuilderV3<
+                  trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient,
+                  trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.Builder,
+                  trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipientOrBuilder>(
+                  recipients_, ((bitField0_ & 0x00000001) != 0), getParentForChildren(), isClean());
           recipients_ = null;
         }
         return recipientsBuilder_;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -3465,12 +3399,12 @@ public final class Pbmse {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:pbmse.v1.EncryptedMessage)
     }
 
     // @@protoc_insertion_point(class_scope:pbmse.v1.EncryptedMessage)
     private static final trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage();
     }
@@ -3479,16 +3413,16 @@ public final class Pbmse {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<EncryptedMessage>
-        PARSER = new com.google.protobuf.AbstractParser<EncryptedMessage>() {
-      @java.lang.Override
-      public EncryptedMessage parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new EncryptedMessage(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<EncryptedMessage> PARSER =
+        new com.google.protobuf.AbstractParser<EncryptedMessage>() {
+          @java.lang.Override
+          public EncryptedMessage parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new EncryptedMessage(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<EncryptedMessage> parser() {
       return PARSER;
@@ -3503,71 +3437,76 @@ public final class Pbmse {
     public trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface EncryptionHeaderOrBuilder extends
+  public interface EncryptionHeaderOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:pbmse.v1.EncryptionHeader)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>.pbmse.v1.EncryptionMode mode = 1 [json_name = "enc"];</code>
+     *
      * @return The enum numeric value on the wire for mode.
      */
     int getModeValue();
     /**
      * <code>.pbmse.v1.EncryptionMode mode = 1 [json_name = "enc"];</code>
+     *
      * @return The mode.
      */
     trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode getMode();
 
     /**
      * <code>.pbmse.v1.EncryptionAlgorithm algorithm = 2 [json_name = "alg"];</code>
+     *
      * @return The enum numeric value on the wire for algorithm.
      */
     int getAlgorithmValue();
     /**
      * <code>.pbmse.v1.EncryptionAlgorithm algorithm = 2 [json_name = "alg"];</code>
+     *
      * @return The algorithm.
      */
     trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm getAlgorithm();
 
     /**
      * <code>string key_id = 3 [json_name = "kid"];</code>
+     *
      * @return The keyId.
      */
     java.lang.String getKeyId();
     /**
      * <code>string key_id = 3 [json_name = "kid"];</code>
+     *
      * @return The bytes for keyId.
      */
-    com.google.protobuf.ByteString
-        getKeyIdBytes();
+    com.google.protobuf.ByteString getKeyIdBytes();
 
     /**
      * <code>string sender_key_id = 4 [json_name = "skid"];</code>
+     *
      * @return The senderKeyId.
      */
     java.lang.String getSenderKeyId();
     /**
      * <code>string sender_key_id = 4 [json_name = "skid"];</code>
+     *
      * @return The bytes for senderKeyId.
      */
-    com.google.protobuf.ByteString
-        getSenderKeyIdBytes();
+    com.google.protobuf.ByteString getSenderKeyIdBytes();
   }
-  /**
-   * Protobuf type {@code pbmse.v1.EncryptionHeader}
-   */
-  public static final class EncryptionHeader extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code pbmse.v1.EncryptionHeader} */
+  public static final class EncryptionHeader extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:pbmse.v1.EncryptionHeader)
       EncryptionHeaderOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use EncryptionHeader.newBuilder() to construct.
     private EncryptionHeader(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private EncryptionHeader() {
       mode_ = 0;
       algorithm_ = 0;
@@ -3577,16 +3516,15 @@ public final class Pbmse {
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new EncryptionHeader();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private EncryptionHeader(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -3605,37 +3543,41 @@ public final class Pbmse {
             case 0:
               done = true;
               break;
-            case 8: {
-              int rawValue = input.readEnum();
+            case 8:
+              {
+                int rawValue = input.readEnum();
 
-              mode_ = rawValue;
-              break;
-            }
-            case 16: {
-              int rawValue = input.readEnum();
-
-              algorithm_ = rawValue;
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              keyId_ = s;
-              break;
-            }
-            case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              senderKeyId_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                mode_ = rawValue;
+                break;
               }
-              break;
-            }
+            case 16:
+              {
+                int rawValue = input.readEnum();
+
+                algorithm_ = rawValue;
+                break;
+              }
+            case 26:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                keyId_ = s;
+                break;
+              }
+            case 34:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                senderKeyId_ = s;
+                break;
+              }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -3643,42 +3585,48 @@ public final class Pbmse {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
       return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_EncryptionHeader_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_EncryptionHeader_fieldAccessorTable
+      return trinsic.okapi.pbmse.v1.Pbmse
+          .internal_static_pbmse_v1_EncryptionHeader_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.class, trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.Builder.class);
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.class,
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.Builder.class);
     }
 
     public static final int MODE_FIELD_NUMBER = 1;
     private int mode_;
     /**
      * <code>.pbmse.v1.EncryptionMode mode = 1 [json_name = "enc"];</code>
+     *
      * @return The enum numeric value on the wire for mode.
      */
-    @java.lang.Override public int getModeValue() {
+    @java.lang.Override
+    public int getModeValue() {
       return mode_;
     }
     /**
      * <code>.pbmse.v1.EncryptionMode mode = 1 [json_name = "enc"];</code>
+     *
      * @return The mode.
      */
-    @java.lang.Override public trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode getMode() {
+    @java.lang.Override
+    public trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode getMode() {
       @SuppressWarnings("deprecation")
-      trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode result = trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode.valueOf(mode_);
+      trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode result =
+          trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode.valueOf(mode_);
       return result == null ? trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode.UNRECOGNIZED : result;
     }
 
@@ -3686,25 +3634,33 @@ public final class Pbmse {
     private int algorithm_;
     /**
      * <code>.pbmse.v1.EncryptionAlgorithm algorithm = 2 [json_name = "alg"];</code>
+     *
      * @return The enum numeric value on the wire for algorithm.
      */
-    @java.lang.Override public int getAlgorithmValue() {
+    @java.lang.Override
+    public int getAlgorithmValue() {
       return algorithm_;
     }
     /**
      * <code>.pbmse.v1.EncryptionAlgorithm algorithm = 2 [json_name = "alg"];</code>
+     *
      * @return The algorithm.
      */
-    @java.lang.Override public trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm getAlgorithm() {
+    @java.lang.Override
+    public trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm getAlgorithm() {
       @SuppressWarnings("deprecation")
-      trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm result = trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm.valueOf(algorithm_);
-      return result == null ? trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm.UNRECOGNIZED : result;
+      trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm result =
+          trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm.valueOf(algorithm_);
+      return result == null
+          ? trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm.UNRECOGNIZED
+          : result;
     }
 
     public static final int KEY_ID_FIELD_NUMBER = 3;
     private volatile java.lang.Object keyId_;
     /**
      * <code>string key_id = 3 [json_name = "kid"];</code>
+     *
      * @return The keyId.
      */
     @java.lang.Override
@@ -3713,8 +3669,7 @@ public final class Pbmse {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         keyId_ = s;
         return s;
@@ -3722,16 +3677,15 @@ public final class Pbmse {
     }
     /**
      * <code>string key_id = 3 [json_name = "kid"];</code>
+     *
      * @return The bytes for keyId.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getKeyIdBytes() {
+    public com.google.protobuf.ByteString getKeyIdBytes() {
       java.lang.Object ref = keyId_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         keyId_ = b;
         return b;
       } else {
@@ -3743,6 +3697,7 @@ public final class Pbmse {
     private volatile java.lang.Object senderKeyId_;
     /**
      * <code>string sender_key_id = 4 [json_name = "skid"];</code>
+     *
      * @return The senderKeyId.
      */
     @java.lang.Override
@@ -3751,8 +3706,7 @@ public final class Pbmse {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         senderKeyId_ = s;
         return s;
@@ -3760,16 +3714,15 @@ public final class Pbmse {
     }
     /**
      * <code>string sender_key_id = 4 [json_name = "skid"];</code>
+     *
      * @return The bytes for senderKeyId.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getSenderKeyIdBytes() {
+    public com.google.protobuf.ByteString getSenderKeyIdBytes() {
       java.lang.Object ref = senderKeyId_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         senderKeyId_ = b;
         return b;
       } else {
@@ -3778,6 +3731,7 @@ public final class Pbmse {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -3789,12 +3743,14 @@ public final class Pbmse {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (mode_ != trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode.ENCRYPTION_MODE_UNSPECIFIED.getNumber()) {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+      if (mode_
+          != trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode.ENCRYPTION_MODE_UNSPECIFIED.getNumber()) {
         output.writeEnum(1, mode_);
       }
-      if (algorithm_ != trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm.ENCRYPTION_ALGORITHM_UNSPECIFIED.getNumber()) {
+      if (algorithm_
+          != trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm.ENCRYPTION_ALGORITHM_UNSPECIFIED
+              .getNumber()) {
         output.writeEnum(2, algorithm_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(keyId_)) {
@@ -3812,13 +3768,14 @@ public final class Pbmse {
       if (size != -1) return size;
 
       size = 0;
-      if (mode_ != trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode.ENCRYPTION_MODE_UNSPECIFIED.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, mode_);
+      if (mode_
+          != trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode.ENCRYPTION_MODE_UNSPECIFIED.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream.computeEnumSize(1, mode_);
       }
-      if (algorithm_ != trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm.ENCRYPTION_ALGORITHM_UNSPECIFIED.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(2, algorithm_);
+      if (algorithm_
+          != trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm.ENCRYPTION_ALGORITHM_UNSPECIFIED
+              .getNumber()) {
+        size += com.google.protobuf.CodedOutputStream.computeEnumSize(2, algorithm_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(keyId_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, keyId_);
@@ -3834,19 +3791,18 @@ public final class Pbmse {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader)) {
         return super.equals(obj);
       }
-      trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader other = (trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader) obj;
+      trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader other =
+          (trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader) obj;
 
       if (mode_ != other.mode_) return false;
       if (algorithm_ != other.algorithm_) return false;
-      if (!getKeyId()
-          .equals(other.getKeyId())) return false;
-      if (!getSenderKeyId()
-          .equals(other.getSenderKeyId())) return false;
+      if (!getKeyId().equals(other.getKeyId())) return false;
+      if (!getSenderKeyId().equals(other.getSenderKeyId())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3871,88 +3827,94 @@ public final class Pbmse {
       return hash;
     }
 
-    public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader parseFrom(
-        java.nio.ByteBuffer data)
+    public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader parseFrom(java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -3961,24 +3923,24 @@ public final class Pbmse {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code pbmse.v1.EncryptionHeader}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code pbmse.v1.EncryptionHeader} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:pbmse.v1.EncryptionHeader)
         trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeaderOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
         return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_EncryptionHeader_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_EncryptionHeader_fieldAccessorTable
+        return trinsic.okapi.pbmse.v1.Pbmse
+            .internal_static_pbmse_v1_EncryptionHeader_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.class, trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.Builder.class);
+                trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.class,
+                trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.Builder.class);
       }
 
       // Construct using trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.newBuilder()
@@ -3986,16 +3948,15 @@ public final class Pbmse {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -4011,8 +3972,7 @@ public final class Pbmse {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
         return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_EncryptionHeader_descriptor;
       }
 
@@ -4032,7 +3992,8 @@ public final class Pbmse {
 
       @java.lang.Override
       public trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader buildPartial() {
-        trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader result = new trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader(this);
+        trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader result =
+            new trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader(this);
         result.mode_ = mode_;
         result.algorithm_ = algorithm_;
         result.keyId_ = keyId_;
@@ -4045,38 +4006,41 @@ public final class Pbmse {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader) {
-          return mergeFrom((trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader)other);
+          return mergeFrom((trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -4084,7 +4048,8 @@ public final class Pbmse {
       }
 
       public Builder mergeFrom(trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader other) {
-        if (other == trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.getDefaultInstance())
+          return this;
         if (other.mode_ != 0) {
           setModeValue(other.getModeValue());
         }
@@ -4131,34 +4096,40 @@ public final class Pbmse {
       private int mode_ = 0;
       /**
        * <code>.pbmse.v1.EncryptionMode mode = 1 [json_name = "enc"];</code>
+       *
        * @return The enum numeric value on the wire for mode.
        */
-      @java.lang.Override public int getModeValue() {
+      @java.lang.Override
+      public int getModeValue() {
         return mode_;
       }
       /**
        * <code>.pbmse.v1.EncryptionMode mode = 1 [json_name = "enc"];</code>
+       *
        * @param value The enum numeric value on the wire for mode to set.
        * @return This builder for chaining.
        */
       public Builder setModeValue(int value) {
-        
+
         mode_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>.pbmse.v1.EncryptionMode mode = 1 [json_name = "enc"];</code>
+       *
        * @return The mode.
        */
       @java.lang.Override
       public trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode getMode() {
         @SuppressWarnings("deprecation")
-        trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode result = trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode.valueOf(mode_);
+        trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode result =
+            trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode.valueOf(mode_);
         return result == null ? trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode.UNRECOGNIZED : result;
       }
       /**
        * <code>.pbmse.v1.EncryptionMode mode = 1 [json_name = "enc"];</code>
+       *
        * @param value The mode to set.
        * @return This builder for chaining.
        */
@@ -4166,17 +4137,18 @@ public final class Pbmse {
         if (value == null) {
           throw new NullPointerException();
         }
-        
+
         mode_ = value.getNumber();
         onChanged();
         return this;
       }
       /**
        * <code>.pbmse.v1.EncryptionMode mode = 1 [json_name = "enc"];</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearMode() {
-        
+
         mode_ = 0;
         onChanged();
         return this;
@@ -4185,34 +4157,42 @@ public final class Pbmse {
       private int algorithm_ = 0;
       /**
        * <code>.pbmse.v1.EncryptionAlgorithm algorithm = 2 [json_name = "alg"];</code>
+       *
        * @return The enum numeric value on the wire for algorithm.
        */
-      @java.lang.Override public int getAlgorithmValue() {
+      @java.lang.Override
+      public int getAlgorithmValue() {
         return algorithm_;
       }
       /**
        * <code>.pbmse.v1.EncryptionAlgorithm algorithm = 2 [json_name = "alg"];</code>
+       *
        * @param value The enum numeric value on the wire for algorithm to set.
        * @return This builder for chaining.
        */
       public Builder setAlgorithmValue(int value) {
-        
+
         algorithm_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>.pbmse.v1.EncryptionAlgorithm algorithm = 2 [json_name = "alg"];</code>
+       *
        * @return The algorithm.
        */
       @java.lang.Override
       public trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm getAlgorithm() {
         @SuppressWarnings("deprecation")
-        trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm result = trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm.valueOf(algorithm_);
-        return result == null ? trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm.UNRECOGNIZED : result;
+        trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm result =
+            trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm.valueOf(algorithm_);
+        return result == null
+            ? trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm.UNRECOGNIZED
+            : result;
       }
       /**
        * <code>.pbmse.v1.EncryptionAlgorithm algorithm = 2 [json_name = "alg"];</code>
+       *
        * @param value The algorithm to set.
        * @return This builder for chaining.
        */
@@ -4220,17 +4200,18 @@ public final class Pbmse {
         if (value == null) {
           throw new NullPointerException();
         }
-        
+
         algorithm_ = value.getNumber();
         onChanged();
         return this;
       }
       /**
        * <code>.pbmse.v1.EncryptionAlgorithm algorithm = 2 [json_name = "alg"];</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearAlgorithm() {
-        
+
         algorithm_ = 0;
         onChanged();
         return this;
@@ -4239,13 +4220,13 @@ public final class Pbmse {
       private java.lang.Object keyId_ = "";
       /**
        * <code>string key_id = 3 [json_name = "kid"];</code>
+       *
        * @return The keyId.
        */
       public java.lang.String getKeyId() {
         java.lang.Object ref = keyId_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           keyId_ = s;
           return s;
@@ -4255,15 +4236,14 @@ public final class Pbmse {
       }
       /**
        * <code>string key_id = 3 [json_name = "kid"];</code>
+       *
        * @return The bytes for keyId.
        */
-      public com.google.protobuf.ByteString
-          getKeyIdBytes() {
+      public com.google.protobuf.ByteString getKeyIdBytes() {
         java.lang.Object ref = keyId_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           keyId_ = b;
           return b;
         } else {
@@ -4272,41 +4252,42 @@ public final class Pbmse {
       }
       /**
        * <code>string key_id = 3 [json_name = "kid"];</code>
+       *
        * @param value The keyId to set.
        * @return This builder for chaining.
        */
-      public Builder setKeyId(
-          java.lang.String value) {
+      public Builder setKeyId(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         keyId_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>string key_id = 3 [json_name = "kid"];</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearKeyId() {
-        
+
         keyId_ = getDefaultInstance().getKeyId();
         onChanged();
         return this;
       }
       /**
        * <code>string key_id = 3 [json_name = "kid"];</code>
+       *
        * @param value The bytes for keyId to set.
        * @return This builder for chaining.
        */
-      public Builder setKeyIdBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setKeyIdBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         keyId_ = value;
         onChanged();
         return this;
@@ -4315,13 +4296,13 @@ public final class Pbmse {
       private java.lang.Object senderKeyId_ = "";
       /**
        * <code>string sender_key_id = 4 [json_name = "skid"];</code>
+       *
        * @return The senderKeyId.
        */
       public java.lang.String getSenderKeyId() {
         java.lang.Object ref = senderKeyId_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           senderKeyId_ = s;
           return s;
@@ -4331,15 +4312,14 @@ public final class Pbmse {
       }
       /**
        * <code>string sender_key_id = 4 [json_name = "skid"];</code>
+       *
        * @return The bytes for senderKeyId.
        */
-      public com.google.protobuf.ByteString
-          getSenderKeyIdBytes() {
+      public com.google.protobuf.ByteString getSenderKeyIdBytes() {
         java.lang.Object ref = senderKeyId_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           senderKeyId_ = b;
           return b;
         } else {
@@ -4348,45 +4328,47 @@ public final class Pbmse {
       }
       /**
        * <code>string sender_key_id = 4 [json_name = "skid"];</code>
+       *
        * @param value The senderKeyId to set.
        * @return This builder for chaining.
        */
-      public Builder setSenderKeyId(
-          java.lang.String value) {
+      public Builder setSenderKeyId(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         senderKeyId_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>string sender_key_id = 4 [json_name = "skid"];</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearSenderKeyId() {
-        
+
         senderKeyId_ = getDefaultInstance().getSenderKeyId();
         onChanged();
         return this;
       }
       /**
        * <code>string sender_key_id = 4 [json_name = "skid"];</code>
+       *
        * @param value The bytes for senderKeyId to set.
        * @return This builder for chaining.
        */
-      public Builder setSenderKeyIdBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setSenderKeyIdBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         senderKeyId_ = value;
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4399,12 +4381,12 @@ public final class Pbmse {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:pbmse.v1.EncryptionHeader)
     }
 
     // @@protoc_insertion_point(class_scope:pbmse.v1.EncryptionHeader)
     private static final trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader();
     }
@@ -4413,16 +4395,16 @@ public final class Pbmse {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<EncryptionHeader>
-        PARSER = new com.google.protobuf.AbstractParser<EncryptionHeader>() {
-      @java.lang.Override
-      public EncryptionHeader parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new EncryptionHeader(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<EncryptionHeader> PARSER =
+        new com.google.protobuf.AbstractParser<EncryptionHeader>() {
+          @java.lang.Override
+          public EncryptionHeader parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new EncryptionHeader(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<EncryptionHeader> parser() {
       return PARSER;
@@ -4437,62 +4419,61 @@ public final class Pbmse {
     public trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface EncryptionRecipientOrBuilder extends
+  public interface EncryptionRecipientOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:pbmse.v1.EncryptionRecipient)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>.pbmse.v1.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
+     *
      * @return Whether the header field is set.
      */
     boolean hasHeader();
     /**
      * <code>.pbmse.v1.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
+     *
      * @return The header.
      */
     trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader getHeader();
-    /**
-     * <code>.pbmse.v1.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
-     */
+    /** <code>.pbmse.v1.EncryptionHeader header = 1 [json_name = "unprotected"];</code> */
     trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeaderOrBuilder getHeaderOrBuilder();
 
     /**
      * <code>bytes content_encryption_key = 2 [json_name = "cek"];</code>
+     *
      * @return The contentEncryptionKey.
      */
     com.google.protobuf.ByteString getContentEncryptionKey();
   }
-  /**
-   * Protobuf type {@code pbmse.v1.EncryptionRecipient}
-   */
-  public static final class EncryptionRecipient extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code pbmse.v1.EncryptionRecipient} */
+  public static final class EncryptionRecipient extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:pbmse.v1.EncryptionRecipient)
       EncryptionRecipientOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use EncryptionRecipient.newBuilder() to construct.
     private EncryptionRecipient(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private EncryptionRecipient() {
       contentEncryptionKey_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new EncryptionRecipient();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private EncryptionRecipient(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -4511,31 +4492,34 @@ public final class Pbmse {
             case 0:
               done = true;
               break;
-            case 10: {
-              trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.Builder subBuilder = null;
-              if (header_ != null) {
-                subBuilder = header_.toBuilder();
-              }
-              header_ = input.readMessage(trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(header_);
-                header_ = subBuilder.buildPartial();
-              }
+            case 10:
+              {
+                trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.Builder subBuilder = null;
+                if (header_ != null) {
+                  subBuilder = header_.toBuilder();
+                }
+                header_ =
+                    input.readMessage(
+                        trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(header_);
+                  header_ = subBuilder.buildPartial();
+                }
 
-              break;
-            }
-            case 18: {
-
-              contentEncryptionKey_ = input.readBytes();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                break;
               }
-              break;
-            }
+            case 18:
+              {
+                contentEncryptionKey_ = input.readBytes();
+                break;
+              }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -4543,30 +4527,32 @@ public final class Pbmse {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
       return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_EncryptionRecipient_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_EncryptionRecipient_fieldAccessorTable
+      return trinsic.okapi.pbmse.v1.Pbmse
+          .internal_static_pbmse_v1_EncryptionRecipient_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.class, trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.Builder.class);
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.class,
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.Builder.class);
     }
 
     public static final int HEADER_FIELD_NUMBER = 1;
     private trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader header_;
     /**
      * <code>.pbmse.v1.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
+     *
      * @return Whether the header field is set.
      */
     @java.lang.Override
@@ -4575,15 +4561,16 @@ public final class Pbmse {
     }
     /**
      * <code>.pbmse.v1.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
+     *
      * @return The header.
      */
     @java.lang.Override
     public trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader getHeader() {
-      return header_ == null ? trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.getDefaultInstance() : header_;
+      return header_ == null
+          ? trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.getDefaultInstance()
+          : header_;
     }
-    /**
-     * <code>.pbmse.v1.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
-     */
+    /** <code>.pbmse.v1.EncryptionHeader header = 1 [json_name = "unprotected"];</code> */
     @java.lang.Override
     public trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeaderOrBuilder getHeaderOrBuilder() {
       return getHeader();
@@ -4593,6 +4580,7 @@ public final class Pbmse {
     private com.google.protobuf.ByteString contentEncryptionKey_;
     /**
      * <code>bytes content_encryption_key = 2 [json_name = "cek"];</code>
+     *
      * @return The contentEncryptionKey.
      */
     @java.lang.Override
@@ -4601,6 +4589,7 @@ public final class Pbmse {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -4612,8 +4601,7 @@ public final class Pbmse {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (header_ != null) {
         output.writeMessage(1, getHeader());
       }
@@ -4630,12 +4618,10 @@ public final class Pbmse {
 
       size = 0;
       if (header_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getHeader());
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getHeader());
       }
       if (!contentEncryptionKey_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, contentEncryptionKey_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(2, contentEncryptionKey_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4645,20 +4631,19 @@ public final class Pbmse {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient)) {
         return super.equals(obj);
       }
-      trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient other = (trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient) obj;
+      trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient other =
+          (trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient) obj;
 
       if (hasHeader() != other.hasHeader()) return false;
       if (hasHeader()) {
-        if (!getHeader()
-            .equals(other.getHeader())) return false;
+        if (!getHeader().equals(other.getHeader())) return false;
       }
-      if (!getContentEncryptionKey()
-          .equals(other.getContentEncryptionKey())) return false;
+      if (!getContentEncryptionKey().equals(other.getContentEncryptionKey())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -4682,87 +4667,93 @@ public final class Pbmse {
     }
 
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -4771,24 +4762,24 @@ public final class Pbmse {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code pbmse.v1.EncryptionRecipient}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code pbmse.v1.EncryptionRecipient} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:pbmse.v1.EncryptionRecipient)
         trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipientOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
         return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_EncryptionRecipient_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_EncryptionRecipient_fieldAccessorTable
+        return trinsic.okapi.pbmse.v1.Pbmse
+            .internal_static_pbmse_v1_EncryptionRecipient_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.class, trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.Builder.class);
+                trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.class,
+                trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.Builder.class);
       }
 
       // Construct using trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.newBuilder()
@@ -4796,16 +4787,15 @@ public final class Pbmse {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -4821,8 +4811,7 @@ public final class Pbmse {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
         return trinsic.okapi.pbmse.v1.Pbmse.internal_static_pbmse_v1_EncryptionRecipient_descriptor;
       }
 
@@ -4842,7 +4831,8 @@ public final class Pbmse {
 
       @java.lang.Override
       public trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient buildPartial() {
-        trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient result = new trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient(this);
+        trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient result =
+            new trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient(this);
         if (headerBuilder_ == null) {
           result.header_ = header_;
         } else {
@@ -4857,38 +4847,41 @@ public final class Pbmse {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient) {
-          return mergeFrom((trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient)other);
+          return mergeFrom((trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -4896,7 +4889,8 @@ public final class Pbmse {
       }
 
       public Builder mergeFrom(trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient other) {
-        if (other == trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient.getDefaultInstance())
+          return this;
         if (other.hasHeader()) {
           mergeHeader(other.getHeader());
         }
@@ -4922,7 +4916,8 @@ public final class Pbmse {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -4934,9 +4929,13 @@ public final class Pbmse {
 
       private trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader header_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader, trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.Builder, trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeaderOrBuilder> headerBuilder_;
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader,
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.Builder,
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeaderOrBuilder>
+          headerBuilder_;
       /**
        * <code>.pbmse.v1.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
+       *
        * @return Whether the header field is set.
        */
       public boolean hasHeader() {
@@ -4944,18 +4943,19 @@ public final class Pbmse {
       }
       /**
        * <code>.pbmse.v1.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
+       *
        * @return The header.
        */
       public trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader getHeader() {
         if (headerBuilder_ == null) {
-          return header_ == null ? trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.getDefaultInstance() : header_;
+          return header_ == null
+              ? trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.getDefaultInstance()
+              : header_;
         } else {
           return headerBuilder_.getMessage();
         }
       }
-      /**
-       * <code>.pbmse.v1.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
-       */
+      /** <code>.pbmse.v1.EncryptionHeader header = 1 [json_name = "unprotected"];</code> */
       public Builder setHeader(trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader value) {
         if (headerBuilder_ == null) {
           if (value == null) {
@@ -4969,9 +4969,7 @@ public final class Pbmse {
 
         return this;
       }
-      /**
-       * <code>.pbmse.v1.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
-       */
+      /** <code>.pbmse.v1.EncryptionHeader header = 1 [json_name = "unprotected"];</code> */
       public Builder setHeader(
           trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.Builder builderForValue) {
         if (headerBuilder_ == null) {
@@ -4983,14 +4981,14 @@ public final class Pbmse {
 
         return this;
       }
-      /**
-       * <code>.pbmse.v1.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
-       */
+      /** <code>.pbmse.v1.EncryptionHeader header = 1 [json_name = "unprotected"];</code> */
       public Builder mergeHeader(trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader value) {
         if (headerBuilder_ == null) {
           if (header_ != null) {
             header_ =
-              trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.newBuilder(header_).mergeFrom(value).buildPartial();
+                trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.newBuilder(header_)
+                    .mergeFrom(value)
+                    .buildPartial();
           } else {
             header_ = value;
           }
@@ -5001,9 +4999,7 @@ public final class Pbmse {
 
         return this;
       }
-      /**
-       * <code>.pbmse.v1.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
-       */
+      /** <code>.pbmse.v1.EncryptionHeader header = 1 [json_name = "unprotected"];</code> */
       public Builder clearHeader() {
         if (headerBuilder_ == null) {
           header_ = null;
@@ -5015,45 +5011,45 @@ public final class Pbmse {
 
         return this;
       }
-      /**
-       * <code>.pbmse.v1.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
-       */
+      /** <code>.pbmse.v1.EncryptionHeader header = 1 [json_name = "unprotected"];</code> */
       public trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.Builder getHeaderBuilder() {
-        
+
         onChanged();
         return getHeaderFieldBuilder().getBuilder();
       }
-      /**
-       * <code>.pbmse.v1.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
-       */
+      /** <code>.pbmse.v1.EncryptionHeader header = 1 [json_name = "unprotected"];</code> */
       public trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeaderOrBuilder getHeaderOrBuilder() {
         if (headerBuilder_ != null) {
           return headerBuilder_.getMessageOrBuilder();
         } else {
-          return header_ == null ?
-              trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.getDefaultInstance() : header_;
+          return header_ == null
+              ? trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.getDefaultInstance()
+              : header_;
         }
       }
-      /**
-       * <code>.pbmse.v1.EncryptionHeader header = 1 [json_name = "unprotected"];</code>
-       */
+      /** <code>.pbmse.v1.EncryptionHeader header = 1 [json_name = "unprotected"];</code> */
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader, trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.Builder, trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeaderOrBuilder> 
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader,
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.Builder,
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeaderOrBuilder>
           getHeaderFieldBuilder() {
         if (headerBuilder_ == null) {
-          headerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader, trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.Builder, trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeaderOrBuilder>(
-                  getHeader(),
-                  getParentForChildren(),
-                  isClean());
+          headerBuilder_ =
+              new com.google.protobuf.SingleFieldBuilderV3<
+                  trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader,
+                  trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeader.Builder,
+                  trinsic.okapi.pbmse.v1.Pbmse.EncryptionHeaderOrBuilder>(
+                  getHeader(), getParentForChildren(), isClean());
           header_ = null;
         }
         return headerBuilder_;
       }
 
-      private com.google.protobuf.ByteString contentEncryptionKey_ = com.google.protobuf.ByteString.EMPTY;
+      private com.google.protobuf.ByteString contentEncryptionKey_ =
+          com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes content_encryption_key = 2 [json_name = "cek"];</code>
+       *
        * @return The contentEncryptionKey.
        */
       @java.lang.Override
@@ -5062,28 +5058,31 @@ public final class Pbmse {
       }
       /**
        * <code>bytes content_encryption_key = 2 [json_name = "cek"];</code>
+       *
        * @param value The contentEncryptionKey to set.
        * @return This builder for chaining.
        */
       public Builder setContentEncryptionKey(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         contentEncryptionKey_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>bytes content_encryption_key = 2 [json_name = "cek"];</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearContentEncryptionKey() {
-        
+
         contentEncryptionKey_ = getDefaultInstance().getContentEncryptionKey();
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -5096,12 +5095,12 @@ public final class Pbmse {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:pbmse.v1.EncryptionRecipient)
     }
 
     // @@protoc_insertion_point(class_scope:pbmse.v1.EncryptionRecipient)
     private static final trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient();
     }
@@ -5110,16 +5109,16 @@ public final class Pbmse {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<EncryptionRecipient>
-        PARSER = new com.google.protobuf.AbstractParser<EncryptionRecipient>() {
-      @java.lang.Override
-      public EncryptionRecipient parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new EncryptionRecipient(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<EncryptionRecipient> PARSER =
+        new com.google.protobuf.AbstractParser<EncryptionRecipient>() {
+          @java.lang.Override
+          public EncryptionRecipient parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new EncryptionRecipient(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<EncryptionRecipient> parser() {
       return PARSER;
@@ -5134,114 +5133,123 @@ public final class Pbmse {
     public trinsic.okapi.pbmse.v1.Pbmse.EncryptionRecipient getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_pbmse_v1_SignedMessage_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_pbmse_v1_SignedMessage_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_pbmse_v1_SignedMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_pbmse_v1_Signature_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_pbmse_v1_Signature_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_pbmse_v1_Signature_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_pbmse_v1_SignatureHeader_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_pbmse_v1_SignatureHeader_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_pbmse_v1_SignatureHeader_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_pbmse_v1_EncryptedMessage_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_pbmse_v1_EncryptedMessage_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_pbmse_v1_EncryptedMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_pbmse_v1_EncryptionHeader_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_pbmse_v1_EncryptionHeader_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_pbmse_v1_EncryptionHeader_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_pbmse_v1_EncryptionRecipient_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_pbmse_v1_EncryptionRecipient_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_pbmse_v1_EncryptionRecipient_fieldAccessorTable;
 
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
+  public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
+
+  private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
+
   static {
     java.lang.String[] descriptorData = {
-      "\n\024pbmse/v1/pbmse.proto\022\010pbmse.v1\"I\n\rSign" +
-      "edMessage\022\017\n\007payload\030\001 \001(\014\022\'\n\nsignatures" +
-      "\030\002 \003(\0132\023.pbmse.v1.Signature\".\n\tSignature" +
-      "\022\016\n\006header\030\001 \001(\014\022\021\n\tsignature\030\003 \001(\014\"4\n\017S" +
-      "ignatureHeader\022\021\n\talgorithm\030\001 \001(\t\022\016\n\006key" +
-      "_id\030\002 \001(\t\"\224\001\n\020EncryptedMessage\022\016\n\002iv\030\001 \001" +
-      "(\014R\002iv\022\020\n\003aad\030\002 \001(\014R\003aad\022\036\n\nciphertext\030\003" +
-      " \001(\014R\nciphertext\022\013\n\003tag\030\004 \001(\014\0221\n\nrecipie" +
-      "nts\030\005 \003(\0132\035.pbmse.v1.EncryptionRecipient" +
-      "\"\250\001\n\020EncryptionHeader\022+\n\004mode\030\001 \001(\0162\030.pb" +
-      "mse.v1.EncryptionModeR\003enc\0225\n\talgorithm\030" +
-      "\002 \001(\0162\035.pbmse.v1.EncryptionAlgorithmR\003al" +
-      "g\022\023\n\006key_id\030\003 \001(\tR\003kid\022\033\n\rsender_key_id\030" +
-      "\004 \001(\tR\004skid\"s\n\023EncryptionRecipient\0227\n\006he" +
-      "ader\030\001 \001(\0132\032.pbmse.v1.EncryptionHeaderR\013" +
-      "unprotected\022#\n\026content_encryption_key\030\002 " +
-      "\001(\014R\003cek*y\n\016EncryptionMode\022\037\n\033ENCRYPTION" +
-      "_MODE_UNSPECIFIED\020\000\022\032\n\026ENCRYPTION_MODE_D" +
-      "IRECT\020\001\022*\n&ENCRYPTION_MODE_CONTENT_ENCRY" +
-      "PTION_KEY\020\002*\211\001\n\023EncryptionAlgorithm\022$\n E" +
-      "NCRYPTION_ALGORITHM_UNSPECIFIED\020\000\022*\n&ENC" +
-      "RYPTION_ALGORITHM_XCHACHA20POLY1305\020\001\022 \n" +
-      "\034ENCRYPTION_ALGORITHM_AES_GCM\020\002B:\n\026trins" +
-      "ic.okapi.pbmse.v1Z github.com/trinsic-id" +
-      "/okapiprotob\006proto3"
+      "\n"
+          + "\024pbmse/v1/pbmse.proto\022\010pbmse.v1\"I\n\r"
+          + "SignedMessage\022\017\n"
+          + "\007payload\030\001 \001(\014\022\'\n\n"
+          + "signatures\030\002 \003(\0132\023.pbmse.v1.Signature\".\n"
+          + "\tSignature\022\016\n"
+          + "\006header\030\001 \001(\014\022\021\n"
+          + "\tsignature\030\003 \001(\014\"4\n"
+          + "\017SignatureHeader\022\021\n"
+          + "\talgorithm\030\001 \001(\t\022\016\n"
+          + "\006key_id\030\002 \001(\t\"\224\001\n"
+          + "\020EncryptedMessage\022\016\n"
+          + "\002iv\030\001 \001(\014R\002iv\022\020\n"
+          + "\003aad\030\002 \001(\014R\003aad\022\036\n\n"
+          + "ciphertext\030\003 \001(\014R\n"
+          + "ciphertext\022\013\n"
+          + "\003tag\030\004 \001(\014\0221\n\n"
+          + "recipients\030\005 \003(\0132\035.pbmse.v1.EncryptionRecipient\"\250\001\n"
+          + "\020EncryptionHeader\022+\n"
+          + "\004mode\030\001 \001(\0162\030.pbmse.v1.EncryptionModeR\003enc\0225\n"
+          + "\talgorithm\030\002 \001(\0162\035.pbmse.v1.EncryptionAlgorithmR\003alg\022\023\n"
+          + "\006key_id\030\003 \001(\tR\003kid\022\033\n\r"
+          + "sender_key_id\030\004 \001(\tR\004skid\"s\n"
+          + "\023EncryptionRecipient\0227\n"
+          + "\006header\030\001 \001(\0132\032.pbmse.v1.EncryptionHeaderR\013unprotected\022#\n"
+          + "\026content_encryption_key\030\002 \001(\014R\003cek*y\n"
+          + "\016EncryptionMode\022\037\n"
+          + "\033ENCRYPTION_MODE_UNSPECIFIED\020\000\022\032\n"
+          + "\026ENCRYPTION_MODE_DIRECT\020\001\022*\n"
+          + "&ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY\020\002*\211\001\n"
+          + "\023EncryptionAlgorithm\022$\n"
+          + " ENCRYPTION_ALGORITHM_UNSPECIFIED\020\000\022*\n"
+          + "&ENCRYPTION_ALGORITHM_XCHACHA20POLY1305\020\001\022 \n"
+          + "\034ENCRYPTION_ALGORITHM_AES_GCM\020\002B(\n"
+          + "\026trinsic.okapi.pbmse.v1Z\016pbmse/v1/pbmseb\006proto3"
     };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-        });
-    internal_static_pbmse_v1_SignedMessage_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_pbmse_v1_SignedMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_pbmse_v1_SignedMessage_descriptor,
-        new java.lang.String[] { "Payload", "Signatures", });
-    internal_static_pbmse_v1_Signature_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_pbmse_v1_Signature_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_pbmse_v1_Signature_descriptor,
-        new java.lang.String[] { "Header", "Signature", });
-    internal_static_pbmse_v1_SignatureHeader_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_pbmse_v1_SignatureHeader_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_pbmse_v1_SignatureHeader_descriptor,
-        new java.lang.String[] { "Algorithm", "KeyId", });
-    internal_static_pbmse_v1_EncryptedMessage_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_pbmse_v1_EncryptedMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_pbmse_v1_EncryptedMessage_descriptor,
-        new java.lang.String[] { "Iv", "Aad", "Ciphertext", "Tag", "Recipients", });
-    internal_static_pbmse_v1_EncryptionHeader_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_pbmse_v1_EncryptionHeader_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_pbmse_v1_EncryptionHeader_descriptor,
-        new java.lang.String[] { "Mode", "Algorithm", "KeyId", "SenderKeyId", });
+    descriptor =
+        com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
+            descriptorData, new com.google.protobuf.Descriptors.FileDescriptor[] {});
+    internal_static_pbmse_v1_SignedMessage_descriptor = getDescriptor().getMessageTypes().get(0);
+    internal_static_pbmse_v1_SignedMessage_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_pbmse_v1_SignedMessage_descriptor,
+            new java.lang.String[] {
+              "Payload", "Signatures",
+            });
+    internal_static_pbmse_v1_Signature_descriptor = getDescriptor().getMessageTypes().get(1);
+    internal_static_pbmse_v1_Signature_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_pbmse_v1_Signature_descriptor,
+            new java.lang.String[] {
+              "Header", "Signature",
+            });
+    internal_static_pbmse_v1_SignatureHeader_descriptor = getDescriptor().getMessageTypes().get(2);
+    internal_static_pbmse_v1_SignatureHeader_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_pbmse_v1_SignatureHeader_descriptor,
+            new java.lang.String[] {
+              "Algorithm", "KeyId",
+            });
+    internal_static_pbmse_v1_EncryptedMessage_descriptor = getDescriptor().getMessageTypes().get(3);
+    internal_static_pbmse_v1_EncryptedMessage_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_pbmse_v1_EncryptedMessage_descriptor,
+            new java.lang.String[] {
+              "Iv", "Aad", "Ciphertext", "Tag", "Recipients",
+            });
+    internal_static_pbmse_v1_EncryptionHeader_descriptor = getDescriptor().getMessageTypes().get(4);
+    internal_static_pbmse_v1_EncryptionHeader_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_pbmse_v1_EncryptionHeader_descriptor,
+            new java.lang.String[] {
+              "Mode", "Algorithm", "KeyId", "SenderKeyId",
+            });
     internal_static_pbmse_v1_EncryptionRecipient_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_pbmse_v1_EncryptionRecipient_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_pbmse_v1_EncryptionRecipient_descriptor,
-        new java.lang.String[] { "Header", "ContentEncryptionKey", });
+        getDescriptor().getMessageTypes().get(5);
+    internal_static_pbmse_v1_EncryptionRecipient_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_pbmse_v1_EncryptionRecipient_descriptor,
+            new java.lang.String[] {
+              "Header", "ContentEncryptionKey",
+            });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

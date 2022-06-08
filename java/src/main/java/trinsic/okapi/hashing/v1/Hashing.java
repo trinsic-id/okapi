@@ -5,53 +5,51 @@ package trinsic.okapi.hashing.v1;
 
 public final class Hashing {
   private Hashing() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {}
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
   }
 
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
-  }
-  public interface Blake3HashRequestOrBuilder extends
+  public interface Blake3HashRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.hashing.v1.Blake3HashRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>bytes data = 1;</code>
+     *
      * @return The data.
      */
     com.google.protobuf.ByteString getData();
   }
-  /**
-   * Protobuf type {@code okapi.hashing.v1.Blake3HashRequest}
-   */
-  public static final class Blake3HashRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code okapi.hashing.v1.Blake3HashRequest} */
+  public static final class Blake3HashRequest extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.hashing.v1.Blake3HashRequest)
       Blake3HashRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use Blake3HashRequest.newBuilder() to construct.
     private Blake3HashRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private Blake3HashRequest() {
       data_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new Blake3HashRequest();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private Blake3HashRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -70,18 +68,18 @@ public final class Hashing {
             case 0:
               done = true;
               break;
-            case 10: {
-
-              data_ = input.readBytes();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 10:
+              {
+                data_ = input.readBytes();
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -89,30 +87,33 @@ public final class Hashing {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3HashRequest_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.hashing.v1.Hashing
+          .internal_static_okapi_hashing_v1_Blake3HashRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3HashRequest_fieldAccessorTable
+      return trinsic.okapi.hashing.v1.Hashing
+          .internal_static_okapi_hashing_v1_Blake3HashRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest.class, trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest.Builder.class);
+              trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest.class,
+              trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest.Builder.class);
     }
 
     public static final int DATA_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString data_;
     /**
      * <code>bytes data = 1;</code>
+     *
      * @return The data.
      */
     @java.lang.Override
@@ -121,6 +122,7 @@ public final class Hashing {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -132,8 +134,7 @@ public final class Hashing {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!data_.isEmpty()) {
         output.writeBytes(1, data_);
       }
@@ -147,8 +148,7 @@ public final class Hashing {
 
       size = 0;
       if (!data_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, data_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(1, data_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -158,15 +158,15 @@ public final class Hashing {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest)) {
         return super.equals(obj);
       }
-      trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest other = (trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest) obj;
+      trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest other =
+          (trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest) obj;
 
-      if (!getData()
-          .equals(other.getData())) return false;
+      if (!getData().equals(other.getData())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -186,87 +186,93 @@ public final class Hashing {
     }
 
     public static trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -275,24 +281,25 @@ public final class Hashing {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code okapi.hashing.v1.Blake3HashRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code okapi.hashing.v1.Blake3HashRequest} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.hashing.v1.Blake3HashRequest)
         trinsic.okapi.hashing.v1.Hashing.Blake3HashRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3HashRequest_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.hashing.v1.Hashing
+            .internal_static_okapi_hashing_v1_Blake3HashRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3HashRequest_fieldAccessorTable
+        return trinsic.okapi.hashing.v1.Hashing
+            .internal_static_okapi_hashing_v1_Blake3HashRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest.class, trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest.Builder.class);
+                trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest.class,
+                trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest.Builder.class);
       }
 
       // Construct using trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest.newBuilder()
@@ -300,16 +307,15 @@ public final class Hashing {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -319,9 +325,9 @@ public final class Hashing {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3HashRequest_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.hashing.v1.Hashing
+            .internal_static_okapi_hashing_v1_Blake3HashRequest_descriptor;
       }
 
       @java.lang.Override
@@ -340,7 +346,8 @@ public final class Hashing {
 
       @java.lang.Override
       public trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest buildPartial() {
-        trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest result = new trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest(this);
+        trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest result =
+            new trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest(this);
         result.data_ = data_;
         onBuilt();
         return result;
@@ -350,38 +357,41 @@ public final class Hashing {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest) {
-          return mergeFrom((trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest)other);
+          return mergeFrom((trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -389,7 +399,8 @@ public final class Hashing {
       }
 
       public Builder mergeFrom(trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest other) {
-        if (other == trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest.getDefaultInstance())
+          return this;
         if (other.getData() != com.google.protobuf.ByteString.EMPTY) {
           setData(other.getData());
         }
@@ -412,7 +423,8 @@ public final class Hashing {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -425,6 +437,7 @@ public final class Hashing {
       private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes data = 1;</code>
+       *
        * @return The data.
        */
       @java.lang.Override
@@ -433,28 +446,31 @@ public final class Hashing {
       }
       /**
        * <code>bytes data = 1;</code>
+       *
        * @param value The data to set.
        * @return This builder for chaining.
        */
       public Builder setData(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         data_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>bytes data = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearData() {
-        
+
         data_ = getDefaultInstance().getData();
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -467,12 +483,12 @@ public final class Hashing {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.hashing.v1.Blake3HashRequest)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.hashing.v1.Blake3HashRequest)
     private static final trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest();
     }
@@ -481,16 +497,16 @@ public final class Hashing {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Blake3HashRequest>
-        PARSER = new com.google.protobuf.AbstractParser<Blake3HashRequest>() {
-      @java.lang.Override
-      public Blake3HashRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Blake3HashRequest(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<Blake3HashRequest> PARSER =
+        new com.google.protobuf.AbstractParser<Blake3HashRequest>() {
+          @java.lang.Override
+          public Blake3HashRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new Blake3HashRequest(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<Blake3HashRequest> parser() {
       return PARSER;
@@ -505,47 +521,46 @@ public final class Hashing {
     public trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface Blake3HashResponseOrBuilder extends
+  public interface Blake3HashResponseOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.hashing.v1.Blake3HashResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>bytes digest = 1;</code>
+     *
      * @return The digest.
      */
     com.google.protobuf.ByteString getDigest();
   }
-  /**
-   * Protobuf type {@code okapi.hashing.v1.Blake3HashResponse}
-   */
-  public static final class Blake3HashResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code okapi.hashing.v1.Blake3HashResponse} */
+  public static final class Blake3HashResponse extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.hashing.v1.Blake3HashResponse)
       Blake3HashResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use Blake3HashResponse.newBuilder() to construct.
     private Blake3HashResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private Blake3HashResponse() {
       digest_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new Blake3HashResponse();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private Blake3HashResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -564,18 +579,18 @@ public final class Hashing {
             case 0:
               done = true;
               break;
-            case 10: {
-
-              digest_ = input.readBytes();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 10:
+              {
+                digest_ = input.readBytes();
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -583,30 +598,33 @@ public final class Hashing {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3HashResponse_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.hashing.v1.Hashing
+          .internal_static_okapi_hashing_v1_Blake3HashResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3HashResponse_fieldAccessorTable
+      return trinsic.okapi.hashing.v1.Hashing
+          .internal_static_okapi_hashing_v1_Blake3HashResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse.class, trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse.Builder.class);
+              trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse.class,
+              trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse.Builder.class);
     }
 
     public static final int DIGEST_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString digest_;
     /**
      * <code>bytes digest = 1;</code>
+     *
      * @return The digest.
      */
     @java.lang.Override
@@ -615,6 +633,7 @@ public final class Hashing {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -626,8 +645,7 @@ public final class Hashing {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!digest_.isEmpty()) {
         output.writeBytes(1, digest_);
       }
@@ -641,8 +659,7 @@ public final class Hashing {
 
       size = 0;
       if (!digest_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, digest_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(1, digest_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -652,15 +669,15 @@ public final class Hashing {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse)) {
         return super.equals(obj);
       }
-      trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse other = (trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse) obj;
+      trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse other =
+          (trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse) obj;
 
-      if (!getDigest()
-          .equals(other.getDigest())) return false;
+      if (!getDigest().equals(other.getDigest())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -680,87 +697,94 @@ public final class Hashing {
     }
 
     public static trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse prototype) {
+
+    public static Builder newBuilder(
+        trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -769,24 +793,25 @@ public final class Hashing {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code okapi.hashing.v1.Blake3HashResponse}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code okapi.hashing.v1.Blake3HashResponse} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.hashing.v1.Blake3HashResponse)
         trinsic.okapi.hashing.v1.Hashing.Blake3HashResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3HashResponse_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.hashing.v1.Hashing
+            .internal_static_okapi_hashing_v1_Blake3HashResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3HashResponse_fieldAccessorTable
+        return trinsic.okapi.hashing.v1.Hashing
+            .internal_static_okapi_hashing_v1_Blake3HashResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse.class, trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse.Builder.class);
+                trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse.class,
+                trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse.Builder.class);
       }
 
       // Construct using trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse.newBuilder()
@@ -794,16 +819,15 @@ public final class Hashing {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -813,9 +837,9 @@ public final class Hashing {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3HashResponse_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.hashing.v1.Hashing
+            .internal_static_okapi_hashing_v1_Blake3HashResponse_descriptor;
       }
 
       @java.lang.Override
@@ -834,7 +858,8 @@ public final class Hashing {
 
       @java.lang.Override
       public trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse buildPartial() {
-        trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse result = new trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse(this);
+        trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse result =
+            new trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse(this);
         result.digest_ = digest_;
         onBuilt();
         return result;
@@ -844,38 +869,41 @@ public final class Hashing {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse) {
-          return mergeFrom((trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse)other);
+          return mergeFrom((trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -883,7 +911,8 @@ public final class Hashing {
       }
 
       public Builder mergeFrom(trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse other) {
-        if (other == trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse.getDefaultInstance())
+          return this;
         if (other.getDigest() != com.google.protobuf.ByteString.EMPTY) {
           setDigest(other.getDigest());
         }
@@ -906,7 +935,8 @@ public final class Hashing {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -919,6 +949,7 @@ public final class Hashing {
       private com.google.protobuf.ByteString digest_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes digest = 1;</code>
+       *
        * @return The digest.
        */
       @java.lang.Override
@@ -927,28 +958,31 @@ public final class Hashing {
       }
       /**
        * <code>bytes digest = 1;</code>
+       *
        * @param value The digest to set.
        * @return This builder for chaining.
        */
       public Builder setDigest(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         digest_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>bytes digest = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearDigest() {
-        
+
         digest_ = getDefaultInstance().getDigest();
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -961,12 +995,12 @@ public final class Hashing {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.hashing.v1.Blake3HashResponse)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.hashing.v1.Blake3HashResponse)
     private static final trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse();
     }
@@ -975,16 +1009,16 @@ public final class Hashing {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Blake3HashResponse>
-        PARSER = new com.google.protobuf.AbstractParser<Blake3HashResponse>() {
-      @java.lang.Override
-      public Blake3HashResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Blake3HashResponse(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<Blake3HashResponse> PARSER =
+        new com.google.protobuf.AbstractParser<Blake3HashResponse>() {
+          @java.lang.Override
+          public Blake3HashResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new Blake3HashResponse(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<Blake3HashResponse> parser() {
       return PARSER;
@@ -999,37 +1033,38 @@ public final class Hashing {
     public trinsic.okapi.hashing.v1.Hashing.Blake3HashResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface Blake3KeyedHashRequestOrBuilder extends
+  public interface Blake3KeyedHashRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.hashing.v1.Blake3KeyedHashRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>bytes data = 1;</code>
+     *
      * @return The data.
      */
     com.google.protobuf.ByteString getData();
 
     /**
      * <code>bytes key = 2;</code>
+     *
      * @return The key.
      */
     com.google.protobuf.ByteString getKey();
   }
-  /**
-   * Protobuf type {@code okapi.hashing.v1.Blake3KeyedHashRequest}
-   */
-  public static final class Blake3KeyedHashRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code okapi.hashing.v1.Blake3KeyedHashRequest} */
+  public static final class Blake3KeyedHashRequest extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.hashing.v1.Blake3KeyedHashRequest)
       Blake3KeyedHashRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use Blake3KeyedHashRequest.newBuilder() to construct.
     private Blake3KeyedHashRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private Blake3KeyedHashRequest() {
       data_ = com.google.protobuf.ByteString.EMPTY;
       key_ = com.google.protobuf.ByteString.EMPTY;
@@ -1037,16 +1072,15 @@ public final class Hashing {
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new Blake3KeyedHashRequest();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private Blake3KeyedHashRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1065,23 +1099,23 @@ public final class Hashing {
             case 0:
               done = true;
               break;
-            case 10: {
-
-              data_ = input.readBytes();
-              break;
-            }
-            case 18: {
-
-              key_ = input.readBytes();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 10:
+              {
+                data_ = input.readBytes();
+                break;
               }
-              break;
-            }
+            case 18:
+              {
+                key_ = input.readBytes();
+                break;
+              }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1089,30 +1123,33 @@ public final class Hashing {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3KeyedHashRequest_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.hashing.v1.Hashing
+          .internal_static_okapi_hashing_v1_Blake3KeyedHashRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3KeyedHashRequest_fieldAccessorTable
+      return trinsic.okapi.hashing.v1.Hashing
+          .internal_static_okapi_hashing_v1_Blake3KeyedHashRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest.class, trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest.Builder.class);
+              trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest.class,
+              trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest.Builder.class);
     }
 
     public static final int DATA_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString data_;
     /**
      * <code>bytes data = 1;</code>
+     *
      * @return The data.
      */
     @java.lang.Override
@@ -1124,6 +1161,7 @@ public final class Hashing {
     private com.google.protobuf.ByteString key_;
     /**
      * <code>bytes key = 2;</code>
+     *
      * @return The key.
      */
     @java.lang.Override
@@ -1132,6 +1170,7 @@ public final class Hashing {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1143,8 +1182,7 @@ public final class Hashing {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!data_.isEmpty()) {
         output.writeBytes(1, data_);
       }
@@ -1161,12 +1199,10 @@ public final class Hashing {
 
       size = 0;
       if (!data_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, data_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(1, data_);
       }
       if (!key_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, key_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(2, key_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1176,17 +1212,16 @@ public final class Hashing {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest)) {
         return super.equals(obj);
       }
-      trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest other = (trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest) obj;
+      trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest other =
+          (trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest) obj;
 
-      if (!getData()
-          .equals(other.getData())) return false;
-      if (!getKey()
-          .equals(other.getKey())) return false;
+      if (!getData().equals(other.getData())) return false;
+      if (!getKey().equals(other.getKey())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1208,87 +1243,94 @@ public final class Hashing {
     }
 
     public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest prototype) {
+
+    public static Builder newBuilder(
+        trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -1297,24 +1339,25 @@ public final class Hashing {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code okapi.hashing.v1.Blake3KeyedHashRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code okapi.hashing.v1.Blake3KeyedHashRequest} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.hashing.v1.Blake3KeyedHashRequest)
         trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3KeyedHashRequest_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.hashing.v1.Hashing
+            .internal_static_okapi_hashing_v1_Blake3KeyedHashRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3KeyedHashRequest_fieldAccessorTable
+        return trinsic.okapi.hashing.v1.Hashing
+            .internal_static_okapi_hashing_v1_Blake3KeyedHashRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest.class, trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest.Builder.class);
+                trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest.class,
+                trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest.Builder.class);
       }
 
       // Construct using trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest.newBuilder()
@@ -1322,16 +1365,15 @@ public final class Hashing {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -1343,9 +1385,9 @@ public final class Hashing {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3KeyedHashRequest_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.hashing.v1.Hashing
+            .internal_static_okapi_hashing_v1_Blake3KeyedHashRequest_descriptor;
       }
 
       @java.lang.Override
@@ -1364,7 +1406,8 @@ public final class Hashing {
 
       @java.lang.Override
       public trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest buildPartial() {
-        trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest result = new trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest(this);
+        trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest result =
+            new trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest(this);
         result.data_ = data_;
         result.key_ = key_;
         onBuilt();
@@ -1375,38 +1418,41 @@ public final class Hashing {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest) {
-          return mergeFrom((trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest)other);
+          return mergeFrom((trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -1414,7 +1460,8 @@ public final class Hashing {
       }
 
       public Builder mergeFrom(trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest other) {
-        if (other == trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest.getDefaultInstance())
+          return this;
         if (other.getData() != com.google.protobuf.ByteString.EMPTY) {
           setData(other.getData());
         }
@@ -1440,7 +1487,8 @@ public final class Hashing {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1453,6 +1501,7 @@ public final class Hashing {
       private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes data = 1;</code>
+       *
        * @return The data.
        */
       @java.lang.Override
@@ -1461,24 +1510,26 @@ public final class Hashing {
       }
       /**
        * <code>bytes data = 1;</code>
+       *
        * @param value The data to set.
        * @return This builder for chaining.
        */
       public Builder setData(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         data_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>bytes data = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearData() {
-        
+
         data_ = getDefaultInstance().getData();
         onChanged();
         return this;
@@ -1487,6 +1538,7 @@ public final class Hashing {
       private com.google.protobuf.ByteString key_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes key = 2;</code>
+       *
        * @return The key.
        */
       @java.lang.Override
@@ -1495,28 +1547,31 @@ public final class Hashing {
       }
       /**
        * <code>bytes key = 2;</code>
+       *
        * @param value The key to set.
        * @return This builder for chaining.
        */
       public Builder setKey(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         key_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>bytes key = 2;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearKey() {
-        
+
         key_ = getDefaultInstance().getKey();
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1529,12 +1584,12 @@ public final class Hashing {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.hashing.v1.Blake3KeyedHashRequest)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.hashing.v1.Blake3KeyedHashRequest)
     private static final trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest();
     }
@@ -1543,16 +1598,16 @@ public final class Hashing {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Blake3KeyedHashRequest>
-        PARSER = new com.google.protobuf.AbstractParser<Blake3KeyedHashRequest>() {
-      @java.lang.Override
-      public Blake3KeyedHashRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Blake3KeyedHashRequest(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<Blake3KeyedHashRequest> PARSER =
+        new com.google.protobuf.AbstractParser<Blake3KeyedHashRequest>() {
+          @java.lang.Override
+          public Blake3KeyedHashRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new Blake3KeyedHashRequest(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<Blake3KeyedHashRequest> parser() {
       return PARSER;
@@ -1567,47 +1622,46 @@ public final class Hashing {
     public trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface Blake3KeyedHashResponseOrBuilder extends
+  public interface Blake3KeyedHashResponseOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.hashing.v1.Blake3KeyedHashResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>bytes digest = 1;</code>
+     *
      * @return The digest.
      */
     com.google.protobuf.ByteString getDigest();
   }
-  /**
-   * Protobuf type {@code okapi.hashing.v1.Blake3KeyedHashResponse}
-   */
-  public static final class Blake3KeyedHashResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code okapi.hashing.v1.Blake3KeyedHashResponse} */
+  public static final class Blake3KeyedHashResponse extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.hashing.v1.Blake3KeyedHashResponse)
       Blake3KeyedHashResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use Blake3KeyedHashResponse.newBuilder() to construct.
     private Blake3KeyedHashResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private Blake3KeyedHashResponse() {
       digest_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new Blake3KeyedHashResponse();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private Blake3KeyedHashResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1626,18 +1680,18 @@ public final class Hashing {
             case 0:
               done = true;
               break;
-            case 10: {
-
-              digest_ = input.readBytes();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 10:
+              {
+                digest_ = input.readBytes();
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1645,30 +1699,33 @@ public final class Hashing {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3KeyedHashResponse_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.hashing.v1.Hashing
+          .internal_static_okapi_hashing_v1_Blake3KeyedHashResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3KeyedHashResponse_fieldAccessorTable
+      return trinsic.okapi.hashing.v1.Hashing
+          .internal_static_okapi_hashing_v1_Blake3KeyedHashResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse.class, trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse.Builder.class);
+              trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse.class,
+              trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse.Builder.class);
     }
 
     public static final int DIGEST_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString digest_;
     /**
      * <code>bytes digest = 1;</code>
+     *
      * @return The digest.
      */
     @java.lang.Override
@@ -1677,6 +1734,7 @@ public final class Hashing {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1688,8 +1746,7 @@ public final class Hashing {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!digest_.isEmpty()) {
         output.writeBytes(1, digest_);
       }
@@ -1703,8 +1760,7 @@ public final class Hashing {
 
       size = 0;
       if (!digest_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, digest_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(1, digest_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1714,15 +1770,15 @@ public final class Hashing {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse)) {
         return super.equals(obj);
       }
-      trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse other = (trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse) obj;
+      trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse other =
+          (trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse) obj;
 
-      if (!getDigest()
-          .equals(other.getDigest())) return false;
+      if (!getDigest().equals(other.getDigest())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1742,87 +1798,94 @@ public final class Hashing {
     }
 
     public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse prototype) {
+
+    public static Builder newBuilder(
+        trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -1831,24 +1894,25 @@ public final class Hashing {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code okapi.hashing.v1.Blake3KeyedHashResponse}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code okapi.hashing.v1.Blake3KeyedHashResponse} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.hashing.v1.Blake3KeyedHashResponse)
         trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3KeyedHashResponse_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.hashing.v1.Hashing
+            .internal_static_okapi_hashing_v1_Blake3KeyedHashResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3KeyedHashResponse_fieldAccessorTable
+        return trinsic.okapi.hashing.v1.Hashing
+            .internal_static_okapi_hashing_v1_Blake3KeyedHashResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse.class, trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse.Builder.class);
+                trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse.class,
+                trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse.Builder.class);
       }
 
       // Construct using trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse.newBuilder()
@@ -1856,16 +1920,15 @@ public final class Hashing {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -1875,9 +1938,9 @@ public final class Hashing {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3KeyedHashResponse_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.hashing.v1.Hashing
+            .internal_static_okapi_hashing_v1_Blake3KeyedHashResponse_descriptor;
       }
 
       @java.lang.Override
@@ -1896,7 +1959,8 @@ public final class Hashing {
 
       @java.lang.Override
       public trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse buildPartial() {
-        trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse result = new trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse(this);
+        trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse result =
+            new trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse(this);
         result.digest_ = digest_;
         onBuilt();
         return result;
@@ -1906,38 +1970,41 @@ public final class Hashing {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse) {
-          return mergeFrom((trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse)other);
+          return mergeFrom((trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -1945,7 +2012,8 @@ public final class Hashing {
       }
 
       public Builder mergeFrom(trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse other) {
-        if (other == trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse.getDefaultInstance())
+          return this;
         if (other.getDigest() != com.google.protobuf.ByteString.EMPTY) {
           setDigest(other.getDigest());
         }
@@ -1968,7 +2036,8 @@ public final class Hashing {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1981,6 +2050,7 @@ public final class Hashing {
       private com.google.protobuf.ByteString digest_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes digest = 1;</code>
+       *
        * @return The digest.
        */
       @java.lang.Override
@@ -1989,28 +2059,31 @@ public final class Hashing {
       }
       /**
        * <code>bytes digest = 1;</code>
+       *
        * @param value The digest to set.
        * @return This builder for chaining.
        */
       public Builder setDigest(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         digest_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>bytes digest = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearDigest() {
-        
+
         digest_ = getDefaultInstance().getDigest();
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -2023,12 +2096,12 @@ public final class Hashing {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.hashing.v1.Blake3KeyedHashResponse)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.hashing.v1.Blake3KeyedHashResponse)
     private static final trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse();
     }
@@ -2037,16 +2110,16 @@ public final class Hashing {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Blake3KeyedHashResponse>
-        PARSER = new com.google.protobuf.AbstractParser<Blake3KeyedHashResponse>() {
-      @java.lang.Override
-      public Blake3KeyedHashResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Blake3KeyedHashResponse(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<Blake3KeyedHashResponse> PARSER =
+        new com.google.protobuf.AbstractParser<Blake3KeyedHashResponse>() {
+          @java.lang.Override
+          public Blake3KeyedHashResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new Blake3KeyedHashResponse(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<Blake3KeyedHashResponse> parser() {
       return PARSER;
@@ -2061,37 +2134,38 @@ public final class Hashing {
     public trinsic.okapi.hashing.v1.Hashing.Blake3KeyedHashResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface Blake3DeriveKeyRequestOrBuilder extends
+  public interface Blake3DeriveKeyRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.hashing.v1.Blake3DeriveKeyRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>bytes context = 1;</code>
+     *
      * @return The context.
      */
     com.google.protobuf.ByteString getContext();
 
     /**
      * <code>bytes key_material = 2;</code>
+     *
      * @return The keyMaterial.
      */
     com.google.protobuf.ByteString getKeyMaterial();
   }
-  /**
-   * Protobuf type {@code okapi.hashing.v1.Blake3DeriveKeyRequest}
-   */
-  public static final class Blake3DeriveKeyRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code okapi.hashing.v1.Blake3DeriveKeyRequest} */
+  public static final class Blake3DeriveKeyRequest extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.hashing.v1.Blake3DeriveKeyRequest)
       Blake3DeriveKeyRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use Blake3DeriveKeyRequest.newBuilder() to construct.
     private Blake3DeriveKeyRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private Blake3DeriveKeyRequest() {
       context_ = com.google.protobuf.ByteString.EMPTY;
       keyMaterial_ = com.google.protobuf.ByteString.EMPTY;
@@ -2099,16 +2173,15 @@ public final class Hashing {
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new Blake3DeriveKeyRequest();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private Blake3DeriveKeyRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2127,23 +2200,23 @@ public final class Hashing {
             case 0:
               done = true;
               break;
-            case 10: {
-
-              context_ = input.readBytes();
-              break;
-            }
-            case 18: {
-
-              keyMaterial_ = input.readBytes();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 10:
+              {
+                context_ = input.readBytes();
+                break;
               }
-              break;
-            }
+            case 18:
+              {
+                keyMaterial_ = input.readBytes();
+                break;
+              }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -2151,30 +2224,33 @@ public final class Hashing {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3DeriveKeyRequest_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.hashing.v1.Hashing
+          .internal_static_okapi_hashing_v1_Blake3DeriveKeyRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3DeriveKeyRequest_fieldAccessorTable
+      return trinsic.okapi.hashing.v1.Hashing
+          .internal_static_okapi_hashing_v1_Blake3DeriveKeyRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest.class, trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest.Builder.class);
+              trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest.class,
+              trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest.Builder.class);
     }
 
     public static final int CONTEXT_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString context_;
     /**
      * <code>bytes context = 1;</code>
+     *
      * @return The context.
      */
     @java.lang.Override
@@ -2186,6 +2262,7 @@ public final class Hashing {
     private com.google.protobuf.ByteString keyMaterial_;
     /**
      * <code>bytes key_material = 2;</code>
+     *
      * @return The keyMaterial.
      */
     @java.lang.Override
@@ -2194,6 +2271,7 @@ public final class Hashing {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -2205,8 +2283,7 @@ public final class Hashing {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!context_.isEmpty()) {
         output.writeBytes(1, context_);
       }
@@ -2223,12 +2300,10 @@ public final class Hashing {
 
       size = 0;
       if (!context_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, context_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(1, context_);
       }
       if (!keyMaterial_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, keyMaterial_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(2, keyMaterial_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2238,17 +2313,16 @@ public final class Hashing {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest)) {
         return super.equals(obj);
       }
-      trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest other = (trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest) obj;
+      trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest other =
+          (trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest) obj;
 
-      if (!getContext()
-          .equals(other.getContext())) return false;
-      if (!getKeyMaterial()
-          .equals(other.getKeyMaterial())) return false;
+      if (!getContext().equals(other.getContext())) return false;
+      if (!getKeyMaterial().equals(other.getKeyMaterial())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2270,87 +2344,94 @@ public final class Hashing {
     }
 
     public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest prototype) {
+
+    public static Builder newBuilder(
+        trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -2359,24 +2440,25 @@ public final class Hashing {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code okapi.hashing.v1.Blake3DeriveKeyRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code okapi.hashing.v1.Blake3DeriveKeyRequest} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.hashing.v1.Blake3DeriveKeyRequest)
         trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3DeriveKeyRequest_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.hashing.v1.Hashing
+            .internal_static_okapi_hashing_v1_Blake3DeriveKeyRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3DeriveKeyRequest_fieldAccessorTable
+        return trinsic.okapi.hashing.v1.Hashing
+            .internal_static_okapi_hashing_v1_Blake3DeriveKeyRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest.class, trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest.Builder.class);
+                trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest.class,
+                trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest.Builder.class);
       }
 
       // Construct using trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest.newBuilder()
@@ -2384,16 +2466,15 @@ public final class Hashing {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -2405,9 +2486,9 @@ public final class Hashing {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3DeriveKeyRequest_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.hashing.v1.Hashing
+            .internal_static_okapi_hashing_v1_Blake3DeriveKeyRequest_descriptor;
       }
 
       @java.lang.Override
@@ -2426,7 +2507,8 @@ public final class Hashing {
 
       @java.lang.Override
       public trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest buildPartial() {
-        trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest result = new trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest(this);
+        trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest result =
+            new trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest(this);
         result.context_ = context_;
         result.keyMaterial_ = keyMaterial_;
         onBuilt();
@@ -2437,38 +2519,41 @@ public final class Hashing {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest) {
-          return mergeFrom((trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest)other);
+          return mergeFrom((trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -2476,7 +2561,8 @@ public final class Hashing {
       }
 
       public Builder mergeFrom(trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest other) {
-        if (other == trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest.getDefaultInstance())
+          return this;
         if (other.getContext() != com.google.protobuf.ByteString.EMPTY) {
           setContext(other.getContext());
         }
@@ -2502,7 +2588,8 @@ public final class Hashing {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2515,6 +2602,7 @@ public final class Hashing {
       private com.google.protobuf.ByteString context_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes context = 1;</code>
+       *
        * @return The context.
        */
       @java.lang.Override
@@ -2523,24 +2611,26 @@ public final class Hashing {
       }
       /**
        * <code>bytes context = 1;</code>
+       *
        * @param value The context to set.
        * @return This builder for chaining.
        */
       public Builder setContext(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         context_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>bytes context = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearContext() {
-        
+
         context_ = getDefaultInstance().getContext();
         onChanged();
         return this;
@@ -2549,6 +2639,7 @@ public final class Hashing {
       private com.google.protobuf.ByteString keyMaterial_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes key_material = 2;</code>
+       *
        * @return The keyMaterial.
        */
       @java.lang.Override
@@ -2557,28 +2648,31 @@ public final class Hashing {
       }
       /**
        * <code>bytes key_material = 2;</code>
+       *
        * @param value The keyMaterial to set.
        * @return This builder for chaining.
        */
       public Builder setKeyMaterial(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         keyMaterial_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>bytes key_material = 2;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearKeyMaterial() {
-        
+
         keyMaterial_ = getDefaultInstance().getKeyMaterial();
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -2591,12 +2685,12 @@ public final class Hashing {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.hashing.v1.Blake3DeriveKeyRequest)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.hashing.v1.Blake3DeriveKeyRequest)
     private static final trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest();
     }
@@ -2605,16 +2699,16 @@ public final class Hashing {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Blake3DeriveKeyRequest>
-        PARSER = new com.google.protobuf.AbstractParser<Blake3DeriveKeyRequest>() {
-      @java.lang.Override
-      public Blake3DeriveKeyRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Blake3DeriveKeyRequest(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<Blake3DeriveKeyRequest> PARSER =
+        new com.google.protobuf.AbstractParser<Blake3DeriveKeyRequest>() {
+          @java.lang.Override
+          public Blake3DeriveKeyRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new Blake3DeriveKeyRequest(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<Blake3DeriveKeyRequest> parser() {
       return PARSER;
@@ -2629,47 +2723,46 @@ public final class Hashing {
     public trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface Blake3DeriveKeyResponseOrBuilder extends
+  public interface Blake3DeriveKeyResponseOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.hashing.v1.Blake3DeriveKeyResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>bytes digest = 1;</code>
+     *
      * @return The digest.
      */
     com.google.protobuf.ByteString getDigest();
   }
-  /**
-   * Protobuf type {@code okapi.hashing.v1.Blake3DeriveKeyResponse}
-   */
-  public static final class Blake3DeriveKeyResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code okapi.hashing.v1.Blake3DeriveKeyResponse} */
+  public static final class Blake3DeriveKeyResponse extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.hashing.v1.Blake3DeriveKeyResponse)
       Blake3DeriveKeyResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use Blake3DeriveKeyResponse.newBuilder() to construct.
     private Blake3DeriveKeyResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private Blake3DeriveKeyResponse() {
       digest_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new Blake3DeriveKeyResponse();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private Blake3DeriveKeyResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2688,18 +2781,18 @@ public final class Hashing {
             case 0:
               done = true;
               break;
-            case 10: {
-
-              digest_ = input.readBytes();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 10:
+              {
+                digest_ = input.readBytes();
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -2707,30 +2800,33 @@ public final class Hashing {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3DeriveKeyResponse_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.hashing.v1.Hashing
+          .internal_static_okapi_hashing_v1_Blake3DeriveKeyResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3DeriveKeyResponse_fieldAccessorTable
+      return trinsic.okapi.hashing.v1.Hashing
+          .internal_static_okapi_hashing_v1_Blake3DeriveKeyResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse.class, trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse.Builder.class);
+              trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse.class,
+              trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse.Builder.class);
     }
 
     public static final int DIGEST_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString digest_;
     /**
      * <code>bytes digest = 1;</code>
+     *
      * @return The digest.
      */
     @java.lang.Override
@@ -2739,6 +2835,7 @@ public final class Hashing {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -2750,8 +2847,7 @@ public final class Hashing {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!digest_.isEmpty()) {
         output.writeBytes(1, digest_);
       }
@@ -2765,8 +2861,7 @@ public final class Hashing {
 
       size = 0;
       if (!digest_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, digest_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(1, digest_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2776,15 +2871,15 @@ public final class Hashing {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse)) {
         return super.equals(obj);
       }
-      trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse other = (trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse) obj;
+      trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse other =
+          (trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse) obj;
 
-      if (!getDigest()
-          .equals(other.getDigest())) return false;
+      if (!getDigest().equals(other.getDigest())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2804,87 +2899,94 @@ public final class Hashing {
     }
 
     public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse prototype) {
+
+    public static Builder newBuilder(
+        trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -2893,24 +2995,25 @@ public final class Hashing {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code okapi.hashing.v1.Blake3DeriveKeyResponse}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code okapi.hashing.v1.Blake3DeriveKeyResponse} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.hashing.v1.Blake3DeriveKeyResponse)
         trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3DeriveKeyResponse_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.hashing.v1.Hashing
+            .internal_static_okapi_hashing_v1_Blake3DeriveKeyResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3DeriveKeyResponse_fieldAccessorTable
+        return trinsic.okapi.hashing.v1.Hashing
+            .internal_static_okapi_hashing_v1_Blake3DeriveKeyResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse.class, trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse.Builder.class);
+                trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse.class,
+                trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse.Builder.class);
       }
 
       // Construct using trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse.newBuilder()
@@ -2918,16 +3021,15 @@ public final class Hashing {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -2937,9 +3039,9 @@ public final class Hashing {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_Blake3DeriveKeyResponse_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.hashing.v1.Hashing
+            .internal_static_okapi_hashing_v1_Blake3DeriveKeyResponse_descriptor;
       }
 
       @java.lang.Override
@@ -2958,7 +3060,8 @@ public final class Hashing {
 
       @java.lang.Override
       public trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse buildPartial() {
-        trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse result = new trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse(this);
+        trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse result =
+            new trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse(this);
         result.digest_ = digest_;
         onBuilt();
         return result;
@@ -2968,38 +3071,41 @@ public final class Hashing {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse) {
-          return mergeFrom((trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse)other);
+          return mergeFrom((trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -3007,7 +3113,8 @@ public final class Hashing {
       }
 
       public Builder mergeFrom(trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse other) {
-        if (other == trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse.getDefaultInstance())
+          return this;
         if (other.getDigest() != com.google.protobuf.ByteString.EMPTY) {
           setDigest(other.getDigest());
         }
@@ -3030,7 +3137,8 @@ public final class Hashing {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3043,6 +3151,7 @@ public final class Hashing {
       private com.google.protobuf.ByteString digest_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes digest = 1;</code>
+       *
        * @return The digest.
        */
       @java.lang.Override
@@ -3051,28 +3160,31 @@ public final class Hashing {
       }
       /**
        * <code>bytes digest = 1;</code>
+       *
        * @param value The digest to set.
        * @return This builder for chaining.
        */
       public Builder setDigest(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         digest_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>bytes digest = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearDigest() {
-        
+
         digest_ = getDefaultInstance().getDigest();
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -3085,12 +3197,12 @@ public final class Hashing {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.hashing.v1.Blake3DeriveKeyResponse)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.hashing.v1.Blake3DeriveKeyResponse)
     private static final trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse();
     }
@@ -3099,16 +3211,16 @@ public final class Hashing {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Blake3DeriveKeyResponse>
-        PARSER = new com.google.protobuf.AbstractParser<Blake3DeriveKeyResponse>() {
-      @java.lang.Override
-      public Blake3DeriveKeyResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Blake3DeriveKeyResponse(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<Blake3DeriveKeyResponse> PARSER =
+        new com.google.protobuf.AbstractParser<Blake3DeriveKeyResponse>() {
+          @java.lang.Override
+          public Blake3DeriveKeyResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new Blake3DeriveKeyResponse(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<Blake3DeriveKeyResponse> parser() {
       return PARSER;
@@ -3123,47 +3235,46 @@ public final class Hashing {
     public trinsic.okapi.hashing.v1.Hashing.Blake3DeriveKeyResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface SHA256HashRequestOrBuilder extends
+  public interface SHA256HashRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.hashing.v1.SHA256HashRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>bytes data = 1;</code>
+     *
      * @return The data.
      */
     com.google.protobuf.ByteString getData();
   }
-  /**
-   * Protobuf type {@code okapi.hashing.v1.SHA256HashRequest}
-   */
-  public static final class SHA256HashRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code okapi.hashing.v1.SHA256HashRequest} */
+  public static final class SHA256HashRequest extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.hashing.v1.SHA256HashRequest)
       SHA256HashRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use SHA256HashRequest.newBuilder() to construct.
     private SHA256HashRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private SHA256HashRequest() {
       data_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new SHA256HashRequest();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private SHA256HashRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -3182,18 +3293,18 @@ public final class Hashing {
             case 0:
               done = true;
               break;
-            case 10: {
-
-              data_ = input.readBytes();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 10:
+              {
+                data_ = input.readBytes();
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -3201,30 +3312,33 @@ public final class Hashing {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_SHA256HashRequest_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.hashing.v1.Hashing
+          .internal_static_okapi_hashing_v1_SHA256HashRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_SHA256HashRequest_fieldAccessorTable
+      return trinsic.okapi.hashing.v1.Hashing
+          .internal_static_okapi_hashing_v1_SHA256HashRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest.class, trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest.Builder.class);
+              trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest.class,
+              trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest.Builder.class);
     }
 
     public static final int DATA_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString data_;
     /**
      * <code>bytes data = 1;</code>
+     *
      * @return The data.
      */
     @java.lang.Override
@@ -3233,6 +3347,7 @@ public final class Hashing {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -3244,8 +3359,7 @@ public final class Hashing {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!data_.isEmpty()) {
         output.writeBytes(1, data_);
       }
@@ -3259,8 +3373,7 @@ public final class Hashing {
 
       size = 0;
       if (!data_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, data_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(1, data_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3270,15 +3383,15 @@ public final class Hashing {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest)) {
         return super.equals(obj);
       }
-      trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest other = (trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest) obj;
+      trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest other =
+          (trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest) obj;
 
-      if (!getData()
-          .equals(other.getData())) return false;
+      if (!getData().equals(other.getData())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3298,87 +3411,93 @@ public final class Hashing {
     }
 
     public static trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -3387,24 +3506,25 @@ public final class Hashing {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code okapi.hashing.v1.SHA256HashRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code okapi.hashing.v1.SHA256HashRequest} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.hashing.v1.SHA256HashRequest)
         trinsic.okapi.hashing.v1.Hashing.SHA256HashRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_SHA256HashRequest_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.hashing.v1.Hashing
+            .internal_static_okapi_hashing_v1_SHA256HashRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_SHA256HashRequest_fieldAccessorTable
+        return trinsic.okapi.hashing.v1.Hashing
+            .internal_static_okapi_hashing_v1_SHA256HashRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest.class, trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest.Builder.class);
+                trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest.class,
+                trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest.Builder.class);
       }
 
       // Construct using trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest.newBuilder()
@@ -3412,16 +3532,15 @@ public final class Hashing {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -3431,9 +3550,9 @@ public final class Hashing {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_SHA256HashRequest_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.hashing.v1.Hashing
+            .internal_static_okapi_hashing_v1_SHA256HashRequest_descriptor;
       }
 
       @java.lang.Override
@@ -3452,7 +3571,8 @@ public final class Hashing {
 
       @java.lang.Override
       public trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest buildPartial() {
-        trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest result = new trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest(this);
+        trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest result =
+            new trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest(this);
         result.data_ = data_;
         onBuilt();
         return result;
@@ -3462,38 +3582,41 @@ public final class Hashing {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest) {
-          return mergeFrom((trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest)other);
+          return mergeFrom((trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -3501,7 +3624,8 @@ public final class Hashing {
       }
 
       public Builder mergeFrom(trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest other) {
-        if (other == trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest.getDefaultInstance())
+          return this;
         if (other.getData() != com.google.protobuf.ByteString.EMPTY) {
           setData(other.getData());
         }
@@ -3524,7 +3648,8 @@ public final class Hashing {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3537,6 +3662,7 @@ public final class Hashing {
       private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes data = 1;</code>
+       *
        * @return The data.
        */
       @java.lang.Override
@@ -3545,28 +3671,31 @@ public final class Hashing {
       }
       /**
        * <code>bytes data = 1;</code>
+       *
        * @param value The data to set.
        * @return This builder for chaining.
        */
       public Builder setData(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         data_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>bytes data = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearData() {
-        
+
         data_ = getDefaultInstance().getData();
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -3579,12 +3708,12 @@ public final class Hashing {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.hashing.v1.SHA256HashRequest)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.hashing.v1.SHA256HashRequest)
     private static final trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest();
     }
@@ -3593,16 +3722,16 @@ public final class Hashing {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<SHA256HashRequest>
-        PARSER = new com.google.protobuf.AbstractParser<SHA256HashRequest>() {
-      @java.lang.Override
-      public SHA256HashRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SHA256HashRequest(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<SHA256HashRequest> PARSER =
+        new com.google.protobuf.AbstractParser<SHA256HashRequest>() {
+          @java.lang.Override
+          public SHA256HashRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new SHA256HashRequest(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<SHA256HashRequest> parser() {
       return PARSER;
@@ -3617,47 +3746,46 @@ public final class Hashing {
     public trinsic.okapi.hashing.v1.Hashing.SHA256HashRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface SHA256HashResponseOrBuilder extends
+  public interface SHA256HashResponseOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.hashing.v1.SHA256HashResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>bytes digest = 1;</code>
+     *
      * @return The digest.
      */
     com.google.protobuf.ByteString getDigest();
   }
-  /**
-   * Protobuf type {@code okapi.hashing.v1.SHA256HashResponse}
-   */
-  public static final class SHA256HashResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code okapi.hashing.v1.SHA256HashResponse} */
+  public static final class SHA256HashResponse extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.hashing.v1.SHA256HashResponse)
       SHA256HashResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use SHA256HashResponse.newBuilder() to construct.
     private SHA256HashResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private SHA256HashResponse() {
       digest_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new SHA256HashResponse();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private SHA256HashResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -3676,18 +3804,18 @@ public final class Hashing {
             case 0:
               done = true;
               break;
-            case 10: {
-
-              digest_ = input.readBytes();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 10:
+              {
+                digest_ = input.readBytes();
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -3695,30 +3823,33 @@ public final class Hashing {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_SHA256HashResponse_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.hashing.v1.Hashing
+          .internal_static_okapi_hashing_v1_SHA256HashResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_SHA256HashResponse_fieldAccessorTable
+      return trinsic.okapi.hashing.v1.Hashing
+          .internal_static_okapi_hashing_v1_SHA256HashResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse.class, trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse.Builder.class);
+              trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse.class,
+              trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse.Builder.class);
     }
 
     public static final int DIGEST_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString digest_;
     /**
      * <code>bytes digest = 1;</code>
+     *
      * @return The digest.
      */
     @java.lang.Override
@@ -3727,6 +3858,7 @@ public final class Hashing {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -3738,8 +3870,7 @@ public final class Hashing {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!digest_.isEmpty()) {
         output.writeBytes(1, digest_);
       }
@@ -3753,8 +3884,7 @@ public final class Hashing {
 
       size = 0;
       if (!digest_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, digest_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(1, digest_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3764,15 +3894,15 @@ public final class Hashing {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse)) {
         return super.equals(obj);
       }
-      trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse other = (trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse) obj;
+      trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse other =
+          (trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse) obj;
 
-      if (!getDigest()
-          .equals(other.getDigest())) return false;
+      if (!getDigest().equals(other.getDigest())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3792,87 +3922,94 @@ public final class Hashing {
     }
 
     public static trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse prototype) {
+
+    public static Builder newBuilder(
+        trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -3881,24 +4018,25 @@ public final class Hashing {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code okapi.hashing.v1.SHA256HashResponse}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code okapi.hashing.v1.SHA256HashResponse} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.hashing.v1.SHA256HashResponse)
         trinsic.okapi.hashing.v1.Hashing.SHA256HashResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_SHA256HashResponse_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.hashing.v1.Hashing
+            .internal_static_okapi_hashing_v1_SHA256HashResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_SHA256HashResponse_fieldAccessorTable
+        return trinsic.okapi.hashing.v1.Hashing
+            .internal_static_okapi_hashing_v1_SHA256HashResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse.class, trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse.Builder.class);
+                trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse.class,
+                trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse.Builder.class);
       }
 
       // Construct using trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse.newBuilder()
@@ -3906,16 +4044,15 @@ public final class Hashing {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -3925,9 +4062,9 @@ public final class Hashing {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.hashing.v1.Hashing.internal_static_okapi_hashing_v1_SHA256HashResponse_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.hashing.v1.Hashing
+            .internal_static_okapi_hashing_v1_SHA256HashResponse_descriptor;
       }
 
       @java.lang.Override
@@ -3946,7 +4083,8 @@ public final class Hashing {
 
       @java.lang.Override
       public trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse buildPartial() {
-        trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse result = new trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse(this);
+        trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse result =
+            new trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse(this);
         result.digest_ = digest_;
         onBuilt();
         return result;
@@ -3956,38 +4094,41 @@ public final class Hashing {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse) {
-          return mergeFrom((trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse)other);
+          return mergeFrom((trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -3995,7 +4136,8 @@ public final class Hashing {
       }
 
       public Builder mergeFrom(trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse other) {
-        if (other == trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse.getDefaultInstance())
+          return this;
         if (other.getDigest() != com.google.protobuf.ByteString.EMPTY) {
           setDigest(other.getDigest());
         }
@@ -4018,7 +4160,8 @@ public final class Hashing {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -4031,6 +4174,7 @@ public final class Hashing {
       private com.google.protobuf.ByteString digest_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes digest = 1;</code>
+       *
        * @return The digest.
        */
       @java.lang.Override
@@ -4039,28 +4183,31 @@ public final class Hashing {
       }
       /**
        * <code>bytes digest = 1;</code>
+       *
        * @param value The digest to set.
        * @return This builder for chaining.
        */
       public Builder setDigest(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         digest_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>bytes digest = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearDigest() {
-        
+
         digest_ = getDefaultInstance().getDigest();
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4073,12 +4220,12 @@ public final class Hashing {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.hashing.v1.SHA256HashResponse)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.hashing.v1.SHA256HashResponse)
     private static final trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse();
     }
@@ -4087,16 +4234,16 @@ public final class Hashing {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<SHA256HashResponse>
-        PARSER = new com.google.protobuf.AbstractParser<SHA256HashResponse>() {
-      @java.lang.Override
-      public SHA256HashResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SHA256HashResponse(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<SHA256HashResponse> PARSER =
+        new com.google.protobuf.AbstractParser<SHA256HashResponse>() {
+          @java.lang.Override
+          public SHA256HashResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new SHA256HashResponse(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<SHA256HashResponse> parser() {
       return PARSER;
@@ -4111,124 +4258,130 @@ public final class Hashing {
     public trinsic.okapi.hashing.v1.Hashing.SHA256HashResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_hashing_v1_Blake3HashRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_hashing_v1_Blake3HashRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_hashing_v1_Blake3HashRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_hashing_v1_Blake3HashResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_hashing_v1_Blake3HashResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_hashing_v1_Blake3HashResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_hashing_v1_Blake3KeyedHashRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_hashing_v1_Blake3KeyedHashRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_hashing_v1_Blake3KeyedHashRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_hashing_v1_Blake3KeyedHashResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_hashing_v1_Blake3KeyedHashResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_hashing_v1_Blake3KeyedHashResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_hashing_v1_Blake3DeriveKeyRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_hashing_v1_Blake3DeriveKeyRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_hashing_v1_Blake3DeriveKeyRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_hashing_v1_Blake3DeriveKeyResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_hashing_v1_Blake3DeriveKeyResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_hashing_v1_Blake3DeriveKeyResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_hashing_v1_SHA256HashRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_hashing_v1_SHA256HashRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_hashing_v1_SHA256HashRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_hashing_v1_SHA256HashResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_hashing_v1_SHA256HashResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_hashing_v1_SHA256HashResponse_fieldAccessorTable;
 
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
+  public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
+
+  private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
+
   static {
     java.lang.String[] descriptorData = {
-      "\n\036okapi/hashing/v1/hashing.proto\022\020okapi." +
-      "hashing.v1\"!\n\021Blake3HashRequest\022\014\n\004data\030" +
-      "\001 \001(\014\"$\n\022Blake3HashResponse\022\016\n\006digest\030\001 " +
-      "\001(\014\"3\n\026Blake3KeyedHashRequest\022\014\n\004data\030\001 " +
-      "\001(\014\022\013\n\003key\030\002 \001(\014\")\n\027Blake3KeyedHashRespo" +
-      "nse\022\016\n\006digest\030\001 \001(\014\"?\n\026Blake3DeriveKeyRe" +
-      "quest\022\017\n\007context\030\001 \001(\014\022\024\n\014key_material\030\002" +
-      " \001(\014\")\n\027Blake3DeriveKeyResponse\022\016\n\006diges" +
-      "t\030\001 \001(\014\"!\n\021SHA256HashRequest\022\014\n\004data\030\001 \001" +
-      "(\014\"$\n\022SHA256HashResponse\022\016\n\006digest\030\001 \001(\014" +
-      "BO\n\030trinsic.okapi.hashing.v1Z github.com" +
-      "/trinsic-id/okapiproto\252\002\020Okapi.Hashing.V" +
-      "1b\006proto3"
+      "\n\036okapi/hashing/v1/hashing.proto\022\020okapi."
+          + "hashing.v1\"!\n\021Blake3HashRequest\022\014\n\004data\030"
+          + "\001 \001(\014\"$\n\022Blake3HashResponse\022\016\n\006digest\030\001 "
+          + "\001(\014\"3\n\026Blake3KeyedHashRequest\022\014\n\004data\030\001 "
+          + "\001(\014\022\013\n\003key\030\002 \001(\014\")\n\027Blake3KeyedHashRespo"
+          + "nse\022\016\n\006digest\030\001 \001(\014\"?\n\026Blake3DeriveKeyRe"
+          + "quest\022\017\n\007context\030\001 \001(\014\022\024\n\014key_material\030\002"
+          + " \001(\014\")\n\027Blake3DeriveKeyResponse\022\016\n\006diges"
+          + "t\030\001 \001(\014\"!\n\021SHA256HashRequest\022\014\n\004data\030\001 \001"
+          + "(\014\"$\n\022SHA256HashResponse\022\016\n\006digest\030\001 \001(\014"
+          + "BG\n\030trinsic.okapi.hashing.v1Z\030okapi/hash"
+          + "ing/v1/hashing\252\002\020Okapi.Hashing.V1b\006proto"
+          + "3"
     };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-        });
+    descriptor =
+        com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
+            descriptorData, new com.google.protobuf.Descriptors.FileDescriptor[] {});
     internal_static_okapi_hashing_v1_Blake3HashRequest_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_okapi_hashing_v1_Blake3HashRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_hashing_v1_Blake3HashRequest_descriptor,
-        new java.lang.String[] { "Data", });
+        getDescriptor().getMessageTypes().get(0);
+    internal_static_okapi_hashing_v1_Blake3HashRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_hashing_v1_Blake3HashRequest_descriptor,
+            new java.lang.String[] {
+              "Data",
+            });
     internal_static_okapi_hashing_v1_Blake3HashResponse_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_okapi_hashing_v1_Blake3HashResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_hashing_v1_Blake3HashResponse_descriptor,
-        new java.lang.String[] { "Digest", });
+        getDescriptor().getMessageTypes().get(1);
+    internal_static_okapi_hashing_v1_Blake3HashResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_hashing_v1_Blake3HashResponse_descriptor,
+            new java.lang.String[] {
+              "Digest",
+            });
     internal_static_okapi_hashing_v1_Blake3KeyedHashRequest_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_okapi_hashing_v1_Blake3KeyedHashRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_hashing_v1_Blake3KeyedHashRequest_descriptor,
-        new java.lang.String[] { "Data", "Key", });
+        getDescriptor().getMessageTypes().get(2);
+    internal_static_okapi_hashing_v1_Blake3KeyedHashRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_hashing_v1_Blake3KeyedHashRequest_descriptor,
+            new java.lang.String[] {
+              "Data", "Key",
+            });
     internal_static_okapi_hashing_v1_Blake3KeyedHashResponse_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_okapi_hashing_v1_Blake3KeyedHashResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_hashing_v1_Blake3KeyedHashResponse_descriptor,
-        new java.lang.String[] { "Digest", });
+        getDescriptor().getMessageTypes().get(3);
+    internal_static_okapi_hashing_v1_Blake3KeyedHashResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_hashing_v1_Blake3KeyedHashResponse_descriptor,
+            new java.lang.String[] {
+              "Digest",
+            });
     internal_static_okapi_hashing_v1_Blake3DeriveKeyRequest_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_okapi_hashing_v1_Blake3DeriveKeyRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_hashing_v1_Blake3DeriveKeyRequest_descriptor,
-        new java.lang.String[] { "Context", "KeyMaterial", });
+        getDescriptor().getMessageTypes().get(4);
+    internal_static_okapi_hashing_v1_Blake3DeriveKeyRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_hashing_v1_Blake3DeriveKeyRequest_descriptor,
+            new java.lang.String[] {
+              "Context", "KeyMaterial",
+            });
     internal_static_okapi_hashing_v1_Blake3DeriveKeyResponse_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_okapi_hashing_v1_Blake3DeriveKeyResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_hashing_v1_Blake3DeriveKeyResponse_descriptor,
-        new java.lang.String[] { "Digest", });
+        getDescriptor().getMessageTypes().get(5);
+    internal_static_okapi_hashing_v1_Blake3DeriveKeyResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_hashing_v1_Blake3DeriveKeyResponse_descriptor,
+            new java.lang.String[] {
+              "Digest",
+            });
     internal_static_okapi_hashing_v1_SHA256HashRequest_descriptor =
-      getDescriptor().getMessageTypes().get(6);
-    internal_static_okapi_hashing_v1_SHA256HashRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_hashing_v1_SHA256HashRequest_descriptor,
-        new java.lang.String[] { "Data", });
+        getDescriptor().getMessageTypes().get(6);
+    internal_static_okapi_hashing_v1_SHA256HashRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_hashing_v1_SHA256HashRequest_descriptor,
+            new java.lang.String[] {
+              "Data",
+            });
     internal_static_okapi_hashing_v1_SHA256HashResponse_descriptor =
-      getDescriptor().getMessageTypes().get(7);
-    internal_static_okapi_hashing_v1_SHA256HashResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_hashing_v1_SHA256HashResponse_descriptor,
-        new java.lang.String[] { "Digest", });
+        getDescriptor().getMessageTypes().get(7);
+    internal_static_okapi_hashing_v1_SHA256HashResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_hashing_v1_SHA256HashResponse_descriptor,
+            new java.lang.String[] {
+              "Digest",
+            });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

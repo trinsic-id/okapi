@@ -47,7 +47,7 @@ module Okapi
     return if @library_linked
 
     @library_linked = true
-    ld_lib_path = ENV['OKAPI_LIBRARY_PATH'] || ''
+    ld_lib_path = ENV.fetch('OKAPI_LIBRARY_PATH', '')
     possible_library_paths = [File.expand_path(File.join(__dir__, '..', 'libs', library_directory, library_name)),
                               File.expand_path(File.join(ld_lib_path, library_directory,
                                                          library_name)),
