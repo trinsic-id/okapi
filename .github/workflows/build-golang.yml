@@ -70,3 +70,9 @@ jobs:
         env:
           OKAPI_LIBRARY_PATH: ${{ env.GOLANG_LD_PATH }}
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+      - name: "Upload coverage to Codecov"
+        uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: true
+          directory: go/services
+          token: ${{ secrets.CODECOV_TOKEN }}

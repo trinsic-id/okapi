@@ -53,3 +53,9 @@ jobs:
         with:
           dotnet_format: true
           dotnet_format_dir: dotnet/
+      - name: "Upload coverage to Codecov"
+        uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: true
+          directory: dotnet
+          token: ${{ secrets.CODECOV_TOKEN }}

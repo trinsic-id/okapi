@@ -55,3 +55,9 @@ jobs:
           npm run test:${{ matrix.target }}
         shell: pwsh
         working-directory: ./wasm/packages/okapi
+      - name: "Upload coverage to Codecov"
+        uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: true
+          directory: web
+          token: ${{ secrets.CODECOV_TOKEN }}

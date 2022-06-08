@@ -67,3 +67,9 @@ jobs:
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
           OKAPI_LIBRARY_PATH: "${{ github.workspace }}/libs/${{ matrix.os-artifact[1] }}"
+      - name: "Upload coverage to Codecov"
+        uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: true
+          directory: python
+          token: ${{ secrets.CODECOV_TOKEN }}
