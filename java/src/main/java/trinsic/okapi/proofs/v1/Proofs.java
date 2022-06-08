@@ -5,40 +5,25 @@ package trinsic.okapi.proofs.v1;
 
 public final class Proofs {
   private Proofs() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
-  }
 
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {}
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  /**
-   * Protobuf enum {@code okapi.proofs.v1.LdSuite}
-   */
-  public enum LdSuite
-      implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>LD_SUITE_UNSPECIFIED = 0;</code>
-     */
+  /** Protobuf enum {@code okapi.proofs.v1.LdSuite} */
+  public enum LdSuite implements com.google.protobuf.ProtocolMessageEnum {
+    /** <code>LD_SUITE_UNSPECIFIED = 0;</code> */
     LD_SUITE_UNSPECIFIED(0),
-    /**
-     * <code>LD_SUITE_JCSED25519SIGNATURE2020 = 1;</code>
-     */
+    /** <code>LD_SUITE_JCSED25519SIGNATURE2020 = 1;</code> */
     LD_SUITE_JCSED25519SIGNATURE2020(1),
     UNRECOGNIZED(-1),
     ;
 
-    /**
-     * <code>LD_SUITE_UNSPECIFIED = 0;</code>
-     */
+    /** <code>LD_SUITE_UNSPECIFIED = 0;</code> */
     public static final int LD_SUITE_UNSPECIFIED_VALUE = 0;
-    /**
-     * <code>LD_SUITE_JCSED25519SIGNATURE2020 = 1;</code>
-     */
+    /** <code>LD_SUITE_JCSED25519SIGNATURE2020 = 1;</code> */
     public static final int LD_SUITE_JCSED25519SIGNATURE2020_VALUE = 1;
-
 
     public final int getNumber() {
       if (this == UNRECOGNIZED) {
@@ -64,48 +49,47 @@ public final class Proofs {
      */
     public static LdSuite forNumber(int value) {
       switch (value) {
-        case 0: return LD_SUITE_UNSPECIFIED;
-        case 1: return LD_SUITE_JCSED25519SIGNATURE2020;
-        default: return null;
+        case 0:
+          return LD_SUITE_UNSPECIFIED;
+        case 1:
+          return LD_SUITE_JCSED25519SIGNATURE2020;
+        default:
+          return null;
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<LdSuite>
-        internalGetValueMap() {
+    public static com.google.protobuf.Internal.EnumLiteMap<LdSuite> internalGetValueMap() {
       return internalValueMap;
     }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        LdSuite> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<LdSuite>() {
-            public LdSuite findValueByNumber(int number) {
-              return LdSuite.forNumber(number);
-            }
-          };
 
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
+    private static final com.google.protobuf.Internal.EnumLiteMap<LdSuite> internalValueMap =
+        new com.google.protobuf.Internal.EnumLiteMap<LdSuite>() {
+          public LdSuite findValueByNumber(int number) {
+            return LdSuite.forNumber(number);
+          }
+        };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor getValueDescriptor() {
       if (this == UNRECOGNIZED) {
         throw new java.lang.IllegalStateException(
             "Can't get the descriptor of an unrecognized enum value.");
       }
       return getDescriptor().getValues().get(ordinal());
     }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
+
+    public final com.google.protobuf.Descriptors.EnumDescriptor getDescriptorForType() {
       return getDescriptor();
     }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
+
+    public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
       return trinsic.okapi.proofs.v1.Proofs.getDescriptor().getEnumTypes().get(0);
     }
 
     private static final LdSuite[] VALUES = values();
 
-    public static LdSuite valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+    public static LdSuite valueOf(com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
+        throw new java.lang.IllegalArgumentException("EnumValueDescriptor is not for this type.");
       }
       if (desc.getIndex() == -1) {
         return UNRECOGNIZED;
@@ -122,11 +106,14 @@ public final class Proofs {
     // @@protoc_insertion_point(enum_scope:okapi.proofs.v1.LdSuite)
   }
 
-  public interface CreateProofRequestOrBuilder extends
+  public interface CreateProofRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.proofs.v1.CreateProofRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * The input JSON document that will be used
      * to create the LD Proof. This document must
@@ -135,10 +122,13 @@ public final class Proofs {
      * </pre>
      *
      * <code>.google.protobuf.Struct document = 1;</code>
+     *
      * @return Whether the document field is set.
      */
     boolean hasDocument();
     /**
+     *
+     *
      * <pre>
      * The input JSON document that will be used
      * to create the LD Proof. This document must
@@ -147,10 +137,13 @@ public final class Proofs {
      * </pre>
      *
      * <code>.google.protobuf.Struct document = 1;</code>
+     *
      * @return The document.
      */
     com.google.protobuf.Struct getDocument();
     /**
+     *
+     *
      * <pre>
      * The input JSON document that will be used
      * to create the LD Proof. This document must
@@ -163,6 +156,8 @@ public final class Proofs {
     com.google.protobuf.StructOrBuilder getDocumentOrBuilder();
 
     /**
+     *
+     *
      * <pre>
      * The signer of the proof. This field must include
      * the 'kid' in full URI format.
@@ -171,10 +166,13 @@ public final class Proofs {
      * </pre>
      *
      * <code>.okapi.keys.v1.JsonWebKey key = 3;</code>
+     *
      * @return Whether the key field is set.
      */
     boolean hasKey();
     /**
+     *
+     *
      * <pre>
      * The signer of the proof. This field must include
      * the 'kid' in full URI format.
@@ -183,10 +181,13 @@ public final class Proofs {
      * </pre>
      *
      * <code>.okapi.keys.v1.JsonWebKey key = 3;</code>
+     *
      * @return The key.
      */
     trinsic.okapi.keys.v1.Keys.JsonWebKey getKey();
     /**
+     *
+     *
      * <pre>
      * The signer of the proof. This field must include
      * the 'kid' in full URI format.
@@ -199,52 +200,56 @@ public final class Proofs {
     trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getKeyOrBuilder();
 
     /**
+     *
+     *
      * <pre>
      * The LD Suite to use to produce this proof
      * </pre>
      *
      * <code>.okapi.proofs.v1.LdSuite suite = 4;</code>
+     *
      * @return The enum numeric value on the wire for suite.
      */
     int getSuiteValue();
     /**
+     *
+     *
      * <pre>
      * The LD Suite to use to produce this proof
      * </pre>
      *
      * <code>.okapi.proofs.v1.LdSuite suite = 4;</code>
+     *
      * @return The suite.
      */
     trinsic.okapi.proofs.v1.Proofs.LdSuite getSuite();
   }
-  /**
-   * Protobuf type {@code okapi.proofs.v1.CreateProofRequest}
-   */
-  public static final class CreateProofRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code okapi.proofs.v1.CreateProofRequest} */
+  public static final class CreateProofRequest extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.proofs.v1.CreateProofRequest)
       CreateProofRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use CreateProofRequest.newBuilder() to construct.
     private CreateProofRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private CreateProofRequest() {
       suite_ = 0;
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new CreateProofRequest();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private CreateProofRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -263,45 +268,51 @@ public final class Proofs {
             case 0:
               done = true;
               break;
-            case 10: {
-              com.google.protobuf.Struct.Builder subBuilder = null;
-              if (document_ != null) {
-                subBuilder = document_.toBuilder();
-              }
-              document_ = input.readMessage(com.google.protobuf.Struct.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(document_);
-                document_ = subBuilder.buildPartial();
-              }
+            case 10:
+              {
+                com.google.protobuf.Struct.Builder subBuilder = null;
+                if (document_ != null) {
+                  subBuilder = document_.toBuilder();
+                }
+                document_ =
+                    input.readMessage(com.google.protobuf.Struct.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(document_);
+                  document_ = subBuilder.buildPartial();
+                }
 
-              break;
-            }
-            case 26: {
-              trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder subBuilder = null;
-              if (key_ != null) {
-                subBuilder = key_.toBuilder();
+                break;
               }
-              key_ = input.readMessage(trinsic.okapi.keys.v1.Keys.JsonWebKey.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(key_);
-                key_ = subBuilder.buildPartial();
-              }
+            case 26:
+              {
+                trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder subBuilder = null;
+                if (key_ != null) {
+                  subBuilder = key_.toBuilder();
+                }
+                key_ =
+                    input.readMessage(
+                        trinsic.okapi.keys.v1.Keys.JsonWebKey.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(key_);
+                  key_ = subBuilder.buildPartial();
+                }
 
-              break;
-            }
-            case 32: {
-              int rawValue = input.readEnum();
-
-              suite_ = rawValue;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                break;
               }
-              break;
-            }
+            case 32:
+              {
+                int rawValue = input.readEnum();
+
+                suite_ = rawValue;
+                break;
+              }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -309,29 +320,33 @@ public final class Proofs {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.proofs.v1.Proofs.internal_static_okapi_proofs_v1_CreateProofRequest_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.proofs.v1.Proofs
+          .internal_static_okapi_proofs_v1_CreateProofRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.proofs.v1.Proofs.internal_static_okapi_proofs_v1_CreateProofRequest_fieldAccessorTable
+      return trinsic.okapi.proofs.v1.Proofs
+          .internal_static_okapi_proofs_v1_CreateProofRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.proofs.v1.Proofs.CreateProofRequest.class, trinsic.okapi.proofs.v1.Proofs.CreateProofRequest.Builder.class);
+              trinsic.okapi.proofs.v1.Proofs.CreateProofRequest.class,
+              trinsic.okapi.proofs.v1.Proofs.CreateProofRequest.Builder.class);
     }
 
     public static final int DOCUMENT_FIELD_NUMBER = 1;
     private com.google.protobuf.Struct document_;
     /**
+     *
+     *
      * <pre>
      * The input JSON document that will be used
      * to create the LD Proof. This document must
@@ -340,6 +355,7 @@ public final class Proofs {
      * </pre>
      *
      * <code>.google.protobuf.Struct document = 1;</code>
+     *
      * @return Whether the document field is set.
      */
     @java.lang.Override
@@ -347,6 +363,8 @@ public final class Proofs {
       return document_ != null;
     }
     /**
+     *
+     *
      * <pre>
      * The input JSON document that will be used
      * to create the LD Proof. This document must
@@ -355,6 +373,7 @@ public final class Proofs {
      * </pre>
      *
      * <code>.google.protobuf.Struct document = 1;</code>
+     *
      * @return The document.
      */
     @java.lang.Override
@@ -362,6 +381,8 @@ public final class Proofs {
       return document_ == null ? com.google.protobuf.Struct.getDefaultInstance() : document_;
     }
     /**
+     *
+     *
      * <pre>
      * The input JSON document that will be used
      * to create the LD Proof. This document must
@@ -379,6 +400,8 @@ public final class Proofs {
     public static final int KEY_FIELD_NUMBER = 3;
     private trinsic.okapi.keys.v1.Keys.JsonWebKey key_;
     /**
+     *
+     *
      * <pre>
      * The signer of the proof. This field must include
      * the 'kid' in full URI format.
@@ -387,6 +410,7 @@ public final class Proofs {
      * </pre>
      *
      * <code>.okapi.keys.v1.JsonWebKey key = 3;</code>
+     *
      * @return Whether the key field is set.
      */
     @java.lang.Override
@@ -394,6 +418,8 @@ public final class Proofs {
       return key_ != null;
     }
     /**
+     *
+     *
      * <pre>
      * The signer of the proof. This field must include
      * the 'kid' in full URI format.
@@ -402,6 +428,7 @@ public final class Proofs {
      * </pre>
      *
      * <code>.okapi.keys.v1.JsonWebKey key = 3;</code>
+     *
      * @return The key.
      */
     @java.lang.Override
@@ -409,6 +436,8 @@ public final class Proofs {
       return key_ == null ? trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance() : key_;
     }
     /**
+     *
+     *
      * <pre>
      * The signer of the proof. This field must include
      * the 'kid' in full URI format.
@@ -426,31 +455,41 @@ public final class Proofs {
     public static final int SUITE_FIELD_NUMBER = 4;
     private int suite_;
     /**
+     *
+     *
      * <pre>
      * The LD Suite to use to produce this proof
      * </pre>
      *
      * <code>.okapi.proofs.v1.LdSuite suite = 4;</code>
+     *
      * @return The enum numeric value on the wire for suite.
      */
-    @java.lang.Override public int getSuiteValue() {
+    @java.lang.Override
+    public int getSuiteValue() {
       return suite_;
     }
     /**
+     *
+     *
      * <pre>
      * The LD Suite to use to produce this proof
      * </pre>
      *
      * <code>.okapi.proofs.v1.LdSuite suite = 4;</code>
+     *
      * @return The suite.
      */
-    @java.lang.Override public trinsic.okapi.proofs.v1.Proofs.LdSuite getSuite() {
+    @java.lang.Override
+    public trinsic.okapi.proofs.v1.Proofs.LdSuite getSuite() {
       @SuppressWarnings("deprecation")
-      trinsic.okapi.proofs.v1.Proofs.LdSuite result = trinsic.okapi.proofs.v1.Proofs.LdSuite.valueOf(suite_);
+      trinsic.okapi.proofs.v1.Proofs.LdSuite result =
+          trinsic.okapi.proofs.v1.Proofs.LdSuite.valueOf(suite_);
       return result == null ? trinsic.okapi.proofs.v1.Proofs.LdSuite.UNRECOGNIZED : result;
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -462,8 +501,7 @@ public final class Proofs {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (document_ != null) {
         output.writeMessage(1, getDocument());
       }
@@ -483,16 +521,13 @@ public final class Proofs {
 
       size = 0;
       if (document_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getDocument());
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getDocument());
       }
       if (key_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getKey());
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, getKey());
       }
       if (suite_ != trinsic.okapi.proofs.v1.Proofs.LdSuite.LD_SUITE_UNSPECIFIED.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(4, suite_);
+        size += com.google.protobuf.CodedOutputStream.computeEnumSize(4, suite_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -502,22 +537,21 @@ public final class Proofs {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.proofs.v1.Proofs.CreateProofRequest)) {
         return super.equals(obj);
       }
-      trinsic.okapi.proofs.v1.Proofs.CreateProofRequest other = (trinsic.okapi.proofs.v1.Proofs.CreateProofRequest) obj;
+      trinsic.okapi.proofs.v1.Proofs.CreateProofRequest other =
+          (trinsic.okapi.proofs.v1.Proofs.CreateProofRequest) obj;
 
       if (hasDocument() != other.hasDocument()) return false;
       if (hasDocument()) {
-        if (!getDocument()
-            .equals(other.getDocument())) return false;
+        if (!getDocument().equals(other.getDocument())) return false;
       }
       if (hasKey() != other.hasKey()) return false;
       if (hasKey()) {
-        if (!getKey()
-            .equals(other.getKey())) return false;
+        if (!getKey().equals(other.getKey())) return false;
       }
       if (suite_ != other.suite_) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -547,87 +581,93 @@ public final class Proofs {
     }
 
     public static trinsic.okapi.proofs.v1.Proofs.CreateProofRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.CreateProofRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.CreateProofRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.CreateProofRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.CreateProofRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.CreateProofRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.proofs.v1.Proofs.CreateProofRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.proofs.v1.Proofs.CreateProofRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.proofs.v1.Proofs.CreateProofRequest parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.proofs.v1.Proofs.CreateProofRequest parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.CreateProofRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.proofs.v1.Proofs.CreateProofRequest parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.proofs.v1.Proofs.CreateProofRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.CreateProofRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.okapi.proofs.v1.Proofs.CreateProofRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -636,24 +676,25 @@ public final class Proofs {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code okapi.proofs.v1.CreateProofRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code okapi.proofs.v1.CreateProofRequest} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.proofs.v1.CreateProofRequest)
         trinsic.okapi.proofs.v1.Proofs.CreateProofRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.proofs.v1.Proofs.internal_static_okapi_proofs_v1_CreateProofRequest_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.proofs.v1.Proofs
+            .internal_static_okapi_proofs_v1_CreateProofRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.proofs.v1.Proofs.internal_static_okapi_proofs_v1_CreateProofRequest_fieldAccessorTable
+        return trinsic.okapi.proofs.v1.Proofs
+            .internal_static_okapi_proofs_v1_CreateProofRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.proofs.v1.Proofs.CreateProofRequest.class, trinsic.okapi.proofs.v1.Proofs.CreateProofRequest.Builder.class);
+                trinsic.okapi.proofs.v1.Proofs.CreateProofRequest.class,
+                trinsic.okapi.proofs.v1.Proofs.CreateProofRequest.Builder.class);
       }
 
       // Construct using trinsic.okapi.proofs.v1.Proofs.CreateProofRequest.newBuilder()
@@ -661,16 +702,15 @@ public final class Proofs {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -692,9 +732,9 @@ public final class Proofs {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.proofs.v1.Proofs.internal_static_okapi_proofs_v1_CreateProofRequest_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.proofs.v1.Proofs
+            .internal_static_okapi_proofs_v1_CreateProofRequest_descriptor;
       }
 
       @java.lang.Override
@@ -713,7 +753,8 @@ public final class Proofs {
 
       @java.lang.Override
       public trinsic.okapi.proofs.v1.Proofs.CreateProofRequest buildPartial() {
-        trinsic.okapi.proofs.v1.Proofs.CreateProofRequest result = new trinsic.okapi.proofs.v1.Proofs.CreateProofRequest(this);
+        trinsic.okapi.proofs.v1.Proofs.CreateProofRequest result =
+            new trinsic.okapi.proofs.v1.Proofs.CreateProofRequest(this);
         if (documentBuilder_ == null) {
           result.document_ = document_;
         } else {
@@ -733,38 +774,41 @@ public final class Proofs {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.proofs.v1.Proofs.CreateProofRequest) {
-          return mergeFrom((trinsic.okapi.proofs.v1.Proofs.CreateProofRequest)other);
+          return mergeFrom((trinsic.okapi.proofs.v1.Proofs.CreateProofRequest) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -772,7 +816,8 @@ public final class Proofs {
       }
 
       public Builder mergeFrom(trinsic.okapi.proofs.v1.Proofs.CreateProofRequest other) {
-        if (other == trinsic.okapi.proofs.v1.Proofs.CreateProofRequest.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.proofs.v1.Proofs.CreateProofRequest.getDefaultInstance())
+          return this;
         if (other.hasDocument()) {
           mergeDocument(other.getDocument());
         }
@@ -801,7 +846,8 @@ public final class Proofs {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.proofs.v1.Proofs.CreateProofRequest) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.proofs.v1.Proofs.CreateProofRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -813,8 +859,13 @@ public final class Proofs {
 
       private com.google.protobuf.Struct document_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder> documentBuilder_;
+              com.google.protobuf.Struct,
+              com.google.protobuf.Struct.Builder,
+              com.google.protobuf.StructOrBuilder>
+          documentBuilder_;
       /**
+       *
+       *
        * <pre>
        * The input JSON document that will be used
        * to create the LD Proof. This document must
@@ -823,12 +874,15 @@ public final class Proofs {
        * </pre>
        *
        * <code>.google.protobuf.Struct document = 1;</code>
+       *
        * @return Whether the document field is set.
        */
       public boolean hasDocument() {
         return documentBuilder_ != null || document_ != null;
       }
       /**
+       *
+       *
        * <pre>
        * The input JSON document that will be used
        * to create the LD Proof. This document must
@@ -837,6 +891,7 @@ public final class Proofs {
        * </pre>
        *
        * <code>.google.protobuf.Struct document = 1;</code>
+       *
        * @return The document.
        */
       public com.google.protobuf.Struct getDocument() {
@@ -847,6 +902,8 @@ public final class Proofs {
         }
       }
       /**
+       *
+       *
        * <pre>
        * The input JSON document that will be used
        * to create the LD Proof. This document must
@@ -870,6 +927,8 @@ public final class Proofs {
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * The input JSON document that will be used
        * to create the LD Proof. This document must
@@ -879,8 +938,7 @@ public final class Proofs {
        *
        * <code>.google.protobuf.Struct document = 1;</code>
        */
-      public Builder setDocument(
-          com.google.protobuf.Struct.Builder builderForValue) {
+      public Builder setDocument(com.google.protobuf.Struct.Builder builderForValue) {
         if (documentBuilder_ == null) {
           document_ = builderForValue.build();
           onChanged();
@@ -891,6 +949,8 @@ public final class Proofs {
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * The input JSON document that will be used
        * to create the LD Proof. This document must
@@ -904,7 +964,7 @@ public final class Proofs {
         if (documentBuilder_ == null) {
           if (document_ != null) {
             document_ =
-              com.google.protobuf.Struct.newBuilder(document_).mergeFrom(value).buildPartial();
+                com.google.protobuf.Struct.newBuilder(document_).mergeFrom(value).buildPartial();
           } else {
             document_ = value;
           }
@@ -916,6 +976,8 @@ public final class Proofs {
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * The input JSON document that will be used
        * to create the LD Proof. This document must
@@ -937,6 +999,8 @@ public final class Proofs {
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * The input JSON document that will be used
        * to create the LD Proof. This document must
@@ -947,11 +1011,13 @@ public final class Proofs {
        * <code>.google.protobuf.Struct document = 1;</code>
        */
       public com.google.protobuf.Struct.Builder getDocumentBuilder() {
-        
+
         onChanged();
         return getDocumentFieldBuilder().getBuilder();
       }
       /**
+       *
+       *
        * <pre>
        * The input JSON document that will be used
        * to create the LD Proof. This document must
@@ -965,11 +1031,12 @@ public final class Proofs {
         if (documentBuilder_ != null) {
           return documentBuilder_.getMessageOrBuilder();
         } else {
-          return document_ == null ?
-              com.google.protobuf.Struct.getDefaultInstance() : document_;
+          return document_ == null ? com.google.protobuf.Struct.getDefaultInstance() : document_;
         }
       }
       /**
+       *
+       *
        * <pre>
        * The input JSON document that will be used
        * to create the LD Proof. This document must
@@ -980,14 +1047,17 @@ public final class Proofs {
        * <code>.google.protobuf.Struct document = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder> 
+              com.google.protobuf.Struct,
+              com.google.protobuf.Struct.Builder,
+              com.google.protobuf.StructOrBuilder>
           getDocumentFieldBuilder() {
         if (documentBuilder_ == null) {
-          documentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder>(
-                  getDocument(),
-                  getParentForChildren(),
-                  isClean());
+          documentBuilder_ =
+              new com.google.protobuf.SingleFieldBuilderV3<
+                  com.google.protobuf.Struct,
+                  com.google.protobuf.Struct.Builder,
+                  com.google.protobuf.StructOrBuilder>(
+                  getDocument(), getParentForChildren(), isClean());
           document_ = null;
         }
         return documentBuilder_;
@@ -995,8 +1065,13 @@ public final class Proofs {
 
       private trinsic.okapi.keys.v1.Keys.JsonWebKey key_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.okapi.keys.v1.Keys.JsonWebKey, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder, trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder> keyBuilder_;
+              trinsic.okapi.keys.v1.Keys.JsonWebKey,
+              trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder,
+              trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>
+          keyBuilder_;
       /**
+       *
+       *
        * <pre>
        * The signer of the proof. This field must include
        * the 'kid' in full URI format.
@@ -1005,12 +1080,15 @@ public final class Proofs {
        * </pre>
        *
        * <code>.okapi.keys.v1.JsonWebKey key = 3;</code>
+       *
        * @return Whether the key field is set.
        */
       public boolean hasKey() {
         return keyBuilder_ != null || key_ != null;
       }
       /**
+       *
+       *
        * <pre>
        * The signer of the proof. This field must include
        * the 'kid' in full URI format.
@@ -1019,6 +1097,7 @@ public final class Proofs {
        * </pre>
        *
        * <code>.okapi.keys.v1.JsonWebKey key = 3;</code>
+       *
        * @return The key.
        */
       public trinsic.okapi.keys.v1.Keys.JsonWebKey getKey() {
@@ -1029,6 +1108,8 @@ public final class Proofs {
         }
       }
       /**
+       *
+       *
        * <pre>
        * The signer of the proof. This field must include
        * the 'kid' in full URI format.
@@ -1052,6 +1133,8 @@ public final class Proofs {
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * The signer of the proof. This field must include
        * the 'kid' in full URI format.
@@ -1061,8 +1144,7 @@ public final class Proofs {
        *
        * <code>.okapi.keys.v1.JsonWebKey key = 3;</code>
        */
-      public Builder setKey(
-          trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder builderForValue) {
+      public Builder setKey(trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder builderForValue) {
         if (keyBuilder_ == null) {
           key_ = builderForValue.build();
           onChanged();
@@ -1073,6 +1155,8 @@ public final class Proofs {
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * The signer of the proof. This field must include
        * the 'kid' in full URI format.
@@ -1086,7 +1170,9 @@ public final class Proofs {
         if (keyBuilder_ == null) {
           if (key_ != null) {
             key_ =
-              trinsic.okapi.keys.v1.Keys.JsonWebKey.newBuilder(key_).mergeFrom(value).buildPartial();
+                trinsic.okapi.keys.v1.Keys.JsonWebKey.newBuilder(key_)
+                    .mergeFrom(value)
+                    .buildPartial();
           } else {
             key_ = value;
           }
@@ -1098,6 +1184,8 @@ public final class Proofs {
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * The signer of the proof. This field must include
        * the 'kid' in full URI format.
@@ -1119,6 +1207,8 @@ public final class Proofs {
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * The signer of the proof. This field must include
        * the 'kid' in full URI format.
@@ -1129,11 +1219,13 @@ public final class Proofs {
        * <code>.okapi.keys.v1.JsonWebKey key = 3;</code>
        */
       public trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder getKeyBuilder() {
-        
+
         onChanged();
         return getKeyFieldBuilder().getBuilder();
       }
       /**
+       *
+       *
        * <pre>
        * The signer of the proof. This field must include
        * the 'kid' in full URI format.
@@ -1147,11 +1239,12 @@ public final class Proofs {
         if (keyBuilder_ != null) {
           return keyBuilder_.getMessageOrBuilder();
         } else {
-          return key_ == null ?
-              trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance() : key_;
+          return key_ == null ? trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance() : key_;
         }
       }
       /**
+       *
+       *
        * <pre>
        * The signer of the proof. This field must include
        * the 'kid' in full URI format.
@@ -1162,14 +1255,17 @@ public final class Proofs {
        * <code>.okapi.keys.v1.JsonWebKey key = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.okapi.keys.v1.Keys.JsonWebKey, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder, trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder> 
+              trinsic.okapi.keys.v1.Keys.JsonWebKey,
+              trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder,
+              trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>
           getKeyFieldBuilder() {
         if (keyBuilder_ == null) {
-          keyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.okapi.keys.v1.Keys.JsonWebKey, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder, trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>(
-                  getKey(),
-                  getParentForChildren(),
-                  isClean());
+          keyBuilder_ =
+              new com.google.protobuf.SingleFieldBuilderV3<
+                  trinsic.okapi.keys.v1.Keys.JsonWebKey,
+                  trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder,
+                  trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>(
+                  getKey(), getParentForChildren(), isClean());
           key_ = null;
         }
         return keyBuilder_;
@@ -1177,51 +1273,65 @@ public final class Proofs {
 
       private int suite_ = 0;
       /**
+       *
+       *
        * <pre>
        * The LD Suite to use to produce this proof
        * </pre>
        *
        * <code>.okapi.proofs.v1.LdSuite suite = 4;</code>
+       *
        * @return The enum numeric value on the wire for suite.
        */
-      @java.lang.Override public int getSuiteValue() {
+      @java.lang.Override
+      public int getSuiteValue() {
         return suite_;
       }
       /**
+       *
+       *
        * <pre>
        * The LD Suite to use to produce this proof
        * </pre>
        *
        * <code>.okapi.proofs.v1.LdSuite suite = 4;</code>
+       *
        * @param value The enum numeric value on the wire for suite to set.
        * @return This builder for chaining.
        */
       public Builder setSuiteValue(int value) {
-        
+
         suite_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * The LD Suite to use to produce this proof
        * </pre>
        *
        * <code>.okapi.proofs.v1.LdSuite suite = 4;</code>
+       *
        * @return The suite.
        */
       @java.lang.Override
       public trinsic.okapi.proofs.v1.Proofs.LdSuite getSuite() {
         @SuppressWarnings("deprecation")
-        trinsic.okapi.proofs.v1.Proofs.LdSuite result = trinsic.okapi.proofs.v1.Proofs.LdSuite.valueOf(suite_);
+        trinsic.okapi.proofs.v1.Proofs.LdSuite result =
+            trinsic.okapi.proofs.v1.Proofs.LdSuite.valueOf(suite_);
         return result == null ? trinsic.okapi.proofs.v1.Proofs.LdSuite.UNRECOGNIZED : result;
       }
       /**
+       *
+       *
        * <pre>
        * The LD Suite to use to produce this proof
        * </pre>
        *
        * <code>.okapi.proofs.v1.LdSuite suite = 4;</code>
+       *
        * @param value The suite to set.
        * @return This builder for chaining.
        */
@@ -1229,25 +1339,29 @@ public final class Proofs {
         if (value == null) {
           throw new NullPointerException();
         }
-        
+
         suite_ = value.getNumber();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * The LD Suite to use to produce this proof
        * </pre>
        *
        * <code>.okapi.proofs.v1.LdSuite suite = 4;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearSuite() {
-        
+
         suite_ = 0;
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1260,12 +1374,12 @@ public final class Proofs {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.proofs.v1.CreateProofRequest)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.proofs.v1.CreateProofRequest)
     private static final trinsic.okapi.proofs.v1.Proofs.CreateProofRequest DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.proofs.v1.Proofs.CreateProofRequest();
     }
@@ -1274,16 +1388,16 @@ public final class Proofs {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<CreateProofRequest>
-        PARSER = new com.google.protobuf.AbstractParser<CreateProofRequest>() {
-      @java.lang.Override
-      public CreateProofRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CreateProofRequest(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<CreateProofRequest> PARSER =
+        new com.google.protobuf.AbstractParser<CreateProofRequest>() {
+          @java.lang.Override
+          public CreateProofRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new CreateProofRequest(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<CreateProofRequest> parser() {
       return PARSER;
@@ -1298,55 +1412,52 @@ public final class Proofs {
     public trinsic.okapi.proofs.v1.Proofs.CreateProofRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface CreateProofResponseOrBuilder extends
+  public interface CreateProofResponseOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.proofs.v1.CreateProofResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>.google.protobuf.Struct signed_document = 1;</code>
+     *
      * @return Whether the signedDocument field is set.
      */
     boolean hasSignedDocument();
     /**
      * <code>.google.protobuf.Struct signed_document = 1;</code>
+     *
      * @return The signedDocument.
      */
     com.google.protobuf.Struct getSignedDocument();
-    /**
-     * <code>.google.protobuf.Struct signed_document = 1;</code>
-     */
+    /** <code>.google.protobuf.Struct signed_document = 1;</code> */
     com.google.protobuf.StructOrBuilder getSignedDocumentOrBuilder();
   }
-  /**
-   * Protobuf type {@code okapi.proofs.v1.CreateProofResponse}
-   */
-  public static final class CreateProofResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code okapi.proofs.v1.CreateProofResponse} */
+  public static final class CreateProofResponse extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.proofs.v1.CreateProofResponse)
       CreateProofResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use CreateProofResponse.newBuilder() to construct.
     private CreateProofResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private CreateProofResponse() {
-    }
+
+    private CreateProofResponse() {}
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new CreateProofResponse();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private CreateProofResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1365,26 +1476,28 @@ public final class Proofs {
             case 0:
               done = true;
               break;
-            case 10: {
-              com.google.protobuf.Struct.Builder subBuilder = null;
-              if (signedDocument_ != null) {
-                subBuilder = signedDocument_.toBuilder();
-              }
-              signedDocument_ = input.readMessage(com.google.protobuf.Struct.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(signedDocument_);
-                signedDocument_ = subBuilder.buildPartial();
-              }
+            case 10:
+              {
+                com.google.protobuf.Struct.Builder subBuilder = null;
+                if (signedDocument_ != null) {
+                  subBuilder = signedDocument_.toBuilder();
+                }
+                signedDocument_ =
+                    input.readMessage(com.google.protobuf.Struct.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(signedDocument_);
+                  signedDocument_ = subBuilder.buildPartial();
+                }
 
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1392,30 +1505,33 @@ public final class Proofs {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.proofs.v1.Proofs.internal_static_okapi_proofs_v1_CreateProofResponse_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.proofs.v1.Proofs
+          .internal_static_okapi_proofs_v1_CreateProofResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.proofs.v1.Proofs.internal_static_okapi_proofs_v1_CreateProofResponse_fieldAccessorTable
+      return trinsic.okapi.proofs.v1.Proofs
+          .internal_static_okapi_proofs_v1_CreateProofResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.proofs.v1.Proofs.CreateProofResponse.class, trinsic.okapi.proofs.v1.Proofs.CreateProofResponse.Builder.class);
+              trinsic.okapi.proofs.v1.Proofs.CreateProofResponse.class,
+              trinsic.okapi.proofs.v1.Proofs.CreateProofResponse.Builder.class);
     }
 
     public static final int SIGNED_DOCUMENT_FIELD_NUMBER = 1;
     private com.google.protobuf.Struct signedDocument_;
     /**
      * <code>.google.protobuf.Struct signed_document = 1;</code>
+     *
      * @return Whether the signedDocument field is set.
      */
     @java.lang.Override
@@ -1424,21 +1540,23 @@ public final class Proofs {
     }
     /**
      * <code>.google.protobuf.Struct signed_document = 1;</code>
+     *
      * @return The signedDocument.
      */
     @java.lang.Override
     public com.google.protobuf.Struct getSignedDocument() {
-      return signedDocument_ == null ? com.google.protobuf.Struct.getDefaultInstance() : signedDocument_;
+      return signedDocument_ == null
+          ? com.google.protobuf.Struct.getDefaultInstance()
+          : signedDocument_;
     }
-    /**
-     * <code>.google.protobuf.Struct signed_document = 1;</code>
-     */
+    /** <code>.google.protobuf.Struct signed_document = 1;</code> */
     @java.lang.Override
     public com.google.protobuf.StructOrBuilder getSignedDocumentOrBuilder() {
       return getSignedDocument();
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1450,8 +1568,7 @@ public final class Proofs {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (signedDocument_ != null) {
         output.writeMessage(1, getSignedDocument());
       }
@@ -1465,8 +1582,7 @@ public final class Proofs {
 
       size = 0;
       if (signedDocument_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getSignedDocument());
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getSignedDocument());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1476,17 +1592,17 @@ public final class Proofs {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.proofs.v1.Proofs.CreateProofResponse)) {
         return super.equals(obj);
       }
-      trinsic.okapi.proofs.v1.Proofs.CreateProofResponse other = (trinsic.okapi.proofs.v1.Proofs.CreateProofResponse) obj;
+      trinsic.okapi.proofs.v1.Proofs.CreateProofResponse other =
+          (trinsic.okapi.proofs.v1.Proofs.CreateProofResponse) obj;
 
       if (hasSignedDocument() != other.hasSignedDocument()) return false;
       if (hasSignedDocument()) {
-        if (!getSignedDocument()
-            .equals(other.getSignedDocument())) return false;
+        if (!getSignedDocument().equals(other.getSignedDocument())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -1509,87 +1625,93 @@ public final class Proofs {
     }
 
     public static trinsic.okapi.proofs.v1.Proofs.CreateProofResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.CreateProofResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.CreateProofResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.CreateProofResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.CreateProofResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.CreateProofResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.proofs.v1.Proofs.CreateProofResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.proofs.v1.Proofs.CreateProofResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.proofs.v1.Proofs.CreateProofResponse parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.proofs.v1.Proofs.CreateProofResponse parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.CreateProofResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.proofs.v1.Proofs.CreateProofResponse parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.proofs.v1.Proofs.CreateProofResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.CreateProofResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.okapi.proofs.v1.Proofs.CreateProofResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -1598,24 +1720,25 @@ public final class Proofs {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code okapi.proofs.v1.CreateProofResponse}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code okapi.proofs.v1.CreateProofResponse} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.proofs.v1.CreateProofResponse)
         trinsic.okapi.proofs.v1.Proofs.CreateProofResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.proofs.v1.Proofs.internal_static_okapi_proofs_v1_CreateProofResponse_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.proofs.v1.Proofs
+            .internal_static_okapi_proofs_v1_CreateProofResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.proofs.v1.Proofs.internal_static_okapi_proofs_v1_CreateProofResponse_fieldAccessorTable
+        return trinsic.okapi.proofs.v1.Proofs
+            .internal_static_okapi_proofs_v1_CreateProofResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.proofs.v1.Proofs.CreateProofResponse.class, trinsic.okapi.proofs.v1.Proofs.CreateProofResponse.Builder.class);
+                trinsic.okapi.proofs.v1.Proofs.CreateProofResponse.class,
+                trinsic.okapi.proofs.v1.Proofs.CreateProofResponse.Builder.class);
       }
 
       // Construct using trinsic.okapi.proofs.v1.Proofs.CreateProofResponse.newBuilder()
@@ -1623,16 +1746,15 @@ public final class Proofs {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -1646,9 +1768,9 @@ public final class Proofs {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.proofs.v1.Proofs.internal_static_okapi_proofs_v1_CreateProofResponse_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.proofs.v1.Proofs
+            .internal_static_okapi_proofs_v1_CreateProofResponse_descriptor;
       }
 
       @java.lang.Override
@@ -1667,7 +1789,8 @@ public final class Proofs {
 
       @java.lang.Override
       public trinsic.okapi.proofs.v1.Proofs.CreateProofResponse buildPartial() {
-        trinsic.okapi.proofs.v1.Proofs.CreateProofResponse result = new trinsic.okapi.proofs.v1.Proofs.CreateProofResponse(this);
+        trinsic.okapi.proofs.v1.Proofs.CreateProofResponse result =
+            new trinsic.okapi.proofs.v1.Proofs.CreateProofResponse(this);
         if (signedDocumentBuilder_ == null) {
           result.signedDocument_ = signedDocument_;
         } else {
@@ -1681,38 +1804,41 @@ public final class Proofs {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.proofs.v1.Proofs.CreateProofResponse) {
-          return mergeFrom((trinsic.okapi.proofs.v1.Proofs.CreateProofResponse)other);
+          return mergeFrom((trinsic.okapi.proofs.v1.Proofs.CreateProofResponse) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -1720,7 +1846,8 @@ public final class Proofs {
       }
 
       public Builder mergeFrom(trinsic.okapi.proofs.v1.Proofs.CreateProofResponse other) {
-        if (other == trinsic.okapi.proofs.v1.Proofs.CreateProofResponse.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.proofs.v1.Proofs.CreateProofResponse.getDefaultInstance())
+          return this;
         if (other.hasSignedDocument()) {
           mergeSignedDocument(other.getSignedDocument());
         }
@@ -1743,7 +1870,8 @@ public final class Proofs {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.proofs.v1.Proofs.CreateProofResponse) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.proofs.v1.Proofs.CreateProofResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1755,9 +1883,13 @@ public final class Proofs {
 
       private com.google.protobuf.Struct signedDocument_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder> signedDocumentBuilder_;
+              com.google.protobuf.Struct,
+              com.google.protobuf.Struct.Builder,
+              com.google.protobuf.StructOrBuilder>
+          signedDocumentBuilder_;
       /**
        * <code>.google.protobuf.Struct signed_document = 1;</code>
+       *
        * @return Whether the signedDocument field is set.
        */
       public boolean hasSignedDocument() {
@@ -1765,18 +1897,19 @@ public final class Proofs {
       }
       /**
        * <code>.google.protobuf.Struct signed_document = 1;</code>
+       *
        * @return The signedDocument.
        */
       public com.google.protobuf.Struct getSignedDocument() {
         if (signedDocumentBuilder_ == null) {
-          return signedDocument_ == null ? com.google.protobuf.Struct.getDefaultInstance() : signedDocument_;
+          return signedDocument_ == null
+              ? com.google.protobuf.Struct.getDefaultInstance()
+              : signedDocument_;
         } else {
           return signedDocumentBuilder_.getMessage();
         }
       }
-      /**
-       * <code>.google.protobuf.Struct signed_document = 1;</code>
-       */
+      /** <code>.google.protobuf.Struct signed_document = 1;</code> */
       public Builder setSignedDocument(com.google.protobuf.Struct value) {
         if (signedDocumentBuilder_ == null) {
           if (value == null) {
@@ -1790,11 +1923,8 @@ public final class Proofs {
 
         return this;
       }
-      /**
-       * <code>.google.protobuf.Struct signed_document = 1;</code>
-       */
-      public Builder setSignedDocument(
-          com.google.protobuf.Struct.Builder builderForValue) {
+      /** <code>.google.protobuf.Struct signed_document = 1;</code> */
+      public Builder setSignedDocument(com.google.protobuf.Struct.Builder builderForValue) {
         if (signedDocumentBuilder_ == null) {
           signedDocument_ = builderForValue.build();
           onChanged();
@@ -1804,14 +1934,14 @@ public final class Proofs {
 
         return this;
       }
-      /**
-       * <code>.google.protobuf.Struct signed_document = 1;</code>
-       */
+      /** <code>.google.protobuf.Struct signed_document = 1;</code> */
       public Builder mergeSignedDocument(com.google.protobuf.Struct value) {
         if (signedDocumentBuilder_ == null) {
           if (signedDocument_ != null) {
             signedDocument_ =
-              com.google.protobuf.Struct.newBuilder(signedDocument_).mergeFrom(value).buildPartial();
+                com.google.protobuf.Struct.newBuilder(signedDocument_)
+                    .mergeFrom(value)
+                    .buildPartial();
           } else {
             signedDocument_ = value;
           }
@@ -1822,9 +1952,7 @@ public final class Proofs {
 
         return this;
       }
-      /**
-       * <code>.google.protobuf.Struct signed_document = 1;</code>
-       */
+      /** <code>.google.protobuf.Struct signed_document = 1;</code> */
       public Builder clearSignedDocument() {
         if (signedDocumentBuilder_ == null) {
           signedDocument_ = null;
@@ -1836,41 +1964,40 @@ public final class Proofs {
 
         return this;
       }
-      /**
-       * <code>.google.protobuf.Struct signed_document = 1;</code>
-       */
+      /** <code>.google.protobuf.Struct signed_document = 1;</code> */
       public com.google.protobuf.Struct.Builder getSignedDocumentBuilder() {
-        
+
         onChanged();
         return getSignedDocumentFieldBuilder().getBuilder();
       }
-      /**
-       * <code>.google.protobuf.Struct signed_document = 1;</code>
-       */
+      /** <code>.google.protobuf.Struct signed_document = 1;</code> */
       public com.google.protobuf.StructOrBuilder getSignedDocumentOrBuilder() {
         if (signedDocumentBuilder_ != null) {
           return signedDocumentBuilder_.getMessageOrBuilder();
         } else {
-          return signedDocument_ == null ?
-              com.google.protobuf.Struct.getDefaultInstance() : signedDocument_;
+          return signedDocument_ == null
+              ? com.google.protobuf.Struct.getDefaultInstance()
+              : signedDocument_;
         }
       }
-      /**
-       * <code>.google.protobuf.Struct signed_document = 1;</code>
-       */
+      /** <code>.google.protobuf.Struct signed_document = 1;</code> */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder> 
+              com.google.protobuf.Struct,
+              com.google.protobuf.Struct.Builder,
+              com.google.protobuf.StructOrBuilder>
           getSignedDocumentFieldBuilder() {
         if (signedDocumentBuilder_ == null) {
-          signedDocumentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder>(
-                  getSignedDocument(),
-                  getParentForChildren(),
-                  isClean());
+          signedDocumentBuilder_ =
+              new com.google.protobuf.SingleFieldBuilderV3<
+                  com.google.protobuf.Struct,
+                  com.google.protobuf.Struct.Builder,
+                  com.google.protobuf.StructOrBuilder>(
+                  getSignedDocument(), getParentForChildren(), isClean());
           signedDocument_ = null;
         }
         return signedDocumentBuilder_;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1883,12 +2010,12 @@ public final class Proofs {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.proofs.v1.CreateProofResponse)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.proofs.v1.CreateProofResponse)
     private static final trinsic.okapi.proofs.v1.Proofs.CreateProofResponse DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.proofs.v1.Proofs.CreateProofResponse();
     }
@@ -1897,16 +2024,16 @@ public final class Proofs {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<CreateProofResponse>
-        PARSER = new com.google.protobuf.AbstractParser<CreateProofResponse>() {
-      @java.lang.Override
-      public CreateProofResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CreateProofResponse(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<CreateProofResponse> PARSER =
+        new com.google.protobuf.AbstractParser<CreateProofResponse>() {
+          @java.lang.Override
+          public CreateProofResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new CreateProofResponse(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<CreateProofResponse> parser() {
       return PARSER;
@@ -1921,40 +2048,36 @@ public final class Proofs {
     public trinsic.okapi.proofs.v1.Proofs.CreateProofResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface VerifyProofRequestOrBuilder extends
+  public interface VerifyProofRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.proofs.v1.VerifyProofRequest)
-      com.google.protobuf.MessageOrBuilder {
-  }
-  /**
-   * Protobuf type {@code okapi.proofs.v1.VerifyProofRequest}
-   */
-  public static final class VerifyProofRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      com.google.protobuf.MessageOrBuilder {}
+  /** Protobuf type {@code okapi.proofs.v1.VerifyProofRequest} */
+  public static final class VerifyProofRequest extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.proofs.v1.VerifyProofRequest)
       VerifyProofRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use VerifyProofRequest.newBuilder() to construct.
     private VerifyProofRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private VerifyProofRequest() {
-    }
+
+    private VerifyProofRequest() {}
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new VerifyProofRequest();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private VerifyProofRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1973,13 +2096,13 @@ public final class Proofs {
             case 0:
               done = true;
               break;
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
               }
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1987,27 +2110,30 @@ public final class Proofs {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.proofs.v1.Proofs.internal_static_okapi_proofs_v1_VerifyProofRequest_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.proofs.v1.Proofs
+          .internal_static_okapi_proofs_v1_VerifyProofRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.proofs.v1.Proofs.internal_static_okapi_proofs_v1_VerifyProofRequest_fieldAccessorTable
+      return trinsic.okapi.proofs.v1.Proofs
+          .internal_static_okapi_proofs_v1_VerifyProofRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest.class, trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest.Builder.class);
+              trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest.class,
+              trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest.Builder.class);
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -2019,8 +2145,7 @@ public final class Proofs {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       unknownFields.writeTo(output);
     }
 
@@ -2038,12 +2163,13 @@ public final class Proofs {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest)) {
         return super.equals(obj);
       }
-      trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest other = (trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest) obj;
+      trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest other =
+          (trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest) obj;
 
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -2062,87 +2188,93 @@ public final class Proofs {
     }
 
     public static trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -2151,24 +2283,25 @@ public final class Proofs {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code okapi.proofs.v1.VerifyProofRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code okapi.proofs.v1.VerifyProofRequest} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.proofs.v1.VerifyProofRequest)
         trinsic.okapi.proofs.v1.Proofs.VerifyProofRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.proofs.v1.Proofs.internal_static_okapi_proofs_v1_VerifyProofRequest_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.proofs.v1.Proofs
+            .internal_static_okapi_proofs_v1_VerifyProofRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.proofs.v1.Proofs.internal_static_okapi_proofs_v1_VerifyProofRequest_fieldAccessorTable
+        return trinsic.okapi.proofs.v1.Proofs
+            .internal_static_okapi_proofs_v1_VerifyProofRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest.class, trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest.Builder.class);
+                trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest.class,
+                trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest.Builder.class);
       }
 
       // Construct using trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest.newBuilder()
@@ -2176,16 +2309,15 @@ public final class Proofs {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -2193,9 +2325,9 @@ public final class Proofs {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.proofs.v1.Proofs.internal_static_okapi_proofs_v1_VerifyProofRequest_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.proofs.v1.Proofs
+            .internal_static_okapi_proofs_v1_VerifyProofRequest_descriptor;
       }
 
       @java.lang.Override
@@ -2214,7 +2346,8 @@ public final class Proofs {
 
       @java.lang.Override
       public trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest buildPartial() {
-        trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest result = new trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest(this);
+        trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest result =
+            new trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest(this);
         onBuilt();
         return result;
       }
@@ -2223,38 +2356,41 @@ public final class Proofs {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest) {
-          return mergeFrom((trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest)other);
+          return mergeFrom((trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -2262,7 +2398,8 @@ public final class Proofs {
       }
 
       public Builder mergeFrom(trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest other) {
-        if (other == trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest.getDefaultInstance())
+          return this;
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -2282,7 +2419,8 @@ public final class Proofs {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2291,6 +2429,7 @@ public final class Proofs {
         }
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -2303,12 +2442,12 @@ public final class Proofs {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.proofs.v1.VerifyProofRequest)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.proofs.v1.VerifyProofRequest)
     private static final trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest();
     }
@@ -2317,16 +2456,16 @@ public final class Proofs {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<VerifyProofRequest>
-        PARSER = new com.google.protobuf.AbstractParser<VerifyProofRequest>() {
-      @java.lang.Override
-      public VerifyProofRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new VerifyProofRequest(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<VerifyProofRequest> PARSER =
+        new com.google.protobuf.AbstractParser<VerifyProofRequest>() {
+          @java.lang.Override
+          public VerifyProofRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new VerifyProofRequest(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<VerifyProofRequest> parser() {
       return PARSER;
@@ -2341,40 +2480,36 @@ public final class Proofs {
     public trinsic.okapi.proofs.v1.Proofs.VerifyProofRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface VerifyProofResponseOrBuilder extends
+  public interface VerifyProofResponseOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.proofs.v1.VerifyProofResponse)
-      com.google.protobuf.MessageOrBuilder {
-  }
-  /**
-   * Protobuf type {@code okapi.proofs.v1.VerifyProofResponse}
-   */
-  public static final class VerifyProofResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      com.google.protobuf.MessageOrBuilder {}
+  /** Protobuf type {@code okapi.proofs.v1.VerifyProofResponse} */
+  public static final class VerifyProofResponse extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.proofs.v1.VerifyProofResponse)
       VerifyProofResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use VerifyProofResponse.newBuilder() to construct.
     private VerifyProofResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private VerifyProofResponse() {
-    }
+
+    private VerifyProofResponse() {}
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new VerifyProofResponse();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private VerifyProofResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2393,13 +2528,13 @@ public final class Proofs {
             case 0:
               done = true;
               break;
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
               }
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -2407,27 +2542,30 @@ public final class Proofs {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.proofs.v1.Proofs.internal_static_okapi_proofs_v1_VerifyProofResponse_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.proofs.v1.Proofs
+          .internal_static_okapi_proofs_v1_VerifyProofResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.proofs.v1.Proofs.internal_static_okapi_proofs_v1_VerifyProofResponse_fieldAccessorTable
+      return trinsic.okapi.proofs.v1.Proofs
+          .internal_static_okapi_proofs_v1_VerifyProofResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse.class, trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse.Builder.class);
+              trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse.class,
+              trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse.Builder.class);
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -2439,8 +2577,7 @@ public final class Proofs {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       unknownFields.writeTo(output);
     }
 
@@ -2458,12 +2595,13 @@ public final class Proofs {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse)) {
         return super.equals(obj);
       }
-      trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse other = (trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse) obj;
+      trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse other =
+          (trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse) obj;
 
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -2482,87 +2620,93 @@ public final class Proofs {
     }
 
     public static trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -2571,24 +2715,25 @@ public final class Proofs {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code okapi.proofs.v1.VerifyProofResponse}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code okapi.proofs.v1.VerifyProofResponse} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.proofs.v1.VerifyProofResponse)
         trinsic.okapi.proofs.v1.Proofs.VerifyProofResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.proofs.v1.Proofs.internal_static_okapi_proofs_v1_VerifyProofResponse_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.proofs.v1.Proofs
+            .internal_static_okapi_proofs_v1_VerifyProofResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.proofs.v1.Proofs.internal_static_okapi_proofs_v1_VerifyProofResponse_fieldAccessorTable
+        return trinsic.okapi.proofs.v1.Proofs
+            .internal_static_okapi_proofs_v1_VerifyProofResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse.class, trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse.Builder.class);
+                trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse.class,
+                trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse.Builder.class);
       }
 
       // Construct using trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse.newBuilder()
@@ -2596,16 +2741,15 @@ public final class Proofs {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -2613,9 +2757,9 @@ public final class Proofs {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.proofs.v1.Proofs.internal_static_okapi_proofs_v1_VerifyProofResponse_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.proofs.v1.Proofs
+            .internal_static_okapi_proofs_v1_VerifyProofResponse_descriptor;
       }
 
       @java.lang.Override
@@ -2634,7 +2778,8 @@ public final class Proofs {
 
       @java.lang.Override
       public trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse buildPartial() {
-        trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse result = new trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse(this);
+        trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse result =
+            new trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse(this);
         onBuilt();
         return result;
       }
@@ -2643,38 +2788,41 @@ public final class Proofs {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse) {
-          return mergeFrom((trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse)other);
+          return mergeFrom((trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -2682,7 +2830,8 @@ public final class Proofs {
       }
 
       public Builder mergeFrom(trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse other) {
-        if (other == trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse.getDefaultInstance())
+          return this;
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -2702,7 +2851,8 @@ public final class Proofs {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2711,6 +2861,7 @@ public final class Proofs {
         }
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -2723,12 +2874,12 @@ public final class Proofs {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.proofs.v1.VerifyProofResponse)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.proofs.v1.VerifyProofResponse)
     private static final trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse();
     }
@@ -2737,16 +2888,16 @@ public final class Proofs {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<VerifyProofResponse>
-        PARSER = new com.google.protobuf.AbstractParser<VerifyProofResponse>() {
-      @java.lang.Override
-      public VerifyProofResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new VerifyProofResponse(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<VerifyProofResponse> PARSER =
+        new com.google.protobuf.AbstractParser<VerifyProofResponse>() {
+          @java.lang.Override
+          public VerifyProofResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new VerifyProofResponse(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<VerifyProofResponse> parser() {
       return PARSER;
@@ -2761,83 +2912,82 @@ public final class Proofs {
     public trinsic.okapi.proofs.v1.Proofs.VerifyProofResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_proofs_v1_CreateProofRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_proofs_v1_CreateProofRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_proofs_v1_CreateProofRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_proofs_v1_CreateProofResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_proofs_v1_CreateProofResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_proofs_v1_CreateProofResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_proofs_v1_VerifyProofRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_proofs_v1_VerifyProofRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_proofs_v1_VerifyProofRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_proofs_v1_VerifyProofResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_proofs_v1_VerifyProofResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_proofs_v1_VerifyProofResponse_fieldAccessorTable;
 
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
+  public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
+
+  private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
+
   static {
     java.lang.String[] descriptorData = {
-      "\n\034okapi/proofs/v1/proofs.proto\022\017okapi.pr" +
-      "oofs.v1\032\030okapi/keys/v1/keys.proto\032\034googl" +
-      "e/protobuf/struct.proto\"\220\001\n\022CreateProofR" +
-      "equest\022)\n\010document\030\001 \001(\0132\027.google.protob" +
-      "uf.Struct\022&\n\003key\030\003 \001(\0132\031.okapi.keys.v1.J" +
-      "sonWebKey\022\'\n\005suite\030\004 \001(\0162\030.okapi.proofs." +
-      "v1.LdSuite\"G\n\023CreateProofResponse\0220\n\017sig" +
-      "ned_document\030\001 \001(\0132\027.google.protobuf.Str" +
-      "uct\"\024\n\022VerifyProofRequest\"\025\n\023VerifyProof" +
-      "Response*I\n\007LdSuite\022\030\n\024LD_SUITE_UNSPECIF" +
-      "IED\020\000\022$\n LD_SUITE_JCSED25519SIGNATURE202" +
-      "0\020\001BM\n\027trinsic.okapi.proofs.v1Z github.c" +
-      "om/trinsic-id/okapiproto\252\002\017Okapi.Proofs." +
-      "V1b\006proto3"
+      "\n\034okapi/proofs/v1/proofs.proto\022\017okapi.pr"
+          + "oofs.v1\032\030okapi/keys/v1/keys.proto\032\034googl"
+          + "e/protobuf/struct.proto\"\220\001\n\022CreateProofR"
+          + "equest\022)\n\010document\030\001 \001(\0132\027.google.protob"
+          + "uf.Struct\022&\n\003key\030\003 \001(\0132\031.okapi.keys.v1.J"
+          + "sonWebKey\022\'\n\005suite\030\004 \001(\0162\030.okapi.proofs."
+          + "v1.LdSuite\"G\n\023CreateProofResponse\0220\n\017sig"
+          + "ned_document\030\001 \001(\0132\027.google.protobuf.Str"
+          + "uct\"\024\n\022VerifyProofRequest\"\025\n\023VerifyProof"
+          + "Response*I\n\007LdSuite\022\030\n\024LD_SUITE_UNSPECIF"
+          + "IED\020\000\022$\n LD_SUITE_JCSED25519SIGNATURE202"
+          + "0\020\001BC\n\027trinsic.okapi.proofs.v1Z\026okapi/pr"
+          + "oofs/v1/proofs\252\002\017Okapi.Proofs.V1b\006proto3"
     };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-          trinsic.okapi.keys.v1.Keys.getDescriptor(),
-          com.google.protobuf.StructProto.getDescriptor(),
-        });
+    descriptor =
+        com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
+            descriptorData,
+            new com.google.protobuf.Descriptors.FileDescriptor[] {
+              trinsic.okapi.keys.v1.Keys.getDescriptor(),
+              com.google.protobuf.StructProto.getDescriptor(),
+            });
     internal_static_okapi_proofs_v1_CreateProofRequest_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_okapi_proofs_v1_CreateProofRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_proofs_v1_CreateProofRequest_descriptor,
-        new java.lang.String[] { "Document", "Key", "Suite", });
+        getDescriptor().getMessageTypes().get(0);
+    internal_static_okapi_proofs_v1_CreateProofRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_proofs_v1_CreateProofRequest_descriptor,
+            new java.lang.String[] {
+              "Document", "Key", "Suite",
+            });
     internal_static_okapi_proofs_v1_CreateProofResponse_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_okapi_proofs_v1_CreateProofResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_proofs_v1_CreateProofResponse_descriptor,
-        new java.lang.String[] { "SignedDocument", });
+        getDescriptor().getMessageTypes().get(1);
+    internal_static_okapi_proofs_v1_CreateProofResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_proofs_v1_CreateProofResponse_descriptor,
+            new java.lang.String[] {
+              "SignedDocument",
+            });
     internal_static_okapi_proofs_v1_VerifyProofRequest_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_okapi_proofs_v1_VerifyProofRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_proofs_v1_VerifyProofRequest_descriptor,
-        new java.lang.String[] { });
+        getDescriptor().getMessageTypes().get(2);
+    internal_static_okapi_proofs_v1_VerifyProofRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_proofs_v1_VerifyProofRequest_descriptor,
+            new java.lang.String[] {});
     internal_static_okapi_proofs_v1_VerifyProofResponse_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_okapi_proofs_v1_VerifyProofResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_proofs_v1_VerifyProofResponse_descriptor,
-        new java.lang.String[] { });
+        getDescriptor().getMessageTypes().get(3);
+    internal_static_okapi_proofs_v1_VerifyProofResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_proofs_v1_VerifyProofResponse_descriptor,
+            new java.lang.String[] {});
     trinsic.okapi.keys.v1.Keys.getDescriptor();
     com.google.protobuf.StructProto.getDescriptor();
   }

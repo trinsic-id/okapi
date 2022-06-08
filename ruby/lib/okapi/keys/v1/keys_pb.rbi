@@ -2,10 +2,6 @@
 # source: okapi/keys/v1/keys.proto
 # typed: strict
 
-module Okapi; end
-module Okapi::Keys; end
-module Okapi::Keys::V1; end
-
 class Okapi::Keys::V1::GenerateKeyRequest
   include Google::Protobuf
   include Google::Protobuf::MessageExts

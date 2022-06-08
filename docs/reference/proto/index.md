@@ -1,916 +1,10 @@
+
+
+
 # Protocol Documentation
 <a name="top"></a>
 
-## Table of Contents
-
-- [okapi/examples/v1/examples.proto](#okapi_examples_v1_examples-proto)
-    - [BasicMessage](#okapi-examples-v1-BasicMessage)
-  
-    - [SecureExampleService](#okapi-examples-v1-SecureExampleService)
-  
-- [okapi/hashing/v1/hashing.proto](#okapi_hashing_v1_hashing-proto)
-    - [Blake3DeriveKeyRequest](#okapi-hashing-v1-Blake3DeriveKeyRequest)
-    - [Blake3DeriveKeyResponse](#okapi-hashing-v1-Blake3DeriveKeyResponse)
-    - [Blake3HashRequest](#okapi-hashing-v1-Blake3HashRequest)
-    - [Blake3HashResponse](#okapi-hashing-v1-Blake3HashResponse)
-    - [Blake3KeyedHashRequest](#okapi-hashing-v1-Blake3KeyedHashRequest)
-    - [Blake3KeyedHashResponse](#okapi-hashing-v1-Blake3KeyedHashResponse)
-    - [SHA256HashRequest](#okapi-hashing-v1-SHA256HashRequest)
-    - [SHA256HashResponse](#okapi-hashing-v1-SHA256HashResponse)
-  
-- [okapi/keys/v1/keys.proto](#okapi_keys_v1_keys-proto)
-    - [GenerateKeyRequest](#okapi-keys-v1-GenerateKeyRequest)
-    - [GenerateKeyResponse](#okapi-keys-v1-GenerateKeyResponse)
-    - [JsonWebKey](#okapi-keys-v1-JsonWebKey)
-    - [ResolveRequest](#okapi-keys-v1-ResolveRequest)
-    - [ResolveResponse](#okapi-keys-v1-ResolveResponse)
-  
-    - [KeyType](#okapi-keys-v1-KeyType)
-  
-- [okapi/metadata/metadata.proto](#okapi_metadata_metadata-proto)
-    - [MetadataRequest](#okapi-metadata-MetadataRequest)
-    - [MetadataResponse](#okapi-metadata-MetadataResponse)
-  
-- [okapi/proofs/v1/proofs.proto](#okapi_proofs_v1_proofs-proto)
-    - [CreateProofRequest](#okapi-proofs-v1-CreateProofRequest)
-    - [CreateProofResponse](#okapi-proofs-v1-CreateProofResponse)
-    - [VerifyProofRequest](#okapi-proofs-v1-VerifyProofRequest)
-    - [VerifyProofResponse](#okapi-proofs-v1-VerifyProofResponse)
-  
-    - [LdSuite](#okapi-proofs-v1-LdSuite)
-  
-- [okapi/security/v1/security.proto](#okapi_security_v1_security-proto)
-    - [BlindOberonTokenRequest](#okapi-security-v1-BlindOberonTokenRequest)
-    - [BlindOberonTokenResponse](#okapi-security-v1-BlindOberonTokenResponse)
-    - [CreateOberonKeyRequest](#okapi-security-v1-CreateOberonKeyRequest)
-    - [CreateOberonKeyResponse](#okapi-security-v1-CreateOberonKeyResponse)
-    - [CreateOberonProofRequest](#okapi-security-v1-CreateOberonProofRequest)
-    - [CreateOberonProofResponse](#okapi-security-v1-CreateOberonProofResponse)
-    - [CreateOberonTokenRequest](#okapi-security-v1-CreateOberonTokenRequest)
-    - [CreateOberonTokenResponse](#okapi-security-v1-CreateOberonTokenResponse)
-    - [UnBlindOberonTokenRequest](#okapi-security-v1-UnBlindOberonTokenRequest)
-    - [UnBlindOberonTokenResponse](#okapi-security-v1-UnBlindOberonTokenResponse)
-    - [VerifyOberonProofRequest](#okapi-security-v1-VerifyOberonProofRequest)
-    - [VerifyOberonProofResponse](#okapi-security-v1-VerifyOberonProofResponse)
-    - [VerifyOberonTokenRequest](#okapi-security-v1-VerifyOberonTokenRequest)
-    - [VerifyOberonTokenResponse](#okapi-security-v1-VerifyOberonTokenResponse)
-  
-- [okapi/transport/v1/transport.proto](#okapi_transport_v1_transport-proto)
-    - [CoreMessage](#okapi-transport-v1-CoreMessage)
-    - [PackRequest](#okapi-transport-v1-PackRequest)
-    - [PackResponse](#okapi-transport-v1-PackResponse)
-    - [SignRequest](#okapi-transport-v1-SignRequest)
-    - [SignResponse](#okapi-transport-v1-SignResponse)
-    - [UnpackRequest](#okapi-transport-v1-UnpackRequest)
-    - [UnpackResponse](#okapi-transport-v1-UnpackResponse)
-    - [VerifyRequest](#okapi-transport-v1-VerifyRequest)
-    - [VerifyResponse](#okapi-transport-v1-VerifyResponse)
-  
-- [pbmse/v1/pbmse.proto](#pbmse_v1_pbmse-proto)
-    - [EncryptedMessage](#pbmse-v1-EncryptedMessage)
-    - [EncryptionHeader](#pbmse-v1-EncryptionHeader)
-    - [EncryptionRecipient](#pbmse-v1-EncryptionRecipient)
-    - [Signature](#pbmse-v1-Signature)
-    - [SignatureHeader](#pbmse-v1-SignatureHeader)
-    - [SignedMessage](#pbmse-v1-SignedMessage)
-  
-    - [EncryptionAlgorithm](#pbmse-v1-EncryptionAlgorithm)
-    - [EncryptionMode](#pbmse-v1-EncryptionMode)
-  
-- [Scalar Value Types](#scalar-value-types)
-
-
-
-<a name="okapi_examples_v1_examples-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## okapi/examples/v1/examples.proto
-
-
-
-<a name="okapi-examples-v1-BasicMessage"></a>
-
-### BasicMessage
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| text | [string](#string) |  |  |
-
-
-
-
-
- 
-
- 
-
- 
-
-
-<a name="okapi-examples-v1-SecureExampleService"></a>
-
-### SecureExampleService
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| Unary | [.pbmse.v1.EncryptedMessage](#pbmse-v1-EncryptedMessage) | [.pbmse.v1.EncryptedMessage](#pbmse-v1-EncryptedMessage) |  |
-| ServerStreaming | [.pbmse.v1.EncryptedMessage](#pbmse-v1-EncryptedMessage) | [.pbmse.v1.EncryptedMessage](#pbmse-v1-EncryptedMessage) stream |  |
-
- 
-
-
-
-<a name="okapi_hashing_v1_hashing-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## okapi/hashing/v1/hashing.proto
-
-
-
-<a name="okapi-hashing-v1-Blake3DeriveKeyRequest"></a>
-
-### Blake3DeriveKeyRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| context | [bytes](#bytes) |  |  |
-| key_material | [bytes](#bytes) |  |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-Blake3DeriveKeyResponse"></a>
-
-### Blake3DeriveKeyResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| digest | [bytes](#bytes) |  |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-Blake3HashRequest"></a>
-
-### Blake3HashRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| data | [bytes](#bytes) |  |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-Blake3HashResponse"></a>
-
-### Blake3HashResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| digest | [bytes](#bytes) |  |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-Blake3KeyedHashRequest"></a>
-
-### Blake3KeyedHashRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| data | [bytes](#bytes) |  |  |
-| key | [bytes](#bytes) |  |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-Blake3KeyedHashResponse"></a>
-
-### Blake3KeyedHashResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| digest | [bytes](#bytes) |  |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-SHA256HashRequest"></a>
-
-### SHA256HashRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| data | [bytes](#bytes) |  |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-SHA256HashResponse"></a>
-
-### SHA256HashResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| digest | [bytes](#bytes) |  |  |
-
-
-
-
-
- 
-
- 
-
- 
-
- 
-
-
-
-<a name="okapi_keys_v1_keys-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## okapi/keys/v1/keys.proto
-
-
-
-<a name="okapi-keys-v1-GenerateKeyRequest"></a>
-
-### GenerateKeyRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| seed | [bytes](#bytes) |  |  |
-| key_type | [KeyType](#okapi-keys-v1-KeyType) |  |  |
-
-
-
-
-
-
-<a name="okapi-keys-v1-GenerateKeyResponse"></a>
-
-### GenerateKeyResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| key | [JsonWebKey](#okapi-keys-v1-JsonWebKey) | repeated |  |
-| did_document | [google.protobuf.Struct](#google-protobuf-Struct) |  |  |
-
-
-
-
-
-
-<a name="okapi-keys-v1-JsonWebKey"></a>
-
-### JsonWebKey
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| kid | [string](#string) |  |  |
-| x | [string](#string) |  | public_key |
-| y | [string](#string) |  | public_key |
-| d | [string](#string) |  | secret_key |
-| crv | [string](#string) |  |  |
-| kty | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="okapi-keys-v1-ResolveRequest"></a>
-
-### ResolveRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| did | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="okapi-keys-v1-ResolveResponse"></a>
-
-### ResolveResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| did_document | [google.protobuf.Struct](#google-protobuf-Struct) |  |  |
-| keys | [JsonWebKey](#okapi-keys-v1-JsonWebKey) | repeated |  |
-
-
-
-
-
- 
-
-
-<a name="okapi-keys-v1-KeyType"></a>
-
-### KeyType
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| KEY_TYPE_UNSPECIFIED | 0 |  |
-| KEY_TYPE_ED25519 | 1 |  |
-| KEY_TYPE_X25519 | 2 |  |
-| KEY_TYPE_P256 | 3 |  |
-| KEY_TYPE_BLS12381G1G2 | 4 |  |
-| KEY_TYPE_SECP256K1 | 5 |  |
-
-
- 
-
- 
-
- 
-
-
-
-<a name="okapi_metadata_metadata-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## okapi/metadata/metadata.proto
-
-
-
-<a name="okapi-metadata-MetadataRequest"></a>
-
-### MetadataRequest
-Request custom metadata about the native okapi binaries - cannot get cargo env vars at runtime
-
-repeated string variables = 1; // optional field, can contain any of the cargo env vars
-
-
-
-
-
-
-<a name="okapi-metadata-MetadataResponse"></a>
-
-### MetadataResponse
-Metadata information about the native okapi binaries. Always returns the version information
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| version | [string](#string) |  | The full version string from okapi |
-| version_major | [int32](#int32) |  | Major version |
-| version_minor | [int32](#int32) |  | Minor version |
-| version_patch | [int32](#int32) |  | Patch release version |
-| target_family | [string](#string) |  | https://doc.rust-lang.org/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-crates |
-| target_os | [string](#string) |  |  |
-| target_arch | [string](#string) |  |  |
-| target_vendor | [string](#string) |  |  |
-| target_env | [string](#string) |  |  |
-
-
-
-
-
- 
-
- 
-
- 
-
- 
-
-
-
-<a name="okapi_proofs_v1_proofs-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## okapi/proofs/v1/proofs.proto
-
-
-
-<a name="okapi-proofs-v1-CreateProofRequest"></a>
-
-### CreateProofRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| document | [google.protobuf.Struct](#google-protobuf-Struct) |  | The input JSON document that will be used to create the LD Proof. This document must also contain a &#34;proof&#34; object, with the desired values filled in. |
-| key | [okapi.keys.v1.JsonWebKey](#okapi-keys-v1-JsonWebKey) |  | The signer of the proof. This field must include the &#39;kid&#39; in full URI format. Example: did:example:alice#key-1 |
-| suite | [LdSuite](#okapi-proofs-v1-LdSuite) |  | The LD Suite to use to produce this proof |
-
-
-
-
-
-
-<a name="okapi-proofs-v1-CreateProofResponse"></a>
-
-### CreateProofResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| signed_document | [google.protobuf.Struct](#google-protobuf-Struct) |  |  |
-
-
-
-
-
-
-<a name="okapi-proofs-v1-VerifyProofRequest"></a>
-
-### VerifyProofRequest
-
-
-
-
-
-
-
-<a name="okapi-proofs-v1-VerifyProofResponse"></a>
-
-### VerifyProofResponse
-
-
-
-
-
-
- 
-
-
-<a name="okapi-proofs-v1-LdSuite"></a>
-
-### LdSuite
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| LD_SUITE_UNSPECIFIED | 0 |  |
-| LD_SUITE_JCSED25519SIGNATURE2020 | 1 |  |
-
-
- 
-
- 
-
- 
-
-
-
-<a name="okapi_security_v1_security-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## okapi/security/v1/security.proto
-messages related to the oberon protocol
-See: https://github.com/mikelodder7/oberon
-
-
-<a name="okapi-security-v1-BlindOberonTokenRequest"></a>
-
-### BlindOberonTokenRequest
-Blind an oberon token
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| token | [bytes](#bytes) |  | raw token bytes |
-| blinding | [bytes](#bytes) | repeated | blinding to apply to the token |
-
-
-
-
-
-
-<a name="okapi-security-v1-BlindOberonTokenResponse"></a>
-
-### BlindOberonTokenResponse
-Contains the blinded token reply
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| token | [bytes](#bytes) |  | raw blinded token bytes |
-
-
-
-
-
-
-<a name="okapi-security-v1-CreateOberonKeyRequest"></a>
-
-### CreateOberonKeyRequest
-Create an Oberon Compatible Secret Key
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| seed | [bytes](#bytes) |  | optional seed to generate deterministic keys |
-
-
-
-
-
-
-<a name="okapi-security-v1-CreateOberonKeyResponse"></a>
-
-### CreateOberonKeyResponse
-Contains the oberon secret key bytes
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| sk | [bytes](#bytes) |  | raw secret key bytes |
-| pk | [bytes](#bytes) |  | raw public key bytes |
-
-
-
-
-
-
-<a name="okapi-security-v1-CreateOberonProofRequest"></a>
-
-### CreateOberonProofRequest
-Create a proof that holder knows the token
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| data | [bytes](#bytes) |  | data used to create the token |
-| token | [bytes](#bytes) |  | token data |
-| blinding | [bytes](#bytes) | repeated | any blindings used to create the token |
-| nonce | [bytes](#bytes) |  | nonce for generating the proof |
-
-
-
-
-
-
-<a name="okapi-security-v1-CreateOberonProofResponse"></a>
-
-### CreateOberonProofResponse
-Contains the token proof
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| proof | [bytes](#bytes) |  | raw proof bytes |
-
-
-
-
-
-
-<a name="okapi-security-v1-CreateOberonTokenRequest"></a>
-
-### CreateOberonTokenRequest
-Create a new oberon token
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| sk | [bytes](#bytes) |  | raw BLS key bytes |
-| data | [bytes](#bytes) |  | data is the public part of the oberon protocol and can be any data |
-| blinding | [bytes](#bytes) | repeated | optional blinding for the token |
-
-
-
-
-
-
-<a name="okapi-security-v1-CreateOberonTokenResponse"></a>
-
-### CreateOberonTokenResponse
-Contains the token with optional blinding
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| token | [bytes](#bytes) |  | raw token bytes |
-
-
-
-
-
-
-<a name="okapi-security-v1-UnBlindOberonTokenRequest"></a>
-
-### UnBlindOberonTokenRequest
-UnBlind an oberon token
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| token | [bytes](#bytes) |  | raw token bytes |
-| blinding | [bytes](#bytes) | repeated | blinding to remove from the token |
-
-
-
-
-
-
-<a name="okapi-security-v1-UnBlindOberonTokenResponse"></a>
-
-### UnBlindOberonTokenResponse
-Contains the unblinded token reply
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| token | [bytes](#bytes) |  | raw unblinded token bytes |
-
-
-
-
-
-
-<a name="okapi-security-v1-VerifyOberonProofRequest"></a>
-
-### VerifyOberonProofRequest
-Verify the presented proof is valid
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| proof | [bytes](#bytes) |  | raw proof bytes returned from CreateProof |
-| data | [bytes](#bytes) |  | data used to create the token |
-| nonce | [bytes](#bytes) |  | nonce used to generate the proof |
-| pk | [bytes](#bytes) |  | public key that was used to generate the token |
-
-
-
-
-
-
-<a name="okapi-security-v1-VerifyOberonProofResponse"></a>
-
-### VerifyOberonProofResponse
-Contains the status of the proof validation
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| valid | [bool](#bool) |  | whether the given proof was valid |
-
-
-
-
-
-
-<a name="okapi-security-v1-VerifyOberonTokenRequest"></a>
-
-### VerifyOberonTokenRequest
-Verify that an oberon token comes from the desired issuer
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| token | [bytes](#bytes) |  | raw token bytes |
-| pk | [bytes](#bytes) |  | token is valid to this public key? |
-| data | [bytes](#bytes) |  | public part of oberon protocol - can be any data |
-
-
-
-
-
-
-<a name="okapi-security-v1-VerifyOberonTokenResponse"></a>
-
-### VerifyOberonTokenResponse
-Contains the verification result for the oberon token
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| valid | [bool](#bool) |  | token is valid to the public key |
-
-
-
-
-
- 
-
- 
-
- 
-
- 
-
-
-
-<a name="okapi_transport_v1_transport-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## okapi/transport/v1/transport.proto
-
-
-
-<a name="okapi-transport-v1-CoreMessage"></a>
-
-### CoreMessage
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
-| type | [string](#string) |  |  |
-| body | [bytes](#bytes) |  |  |
-| to | [string](#string) | repeated |  |
-| from | [string](#string) |  |  |
-| created | [int64](#int64) |  |  |
-| expires | [int64](#int64) |  |  |
-
-
-
-
-
-
-<a name="okapi-transport-v1-PackRequest"></a>
-
-### PackRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| sender_key | [okapi.keys.v1.JsonWebKey](#okapi-keys-v1-JsonWebKey) |  |  |
-| receiver_key | [okapi.keys.v1.JsonWebKey](#okapi-keys-v1-JsonWebKey) |  |  |
-| associated_data | [bytes](#bytes) |  |  |
-| plaintext | [bytes](#bytes) |  |  |
-| mode | [pbmse.v1.EncryptionMode](#pbmse-v1-EncryptionMode) |  |  |
-| algorithm | [pbmse.v1.EncryptionAlgorithm](#pbmse-v1-EncryptionAlgorithm) |  |  |
-
-
-
-
-
-
-<a name="okapi-transport-v1-PackResponse"></a>
-
-### PackResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| message | [pbmse.v1.EncryptedMessage](#pbmse-v1-EncryptedMessage) |  |  |
-
-
-
-
-
-
-<a name="okapi-transport-v1-SignRequest"></a>
-
-### SignRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| payload | [bytes](#bytes) |  |  |
-| key | [okapi.keys.v1.JsonWebKey](#okapi-keys-v1-JsonWebKey) |  |  |
-| append_to | [pbmse.v1.SignedMessage](#pbmse-v1-SignedMessage) |  |  |
-
-
-
-
-
-
-<a name="okapi-transport-v1-SignResponse"></a>
-
-### SignResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| message | [pbmse.v1.SignedMessage](#pbmse-v1-SignedMessage) |  |  |
-
-
-
-
-
-
-<a name="okapi-transport-v1-UnpackRequest"></a>
-
-### UnpackRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| sender_key | [okapi.keys.v1.JsonWebKey](#okapi-keys-v1-JsonWebKey) |  |  |
-| receiver_key | [okapi.keys.v1.JsonWebKey](#okapi-keys-v1-JsonWebKey) |  |  |
-| message | [pbmse.v1.EncryptedMessage](#pbmse-v1-EncryptedMessage) |  |  |
-
-
-
-
-
-
-<a name="okapi-transport-v1-UnpackResponse"></a>
-
-### UnpackResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| plaintext | [bytes](#bytes) |  |  |
-
-
-
-
-
-
-<a name="okapi-transport-v1-VerifyRequest"></a>
-
-### VerifyRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| message | [pbmse.v1.SignedMessage](#pbmse-v1-SignedMessage) |  |  |
-| key | [okapi.keys.v1.JsonWebKey](#okapi-keys-v1-JsonWebKey) |  |  |
-
-
-
-
-
-
-<a name="okapi-transport-v1-VerifyResponse"></a>
-
-### VerifyResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| is_valid | [bool](#bool) |  |  |
-
-
-
-
-
- 
-
- 
-
- 
-
- 
+This page documents the Protobuf Services and Messages which compose the Trinsic API.
 
 
 
@@ -920,6 +14,8 @@ Contains the verification result for the oberon token
 ## pbmse/v1/pbmse.proto
 
 
+ <!-- end services -->
+
 
 <a name="pbmse-v1-EncryptedMessage"></a>
 
@@ -927,13 +23,13 @@ Contains the verification result for the oberon token
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| iv | [bytes](#bytes) |  |  |
-| aad | [bytes](#bytes) |  |  |
-| ciphertext | [bytes](#bytes) |  |  |
-| tag | [bytes](#bytes) |  |  |
-| recipients | [EncryptionRecipient](#pbmse-v1-EncryptionRecipient) | repeated |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| iv | [bytes](/reference/proto#bytes) |  |
+| aad | [bytes](/reference/proto#bytes) |  |
+| ciphertext | [bytes](/reference/proto#bytes) |  |
+| tag | [bytes](/reference/proto#bytes) |  |
+| recipients | [EncryptionRecipient](/reference/proto#pbmse-v1-EncryptionRecipient)[] |  |
 
 
 
@@ -946,12 +42,12 @@ Contains the verification result for the oberon token
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| mode | [EncryptionMode](#pbmse-v1-EncryptionMode) |  |  |
-| algorithm | [EncryptionAlgorithm](#pbmse-v1-EncryptionAlgorithm) |  |  |
-| key_id | [string](#string) |  |  |
-| sender_key_id | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| mode | [EncryptionMode](/reference/proto#pbmse-v1-EncryptionMode) |  |
+| algorithm | [EncryptionAlgorithm](/reference/proto#pbmse-v1-EncryptionAlgorithm) |  |
+| key_id | [string](/reference/proto#string) |  |
+| sender_key_id | [string](/reference/proto#string) |  |
 
 
 
@@ -964,10 +60,10 @@ Contains the verification result for the oberon token
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| header | [EncryptionHeader](#pbmse-v1-EncryptionHeader) |  |  |
-| content_encryption_key | [bytes](#bytes) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| header | [EncryptionHeader](/reference/proto#pbmse-v1-EncryptionHeader) |  |
+| content_encryption_key | [bytes](/reference/proto#bytes) |  |
 
 
 
@@ -980,10 +76,10 @@ Contains the verification result for the oberon token
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| header | [bytes](#bytes) |  |  |
-| signature | [bytes](#bytes) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| header | [bytes](/reference/proto#bytes) |  |
+| signature | [bytes](/reference/proto#bytes) |  |
 
 
 
@@ -996,10 +92,10 @@ Contains the verification result for the oberon token
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| algorithm | [string](#string) |  |  |
-| key_id | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| algorithm | [string](/reference/proto#string) |  |
+| key_id | [string](/reference/proto#string) |  |
 
 
 
@@ -1013,16 +109,16 @@ JWS
 Protocol buffer message signing and encryption
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| payload | [bytes](#bytes) |  |  |
-| signatures | [Signature](#pbmse-v1-Signature) | repeated |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| payload | [bytes](/reference/proto#bytes) |  |
+| signatures | [Signature](/reference/proto#pbmse-v1-Signature)[] |  |
 
 
 
 
 
- 
+ <!-- end messages -->
 
 
 <a name="pbmse-v1-EncryptionAlgorithm"></a>
@@ -1050,11 +146,842 @@ Protocol buffer message signing and encryption
 | ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY | 2 |  |
 
 
- 
+ <!-- end enums -->
 
- 
+ <!-- end HasExtensions -->
 
- 
+
+
+<a name="okapi_keys_v1_keys-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## okapi/keys/v1/keys.proto
+
+
+ <!-- end services -->
+
+
+<a name="okapi-keys-v1-GenerateKeyRequest"></a>
+
+### GenerateKeyRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| seed | [bytes](/reference/proto#bytes) |  |
+| key_type | [KeyType](/reference/proto#okapi-keys-v1-KeyType) |  |
+
+
+
+
+
+
+<a name="okapi-keys-v1-GenerateKeyResponse"></a>
+
+### GenerateKeyResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey)[] |  |
+| did_document | [google.protobuf.Struct](/reference/proto#google-protobuf-Struct) |  |
+
+
+
+
+
+
+<a name="okapi-keys-v1-JsonWebKey"></a>
+
+### JsonWebKey
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| kid | [string](/reference/proto#string) |  |
+| x | [string](/reference/proto#string) | public_key |
+| y | [string](/reference/proto#string) | public_key |
+| d | [string](/reference/proto#string) | secret_key |
+| crv | [string](/reference/proto#string) |  |
+| kty | [string](/reference/proto#string) |  |
+
+
+
+
+
+
+<a name="okapi-keys-v1-ResolveRequest"></a>
+
+### ResolveRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| did | [string](/reference/proto#string) |  |
+
+
+
+
+
+
+<a name="okapi-keys-v1-ResolveResponse"></a>
+
+### ResolveResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| did_document | [google.protobuf.Struct](/reference/proto#google-protobuf-Struct) |  |
+| keys | [JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey)[] |  |
+
+
+
+
+
+ <!-- end messages -->
+
+
+<a name="okapi-keys-v1-KeyType"></a>
+
+### KeyType
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| KEY_TYPE_UNSPECIFIED | 0 |  |
+| KEY_TYPE_ED25519 | 1 |  |
+| KEY_TYPE_X25519 | 2 |  |
+| KEY_TYPE_P256 | 3 |  |
+| KEY_TYPE_BLS12381G1G2 | 4 |  |
+| KEY_TYPE_SECP256K1 | 5 |  |
+
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="okapi_metadata_metadata-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## okapi/metadata/metadata.proto
+
+
+ <!-- end services -->
+
+
+<a name="okapi-metadata-MetadataRequest"></a>
+
+### MetadataRequest
+Request custom metadata about the native okapi binaries - cannot get cargo env vars at runtime
+
+repeated string variables = 1; // optional field, can contain any of the cargo env vars
+
+
+
+
+
+
+<a name="okapi-metadata-MetadataResponse"></a>
+
+### MetadataResponse
+Metadata information about the native okapi binaries. Always returns the version information
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| version | [string](/reference/proto#string) | The full version string from okapi |
+| version_major | [int32](/reference/proto#int32) | Major version |
+| version_minor | [int32](/reference/proto#int32) | Minor version |
+| version_patch | [int32](/reference/proto#int32) | Patch release version |
+| target_family | [string](/reference/proto#string) | https://doc.rust-lang.org/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-crates |
+| target_os | [string](/reference/proto#string) |  |
+| target_arch | [string](/reference/proto#string) |  |
+| target_vendor | [string](/reference/proto#string) |  |
+| target_env | [string](/reference/proto#string) |  |
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="okapi_security_v1_security-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## okapi/security/v1/security.proto
+messages related to the oberon protocol
+See: https://github.com/mikelodder7/oberon
+
+ <!-- end services -->
+
+
+<a name="okapi-security-v1-BlindOberonTokenRequest"></a>
+
+### BlindOberonTokenRequest
+Blind an oberon token
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| token | [bytes](/reference/proto#bytes) | raw token bytes |
+| blinding | [bytes](/reference/proto#bytes)[] | blinding to apply to the token |
+
+
+
+
+
+
+<a name="okapi-security-v1-BlindOberonTokenResponse"></a>
+
+### BlindOberonTokenResponse
+Contains the blinded token reply
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| token | [bytes](/reference/proto#bytes) | raw blinded token bytes |
+
+
+
+
+
+
+<a name="okapi-security-v1-CreateOberonKeyRequest"></a>
+
+### CreateOberonKeyRequest
+Create an Oberon Compatible Secret Key
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| seed | [bytes](/reference/proto#bytes) | optional seed to generate deterministic keys |
+
+
+
+
+
+
+<a name="okapi-security-v1-CreateOberonKeyResponse"></a>
+
+### CreateOberonKeyResponse
+Contains the oberon secret key bytes
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| sk | [bytes](/reference/proto#bytes) | raw secret key bytes |
+| pk | [bytes](/reference/proto#bytes) | raw public key bytes |
+
+
+
+
+
+
+<a name="okapi-security-v1-CreateOberonProofRequest"></a>
+
+### CreateOberonProofRequest
+Create a proof that holder knows the token
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| data | [bytes](/reference/proto#bytes) | data used to create the token |
+| token | [bytes](/reference/proto#bytes) | token data |
+| blinding | [bytes](/reference/proto#bytes)[] | any blindings used to create the token |
+| nonce | [bytes](/reference/proto#bytes) | nonce for generating the proof |
+
+
+
+
+
+
+<a name="okapi-security-v1-CreateOberonProofResponse"></a>
+
+### CreateOberonProofResponse
+Contains the token proof
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| proof | [bytes](/reference/proto#bytes) | raw proof bytes |
+
+
+
+
+
+
+<a name="okapi-security-v1-CreateOberonTokenRequest"></a>
+
+### CreateOberonTokenRequest
+Create a new oberon token
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| sk | [bytes](/reference/proto#bytes) | raw BLS key bytes |
+| data | [bytes](/reference/proto#bytes) | data is the public part of the oberon protocol and can be any data |
+| blinding | [bytes](/reference/proto#bytes)[] | optional blinding for the token |
+
+
+
+
+
+
+<a name="okapi-security-v1-CreateOberonTokenResponse"></a>
+
+### CreateOberonTokenResponse
+Contains the token with optional blinding
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| token | [bytes](/reference/proto#bytes) | raw token bytes |
+
+
+
+
+
+
+<a name="okapi-security-v1-UnBlindOberonTokenRequest"></a>
+
+### UnBlindOberonTokenRequest
+UnBlind an oberon token
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| token | [bytes](/reference/proto#bytes) | raw token bytes |
+| blinding | [bytes](/reference/proto#bytes)[] | blinding to remove from the token |
+
+
+
+
+
+
+<a name="okapi-security-v1-UnBlindOberonTokenResponse"></a>
+
+### UnBlindOberonTokenResponse
+Contains the unblinded token reply
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| token | [bytes](/reference/proto#bytes) | raw unblinded token bytes |
+
+
+
+
+
+
+<a name="okapi-security-v1-VerifyOberonProofRequest"></a>
+
+### VerifyOberonProofRequest
+Verify the presented proof is valid
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| proof | [bytes](/reference/proto#bytes) | raw proof bytes returned from CreateProof |
+| data | [bytes](/reference/proto#bytes) | data used to create the token |
+| nonce | [bytes](/reference/proto#bytes) | nonce used to generate the proof |
+| pk | [bytes](/reference/proto#bytes) | public key that was used to generate the token |
+
+
+
+
+
+
+<a name="okapi-security-v1-VerifyOberonProofResponse"></a>
+
+### VerifyOberonProofResponse
+Contains the status of the proof validation
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| valid | [bool](/reference/proto#bool) | whether the given proof was valid |
+
+
+
+
+
+
+<a name="okapi-security-v1-VerifyOberonTokenRequest"></a>
+
+### VerifyOberonTokenRequest
+Verify that an oberon token comes from the desired issuer
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| token | [bytes](/reference/proto#bytes) | raw token bytes |
+| pk | [bytes](/reference/proto#bytes) | token is valid to this public key? |
+| data | [bytes](/reference/proto#bytes) | public part of oberon protocol - can be any data |
+
+
+
+
+
+
+<a name="okapi-security-v1-VerifyOberonTokenResponse"></a>
+
+### VerifyOberonTokenResponse
+Contains the verification result for the oberon token
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| valid | [bool](/reference/proto#bool) | token is valid to the public key |
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="okapi_hashing_v1_hashing-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## okapi/hashing/v1/hashing.proto
+
+
+ <!-- end services -->
+
+
+<a name="okapi-hashing-v1-Blake3DeriveKeyRequest"></a>
+
+### Blake3DeriveKeyRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| context | [bytes](/reference/proto#bytes) |  |
+| key_material | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-Blake3DeriveKeyResponse"></a>
+
+### Blake3DeriveKeyResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| digest | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-Blake3HashRequest"></a>
+
+### Blake3HashRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| data | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-Blake3HashResponse"></a>
+
+### Blake3HashResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| digest | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-Blake3KeyedHashRequest"></a>
+
+### Blake3KeyedHashRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| data | [bytes](/reference/proto#bytes) |  |
+| key | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-Blake3KeyedHashResponse"></a>
+
+### Blake3KeyedHashResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| digest | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-SHA256HashRequest"></a>
+
+### SHA256HashRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| data | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-SHA256HashResponse"></a>
+
+### SHA256HashResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| digest | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="okapi_transport_v1_transport-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## okapi/transport/v1/transport.proto
+
+
+ <!-- end services -->
+
+
+<a name="okapi-transport-v1-CoreMessage"></a>
+
+### CoreMessage
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) |  |
+| type | [string](/reference/proto#string) |  |
+| body | [bytes](/reference/proto#bytes) |  |
+| to | [string](/reference/proto#string)[] |  |
+| from | [string](/reference/proto#string) |  |
+| created | [int64](/reference/proto#int64) |  |
+| expires | [int64](/reference/proto#int64) |  |
+
+
+
+
+
+
+<a name="okapi-transport-v1-PackRequest"></a>
+
+### PackRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| sender_key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
+| receiver_key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
+| associated_data | [bytes](/reference/proto#bytes) |  |
+| plaintext | [bytes](/reference/proto#bytes) |  |
+| mode | [pbmse.v1.EncryptionMode](/reference/proto#pbmse-v1-EncryptionMode) |  |
+| algorithm | [pbmse.v1.EncryptionAlgorithm](/reference/proto#pbmse-v1-EncryptionAlgorithm) |  |
+
+
+
+
+
+
+<a name="okapi-transport-v1-PackResponse"></a>
+
+### PackResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| message | [pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) |  |
+
+
+
+
+
+
+<a name="okapi-transport-v1-SignRequest"></a>
+
+### SignRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| payload | [bytes](/reference/proto#bytes) |  |
+| key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
+| append_to | [pbmse.v1.SignedMessage](/reference/proto#pbmse-v1-SignedMessage) |  |
+
+
+
+
+
+
+<a name="okapi-transport-v1-SignResponse"></a>
+
+### SignResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| message | [pbmse.v1.SignedMessage](/reference/proto#pbmse-v1-SignedMessage) |  |
+
+
+
+
+
+
+<a name="okapi-transport-v1-UnpackRequest"></a>
+
+### UnpackRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| sender_key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
+| receiver_key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
+| message | [pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) |  |
+
+
+
+
+
+
+<a name="okapi-transport-v1-UnpackResponse"></a>
+
+### UnpackResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| plaintext | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-transport-v1-VerifyRequest"></a>
+
+### VerifyRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| message | [pbmse.v1.SignedMessage](/reference/proto#pbmse-v1-SignedMessage) |  |
+| key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
+
+
+
+
+
+
+<a name="okapi-transport-v1-VerifyResponse"></a>
+
+### VerifyResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| is_valid | [bool](/reference/proto#bool) |  |
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="okapi_examples_v1_examples-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## okapi/examples/v1/examples.proto
+
+
+
+<a name="okapi-examples-v1-SecureExampleService"></a>
+
+### Service - SecureExampleService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| Unary | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) |  |
+| ServerStreaming | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) stream |  |
+
+ <!-- end services -->
+
+
+<a name="okapi-examples-v1-BasicMessage"></a>
+
+### BasicMessage
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| text | [string](/reference/proto#string) |  |
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="okapi_proofs_v1_proofs-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## okapi/proofs/v1/proofs.proto
+
+
+ <!-- end services -->
+
+
+<a name="okapi-proofs-v1-CreateProofRequest"></a>
+
+### CreateProofRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| document | [google.protobuf.Struct](/reference/proto#google-protobuf-Struct) | The input JSON document that will be used to create the LD Proof. This document must also contain a "proof" object, with the desired values filled in. |
+| key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) | The signer of the proof. This field must include the 'kid' in full URI format. Example: did:example:alice#key-1 |
+| suite | [LdSuite](/reference/proto#okapi-proofs-v1-LdSuite) | The LD Suite to use to produce this proof |
+
+
+
+
+
+
+<a name="okapi-proofs-v1-CreateProofResponse"></a>
+
+### CreateProofResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| signed_document | [google.protobuf.Struct](/reference/proto#google-protobuf-Struct) |  |
+
+
+
+
+
+
+<a name="okapi-proofs-v1-VerifyProofRequest"></a>
+
+### VerifyProofRequest
+
+
+
+
+
+
+
+<a name="okapi-proofs-v1-VerifyProofResponse"></a>
+
+### VerifyProofResponse
+
+
+
+
+
+
+ <!-- end messages -->
+
+
+<a name="okapi-proofs-v1-LdSuite"></a>
+
+### LdSuite
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| LD_SUITE_UNSPECIFIED | 0 |  |
+| LD_SUITE_JCSED25519SIGNATURE2020 | 1 |  |
+
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
 
 
 
@@ -1077,4 +1004,3 @@ Protocol buffer message signing and encryption
 | <a name="bool" /> bool |  | bool | boolean | boolean | bool | bool | boolean | TrueClass/FalseClass |
 | <a name="string" /> string | A string must always contain UTF-8 encoded or 7-bit ASCII text. | string | String | str/unicode | string | string | string | String (UTF-8) |
 | <a name="bytes" /> bytes | May contain any arbitrary sequence of bytes. | string | ByteString | str | []byte | ByteString | string | String (ASCII-8BIT) |
-

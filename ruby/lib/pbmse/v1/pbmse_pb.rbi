@@ -2,9 +2,6 @@
 # source: pbmse/v1/pbmse.proto
 # typed: strict
 
-module Pbmse; end
-module Pbmse::V1; end
-
 class Pbmse::V1::SignedMessage
   include Google::Protobuf
   include Google::Protobuf::MessageExts

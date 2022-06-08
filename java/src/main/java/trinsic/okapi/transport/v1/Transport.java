@@ -5,83 +5,81 @@ package trinsic.okapi.transport.v1;
 
 public final class Transport {
   private Transport() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {}
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
   }
 
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
-  }
-  public interface SignRequestOrBuilder extends
+  public interface SignRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.transport.v1.SignRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>bytes payload = 1;</code>
+     *
      * @return The payload.
      */
     com.google.protobuf.ByteString getPayload();
 
     /**
      * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
+     *
      * @return Whether the key field is set.
      */
     boolean hasKey();
     /**
      * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
+     *
      * @return The key.
      */
     trinsic.okapi.keys.v1.Keys.JsonWebKey getKey();
-    /**
-     * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
-     */
+    /** <code>.okapi.keys.v1.JsonWebKey key = 2;</code> */
     trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getKeyOrBuilder();
 
     /**
      * <code>.pbmse.v1.SignedMessage append_to = 3;</code>
+     *
      * @return Whether the appendTo field is set.
      */
     boolean hasAppendTo();
     /**
      * <code>.pbmse.v1.SignedMessage append_to = 3;</code>
+     *
      * @return The appendTo.
      */
     trinsic.okapi.pbmse.v1.Pbmse.SignedMessage getAppendTo();
-    /**
-     * <code>.pbmse.v1.SignedMessage append_to = 3;</code>
-     */
+    /** <code>.pbmse.v1.SignedMessage append_to = 3;</code> */
     trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder getAppendToOrBuilder();
   }
-  /**
-   * Protobuf type {@code okapi.transport.v1.SignRequest}
-   */
-  public static final class SignRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code okapi.transport.v1.SignRequest} */
+  public static final class SignRequest extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.transport.v1.SignRequest)
       SignRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use SignRequest.newBuilder() to construct.
     private SignRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private SignRequest() {
       payload_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new SignRequest();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private SignRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -100,44 +98,50 @@ public final class Transport {
             case 0:
               done = true;
               break;
-            case 10: {
+            case 10:
+              {
+                payload_ = input.readBytes();
+                break;
+              }
+            case 18:
+              {
+                trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder subBuilder = null;
+                if (key_ != null) {
+                  subBuilder = key_.toBuilder();
+                }
+                key_ =
+                    input.readMessage(
+                        trinsic.okapi.keys.v1.Keys.JsonWebKey.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(key_);
+                  key_ = subBuilder.buildPartial();
+                }
 
-              payload_ = input.readBytes();
-              break;
-            }
-            case 18: {
-              trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder subBuilder = null;
-              if (key_ != null) {
-                subBuilder = key_.toBuilder();
+                break;
               }
-              key_ = input.readMessage(trinsic.okapi.keys.v1.Keys.JsonWebKey.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(key_);
-                key_ = subBuilder.buildPartial();
-              }
+            case 26:
+              {
+                trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder subBuilder = null;
+                if (appendTo_ != null) {
+                  subBuilder = appendTo_.toBuilder();
+                }
+                appendTo_ =
+                    input.readMessage(
+                        trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(appendTo_);
+                  appendTo_ = subBuilder.buildPartial();
+                }
 
-              break;
-            }
-            case 26: {
-              trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder subBuilder = null;
-              if (appendTo_ != null) {
-                subBuilder = appendTo_.toBuilder();
+                break;
               }
-              appendTo_ = input.readMessage(trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(appendTo_);
-                appendTo_ = subBuilder.buildPartial();
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
               }
-
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -145,30 +149,33 @@ public final class Transport {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_SignRequest_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.transport.v1.Transport
+          .internal_static_okapi_transport_v1_SignRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_SignRequest_fieldAccessorTable
+      return trinsic.okapi.transport.v1.Transport
+          .internal_static_okapi_transport_v1_SignRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.transport.v1.Transport.SignRequest.class, trinsic.okapi.transport.v1.Transport.SignRequest.Builder.class);
+              trinsic.okapi.transport.v1.Transport.SignRequest.class,
+              trinsic.okapi.transport.v1.Transport.SignRequest.Builder.class);
     }
 
     public static final int PAYLOAD_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString payload_;
     /**
      * <code>bytes payload = 1;</code>
+     *
      * @return The payload.
      */
     @java.lang.Override
@@ -180,6 +187,7 @@ public final class Transport {
     private trinsic.okapi.keys.v1.Keys.JsonWebKey key_;
     /**
      * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
+     *
      * @return Whether the key field is set.
      */
     @java.lang.Override
@@ -188,15 +196,14 @@ public final class Transport {
     }
     /**
      * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
+     *
      * @return The key.
      */
     @java.lang.Override
     public trinsic.okapi.keys.v1.Keys.JsonWebKey getKey() {
       return key_ == null ? trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance() : key_;
     }
-    /**
-     * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
-     */
+    /** <code>.okapi.keys.v1.JsonWebKey key = 2;</code> */
     @java.lang.Override
     public trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getKeyOrBuilder() {
       return getKey();
@@ -206,6 +213,7 @@ public final class Transport {
     private trinsic.okapi.pbmse.v1.Pbmse.SignedMessage appendTo_;
     /**
      * <code>.pbmse.v1.SignedMessage append_to = 3;</code>
+     *
      * @return Whether the appendTo field is set.
      */
     @java.lang.Override
@@ -214,21 +222,23 @@ public final class Transport {
     }
     /**
      * <code>.pbmse.v1.SignedMessage append_to = 3;</code>
+     *
      * @return The appendTo.
      */
     @java.lang.Override
     public trinsic.okapi.pbmse.v1.Pbmse.SignedMessage getAppendTo() {
-      return appendTo_ == null ? trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.getDefaultInstance() : appendTo_;
+      return appendTo_ == null
+          ? trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.getDefaultInstance()
+          : appendTo_;
     }
-    /**
-     * <code>.pbmse.v1.SignedMessage append_to = 3;</code>
-     */
+    /** <code>.pbmse.v1.SignedMessage append_to = 3;</code> */
     @java.lang.Override
     public trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder getAppendToOrBuilder() {
       return getAppendTo();
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -240,8 +250,7 @@ public final class Transport {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!payload_.isEmpty()) {
         output.writeBytes(1, payload_);
       }
@@ -261,16 +270,13 @@ public final class Transport {
 
       size = 0;
       if (!payload_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, payload_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(1, payload_);
       }
       if (key_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getKey());
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getKey());
       }
       if (appendTo_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getAppendTo());
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, getAppendTo());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -280,24 +286,22 @@ public final class Transport {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.transport.v1.Transport.SignRequest)) {
         return super.equals(obj);
       }
-      trinsic.okapi.transport.v1.Transport.SignRequest other = (trinsic.okapi.transport.v1.Transport.SignRequest) obj;
+      trinsic.okapi.transport.v1.Transport.SignRequest other =
+          (trinsic.okapi.transport.v1.Transport.SignRequest) obj;
 
-      if (!getPayload()
-          .equals(other.getPayload())) return false;
+      if (!getPayload().equals(other.getPayload())) return false;
       if (hasKey() != other.hasKey()) return false;
       if (hasKey()) {
-        if (!getKey()
-            .equals(other.getKey())) return false;
+        if (!getKey().equals(other.getKey())) return false;
       }
       if (hasAppendTo() != other.hasAppendTo()) return false;
       if (hasAppendTo()) {
-        if (!getAppendTo()
-            .equals(other.getAppendTo())) return false;
+        if (!getAppendTo().equals(other.getAppendTo())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -326,87 +330,93 @@ public final class Transport {
     }
 
     public static trinsic.okapi.transport.v1.Transport.SignRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.transport.v1.Transport.SignRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.transport.v1.Transport.SignRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.transport.v1.Transport.SignRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.transport.v1.Transport.SignRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.transport.v1.Transport.SignRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.transport.v1.Transport.SignRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.transport.v1.Transport.SignRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.transport.v1.Transport.SignRequest parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.transport.v1.Transport.SignRequest parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.transport.v1.Transport.SignRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.transport.v1.Transport.SignRequest parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.transport.v1.Transport.SignRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.transport.v1.Transport.SignRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.okapi.transport.v1.Transport.SignRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -415,24 +425,25 @@ public final class Transport {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code okapi.transport.v1.SignRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code okapi.transport.v1.SignRequest} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.transport.v1.SignRequest)
         trinsic.okapi.transport.v1.Transport.SignRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_SignRequest_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.transport.v1.Transport
+            .internal_static_okapi_transport_v1_SignRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_SignRequest_fieldAccessorTable
+        return trinsic.okapi.transport.v1.Transport
+            .internal_static_okapi_transport_v1_SignRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.transport.v1.Transport.SignRequest.class, trinsic.okapi.transport.v1.Transport.SignRequest.Builder.class);
+                trinsic.okapi.transport.v1.Transport.SignRequest.class,
+                trinsic.okapi.transport.v1.Transport.SignRequest.Builder.class);
       }
 
       // Construct using trinsic.okapi.transport.v1.Transport.SignRequest.newBuilder()
@@ -440,16 +451,15 @@ public final class Transport {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -471,9 +481,9 @@ public final class Transport {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_SignRequest_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.transport.v1.Transport
+            .internal_static_okapi_transport_v1_SignRequest_descriptor;
       }
 
       @java.lang.Override
@@ -492,7 +502,8 @@ public final class Transport {
 
       @java.lang.Override
       public trinsic.okapi.transport.v1.Transport.SignRequest buildPartial() {
-        trinsic.okapi.transport.v1.Transport.SignRequest result = new trinsic.okapi.transport.v1.Transport.SignRequest(this);
+        trinsic.okapi.transport.v1.Transport.SignRequest result =
+            new trinsic.okapi.transport.v1.Transport.SignRequest(this);
         result.payload_ = payload_;
         if (keyBuilder_ == null) {
           result.key_ = key_;
@@ -512,38 +523,41 @@ public final class Transport {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.transport.v1.Transport.SignRequest) {
-          return mergeFrom((trinsic.okapi.transport.v1.Transport.SignRequest)other);
+          return mergeFrom((trinsic.okapi.transport.v1.Transport.SignRequest) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -551,7 +565,8 @@ public final class Transport {
       }
 
       public Builder mergeFrom(trinsic.okapi.transport.v1.Transport.SignRequest other) {
-        if (other == trinsic.okapi.transport.v1.Transport.SignRequest.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.transport.v1.Transport.SignRequest.getDefaultInstance())
+          return this;
         if (other.getPayload() != com.google.protobuf.ByteString.EMPTY) {
           setPayload(other.getPayload());
         }
@@ -580,7 +595,8 @@ public final class Transport {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.transport.v1.Transport.SignRequest) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.transport.v1.Transport.SignRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -593,6 +609,7 @@ public final class Transport {
       private com.google.protobuf.ByteString payload_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes payload = 1;</code>
+       *
        * @return The payload.
        */
       @java.lang.Override
@@ -601,24 +618,26 @@ public final class Transport {
       }
       /**
        * <code>bytes payload = 1;</code>
+       *
        * @param value The payload to set.
        * @return This builder for chaining.
        */
       public Builder setPayload(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         payload_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>bytes payload = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearPayload() {
-        
+
         payload_ = getDefaultInstance().getPayload();
         onChanged();
         return this;
@@ -626,9 +645,13 @@ public final class Transport {
 
       private trinsic.okapi.keys.v1.Keys.JsonWebKey key_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.okapi.keys.v1.Keys.JsonWebKey, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder, trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder> keyBuilder_;
+              trinsic.okapi.keys.v1.Keys.JsonWebKey,
+              trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder,
+              trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>
+          keyBuilder_;
       /**
        * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
+       *
        * @return Whether the key field is set.
        */
       public boolean hasKey() {
@@ -636,6 +659,7 @@ public final class Transport {
       }
       /**
        * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
+       *
        * @return The key.
        */
       public trinsic.okapi.keys.v1.Keys.JsonWebKey getKey() {
@@ -645,9 +669,7 @@ public final class Transport {
           return keyBuilder_.getMessage();
         }
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey key = 2;</code> */
       public Builder setKey(trinsic.okapi.keys.v1.Keys.JsonWebKey value) {
         if (keyBuilder_ == null) {
           if (value == null) {
@@ -661,11 +683,8 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
-       */
-      public Builder setKey(
-          trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder builderForValue) {
+      /** <code>.okapi.keys.v1.JsonWebKey key = 2;</code> */
+      public Builder setKey(trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder builderForValue) {
         if (keyBuilder_ == null) {
           key_ = builderForValue.build();
           onChanged();
@@ -675,14 +694,14 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey key = 2;</code> */
       public Builder mergeKey(trinsic.okapi.keys.v1.Keys.JsonWebKey value) {
         if (keyBuilder_ == null) {
           if (key_ != null) {
             key_ =
-              trinsic.okapi.keys.v1.Keys.JsonWebKey.newBuilder(key_).mergeFrom(value).buildPartial();
+                trinsic.okapi.keys.v1.Keys.JsonWebKey.newBuilder(key_)
+                    .mergeFrom(value)
+                    .buildPartial();
           } else {
             key_ = value;
           }
@@ -693,9 +712,7 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey key = 2;</code> */
       public Builder clearKey() {
         if (keyBuilder_ == null) {
           key_ = null;
@@ -707,37 +724,33 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey key = 2;</code> */
       public trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder getKeyBuilder() {
-        
+
         onChanged();
         return getKeyFieldBuilder().getBuilder();
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey key = 2;</code> */
       public trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getKeyOrBuilder() {
         if (keyBuilder_ != null) {
           return keyBuilder_.getMessageOrBuilder();
         } else {
-          return key_ == null ?
-              trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance() : key_;
+          return key_ == null ? trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance() : key_;
         }
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey key = 2;</code> */
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.okapi.keys.v1.Keys.JsonWebKey, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder, trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder> 
+              trinsic.okapi.keys.v1.Keys.JsonWebKey,
+              trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder,
+              trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>
           getKeyFieldBuilder() {
         if (keyBuilder_ == null) {
-          keyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.okapi.keys.v1.Keys.JsonWebKey, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder, trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>(
-                  getKey(),
-                  getParentForChildren(),
-                  isClean());
+          keyBuilder_ =
+              new com.google.protobuf.SingleFieldBuilderV3<
+                  trinsic.okapi.keys.v1.Keys.JsonWebKey,
+                  trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder,
+                  trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>(
+                  getKey(), getParentForChildren(), isClean());
           key_ = null;
         }
         return keyBuilder_;
@@ -745,9 +758,13 @@ public final class Transport {
 
       private trinsic.okapi.pbmse.v1.Pbmse.SignedMessage appendTo_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.okapi.pbmse.v1.Pbmse.SignedMessage, trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder, trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder> appendToBuilder_;
+              trinsic.okapi.pbmse.v1.Pbmse.SignedMessage,
+              trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder,
+              trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder>
+          appendToBuilder_;
       /**
        * <code>.pbmse.v1.SignedMessage append_to = 3;</code>
+       *
        * @return Whether the appendTo field is set.
        */
       public boolean hasAppendTo() {
@@ -755,18 +772,19 @@ public final class Transport {
       }
       /**
        * <code>.pbmse.v1.SignedMessage append_to = 3;</code>
+       *
        * @return The appendTo.
        */
       public trinsic.okapi.pbmse.v1.Pbmse.SignedMessage getAppendTo() {
         if (appendToBuilder_ == null) {
-          return appendTo_ == null ? trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.getDefaultInstance() : appendTo_;
+          return appendTo_ == null
+              ? trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.getDefaultInstance()
+              : appendTo_;
         } else {
           return appendToBuilder_.getMessage();
         }
       }
-      /**
-       * <code>.pbmse.v1.SignedMessage append_to = 3;</code>
-       */
+      /** <code>.pbmse.v1.SignedMessage append_to = 3;</code> */
       public Builder setAppendTo(trinsic.okapi.pbmse.v1.Pbmse.SignedMessage value) {
         if (appendToBuilder_ == null) {
           if (value == null) {
@@ -780,9 +798,7 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.pbmse.v1.SignedMessage append_to = 3;</code>
-       */
+      /** <code>.pbmse.v1.SignedMessage append_to = 3;</code> */
       public Builder setAppendTo(
           trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder builderForValue) {
         if (appendToBuilder_ == null) {
@@ -794,14 +810,14 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.pbmse.v1.SignedMessage append_to = 3;</code>
-       */
+      /** <code>.pbmse.v1.SignedMessage append_to = 3;</code> */
       public Builder mergeAppendTo(trinsic.okapi.pbmse.v1.Pbmse.SignedMessage value) {
         if (appendToBuilder_ == null) {
           if (appendTo_ != null) {
             appendTo_ =
-              trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.newBuilder(appendTo_).mergeFrom(value).buildPartial();
+                trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.newBuilder(appendTo_)
+                    .mergeFrom(value)
+                    .buildPartial();
           } else {
             appendTo_ = value;
           }
@@ -812,9 +828,7 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.pbmse.v1.SignedMessage append_to = 3;</code>
-       */
+      /** <code>.pbmse.v1.SignedMessage append_to = 3;</code> */
       public Builder clearAppendTo() {
         if (appendToBuilder_ == null) {
           appendTo_ = null;
@@ -826,41 +840,40 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.pbmse.v1.SignedMessage append_to = 3;</code>
-       */
+      /** <code>.pbmse.v1.SignedMessage append_to = 3;</code> */
       public trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder getAppendToBuilder() {
-        
+
         onChanged();
         return getAppendToFieldBuilder().getBuilder();
       }
-      /**
-       * <code>.pbmse.v1.SignedMessage append_to = 3;</code>
-       */
+      /** <code>.pbmse.v1.SignedMessage append_to = 3;</code> */
       public trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder getAppendToOrBuilder() {
         if (appendToBuilder_ != null) {
           return appendToBuilder_.getMessageOrBuilder();
         } else {
-          return appendTo_ == null ?
-              trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.getDefaultInstance() : appendTo_;
+          return appendTo_ == null
+              ? trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.getDefaultInstance()
+              : appendTo_;
         }
       }
-      /**
-       * <code>.pbmse.v1.SignedMessage append_to = 3;</code>
-       */
+      /** <code>.pbmse.v1.SignedMessage append_to = 3;</code> */
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.okapi.pbmse.v1.Pbmse.SignedMessage, trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder, trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder> 
+              trinsic.okapi.pbmse.v1.Pbmse.SignedMessage,
+              trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder,
+              trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder>
           getAppendToFieldBuilder() {
         if (appendToBuilder_ == null) {
-          appendToBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.okapi.pbmse.v1.Pbmse.SignedMessage, trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder, trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder>(
-                  getAppendTo(),
-                  getParentForChildren(),
-                  isClean());
+          appendToBuilder_ =
+              new com.google.protobuf.SingleFieldBuilderV3<
+                  trinsic.okapi.pbmse.v1.Pbmse.SignedMessage,
+                  trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder,
+                  trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder>(
+                  getAppendTo(), getParentForChildren(), isClean());
           appendTo_ = null;
         }
         return appendToBuilder_;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -873,12 +886,12 @@ public final class Transport {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.transport.v1.SignRequest)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.transport.v1.SignRequest)
     private static final trinsic.okapi.transport.v1.Transport.SignRequest DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.transport.v1.Transport.SignRequest();
     }
@@ -887,16 +900,16 @@ public final class Transport {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<SignRequest>
-        PARSER = new com.google.protobuf.AbstractParser<SignRequest>() {
-      @java.lang.Override
-      public SignRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SignRequest(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<SignRequest> PARSER =
+        new com.google.protobuf.AbstractParser<SignRequest>() {
+          @java.lang.Override
+          public SignRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new SignRequest(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<SignRequest> parser() {
       return PARSER;
@@ -911,55 +924,52 @@ public final class Transport {
     public trinsic.okapi.transport.v1.Transport.SignRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface SignResponseOrBuilder extends
+  public interface SignResponseOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.transport.v1.SignResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>.pbmse.v1.SignedMessage message = 1;</code>
+     *
      * @return Whether the message field is set.
      */
     boolean hasMessage();
     /**
      * <code>.pbmse.v1.SignedMessage message = 1;</code>
+     *
      * @return The message.
      */
     trinsic.okapi.pbmse.v1.Pbmse.SignedMessage getMessage();
-    /**
-     * <code>.pbmse.v1.SignedMessage message = 1;</code>
-     */
+    /** <code>.pbmse.v1.SignedMessage message = 1;</code> */
     trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder getMessageOrBuilder();
   }
-  /**
-   * Protobuf type {@code okapi.transport.v1.SignResponse}
-   */
-  public static final class SignResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code okapi.transport.v1.SignResponse} */
+  public static final class SignResponse extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.transport.v1.SignResponse)
       SignResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use SignResponse.newBuilder() to construct.
     private SignResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private SignResponse() {
-    }
+
+    private SignResponse() {}
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new SignResponse();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private SignResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -978,26 +988,29 @@ public final class Transport {
             case 0:
               done = true;
               break;
-            case 10: {
-              trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder subBuilder = null;
-              if (message_ != null) {
-                subBuilder = message_.toBuilder();
-              }
-              message_ = input.readMessage(trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(message_);
-                message_ = subBuilder.buildPartial();
-              }
+            case 10:
+              {
+                trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder subBuilder = null;
+                if (message_ != null) {
+                  subBuilder = message_.toBuilder();
+                }
+                message_ =
+                    input.readMessage(
+                        trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(message_);
+                  message_ = subBuilder.buildPartial();
+                }
 
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1005,30 +1018,33 @@ public final class Transport {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_SignResponse_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.transport.v1.Transport
+          .internal_static_okapi_transport_v1_SignResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_SignResponse_fieldAccessorTable
+      return trinsic.okapi.transport.v1.Transport
+          .internal_static_okapi_transport_v1_SignResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.transport.v1.Transport.SignResponse.class, trinsic.okapi.transport.v1.Transport.SignResponse.Builder.class);
+              trinsic.okapi.transport.v1.Transport.SignResponse.class,
+              trinsic.okapi.transport.v1.Transport.SignResponse.Builder.class);
     }
 
     public static final int MESSAGE_FIELD_NUMBER = 1;
     private trinsic.okapi.pbmse.v1.Pbmse.SignedMessage message_;
     /**
      * <code>.pbmse.v1.SignedMessage message = 1;</code>
+     *
      * @return Whether the message field is set.
      */
     @java.lang.Override
@@ -1037,21 +1053,23 @@ public final class Transport {
     }
     /**
      * <code>.pbmse.v1.SignedMessage message = 1;</code>
+     *
      * @return The message.
      */
     @java.lang.Override
     public trinsic.okapi.pbmse.v1.Pbmse.SignedMessage getMessage() {
-      return message_ == null ? trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.getDefaultInstance() : message_;
+      return message_ == null
+          ? trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.getDefaultInstance()
+          : message_;
     }
-    /**
-     * <code>.pbmse.v1.SignedMessage message = 1;</code>
-     */
+    /** <code>.pbmse.v1.SignedMessage message = 1;</code> */
     @java.lang.Override
     public trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder getMessageOrBuilder() {
       return getMessage();
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1063,8 +1081,7 @@ public final class Transport {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (message_ != null) {
         output.writeMessage(1, getMessage());
       }
@@ -1078,8 +1095,7 @@ public final class Transport {
 
       size = 0;
       if (message_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getMessage());
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getMessage());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1089,17 +1105,17 @@ public final class Transport {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.transport.v1.Transport.SignResponse)) {
         return super.equals(obj);
       }
-      trinsic.okapi.transport.v1.Transport.SignResponse other = (trinsic.okapi.transport.v1.Transport.SignResponse) obj;
+      trinsic.okapi.transport.v1.Transport.SignResponse other =
+          (trinsic.okapi.transport.v1.Transport.SignResponse) obj;
 
       if (hasMessage() != other.hasMessage()) return false;
       if (hasMessage()) {
-        if (!getMessage()
-            .equals(other.getMessage())) return false;
+        if (!getMessage().equals(other.getMessage())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -1122,87 +1138,93 @@ public final class Transport {
     }
 
     public static trinsic.okapi.transport.v1.Transport.SignResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.transport.v1.Transport.SignResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.transport.v1.Transport.SignResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.transport.v1.Transport.SignResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.transport.v1.Transport.SignResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.transport.v1.Transport.SignResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.transport.v1.Transport.SignResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.transport.v1.Transport.SignResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.transport.v1.Transport.SignResponse parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.transport.v1.Transport.SignResponse parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.transport.v1.Transport.SignResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.transport.v1.Transport.SignResponse parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.transport.v1.Transport.SignResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.transport.v1.Transport.SignResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.okapi.transport.v1.Transport.SignResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -1211,24 +1233,25 @@ public final class Transport {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code okapi.transport.v1.SignResponse}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code okapi.transport.v1.SignResponse} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.transport.v1.SignResponse)
         trinsic.okapi.transport.v1.Transport.SignResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_SignResponse_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.transport.v1.Transport
+            .internal_static_okapi_transport_v1_SignResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_SignResponse_fieldAccessorTable
+        return trinsic.okapi.transport.v1.Transport
+            .internal_static_okapi_transport_v1_SignResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.transport.v1.Transport.SignResponse.class, trinsic.okapi.transport.v1.Transport.SignResponse.Builder.class);
+                trinsic.okapi.transport.v1.Transport.SignResponse.class,
+                trinsic.okapi.transport.v1.Transport.SignResponse.Builder.class);
       }
 
       // Construct using trinsic.okapi.transport.v1.Transport.SignResponse.newBuilder()
@@ -1236,16 +1259,15 @@ public final class Transport {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -1259,9 +1281,9 @@ public final class Transport {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_SignResponse_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.transport.v1.Transport
+            .internal_static_okapi_transport_v1_SignResponse_descriptor;
       }
 
       @java.lang.Override
@@ -1280,7 +1302,8 @@ public final class Transport {
 
       @java.lang.Override
       public trinsic.okapi.transport.v1.Transport.SignResponse buildPartial() {
-        trinsic.okapi.transport.v1.Transport.SignResponse result = new trinsic.okapi.transport.v1.Transport.SignResponse(this);
+        trinsic.okapi.transport.v1.Transport.SignResponse result =
+            new trinsic.okapi.transport.v1.Transport.SignResponse(this);
         if (messageBuilder_ == null) {
           result.message_ = message_;
         } else {
@@ -1294,38 +1317,41 @@ public final class Transport {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.transport.v1.Transport.SignResponse) {
-          return mergeFrom((trinsic.okapi.transport.v1.Transport.SignResponse)other);
+          return mergeFrom((trinsic.okapi.transport.v1.Transport.SignResponse) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -1333,7 +1359,8 @@ public final class Transport {
       }
 
       public Builder mergeFrom(trinsic.okapi.transport.v1.Transport.SignResponse other) {
-        if (other == trinsic.okapi.transport.v1.Transport.SignResponse.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.transport.v1.Transport.SignResponse.getDefaultInstance())
+          return this;
         if (other.hasMessage()) {
           mergeMessage(other.getMessage());
         }
@@ -1356,7 +1383,8 @@ public final class Transport {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.transport.v1.Transport.SignResponse) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.transport.v1.Transport.SignResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1368,9 +1396,13 @@ public final class Transport {
 
       private trinsic.okapi.pbmse.v1.Pbmse.SignedMessage message_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.okapi.pbmse.v1.Pbmse.SignedMessage, trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder, trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder> messageBuilder_;
+              trinsic.okapi.pbmse.v1.Pbmse.SignedMessage,
+              trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder,
+              trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder>
+          messageBuilder_;
       /**
        * <code>.pbmse.v1.SignedMessage message = 1;</code>
+       *
        * @return Whether the message field is set.
        */
       public boolean hasMessage() {
@@ -1378,18 +1410,19 @@ public final class Transport {
       }
       /**
        * <code>.pbmse.v1.SignedMessage message = 1;</code>
+       *
        * @return The message.
        */
       public trinsic.okapi.pbmse.v1.Pbmse.SignedMessage getMessage() {
         if (messageBuilder_ == null) {
-          return message_ == null ? trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.getDefaultInstance() : message_;
+          return message_ == null
+              ? trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.getDefaultInstance()
+              : message_;
         } else {
           return messageBuilder_.getMessage();
         }
       }
-      /**
-       * <code>.pbmse.v1.SignedMessage message = 1;</code>
-       */
+      /** <code>.pbmse.v1.SignedMessage message = 1;</code> */
       public Builder setMessage(trinsic.okapi.pbmse.v1.Pbmse.SignedMessage value) {
         if (messageBuilder_ == null) {
           if (value == null) {
@@ -1403,9 +1436,7 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.pbmse.v1.SignedMessage message = 1;</code>
-       */
+      /** <code>.pbmse.v1.SignedMessage message = 1;</code> */
       public Builder setMessage(
           trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder builderForValue) {
         if (messageBuilder_ == null) {
@@ -1417,14 +1448,14 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.pbmse.v1.SignedMessage message = 1;</code>
-       */
+      /** <code>.pbmse.v1.SignedMessage message = 1;</code> */
       public Builder mergeMessage(trinsic.okapi.pbmse.v1.Pbmse.SignedMessage value) {
         if (messageBuilder_ == null) {
           if (message_ != null) {
             message_ =
-              trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.newBuilder(message_).mergeFrom(value).buildPartial();
+                trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.newBuilder(message_)
+                    .mergeFrom(value)
+                    .buildPartial();
           } else {
             message_ = value;
           }
@@ -1435,9 +1466,7 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.pbmse.v1.SignedMessage message = 1;</code>
-       */
+      /** <code>.pbmse.v1.SignedMessage message = 1;</code> */
       public Builder clearMessage() {
         if (messageBuilder_ == null) {
           message_ = null;
@@ -1449,41 +1478,40 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.pbmse.v1.SignedMessage message = 1;</code>
-       */
+      /** <code>.pbmse.v1.SignedMessage message = 1;</code> */
       public trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder getMessageBuilder() {
-        
+
         onChanged();
         return getMessageFieldBuilder().getBuilder();
       }
-      /**
-       * <code>.pbmse.v1.SignedMessage message = 1;</code>
-       */
+      /** <code>.pbmse.v1.SignedMessage message = 1;</code> */
       public trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder getMessageOrBuilder() {
         if (messageBuilder_ != null) {
           return messageBuilder_.getMessageOrBuilder();
         } else {
-          return message_ == null ?
-              trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.getDefaultInstance() : message_;
+          return message_ == null
+              ? trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.getDefaultInstance()
+              : message_;
         }
       }
-      /**
-       * <code>.pbmse.v1.SignedMessage message = 1;</code>
-       */
+      /** <code>.pbmse.v1.SignedMessage message = 1;</code> */
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.okapi.pbmse.v1.Pbmse.SignedMessage, trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder, trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder> 
+              trinsic.okapi.pbmse.v1.Pbmse.SignedMessage,
+              trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder,
+              trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder>
           getMessageFieldBuilder() {
         if (messageBuilder_ == null) {
-          messageBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.okapi.pbmse.v1.Pbmse.SignedMessage, trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder, trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder>(
-                  getMessage(),
-                  getParentForChildren(),
-                  isClean());
+          messageBuilder_ =
+              new com.google.protobuf.SingleFieldBuilderV3<
+                  trinsic.okapi.pbmse.v1.Pbmse.SignedMessage,
+                  trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder,
+                  trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder>(
+                  getMessage(), getParentForChildren(), isClean());
           message_ = null;
         }
         return messageBuilder_;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1496,12 +1524,12 @@ public final class Transport {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.transport.v1.SignResponse)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.transport.v1.SignResponse)
     private static final trinsic.okapi.transport.v1.Transport.SignResponse DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.transport.v1.Transport.SignResponse();
     }
@@ -1510,16 +1538,16 @@ public final class Transport {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<SignResponse>
-        PARSER = new com.google.protobuf.AbstractParser<SignResponse>() {
-      @java.lang.Override
-      public SignResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SignResponse(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<SignResponse> PARSER =
+        new com.google.protobuf.AbstractParser<SignResponse>() {
+          @java.lang.Override
+          public SignResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new SignResponse(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<SignResponse> parser() {
       return PARSER;
@@ -1534,70 +1562,67 @@ public final class Transport {
     public trinsic.okapi.transport.v1.Transport.SignResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface VerifyRequestOrBuilder extends
+  public interface VerifyRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.transport.v1.VerifyRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>.pbmse.v1.SignedMessage message = 1;</code>
+     *
      * @return Whether the message field is set.
      */
     boolean hasMessage();
     /**
      * <code>.pbmse.v1.SignedMessage message = 1;</code>
+     *
      * @return The message.
      */
     trinsic.okapi.pbmse.v1.Pbmse.SignedMessage getMessage();
-    /**
-     * <code>.pbmse.v1.SignedMessage message = 1;</code>
-     */
+    /** <code>.pbmse.v1.SignedMessage message = 1;</code> */
     trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder getMessageOrBuilder();
 
     /**
      * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
+     *
      * @return Whether the key field is set.
      */
     boolean hasKey();
     /**
      * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
+     *
      * @return The key.
      */
     trinsic.okapi.keys.v1.Keys.JsonWebKey getKey();
-    /**
-     * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
-     */
+    /** <code>.okapi.keys.v1.JsonWebKey key = 2;</code> */
     trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getKeyOrBuilder();
   }
-  /**
-   * Protobuf type {@code okapi.transport.v1.VerifyRequest}
-   */
-  public static final class VerifyRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code okapi.transport.v1.VerifyRequest} */
+  public static final class VerifyRequest extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.transport.v1.VerifyRequest)
       VerifyRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use VerifyRequest.newBuilder() to construct.
     private VerifyRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private VerifyRequest() {
-    }
+
+    private VerifyRequest() {}
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new VerifyRequest();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private VerifyRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1616,39 +1641,45 @@ public final class Transport {
             case 0:
               done = true;
               break;
-            case 10: {
-              trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder subBuilder = null;
-              if (message_ != null) {
-                subBuilder = message_.toBuilder();
-              }
-              message_ = input.readMessage(trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(message_);
-                message_ = subBuilder.buildPartial();
-              }
+            case 10:
+              {
+                trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder subBuilder = null;
+                if (message_ != null) {
+                  subBuilder = message_.toBuilder();
+                }
+                message_ =
+                    input.readMessage(
+                        trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(message_);
+                  message_ = subBuilder.buildPartial();
+                }
 
-              break;
-            }
-            case 18: {
-              trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder subBuilder = null;
-              if (key_ != null) {
-                subBuilder = key_.toBuilder();
+                break;
               }
-              key_ = input.readMessage(trinsic.okapi.keys.v1.Keys.JsonWebKey.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(key_);
-                key_ = subBuilder.buildPartial();
-              }
+            case 18:
+              {
+                trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder subBuilder = null;
+                if (key_ != null) {
+                  subBuilder = key_.toBuilder();
+                }
+                key_ =
+                    input.readMessage(
+                        trinsic.okapi.keys.v1.Keys.JsonWebKey.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(key_);
+                  key_ = subBuilder.buildPartial();
+                }
 
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1656,30 +1687,33 @@ public final class Transport {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_VerifyRequest_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.transport.v1.Transport
+          .internal_static_okapi_transport_v1_VerifyRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_VerifyRequest_fieldAccessorTable
+      return trinsic.okapi.transport.v1.Transport
+          .internal_static_okapi_transport_v1_VerifyRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.transport.v1.Transport.VerifyRequest.class, trinsic.okapi.transport.v1.Transport.VerifyRequest.Builder.class);
+              trinsic.okapi.transport.v1.Transport.VerifyRequest.class,
+              trinsic.okapi.transport.v1.Transport.VerifyRequest.Builder.class);
     }
 
     public static final int MESSAGE_FIELD_NUMBER = 1;
     private trinsic.okapi.pbmse.v1.Pbmse.SignedMessage message_;
     /**
      * <code>.pbmse.v1.SignedMessage message = 1;</code>
+     *
      * @return Whether the message field is set.
      */
     @java.lang.Override
@@ -1688,15 +1722,16 @@ public final class Transport {
     }
     /**
      * <code>.pbmse.v1.SignedMessage message = 1;</code>
+     *
      * @return The message.
      */
     @java.lang.Override
     public trinsic.okapi.pbmse.v1.Pbmse.SignedMessage getMessage() {
-      return message_ == null ? trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.getDefaultInstance() : message_;
+      return message_ == null
+          ? trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.getDefaultInstance()
+          : message_;
     }
-    /**
-     * <code>.pbmse.v1.SignedMessage message = 1;</code>
-     */
+    /** <code>.pbmse.v1.SignedMessage message = 1;</code> */
     @java.lang.Override
     public trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder getMessageOrBuilder() {
       return getMessage();
@@ -1706,6 +1741,7 @@ public final class Transport {
     private trinsic.okapi.keys.v1.Keys.JsonWebKey key_;
     /**
      * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
+     *
      * @return Whether the key field is set.
      */
     @java.lang.Override
@@ -1714,21 +1750,21 @@ public final class Transport {
     }
     /**
      * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
+     *
      * @return The key.
      */
     @java.lang.Override
     public trinsic.okapi.keys.v1.Keys.JsonWebKey getKey() {
       return key_ == null ? trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance() : key_;
     }
-    /**
-     * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
-     */
+    /** <code>.okapi.keys.v1.JsonWebKey key = 2;</code> */
     @java.lang.Override
     public trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getKeyOrBuilder() {
       return getKey();
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1740,8 +1776,7 @@ public final class Transport {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (message_ != null) {
         output.writeMessage(1, getMessage());
       }
@@ -1758,12 +1793,10 @@ public final class Transport {
 
       size = 0;
       if (message_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getMessage());
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getMessage());
       }
       if (key_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getKey());
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getKey());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1773,22 +1806,21 @@ public final class Transport {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.transport.v1.Transport.VerifyRequest)) {
         return super.equals(obj);
       }
-      trinsic.okapi.transport.v1.Transport.VerifyRequest other = (trinsic.okapi.transport.v1.Transport.VerifyRequest) obj;
+      trinsic.okapi.transport.v1.Transport.VerifyRequest other =
+          (trinsic.okapi.transport.v1.Transport.VerifyRequest) obj;
 
       if (hasMessage() != other.hasMessage()) return false;
       if (hasMessage()) {
-        if (!getMessage()
-            .equals(other.getMessage())) return false;
+        if (!getMessage().equals(other.getMessage())) return false;
       }
       if (hasKey() != other.hasKey()) return false;
       if (hasKey()) {
-        if (!getKey()
-            .equals(other.getKey())) return false;
+        if (!getKey().equals(other.getKey())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -1815,87 +1847,93 @@ public final class Transport {
     }
 
     public static trinsic.okapi.transport.v1.Transport.VerifyRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.transport.v1.Transport.VerifyRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.transport.v1.Transport.VerifyRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.transport.v1.Transport.VerifyRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.transport.v1.Transport.VerifyRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.transport.v1.Transport.VerifyRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.transport.v1.Transport.VerifyRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.transport.v1.Transport.VerifyRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.transport.v1.Transport.VerifyRequest parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.transport.v1.Transport.VerifyRequest parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.transport.v1.Transport.VerifyRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.transport.v1.Transport.VerifyRequest parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.transport.v1.Transport.VerifyRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.transport.v1.Transport.VerifyRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.okapi.transport.v1.Transport.VerifyRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -1904,24 +1942,25 @@ public final class Transport {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code okapi.transport.v1.VerifyRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code okapi.transport.v1.VerifyRequest} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.transport.v1.VerifyRequest)
         trinsic.okapi.transport.v1.Transport.VerifyRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_VerifyRequest_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.transport.v1.Transport
+            .internal_static_okapi_transport_v1_VerifyRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_VerifyRequest_fieldAccessorTable
+        return trinsic.okapi.transport.v1.Transport
+            .internal_static_okapi_transport_v1_VerifyRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.transport.v1.Transport.VerifyRequest.class, trinsic.okapi.transport.v1.Transport.VerifyRequest.Builder.class);
+                trinsic.okapi.transport.v1.Transport.VerifyRequest.class,
+                trinsic.okapi.transport.v1.Transport.VerifyRequest.Builder.class);
       }
 
       // Construct using trinsic.okapi.transport.v1.Transport.VerifyRequest.newBuilder()
@@ -1929,16 +1968,15 @@ public final class Transport {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -1958,9 +1996,9 @@ public final class Transport {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_VerifyRequest_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.transport.v1.Transport
+            .internal_static_okapi_transport_v1_VerifyRequest_descriptor;
       }
 
       @java.lang.Override
@@ -1979,7 +2017,8 @@ public final class Transport {
 
       @java.lang.Override
       public trinsic.okapi.transport.v1.Transport.VerifyRequest buildPartial() {
-        trinsic.okapi.transport.v1.Transport.VerifyRequest result = new trinsic.okapi.transport.v1.Transport.VerifyRequest(this);
+        trinsic.okapi.transport.v1.Transport.VerifyRequest result =
+            new trinsic.okapi.transport.v1.Transport.VerifyRequest(this);
         if (messageBuilder_ == null) {
           result.message_ = message_;
         } else {
@@ -1998,38 +2037,41 @@ public final class Transport {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.transport.v1.Transport.VerifyRequest) {
-          return mergeFrom((trinsic.okapi.transport.v1.Transport.VerifyRequest)other);
+          return mergeFrom((trinsic.okapi.transport.v1.Transport.VerifyRequest) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -2037,7 +2079,8 @@ public final class Transport {
       }
 
       public Builder mergeFrom(trinsic.okapi.transport.v1.Transport.VerifyRequest other) {
-        if (other == trinsic.okapi.transport.v1.Transport.VerifyRequest.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.transport.v1.Transport.VerifyRequest.getDefaultInstance())
+          return this;
         if (other.hasMessage()) {
           mergeMessage(other.getMessage());
         }
@@ -2063,7 +2106,8 @@ public final class Transport {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.transport.v1.Transport.VerifyRequest) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.transport.v1.Transport.VerifyRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2075,9 +2119,13 @@ public final class Transport {
 
       private trinsic.okapi.pbmse.v1.Pbmse.SignedMessage message_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.okapi.pbmse.v1.Pbmse.SignedMessage, trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder, trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder> messageBuilder_;
+              trinsic.okapi.pbmse.v1.Pbmse.SignedMessage,
+              trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder,
+              trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder>
+          messageBuilder_;
       /**
        * <code>.pbmse.v1.SignedMessage message = 1;</code>
+       *
        * @return Whether the message field is set.
        */
       public boolean hasMessage() {
@@ -2085,18 +2133,19 @@ public final class Transport {
       }
       /**
        * <code>.pbmse.v1.SignedMessage message = 1;</code>
+       *
        * @return The message.
        */
       public trinsic.okapi.pbmse.v1.Pbmse.SignedMessage getMessage() {
         if (messageBuilder_ == null) {
-          return message_ == null ? trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.getDefaultInstance() : message_;
+          return message_ == null
+              ? trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.getDefaultInstance()
+              : message_;
         } else {
           return messageBuilder_.getMessage();
         }
       }
-      /**
-       * <code>.pbmse.v1.SignedMessage message = 1;</code>
-       */
+      /** <code>.pbmse.v1.SignedMessage message = 1;</code> */
       public Builder setMessage(trinsic.okapi.pbmse.v1.Pbmse.SignedMessage value) {
         if (messageBuilder_ == null) {
           if (value == null) {
@@ -2110,9 +2159,7 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.pbmse.v1.SignedMessage message = 1;</code>
-       */
+      /** <code>.pbmse.v1.SignedMessage message = 1;</code> */
       public Builder setMessage(
           trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder builderForValue) {
         if (messageBuilder_ == null) {
@@ -2124,14 +2171,14 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.pbmse.v1.SignedMessage message = 1;</code>
-       */
+      /** <code>.pbmse.v1.SignedMessage message = 1;</code> */
       public Builder mergeMessage(trinsic.okapi.pbmse.v1.Pbmse.SignedMessage value) {
         if (messageBuilder_ == null) {
           if (message_ != null) {
             message_ =
-              trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.newBuilder(message_).mergeFrom(value).buildPartial();
+                trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.newBuilder(message_)
+                    .mergeFrom(value)
+                    .buildPartial();
           } else {
             message_ = value;
           }
@@ -2142,9 +2189,7 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.pbmse.v1.SignedMessage message = 1;</code>
-       */
+      /** <code>.pbmse.v1.SignedMessage message = 1;</code> */
       public Builder clearMessage() {
         if (messageBuilder_ == null) {
           message_ = null;
@@ -2156,37 +2201,35 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.pbmse.v1.SignedMessage message = 1;</code>
-       */
+      /** <code>.pbmse.v1.SignedMessage message = 1;</code> */
       public trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder getMessageBuilder() {
-        
+
         onChanged();
         return getMessageFieldBuilder().getBuilder();
       }
-      /**
-       * <code>.pbmse.v1.SignedMessage message = 1;</code>
-       */
+      /** <code>.pbmse.v1.SignedMessage message = 1;</code> */
       public trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder getMessageOrBuilder() {
         if (messageBuilder_ != null) {
           return messageBuilder_.getMessageOrBuilder();
         } else {
-          return message_ == null ?
-              trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.getDefaultInstance() : message_;
+          return message_ == null
+              ? trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.getDefaultInstance()
+              : message_;
         }
       }
-      /**
-       * <code>.pbmse.v1.SignedMessage message = 1;</code>
-       */
+      /** <code>.pbmse.v1.SignedMessage message = 1;</code> */
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.okapi.pbmse.v1.Pbmse.SignedMessage, trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder, trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder> 
+              trinsic.okapi.pbmse.v1.Pbmse.SignedMessage,
+              trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder,
+              trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder>
           getMessageFieldBuilder() {
         if (messageBuilder_ == null) {
-          messageBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.okapi.pbmse.v1.Pbmse.SignedMessage, trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder, trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder>(
-                  getMessage(),
-                  getParentForChildren(),
-                  isClean());
+          messageBuilder_ =
+              new com.google.protobuf.SingleFieldBuilderV3<
+                  trinsic.okapi.pbmse.v1.Pbmse.SignedMessage,
+                  trinsic.okapi.pbmse.v1.Pbmse.SignedMessage.Builder,
+                  trinsic.okapi.pbmse.v1.Pbmse.SignedMessageOrBuilder>(
+                  getMessage(), getParentForChildren(), isClean());
           message_ = null;
         }
         return messageBuilder_;
@@ -2194,9 +2237,13 @@ public final class Transport {
 
       private trinsic.okapi.keys.v1.Keys.JsonWebKey key_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.okapi.keys.v1.Keys.JsonWebKey, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder, trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder> keyBuilder_;
+              trinsic.okapi.keys.v1.Keys.JsonWebKey,
+              trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder,
+              trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>
+          keyBuilder_;
       /**
        * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
+       *
        * @return Whether the key field is set.
        */
       public boolean hasKey() {
@@ -2204,6 +2251,7 @@ public final class Transport {
       }
       /**
        * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
+       *
        * @return The key.
        */
       public trinsic.okapi.keys.v1.Keys.JsonWebKey getKey() {
@@ -2213,9 +2261,7 @@ public final class Transport {
           return keyBuilder_.getMessage();
         }
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey key = 2;</code> */
       public Builder setKey(trinsic.okapi.keys.v1.Keys.JsonWebKey value) {
         if (keyBuilder_ == null) {
           if (value == null) {
@@ -2229,11 +2275,8 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
-       */
-      public Builder setKey(
-          trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder builderForValue) {
+      /** <code>.okapi.keys.v1.JsonWebKey key = 2;</code> */
+      public Builder setKey(trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder builderForValue) {
         if (keyBuilder_ == null) {
           key_ = builderForValue.build();
           onChanged();
@@ -2243,14 +2286,14 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey key = 2;</code> */
       public Builder mergeKey(trinsic.okapi.keys.v1.Keys.JsonWebKey value) {
         if (keyBuilder_ == null) {
           if (key_ != null) {
             key_ =
-              trinsic.okapi.keys.v1.Keys.JsonWebKey.newBuilder(key_).mergeFrom(value).buildPartial();
+                trinsic.okapi.keys.v1.Keys.JsonWebKey.newBuilder(key_)
+                    .mergeFrom(value)
+                    .buildPartial();
           } else {
             key_ = value;
           }
@@ -2261,9 +2304,7 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey key = 2;</code> */
       public Builder clearKey() {
         if (keyBuilder_ == null) {
           key_ = null;
@@ -2275,41 +2316,38 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey key = 2;</code> */
       public trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder getKeyBuilder() {
-        
+
         onChanged();
         return getKeyFieldBuilder().getBuilder();
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey key = 2;</code> */
       public trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getKeyOrBuilder() {
         if (keyBuilder_ != null) {
           return keyBuilder_.getMessageOrBuilder();
         } else {
-          return key_ == null ?
-              trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance() : key_;
+          return key_ == null ? trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance() : key_;
         }
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey key = 2;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey key = 2;</code> */
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.okapi.keys.v1.Keys.JsonWebKey, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder, trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder> 
+              trinsic.okapi.keys.v1.Keys.JsonWebKey,
+              trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder,
+              trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>
           getKeyFieldBuilder() {
         if (keyBuilder_ == null) {
-          keyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.okapi.keys.v1.Keys.JsonWebKey, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder, trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>(
-                  getKey(),
-                  getParentForChildren(),
-                  isClean());
+          keyBuilder_ =
+              new com.google.protobuf.SingleFieldBuilderV3<
+                  trinsic.okapi.keys.v1.Keys.JsonWebKey,
+                  trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder,
+                  trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>(
+                  getKey(), getParentForChildren(), isClean());
           key_ = null;
         }
         return keyBuilder_;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -2322,12 +2360,12 @@ public final class Transport {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.transport.v1.VerifyRequest)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.transport.v1.VerifyRequest)
     private static final trinsic.okapi.transport.v1.Transport.VerifyRequest DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.transport.v1.Transport.VerifyRequest();
     }
@@ -2336,16 +2374,16 @@ public final class Transport {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<VerifyRequest>
-        PARSER = new com.google.protobuf.AbstractParser<VerifyRequest>() {
-      @java.lang.Override
-      public VerifyRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new VerifyRequest(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<VerifyRequest> PARSER =
+        new com.google.protobuf.AbstractParser<VerifyRequest>() {
+          @java.lang.Override
+          public VerifyRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new VerifyRequest(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<VerifyRequest> parser() {
       return PARSER;
@@ -2360,46 +2398,44 @@ public final class Transport {
     public trinsic.okapi.transport.v1.Transport.VerifyRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface VerifyResponseOrBuilder extends
+  public interface VerifyResponseOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.transport.v1.VerifyResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>bool is_valid = 1;</code>
+     *
      * @return The isValid.
      */
     boolean getIsValid();
   }
-  /**
-   * Protobuf type {@code okapi.transport.v1.VerifyResponse}
-   */
-  public static final class VerifyResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code okapi.transport.v1.VerifyResponse} */
+  public static final class VerifyResponse extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.transport.v1.VerifyResponse)
       VerifyResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use VerifyResponse.newBuilder() to construct.
     private VerifyResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private VerifyResponse() {
-    }
+
+    private VerifyResponse() {}
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new VerifyResponse();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private VerifyResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2418,18 +2454,18 @@ public final class Transport {
             case 0:
               done = true;
               break;
-            case 8: {
-
-              isValid_ = input.readBool();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 8:
+              {
+                isValid_ = input.readBool();
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -2437,30 +2473,33 @@ public final class Transport {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_VerifyResponse_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.transport.v1.Transport
+          .internal_static_okapi_transport_v1_VerifyResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_VerifyResponse_fieldAccessorTable
+      return trinsic.okapi.transport.v1.Transport
+          .internal_static_okapi_transport_v1_VerifyResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.transport.v1.Transport.VerifyResponse.class, trinsic.okapi.transport.v1.Transport.VerifyResponse.Builder.class);
+              trinsic.okapi.transport.v1.Transport.VerifyResponse.class,
+              trinsic.okapi.transport.v1.Transport.VerifyResponse.Builder.class);
     }
 
     public static final int IS_VALID_FIELD_NUMBER = 1;
     private boolean isValid_;
     /**
      * <code>bool is_valid = 1;</code>
+     *
      * @return The isValid.
      */
     @java.lang.Override
@@ -2469,6 +2508,7 @@ public final class Transport {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -2480,8 +2520,7 @@ public final class Transport {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (isValid_ != false) {
         output.writeBool(1, isValid_);
       }
@@ -2495,8 +2534,7 @@ public final class Transport {
 
       size = 0;
       if (isValid_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(1, isValid_);
+        size += com.google.protobuf.CodedOutputStream.computeBoolSize(1, isValid_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2506,15 +2544,15 @@ public final class Transport {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.transport.v1.Transport.VerifyResponse)) {
         return super.equals(obj);
       }
-      trinsic.okapi.transport.v1.Transport.VerifyResponse other = (trinsic.okapi.transport.v1.Transport.VerifyResponse) obj;
+      trinsic.okapi.transport.v1.Transport.VerifyResponse other =
+          (trinsic.okapi.transport.v1.Transport.VerifyResponse) obj;
 
-      if (getIsValid()
-          != other.getIsValid()) return false;
+      if (getIsValid() != other.getIsValid()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2527,95 +2565,101 @@ public final class Transport {
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + IS_VALID_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getIsValid());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getIsValid());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
     public static trinsic.okapi.transport.v1.Transport.VerifyResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.transport.v1.Transport.VerifyResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.transport.v1.Transport.VerifyResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.transport.v1.Transport.VerifyResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.transport.v1.Transport.VerifyResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.transport.v1.Transport.VerifyResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.transport.v1.Transport.VerifyResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.transport.v1.Transport.VerifyResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.transport.v1.Transport.VerifyResponse parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.transport.v1.Transport.VerifyResponse parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.transport.v1.Transport.VerifyResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.transport.v1.Transport.VerifyResponse parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.transport.v1.Transport.VerifyResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.transport.v1.Transport.VerifyResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.okapi.transport.v1.Transport.VerifyResponse prototype) {
+
+    public static Builder newBuilder(
+        trinsic.okapi.transport.v1.Transport.VerifyResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -2624,24 +2668,25 @@ public final class Transport {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code okapi.transport.v1.VerifyResponse}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code okapi.transport.v1.VerifyResponse} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.transport.v1.VerifyResponse)
         trinsic.okapi.transport.v1.Transport.VerifyResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_VerifyResponse_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.transport.v1.Transport
+            .internal_static_okapi_transport_v1_VerifyResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_VerifyResponse_fieldAccessorTable
+        return trinsic.okapi.transport.v1.Transport
+            .internal_static_okapi_transport_v1_VerifyResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.transport.v1.Transport.VerifyResponse.class, trinsic.okapi.transport.v1.Transport.VerifyResponse.Builder.class);
+                trinsic.okapi.transport.v1.Transport.VerifyResponse.class,
+                trinsic.okapi.transport.v1.Transport.VerifyResponse.Builder.class);
       }
 
       // Construct using trinsic.okapi.transport.v1.Transport.VerifyResponse.newBuilder()
@@ -2649,16 +2694,15 @@ public final class Transport {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -2668,9 +2712,9 @@ public final class Transport {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_VerifyResponse_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.transport.v1.Transport
+            .internal_static_okapi_transport_v1_VerifyResponse_descriptor;
       }
 
       @java.lang.Override
@@ -2689,7 +2733,8 @@ public final class Transport {
 
       @java.lang.Override
       public trinsic.okapi.transport.v1.Transport.VerifyResponse buildPartial() {
-        trinsic.okapi.transport.v1.Transport.VerifyResponse result = new trinsic.okapi.transport.v1.Transport.VerifyResponse(this);
+        trinsic.okapi.transport.v1.Transport.VerifyResponse result =
+            new trinsic.okapi.transport.v1.Transport.VerifyResponse(this);
         result.isValid_ = isValid_;
         onBuilt();
         return result;
@@ -2699,38 +2744,41 @@ public final class Transport {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.transport.v1.Transport.VerifyResponse) {
-          return mergeFrom((trinsic.okapi.transport.v1.Transport.VerifyResponse)other);
+          return mergeFrom((trinsic.okapi.transport.v1.Transport.VerifyResponse) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -2738,7 +2786,8 @@ public final class Transport {
       }
 
       public Builder mergeFrom(trinsic.okapi.transport.v1.Transport.VerifyResponse other) {
-        if (other == trinsic.okapi.transport.v1.Transport.VerifyResponse.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.transport.v1.Transport.VerifyResponse.getDefaultInstance())
+          return this;
         if (other.getIsValid() != false) {
           setIsValid(other.getIsValid());
         }
@@ -2761,7 +2810,8 @@ public final class Transport {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.transport.v1.Transport.VerifyResponse) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.transport.v1.Transport.VerifyResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2771,9 +2821,10 @@ public final class Transport {
         return this;
       }
 
-      private boolean isValid_ ;
+      private boolean isValid_;
       /**
        * <code>bool is_valid = 1;</code>
+       *
        * @return The isValid.
        */
       @java.lang.Override
@@ -2782,25 +2833,28 @@ public final class Transport {
       }
       /**
        * <code>bool is_valid = 1;</code>
+       *
        * @param value The isValid to set.
        * @return This builder for chaining.
        */
       public Builder setIsValid(boolean value) {
-        
+
         isValid_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>bool is_valid = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearIsValid() {
-        
+
         isValid_ = false;
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -2813,12 +2867,12 @@ public final class Transport {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.transport.v1.VerifyResponse)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.transport.v1.VerifyResponse)
     private static final trinsic.okapi.transport.v1.Transport.VerifyResponse DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.transport.v1.Transport.VerifyResponse();
     }
@@ -2827,16 +2881,16 @@ public final class Transport {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<VerifyResponse>
-        PARSER = new com.google.protobuf.AbstractParser<VerifyResponse>() {
-      @java.lang.Override
-      public VerifyResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new VerifyResponse(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<VerifyResponse> PARSER =
+        new com.google.protobuf.AbstractParser<VerifyResponse>() {
+          @java.lang.Override
+          public VerifyResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new VerifyResponse(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<VerifyResponse> parser() {
       return PARSER;
@@ -2851,89 +2905,94 @@ public final class Transport {
     public trinsic.okapi.transport.v1.Transport.VerifyResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface PackRequestOrBuilder extends
+  public interface PackRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.transport.v1.PackRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
+     *
      * @return Whether the senderKey field is set.
      */
     boolean hasSenderKey();
     /**
      * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
+     *
      * @return The senderKey.
      */
     trinsic.okapi.keys.v1.Keys.JsonWebKey getSenderKey();
-    /**
-     * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
-     */
+    /** <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code> */
     trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getSenderKeyOrBuilder();
 
     /**
      * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
+     *
      * @return Whether the receiverKey field is set.
      */
     boolean hasReceiverKey();
     /**
      * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
+     *
      * @return The receiverKey.
      */
     trinsic.okapi.keys.v1.Keys.JsonWebKey getReceiverKey();
-    /**
-     * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
-     */
+    /** <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code> */
     trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getReceiverKeyOrBuilder();
 
     /**
      * <code>bytes associated_data = 3;</code>
+     *
      * @return The associatedData.
      */
     com.google.protobuf.ByteString getAssociatedData();
 
     /**
      * <code>bytes plaintext = 4;</code>
+     *
      * @return The plaintext.
      */
     com.google.protobuf.ByteString getPlaintext();
 
     /**
      * <code>.pbmse.v1.EncryptionMode mode = 5;</code>
+     *
      * @return The enum numeric value on the wire for mode.
      */
     int getModeValue();
     /**
      * <code>.pbmse.v1.EncryptionMode mode = 5;</code>
+     *
      * @return The mode.
      */
     trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode getMode();
 
     /**
      * <code>.pbmse.v1.EncryptionAlgorithm algorithm = 6;</code>
+     *
      * @return The enum numeric value on the wire for algorithm.
      */
     int getAlgorithmValue();
     /**
      * <code>.pbmse.v1.EncryptionAlgorithm algorithm = 6;</code>
+     *
      * @return The algorithm.
      */
     trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm getAlgorithm();
   }
-  /**
-   * Protobuf type {@code okapi.transport.v1.PackRequest}
-   */
-  public static final class PackRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code okapi.transport.v1.PackRequest} */
+  public static final class PackRequest extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.transport.v1.PackRequest)
       PackRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use PackRequest.newBuilder() to construct.
     private PackRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private PackRequest() {
       associatedData_ = com.google.protobuf.ByteString.EMPTY;
       plaintext_ = com.google.protobuf.ByteString.EMPTY;
@@ -2943,16 +3002,15 @@ public final class Transport {
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new PackRequest();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private PackRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2971,61 +3029,69 @@ public final class Transport {
             case 0:
               done = true;
               break;
-            case 10: {
-              trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder subBuilder = null;
-              if (senderKey_ != null) {
-                subBuilder = senderKey_.toBuilder();
+            case 10:
+              {
+                trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder subBuilder = null;
+                if (senderKey_ != null) {
+                  subBuilder = senderKey_.toBuilder();
+                }
+                senderKey_ =
+                    input.readMessage(
+                        trinsic.okapi.keys.v1.Keys.JsonWebKey.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(senderKey_);
+                  senderKey_ = subBuilder.buildPartial();
+                }
+
+                break;
               }
-              senderKey_ = input.readMessage(trinsic.okapi.keys.v1.Keys.JsonWebKey.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(senderKey_);
-                senderKey_ = subBuilder.buildPartial();
+            case 18:
+              {
+                trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder subBuilder = null;
+                if (receiverKey_ != null) {
+                  subBuilder = receiverKey_.toBuilder();
+                }
+                receiverKey_ =
+                    input.readMessage(
+                        trinsic.okapi.keys.v1.Keys.JsonWebKey.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(receiverKey_);
+                  receiverKey_ = subBuilder.buildPartial();
+                }
+
+                break;
               }
-
-              break;
-            }
-            case 18: {
-              trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder subBuilder = null;
-              if (receiverKey_ != null) {
-                subBuilder = receiverKey_.toBuilder();
+            case 26:
+              {
+                associatedData_ = input.readBytes();
+                break;
               }
-              receiverKey_ = input.readMessage(trinsic.okapi.keys.v1.Keys.JsonWebKey.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(receiverKey_);
-                receiverKey_ = subBuilder.buildPartial();
+            case 34:
+              {
+                plaintext_ = input.readBytes();
+                break;
               }
+            case 40:
+              {
+                int rawValue = input.readEnum();
 
-              break;
-            }
-            case 26: {
-
-              associatedData_ = input.readBytes();
-              break;
-            }
-            case 34: {
-
-              plaintext_ = input.readBytes();
-              break;
-            }
-            case 40: {
-              int rawValue = input.readEnum();
-
-              mode_ = rawValue;
-              break;
-            }
-            case 48: {
-              int rawValue = input.readEnum();
-
-              algorithm_ = rawValue;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                mode_ = rawValue;
+                break;
               }
-              break;
-            }
+            case 48:
+              {
+                int rawValue = input.readEnum();
+
+                algorithm_ = rawValue;
+                break;
+              }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -3033,30 +3099,33 @@ public final class Transport {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_PackRequest_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.transport.v1.Transport
+          .internal_static_okapi_transport_v1_PackRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_PackRequest_fieldAccessorTable
+      return trinsic.okapi.transport.v1.Transport
+          .internal_static_okapi_transport_v1_PackRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.transport.v1.Transport.PackRequest.class, trinsic.okapi.transport.v1.Transport.PackRequest.Builder.class);
+              trinsic.okapi.transport.v1.Transport.PackRequest.class,
+              trinsic.okapi.transport.v1.Transport.PackRequest.Builder.class);
     }
 
     public static final int SENDER_KEY_FIELD_NUMBER = 1;
     private trinsic.okapi.keys.v1.Keys.JsonWebKey senderKey_;
     /**
      * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
+     *
      * @return Whether the senderKey field is set.
      */
     @java.lang.Override
@@ -3065,15 +3134,16 @@ public final class Transport {
     }
     /**
      * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
+     *
      * @return The senderKey.
      */
     @java.lang.Override
     public trinsic.okapi.keys.v1.Keys.JsonWebKey getSenderKey() {
-      return senderKey_ == null ? trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance() : senderKey_;
+      return senderKey_ == null
+          ? trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance()
+          : senderKey_;
     }
-    /**
-     * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
-     */
+    /** <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code> */
     @java.lang.Override
     public trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getSenderKeyOrBuilder() {
       return getSenderKey();
@@ -3083,6 +3153,7 @@ public final class Transport {
     private trinsic.okapi.keys.v1.Keys.JsonWebKey receiverKey_;
     /**
      * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
+     *
      * @return Whether the receiverKey field is set.
      */
     @java.lang.Override
@@ -3091,15 +3162,16 @@ public final class Transport {
     }
     /**
      * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
+     *
      * @return The receiverKey.
      */
     @java.lang.Override
     public trinsic.okapi.keys.v1.Keys.JsonWebKey getReceiverKey() {
-      return receiverKey_ == null ? trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance() : receiverKey_;
+      return receiverKey_ == null
+          ? trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance()
+          : receiverKey_;
     }
-    /**
-     * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
-     */
+    /** <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code> */
     @java.lang.Override
     public trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getReceiverKeyOrBuilder() {
       return getReceiverKey();
@@ -3109,6 +3181,7 @@ public final class Transport {
     private com.google.protobuf.ByteString associatedData_;
     /**
      * <code>bytes associated_data = 3;</code>
+     *
      * @return The associatedData.
      */
     @java.lang.Override
@@ -3120,6 +3193,7 @@ public final class Transport {
     private com.google.protobuf.ByteString plaintext_;
     /**
      * <code>bytes plaintext = 4;</code>
+     *
      * @return The plaintext.
      */
     @java.lang.Override
@@ -3131,18 +3205,23 @@ public final class Transport {
     private int mode_;
     /**
      * <code>.pbmse.v1.EncryptionMode mode = 5;</code>
+     *
      * @return The enum numeric value on the wire for mode.
      */
-    @java.lang.Override public int getModeValue() {
+    @java.lang.Override
+    public int getModeValue() {
       return mode_;
     }
     /**
      * <code>.pbmse.v1.EncryptionMode mode = 5;</code>
+     *
      * @return The mode.
      */
-    @java.lang.Override public trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode getMode() {
+    @java.lang.Override
+    public trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode getMode() {
       @SuppressWarnings("deprecation")
-      trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode result = trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode.valueOf(mode_);
+      trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode result =
+          trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode.valueOf(mode_);
       return result == null ? trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode.UNRECOGNIZED : result;
     }
 
@@ -3150,22 +3229,30 @@ public final class Transport {
     private int algorithm_;
     /**
      * <code>.pbmse.v1.EncryptionAlgorithm algorithm = 6;</code>
+     *
      * @return The enum numeric value on the wire for algorithm.
      */
-    @java.lang.Override public int getAlgorithmValue() {
+    @java.lang.Override
+    public int getAlgorithmValue() {
       return algorithm_;
     }
     /**
      * <code>.pbmse.v1.EncryptionAlgorithm algorithm = 6;</code>
+     *
      * @return The algorithm.
      */
-    @java.lang.Override public trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm getAlgorithm() {
+    @java.lang.Override
+    public trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm getAlgorithm() {
       @SuppressWarnings("deprecation")
-      trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm result = trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm.valueOf(algorithm_);
-      return result == null ? trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm.UNRECOGNIZED : result;
+      trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm result =
+          trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm.valueOf(algorithm_);
+      return result == null
+          ? trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm.UNRECOGNIZED
+          : result;
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -3177,8 +3264,7 @@ public final class Transport {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (senderKey_ != null) {
         output.writeMessage(1, getSenderKey());
       }
@@ -3191,10 +3277,13 @@ public final class Transport {
       if (!plaintext_.isEmpty()) {
         output.writeBytes(4, plaintext_);
       }
-      if (mode_ != trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode.ENCRYPTION_MODE_UNSPECIFIED.getNumber()) {
+      if (mode_
+          != trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode.ENCRYPTION_MODE_UNSPECIFIED.getNumber()) {
         output.writeEnum(5, mode_);
       }
-      if (algorithm_ != trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm.ENCRYPTION_ALGORITHM_UNSPECIFIED.getNumber()) {
+      if (algorithm_
+          != trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm.ENCRYPTION_ALGORITHM_UNSPECIFIED
+              .getNumber()) {
         output.writeEnum(6, algorithm_);
       }
       unknownFields.writeTo(output);
@@ -3207,28 +3296,25 @@ public final class Transport {
 
       size = 0;
       if (senderKey_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getSenderKey());
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getSenderKey());
       }
       if (receiverKey_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getReceiverKey());
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getReceiverKey());
       }
       if (!associatedData_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, associatedData_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(3, associatedData_);
       }
       if (!plaintext_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, plaintext_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(4, plaintext_);
       }
-      if (mode_ != trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode.ENCRYPTION_MODE_UNSPECIFIED.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(5, mode_);
+      if (mode_
+          != trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode.ENCRYPTION_MODE_UNSPECIFIED.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream.computeEnumSize(5, mode_);
       }
-      if (algorithm_ != trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm.ENCRYPTION_ALGORITHM_UNSPECIFIED.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(6, algorithm_);
+      if (algorithm_
+          != trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm.ENCRYPTION_ALGORITHM_UNSPECIFIED
+              .getNumber()) {
+        size += com.google.protobuf.CodedOutputStream.computeEnumSize(6, algorithm_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3238,27 +3324,24 @@ public final class Transport {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.transport.v1.Transport.PackRequest)) {
         return super.equals(obj);
       }
-      trinsic.okapi.transport.v1.Transport.PackRequest other = (trinsic.okapi.transport.v1.Transport.PackRequest) obj;
+      trinsic.okapi.transport.v1.Transport.PackRequest other =
+          (trinsic.okapi.transport.v1.Transport.PackRequest) obj;
 
       if (hasSenderKey() != other.hasSenderKey()) return false;
       if (hasSenderKey()) {
-        if (!getSenderKey()
-            .equals(other.getSenderKey())) return false;
+        if (!getSenderKey().equals(other.getSenderKey())) return false;
       }
       if (hasReceiverKey() != other.hasReceiverKey()) return false;
       if (hasReceiverKey()) {
-        if (!getReceiverKey()
-            .equals(other.getReceiverKey())) return false;
+        if (!getReceiverKey().equals(other.getReceiverKey())) return false;
       }
-      if (!getAssociatedData()
-          .equals(other.getAssociatedData())) return false;
-      if (!getPlaintext()
-          .equals(other.getPlaintext())) return false;
+      if (!getAssociatedData().equals(other.getAssociatedData())) return false;
+      if (!getPlaintext().equals(other.getPlaintext())) return false;
       if (mode_ != other.mode_) return false;
       if (algorithm_ != other.algorithm_) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -3294,87 +3377,93 @@ public final class Transport {
     }
 
     public static trinsic.okapi.transport.v1.Transport.PackRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.transport.v1.Transport.PackRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.transport.v1.Transport.PackRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.transport.v1.Transport.PackRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.transport.v1.Transport.PackRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.transport.v1.Transport.PackRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.transport.v1.Transport.PackRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.transport.v1.Transport.PackRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.transport.v1.Transport.PackRequest parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.transport.v1.Transport.PackRequest parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.transport.v1.Transport.PackRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.transport.v1.Transport.PackRequest parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.transport.v1.Transport.PackRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.transport.v1.Transport.PackRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.okapi.transport.v1.Transport.PackRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -3383,24 +3472,25 @@ public final class Transport {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code okapi.transport.v1.PackRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code okapi.transport.v1.PackRequest} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.transport.v1.PackRequest)
         trinsic.okapi.transport.v1.Transport.PackRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_PackRequest_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.transport.v1.Transport
+            .internal_static_okapi_transport_v1_PackRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_PackRequest_fieldAccessorTable
+        return trinsic.okapi.transport.v1.Transport
+            .internal_static_okapi_transport_v1_PackRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.transport.v1.Transport.PackRequest.class, trinsic.okapi.transport.v1.Transport.PackRequest.Builder.class);
+                trinsic.okapi.transport.v1.Transport.PackRequest.class,
+                trinsic.okapi.transport.v1.Transport.PackRequest.Builder.class);
       }
 
       // Construct using trinsic.okapi.transport.v1.Transport.PackRequest.newBuilder()
@@ -3408,16 +3498,15 @@ public final class Transport {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -3445,9 +3534,9 @@ public final class Transport {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_PackRequest_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.transport.v1.Transport
+            .internal_static_okapi_transport_v1_PackRequest_descriptor;
       }
 
       @java.lang.Override
@@ -3466,7 +3555,8 @@ public final class Transport {
 
       @java.lang.Override
       public trinsic.okapi.transport.v1.Transport.PackRequest buildPartial() {
-        trinsic.okapi.transport.v1.Transport.PackRequest result = new trinsic.okapi.transport.v1.Transport.PackRequest(this);
+        trinsic.okapi.transport.v1.Transport.PackRequest result =
+            new trinsic.okapi.transport.v1.Transport.PackRequest(this);
         if (senderKeyBuilder_ == null) {
           result.senderKey_ = senderKey_;
         } else {
@@ -3489,38 +3579,41 @@ public final class Transport {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.transport.v1.Transport.PackRequest) {
-          return mergeFrom((trinsic.okapi.transport.v1.Transport.PackRequest)other);
+          return mergeFrom((trinsic.okapi.transport.v1.Transport.PackRequest) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -3528,7 +3621,8 @@ public final class Transport {
       }
 
       public Builder mergeFrom(trinsic.okapi.transport.v1.Transport.PackRequest other) {
-        if (other == trinsic.okapi.transport.v1.Transport.PackRequest.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.transport.v1.Transport.PackRequest.getDefaultInstance())
+          return this;
         if (other.hasSenderKey()) {
           mergeSenderKey(other.getSenderKey());
         }
@@ -3566,7 +3660,8 @@ public final class Transport {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.transport.v1.Transport.PackRequest) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.transport.v1.Transport.PackRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3578,9 +3673,13 @@ public final class Transport {
 
       private trinsic.okapi.keys.v1.Keys.JsonWebKey senderKey_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.okapi.keys.v1.Keys.JsonWebKey, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder, trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder> senderKeyBuilder_;
+              trinsic.okapi.keys.v1.Keys.JsonWebKey,
+              trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder,
+              trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>
+          senderKeyBuilder_;
       /**
        * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
+       *
        * @return Whether the senderKey field is set.
        */
       public boolean hasSenderKey() {
@@ -3588,18 +3687,19 @@ public final class Transport {
       }
       /**
        * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
+       *
        * @return The senderKey.
        */
       public trinsic.okapi.keys.v1.Keys.JsonWebKey getSenderKey() {
         if (senderKeyBuilder_ == null) {
-          return senderKey_ == null ? trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance() : senderKey_;
+          return senderKey_ == null
+              ? trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance()
+              : senderKey_;
         } else {
           return senderKeyBuilder_.getMessage();
         }
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code> */
       public Builder setSenderKey(trinsic.okapi.keys.v1.Keys.JsonWebKey value) {
         if (senderKeyBuilder_ == null) {
           if (value == null) {
@@ -3613,11 +3713,8 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
-       */
-      public Builder setSenderKey(
-          trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder builderForValue) {
+      /** <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code> */
+      public Builder setSenderKey(trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder builderForValue) {
         if (senderKeyBuilder_ == null) {
           senderKey_ = builderForValue.build();
           onChanged();
@@ -3627,14 +3724,14 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code> */
       public Builder mergeSenderKey(trinsic.okapi.keys.v1.Keys.JsonWebKey value) {
         if (senderKeyBuilder_ == null) {
           if (senderKey_ != null) {
             senderKey_ =
-              trinsic.okapi.keys.v1.Keys.JsonWebKey.newBuilder(senderKey_).mergeFrom(value).buildPartial();
+                trinsic.okapi.keys.v1.Keys.JsonWebKey.newBuilder(senderKey_)
+                    .mergeFrom(value)
+                    .buildPartial();
           } else {
             senderKey_ = value;
           }
@@ -3645,9 +3742,7 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code> */
       public Builder clearSenderKey() {
         if (senderKeyBuilder_ == null) {
           senderKey_ = null;
@@ -3659,37 +3754,35 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code> */
       public trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder getSenderKeyBuilder() {
-        
+
         onChanged();
         return getSenderKeyFieldBuilder().getBuilder();
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code> */
       public trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getSenderKeyOrBuilder() {
         if (senderKeyBuilder_ != null) {
           return senderKeyBuilder_.getMessageOrBuilder();
         } else {
-          return senderKey_ == null ?
-              trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance() : senderKey_;
+          return senderKey_ == null
+              ? trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance()
+              : senderKey_;
         }
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code> */
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.okapi.keys.v1.Keys.JsonWebKey, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder, trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder> 
+              trinsic.okapi.keys.v1.Keys.JsonWebKey,
+              trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder,
+              trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>
           getSenderKeyFieldBuilder() {
         if (senderKeyBuilder_ == null) {
-          senderKeyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.okapi.keys.v1.Keys.JsonWebKey, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder, trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>(
-                  getSenderKey(),
-                  getParentForChildren(),
-                  isClean());
+          senderKeyBuilder_ =
+              new com.google.protobuf.SingleFieldBuilderV3<
+                  trinsic.okapi.keys.v1.Keys.JsonWebKey,
+                  trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder,
+                  trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>(
+                  getSenderKey(), getParentForChildren(), isClean());
           senderKey_ = null;
         }
         return senderKeyBuilder_;
@@ -3697,9 +3790,13 @@ public final class Transport {
 
       private trinsic.okapi.keys.v1.Keys.JsonWebKey receiverKey_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.okapi.keys.v1.Keys.JsonWebKey, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder, trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder> receiverKeyBuilder_;
+              trinsic.okapi.keys.v1.Keys.JsonWebKey,
+              trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder,
+              trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>
+          receiverKeyBuilder_;
       /**
        * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
+       *
        * @return Whether the receiverKey field is set.
        */
       public boolean hasReceiverKey() {
@@ -3707,18 +3804,19 @@ public final class Transport {
       }
       /**
        * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
+       *
        * @return The receiverKey.
        */
       public trinsic.okapi.keys.v1.Keys.JsonWebKey getReceiverKey() {
         if (receiverKeyBuilder_ == null) {
-          return receiverKey_ == null ? trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance() : receiverKey_;
+          return receiverKey_ == null
+              ? trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance()
+              : receiverKey_;
         } else {
           return receiverKeyBuilder_.getMessage();
         }
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code> */
       public Builder setReceiverKey(trinsic.okapi.keys.v1.Keys.JsonWebKey value) {
         if (receiverKeyBuilder_ == null) {
           if (value == null) {
@@ -3732,11 +3830,8 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
-       */
-      public Builder setReceiverKey(
-          trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder builderForValue) {
+      /** <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code> */
+      public Builder setReceiverKey(trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder builderForValue) {
         if (receiverKeyBuilder_ == null) {
           receiverKey_ = builderForValue.build();
           onChanged();
@@ -3746,14 +3841,14 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code> */
       public Builder mergeReceiverKey(trinsic.okapi.keys.v1.Keys.JsonWebKey value) {
         if (receiverKeyBuilder_ == null) {
           if (receiverKey_ != null) {
             receiverKey_ =
-              trinsic.okapi.keys.v1.Keys.JsonWebKey.newBuilder(receiverKey_).mergeFrom(value).buildPartial();
+                trinsic.okapi.keys.v1.Keys.JsonWebKey.newBuilder(receiverKey_)
+                    .mergeFrom(value)
+                    .buildPartial();
           } else {
             receiverKey_ = value;
           }
@@ -3764,9 +3859,7 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code> */
       public Builder clearReceiverKey() {
         if (receiverKeyBuilder_ == null) {
           receiverKey_ = null;
@@ -3778,37 +3871,35 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code> */
       public trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder getReceiverKeyBuilder() {
-        
+
         onChanged();
         return getReceiverKeyFieldBuilder().getBuilder();
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code> */
       public trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getReceiverKeyOrBuilder() {
         if (receiverKeyBuilder_ != null) {
           return receiverKeyBuilder_.getMessageOrBuilder();
         } else {
-          return receiverKey_ == null ?
-              trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance() : receiverKey_;
+          return receiverKey_ == null
+              ? trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance()
+              : receiverKey_;
         }
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code> */
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.okapi.keys.v1.Keys.JsonWebKey, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder, trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder> 
+              trinsic.okapi.keys.v1.Keys.JsonWebKey,
+              trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder,
+              trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>
           getReceiverKeyFieldBuilder() {
         if (receiverKeyBuilder_ == null) {
-          receiverKeyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.okapi.keys.v1.Keys.JsonWebKey, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder, trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>(
-                  getReceiverKey(),
-                  getParentForChildren(),
-                  isClean());
+          receiverKeyBuilder_ =
+              new com.google.protobuf.SingleFieldBuilderV3<
+                  trinsic.okapi.keys.v1.Keys.JsonWebKey,
+                  trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder,
+                  trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>(
+                  getReceiverKey(), getParentForChildren(), isClean());
           receiverKey_ = null;
         }
         return receiverKeyBuilder_;
@@ -3817,6 +3908,7 @@ public final class Transport {
       private com.google.protobuf.ByteString associatedData_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes associated_data = 3;</code>
+       *
        * @return The associatedData.
        */
       @java.lang.Override
@@ -3825,24 +3917,26 @@ public final class Transport {
       }
       /**
        * <code>bytes associated_data = 3;</code>
+       *
        * @param value The associatedData to set.
        * @return This builder for chaining.
        */
       public Builder setAssociatedData(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         associatedData_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>bytes associated_data = 3;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearAssociatedData() {
-        
+
         associatedData_ = getDefaultInstance().getAssociatedData();
         onChanged();
         return this;
@@ -3851,6 +3945,7 @@ public final class Transport {
       private com.google.protobuf.ByteString plaintext_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes plaintext = 4;</code>
+       *
        * @return The plaintext.
        */
       @java.lang.Override
@@ -3859,24 +3954,26 @@ public final class Transport {
       }
       /**
        * <code>bytes plaintext = 4;</code>
+       *
        * @param value The plaintext to set.
        * @return This builder for chaining.
        */
       public Builder setPlaintext(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         plaintext_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>bytes plaintext = 4;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearPlaintext() {
-        
+
         plaintext_ = getDefaultInstance().getPlaintext();
         onChanged();
         return this;
@@ -3885,34 +3982,40 @@ public final class Transport {
       private int mode_ = 0;
       /**
        * <code>.pbmse.v1.EncryptionMode mode = 5;</code>
+       *
        * @return The enum numeric value on the wire for mode.
        */
-      @java.lang.Override public int getModeValue() {
+      @java.lang.Override
+      public int getModeValue() {
         return mode_;
       }
       /**
        * <code>.pbmse.v1.EncryptionMode mode = 5;</code>
+       *
        * @param value The enum numeric value on the wire for mode to set.
        * @return This builder for chaining.
        */
       public Builder setModeValue(int value) {
-        
+
         mode_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>.pbmse.v1.EncryptionMode mode = 5;</code>
+       *
        * @return The mode.
        */
       @java.lang.Override
       public trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode getMode() {
         @SuppressWarnings("deprecation")
-        trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode result = trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode.valueOf(mode_);
+        trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode result =
+            trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode.valueOf(mode_);
         return result == null ? trinsic.okapi.pbmse.v1.Pbmse.EncryptionMode.UNRECOGNIZED : result;
       }
       /**
        * <code>.pbmse.v1.EncryptionMode mode = 5;</code>
+       *
        * @param value The mode to set.
        * @return This builder for chaining.
        */
@@ -3920,17 +4023,18 @@ public final class Transport {
         if (value == null) {
           throw new NullPointerException();
         }
-        
+
         mode_ = value.getNumber();
         onChanged();
         return this;
       }
       /**
        * <code>.pbmse.v1.EncryptionMode mode = 5;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearMode() {
-        
+
         mode_ = 0;
         onChanged();
         return this;
@@ -3939,34 +4043,42 @@ public final class Transport {
       private int algorithm_ = 0;
       /**
        * <code>.pbmse.v1.EncryptionAlgorithm algorithm = 6;</code>
+       *
        * @return The enum numeric value on the wire for algorithm.
        */
-      @java.lang.Override public int getAlgorithmValue() {
+      @java.lang.Override
+      public int getAlgorithmValue() {
         return algorithm_;
       }
       /**
        * <code>.pbmse.v1.EncryptionAlgorithm algorithm = 6;</code>
+       *
        * @param value The enum numeric value on the wire for algorithm to set.
        * @return This builder for chaining.
        */
       public Builder setAlgorithmValue(int value) {
-        
+
         algorithm_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>.pbmse.v1.EncryptionAlgorithm algorithm = 6;</code>
+       *
        * @return The algorithm.
        */
       @java.lang.Override
       public trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm getAlgorithm() {
         @SuppressWarnings("deprecation")
-        trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm result = trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm.valueOf(algorithm_);
-        return result == null ? trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm.UNRECOGNIZED : result;
+        trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm result =
+            trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm.valueOf(algorithm_);
+        return result == null
+            ? trinsic.okapi.pbmse.v1.Pbmse.EncryptionAlgorithm.UNRECOGNIZED
+            : result;
       }
       /**
        * <code>.pbmse.v1.EncryptionAlgorithm algorithm = 6;</code>
+       *
        * @param value The algorithm to set.
        * @return This builder for chaining.
        */
@@ -3974,21 +4086,23 @@ public final class Transport {
         if (value == null) {
           throw new NullPointerException();
         }
-        
+
         algorithm_ = value.getNumber();
         onChanged();
         return this;
       }
       /**
        * <code>.pbmse.v1.EncryptionAlgorithm algorithm = 6;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearAlgorithm() {
-        
+
         algorithm_ = 0;
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4001,12 +4115,12 @@ public final class Transport {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.transport.v1.PackRequest)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.transport.v1.PackRequest)
     private static final trinsic.okapi.transport.v1.Transport.PackRequest DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.transport.v1.Transport.PackRequest();
     }
@@ -4015,16 +4129,16 @@ public final class Transport {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<PackRequest>
-        PARSER = new com.google.protobuf.AbstractParser<PackRequest>() {
-      @java.lang.Override
-      public PackRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new PackRequest(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<PackRequest> PARSER =
+        new com.google.protobuf.AbstractParser<PackRequest>() {
+          @java.lang.Override
+          public PackRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new PackRequest(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<PackRequest> parser() {
       return PARSER;
@@ -4039,55 +4153,52 @@ public final class Transport {
     public trinsic.okapi.transport.v1.Transport.PackRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface PackResponseOrBuilder extends
+  public interface PackResponseOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.transport.v1.PackResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>.pbmse.v1.EncryptedMessage message = 1;</code>
+     *
      * @return Whether the message field is set.
      */
     boolean hasMessage();
     /**
      * <code>.pbmse.v1.EncryptedMessage message = 1;</code>
+     *
      * @return The message.
      */
     trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage getMessage();
-    /**
-     * <code>.pbmse.v1.EncryptedMessage message = 1;</code>
-     */
+    /** <code>.pbmse.v1.EncryptedMessage message = 1;</code> */
     trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessageOrBuilder getMessageOrBuilder();
   }
-  /**
-   * Protobuf type {@code okapi.transport.v1.PackResponse}
-   */
-  public static final class PackResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code okapi.transport.v1.PackResponse} */
+  public static final class PackResponse extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.transport.v1.PackResponse)
       PackResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use PackResponse.newBuilder() to construct.
     private PackResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private PackResponse() {
-    }
+
+    private PackResponse() {}
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new PackResponse();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private PackResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -4106,26 +4217,29 @@ public final class Transport {
             case 0:
               done = true;
               break;
-            case 10: {
-              trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.Builder subBuilder = null;
-              if (message_ != null) {
-                subBuilder = message_.toBuilder();
-              }
-              message_ = input.readMessage(trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(message_);
-                message_ = subBuilder.buildPartial();
-              }
+            case 10:
+              {
+                trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.Builder subBuilder = null;
+                if (message_ != null) {
+                  subBuilder = message_.toBuilder();
+                }
+                message_ =
+                    input.readMessage(
+                        trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(message_);
+                  message_ = subBuilder.buildPartial();
+                }
 
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -4133,30 +4247,33 @@ public final class Transport {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_PackResponse_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.transport.v1.Transport
+          .internal_static_okapi_transport_v1_PackResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_PackResponse_fieldAccessorTable
+      return trinsic.okapi.transport.v1.Transport
+          .internal_static_okapi_transport_v1_PackResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.transport.v1.Transport.PackResponse.class, trinsic.okapi.transport.v1.Transport.PackResponse.Builder.class);
+              trinsic.okapi.transport.v1.Transport.PackResponse.class,
+              trinsic.okapi.transport.v1.Transport.PackResponse.Builder.class);
     }
 
     public static final int MESSAGE_FIELD_NUMBER = 1;
     private trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage message_;
     /**
      * <code>.pbmse.v1.EncryptedMessage message = 1;</code>
+     *
      * @return Whether the message field is set.
      */
     @java.lang.Override
@@ -4165,21 +4282,23 @@ public final class Transport {
     }
     /**
      * <code>.pbmse.v1.EncryptedMessage message = 1;</code>
+     *
      * @return The message.
      */
     @java.lang.Override
     public trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage getMessage() {
-      return message_ == null ? trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.getDefaultInstance() : message_;
+      return message_ == null
+          ? trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.getDefaultInstance()
+          : message_;
     }
-    /**
-     * <code>.pbmse.v1.EncryptedMessage message = 1;</code>
-     */
+    /** <code>.pbmse.v1.EncryptedMessage message = 1;</code> */
     @java.lang.Override
     public trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessageOrBuilder getMessageOrBuilder() {
       return getMessage();
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -4191,8 +4310,7 @@ public final class Transport {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (message_ != null) {
         output.writeMessage(1, getMessage());
       }
@@ -4206,8 +4324,7 @@ public final class Transport {
 
       size = 0;
       if (message_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getMessage());
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getMessage());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4217,17 +4334,17 @@ public final class Transport {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.transport.v1.Transport.PackResponse)) {
         return super.equals(obj);
       }
-      trinsic.okapi.transport.v1.Transport.PackResponse other = (trinsic.okapi.transport.v1.Transport.PackResponse) obj;
+      trinsic.okapi.transport.v1.Transport.PackResponse other =
+          (trinsic.okapi.transport.v1.Transport.PackResponse) obj;
 
       if (hasMessage() != other.hasMessage()) return false;
       if (hasMessage()) {
-        if (!getMessage()
-            .equals(other.getMessage())) return false;
+        if (!getMessage().equals(other.getMessage())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -4250,87 +4367,93 @@ public final class Transport {
     }
 
     public static trinsic.okapi.transport.v1.Transport.PackResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.transport.v1.Transport.PackResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.transport.v1.Transport.PackResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.transport.v1.Transport.PackResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.transport.v1.Transport.PackResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.transport.v1.Transport.PackResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.transport.v1.Transport.PackResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.transport.v1.Transport.PackResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.transport.v1.Transport.PackResponse parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.transport.v1.Transport.PackResponse parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.transport.v1.Transport.PackResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.transport.v1.Transport.PackResponse parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.transport.v1.Transport.PackResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.transport.v1.Transport.PackResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.okapi.transport.v1.Transport.PackResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -4339,24 +4462,25 @@ public final class Transport {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code okapi.transport.v1.PackResponse}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code okapi.transport.v1.PackResponse} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.transport.v1.PackResponse)
         trinsic.okapi.transport.v1.Transport.PackResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_PackResponse_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.transport.v1.Transport
+            .internal_static_okapi_transport_v1_PackResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_PackResponse_fieldAccessorTable
+        return trinsic.okapi.transport.v1.Transport
+            .internal_static_okapi_transport_v1_PackResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.transport.v1.Transport.PackResponse.class, trinsic.okapi.transport.v1.Transport.PackResponse.Builder.class);
+                trinsic.okapi.transport.v1.Transport.PackResponse.class,
+                trinsic.okapi.transport.v1.Transport.PackResponse.Builder.class);
       }
 
       // Construct using trinsic.okapi.transport.v1.Transport.PackResponse.newBuilder()
@@ -4364,16 +4488,15 @@ public final class Transport {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -4387,9 +4510,9 @@ public final class Transport {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_PackResponse_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.transport.v1.Transport
+            .internal_static_okapi_transport_v1_PackResponse_descriptor;
       }
 
       @java.lang.Override
@@ -4408,7 +4531,8 @@ public final class Transport {
 
       @java.lang.Override
       public trinsic.okapi.transport.v1.Transport.PackResponse buildPartial() {
-        trinsic.okapi.transport.v1.Transport.PackResponse result = new trinsic.okapi.transport.v1.Transport.PackResponse(this);
+        trinsic.okapi.transport.v1.Transport.PackResponse result =
+            new trinsic.okapi.transport.v1.Transport.PackResponse(this);
         if (messageBuilder_ == null) {
           result.message_ = message_;
         } else {
@@ -4422,38 +4546,41 @@ public final class Transport {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.transport.v1.Transport.PackResponse) {
-          return mergeFrom((trinsic.okapi.transport.v1.Transport.PackResponse)other);
+          return mergeFrom((trinsic.okapi.transport.v1.Transport.PackResponse) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -4461,7 +4588,8 @@ public final class Transport {
       }
 
       public Builder mergeFrom(trinsic.okapi.transport.v1.Transport.PackResponse other) {
-        if (other == trinsic.okapi.transport.v1.Transport.PackResponse.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.transport.v1.Transport.PackResponse.getDefaultInstance())
+          return this;
         if (other.hasMessage()) {
           mergeMessage(other.getMessage());
         }
@@ -4484,7 +4612,8 @@ public final class Transport {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.transport.v1.Transport.PackResponse) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.transport.v1.Transport.PackResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -4496,9 +4625,13 @@ public final class Transport {
 
       private trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage message_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage, trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.Builder, trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessageOrBuilder> messageBuilder_;
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage,
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.Builder,
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessageOrBuilder>
+          messageBuilder_;
       /**
        * <code>.pbmse.v1.EncryptedMessage message = 1;</code>
+       *
        * @return Whether the message field is set.
        */
       public boolean hasMessage() {
@@ -4506,18 +4639,19 @@ public final class Transport {
       }
       /**
        * <code>.pbmse.v1.EncryptedMessage message = 1;</code>
+       *
        * @return The message.
        */
       public trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage getMessage() {
         if (messageBuilder_ == null) {
-          return message_ == null ? trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.getDefaultInstance() : message_;
+          return message_ == null
+              ? trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.getDefaultInstance()
+              : message_;
         } else {
           return messageBuilder_.getMessage();
         }
       }
-      /**
-       * <code>.pbmse.v1.EncryptedMessage message = 1;</code>
-       */
+      /** <code>.pbmse.v1.EncryptedMessage message = 1;</code> */
       public Builder setMessage(trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage value) {
         if (messageBuilder_ == null) {
           if (value == null) {
@@ -4531,9 +4665,7 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.pbmse.v1.EncryptedMessage message = 1;</code>
-       */
+      /** <code>.pbmse.v1.EncryptedMessage message = 1;</code> */
       public Builder setMessage(
           trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.Builder builderForValue) {
         if (messageBuilder_ == null) {
@@ -4545,14 +4677,14 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.pbmse.v1.EncryptedMessage message = 1;</code>
-       */
+      /** <code>.pbmse.v1.EncryptedMessage message = 1;</code> */
       public Builder mergeMessage(trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage value) {
         if (messageBuilder_ == null) {
           if (message_ != null) {
             message_ =
-              trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.newBuilder(message_).mergeFrom(value).buildPartial();
+                trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.newBuilder(message_)
+                    .mergeFrom(value)
+                    .buildPartial();
           } else {
             message_ = value;
           }
@@ -4563,9 +4695,7 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.pbmse.v1.EncryptedMessage message = 1;</code>
-       */
+      /** <code>.pbmse.v1.EncryptedMessage message = 1;</code> */
       public Builder clearMessage() {
         if (messageBuilder_ == null) {
           message_ = null;
@@ -4577,41 +4707,40 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.pbmse.v1.EncryptedMessage message = 1;</code>
-       */
+      /** <code>.pbmse.v1.EncryptedMessage message = 1;</code> */
       public trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.Builder getMessageBuilder() {
-        
+
         onChanged();
         return getMessageFieldBuilder().getBuilder();
       }
-      /**
-       * <code>.pbmse.v1.EncryptedMessage message = 1;</code>
-       */
+      /** <code>.pbmse.v1.EncryptedMessage message = 1;</code> */
       public trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessageOrBuilder getMessageOrBuilder() {
         if (messageBuilder_ != null) {
           return messageBuilder_.getMessageOrBuilder();
         } else {
-          return message_ == null ?
-              trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.getDefaultInstance() : message_;
+          return message_ == null
+              ? trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.getDefaultInstance()
+              : message_;
         }
       }
-      /**
-       * <code>.pbmse.v1.EncryptedMessage message = 1;</code>
-       */
+      /** <code>.pbmse.v1.EncryptedMessage message = 1;</code> */
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage, trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.Builder, trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessageOrBuilder> 
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage,
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.Builder,
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessageOrBuilder>
           getMessageFieldBuilder() {
         if (messageBuilder_ == null) {
-          messageBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage, trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.Builder, trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessageOrBuilder>(
-                  getMessage(),
-                  getParentForChildren(),
-                  isClean());
+          messageBuilder_ =
+              new com.google.protobuf.SingleFieldBuilderV3<
+                  trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage,
+                  trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.Builder,
+                  trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessageOrBuilder>(
+                  getMessage(), getParentForChildren(), isClean());
           message_ = null;
         }
         return messageBuilder_;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4624,12 +4753,12 @@ public final class Transport {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.transport.v1.PackResponse)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.transport.v1.PackResponse)
     private static final trinsic.okapi.transport.v1.Transport.PackResponse DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.transport.v1.Transport.PackResponse();
     }
@@ -4638,16 +4767,16 @@ public final class Transport {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<PackResponse>
-        PARSER = new com.google.protobuf.AbstractParser<PackResponse>() {
-      @java.lang.Override
-      public PackResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new PackResponse(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<PackResponse> PARSER =
+        new com.google.protobuf.AbstractParser<PackResponse>() {
+          @java.lang.Override
+          public PackResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new PackResponse(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<PackResponse> parser() {
       return PARSER;
@@ -4662,85 +4791,82 @@ public final class Transport {
     public trinsic.okapi.transport.v1.Transport.PackResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface UnpackRequestOrBuilder extends
+  public interface UnpackRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.transport.v1.UnpackRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
+     *
      * @return Whether the senderKey field is set.
      */
     boolean hasSenderKey();
     /**
      * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
+     *
      * @return The senderKey.
      */
     trinsic.okapi.keys.v1.Keys.JsonWebKey getSenderKey();
-    /**
-     * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
-     */
+    /** <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code> */
     trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getSenderKeyOrBuilder();
 
     /**
      * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
+     *
      * @return Whether the receiverKey field is set.
      */
     boolean hasReceiverKey();
     /**
      * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
+     *
      * @return The receiverKey.
      */
     trinsic.okapi.keys.v1.Keys.JsonWebKey getReceiverKey();
-    /**
-     * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
-     */
+    /** <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code> */
     trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getReceiverKeyOrBuilder();
 
     /**
      * <code>.pbmse.v1.EncryptedMessage message = 3;</code>
+     *
      * @return Whether the message field is set.
      */
     boolean hasMessage();
     /**
      * <code>.pbmse.v1.EncryptedMessage message = 3;</code>
+     *
      * @return The message.
      */
     trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage getMessage();
-    /**
-     * <code>.pbmse.v1.EncryptedMessage message = 3;</code>
-     */
+    /** <code>.pbmse.v1.EncryptedMessage message = 3;</code> */
     trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessageOrBuilder getMessageOrBuilder();
   }
-  /**
-   * Protobuf type {@code okapi.transport.v1.UnpackRequest}
-   */
-  public static final class UnpackRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code okapi.transport.v1.UnpackRequest} */
+  public static final class UnpackRequest extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.transport.v1.UnpackRequest)
       UnpackRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use UnpackRequest.newBuilder() to construct.
     private UnpackRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private UnpackRequest() {
-    }
+
+    private UnpackRequest() {}
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new UnpackRequest();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private UnpackRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -4759,52 +4885,61 @@ public final class Transport {
             case 0:
               done = true;
               break;
-            case 10: {
-              trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder subBuilder = null;
-              if (senderKey_ != null) {
-                subBuilder = senderKey_.toBuilder();
-              }
-              senderKey_ = input.readMessage(trinsic.okapi.keys.v1.Keys.JsonWebKey.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(senderKey_);
-                senderKey_ = subBuilder.buildPartial();
-              }
+            case 10:
+              {
+                trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder subBuilder = null;
+                if (senderKey_ != null) {
+                  subBuilder = senderKey_.toBuilder();
+                }
+                senderKey_ =
+                    input.readMessage(
+                        trinsic.okapi.keys.v1.Keys.JsonWebKey.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(senderKey_);
+                  senderKey_ = subBuilder.buildPartial();
+                }
 
-              break;
-            }
-            case 18: {
-              trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder subBuilder = null;
-              if (receiverKey_ != null) {
-                subBuilder = receiverKey_.toBuilder();
+                break;
               }
-              receiverKey_ = input.readMessage(trinsic.okapi.keys.v1.Keys.JsonWebKey.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(receiverKey_);
-                receiverKey_ = subBuilder.buildPartial();
-              }
+            case 18:
+              {
+                trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder subBuilder = null;
+                if (receiverKey_ != null) {
+                  subBuilder = receiverKey_.toBuilder();
+                }
+                receiverKey_ =
+                    input.readMessage(
+                        trinsic.okapi.keys.v1.Keys.JsonWebKey.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(receiverKey_);
+                  receiverKey_ = subBuilder.buildPartial();
+                }
 
-              break;
-            }
-            case 26: {
-              trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.Builder subBuilder = null;
-              if (message_ != null) {
-                subBuilder = message_.toBuilder();
+                break;
               }
-              message_ = input.readMessage(trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(message_);
-                message_ = subBuilder.buildPartial();
-              }
+            case 26:
+              {
+                trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.Builder subBuilder = null;
+                if (message_ != null) {
+                  subBuilder = message_.toBuilder();
+                }
+                message_ =
+                    input.readMessage(
+                        trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(message_);
+                  message_ = subBuilder.buildPartial();
+                }
 
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -4812,30 +4947,33 @@ public final class Transport {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_UnpackRequest_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.transport.v1.Transport
+          .internal_static_okapi_transport_v1_UnpackRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_UnpackRequest_fieldAccessorTable
+      return trinsic.okapi.transport.v1.Transport
+          .internal_static_okapi_transport_v1_UnpackRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.transport.v1.Transport.UnpackRequest.class, trinsic.okapi.transport.v1.Transport.UnpackRequest.Builder.class);
+              trinsic.okapi.transport.v1.Transport.UnpackRequest.class,
+              trinsic.okapi.transport.v1.Transport.UnpackRequest.Builder.class);
     }
 
     public static final int SENDER_KEY_FIELD_NUMBER = 1;
     private trinsic.okapi.keys.v1.Keys.JsonWebKey senderKey_;
     /**
      * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
+     *
      * @return Whether the senderKey field is set.
      */
     @java.lang.Override
@@ -4844,15 +4982,16 @@ public final class Transport {
     }
     /**
      * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
+     *
      * @return The senderKey.
      */
     @java.lang.Override
     public trinsic.okapi.keys.v1.Keys.JsonWebKey getSenderKey() {
-      return senderKey_ == null ? trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance() : senderKey_;
+      return senderKey_ == null
+          ? trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance()
+          : senderKey_;
     }
-    /**
-     * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
-     */
+    /** <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code> */
     @java.lang.Override
     public trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getSenderKeyOrBuilder() {
       return getSenderKey();
@@ -4862,6 +5001,7 @@ public final class Transport {
     private trinsic.okapi.keys.v1.Keys.JsonWebKey receiverKey_;
     /**
      * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
+     *
      * @return Whether the receiverKey field is set.
      */
     @java.lang.Override
@@ -4870,15 +5010,16 @@ public final class Transport {
     }
     /**
      * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
+     *
      * @return The receiverKey.
      */
     @java.lang.Override
     public trinsic.okapi.keys.v1.Keys.JsonWebKey getReceiverKey() {
-      return receiverKey_ == null ? trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance() : receiverKey_;
+      return receiverKey_ == null
+          ? trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance()
+          : receiverKey_;
     }
-    /**
-     * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
-     */
+    /** <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code> */
     @java.lang.Override
     public trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getReceiverKeyOrBuilder() {
       return getReceiverKey();
@@ -4888,6 +5029,7 @@ public final class Transport {
     private trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage message_;
     /**
      * <code>.pbmse.v1.EncryptedMessage message = 3;</code>
+     *
      * @return Whether the message field is set.
      */
     @java.lang.Override
@@ -4896,21 +5038,23 @@ public final class Transport {
     }
     /**
      * <code>.pbmse.v1.EncryptedMessage message = 3;</code>
+     *
      * @return The message.
      */
     @java.lang.Override
     public trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage getMessage() {
-      return message_ == null ? trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.getDefaultInstance() : message_;
+      return message_ == null
+          ? trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.getDefaultInstance()
+          : message_;
     }
-    /**
-     * <code>.pbmse.v1.EncryptedMessage message = 3;</code>
-     */
+    /** <code>.pbmse.v1.EncryptedMessage message = 3;</code> */
     @java.lang.Override
     public trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessageOrBuilder getMessageOrBuilder() {
       return getMessage();
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -4922,8 +5066,7 @@ public final class Transport {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (senderKey_ != null) {
         output.writeMessage(1, getSenderKey());
       }
@@ -4943,16 +5086,13 @@ public final class Transport {
 
       size = 0;
       if (senderKey_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getSenderKey());
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getSenderKey());
       }
       if (receiverKey_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getReceiverKey());
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getReceiverKey());
       }
       if (message_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getMessage());
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, getMessage());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4962,27 +5102,25 @@ public final class Transport {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.transport.v1.Transport.UnpackRequest)) {
         return super.equals(obj);
       }
-      trinsic.okapi.transport.v1.Transport.UnpackRequest other = (trinsic.okapi.transport.v1.Transport.UnpackRequest) obj;
+      trinsic.okapi.transport.v1.Transport.UnpackRequest other =
+          (trinsic.okapi.transport.v1.Transport.UnpackRequest) obj;
 
       if (hasSenderKey() != other.hasSenderKey()) return false;
       if (hasSenderKey()) {
-        if (!getSenderKey()
-            .equals(other.getSenderKey())) return false;
+        if (!getSenderKey().equals(other.getSenderKey())) return false;
       }
       if (hasReceiverKey() != other.hasReceiverKey()) return false;
       if (hasReceiverKey()) {
-        if (!getReceiverKey()
-            .equals(other.getReceiverKey())) return false;
+        if (!getReceiverKey().equals(other.getReceiverKey())) return false;
       }
       if (hasMessage() != other.hasMessage()) return false;
       if (hasMessage()) {
-        if (!getMessage()
-            .equals(other.getMessage())) return false;
+        if (!getMessage().equals(other.getMessage())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -5013,87 +5151,93 @@ public final class Transport {
     }
 
     public static trinsic.okapi.transport.v1.Transport.UnpackRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.transport.v1.Transport.UnpackRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.transport.v1.Transport.UnpackRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.transport.v1.Transport.UnpackRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.transport.v1.Transport.UnpackRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.transport.v1.Transport.UnpackRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.transport.v1.Transport.UnpackRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.transport.v1.Transport.UnpackRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.transport.v1.Transport.UnpackRequest parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.transport.v1.Transport.UnpackRequest parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.transport.v1.Transport.UnpackRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.transport.v1.Transport.UnpackRequest parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.transport.v1.Transport.UnpackRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.transport.v1.Transport.UnpackRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.okapi.transport.v1.Transport.UnpackRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -5102,24 +5246,25 @@ public final class Transport {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code okapi.transport.v1.UnpackRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code okapi.transport.v1.UnpackRequest} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.transport.v1.UnpackRequest)
         trinsic.okapi.transport.v1.Transport.UnpackRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_UnpackRequest_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.transport.v1.Transport
+            .internal_static_okapi_transport_v1_UnpackRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_UnpackRequest_fieldAccessorTable
+        return trinsic.okapi.transport.v1.Transport
+            .internal_static_okapi_transport_v1_UnpackRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.transport.v1.Transport.UnpackRequest.class, trinsic.okapi.transport.v1.Transport.UnpackRequest.Builder.class);
+                trinsic.okapi.transport.v1.Transport.UnpackRequest.class,
+                trinsic.okapi.transport.v1.Transport.UnpackRequest.Builder.class);
       }
 
       // Construct using trinsic.okapi.transport.v1.Transport.UnpackRequest.newBuilder()
@@ -5127,16 +5272,15 @@ public final class Transport {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -5162,9 +5306,9 @@ public final class Transport {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_UnpackRequest_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.transport.v1.Transport
+            .internal_static_okapi_transport_v1_UnpackRequest_descriptor;
       }
 
       @java.lang.Override
@@ -5183,7 +5327,8 @@ public final class Transport {
 
       @java.lang.Override
       public trinsic.okapi.transport.v1.Transport.UnpackRequest buildPartial() {
-        trinsic.okapi.transport.v1.Transport.UnpackRequest result = new trinsic.okapi.transport.v1.Transport.UnpackRequest(this);
+        trinsic.okapi.transport.v1.Transport.UnpackRequest result =
+            new trinsic.okapi.transport.v1.Transport.UnpackRequest(this);
         if (senderKeyBuilder_ == null) {
           result.senderKey_ = senderKey_;
         } else {
@@ -5207,38 +5352,41 @@ public final class Transport {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.transport.v1.Transport.UnpackRequest) {
-          return mergeFrom((trinsic.okapi.transport.v1.Transport.UnpackRequest)other);
+          return mergeFrom((trinsic.okapi.transport.v1.Transport.UnpackRequest) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -5246,7 +5394,8 @@ public final class Transport {
       }
 
       public Builder mergeFrom(trinsic.okapi.transport.v1.Transport.UnpackRequest other) {
-        if (other == trinsic.okapi.transport.v1.Transport.UnpackRequest.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.transport.v1.Transport.UnpackRequest.getDefaultInstance())
+          return this;
         if (other.hasSenderKey()) {
           mergeSenderKey(other.getSenderKey());
         }
@@ -5275,7 +5424,8 @@ public final class Transport {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.transport.v1.Transport.UnpackRequest) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.transport.v1.Transport.UnpackRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -5287,9 +5437,13 @@ public final class Transport {
 
       private trinsic.okapi.keys.v1.Keys.JsonWebKey senderKey_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.okapi.keys.v1.Keys.JsonWebKey, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder, trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder> senderKeyBuilder_;
+              trinsic.okapi.keys.v1.Keys.JsonWebKey,
+              trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder,
+              trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>
+          senderKeyBuilder_;
       /**
        * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
+       *
        * @return Whether the senderKey field is set.
        */
       public boolean hasSenderKey() {
@@ -5297,18 +5451,19 @@ public final class Transport {
       }
       /**
        * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
+       *
        * @return The senderKey.
        */
       public trinsic.okapi.keys.v1.Keys.JsonWebKey getSenderKey() {
         if (senderKeyBuilder_ == null) {
-          return senderKey_ == null ? trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance() : senderKey_;
+          return senderKey_ == null
+              ? trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance()
+              : senderKey_;
         } else {
           return senderKeyBuilder_.getMessage();
         }
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code> */
       public Builder setSenderKey(trinsic.okapi.keys.v1.Keys.JsonWebKey value) {
         if (senderKeyBuilder_ == null) {
           if (value == null) {
@@ -5322,11 +5477,8 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
-       */
-      public Builder setSenderKey(
-          trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder builderForValue) {
+      /** <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code> */
+      public Builder setSenderKey(trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder builderForValue) {
         if (senderKeyBuilder_ == null) {
           senderKey_ = builderForValue.build();
           onChanged();
@@ -5336,14 +5488,14 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code> */
       public Builder mergeSenderKey(trinsic.okapi.keys.v1.Keys.JsonWebKey value) {
         if (senderKeyBuilder_ == null) {
           if (senderKey_ != null) {
             senderKey_ =
-              trinsic.okapi.keys.v1.Keys.JsonWebKey.newBuilder(senderKey_).mergeFrom(value).buildPartial();
+                trinsic.okapi.keys.v1.Keys.JsonWebKey.newBuilder(senderKey_)
+                    .mergeFrom(value)
+                    .buildPartial();
           } else {
             senderKey_ = value;
           }
@@ -5354,9 +5506,7 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code> */
       public Builder clearSenderKey() {
         if (senderKeyBuilder_ == null) {
           senderKey_ = null;
@@ -5368,37 +5518,35 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code> */
       public trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder getSenderKeyBuilder() {
-        
+
         onChanged();
         return getSenderKeyFieldBuilder().getBuilder();
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code> */
       public trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getSenderKeyOrBuilder() {
         if (senderKeyBuilder_ != null) {
           return senderKeyBuilder_.getMessageOrBuilder();
         } else {
-          return senderKey_ == null ?
-              trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance() : senderKey_;
+          return senderKey_ == null
+              ? trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance()
+              : senderKey_;
         }
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey sender_key = 1;</code> */
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.okapi.keys.v1.Keys.JsonWebKey, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder, trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder> 
+              trinsic.okapi.keys.v1.Keys.JsonWebKey,
+              trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder,
+              trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>
           getSenderKeyFieldBuilder() {
         if (senderKeyBuilder_ == null) {
-          senderKeyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.okapi.keys.v1.Keys.JsonWebKey, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder, trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>(
-                  getSenderKey(),
-                  getParentForChildren(),
-                  isClean());
+          senderKeyBuilder_ =
+              new com.google.protobuf.SingleFieldBuilderV3<
+                  trinsic.okapi.keys.v1.Keys.JsonWebKey,
+                  trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder,
+                  trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>(
+                  getSenderKey(), getParentForChildren(), isClean());
           senderKey_ = null;
         }
         return senderKeyBuilder_;
@@ -5406,9 +5554,13 @@ public final class Transport {
 
       private trinsic.okapi.keys.v1.Keys.JsonWebKey receiverKey_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.okapi.keys.v1.Keys.JsonWebKey, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder, trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder> receiverKeyBuilder_;
+              trinsic.okapi.keys.v1.Keys.JsonWebKey,
+              trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder,
+              trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>
+          receiverKeyBuilder_;
       /**
        * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
+       *
        * @return Whether the receiverKey field is set.
        */
       public boolean hasReceiverKey() {
@@ -5416,18 +5568,19 @@ public final class Transport {
       }
       /**
        * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
+       *
        * @return The receiverKey.
        */
       public trinsic.okapi.keys.v1.Keys.JsonWebKey getReceiverKey() {
         if (receiverKeyBuilder_ == null) {
-          return receiverKey_ == null ? trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance() : receiverKey_;
+          return receiverKey_ == null
+              ? trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance()
+              : receiverKey_;
         } else {
           return receiverKeyBuilder_.getMessage();
         }
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code> */
       public Builder setReceiverKey(trinsic.okapi.keys.v1.Keys.JsonWebKey value) {
         if (receiverKeyBuilder_ == null) {
           if (value == null) {
@@ -5441,11 +5594,8 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
-       */
-      public Builder setReceiverKey(
-          trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder builderForValue) {
+      /** <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code> */
+      public Builder setReceiverKey(trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder builderForValue) {
         if (receiverKeyBuilder_ == null) {
           receiverKey_ = builderForValue.build();
           onChanged();
@@ -5455,14 +5605,14 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code> */
       public Builder mergeReceiverKey(trinsic.okapi.keys.v1.Keys.JsonWebKey value) {
         if (receiverKeyBuilder_ == null) {
           if (receiverKey_ != null) {
             receiverKey_ =
-              trinsic.okapi.keys.v1.Keys.JsonWebKey.newBuilder(receiverKey_).mergeFrom(value).buildPartial();
+                trinsic.okapi.keys.v1.Keys.JsonWebKey.newBuilder(receiverKey_)
+                    .mergeFrom(value)
+                    .buildPartial();
           } else {
             receiverKey_ = value;
           }
@@ -5473,9 +5623,7 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code> */
       public Builder clearReceiverKey() {
         if (receiverKeyBuilder_ == null) {
           receiverKey_ = null;
@@ -5487,37 +5635,35 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code> */
       public trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder getReceiverKeyBuilder() {
-        
+
         onChanged();
         return getReceiverKeyFieldBuilder().getBuilder();
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code> */
       public trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getReceiverKeyOrBuilder() {
         if (receiverKeyBuilder_ != null) {
           return receiverKeyBuilder_.getMessageOrBuilder();
         } else {
-          return receiverKey_ == null ?
-              trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance() : receiverKey_;
+          return receiverKey_ == null
+              ? trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance()
+              : receiverKey_;
         }
       }
-      /**
-       * <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code>
-       */
+      /** <code>.okapi.keys.v1.JsonWebKey receiver_key = 2;</code> */
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.okapi.keys.v1.Keys.JsonWebKey, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder, trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder> 
+              trinsic.okapi.keys.v1.Keys.JsonWebKey,
+              trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder,
+              trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>
           getReceiverKeyFieldBuilder() {
         if (receiverKeyBuilder_ == null) {
-          receiverKeyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.okapi.keys.v1.Keys.JsonWebKey, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder, trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>(
-                  getReceiverKey(),
-                  getParentForChildren(),
-                  isClean());
+          receiverKeyBuilder_ =
+              new com.google.protobuf.SingleFieldBuilderV3<
+                  trinsic.okapi.keys.v1.Keys.JsonWebKey,
+                  trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder,
+                  trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>(
+                  getReceiverKey(), getParentForChildren(), isClean());
           receiverKey_ = null;
         }
         return receiverKeyBuilder_;
@@ -5525,9 +5671,13 @@ public final class Transport {
 
       private trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage message_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage, trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.Builder, trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessageOrBuilder> messageBuilder_;
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage,
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.Builder,
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessageOrBuilder>
+          messageBuilder_;
       /**
        * <code>.pbmse.v1.EncryptedMessage message = 3;</code>
+       *
        * @return Whether the message field is set.
        */
       public boolean hasMessage() {
@@ -5535,18 +5685,19 @@ public final class Transport {
       }
       /**
        * <code>.pbmse.v1.EncryptedMessage message = 3;</code>
+       *
        * @return The message.
        */
       public trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage getMessage() {
         if (messageBuilder_ == null) {
-          return message_ == null ? trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.getDefaultInstance() : message_;
+          return message_ == null
+              ? trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.getDefaultInstance()
+              : message_;
         } else {
           return messageBuilder_.getMessage();
         }
       }
-      /**
-       * <code>.pbmse.v1.EncryptedMessage message = 3;</code>
-       */
+      /** <code>.pbmse.v1.EncryptedMessage message = 3;</code> */
       public Builder setMessage(trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage value) {
         if (messageBuilder_ == null) {
           if (value == null) {
@@ -5560,9 +5711,7 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.pbmse.v1.EncryptedMessage message = 3;</code>
-       */
+      /** <code>.pbmse.v1.EncryptedMessage message = 3;</code> */
       public Builder setMessage(
           trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.Builder builderForValue) {
         if (messageBuilder_ == null) {
@@ -5574,14 +5723,14 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.pbmse.v1.EncryptedMessage message = 3;</code>
-       */
+      /** <code>.pbmse.v1.EncryptedMessage message = 3;</code> */
       public Builder mergeMessage(trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage value) {
         if (messageBuilder_ == null) {
           if (message_ != null) {
             message_ =
-              trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.newBuilder(message_).mergeFrom(value).buildPartial();
+                trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.newBuilder(message_)
+                    .mergeFrom(value)
+                    .buildPartial();
           } else {
             message_ = value;
           }
@@ -5592,9 +5741,7 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.pbmse.v1.EncryptedMessage message = 3;</code>
-       */
+      /** <code>.pbmse.v1.EncryptedMessage message = 3;</code> */
       public Builder clearMessage() {
         if (messageBuilder_ == null) {
           message_ = null;
@@ -5606,41 +5753,40 @@ public final class Transport {
 
         return this;
       }
-      /**
-       * <code>.pbmse.v1.EncryptedMessage message = 3;</code>
-       */
+      /** <code>.pbmse.v1.EncryptedMessage message = 3;</code> */
       public trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.Builder getMessageBuilder() {
-        
+
         onChanged();
         return getMessageFieldBuilder().getBuilder();
       }
-      /**
-       * <code>.pbmse.v1.EncryptedMessage message = 3;</code>
-       */
+      /** <code>.pbmse.v1.EncryptedMessage message = 3;</code> */
       public trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessageOrBuilder getMessageOrBuilder() {
         if (messageBuilder_ != null) {
           return messageBuilder_.getMessageOrBuilder();
         } else {
-          return message_ == null ?
-              trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.getDefaultInstance() : message_;
+          return message_ == null
+              ? trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.getDefaultInstance()
+              : message_;
         }
       }
-      /**
-       * <code>.pbmse.v1.EncryptedMessage message = 3;</code>
-       */
+      /** <code>.pbmse.v1.EncryptedMessage message = 3;</code> */
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage, trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.Builder, trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessageOrBuilder> 
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage,
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.Builder,
+              trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessageOrBuilder>
           getMessageFieldBuilder() {
         if (messageBuilder_ == null) {
-          messageBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage, trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.Builder, trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessageOrBuilder>(
-                  getMessage(),
-                  getParentForChildren(),
-                  isClean());
+          messageBuilder_ =
+              new com.google.protobuf.SingleFieldBuilderV3<
+                  trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage,
+                  trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.Builder,
+                  trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessageOrBuilder>(
+                  getMessage(), getParentForChildren(), isClean());
           message_ = null;
         }
         return messageBuilder_;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -5653,12 +5799,12 @@ public final class Transport {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.transport.v1.UnpackRequest)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.transport.v1.UnpackRequest)
     private static final trinsic.okapi.transport.v1.Transport.UnpackRequest DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.transport.v1.Transport.UnpackRequest();
     }
@@ -5667,16 +5813,16 @@ public final class Transport {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<UnpackRequest>
-        PARSER = new com.google.protobuf.AbstractParser<UnpackRequest>() {
-      @java.lang.Override
-      public UnpackRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UnpackRequest(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<UnpackRequest> PARSER =
+        new com.google.protobuf.AbstractParser<UnpackRequest>() {
+          @java.lang.Override
+          public UnpackRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new UnpackRequest(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<UnpackRequest> parser() {
       return PARSER;
@@ -5691,47 +5837,46 @@ public final class Transport {
     public trinsic.okapi.transport.v1.Transport.UnpackRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface UnpackResponseOrBuilder extends
+  public interface UnpackResponseOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.transport.v1.UnpackResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>bytes plaintext = 1;</code>
+     *
      * @return The plaintext.
      */
     com.google.protobuf.ByteString getPlaintext();
   }
-  /**
-   * Protobuf type {@code okapi.transport.v1.UnpackResponse}
-   */
-  public static final class UnpackResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code okapi.transport.v1.UnpackResponse} */
+  public static final class UnpackResponse extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.transport.v1.UnpackResponse)
       UnpackResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use UnpackResponse.newBuilder() to construct.
     private UnpackResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private UnpackResponse() {
       plaintext_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new UnpackResponse();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private UnpackResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -5750,18 +5895,18 @@ public final class Transport {
             case 0:
               done = true;
               break;
-            case 10: {
-
-              plaintext_ = input.readBytes();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 10:
+              {
+                plaintext_ = input.readBytes();
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -5769,30 +5914,33 @@ public final class Transport {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_UnpackResponse_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.transport.v1.Transport
+          .internal_static_okapi_transport_v1_UnpackResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_UnpackResponse_fieldAccessorTable
+      return trinsic.okapi.transport.v1.Transport
+          .internal_static_okapi_transport_v1_UnpackResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.transport.v1.Transport.UnpackResponse.class, trinsic.okapi.transport.v1.Transport.UnpackResponse.Builder.class);
+              trinsic.okapi.transport.v1.Transport.UnpackResponse.class,
+              trinsic.okapi.transport.v1.Transport.UnpackResponse.Builder.class);
     }
 
     public static final int PLAINTEXT_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString plaintext_;
     /**
      * <code>bytes plaintext = 1;</code>
+     *
      * @return The plaintext.
      */
     @java.lang.Override
@@ -5801,6 +5949,7 @@ public final class Transport {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -5812,8 +5961,7 @@ public final class Transport {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!plaintext_.isEmpty()) {
         output.writeBytes(1, plaintext_);
       }
@@ -5827,8 +5975,7 @@ public final class Transport {
 
       size = 0;
       if (!plaintext_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, plaintext_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(1, plaintext_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -5838,15 +5985,15 @@ public final class Transport {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.transport.v1.Transport.UnpackResponse)) {
         return super.equals(obj);
       }
-      trinsic.okapi.transport.v1.Transport.UnpackResponse other = (trinsic.okapi.transport.v1.Transport.UnpackResponse) obj;
+      trinsic.okapi.transport.v1.Transport.UnpackResponse other =
+          (trinsic.okapi.transport.v1.Transport.UnpackResponse) obj;
 
-      if (!getPlaintext()
-          .equals(other.getPlaintext())) return false;
+      if (!getPlaintext().equals(other.getPlaintext())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -5866,87 +6013,94 @@ public final class Transport {
     }
 
     public static trinsic.okapi.transport.v1.Transport.UnpackResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.transport.v1.Transport.UnpackResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.transport.v1.Transport.UnpackResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.transport.v1.Transport.UnpackResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.transport.v1.Transport.UnpackResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.transport.v1.Transport.UnpackResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.transport.v1.Transport.UnpackResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.transport.v1.Transport.UnpackResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.transport.v1.Transport.UnpackResponse parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.transport.v1.Transport.UnpackResponse parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.transport.v1.Transport.UnpackResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.transport.v1.Transport.UnpackResponse parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.transport.v1.Transport.UnpackResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.transport.v1.Transport.UnpackResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.okapi.transport.v1.Transport.UnpackResponse prototype) {
+
+    public static Builder newBuilder(
+        trinsic.okapi.transport.v1.Transport.UnpackResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -5955,24 +6109,25 @@ public final class Transport {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code okapi.transport.v1.UnpackResponse}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code okapi.transport.v1.UnpackResponse} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.transport.v1.UnpackResponse)
         trinsic.okapi.transport.v1.Transport.UnpackResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_UnpackResponse_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.transport.v1.Transport
+            .internal_static_okapi_transport_v1_UnpackResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_UnpackResponse_fieldAccessorTable
+        return trinsic.okapi.transport.v1.Transport
+            .internal_static_okapi_transport_v1_UnpackResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.transport.v1.Transport.UnpackResponse.class, trinsic.okapi.transport.v1.Transport.UnpackResponse.Builder.class);
+                trinsic.okapi.transport.v1.Transport.UnpackResponse.class,
+                trinsic.okapi.transport.v1.Transport.UnpackResponse.Builder.class);
       }
 
       // Construct using trinsic.okapi.transport.v1.Transport.UnpackResponse.newBuilder()
@@ -5980,16 +6135,15 @@ public final class Transport {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -5999,9 +6153,9 @@ public final class Transport {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_UnpackResponse_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.transport.v1.Transport
+            .internal_static_okapi_transport_v1_UnpackResponse_descriptor;
       }
 
       @java.lang.Override
@@ -6020,7 +6174,8 @@ public final class Transport {
 
       @java.lang.Override
       public trinsic.okapi.transport.v1.Transport.UnpackResponse buildPartial() {
-        trinsic.okapi.transport.v1.Transport.UnpackResponse result = new trinsic.okapi.transport.v1.Transport.UnpackResponse(this);
+        trinsic.okapi.transport.v1.Transport.UnpackResponse result =
+            new trinsic.okapi.transport.v1.Transport.UnpackResponse(this);
         result.plaintext_ = plaintext_;
         onBuilt();
         return result;
@@ -6030,38 +6185,41 @@ public final class Transport {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.transport.v1.Transport.UnpackResponse) {
-          return mergeFrom((trinsic.okapi.transport.v1.Transport.UnpackResponse)other);
+          return mergeFrom((trinsic.okapi.transport.v1.Transport.UnpackResponse) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -6069,7 +6227,8 @@ public final class Transport {
       }
 
       public Builder mergeFrom(trinsic.okapi.transport.v1.Transport.UnpackResponse other) {
-        if (other == trinsic.okapi.transport.v1.Transport.UnpackResponse.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.transport.v1.Transport.UnpackResponse.getDefaultInstance())
+          return this;
         if (other.getPlaintext() != com.google.protobuf.ByteString.EMPTY) {
           setPlaintext(other.getPlaintext());
         }
@@ -6092,7 +6251,8 @@ public final class Transport {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.transport.v1.Transport.UnpackResponse) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.transport.v1.Transport.UnpackResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -6105,6 +6265,7 @@ public final class Transport {
       private com.google.protobuf.ByteString plaintext_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes plaintext = 1;</code>
+       *
        * @return The plaintext.
        */
       @java.lang.Override
@@ -6113,28 +6274,31 @@ public final class Transport {
       }
       /**
        * <code>bytes plaintext = 1;</code>
+       *
        * @param value The plaintext to set.
        * @return This builder for chaining.
        */
       public Builder setPlaintext(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         plaintext_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>bytes plaintext = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearPlaintext() {
-        
+
         plaintext_ = getDefaultInstance().getPlaintext();
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -6147,12 +6311,12 @@ public final class Transport {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.transport.v1.UnpackResponse)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.transport.v1.UnpackResponse)
     private static final trinsic.okapi.transport.v1.Transport.UnpackResponse DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.transport.v1.Transport.UnpackResponse();
     }
@@ -6161,16 +6325,16 @@ public final class Transport {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<UnpackResponse>
-        PARSER = new com.google.protobuf.AbstractParser<UnpackResponse>() {
-      @java.lang.Override
-      public UnpackResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UnpackResponse(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<UnpackResponse> PARSER =
+        new com.google.protobuf.AbstractParser<UnpackResponse>() {
+          @java.lang.Override
+          public UnpackResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new UnpackResponse(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<UnpackResponse> parser() {
       return PARSER;
@@ -6185,104 +6349,111 @@ public final class Transport {
     public trinsic.okapi.transport.v1.Transport.UnpackResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface CoreMessageOrBuilder extends
+  public interface CoreMessageOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.transport.v1.CoreMessage)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>string id = 1;</code>
+     *
      * @return The id.
      */
     java.lang.String getId();
     /**
      * <code>string id = 1;</code>
+     *
      * @return The bytes for id.
      */
-    com.google.protobuf.ByteString
-        getIdBytes();
+    com.google.protobuf.ByteString getIdBytes();
 
     /**
      * <code>string type = 2;</code>
+     *
      * @return The type.
      */
     java.lang.String getType();
     /**
      * <code>string type = 2;</code>
+     *
      * @return The bytes for type.
      */
-    com.google.protobuf.ByteString
-        getTypeBytes();
+    com.google.protobuf.ByteString getTypeBytes();
 
     /**
      * <code>bytes body = 3;</code>
+     *
      * @return The body.
      */
     com.google.protobuf.ByteString getBody();
 
     /**
      * <code>repeated string to = 4;</code>
+     *
      * @return A list containing the to.
      */
-    java.util.List<java.lang.String>
-        getToList();
+    java.util.List<java.lang.String> getToList();
     /**
      * <code>repeated string to = 4;</code>
+     *
      * @return The count of to.
      */
     int getToCount();
     /**
      * <code>repeated string to = 4;</code>
+     *
      * @param index The index of the element to return.
      * @return The to at the given index.
      */
     java.lang.String getTo(int index);
     /**
      * <code>repeated string to = 4;</code>
+     *
      * @param index The index of the value to return.
      * @return The bytes of the to at the given index.
      */
-    com.google.protobuf.ByteString
-        getToBytes(int index);
+    com.google.protobuf.ByteString getToBytes(int index);
 
     /**
      * <code>string from = 5;</code>
+     *
      * @return The from.
      */
     java.lang.String getFrom();
     /**
      * <code>string from = 5;</code>
+     *
      * @return The bytes for from.
      */
-    com.google.protobuf.ByteString
-        getFromBytes();
+    com.google.protobuf.ByteString getFromBytes();
 
     /**
      * <code>int64 created = 6 [json_name = "created_time"];</code>
+     *
      * @return The created.
      */
     long getCreated();
 
     /**
      * <code>int64 expires = 7 [json_name = "expires_time"];</code>
+     *
      * @return The expires.
      */
     long getExpires();
   }
-  /**
-   * Protobuf type {@code okapi.transport.v1.CoreMessage}
-   */
-  public static final class CoreMessage extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code okapi.transport.v1.CoreMessage} */
+  public static final class CoreMessage extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.transport.v1.CoreMessage)
       CoreMessageOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use CoreMessage.newBuilder() to construct.
     private CoreMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private CoreMessage() {
       id_ = "";
       type_ = "";
@@ -6293,16 +6464,15 @@ public final class Transport {
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new CoreMessage();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private CoreMessage(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -6322,55 +6492,59 @@ public final class Transport {
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 10:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
 
-              id_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              type_ = s;
-              break;
-            }
-            case 26: {
-
-              body_ = input.readBytes();
-              break;
-            }
-            case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                to_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000001;
+                id_ = s;
+                break;
               }
-              to_.add(s);
-              break;
-            }
-            case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 18:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
 
-              from_ = s;
-              break;
-            }
-            case 48: {
-
-              created_ = input.readInt64();
-              break;
-            }
-            case 56: {
-
-              expires_ = input.readInt64();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                type_ = s;
+                break;
               }
-              break;
-            }
+            case 26:
+              {
+                body_ = input.readBytes();
+                break;
+              }
+            case 34:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                  to_ = new com.google.protobuf.LazyStringArrayList();
+                  mutable_bitField0_ |= 0x00000001;
+                }
+                to_.add(s);
+                break;
+              }
+            case 42:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                from_ = s;
+                break;
+              }
+            case 48:
+              {
+                created_ = input.readInt64();
+                break;
+              }
+            case 56:
+              {
+                expires_ = input.readInt64();
+                break;
+              }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -6378,8 +6552,7 @@ public final class Transport {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
           to_ = to_.getUnmodifiableView();
@@ -6388,23 +6561,27 @@ public final class Transport {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_CoreMessage_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.transport.v1.Transport
+          .internal_static_okapi_transport_v1_CoreMessage_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_CoreMessage_fieldAccessorTable
+      return trinsic.okapi.transport.v1.Transport
+          .internal_static_okapi_transport_v1_CoreMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.transport.v1.Transport.CoreMessage.class, trinsic.okapi.transport.v1.Transport.CoreMessage.Builder.class);
+              trinsic.okapi.transport.v1.Transport.CoreMessage.class,
+              trinsic.okapi.transport.v1.Transport.CoreMessage.Builder.class);
     }
 
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
      * <code>string id = 1;</code>
+     *
      * @return The id.
      */
     @java.lang.Override
@@ -6413,8 +6590,7 @@ public final class Transport {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         id_ = s;
         return s;
@@ -6422,16 +6598,15 @@ public final class Transport {
     }
     /**
      * <code>string id = 1;</code>
+     *
      * @return The bytes for id.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getIdBytes() {
+    public com.google.protobuf.ByteString getIdBytes() {
       java.lang.Object ref = id_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         id_ = b;
         return b;
       } else {
@@ -6443,6 +6618,7 @@ public final class Transport {
     private volatile java.lang.Object type_;
     /**
      * <code>string type = 2;</code>
+     *
      * @return The type.
      */
     @java.lang.Override
@@ -6451,8 +6627,7 @@ public final class Transport {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         type_ = s;
         return s;
@@ -6460,16 +6635,15 @@ public final class Transport {
     }
     /**
      * <code>string type = 2;</code>
+     *
      * @return The bytes for type.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getTypeBytes() {
+    public com.google.protobuf.ByteString getTypeBytes() {
       java.lang.Object ref = type_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         type_ = b;
         return b;
       } else {
@@ -6481,6 +6655,7 @@ public final class Transport {
     private com.google.protobuf.ByteString body_;
     /**
      * <code>bytes body = 3;</code>
+     *
      * @return The body.
      */
     @java.lang.Override
@@ -6492,14 +6667,15 @@ public final class Transport {
     private com.google.protobuf.LazyStringList to_;
     /**
      * <code>repeated string to = 4;</code>
+     *
      * @return A list containing the to.
      */
-    public com.google.protobuf.ProtocolStringList
-        getToList() {
+    public com.google.protobuf.ProtocolStringList getToList() {
       return to_;
     }
     /**
      * <code>repeated string to = 4;</code>
+     *
      * @return The count of to.
      */
     public int getToCount() {
@@ -6507,6 +6683,7 @@ public final class Transport {
     }
     /**
      * <code>repeated string to = 4;</code>
+     *
      * @param index The index of the element to return.
      * @return The to at the given index.
      */
@@ -6515,11 +6692,11 @@ public final class Transport {
     }
     /**
      * <code>repeated string to = 4;</code>
+     *
      * @param index The index of the value to return.
      * @return The bytes of the to at the given index.
      */
-    public com.google.protobuf.ByteString
-        getToBytes(int index) {
+    public com.google.protobuf.ByteString getToBytes(int index) {
       return to_.getByteString(index);
     }
 
@@ -6527,6 +6704,7 @@ public final class Transport {
     private volatile java.lang.Object from_;
     /**
      * <code>string from = 5;</code>
+     *
      * @return The from.
      */
     @java.lang.Override
@@ -6535,8 +6713,7 @@ public final class Transport {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         from_ = s;
         return s;
@@ -6544,16 +6721,15 @@ public final class Transport {
     }
     /**
      * <code>string from = 5;</code>
+     *
      * @return The bytes for from.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getFromBytes() {
+    public com.google.protobuf.ByteString getFromBytes() {
       java.lang.Object ref = from_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         from_ = b;
         return b;
       } else {
@@ -6565,6 +6741,7 @@ public final class Transport {
     private long created_;
     /**
      * <code>int64 created = 6 [json_name = "created_time"];</code>
+     *
      * @return The created.
      */
     @java.lang.Override
@@ -6576,6 +6753,7 @@ public final class Transport {
     private long expires_;
     /**
      * <code>int64 expires = 7 [json_name = "expires_time"];</code>
+     *
      * @return The expires.
      */
     @java.lang.Override
@@ -6584,6 +6762,7 @@ public final class Transport {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -6595,8 +6774,7 @@ public final class Transport {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
@@ -6634,8 +6812,7 @@ public final class Transport {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, type_);
       }
       if (!body_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, body_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(3, body_);
       }
       {
         int dataSize = 0;
@@ -6649,12 +6826,10 @@ public final class Transport {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, from_);
       }
       if (created_ != 0L) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(6, created_);
+        size += com.google.protobuf.CodedOutputStream.computeInt64Size(6, created_);
       }
       if (expires_ != 0L) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(7, expires_);
+        size += com.google.protobuf.CodedOutputStream.computeInt64Size(7, expires_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -6664,27 +6839,21 @@ public final class Transport {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.transport.v1.Transport.CoreMessage)) {
         return super.equals(obj);
       }
-      trinsic.okapi.transport.v1.Transport.CoreMessage other = (trinsic.okapi.transport.v1.Transport.CoreMessage) obj;
+      trinsic.okapi.transport.v1.Transport.CoreMessage other =
+          (trinsic.okapi.transport.v1.Transport.CoreMessage) obj;
 
-      if (!getId()
-          .equals(other.getId())) return false;
-      if (!getType()
-          .equals(other.getType())) return false;
-      if (!getBody()
-          .equals(other.getBody())) return false;
-      if (!getToList()
-          .equals(other.getToList())) return false;
-      if (!getFrom()
-          .equals(other.getFrom())) return false;
-      if (getCreated()
-          != other.getCreated()) return false;
-      if (getExpires()
-          != other.getExpires()) return false;
+      if (!getId().equals(other.getId())) return false;
+      if (!getType().equals(other.getType())) return false;
+      if (!getBody().equals(other.getBody())) return false;
+      if (!getToList().equals(other.getToList())) return false;
+      if (!getFrom().equals(other.getFrom())) return false;
+      if (getCreated() != other.getCreated()) return false;
+      if (getExpires() != other.getExpires()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -6709,98 +6878,102 @@ public final class Transport {
       hash = (37 * hash) + FROM_FIELD_NUMBER;
       hash = (53 * hash) + getFrom().hashCode();
       hash = (37 * hash) + CREATED_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getCreated());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getCreated());
       hash = (37 * hash) + EXPIRES_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getExpires());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getExpires());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
     public static trinsic.okapi.transport.v1.Transport.CoreMessage parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.transport.v1.Transport.CoreMessage parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.transport.v1.Transport.CoreMessage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.transport.v1.Transport.CoreMessage parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.transport.v1.Transport.CoreMessage parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.transport.v1.Transport.CoreMessage parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.transport.v1.Transport.CoreMessage parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.transport.v1.Transport.CoreMessage parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.transport.v1.Transport.CoreMessage parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.transport.v1.Transport.CoreMessage parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.transport.v1.Transport.CoreMessage parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.transport.v1.Transport.CoreMessage parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.transport.v1.Transport.CoreMessage parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.transport.v1.Transport.CoreMessage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.okapi.transport.v1.Transport.CoreMessage prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -6809,24 +6982,25 @@ public final class Transport {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code okapi.transport.v1.CoreMessage}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code okapi.transport.v1.CoreMessage} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.transport.v1.CoreMessage)
         trinsic.okapi.transport.v1.Transport.CoreMessageOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_CoreMessage_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.transport.v1.Transport
+            .internal_static_okapi_transport_v1_CoreMessage_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_CoreMessage_fieldAccessorTable
+        return trinsic.okapi.transport.v1.Transport
+            .internal_static_okapi_transport_v1_CoreMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.transport.v1.Transport.CoreMessage.class, trinsic.okapi.transport.v1.Transport.CoreMessage.Builder.class);
+                trinsic.okapi.transport.v1.Transport.CoreMessage.class,
+                trinsic.okapi.transport.v1.Transport.CoreMessage.Builder.class);
       }
 
       // Construct using trinsic.okapi.transport.v1.Transport.CoreMessage.newBuilder()
@@ -6834,16 +7008,15 @@ public final class Transport {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -6865,9 +7038,9 @@ public final class Transport {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.transport.v1.Transport.internal_static_okapi_transport_v1_CoreMessage_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.transport.v1.Transport
+            .internal_static_okapi_transport_v1_CoreMessage_descriptor;
       }
 
       @java.lang.Override
@@ -6886,7 +7059,8 @@ public final class Transport {
 
       @java.lang.Override
       public trinsic.okapi.transport.v1.Transport.CoreMessage buildPartial() {
-        trinsic.okapi.transport.v1.Transport.CoreMessage result = new trinsic.okapi.transport.v1.Transport.CoreMessage(this);
+        trinsic.okapi.transport.v1.Transport.CoreMessage result =
+            new trinsic.okapi.transport.v1.Transport.CoreMessage(this);
         int from_bitField0_ = bitField0_;
         result.id_ = id_;
         result.type_ = type_;
@@ -6907,38 +7081,41 @@ public final class Transport {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.transport.v1.Transport.CoreMessage) {
-          return mergeFrom((trinsic.okapi.transport.v1.Transport.CoreMessage)other);
+          return mergeFrom((trinsic.okapi.transport.v1.Transport.CoreMessage) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -6946,7 +7123,8 @@ public final class Transport {
       }
 
       public Builder mergeFrom(trinsic.okapi.transport.v1.Transport.CoreMessage other) {
-        if (other == trinsic.okapi.transport.v1.Transport.CoreMessage.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.transport.v1.Transport.CoreMessage.getDefaultInstance())
+          return this;
         if (!other.getId().isEmpty()) {
           id_ = other.id_;
           onChanged();
@@ -6997,7 +7175,8 @@ public final class Transport {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.transport.v1.Transport.CoreMessage) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.transport.v1.Transport.CoreMessage) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -7006,18 +7185,19 @@ public final class Transport {
         }
         return this;
       }
+
       private int bitField0_;
 
       private java.lang.Object id_ = "";
       /**
        * <code>string id = 1;</code>
+       *
        * @return The id.
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           id_ = s;
           return s;
@@ -7027,15 +7207,14 @@ public final class Transport {
       }
       /**
        * <code>string id = 1;</code>
+       *
        * @return The bytes for id.
        */
-      public com.google.protobuf.ByteString
-          getIdBytes() {
+      public com.google.protobuf.ByteString getIdBytes() {
         java.lang.Object ref = id_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           id_ = b;
           return b;
         } else {
@@ -7044,41 +7223,42 @@ public final class Transport {
       }
       /**
        * <code>string id = 1;</code>
+       *
        * @param value The id to set.
        * @return This builder for chaining.
        */
-      public Builder setId(
-          java.lang.String value) {
+      public Builder setId(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         id_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>string id = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearId() {
-        
+
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
       }
       /**
        * <code>string id = 1;</code>
+       *
        * @param value The bytes for id to set.
        * @return This builder for chaining.
        */
-      public Builder setIdBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setIdBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         id_ = value;
         onChanged();
         return this;
@@ -7087,13 +7267,13 @@ public final class Transport {
       private java.lang.Object type_ = "";
       /**
        * <code>string type = 2;</code>
+       *
        * @return The type.
        */
       public java.lang.String getType() {
         java.lang.Object ref = type_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           type_ = s;
           return s;
@@ -7103,15 +7283,14 @@ public final class Transport {
       }
       /**
        * <code>string type = 2;</code>
+       *
        * @return The bytes for type.
        */
-      public com.google.protobuf.ByteString
-          getTypeBytes() {
+      public com.google.protobuf.ByteString getTypeBytes() {
         java.lang.Object ref = type_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           type_ = b;
           return b;
         } else {
@@ -7120,41 +7299,42 @@ public final class Transport {
       }
       /**
        * <code>string type = 2;</code>
+       *
        * @param value The type to set.
        * @return This builder for chaining.
        */
-      public Builder setType(
-          java.lang.String value) {
+      public Builder setType(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         type_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>string type = 2;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearType() {
-        
+
         type_ = getDefaultInstance().getType();
         onChanged();
         return this;
       }
       /**
        * <code>string type = 2;</code>
+       *
        * @param value The bytes for type to set.
        * @return This builder for chaining.
        */
-      public Builder setTypeBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setTypeBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         type_ = value;
         onChanged();
         return this;
@@ -7163,6 +7343,7 @@ public final class Transport {
       private com.google.protobuf.ByteString body_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes body = 3;</code>
+       *
        * @return The body.
        */
       @java.lang.Override
@@ -7171,46 +7352,51 @@ public final class Transport {
       }
       /**
        * <code>bytes body = 3;</code>
+       *
        * @param value The body to set.
        * @return This builder for chaining.
        */
       public Builder setBody(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         body_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>bytes body = 3;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearBody() {
-        
+
         body_ = getDefaultInstance().getBody();
         onChanged();
         return this;
       }
 
-      private com.google.protobuf.LazyStringList to_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private com.google.protobuf.LazyStringList to_ =
+          com.google.protobuf.LazyStringArrayList.EMPTY;
+
       private void ensureToIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
           to_ = new com.google.protobuf.LazyStringArrayList(to_);
           bitField0_ |= 0x00000001;
-         }
+        }
       }
       /**
        * <code>repeated string to = 4;</code>
+       *
        * @return A list containing the to.
        */
-      public com.google.protobuf.ProtocolStringList
-          getToList() {
+      public com.google.protobuf.ProtocolStringList getToList() {
         return to_.getUnmodifiableView();
       }
       /**
        * <code>repeated string to = 4;</code>
+       *
        * @return The count of to.
        */
       public int getToCount() {
@@ -7218,6 +7404,7 @@ public final class Transport {
       }
       /**
        * <code>repeated string to = 4;</code>
+       *
        * @param index The index of the element to return.
        * @return The to at the given index.
        */
@@ -7226,59 +7413,59 @@ public final class Transport {
       }
       /**
        * <code>repeated string to = 4;</code>
+       *
        * @param index The index of the value to return.
        * @return The bytes of the to at the given index.
        */
-      public com.google.protobuf.ByteString
-          getToBytes(int index) {
+      public com.google.protobuf.ByteString getToBytes(int index) {
         return to_.getByteString(index);
       }
       /**
        * <code>repeated string to = 4;</code>
+       *
        * @param index The index to set the value at.
        * @param value The to to set.
        * @return This builder for chaining.
        */
-      public Builder setTo(
-          int index, java.lang.String value) {
+      public Builder setTo(int index, java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureToIsMutable();
+          throw new NullPointerException();
+        }
+        ensureToIsMutable();
         to_.set(index, value);
         onChanged();
         return this;
       }
       /**
        * <code>repeated string to = 4;</code>
+       *
        * @param value The to to add.
        * @return This builder for chaining.
        */
-      public Builder addTo(
-          java.lang.String value) {
+      public Builder addTo(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureToIsMutable();
+          throw new NullPointerException();
+        }
+        ensureToIsMutable();
         to_.add(value);
         onChanged();
         return this;
       }
       /**
        * <code>repeated string to = 4;</code>
+       *
        * @param values The to to add.
        * @return This builder for chaining.
        */
-      public Builder addAllTo(
-          java.lang.Iterable<java.lang.String> values) {
+      public Builder addAllTo(java.lang.Iterable<java.lang.String> values) {
         ensureToIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, to_);
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, to_);
         onChanged();
         return this;
       }
       /**
        * <code>repeated string to = 4;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearTo() {
@@ -7289,15 +7476,15 @@ public final class Transport {
       }
       /**
        * <code>repeated string to = 4;</code>
+       *
        * @param value The bytes of the to to add.
        * @return This builder for chaining.
        */
-      public Builder addToBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder addToBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
         ensureToIsMutable();
         to_.add(value);
         onChanged();
@@ -7307,13 +7494,13 @@ public final class Transport {
       private java.lang.Object from_ = "";
       /**
        * <code>string from = 5;</code>
+       *
        * @return The from.
        */
       public java.lang.String getFrom() {
         java.lang.Object ref = from_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           from_ = s;
           return s;
@@ -7323,15 +7510,14 @@ public final class Transport {
       }
       /**
        * <code>string from = 5;</code>
+       *
        * @return The bytes for from.
        */
-      public com.google.protobuf.ByteString
-          getFromBytes() {
+      public com.google.protobuf.ByteString getFromBytes() {
         java.lang.Object ref = from_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           from_ = b;
           return b;
         } else {
@@ -7340,49 +7526,51 @@ public final class Transport {
       }
       /**
        * <code>string from = 5;</code>
+       *
        * @param value The from to set.
        * @return This builder for chaining.
        */
-      public Builder setFrom(
-          java.lang.String value) {
+      public Builder setFrom(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         from_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>string from = 5;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearFrom() {
-        
+
         from_ = getDefaultInstance().getFrom();
         onChanged();
         return this;
       }
       /**
        * <code>string from = 5;</code>
+       *
        * @param value The bytes for from to set.
        * @return This builder for chaining.
        */
-      public Builder setFromBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setFromBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         from_ = value;
         onChanged();
         return this;
       }
 
-      private long created_ ;
+      private long created_;
       /**
        * <code>int64 created = 6 [json_name = "created_time"];</code>
+       *
        * @return The created.
        */
       @java.lang.Override
@@ -7391,29 +7579,32 @@ public final class Transport {
       }
       /**
        * <code>int64 created = 6 [json_name = "created_time"];</code>
+       *
        * @param value The created to set.
        * @return This builder for chaining.
        */
       public Builder setCreated(long value) {
-        
+
         created_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>int64 created = 6 [json_name = "created_time"];</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearCreated() {
-        
+
         created_ = 0L;
         onChanged();
         return this;
       }
 
-      private long expires_ ;
+      private long expires_;
       /**
        * <code>int64 expires = 7 [json_name = "expires_time"];</code>
+       *
        * @return The expires.
        */
       @java.lang.Override
@@ -7422,25 +7613,28 @@ public final class Transport {
       }
       /**
        * <code>int64 expires = 7 [json_name = "expires_time"];</code>
+       *
        * @param value The expires to set.
        * @return This builder for chaining.
        */
       public Builder setExpires(long value) {
-        
+
         expires_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>int64 expires = 7 [json_name = "expires_time"];</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearExpires() {
-        
+
         expires_ = 0L;
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -7453,12 +7647,12 @@ public final class Transport {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.transport.v1.CoreMessage)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.transport.v1.CoreMessage)
     private static final trinsic.okapi.transport.v1.Transport.CoreMessage DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.transport.v1.Transport.CoreMessage();
     }
@@ -7467,16 +7661,16 @@ public final class Transport {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<CoreMessage>
-        PARSER = new com.google.protobuf.AbstractParser<CoreMessage>() {
-      @java.lang.Override
-      public CoreMessage parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CoreMessage(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<CoreMessage> PARSER =
+        new com.google.protobuf.AbstractParser<CoreMessage>() {
+          @java.lang.Override
+          public CoreMessage parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new CoreMessage(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<CoreMessage> parser() {
       return PARSER;
@@ -7491,153 +7685,172 @@ public final class Transport {
     public trinsic.okapi.transport.v1.Transport.CoreMessage getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_transport_v1_SignRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_transport_v1_SignRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_transport_v1_SignRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_transport_v1_SignResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_transport_v1_SignResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_transport_v1_SignResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_transport_v1_VerifyRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_transport_v1_VerifyRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_transport_v1_VerifyRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_transport_v1_VerifyResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_transport_v1_VerifyResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_transport_v1_VerifyResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_transport_v1_PackRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_transport_v1_PackRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_transport_v1_PackRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_transport_v1_PackResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_transport_v1_PackResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_transport_v1_PackResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_transport_v1_UnpackRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_transport_v1_UnpackRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_transport_v1_UnpackRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_transport_v1_UnpackResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_transport_v1_UnpackResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_transport_v1_UnpackResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_transport_v1_CoreMessage_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_transport_v1_CoreMessage_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_transport_v1_CoreMessage_fieldAccessorTable;
 
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
+  public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
+
+  private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
+
   static {
     java.lang.String[] descriptorData = {
-      "\n\"okapi/transport/v1/transport.proto\022\022ok" +
-      "api.transport.v1\032\030okapi/keys/v1/keys.pro" +
-      "to\032\024pbmse/v1/pbmse.proto\"r\n\013SignRequest\022" +
-      "\017\n\007payload\030\001 \001(\014\022&\n\003key\030\002 \001(\0132\031.okapi.ke" +
-      "ys.v1.JsonWebKey\022*\n\tappend_to\030\003 \001(\0132\027.pb" +
-      "mse.v1.SignedMessage\"8\n\014SignResponse\022(\n\007" +
-      "message\030\001 \001(\0132\027.pbmse.v1.SignedMessage\"a" +
-      "\n\rVerifyRequest\022(\n\007message\030\001 \001(\0132\027.pbmse" +
-      ".v1.SignedMessage\022&\n\003key\030\002 \001(\0132\031.okapi.k" +
-      "eys.v1.JsonWebKey\"\"\n\016VerifyResponse\022\020\n\010i" +
-      "s_valid\030\001 \001(\010\"\363\001\n\013PackRequest\022-\n\nsender_" +
-      "key\030\001 \001(\0132\031.okapi.keys.v1.JsonWebKey\022/\n\014" +
-      "receiver_key\030\002 \001(\0132\031.okapi.keys.v1.JsonW" +
-      "ebKey\022\027\n\017associated_data\030\003 \001(\014\022\021\n\tplaint" +
-      "ext\030\004 \001(\014\022&\n\004mode\030\005 \001(\0162\030.pbmse.v1.Encry" +
-      "ptionMode\0220\n\talgorithm\030\006 \001(\0162\035.pbmse.v1." +
-      "EncryptionAlgorithm\";\n\014PackResponse\022+\n\007m" +
-      "essage\030\001 \001(\0132\032.pbmse.v1.EncryptedMessage" +
-      "\"\234\001\n\rUnpackRequest\022-\n\nsender_key\030\001 \001(\0132\031" +
-      ".okapi.keys.v1.JsonWebKey\022/\n\014receiver_ke" +
-      "y\030\002 \001(\0132\031.okapi.keys.v1.JsonWebKey\022+\n\007me" +
-      "ssage\030\003 \001(\0132\032.pbmse.v1.EncryptedMessage\"" +
-      "#\n\016UnpackResponse\022\021\n\tplaintext\030\001 \001(\014\"\215\001\n" +
-      "\013CoreMessage\022\n\n\002id\030\001 \001(\t\022\014\n\004type\030\002 \001(\t\022\014" +
-      "\n\004body\030\003 \001(\014\022\n\n\002to\030\004 \003(\t\022\014\n\004from\030\005 \001(\t\022\035" +
-      "\n\007created\030\006 \001(\003R\014created_time\022\035\n\007expires" +
-      "\030\007 \001(\003R\014expires_timeBS\n\032trinsic.okapi.tr" +
-      "ansport.v1Z github.com/trinsic-id/okapip" +
-      "roto\252\002\022Okapi.Transport.V1b\006proto3"
+      "\n"
+          + "\"okapi/transport/v1/transport.proto\022\022ok"
+          + "api.transport.v1\032\030okapi/keys/v1/keys.proto\032\024pbmse/v1/pbmse.proto\"r\n"
+          + "\013SignRequest\022\017\n"
+          + "\007payload\030\001 \001(\014\022&\n"
+          + "\003key\030\002 \001(\0132\031.okapi.keys.v1.JsonWebKey\022*\n"
+          + "\tappend_to\030\003 \001(\0132\027.pbmse.v1.SignedMessage\"8\n"
+          + "\014SignResponse\022(\n"
+          + "\007message\030\001 \001(\0132\027.pbmse.v1.SignedMessage\"a\n\r"
+          + "VerifyRequest\022(\n"
+          + "\007message\030\001 \001(\0132\027.pbmse.v1.SignedMessage\022&\n"
+          + "\003key\030\002 \001(\0132\031.okapi.keys.v1.JsonWebKey\"\"\n"
+          + "\016VerifyResponse\022\020\n"
+          + "\010is_valid\030\001 \001(\010\"\363\001\n"
+          + "\013PackRequest\022-\n\n"
+          + "sender_key\030\001 \001(\0132\031.okapi.keys.v1.JsonWebKey\022/\n"
+          + "\014receiver_key\030\002 \001(\0132\031.okapi.keys.v1.JsonWebKey\022\027\n"
+          + "\017associated_data\030\003 \001(\014\022\021\n"
+          + "\tplaintext\030\004 \001(\014\022&\n"
+          + "\004mode\030\005 \001(\0162\030.pbmse.v1.EncryptionMode\0220\n"
+          + "\talgorithm\030\006 \001(\0162\035.pbmse.v1.EncryptionAlgorithm\";\n"
+          + "\014PackResponse\022+\n"
+          + "\007message\030\001 \001(\0132\032.pbmse.v1.EncryptedMessage\"\234\001\n\r"
+          + "UnpackRequest\022-\n\n"
+          + "sender_key\030\001 \001(\0132\031.okapi.keys.v1.JsonWebKey\022/\n"
+          + "\014receiver_key\030\002 \001(\0132\031.okapi.keys.v1.JsonWebKey\022+\n"
+          + "\007message\030\003 \001(\0132\032.pbmse.v1.EncryptedMessage\"#\n"
+          + "\016UnpackResponse\022\021\n"
+          + "\tplaintext\030\001 \001(\014\"\215\001\n"
+          + "\013CoreMessage\022\n\n"
+          + "\002id\030\001 \001(\t\022\014\n"
+          + "\004type\030\002 \001(\t\022\014\n"
+          + "\004body\030\003 \001(\014\022\n\n"
+          + "\002to\030\004 \003(\t\022\014\n"
+          + "\004from\030\005 \001(\t\022\035\n"
+          + "\007created\030\006 \001(\003R\014created_time\022\035\n"
+          + "\007expires\030\007 \001(\003R\014expires_timeBO\n"
+          + "\032trinsic.okapi.transport.v1Z\034okapi/transport/v1/transport"
+          + "\252\002\022Okapi.Transport.V1b\006proto3"
     };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-          trinsic.okapi.keys.v1.Keys.getDescriptor(),
-          trinsic.okapi.pbmse.v1.Pbmse.getDescriptor(),
-        });
+    descriptor =
+        com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
+            descriptorData,
+            new com.google.protobuf.Descriptors.FileDescriptor[] {
+              trinsic.okapi.keys.v1.Keys.getDescriptor(),
+              trinsic.okapi.pbmse.v1.Pbmse.getDescriptor(),
+            });
     internal_static_okapi_transport_v1_SignRequest_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_okapi_transport_v1_SignRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_transport_v1_SignRequest_descriptor,
-        new java.lang.String[] { "Payload", "Key", "AppendTo", });
+        getDescriptor().getMessageTypes().get(0);
+    internal_static_okapi_transport_v1_SignRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_transport_v1_SignRequest_descriptor,
+            new java.lang.String[] {
+              "Payload", "Key", "AppendTo",
+            });
     internal_static_okapi_transport_v1_SignResponse_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_okapi_transport_v1_SignResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_transport_v1_SignResponse_descriptor,
-        new java.lang.String[] { "Message", });
+        getDescriptor().getMessageTypes().get(1);
+    internal_static_okapi_transport_v1_SignResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_transport_v1_SignResponse_descriptor,
+            new java.lang.String[] {
+              "Message",
+            });
     internal_static_okapi_transport_v1_VerifyRequest_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_okapi_transport_v1_VerifyRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_transport_v1_VerifyRequest_descriptor,
-        new java.lang.String[] { "Message", "Key", });
+        getDescriptor().getMessageTypes().get(2);
+    internal_static_okapi_transport_v1_VerifyRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_transport_v1_VerifyRequest_descriptor,
+            new java.lang.String[] {
+              "Message", "Key",
+            });
     internal_static_okapi_transport_v1_VerifyResponse_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_okapi_transport_v1_VerifyResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_transport_v1_VerifyResponse_descriptor,
-        new java.lang.String[] { "IsValid", });
+        getDescriptor().getMessageTypes().get(3);
+    internal_static_okapi_transport_v1_VerifyResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_transport_v1_VerifyResponse_descriptor,
+            new java.lang.String[] {
+              "IsValid",
+            });
     internal_static_okapi_transport_v1_PackRequest_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_okapi_transport_v1_PackRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_transport_v1_PackRequest_descriptor,
-        new java.lang.String[] { "SenderKey", "ReceiverKey", "AssociatedData", "Plaintext", "Mode", "Algorithm", });
+        getDescriptor().getMessageTypes().get(4);
+    internal_static_okapi_transport_v1_PackRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_transport_v1_PackRequest_descriptor,
+            new java.lang.String[] {
+              "SenderKey", "ReceiverKey", "AssociatedData", "Plaintext", "Mode", "Algorithm",
+            });
     internal_static_okapi_transport_v1_PackResponse_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_okapi_transport_v1_PackResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_transport_v1_PackResponse_descriptor,
-        new java.lang.String[] { "Message", });
+        getDescriptor().getMessageTypes().get(5);
+    internal_static_okapi_transport_v1_PackResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_transport_v1_PackResponse_descriptor,
+            new java.lang.String[] {
+              "Message",
+            });
     internal_static_okapi_transport_v1_UnpackRequest_descriptor =
-      getDescriptor().getMessageTypes().get(6);
-    internal_static_okapi_transport_v1_UnpackRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_transport_v1_UnpackRequest_descriptor,
-        new java.lang.String[] { "SenderKey", "ReceiverKey", "Message", });
+        getDescriptor().getMessageTypes().get(6);
+    internal_static_okapi_transport_v1_UnpackRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_transport_v1_UnpackRequest_descriptor,
+            new java.lang.String[] {
+              "SenderKey", "ReceiverKey", "Message",
+            });
     internal_static_okapi_transport_v1_UnpackResponse_descriptor =
-      getDescriptor().getMessageTypes().get(7);
-    internal_static_okapi_transport_v1_UnpackResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_transport_v1_UnpackResponse_descriptor,
-        new java.lang.String[] { "Plaintext", });
+        getDescriptor().getMessageTypes().get(7);
+    internal_static_okapi_transport_v1_UnpackResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_transport_v1_UnpackResponse_descriptor,
+            new java.lang.String[] {
+              "Plaintext",
+            });
     internal_static_okapi_transport_v1_CoreMessage_descriptor =
-      getDescriptor().getMessageTypes().get(8);
-    internal_static_okapi_transport_v1_CoreMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_transport_v1_CoreMessage_descriptor,
-        new java.lang.String[] { "Id", "Type", "Body", "To", "From", "Created", "Expires", });
+        getDescriptor().getMessageTypes().get(8);
+    internal_static_okapi_transport_v1_CoreMessage_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_transport_v1_CoreMessage_descriptor,
+            new java.lang.String[] {
+              "Id", "Type", "Body", "To", "From", "Created", "Expires",
+            });
     trinsic.okapi.keys.v1.Keys.getDescriptor();
     trinsic.okapi.pbmse.v1.Pbmse.getDescriptor();
   }

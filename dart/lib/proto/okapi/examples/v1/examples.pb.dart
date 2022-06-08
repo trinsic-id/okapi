@@ -10,7 +10,7 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../../pbmse/v1/pbmse.pb.dart' as $0;
+import '../../../pbmse/v1/pbmse.pb.dart' as $2;
 
 class BasicMessage extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -83,17 +83,17 @@ class SecureExampleServiceApi {
   $pb.RpcClient _client;
   SecureExampleServiceApi(this._client);
 
-  $async.Future<$0.EncryptedMessage> unary(
-      $pb.ClientContext? ctx, $0.EncryptedMessage request) {
-    var emptyResponse = $0.EncryptedMessage();
-    return _client.invoke<$0.EncryptedMessage>(
+  $async.Future<$2.EncryptedMessage> unary(
+      $pb.ClientContext? ctx, $2.EncryptedMessage request) {
+    var emptyResponse = $2.EncryptedMessage();
+    return _client.invoke<$2.EncryptedMessage>(
         ctx, 'SecureExampleService', 'Unary', request, emptyResponse);
   }
 
-  $async.Future<$0.EncryptedMessage> serverStreaming(
-      $pb.ClientContext? ctx, $0.EncryptedMessage request) {
-    var emptyResponse = $0.EncryptedMessage();
-    return _client.invoke<$0.EncryptedMessage>(
+  $async.Future<$2.EncryptedMessage> serverStreaming(
+      $pb.ClientContext? ctx, $2.EncryptedMessage request) {
+    var emptyResponse = $2.EncryptedMessage();
+    return _client.invoke<$2.EncryptedMessage>(
         ctx, 'SecureExampleService', 'ServerStreaming', request, emptyResponse);
   }
 }

@@ -8,7 +8,7 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-import '../../../pbmse/v1/pbmse.pbjson.dart' as $0;
+import '../../../pbmse/v1/pbmse.pbjson.dart' as $2;
 
 @$core.Deprecated('Use basicMessageDescriptor instead')
 const BasicMessage$json = const {
@@ -42,9 +42,9 @@ const $core.Map<$core.String, $core.dynamic> SecureExampleServiceBase$json =
 @$core.Deprecated('Use secureExampleServiceDescriptor instead')
 const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>>
     SecureExampleServiceBase$messageJson = const {
-  '.pbmse.v1.EncryptedMessage': $0.EncryptedMessage$json,
-  '.pbmse.v1.EncryptionRecipient': $0.EncryptionRecipient$json,
-  '.pbmse.v1.EncryptionHeader': $0.EncryptionHeader$json,
+  '.pbmse.v1.EncryptedMessage': $2.EncryptedMessage$json,
+  '.pbmse.v1.EncryptionRecipient': $2.EncryptionRecipient$json,
+  '.pbmse.v1.EncryptionHeader': $2.EncryptionHeader$json,
 };
 
 /// Descriptor for `SecureExampleService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
