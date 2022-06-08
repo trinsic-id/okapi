@@ -2,10 +2,6 @@
 # source: okapi/examples/v1/examples.proto
 # typed: strict
 
-module Okapi; end
-module Okapi::Examples; end
-module Okapi::Examples::V1; end
-
 class Okapi::Examples::V1::BasicMessage
   include Google::Protobuf
   include Google::Protobuf::MessageExts

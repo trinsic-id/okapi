@@ -2,10 +2,6 @@
 # source: okapi/security/v1/security.proto
 # typed: strict
 
-module Okapi; end
-module Okapi::Security; end
-module Okapi::Security::V1; end
-
 class Okapi::Security::V1::CreateOberonKeyRequest
   include Google::Protobuf
   include Google::Protobuf::MessageExts

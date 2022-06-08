@@ -2,10 +2,6 @@
 # source: okapi/proofs/v1/proofs.proto
 # typed: strict
 
-module Okapi; end
-module Okapi::Proofs; end
-module Okapi::Proofs::V1; end
-
 class Okapi::Proofs::V1::CreateProofRequest
   include Google::Protobuf
   include Google::Protobuf::MessageExts
@@ -179,6 +175,9 @@ class Okapi::Proofs::V1::VerifyProofRequest
   def self.descriptor
   end
 
+  sig {void}
+  def initialize; end
+
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
@@ -216,6 +215,9 @@ class Okapi::Proofs::V1::VerifyProofResponse
   sig { returns(Google::Protobuf::Descriptor) }
   def self.descriptor
   end
+
+  sig {void}
+  def initialize; end
 
   sig { params(field: String).returns(T.untyped) }
   def [](field)
