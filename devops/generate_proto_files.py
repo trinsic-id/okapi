@@ -219,13 +219,11 @@ def update_ruby():
 def update_java():
     language_path = get_language_dir("java")
     lang_proto_path = join(language_path, "src", "main", "java")
-    java_services = join(lang_proto_path, "trinsic", "services")
+    java_services = join(lang_proto_path, "trinsic", "okapi")
     for subdir in os.listdir(java_services):
         java_subdir = join(java_services, subdir)
         if os.path.isdir(java_subdir):
             clean_dir(java_subdir)
-    clean_dir(join(lang_proto_path, "trinsic", "sdk"))
-    clean_dir(join(lang_proto_path, "trinsic", "pbmse"))
 
     run_protoc(
         language_options={
