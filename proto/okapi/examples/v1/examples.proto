@@ -5,7 +5,7 @@ import "pbmse/v1/pbmse.proto";
 package okapi.examples.v1;
 
 option csharp_namespace = "Okapi.Examples.V1";
-option go_package = "github.com/trinsic-id/okapiproto";
+option go_package = "okapi/examples/v1/examples";
 option java_package = "trinsic.okapi.examples.v1";
 
 message BasicMessage {

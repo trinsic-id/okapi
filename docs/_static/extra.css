@@ -1,0 +1,194 @@
+h1,
+h2,
+h3 {
+    font-weight: 800;
+}
+
+.md-header {
+    /* background-color: #333; */
+    box-shadow: none !important;
+    /* #006BE5; */
+}
+
+:root {
+    --md-primary-fg-color: #006BE5;
+    --md-primary-fg-color--light: #B3D6FF;
+    --md-primary-fg-color--dark: #003B80;
+
+    font-variant-ligatures: none;
+}
+
+input {
+    font-variant-ligatures: none;
+}
+
+[data-md-color-scheme="slate"] {
+    --md-hue: 200;
+    /* [0, 360] */
+}
+
+.md-header__button.md-logo {
+    margin-bottom: .4rem;
+}
+
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg,
+.md-nav__title .md-nav__button.md-logo img,
+.md-nav__title .md-nav__button.md-logo svg {
+    width: auto;
+    height: 1.8rem;
+}
+
+
+/***********************************************************
+ * Protobuf Object Inclusion Macro Styles  ( proto_message() )
+ ***********************************************************/
+
+.proto-obj-container {
+    padding-left: 0.5rem;
+    border-left: 4px solid #3498db;
+}
+
+/* Name of protobuf object */
+.proto-obj-header {
+    font-feature-settings: "kern";
+    font-family: var(--md-code-font-family);
+}
+
+/* Remove dangling <p> block in proto-obj-header */
+.proto-obj-header p {
+    display: none;
+}
+
+/* Remove "Top" link that is erroneously included with some protobuf object injections */
+.proto-obj-contents a[href="#top"] {
+    display: none;
+}
+
+/* Prefix text before protobuf message table */
+.proto-obj-contents p {
+    font-size: 0.6rem;
+}
+
+
+/***********************************************************
+ * New-style Protobuf Object Rendering                     *
+ ***********************************************************/
+
+.proto-obj-container {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.proto-obj-name {
+    font-feature-settings: "kern";
+    font-family: var(--md-code-font-family);
+}
+
+.proto-obj-description {
+    font-size: 0.6rem;
+}
+
+.proto-field:first-child {
+    border-top: unset !important;
+}
+
+.proto-field {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-top: 1px solid #e3e8ee;
+}
+
+.proto-field-name {
+    font-weight: bold;
+    font-size: 0.7rem;
+    font-feature-settings: "kern";
+    font-family: var(--md-code-font-family);
+
+    display: inline-block;
+}
+
+.proto-type-separator {
+    display: inline-block;
+}
+
+.proto-field-type {
+    font-size: 0.55rem;
+    font-feature-settings: "kern";
+    font-family: var(--md-code-font-family);
+    display: inline-block;
+}
+
+.proto-field-description {
+    font-size: 14px;
+}
+
+
+.proto-field-expand-btn {
+    cursor: pointer;
+    margin-top: 0.5rem;
+    margin-bottom: 0.3rem;
+    font-size: 0.75em;
+    border: 1px solid #e3e8ee;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: fit-content;
+}
+
+.proto-field-expand-btn:hover {
+    color: black;
+}
+
+.proto-field-sub-child {
+    border-radius: 5px;
+    border: 1px solid #8080806b;
+    padding-right: 1em;
+}
+
+.proto-field-sub-child.hidden {
+    display: none;
+}
+
+.proto-field-sub-child .proto-obj-fields {
+    margin-top: 0em;
+    margin-left: 1em;
+}
+
+.proto-obj-subtype-context {
+    color: grey;
+}
+
+
+
+/** 
+  * When we render the "Sample / Request / Response" tabs 
+  * for protobuf method documentation, we want those tabs to be centered.
+  *
+  * We have basically no control over the styling of specific tabhosts, but we do have CSS.
+  * So we create a <div class="proto-method-tabs-marker"/> immediately preceeding the tab declaration,
+  * then use a sibling selector to style the immediately preceding tabs.
+  **/
+.proto-method-tabs-marker {
+    display: none;
+}
+
+/* Center any tabs immediately following a .proto-method-tabs-marker */
+.proto-method-tabs-marker+.tabbed-set {
+    align-items: center;
+}
+/* For some reason a mystery <p/> is being generated, adding padding... get rid of it. */
+.proto-method-tabs-marker+.tabbed-set p:first-child {
+    display: none;
+}
+
+/* For sub-tabs of the Sample/Request/Response tabs (ie, the language tabs),
+   make their font smaller. */
+.proto-method-tabs-marker+.tabbed-set .tabbed-set .tabbed-labels label{
+    font-size: 0.5rem;  
+}   
+
+/* Make the Sample / Request / Response tab labels larger */
+.proto-method-tabs-marker+.tabbed-set > .tabbed-labels > label {
+    font-size: 0.7rem;
+}

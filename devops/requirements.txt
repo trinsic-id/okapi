@@ -1,4 +1,4 @@
-betterproto[compiler]
+git+https://github.com/danielgtaylor/python-betterproto.git@master#egg=betterproto
 grpcio-tools
 requests~=2.27.1
 PyYAML~=6.0

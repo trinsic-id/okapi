@@ -3,7 +3,7 @@ syntax = "proto3";
 package okapi.hashing.v1;
 
 option csharp_namespace = "Okapi.Hashing.V1";
-option go_package = "github.com/trinsic-id/okapiproto";
+option go_package = "okapi/hashing/v1/hashing";
 option java_package = "trinsic.okapi.hashing.v1";
 
 

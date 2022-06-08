@@ -3,7 +3,7 @@ package okapi
 import (
 	"encoding/hex"
 	"github.com/stretchr/testify/assert"
-	"github.com/trinsic-id/okapi/go/okapiproto"
+	"github.com/trinsic-id/okapi/go/okapi/hashing/v1/hashing"
 	"testing"
 )
 
@@ -11,7 +11,7 @@ func TestSHA256Hash(t *testing.T) {
 	assert := assert.New(t)
 	h := Hashing()
 
-	request := okapiproto.SHA256HashRequest{}
+	request := hashing.SHA256HashRequest{}
 	request.Data = []byte("4113")
 
 	response, err := h.Sha256Hash(&request)
@@ -27,7 +27,7 @@ func TestBlake3Hash(t *testing.T) {
 	assert := assert.New(t)
 	h := Hashing()
 
-	request := okapiproto.Blake3HashRequest{}
+	request := hashing.Blake3HashRequest{}
 	request.Data = []byte{0, 1, 2}
 
 	response, err := h.Blake3Hash(&request)
@@ -43,7 +43,7 @@ func TestBlake3KeyedHash(t *testing.T) {
 	assert := assert.New(t)
 	h := Hashing()
 
-	request := okapiproto.Blake3KeyedHashRequest{}
+	request := hashing.Blake3KeyedHashRequest{}
 	request.Data = []byte{0, 1, 2}
 	request.Key = []byte("whats the Elvish word for friend")
 
@@ -60,7 +60,7 @@ func TestBlake3DeriveKey(t *testing.T) {
 	assert := assert.New(t)
 	h := Hashing()
 
-	request := okapiproto.Blake3DeriveKeyRequest{}
+	request := hashing.Blake3DeriveKeyRequest{}
 	request.KeyMaterial = []byte{0, 1, 2}
 	request.Context = []byte("BLAKE3 2019-12-27 16:29:52 test vectors context")
 

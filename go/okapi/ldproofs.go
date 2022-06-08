@@ -1,10 +1,10 @@
 package okapi
 
-import "github.com/trinsic-id/okapi/go/okapiproto"
+import "github.com/trinsic-id/okapi/go/okapi/proofs/v1/proofs"
 
 // LdProofer implements Linked-Data Proofs
 type LdProofer interface {
-	CreateProof(request *okapiproto.CreateProofRequest) (*okapiproto.CreateProofResponse, error)
+	CreateProof(request *proofs.CreateProofRequest) (*proofs.CreateProofResponse, error)
 }
 
 // LdProofs implements Linked-Data Proofs
@@ -14,8 +14,8 @@ func LdProofs() LdProofer {
 
 type ldProofs struct{}
 
-func (l *ldProofs) CreateProof(request *okapiproto.CreateProofRequest) (*okapiproto.CreateProofResponse, error) {
-	response := okapiproto.CreateProofResponse{}
+func (l *ldProofs) CreateProof(request *proofs.CreateProofRequest) (*proofs.CreateProofResponse, error) {
+	response := proofs.CreateProofResponse{}
 	err := callOkapiNative(request, &response, "ldproofs_create_proof")
 	return &response, err
 }

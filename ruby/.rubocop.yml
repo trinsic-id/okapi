@@ -1,4 +1,5 @@
 AllCops:
+  NewCops: enable
   TargetRubyVersion: 2.6
   Exclude:
     - '**/*.rbi' # Don't look at sorbet type hints

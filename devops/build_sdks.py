@@ -92,6 +92,12 @@ def clean_dir(language_dir: str) -> None:
     os.makedirs(language_dir, exist_ok=True)
 
 
+def remove_subdirs(base_dir: str) -> None:
+    sub_dirs = [f.path for f in os.scandir(base_dir) if f.is_dir()]
+    for folder in sub_dirs:
+        clean_dir(folder)
+
+
 def update_line(file_name: str, replace_lines: Dict[str, str]) -> None:
     with open(file_name, "r") as fid:
         file_lines = fid.readlines()
@@ -190,7 +196,7 @@ def build_golang(args) -> None:
 
 def build_dart(args) -> None:
     # Copy in Okapi libraries to the $GOLANG_LD_PATH directory
-    dart_dir = get_language_dir('dart')
+    dart_dir = get_language_dir("dart")
     update_line(
         join(dart_dir, "pubspec.yaml"),
         {"version:": f'version: "{get_package_versions(args)}"'},

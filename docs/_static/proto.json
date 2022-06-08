@@ -1,0 +1,2903 @@
+{
+  "index": {
+    "okapi.examples.v1.BasicMessage": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/examples/v1/examples.proto",
+      "parent": ""
+    },
+    "okapi.examples.v1.BasicMessage.text": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/examples/v1/examples.proto",
+      "parent": "okapi.examples.v1.BasicMessage"
+    },
+    "okapi.examples.v1.SecureExampleService": {
+      "type": "serviceProto",
+      "collection": "services",
+      "file": "okapi/examples/v1/examples.proto",
+      "parent": ""
+    },
+    "okapi.examples.v1.SecureExampleService.ServerStreaming": {
+      "type": "methodProto",
+      "collection": "methods",
+      "file": "okapi/examples/v1/examples.proto",
+      "parent": ""
+    },
+    "okapi.examples.v1.SecureExampleService.Unary": {
+      "type": "methodProto",
+      "collection": "methods",
+      "file": "okapi/examples/v1/examples.proto",
+      "parent": ""
+    },
+    "okapi.hashing.v1.Blake3DeriveKeyRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/hashing/v1/hashing.proto",
+      "parent": ""
+    },
+    "okapi.hashing.v1.Blake3DeriveKeyRequest.context": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/hashing/v1/hashing.proto",
+      "parent": "okapi.hashing.v1.Blake3DeriveKeyRequest"
+    },
+    "okapi.hashing.v1.Blake3DeriveKeyRequest.key_material": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/hashing/v1/hashing.proto",
+      "parent": "okapi.hashing.v1.Blake3DeriveKeyRequest"
+    },
+    "okapi.hashing.v1.Blake3DeriveKeyResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/hashing/v1/hashing.proto",
+      "parent": ""
+    },
+    "okapi.hashing.v1.Blake3DeriveKeyResponse.digest": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/hashing/v1/hashing.proto",
+      "parent": "okapi.hashing.v1.Blake3DeriveKeyResponse"
+    },
+    "okapi.hashing.v1.Blake3HashRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/hashing/v1/hashing.proto",
+      "parent": ""
+    },
+    "okapi.hashing.v1.Blake3HashRequest.data": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/hashing/v1/hashing.proto",
+      "parent": "okapi.hashing.v1.Blake3HashRequest"
+    },
+    "okapi.hashing.v1.Blake3HashResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/hashing/v1/hashing.proto",
+      "parent": ""
+    },
+    "okapi.hashing.v1.Blake3HashResponse.digest": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/hashing/v1/hashing.proto",
+      "parent": "okapi.hashing.v1.Blake3HashResponse"
+    },
+    "okapi.hashing.v1.Blake3KeyedHashRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/hashing/v1/hashing.proto",
+      "parent": ""
+    },
+    "okapi.hashing.v1.Blake3KeyedHashRequest.data": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/hashing/v1/hashing.proto",
+      "parent": "okapi.hashing.v1.Blake3KeyedHashRequest"
+    },
+    "okapi.hashing.v1.Blake3KeyedHashRequest.key": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/hashing/v1/hashing.proto",
+      "parent": "okapi.hashing.v1.Blake3KeyedHashRequest"
+    },
+    "okapi.hashing.v1.Blake3KeyedHashResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/hashing/v1/hashing.proto",
+      "parent": ""
+    },
+    "okapi.hashing.v1.Blake3KeyedHashResponse.digest": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/hashing/v1/hashing.proto",
+      "parent": "okapi.hashing.v1.Blake3KeyedHashResponse"
+    },
+    "okapi.hashing.v1.SHA256HashRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/hashing/v1/hashing.proto",
+      "parent": ""
+    },
+    "okapi.hashing.v1.SHA256HashRequest.data": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/hashing/v1/hashing.proto",
+      "parent": "okapi.hashing.v1.SHA256HashRequest"
+    },
+    "okapi.hashing.v1.SHA256HashResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/hashing/v1/hashing.proto",
+      "parent": ""
+    },
+    "okapi.hashing.v1.SHA256HashResponse.digest": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/hashing/v1/hashing.proto",
+      "parent": "okapi.hashing.v1.SHA256HashResponse"
+    },
+    "okapi.keys.v1.GenerateKeyRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": ""
+    },
+    "okapi.keys.v1.GenerateKeyRequest.key_type": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": "okapi.keys.v1.GenerateKeyRequest"
+    },
+    "okapi.keys.v1.GenerateKeyRequest.seed": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": "okapi.keys.v1.GenerateKeyRequest"
+    },
+    "okapi.keys.v1.GenerateKeyResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": ""
+    },
+    "okapi.keys.v1.GenerateKeyResponse.did_document": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": "okapi.keys.v1.GenerateKeyResponse"
+    },
+    "okapi.keys.v1.GenerateKeyResponse.key": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": "okapi.keys.v1.GenerateKeyResponse"
+    },
+    "okapi.keys.v1.JsonWebKey": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": ""
+    },
+    "okapi.keys.v1.JsonWebKey.crv": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": "okapi.keys.v1.JsonWebKey"
+    },
+    "okapi.keys.v1.JsonWebKey.d": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": "okapi.keys.v1.JsonWebKey"
+    },
+    "okapi.keys.v1.JsonWebKey.kid": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": "okapi.keys.v1.JsonWebKey"
+    },
+    "okapi.keys.v1.JsonWebKey.kty": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": "okapi.keys.v1.JsonWebKey"
+    },
+    "okapi.keys.v1.JsonWebKey.x": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": "okapi.keys.v1.JsonWebKey"
+    },
+    "okapi.keys.v1.JsonWebKey.y": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": "okapi.keys.v1.JsonWebKey"
+    },
+    "okapi.keys.v1.KeyType": {
+      "type": "enum",
+      "collection": "enums",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": ""
+    },
+    "okapi.keys.v1.KeyType.KEY_TYPE_BLS12381G1G2": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": "okapi.keys.v1.KeyType"
+    },
+    "okapi.keys.v1.KeyType.KEY_TYPE_ED25519": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": "okapi.keys.v1.KeyType"
+    },
+    "okapi.keys.v1.KeyType.KEY_TYPE_P256": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": "okapi.keys.v1.KeyType"
+    },
+    "okapi.keys.v1.KeyType.KEY_TYPE_SECP256K1": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": "okapi.keys.v1.KeyType"
+    },
+    "okapi.keys.v1.KeyType.KEY_TYPE_UNSPECIFIED": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": "okapi.keys.v1.KeyType"
+    },
+    "okapi.keys.v1.KeyType.KEY_TYPE_X25519": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": "okapi.keys.v1.KeyType"
+    },
+    "okapi.keys.v1.ResolveRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": ""
+    },
+    "okapi.keys.v1.ResolveRequest.did": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": "okapi.keys.v1.ResolveRequest"
+    },
+    "okapi.keys.v1.ResolveResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": ""
+    },
+    "okapi.keys.v1.ResolveResponse.did_document": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": "okapi.keys.v1.ResolveResponse"
+    },
+    "okapi.keys.v1.ResolveResponse.keys": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": "okapi.keys.v1.ResolveResponse"
+    },
+    "okapi.metadata.MetadataRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/metadata/metadata.proto",
+      "parent": ""
+    },
+    "okapi.metadata.MetadataResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/metadata/metadata.proto",
+      "parent": ""
+    },
+    "okapi.metadata.MetadataResponse.target_arch": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/metadata/metadata.proto",
+      "parent": "okapi.metadata.MetadataResponse"
+    },
+    "okapi.metadata.MetadataResponse.target_env": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/metadata/metadata.proto",
+      "parent": "okapi.metadata.MetadataResponse"
+    },
+    "okapi.metadata.MetadataResponse.target_family": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/metadata/metadata.proto",
+      "parent": "okapi.metadata.MetadataResponse"
+    },
+    "okapi.metadata.MetadataResponse.target_os": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/metadata/metadata.proto",
+      "parent": "okapi.metadata.MetadataResponse"
+    },
+    "okapi.metadata.MetadataResponse.target_vendor": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/metadata/metadata.proto",
+      "parent": "okapi.metadata.MetadataResponse"
+    },
+    "okapi.metadata.MetadataResponse.version": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/metadata/metadata.proto",
+      "parent": "okapi.metadata.MetadataResponse"
+    },
+    "okapi.metadata.MetadataResponse.version_major": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/metadata/metadata.proto",
+      "parent": "okapi.metadata.MetadataResponse"
+    },
+    "okapi.metadata.MetadataResponse.version_minor": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/metadata/metadata.proto",
+      "parent": "okapi.metadata.MetadataResponse"
+    },
+    "okapi.metadata.MetadataResponse.version_patch": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/metadata/metadata.proto",
+      "parent": "okapi.metadata.MetadataResponse"
+    },
+    "okapi.proofs.v1.CreateProofRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/proofs/v1/proofs.proto",
+      "parent": ""
+    },
+    "okapi.proofs.v1.CreateProofRequest.document": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/proofs/v1/proofs.proto",
+      "parent": "okapi.proofs.v1.CreateProofRequest"
+    },
+    "okapi.proofs.v1.CreateProofRequest.key": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/proofs/v1/proofs.proto",
+      "parent": "okapi.proofs.v1.CreateProofRequest"
+    },
+    "okapi.proofs.v1.CreateProofRequest.suite": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/proofs/v1/proofs.proto",
+      "parent": "okapi.proofs.v1.CreateProofRequest"
+    },
+    "okapi.proofs.v1.CreateProofResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/proofs/v1/proofs.proto",
+      "parent": ""
+    },
+    "okapi.proofs.v1.CreateProofResponse.signed_document": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/proofs/v1/proofs.proto",
+      "parent": "okapi.proofs.v1.CreateProofResponse"
+    },
+    "okapi.proofs.v1.LdSuite": {
+      "type": "enum",
+      "collection": "enums",
+      "file": "okapi/proofs/v1/proofs.proto",
+      "parent": ""
+    },
+    "okapi.proofs.v1.LdSuite.LD_SUITE_JCSED25519SIGNATURE2020": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "okapi/proofs/v1/proofs.proto",
+      "parent": "okapi.proofs.v1.LdSuite"
+    },
+    "okapi.proofs.v1.LdSuite.LD_SUITE_UNSPECIFIED": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "okapi/proofs/v1/proofs.proto",
+      "parent": "okapi.proofs.v1.LdSuite"
+    },
+    "okapi.proofs.v1.VerifyProofRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/proofs/v1/proofs.proto",
+      "parent": ""
+    },
+    "okapi.proofs.v1.VerifyProofResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/proofs/v1/proofs.proto",
+      "parent": ""
+    },
+    "okapi.security.v1.BlindOberonTokenRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/security/v1/security.proto",
+      "parent": ""
+    },
+    "okapi.security.v1.BlindOberonTokenRequest.blinding": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/security/v1/security.proto",
+      "parent": "okapi.security.v1.BlindOberonTokenRequest"
+    },
+    "okapi.security.v1.BlindOberonTokenRequest.token": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/security/v1/security.proto",
+      "parent": "okapi.security.v1.BlindOberonTokenRequest"
+    },
+    "okapi.security.v1.BlindOberonTokenResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/security/v1/security.proto",
+      "parent": ""
+    },
+    "okapi.security.v1.BlindOberonTokenResponse.token": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/security/v1/security.proto",
+      "parent": "okapi.security.v1.BlindOberonTokenResponse"
+    },
+    "okapi.security.v1.CreateOberonKeyRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/security/v1/security.proto",
+      "parent": ""
+    },
+    "okapi.security.v1.CreateOberonKeyRequest.seed": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/security/v1/security.proto",
+      "parent": "okapi.security.v1.CreateOberonKeyRequest"
+    },
+    "okapi.security.v1.CreateOberonKeyResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/security/v1/security.proto",
+      "parent": ""
+    },
+    "okapi.security.v1.CreateOberonKeyResponse.pk": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/security/v1/security.proto",
+      "parent": "okapi.security.v1.CreateOberonKeyResponse"
+    },
+    "okapi.security.v1.CreateOberonKeyResponse.sk": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/security/v1/security.proto",
+      "parent": "okapi.security.v1.CreateOberonKeyResponse"
+    },
+    "okapi.security.v1.CreateOberonProofRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/security/v1/security.proto",
+      "parent": ""
+    },
+    "okapi.security.v1.CreateOberonProofRequest.blinding": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/security/v1/security.proto",
+      "parent": "okapi.security.v1.CreateOberonProofRequest"
+    },
+    "okapi.security.v1.CreateOberonProofRequest.data": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/security/v1/security.proto",
+      "parent": "okapi.security.v1.CreateOberonProofRequest"
+    },
+    "okapi.security.v1.CreateOberonProofRequest.nonce": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/security/v1/security.proto",
+      "parent": "okapi.security.v1.CreateOberonProofRequest"
+    },
+    "okapi.security.v1.CreateOberonProofRequest.token": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/security/v1/security.proto",
+      "parent": "okapi.security.v1.CreateOberonProofRequest"
+    },
+    "okapi.security.v1.CreateOberonProofResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/security/v1/security.proto",
+      "parent": ""
+    },
+    "okapi.security.v1.CreateOberonProofResponse.proof": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/security/v1/security.proto",
+      "parent": "okapi.security.v1.CreateOberonProofResponse"
+    },
+    "okapi.security.v1.CreateOberonTokenRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/security/v1/security.proto",
+      "parent": ""
+    },
+    "okapi.security.v1.CreateOberonTokenRequest.blinding": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/security/v1/security.proto",
+      "parent": "okapi.security.v1.CreateOberonTokenRequest"
+    },
+    "okapi.security.v1.CreateOberonTokenRequest.data": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/security/v1/security.proto",
+      "parent": "okapi.security.v1.CreateOberonTokenRequest"
+    },
+    "okapi.security.v1.CreateOberonTokenRequest.sk": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/security/v1/security.proto",
+      "parent": "okapi.security.v1.CreateOberonTokenRequest"
+    },
+    "okapi.security.v1.CreateOberonTokenResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/security/v1/security.proto",
+      "parent": ""
+    },
+    "okapi.security.v1.CreateOberonTokenResponse.token": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/security/v1/security.proto",
+      "parent": "okapi.security.v1.CreateOberonTokenResponse"
+    },
+    "okapi.security.v1.UnBlindOberonTokenRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/security/v1/security.proto",
+      "parent": ""
+    },
+    "okapi.security.v1.UnBlindOberonTokenRequest.blinding": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/security/v1/security.proto",
+      "parent": "okapi.security.v1.UnBlindOberonTokenRequest"
+    },
+    "okapi.security.v1.UnBlindOberonTokenRequest.token": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/security/v1/security.proto",
+      "parent": "okapi.security.v1.UnBlindOberonTokenRequest"
+    },
+    "okapi.security.v1.UnBlindOberonTokenResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/security/v1/security.proto",
+      "parent": ""
+    },
+    "okapi.security.v1.UnBlindOberonTokenResponse.token": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/security/v1/security.proto",
+      "parent": "okapi.security.v1.UnBlindOberonTokenResponse"
+    },
+    "okapi.security.v1.VerifyOberonProofRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/security/v1/security.proto",
+      "parent": ""
+    },
+    "okapi.security.v1.VerifyOberonProofRequest.data": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/security/v1/security.proto",
+      "parent": "okapi.security.v1.VerifyOberonProofRequest"
+    },
+    "okapi.security.v1.VerifyOberonProofRequest.nonce": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/security/v1/security.proto",
+      "parent": "okapi.security.v1.VerifyOberonProofRequest"
+    },
+    "okapi.security.v1.VerifyOberonProofRequest.pk": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/security/v1/security.proto",
+      "parent": "okapi.security.v1.VerifyOberonProofRequest"
+    },
+    "okapi.security.v1.VerifyOberonProofRequest.proof": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/security/v1/security.proto",
+      "parent": "okapi.security.v1.VerifyOberonProofRequest"
+    },
+    "okapi.security.v1.VerifyOberonProofResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/security/v1/security.proto",
+      "parent": ""
+    },
+    "okapi.security.v1.VerifyOberonProofResponse.valid": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/security/v1/security.proto",
+      "parent": "okapi.security.v1.VerifyOberonProofResponse"
+    },
+    "okapi.security.v1.VerifyOberonTokenRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/security/v1/security.proto",
+      "parent": ""
+    },
+    "okapi.security.v1.VerifyOberonTokenRequest.data": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/security/v1/security.proto",
+      "parent": "okapi.security.v1.VerifyOberonTokenRequest"
+    },
+    "okapi.security.v1.VerifyOberonTokenRequest.pk": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/security/v1/security.proto",
+      "parent": "okapi.security.v1.VerifyOberonTokenRequest"
+    },
+    "okapi.security.v1.VerifyOberonTokenRequest.token": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/security/v1/security.proto",
+      "parent": "okapi.security.v1.VerifyOberonTokenRequest"
+    },
+    "okapi.security.v1.VerifyOberonTokenResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/security/v1/security.proto",
+      "parent": ""
+    },
+    "okapi.security.v1.VerifyOberonTokenResponse.valid": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/security/v1/security.proto",
+      "parent": "okapi.security.v1.VerifyOberonTokenResponse"
+    },
+    "okapi.transport.v1.CoreMessage": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": ""
+    },
+    "okapi.transport.v1.CoreMessage.body": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": "okapi.transport.v1.CoreMessage"
+    },
+    "okapi.transport.v1.CoreMessage.created": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": "okapi.transport.v1.CoreMessage"
+    },
+    "okapi.transport.v1.CoreMessage.expires": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": "okapi.transport.v1.CoreMessage"
+    },
+    "okapi.transport.v1.CoreMessage.from": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": "okapi.transport.v1.CoreMessage"
+    },
+    "okapi.transport.v1.CoreMessage.id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": "okapi.transport.v1.CoreMessage"
+    },
+    "okapi.transport.v1.CoreMessage.to": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": "okapi.transport.v1.CoreMessage"
+    },
+    "okapi.transport.v1.CoreMessage.type": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": "okapi.transport.v1.CoreMessage"
+    },
+    "okapi.transport.v1.PackRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": ""
+    },
+    "okapi.transport.v1.PackRequest.algorithm": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": "okapi.transport.v1.PackRequest"
+    },
+    "okapi.transport.v1.PackRequest.associated_data": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": "okapi.transport.v1.PackRequest"
+    },
+    "okapi.transport.v1.PackRequest.mode": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": "okapi.transport.v1.PackRequest"
+    },
+    "okapi.transport.v1.PackRequest.plaintext": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": "okapi.transport.v1.PackRequest"
+    },
+    "okapi.transport.v1.PackRequest.receiver_key": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": "okapi.transport.v1.PackRequest"
+    },
+    "okapi.transport.v1.PackRequest.sender_key": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": "okapi.transport.v1.PackRequest"
+    },
+    "okapi.transport.v1.PackResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": ""
+    },
+    "okapi.transport.v1.PackResponse.message": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": "okapi.transport.v1.PackResponse"
+    },
+    "okapi.transport.v1.SignRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": ""
+    },
+    "okapi.transport.v1.SignRequest.append_to": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": "okapi.transport.v1.SignRequest"
+    },
+    "okapi.transport.v1.SignRequest.key": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": "okapi.transport.v1.SignRequest"
+    },
+    "okapi.transport.v1.SignRequest.payload": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": "okapi.transport.v1.SignRequest"
+    },
+    "okapi.transport.v1.SignResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": ""
+    },
+    "okapi.transport.v1.SignResponse.message": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": "okapi.transport.v1.SignResponse"
+    },
+    "okapi.transport.v1.UnpackRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": ""
+    },
+    "okapi.transport.v1.UnpackRequest.message": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": "okapi.transport.v1.UnpackRequest"
+    },
+    "okapi.transport.v1.UnpackRequest.receiver_key": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": "okapi.transport.v1.UnpackRequest"
+    },
+    "okapi.transport.v1.UnpackRequest.sender_key": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": "okapi.transport.v1.UnpackRequest"
+    },
+    "okapi.transport.v1.UnpackResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": ""
+    },
+    "okapi.transport.v1.UnpackResponse.plaintext": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": "okapi.transport.v1.UnpackResponse"
+    },
+    "okapi.transport.v1.VerifyRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": ""
+    },
+    "okapi.transport.v1.VerifyRequest.key": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": "okapi.transport.v1.VerifyRequest"
+    },
+    "okapi.transport.v1.VerifyRequest.message": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": "okapi.transport.v1.VerifyRequest"
+    },
+    "okapi.transport.v1.VerifyResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": ""
+    },
+    "okapi.transport.v1.VerifyResponse.is_valid": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/transport/v1/transport.proto",
+      "parent": "okapi.transport.v1.VerifyResponse"
+    },
+    "pbmse.v1.EncryptedMessage": {
+      "type": "message",
+      "collection": "messages",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": ""
+    },
+    "pbmse.v1.EncryptedMessage.aad": {
+      "type": "field",
+      "collection": "fields",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": "pbmse.v1.EncryptedMessage"
+    },
+    "pbmse.v1.EncryptedMessage.ciphertext": {
+      "type": "field",
+      "collection": "fields",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": "pbmse.v1.EncryptedMessage"
+    },
+    "pbmse.v1.EncryptedMessage.iv": {
+      "type": "field",
+      "collection": "fields",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": "pbmse.v1.EncryptedMessage"
+    },
+    "pbmse.v1.EncryptedMessage.recipients": {
+      "type": "field",
+      "collection": "fields",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": "pbmse.v1.EncryptedMessage"
+    },
+    "pbmse.v1.EncryptedMessage.tag": {
+      "type": "field",
+      "collection": "fields",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": "pbmse.v1.EncryptedMessage"
+    },
+    "pbmse.v1.EncryptionAlgorithm": {
+      "type": "enum",
+      "collection": "enums",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": ""
+    },
+    "pbmse.v1.EncryptionAlgorithm.ENCRYPTION_ALGORITHM_AES_GCM": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": "pbmse.v1.EncryptionAlgorithm"
+    },
+    "pbmse.v1.EncryptionAlgorithm.ENCRYPTION_ALGORITHM_UNSPECIFIED": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": "pbmse.v1.EncryptionAlgorithm"
+    },
+    "pbmse.v1.EncryptionAlgorithm.ENCRYPTION_ALGORITHM_XCHACHA20POLY1305": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": "pbmse.v1.EncryptionAlgorithm"
+    },
+    "pbmse.v1.EncryptionHeader": {
+      "type": "message",
+      "collection": "messages",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": ""
+    },
+    "pbmse.v1.EncryptionHeader.algorithm": {
+      "type": "field",
+      "collection": "fields",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": "pbmse.v1.EncryptionHeader"
+    },
+    "pbmse.v1.EncryptionHeader.key_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": "pbmse.v1.EncryptionHeader"
+    },
+    "pbmse.v1.EncryptionHeader.mode": {
+      "type": "field",
+      "collection": "fields",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": "pbmse.v1.EncryptionHeader"
+    },
+    "pbmse.v1.EncryptionHeader.sender_key_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": "pbmse.v1.EncryptionHeader"
+    },
+    "pbmse.v1.EncryptionMode": {
+      "type": "enum",
+      "collection": "enums",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": ""
+    },
+    "pbmse.v1.EncryptionMode.ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": "pbmse.v1.EncryptionMode"
+    },
+    "pbmse.v1.EncryptionMode.ENCRYPTION_MODE_DIRECT": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": "pbmse.v1.EncryptionMode"
+    },
+    "pbmse.v1.EncryptionMode.ENCRYPTION_MODE_UNSPECIFIED": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": "pbmse.v1.EncryptionMode"
+    },
+    "pbmse.v1.EncryptionRecipient": {
+      "type": "message",
+      "collection": "messages",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": ""
+    },
+    "pbmse.v1.EncryptionRecipient.content_encryption_key": {
+      "type": "field",
+      "collection": "fields",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": "pbmse.v1.EncryptionRecipient"
+    },
+    "pbmse.v1.EncryptionRecipient.header": {
+      "type": "field",
+      "collection": "fields",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": "pbmse.v1.EncryptionRecipient"
+    },
+    "pbmse.v1.Signature": {
+      "type": "message",
+      "collection": "messages",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": ""
+    },
+    "pbmse.v1.Signature.header": {
+      "type": "field",
+      "collection": "fields",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": "pbmse.v1.Signature"
+    },
+    "pbmse.v1.Signature.signature": {
+      "type": "field",
+      "collection": "fields",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": "pbmse.v1.Signature"
+    },
+    "pbmse.v1.SignatureHeader": {
+      "type": "message",
+      "collection": "messages",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": ""
+    },
+    "pbmse.v1.SignatureHeader.algorithm": {
+      "type": "field",
+      "collection": "fields",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": "pbmse.v1.SignatureHeader"
+    },
+    "pbmse.v1.SignatureHeader.key_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": "pbmse.v1.SignatureHeader"
+    },
+    "pbmse.v1.SignedMessage": {
+      "type": "message",
+      "collection": "messages",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": ""
+    },
+    "pbmse.v1.SignedMessage.payload": {
+      "type": "field",
+      "collection": "fields",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": "pbmse.v1.SignedMessage"
+    },
+    "pbmse.v1.SignedMessage.signatures": {
+      "type": "field",
+      "collection": "fields",
+      "file": "pbmse/v1/pbmse.proto",
+      "parent": "pbmse.v1.SignedMessage"
+    }
+  },
+  "files": {
+    "okapi/examples/v1/examples.proto": {
+      "name": "okapi/examples/v1/examples.proto",
+      "package": "okapi.examples.v1",
+      "description": "",
+      "services": [
+        "okapi.examples.v1.SecureExampleService"
+      ],
+      "methods": [
+        "okapi.examples.v1.SecureExampleService.Unary",
+        "okapi.examples.v1.SecureExampleService.ServerStreaming"
+      ],
+      "messages": [
+        "okapi.examples.v1.BasicMessage"
+      ],
+      "fields": [
+        "okapi.examples.v1.BasicMessage.text"
+      ],
+      "enums": [],
+      "enum_values": []
+    },
+    "okapi/hashing/v1/hashing.proto": {
+      "name": "okapi/hashing/v1/hashing.proto",
+      "package": "okapi.hashing.v1",
+      "description": "",
+      "services": [],
+      "methods": [],
+      "messages": [
+        "okapi.hashing.v1.Blake3HashRequest",
+        "okapi.hashing.v1.Blake3HashResponse",
+        "okapi.hashing.v1.Blake3KeyedHashRequest",
+        "okapi.hashing.v1.Blake3KeyedHashResponse",
+        "okapi.hashing.v1.Blake3DeriveKeyRequest",
+        "okapi.hashing.v1.Blake3DeriveKeyResponse",
+        "okapi.hashing.v1.SHA256HashRequest",
+        "okapi.hashing.v1.SHA256HashResponse"
+      ],
+      "fields": [
+        "okapi.hashing.v1.Blake3HashRequest.data",
+        "okapi.hashing.v1.Blake3HashResponse.digest",
+        "okapi.hashing.v1.Blake3KeyedHashRequest.data",
+        "okapi.hashing.v1.Blake3KeyedHashRequest.key",
+        "okapi.hashing.v1.Blake3KeyedHashResponse.digest",
+        "okapi.hashing.v1.Blake3DeriveKeyRequest.context",
+        "okapi.hashing.v1.Blake3DeriveKeyRequest.key_material",
+        "okapi.hashing.v1.Blake3DeriveKeyResponse.digest",
+        "okapi.hashing.v1.SHA256HashRequest.data",
+        "okapi.hashing.v1.SHA256HashResponse.digest"
+      ],
+      "enums": [],
+      "enum_values": []
+    },
+    "okapi/keys/v1/keys.proto": {
+      "name": "okapi/keys/v1/keys.proto",
+      "package": "okapi.keys.v1",
+      "description": "",
+      "services": [],
+      "methods": [],
+      "messages": [
+        "okapi.keys.v1.GenerateKeyRequest",
+        "okapi.keys.v1.GenerateKeyResponse",
+        "okapi.keys.v1.ResolveRequest",
+        "okapi.keys.v1.ResolveResponse",
+        "okapi.keys.v1.JsonWebKey"
+      ],
+      "fields": [
+        "okapi.keys.v1.GenerateKeyRequest.seed",
+        "okapi.keys.v1.GenerateKeyRequest.key_type",
+        "okapi.keys.v1.GenerateKeyResponse.key",
+        "okapi.keys.v1.GenerateKeyResponse.did_document",
+        "okapi.keys.v1.ResolveRequest.did",
+        "okapi.keys.v1.ResolveResponse.did_document",
+        "okapi.keys.v1.ResolveResponse.keys",
+        "okapi.keys.v1.JsonWebKey.kid",
+        "okapi.keys.v1.JsonWebKey.x",
+        "okapi.keys.v1.JsonWebKey.y",
+        "okapi.keys.v1.JsonWebKey.d",
+        "okapi.keys.v1.JsonWebKey.crv",
+        "okapi.keys.v1.JsonWebKey.kty"
+      ],
+      "enums": [
+        "okapi.keys.v1.KeyType"
+      ],
+      "enum_values": [
+        "okapi.keys.v1.KeyType.KEY_TYPE_UNSPECIFIED",
+        "okapi.keys.v1.KeyType.KEY_TYPE_ED25519",
+        "okapi.keys.v1.KeyType.KEY_TYPE_X25519",
+        "okapi.keys.v1.KeyType.KEY_TYPE_P256",
+        "okapi.keys.v1.KeyType.KEY_TYPE_BLS12381G1G2",
+        "okapi.keys.v1.KeyType.KEY_TYPE_SECP256K1"
+      ]
+    },
+    "okapi/metadata/metadata.proto": {
+      "name": "okapi/metadata/metadata.proto",
+      "package": "okapi.metadata",
+      "description": "",
+      "services": [],
+      "methods": [],
+      "messages": [
+        "okapi.metadata.MetadataRequest",
+        "okapi.metadata.MetadataResponse"
+      ],
+      "fields": [
+        "okapi.metadata.MetadataResponse.version",
+        "okapi.metadata.MetadataResponse.version_major",
+        "okapi.metadata.MetadataResponse.version_minor",
+        "okapi.metadata.MetadataResponse.version_patch",
+        "okapi.metadata.MetadataResponse.target_family",
+        "okapi.metadata.MetadataResponse.target_os",
+        "okapi.metadata.MetadataResponse.target_arch",
+        "okapi.metadata.MetadataResponse.target_vendor",
+        "okapi.metadata.MetadataResponse.target_env"
+      ],
+      "enums": [],
+      "enum_values": []
+    },
+    "okapi/proofs/v1/proofs.proto": {
+      "name": "okapi/proofs/v1/proofs.proto",
+      "package": "okapi.proofs.v1",
+      "description": "",
+      "services": [],
+      "methods": [],
+      "messages": [
+        "okapi.proofs.v1.CreateProofRequest",
+        "okapi.proofs.v1.CreateProofResponse",
+        "okapi.proofs.v1.VerifyProofRequest",
+        "okapi.proofs.v1.VerifyProofResponse"
+      ],
+      "fields": [
+        "okapi.proofs.v1.CreateProofRequest.document",
+        "okapi.proofs.v1.CreateProofRequest.key",
+        "okapi.proofs.v1.CreateProofRequest.suite",
+        "okapi.proofs.v1.CreateProofResponse.signed_document"
+      ],
+      "enums": [
+        "okapi.proofs.v1.LdSuite"
+      ],
+      "enum_values": [
+        "okapi.proofs.v1.LdSuite.LD_SUITE_UNSPECIFIED",
+        "okapi.proofs.v1.LdSuite.LD_SUITE_JCSED25519SIGNATURE2020"
+      ]
+    },
+    "okapi/security/v1/security.proto": {
+      "name": "okapi/security/v1/security.proto",
+      "package": "okapi.security.v1",
+      "description": "",
+      "services": [],
+      "methods": [],
+      "messages": [
+        "okapi.security.v1.CreateOberonKeyRequest",
+        "okapi.security.v1.CreateOberonKeyResponse",
+        "okapi.security.v1.CreateOberonTokenRequest",
+        "okapi.security.v1.CreateOberonTokenResponse",
+        "okapi.security.v1.CreateOberonProofRequest",
+        "okapi.security.v1.CreateOberonProofResponse",
+        "okapi.security.v1.VerifyOberonProofRequest",
+        "okapi.security.v1.VerifyOberonProofResponse",
+        "okapi.security.v1.BlindOberonTokenRequest",
+        "okapi.security.v1.BlindOberonTokenResponse",
+        "okapi.security.v1.UnBlindOberonTokenRequest",
+        "okapi.security.v1.UnBlindOberonTokenResponse",
+        "okapi.security.v1.VerifyOberonTokenRequest",
+        "okapi.security.v1.VerifyOberonTokenResponse"
+      ],
+      "fields": [
+        "okapi.security.v1.CreateOberonKeyRequest.seed",
+        "okapi.security.v1.CreateOberonKeyResponse.sk",
+        "okapi.security.v1.CreateOberonKeyResponse.pk",
+        "okapi.security.v1.CreateOberonTokenRequest.sk",
+        "okapi.security.v1.CreateOberonTokenRequest.data",
+        "okapi.security.v1.CreateOberonTokenRequest.blinding",
+        "okapi.security.v1.CreateOberonTokenResponse.token",
+        "okapi.security.v1.CreateOberonProofRequest.data",
+        "okapi.security.v1.CreateOberonProofRequest.token",
+        "okapi.security.v1.CreateOberonProofRequest.blinding",
+        "okapi.security.v1.CreateOberonProofRequest.nonce",
+        "okapi.security.v1.CreateOberonProofResponse.proof",
+        "okapi.security.v1.VerifyOberonProofRequest.proof",
+        "okapi.security.v1.VerifyOberonProofRequest.data",
+        "okapi.security.v1.VerifyOberonProofRequest.nonce",
+        "okapi.security.v1.VerifyOberonProofRequest.pk",
+        "okapi.security.v1.VerifyOberonProofResponse.valid",
+        "okapi.security.v1.BlindOberonTokenRequest.token",
+        "okapi.security.v1.BlindOberonTokenRequest.blinding",
+        "okapi.security.v1.BlindOberonTokenResponse.token",
+        "okapi.security.v1.UnBlindOberonTokenRequest.token",
+        "okapi.security.v1.UnBlindOberonTokenRequest.blinding",
+        "okapi.security.v1.UnBlindOberonTokenResponse.token",
+        "okapi.security.v1.VerifyOberonTokenRequest.token",
+        "okapi.security.v1.VerifyOberonTokenRequest.pk",
+        "okapi.security.v1.VerifyOberonTokenRequest.data",
+        "okapi.security.v1.VerifyOberonTokenResponse.valid"
+      ],
+      "enums": [],
+      "enum_values": []
+    },
+    "okapi/transport/v1/transport.proto": {
+      "name": "okapi/transport/v1/transport.proto",
+      "package": "okapi.transport.v1",
+      "description": "",
+      "services": [],
+      "methods": [],
+      "messages": [
+        "okapi.transport.v1.SignRequest",
+        "okapi.transport.v1.SignResponse",
+        "okapi.transport.v1.VerifyRequest",
+        "okapi.transport.v1.VerifyResponse",
+        "okapi.transport.v1.PackRequest",
+        "okapi.transport.v1.PackResponse",
+        "okapi.transport.v1.UnpackRequest",
+        "okapi.transport.v1.UnpackResponse",
+        "okapi.transport.v1.CoreMessage"
+      ],
+      "fields": [
+        "okapi.transport.v1.SignRequest.payload",
+        "okapi.transport.v1.SignRequest.key",
+        "okapi.transport.v1.SignRequest.append_to",
+        "okapi.transport.v1.SignResponse.message",
+        "okapi.transport.v1.VerifyRequest.message",
+        "okapi.transport.v1.VerifyRequest.key",
+        "okapi.transport.v1.VerifyResponse.is_valid",
+        "okapi.transport.v1.PackRequest.sender_key",
+        "okapi.transport.v1.PackRequest.receiver_key",
+        "okapi.transport.v1.PackRequest.associated_data",
+        "okapi.transport.v1.PackRequest.plaintext",
+        "okapi.transport.v1.PackRequest.mode",
+        "okapi.transport.v1.PackRequest.algorithm",
+        "okapi.transport.v1.PackResponse.message",
+        "okapi.transport.v1.UnpackRequest.sender_key",
+        "okapi.transport.v1.UnpackRequest.receiver_key",
+        "okapi.transport.v1.UnpackRequest.message",
+        "okapi.transport.v1.UnpackResponse.plaintext",
+        "okapi.transport.v1.CoreMessage.id",
+        "okapi.transport.v1.CoreMessage.type",
+        "okapi.transport.v1.CoreMessage.body",
+        "okapi.transport.v1.CoreMessage.to",
+        "okapi.transport.v1.CoreMessage.from",
+        "okapi.transport.v1.CoreMessage.created",
+        "okapi.transport.v1.CoreMessage.expires"
+      ],
+      "enums": [],
+      "enum_values": []
+    },
+    "pbmse/v1/pbmse.proto": {
+      "name": "pbmse/v1/pbmse.proto",
+      "package": "pbmse.v1",
+      "description": "",
+      "services": [],
+      "methods": [],
+      "messages": [
+        "pbmse.v1.SignedMessage",
+        "pbmse.v1.Signature",
+        "pbmse.v1.SignatureHeader",
+        "pbmse.v1.EncryptedMessage",
+        "pbmse.v1.EncryptionHeader",
+        "pbmse.v1.EncryptionRecipient"
+      ],
+      "fields": [
+        "pbmse.v1.SignedMessage.payload",
+        "pbmse.v1.SignedMessage.signatures",
+        "pbmse.v1.Signature.header",
+        "pbmse.v1.Signature.signature",
+        "pbmse.v1.SignatureHeader.algorithm",
+        "pbmse.v1.SignatureHeader.key_id",
+        "pbmse.v1.EncryptedMessage.iv",
+        "pbmse.v1.EncryptedMessage.aad",
+        "pbmse.v1.EncryptedMessage.ciphertext",
+        "pbmse.v1.EncryptedMessage.tag",
+        "pbmse.v1.EncryptedMessage.recipients",
+        "pbmse.v1.EncryptionHeader.mode",
+        "pbmse.v1.EncryptionHeader.algorithm",
+        "pbmse.v1.EncryptionHeader.key_id",
+        "pbmse.v1.EncryptionHeader.sender_key_id",
+        "pbmse.v1.EncryptionRecipient.header",
+        "pbmse.v1.EncryptionRecipient.content_encryption_key"
+      ],
+      "enums": [
+        "pbmse.v1.EncryptionMode",
+        "pbmse.v1.EncryptionAlgorithm"
+      ],
+      "enum_values": [
+        "pbmse.v1.EncryptionMode.ENCRYPTION_MODE_UNSPECIFIED",
+        "pbmse.v1.EncryptionMode.ENCRYPTION_MODE_DIRECT",
+        "pbmse.v1.EncryptionMode.ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY",
+        "pbmse.v1.EncryptionAlgorithm.ENCRYPTION_ALGORITHM_UNSPECIFIED",
+        "pbmse.v1.EncryptionAlgorithm.ENCRYPTION_ALGORITHM_XCHACHA20POLY1305",
+        "pbmse.v1.EncryptionAlgorithm.ENCRYPTION_ALGORITHM_AES_GCM"
+      ]
+    }
+  },
+  "services": {
+    "okapi.examples.v1.SecureExampleService": {
+      "name": "SecureExampleService",
+      "full_name": "okapi.examples.v1.SecureExampleService",
+      "description": "",
+      "methods": [
+        "okapi.examples.v1.SecureExampleService.Unary",
+        "okapi.examples.v1.SecureExampleService.ServerStreaming"
+      ]
+    }
+  },
+  "methods": {
+    "okapi.examples.v1.SecureExampleService.ServerStreaming": {
+      "name": "ServerStreaming",
+      "full_name": "okapi.examples.v1.SecureExampleService.ServerStreaming",
+      "input_type": "pbmse.v1.EncryptedMessage",
+      "output_type": "pbmse.v1.EncryptedMessage",
+      "description": ""
+    },
+    "okapi.examples.v1.SecureExampleService.Unary": {
+      "name": "Unary",
+      "full_name": "okapi.examples.v1.SecureExampleService.Unary",
+      "input_type": "pbmse.v1.EncryptedMessage",
+      "output_type": "pbmse.v1.EncryptedMessage",
+      "description": ""
+    }
+  },
+  "messages": {
+    "okapi.examples.v1.BasicMessage": {
+      "name": "BasicMessage",
+      "full_name": "okapi.examples.v1.BasicMessage",
+      "description": "",
+      "fields": [
+        "okapi.examples.v1.BasicMessage.text"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.hashing.v1.Blake3DeriveKeyRequest": {
+      "name": "Blake3DeriveKeyRequest",
+      "full_name": "okapi.hashing.v1.Blake3DeriveKeyRequest",
+      "description": "",
+      "fields": [
+        "okapi.hashing.v1.Blake3DeriveKeyRequest.context",
+        "okapi.hashing.v1.Blake3DeriveKeyRequest.key_material"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.hashing.v1.Blake3DeriveKeyResponse": {
+      "name": "Blake3DeriveKeyResponse",
+      "full_name": "okapi.hashing.v1.Blake3DeriveKeyResponse",
+      "description": "",
+      "fields": [
+        "okapi.hashing.v1.Blake3DeriveKeyResponse.digest"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.hashing.v1.Blake3HashRequest": {
+      "name": "Blake3HashRequest",
+      "full_name": "okapi.hashing.v1.Blake3HashRequest",
+      "description": "",
+      "fields": [
+        "okapi.hashing.v1.Blake3HashRequest.data"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.hashing.v1.Blake3HashResponse": {
+      "name": "Blake3HashResponse",
+      "full_name": "okapi.hashing.v1.Blake3HashResponse",
+      "description": "",
+      "fields": [
+        "okapi.hashing.v1.Blake3HashResponse.digest"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.hashing.v1.Blake3KeyedHashRequest": {
+      "name": "Blake3KeyedHashRequest",
+      "full_name": "okapi.hashing.v1.Blake3KeyedHashRequest",
+      "description": "",
+      "fields": [
+        "okapi.hashing.v1.Blake3KeyedHashRequest.data",
+        "okapi.hashing.v1.Blake3KeyedHashRequest.key"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.hashing.v1.Blake3KeyedHashResponse": {
+      "name": "Blake3KeyedHashResponse",
+      "full_name": "okapi.hashing.v1.Blake3KeyedHashResponse",
+      "description": "",
+      "fields": [
+        "okapi.hashing.v1.Blake3KeyedHashResponse.digest"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.hashing.v1.SHA256HashRequest": {
+      "name": "SHA256HashRequest",
+      "full_name": "okapi.hashing.v1.SHA256HashRequest",
+      "description": "",
+      "fields": [
+        "okapi.hashing.v1.SHA256HashRequest.data"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.hashing.v1.SHA256HashResponse": {
+      "name": "SHA256HashResponse",
+      "full_name": "okapi.hashing.v1.SHA256HashResponse",
+      "description": "",
+      "fields": [
+        "okapi.hashing.v1.SHA256HashResponse.digest"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.keys.v1.GenerateKeyRequest": {
+      "name": "GenerateKeyRequest",
+      "full_name": "okapi.keys.v1.GenerateKeyRequest",
+      "description": "",
+      "fields": [
+        "okapi.keys.v1.GenerateKeyRequest.seed",
+        "okapi.keys.v1.GenerateKeyRequest.key_type"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.keys.v1.GenerateKeyResponse": {
+      "name": "GenerateKeyResponse",
+      "full_name": "okapi.keys.v1.GenerateKeyResponse",
+      "description": "",
+      "fields": [
+        "okapi.keys.v1.GenerateKeyResponse.key",
+        "okapi.keys.v1.GenerateKeyResponse.did_document"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.keys.v1.JsonWebKey": {
+      "name": "JsonWebKey",
+      "full_name": "okapi.keys.v1.JsonWebKey",
+      "description": "",
+      "fields": [
+        "okapi.keys.v1.JsonWebKey.kid",
+        "okapi.keys.v1.JsonWebKey.x",
+        "okapi.keys.v1.JsonWebKey.y",
+        "okapi.keys.v1.JsonWebKey.d",
+        "okapi.keys.v1.JsonWebKey.crv",
+        "okapi.keys.v1.JsonWebKey.kty"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.keys.v1.ResolveRequest": {
+      "name": "ResolveRequest",
+      "full_name": "okapi.keys.v1.ResolveRequest",
+      "description": "",
+      "fields": [
+        "okapi.keys.v1.ResolveRequest.did"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.keys.v1.ResolveResponse": {
+      "name": "ResolveResponse",
+      "full_name": "okapi.keys.v1.ResolveResponse",
+      "description": "",
+      "fields": [
+        "okapi.keys.v1.ResolveResponse.did_document",
+        "okapi.keys.v1.ResolveResponse.keys"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.metadata.MetadataRequest": {
+      "name": "MetadataRequest",
+      "full_name": "okapi.metadata.MetadataRequest",
+      "description": "Request custom metadata about the native okapi binaries - cannot get cargo env vars at runtime\n\nrepeated string variables = 1; // optional field, can contain any of the cargo env vars",
+      "fields": [],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.metadata.MetadataResponse": {
+      "name": "MetadataResponse",
+      "full_name": "okapi.metadata.MetadataResponse",
+      "description": "Metadata information about the native okapi binaries. Always returns the version information",
+      "fields": [
+        "okapi.metadata.MetadataResponse.version",
+        "okapi.metadata.MetadataResponse.version_major",
+        "okapi.metadata.MetadataResponse.version_minor",
+        "okapi.metadata.MetadataResponse.version_patch",
+        "okapi.metadata.MetadataResponse.target_family",
+        "okapi.metadata.MetadataResponse.target_os",
+        "okapi.metadata.MetadataResponse.target_arch",
+        "okapi.metadata.MetadataResponse.target_vendor",
+        "okapi.metadata.MetadataResponse.target_env"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.proofs.v1.CreateProofRequest": {
+      "name": "CreateProofRequest",
+      "full_name": "okapi.proofs.v1.CreateProofRequest",
+      "description": "",
+      "fields": [
+        "okapi.proofs.v1.CreateProofRequest.document",
+        "okapi.proofs.v1.CreateProofRequest.key",
+        "okapi.proofs.v1.CreateProofRequest.suite"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.proofs.v1.CreateProofResponse": {
+      "name": "CreateProofResponse",
+      "full_name": "okapi.proofs.v1.CreateProofResponse",
+      "description": "",
+      "fields": [
+        "okapi.proofs.v1.CreateProofResponse.signed_document"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.proofs.v1.VerifyProofRequest": {
+      "name": "VerifyProofRequest",
+      "full_name": "okapi.proofs.v1.VerifyProofRequest",
+      "description": "",
+      "fields": [],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.proofs.v1.VerifyProofResponse": {
+      "name": "VerifyProofResponse",
+      "full_name": "okapi.proofs.v1.VerifyProofResponse",
+      "description": "",
+      "fields": [],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.security.v1.BlindOberonTokenRequest": {
+      "name": "BlindOberonTokenRequest",
+      "full_name": "okapi.security.v1.BlindOberonTokenRequest",
+      "description": "Blind an oberon token",
+      "fields": [
+        "okapi.security.v1.BlindOberonTokenRequest.token",
+        "okapi.security.v1.BlindOberonTokenRequest.blinding"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.security.v1.BlindOberonTokenResponse": {
+      "name": "BlindOberonTokenResponse",
+      "full_name": "okapi.security.v1.BlindOberonTokenResponse",
+      "description": "Contains the blinded token reply",
+      "fields": [
+        "okapi.security.v1.BlindOberonTokenResponse.token"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.security.v1.CreateOberonKeyRequest": {
+      "name": "CreateOberonKeyRequest",
+      "full_name": "okapi.security.v1.CreateOberonKeyRequest",
+      "description": "Create an Oberon Compatible Secret Key",
+      "fields": [
+        "okapi.security.v1.CreateOberonKeyRequest.seed"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.security.v1.CreateOberonKeyResponse": {
+      "name": "CreateOberonKeyResponse",
+      "full_name": "okapi.security.v1.CreateOberonKeyResponse",
+      "description": "Contains the oberon secret key bytes",
+      "fields": [
+        "okapi.security.v1.CreateOberonKeyResponse.sk",
+        "okapi.security.v1.CreateOberonKeyResponse.pk"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.security.v1.CreateOberonProofRequest": {
+      "name": "CreateOberonProofRequest",
+      "full_name": "okapi.security.v1.CreateOberonProofRequest",
+      "description": "Create a proof that holder knows the token",
+      "fields": [
+        "okapi.security.v1.CreateOberonProofRequest.data",
+        "okapi.security.v1.CreateOberonProofRequest.token",
+        "okapi.security.v1.CreateOberonProofRequest.blinding",
+        "okapi.security.v1.CreateOberonProofRequest.nonce"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.security.v1.CreateOberonProofResponse": {
+      "name": "CreateOberonProofResponse",
+      "full_name": "okapi.security.v1.CreateOberonProofResponse",
+      "description": "Contains the token proof",
+      "fields": [
+        "okapi.security.v1.CreateOberonProofResponse.proof"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.security.v1.CreateOberonTokenRequest": {
+      "name": "CreateOberonTokenRequest",
+      "full_name": "okapi.security.v1.CreateOberonTokenRequest",
+      "description": "Create a new oberon token",
+      "fields": [
+        "okapi.security.v1.CreateOberonTokenRequest.sk",
+        "okapi.security.v1.CreateOberonTokenRequest.data",
+        "okapi.security.v1.CreateOberonTokenRequest.blinding"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.security.v1.CreateOberonTokenResponse": {
+      "name": "CreateOberonTokenResponse",
+      "full_name": "okapi.security.v1.CreateOberonTokenResponse",
+      "description": "Contains the token with optional blinding",
+      "fields": [
+        "okapi.security.v1.CreateOberonTokenResponse.token"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.security.v1.UnBlindOberonTokenRequest": {
+      "name": "UnBlindOberonTokenRequest",
+      "full_name": "okapi.security.v1.UnBlindOberonTokenRequest",
+      "description": "UnBlind an oberon token",
+      "fields": [
+        "okapi.security.v1.UnBlindOberonTokenRequest.token",
+        "okapi.security.v1.UnBlindOberonTokenRequest.blinding"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.security.v1.UnBlindOberonTokenResponse": {
+      "name": "UnBlindOberonTokenResponse",
+      "full_name": "okapi.security.v1.UnBlindOberonTokenResponse",
+      "description": "Contains the unblinded token reply",
+      "fields": [
+        "okapi.security.v1.UnBlindOberonTokenResponse.token"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.security.v1.VerifyOberonProofRequest": {
+      "name": "VerifyOberonProofRequest",
+      "full_name": "okapi.security.v1.VerifyOberonProofRequest",
+      "description": "Verify the presented proof is valid",
+      "fields": [
+        "okapi.security.v1.VerifyOberonProofRequest.proof",
+        "okapi.security.v1.VerifyOberonProofRequest.data",
+        "okapi.security.v1.VerifyOberonProofRequest.nonce",
+        "okapi.security.v1.VerifyOberonProofRequest.pk"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.security.v1.VerifyOberonProofResponse": {
+      "name": "VerifyOberonProofResponse",
+      "full_name": "okapi.security.v1.VerifyOberonProofResponse",
+      "description": "Contains the status of the proof validation",
+      "fields": [
+        "okapi.security.v1.VerifyOberonProofResponse.valid"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.security.v1.VerifyOberonTokenRequest": {
+      "name": "VerifyOberonTokenRequest",
+      "full_name": "okapi.security.v1.VerifyOberonTokenRequest",
+      "description": "Verify that an oberon token comes from the desired issuer",
+      "fields": [
+        "okapi.security.v1.VerifyOberonTokenRequest.token",
+        "okapi.security.v1.VerifyOberonTokenRequest.pk",
+        "okapi.security.v1.VerifyOberonTokenRequest.data"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.security.v1.VerifyOberonTokenResponse": {
+      "name": "VerifyOberonTokenResponse",
+      "full_name": "okapi.security.v1.VerifyOberonTokenResponse",
+      "description": "Contains the verification result for the oberon token",
+      "fields": [
+        "okapi.security.v1.VerifyOberonTokenResponse.valid"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.transport.v1.CoreMessage": {
+      "name": "CoreMessage",
+      "full_name": "okapi.transport.v1.CoreMessage",
+      "description": "",
+      "fields": [
+        "okapi.transport.v1.CoreMessage.id",
+        "okapi.transport.v1.CoreMessage.type",
+        "okapi.transport.v1.CoreMessage.body",
+        "okapi.transport.v1.CoreMessage.to",
+        "okapi.transport.v1.CoreMessage.from",
+        "okapi.transport.v1.CoreMessage.created",
+        "okapi.transport.v1.CoreMessage.expires"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.transport.v1.PackRequest": {
+      "name": "PackRequest",
+      "full_name": "okapi.transport.v1.PackRequest",
+      "description": "",
+      "fields": [
+        "okapi.transport.v1.PackRequest.sender_key",
+        "okapi.transport.v1.PackRequest.receiver_key",
+        "okapi.transport.v1.PackRequest.associated_data",
+        "okapi.transport.v1.PackRequest.plaintext",
+        "okapi.transport.v1.PackRequest.mode",
+        "okapi.transport.v1.PackRequest.algorithm"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.transport.v1.PackResponse": {
+      "name": "PackResponse",
+      "full_name": "okapi.transport.v1.PackResponse",
+      "description": "",
+      "fields": [
+        "okapi.transport.v1.PackResponse.message"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.transport.v1.SignRequest": {
+      "name": "SignRequest",
+      "full_name": "okapi.transport.v1.SignRequest",
+      "description": "",
+      "fields": [
+        "okapi.transport.v1.SignRequest.payload",
+        "okapi.transport.v1.SignRequest.key",
+        "okapi.transport.v1.SignRequest.append_to"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.transport.v1.SignResponse": {
+      "name": "SignResponse",
+      "full_name": "okapi.transport.v1.SignResponse",
+      "description": "",
+      "fields": [
+        "okapi.transport.v1.SignResponse.message"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.transport.v1.UnpackRequest": {
+      "name": "UnpackRequest",
+      "full_name": "okapi.transport.v1.UnpackRequest",
+      "description": "",
+      "fields": [
+        "okapi.transport.v1.UnpackRequest.sender_key",
+        "okapi.transport.v1.UnpackRequest.receiver_key",
+        "okapi.transport.v1.UnpackRequest.message"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.transport.v1.UnpackResponse": {
+      "name": "UnpackResponse",
+      "full_name": "okapi.transport.v1.UnpackResponse",
+      "description": "",
+      "fields": [
+        "okapi.transport.v1.UnpackResponse.plaintext"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.transport.v1.VerifyRequest": {
+      "name": "VerifyRequest",
+      "full_name": "okapi.transport.v1.VerifyRequest",
+      "description": "",
+      "fields": [
+        "okapi.transport.v1.VerifyRequest.message",
+        "okapi.transport.v1.VerifyRequest.key"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "okapi.transport.v1.VerifyResponse": {
+      "name": "VerifyResponse",
+      "full_name": "okapi.transport.v1.VerifyResponse",
+      "description": "",
+      "fields": [
+        "okapi.transport.v1.VerifyResponse.is_valid"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "pbmse.v1.EncryptedMessage": {
+      "name": "EncryptedMessage",
+      "full_name": "pbmse.v1.EncryptedMessage",
+      "description": "",
+      "fields": [
+        "pbmse.v1.EncryptedMessage.iv",
+        "pbmse.v1.EncryptedMessage.aad",
+        "pbmse.v1.EncryptedMessage.ciphertext",
+        "pbmse.v1.EncryptedMessage.tag",
+        "pbmse.v1.EncryptedMessage.recipients"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "pbmse.v1.EncryptionHeader": {
+      "name": "EncryptionHeader",
+      "full_name": "pbmse.v1.EncryptionHeader",
+      "description": "",
+      "fields": [
+        "pbmse.v1.EncryptionHeader.mode",
+        "pbmse.v1.EncryptionHeader.algorithm",
+        "pbmse.v1.EncryptionHeader.key_id",
+        "pbmse.v1.EncryptionHeader.sender_key_id"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "pbmse.v1.EncryptionRecipient": {
+      "name": "EncryptionRecipient",
+      "full_name": "pbmse.v1.EncryptionRecipient",
+      "description": "",
+      "fields": [
+        "pbmse.v1.EncryptionRecipient.header",
+        "pbmse.v1.EncryptionRecipient.content_encryption_key"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "pbmse.v1.Signature": {
+      "name": "Signature",
+      "full_name": "pbmse.v1.Signature",
+      "description": "",
+      "fields": [
+        "pbmse.v1.Signature.header",
+        "pbmse.v1.Signature.signature"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "pbmse.v1.SignatureHeader": {
+      "name": "SignatureHeader",
+      "full_name": "pbmse.v1.SignatureHeader",
+      "description": "",
+      "fields": [
+        "pbmse.v1.SignatureHeader.algorithm",
+        "pbmse.v1.SignatureHeader.key_id"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "pbmse.v1.SignedMessage": {
+      "name": "SignedMessage",
+      "full_name": "pbmse.v1.SignedMessage",
+      "description": "JWS\nProtocol buffer message signing and encryption",
+      "fields": [
+        "pbmse.v1.SignedMessage.payload",
+        "pbmse.v1.SignedMessage.signatures"
+      ],
+      "messages": [],
+      "enums": []
+    }
+  },
+  "fields": {
+    "okapi.examples.v1.BasicMessage.text": {
+      "name": "text",
+      "full_name": "okapi.examples.v1.BasicMessage.text",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "okapi.hashing.v1.Blake3DeriveKeyRequest.context": {
+      "name": "context",
+      "full_name": "okapi.hashing.v1.Blake3DeriveKeyRequest.context",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "okapi.hashing.v1.Blake3DeriveKeyRequest.key_material": {
+      "name": "key_material",
+      "full_name": "okapi.hashing.v1.Blake3DeriveKeyRequest.key_material",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "okapi.hashing.v1.Blake3DeriveKeyResponse.digest": {
+      "name": "digest",
+      "full_name": "okapi.hashing.v1.Blake3DeriveKeyResponse.digest",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "okapi.hashing.v1.Blake3HashRequest.data": {
+      "name": "data",
+      "full_name": "okapi.hashing.v1.Blake3HashRequest.data",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "okapi.hashing.v1.Blake3HashResponse.digest": {
+      "name": "digest",
+      "full_name": "okapi.hashing.v1.Blake3HashResponse.digest",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "okapi.hashing.v1.Blake3KeyedHashRequest.data": {
+      "name": "data",
+      "full_name": "okapi.hashing.v1.Blake3KeyedHashRequest.data",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "okapi.hashing.v1.Blake3KeyedHashRequest.key": {
+      "name": "key",
+      "full_name": "okapi.hashing.v1.Blake3KeyedHashRequest.key",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "okapi.hashing.v1.Blake3KeyedHashResponse.digest": {
+      "name": "digest",
+      "full_name": "okapi.hashing.v1.Blake3KeyedHashResponse.digest",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "okapi.hashing.v1.SHA256HashRequest.data": {
+      "name": "data",
+      "full_name": "okapi.hashing.v1.SHA256HashRequest.data",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "okapi.hashing.v1.SHA256HashResponse.digest": {
+      "name": "digest",
+      "full_name": "okapi.hashing.v1.SHA256HashResponse.digest",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "okapi.keys.v1.GenerateKeyRequest.key_type": {
+      "name": "key_type",
+      "full_name": "okapi.keys.v1.GenerateKeyRequest.key_type",
+      "label": "LABEL_OPTIONAL",
+      "type": "KeyType",
+      "full_type": "okapi.keys.v1.KeyType",
+      "description": ""
+    },
+    "okapi.keys.v1.GenerateKeyRequest.seed": {
+      "name": "seed",
+      "full_name": "okapi.keys.v1.GenerateKeyRequest.seed",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "okapi.keys.v1.GenerateKeyResponse.did_document": {
+      "name": "did_document",
+      "full_name": "okapi.keys.v1.GenerateKeyResponse.did_document",
+      "label": "LABEL_OPTIONAL",
+      "type": "Struct",
+      "full_type": "google.protobuf.Struct",
+      "description": ""
+    },
+    "okapi.keys.v1.GenerateKeyResponse.key": {
+      "name": "key",
+      "full_name": "okapi.keys.v1.GenerateKeyResponse.key",
+      "label": "LABEL_REPEATED",
+      "type": "JsonWebKey",
+      "full_type": "okapi.keys.v1.JsonWebKey",
+      "description": ""
+    },
+    "okapi.keys.v1.JsonWebKey.crv": {
+      "name": "crv",
+      "full_name": "okapi.keys.v1.JsonWebKey.crv",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "okapi.keys.v1.JsonWebKey.d": {
+      "name": "d",
+      "full_name": "okapi.keys.v1.JsonWebKey.d",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "secret_key"
+    },
+    "okapi.keys.v1.JsonWebKey.kid": {
+      "name": "kid",
+      "full_name": "okapi.keys.v1.JsonWebKey.kid",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "okapi.keys.v1.JsonWebKey.kty": {
+      "name": "kty",
+      "full_name": "okapi.keys.v1.JsonWebKey.kty",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "okapi.keys.v1.JsonWebKey.x": {
+      "name": "x",
+      "full_name": "okapi.keys.v1.JsonWebKey.x",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "public_key"
+    },
+    "okapi.keys.v1.JsonWebKey.y": {
+      "name": "y",
+      "full_name": "okapi.keys.v1.JsonWebKey.y",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "public_key"
+    },
+    "okapi.keys.v1.ResolveRequest.did": {
+      "name": "did",
+      "full_name": "okapi.keys.v1.ResolveRequest.did",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "okapi.keys.v1.ResolveResponse.did_document": {
+      "name": "did_document",
+      "full_name": "okapi.keys.v1.ResolveResponse.did_document",
+      "label": "LABEL_OPTIONAL",
+      "type": "Struct",
+      "full_type": "google.protobuf.Struct",
+      "description": ""
+    },
+    "okapi.keys.v1.ResolveResponse.keys": {
+      "name": "keys",
+      "full_name": "okapi.keys.v1.ResolveResponse.keys",
+      "label": "LABEL_REPEATED",
+      "type": "JsonWebKey",
+      "full_type": "okapi.keys.v1.JsonWebKey",
+      "description": ""
+    },
+    "okapi.metadata.MetadataResponse.target_arch": {
+      "name": "target_arch",
+      "full_name": "okapi.metadata.MetadataResponse.target_arch",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "okapi.metadata.MetadataResponse.target_env": {
+      "name": "target_env",
+      "full_name": "okapi.metadata.MetadataResponse.target_env",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "okapi.metadata.MetadataResponse.target_family": {
+      "name": "target_family",
+      "full_name": "okapi.metadata.MetadataResponse.target_family",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "https://doc.rust-lang.org/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-crates"
+    },
+    "okapi.metadata.MetadataResponse.target_os": {
+      "name": "target_os",
+      "full_name": "okapi.metadata.MetadataResponse.target_os",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "okapi.metadata.MetadataResponse.target_vendor": {
+      "name": "target_vendor",
+      "full_name": "okapi.metadata.MetadataResponse.target_vendor",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "okapi.metadata.MetadataResponse.version": {
+      "name": "version",
+      "full_name": "okapi.metadata.MetadataResponse.version",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The full version string from okapi"
+    },
+    "okapi.metadata.MetadataResponse.version_major": {
+      "name": "version_major",
+      "full_name": "okapi.metadata.MetadataResponse.version_major",
+      "label": "LABEL_OPTIONAL",
+      "type": "int32",
+      "full_type": "int32",
+      "description": "Major version"
+    },
+    "okapi.metadata.MetadataResponse.version_minor": {
+      "name": "version_minor",
+      "full_name": "okapi.metadata.MetadataResponse.version_minor",
+      "label": "LABEL_OPTIONAL",
+      "type": "int32",
+      "full_type": "int32",
+      "description": "Minor version"
+    },
+    "okapi.metadata.MetadataResponse.version_patch": {
+      "name": "version_patch",
+      "full_name": "okapi.metadata.MetadataResponse.version_patch",
+      "label": "LABEL_OPTIONAL",
+      "type": "int32",
+      "full_type": "int32",
+      "description": "Patch release version"
+    },
+    "okapi.proofs.v1.CreateProofRequest.document": {
+      "name": "document",
+      "full_name": "okapi.proofs.v1.CreateProofRequest.document",
+      "label": "LABEL_OPTIONAL",
+      "type": "Struct",
+      "full_type": "google.protobuf.Struct",
+      "description": "The input JSON document that will be used\nto create the LD Proof. This document must\nalso contain a \"proof\" object, with the desired\nvalues filled in."
+    },
+    "okapi.proofs.v1.CreateProofRequest.key": {
+      "name": "key",
+      "full_name": "okapi.proofs.v1.CreateProofRequest.key",
+      "label": "LABEL_OPTIONAL",
+      "type": "JsonWebKey",
+      "full_type": "okapi.keys.v1.JsonWebKey",
+      "description": "The signer of the proof. This field must include\nthe 'kid' in full URI format.\nExample:\n did:example:alice#key-1"
+    },
+    "okapi.proofs.v1.CreateProofRequest.suite": {
+      "name": "suite",
+      "full_name": "okapi.proofs.v1.CreateProofRequest.suite",
+      "label": "LABEL_OPTIONAL",
+      "type": "LdSuite",
+      "full_type": "okapi.proofs.v1.LdSuite",
+      "description": "The LD Suite to use to produce this proof"
+    },
+    "okapi.proofs.v1.CreateProofResponse.signed_document": {
+      "name": "signed_document",
+      "full_name": "okapi.proofs.v1.CreateProofResponse.signed_document",
+      "label": "LABEL_OPTIONAL",
+      "type": "Struct",
+      "full_type": "google.protobuf.Struct",
+      "description": ""
+    },
+    "okapi.security.v1.BlindOberonTokenRequest.blinding": {
+      "name": "blinding",
+      "full_name": "okapi.security.v1.BlindOberonTokenRequest.blinding",
+      "label": "LABEL_REPEATED",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "blinding to apply to the token"
+    },
+    "okapi.security.v1.BlindOberonTokenRequest.token": {
+      "name": "token",
+      "full_name": "okapi.security.v1.BlindOberonTokenRequest.token",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "raw token bytes"
+    },
+    "okapi.security.v1.BlindOberonTokenResponse.token": {
+      "name": "token",
+      "full_name": "okapi.security.v1.BlindOberonTokenResponse.token",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "raw blinded token bytes"
+    },
+    "okapi.security.v1.CreateOberonKeyRequest.seed": {
+      "name": "seed",
+      "full_name": "okapi.security.v1.CreateOberonKeyRequest.seed",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "optional seed to generate deterministic keys"
+    },
+    "okapi.security.v1.CreateOberonKeyResponse.pk": {
+      "name": "pk",
+      "full_name": "okapi.security.v1.CreateOberonKeyResponse.pk",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "raw public key bytes"
+    },
+    "okapi.security.v1.CreateOberonKeyResponse.sk": {
+      "name": "sk",
+      "full_name": "okapi.security.v1.CreateOberonKeyResponse.sk",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "raw secret key bytes"
+    },
+    "okapi.security.v1.CreateOberonProofRequest.blinding": {
+      "name": "blinding",
+      "full_name": "okapi.security.v1.CreateOberonProofRequest.blinding",
+      "label": "LABEL_REPEATED",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "any blindings used to create the token"
+    },
+    "okapi.security.v1.CreateOberonProofRequest.data": {
+      "name": "data",
+      "full_name": "okapi.security.v1.CreateOberonProofRequest.data",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "data used to create the token"
+    },
+    "okapi.security.v1.CreateOberonProofRequest.nonce": {
+      "name": "nonce",
+      "full_name": "okapi.security.v1.CreateOberonProofRequest.nonce",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "nonce for generating the proof"
+    },
+    "okapi.security.v1.CreateOberonProofRequest.token": {
+      "name": "token",
+      "full_name": "okapi.security.v1.CreateOberonProofRequest.token",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "token data"
+    },
+    "okapi.security.v1.CreateOberonProofResponse.proof": {
+      "name": "proof",
+      "full_name": "okapi.security.v1.CreateOberonProofResponse.proof",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "raw proof bytes"
+    },
+    "okapi.security.v1.CreateOberonTokenRequest.blinding": {
+      "name": "blinding",
+      "full_name": "okapi.security.v1.CreateOberonTokenRequest.blinding",
+      "label": "LABEL_REPEATED",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "optional blinding for the token"
+    },
+    "okapi.security.v1.CreateOberonTokenRequest.data": {
+      "name": "data",
+      "full_name": "okapi.security.v1.CreateOberonTokenRequest.data",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "data is the public part of the oberon protocol and can be any data"
+    },
+    "okapi.security.v1.CreateOberonTokenRequest.sk": {
+      "name": "sk",
+      "full_name": "okapi.security.v1.CreateOberonTokenRequest.sk",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "raw BLS key bytes"
+    },
+    "okapi.security.v1.CreateOberonTokenResponse.token": {
+      "name": "token",
+      "full_name": "okapi.security.v1.CreateOberonTokenResponse.token",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "raw token bytes"
+    },
+    "okapi.security.v1.UnBlindOberonTokenRequest.blinding": {
+      "name": "blinding",
+      "full_name": "okapi.security.v1.UnBlindOberonTokenRequest.blinding",
+      "label": "LABEL_REPEATED",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "blinding to remove from the token"
+    },
+    "okapi.security.v1.UnBlindOberonTokenRequest.token": {
+      "name": "token",
+      "full_name": "okapi.security.v1.UnBlindOberonTokenRequest.token",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "raw token bytes"
+    },
+    "okapi.security.v1.UnBlindOberonTokenResponse.token": {
+      "name": "token",
+      "full_name": "okapi.security.v1.UnBlindOberonTokenResponse.token",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "raw unblinded token bytes"
+    },
+    "okapi.security.v1.VerifyOberonProofRequest.data": {
+      "name": "data",
+      "full_name": "okapi.security.v1.VerifyOberonProofRequest.data",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "data used to create the token"
+    },
+    "okapi.security.v1.VerifyOberonProofRequest.nonce": {
+      "name": "nonce",
+      "full_name": "okapi.security.v1.VerifyOberonProofRequest.nonce",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "nonce used to generate the proof"
+    },
+    "okapi.security.v1.VerifyOberonProofRequest.pk": {
+      "name": "pk",
+      "full_name": "okapi.security.v1.VerifyOberonProofRequest.pk",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "public key that was used to generate the token"
+    },
+    "okapi.security.v1.VerifyOberonProofRequest.proof": {
+      "name": "proof",
+      "full_name": "okapi.security.v1.VerifyOberonProofRequest.proof",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "raw proof bytes returned from CreateProof"
+    },
+    "okapi.security.v1.VerifyOberonProofResponse.valid": {
+      "name": "valid",
+      "full_name": "okapi.security.v1.VerifyOberonProofResponse.valid",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "whether the given proof was valid"
+    },
+    "okapi.security.v1.VerifyOberonTokenRequest.data": {
+      "name": "data",
+      "full_name": "okapi.security.v1.VerifyOberonTokenRequest.data",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "public part of oberon protocol - can be any data"
+    },
+    "okapi.security.v1.VerifyOberonTokenRequest.pk": {
+      "name": "pk",
+      "full_name": "okapi.security.v1.VerifyOberonTokenRequest.pk",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "token is valid to this public key?"
+    },
+    "okapi.security.v1.VerifyOberonTokenRequest.token": {
+      "name": "token",
+      "full_name": "okapi.security.v1.VerifyOberonTokenRequest.token",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "raw token bytes"
+    },
+    "okapi.security.v1.VerifyOberonTokenResponse.valid": {
+      "name": "valid",
+      "full_name": "okapi.security.v1.VerifyOberonTokenResponse.valid",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "token is valid to the public key"
+    },
+    "okapi.transport.v1.CoreMessage.body": {
+      "name": "body",
+      "full_name": "okapi.transport.v1.CoreMessage.body",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "okapi.transport.v1.CoreMessage.created": {
+      "name": "created",
+      "full_name": "okapi.transport.v1.CoreMessage.created",
+      "label": "LABEL_OPTIONAL",
+      "type": "int64",
+      "full_type": "int64",
+      "description": ""
+    },
+    "okapi.transport.v1.CoreMessage.expires": {
+      "name": "expires",
+      "full_name": "okapi.transport.v1.CoreMessage.expires",
+      "label": "LABEL_OPTIONAL",
+      "type": "int64",
+      "full_type": "int64",
+      "description": ""
+    },
+    "okapi.transport.v1.CoreMessage.from": {
+      "name": "from",
+      "full_name": "okapi.transport.v1.CoreMessage.from",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "okapi.transport.v1.CoreMessage.id": {
+      "name": "id",
+      "full_name": "okapi.transport.v1.CoreMessage.id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "okapi.transport.v1.CoreMessage.to": {
+      "name": "to",
+      "full_name": "okapi.transport.v1.CoreMessage.to",
+      "label": "LABEL_REPEATED",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "okapi.transport.v1.CoreMessage.type": {
+      "name": "type",
+      "full_name": "okapi.transport.v1.CoreMessage.type",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "okapi.transport.v1.PackRequest.algorithm": {
+      "name": "algorithm",
+      "full_name": "okapi.transport.v1.PackRequest.algorithm",
+      "label": "LABEL_OPTIONAL",
+      "type": "EncryptionAlgorithm",
+      "full_type": "pbmse.v1.EncryptionAlgorithm",
+      "description": ""
+    },
+    "okapi.transport.v1.PackRequest.associated_data": {
+      "name": "associated_data",
+      "full_name": "okapi.transport.v1.PackRequest.associated_data",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "okapi.transport.v1.PackRequest.mode": {
+      "name": "mode",
+      "full_name": "okapi.transport.v1.PackRequest.mode",
+      "label": "LABEL_OPTIONAL",
+      "type": "EncryptionMode",
+      "full_type": "pbmse.v1.EncryptionMode",
+      "description": ""
+    },
+    "okapi.transport.v1.PackRequest.plaintext": {
+      "name": "plaintext",
+      "full_name": "okapi.transport.v1.PackRequest.plaintext",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "okapi.transport.v1.PackRequest.receiver_key": {
+      "name": "receiver_key",
+      "full_name": "okapi.transport.v1.PackRequest.receiver_key",
+      "label": "LABEL_OPTIONAL",
+      "type": "JsonWebKey",
+      "full_type": "okapi.keys.v1.JsonWebKey",
+      "description": ""
+    },
+    "okapi.transport.v1.PackRequest.sender_key": {
+      "name": "sender_key",
+      "full_name": "okapi.transport.v1.PackRequest.sender_key",
+      "label": "LABEL_OPTIONAL",
+      "type": "JsonWebKey",
+      "full_type": "okapi.keys.v1.JsonWebKey",
+      "description": ""
+    },
+    "okapi.transport.v1.PackResponse.message": {
+      "name": "message",
+      "full_name": "okapi.transport.v1.PackResponse.message",
+      "label": "LABEL_OPTIONAL",
+      "type": "EncryptedMessage",
+      "full_type": "pbmse.v1.EncryptedMessage",
+      "description": ""
+    },
+    "okapi.transport.v1.SignRequest.append_to": {
+      "name": "append_to",
+      "full_name": "okapi.transport.v1.SignRequest.append_to",
+      "label": "LABEL_OPTIONAL",
+      "type": "SignedMessage",
+      "full_type": "pbmse.v1.SignedMessage",
+      "description": ""
+    },
+    "okapi.transport.v1.SignRequest.key": {
+      "name": "key",
+      "full_name": "okapi.transport.v1.SignRequest.key",
+      "label": "LABEL_OPTIONAL",
+      "type": "JsonWebKey",
+      "full_type": "okapi.keys.v1.JsonWebKey",
+      "description": ""
+    },
+    "okapi.transport.v1.SignRequest.payload": {
+      "name": "payload",
+      "full_name": "okapi.transport.v1.SignRequest.payload",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "okapi.transport.v1.SignResponse.message": {
+      "name": "message",
+      "full_name": "okapi.transport.v1.SignResponse.message",
+      "label": "LABEL_OPTIONAL",
+      "type": "SignedMessage",
+      "full_type": "pbmse.v1.SignedMessage",
+      "description": ""
+    },
+    "okapi.transport.v1.UnpackRequest.message": {
+      "name": "message",
+      "full_name": "okapi.transport.v1.UnpackRequest.message",
+      "label": "LABEL_OPTIONAL",
+      "type": "EncryptedMessage",
+      "full_type": "pbmse.v1.EncryptedMessage",
+      "description": ""
+    },
+    "okapi.transport.v1.UnpackRequest.receiver_key": {
+      "name": "receiver_key",
+      "full_name": "okapi.transport.v1.UnpackRequest.receiver_key",
+      "label": "LABEL_OPTIONAL",
+      "type": "JsonWebKey",
+      "full_type": "okapi.keys.v1.JsonWebKey",
+      "description": ""
+    },
+    "okapi.transport.v1.UnpackRequest.sender_key": {
+      "name": "sender_key",
+      "full_name": "okapi.transport.v1.UnpackRequest.sender_key",
+      "label": "LABEL_OPTIONAL",
+      "type": "JsonWebKey",
+      "full_type": "okapi.keys.v1.JsonWebKey",
+      "description": ""
+    },
+    "okapi.transport.v1.UnpackResponse.plaintext": {
+      "name": "plaintext",
+      "full_name": "okapi.transport.v1.UnpackResponse.plaintext",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "okapi.transport.v1.VerifyRequest.key": {
+      "name": "key",
+      "full_name": "okapi.transport.v1.VerifyRequest.key",
+      "label": "LABEL_OPTIONAL",
+      "type": "JsonWebKey",
+      "full_type": "okapi.keys.v1.JsonWebKey",
+      "description": ""
+    },
+    "okapi.transport.v1.VerifyRequest.message": {
+      "name": "message",
+      "full_name": "okapi.transport.v1.VerifyRequest.message",
+      "label": "LABEL_OPTIONAL",
+      "type": "SignedMessage",
+      "full_type": "pbmse.v1.SignedMessage",
+      "description": ""
+    },
+    "okapi.transport.v1.VerifyResponse.is_valid": {
+      "name": "is_valid",
+      "full_name": "okapi.transport.v1.VerifyResponse.is_valid",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": ""
+    },
+    "pbmse.v1.EncryptedMessage.aad": {
+      "name": "aad",
+      "full_name": "pbmse.v1.EncryptedMessage.aad",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "pbmse.v1.EncryptedMessage.ciphertext": {
+      "name": "ciphertext",
+      "full_name": "pbmse.v1.EncryptedMessage.ciphertext",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "pbmse.v1.EncryptedMessage.iv": {
+      "name": "iv",
+      "full_name": "pbmse.v1.EncryptedMessage.iv",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "pbmse.v1.EncryptedMessage.recipients": {
+      "name": "recipients",
+      "full_name": "pbmse.v1.EncryptedMessage.recipients",
+      "label": "LABEL_REPEATED",
+      "type": "EncryptionRecipient",
+      "full_type": "pbmse.v1.EncryptionRecipient",
+      "description": ""
+    },
+    "pbmse.v1.EncryptedMessage.tag": {
+      "name": "tag",
+      "full_name": "pbmse.v1.EncryptedMessage.tag",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "pbmse.v1.EncryptionHeader.algorithm": {
+      "name": "algorithm",
+      "full_name": "pbmse.v1.EncryptionHeader.algorithm",
+      "label": "LABEL_OPTIONAL",
+      "type": "EncryptionAlgorithm",
+      "full_type": "pbmse.v1.EncryptionAlgorithm",
+      "description": ""
+    },
+    "pbmse.v1.EncryptionHeader.key_id": {
+      "name": "key_id",
+      "full_name": "pbmse.v1.EncryptionHeader.key_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "pbmse.v1.EncryptionHeader.mode": {
+      "name": "mode",
+      "full_name": "pbmse.v1.EncryptionHeader.mode",
+      "label": "LABEL_OPTIONAL",
+      "type": "EncryptionMode",
+      "full_type": "pbmse.v1.EncryptionMode",
+      "description": ""
+    },
+    "pbmse.v1.EncryptionHeader.sender_key_id": {
+      "name": "sender_key_id",
+      "full_name": "pbmse.v1.EncryptionHeader.sender_key_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "pbmse.v1.EncryptionRecipient.content_encryption_key": {
+      "name": "content_encryption_key",
+      "full_name": "pbmse.v1.EncryptionRecipient.content_encryption_key",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "pbmse.v1.EncryptionRecipient.header": {
+      "name": "header",
+      "full_name": "pbmse.v1.EncryptionRecipient.header",
+      "label": "LABEL_OPTIONAL",
+      "type": "EncryptionHeader",
+      "full_type": "pbmse.v1.EncryptionHeader",
+      "description": ""
+    },
+    "pbmse.v1.Signature.header": {
+      "name": "header",
+      "full_name": "pbmse.v1.Signature.header",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "pbmse.v1.Signature.signature": {
+      "name": "signature",
+      "full_name": "pbmse.v1.Signature.signature",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "pbmse.v1.SignatureHeader.algorithm": {
+      "name": "algorithm",
+      "full_name": "pbmse.v1.SignatureHeader.algorithm",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "pbmse.v1.SignatureHeader.key_id": {
+      "name": "key_id",
+      "full_name": "pbmse.v1.SignatureHeader.key_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "pbmse.v1.SignedMessage.payload": {
+      "name": "payload",
+      "full_name": "pbmse.v1.SignedMessage.payload",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "pbmse.v1.SignedMessage.signatures": {
+      "name": "signatures",
+      "full_name": "pbmse.v1.SignedMessage.signatures",
+      "label": "LABEL_REPEATED",
+      "type": "Signature",
+      "full_type": "pbmse.v1.Signature",
+      "description": ""
+    }
+  },
+  "enums": {
+    "okapi.keys.v1.KeyType": {
+      "name": "KeyType",
+      "full_name": "okapi.keys.v1.KeyType",
+      "description": "",
+      "values": [
+        "okapi.keys.v1.KeyType.KEY_TYPE_UNSPECIFIED",
+        "okapi.keys.v1.KeyType.KEY_TYPE_ED25519",
+        "okapi.keys.v1.KeyType.KEY_TYPE_X25519",
+        "okapi.keys.v1.KeyType.KEY_TYPE_P256",
+        "okapi.keys.v1.KeyType.KEY_TYPE_BLS12381G1G2",
+        "okapi.keys.v1.KeyType.KEY_TYPE_SECP256K1"
+      ]
+    },
+    "okapi.proofs.v1.LdSuite": {
+      "name": "LdSuite",
+      "full_name": "okapi.proofs.v1.LdSuite",
+      "description": "",
+      "values": [
+        "okapi.proofs.v1.LdSuite.LD_SUITE_UNSPECIFIED",
+        "okapi.proofs.v1.LdSuite.LD_SUITE_JCSED25519SIGNATURE2020"
+      ]
+    },
+    "pbmse.v1.EncryptionAlgorithm": {
+      "name": "EncryptionAlgorithm",
+      "full_name": "pbmse.v1.EncryptionAlgorithm",
+      "description": "",
+      "values": [
+        "pbmse.v1.EncryptionAlgorithm.ENCRYPTION_ALGORITHM_UNSPECIFIED",
+        "pbmse.v1.EncryptionAlgorithm.ENCRYPTION_ALGORITHM_XCHACHA20POLY1305",
+        "pbmse.v1.EncryptionAlgorithm.ENCRYPTION_ALGORITHM_AES_GCM"
+      ]
+    },
+    "pbmse.v1.EncryptionMode": {
+      "name": "EncryptionMode",
+      "full_name": "pbmse.v1.EncryptionMode",
+      "description": "",
+      "values": [
+        "pbmse.v1.EncryptionMode.ENCRYPTION_MODE_UNSPECIFIED",
+        "pbmse.v1.EncryptionMode.ENCRYPTION_MODE_DIRECT",
+        "pbmse.v1.EncryptionMode.ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY"
+      ]
+    }
+  },
+  "enum_values": {
+    "okapi.keys.v1.KeyType.KEY_TYPE_BLS12381G1G2": {
+      "name": "KEY_TYPE_BLS12381G1G2",
+      "full_name": "okapi.keys.v1.KeyType.KEY_TYPE_BLS12381G1G2",
+      "description": "",
+      "value": 4
+    },
+    "okapi.keys.v1.KeyType.KEY_TYPE_ED25519": {
+      "name": "KEY_TYPE_ED25519",
+      "full_name": "okapi.keys.v1.KeyType.KEY_TYPE_ED25519",
+      "description": "",
+      "value": 1
+    },
+    "okapi.keys.v1.KeyType.KEY_TYPE_P256": {
+      "name": "KEY_TYPE_P256",
+      "full_name": "okapi.keys.v1.KeyType.KEY_TYPE_P256",
+      "description": "",
+      "value": 3
+    },
+    "okapi.keys.v1.KeyType.KEY_TYPE_SECP256K1": {
+      "name": "KEY_TYPE_SECP256K1",
+      "full_name": "okapi.keys.v1.KeyType.KEY_TYPE_SECP256K1",
+      "description": "",
+      "value": 5
+    },
+    "okapi.keys.v1.KeyType.KEY_TYPE_UNSPECIFIED": {
+      "name": "KEY_TYPE_UNSPECIFIED",
+      "full_name": "okapi.keys.v1.KeyType.KEY_TYPE_UNSPECIFIED",
+      "description": "",
+      "value": 0
+    },
+    "okapi.keys.v1.KeyType.KEY_TYPE_X25519": {
+      "name": "KEY_TYPE_X25519",
+      "full_name": "okapi.keys.v1.KeyType.KEY_TYPE_X25519",
+      "description": "",
+      "value": 2
+    },
+    "okapi.proofs.v1.LdSuite.LD_SUITE_JCSED25519SIGNATURE2020": {
+      "name": "LD_SUITE_JCSED25519SIGNATURE2020",
+      "full_name": "okapi.proofs.v1.LdSuite.LD_SUITE_JCSED25519SIGNATURE2020",
+      "description": "",
+      "value": 1
+    },
+    "okapi.proofs.v1.LdSuite.LD_SUITE_UNSPECIFIED": {
+      "name": "LD_SUITE_UNSPECIFIED",
+      "full_name": "okapi.proofs.v1.LdSuite.LD_SUITE_UNSPECIFIED",
+      "description": "",
+      "value": 0
+    },
+    "pbmse.v1.EncryptionAlgorithm.ENCRYPTION_ALGORITHM_AES_GCM": {
+      "name": "ENCRYPTION_ALGORITHM_AES_GCM",
+      "full_name": "pbmse.v1.EncryptionAlgorithm.ENCRYPTION_ALGORITHM_AES_GCM",
+      "description": "",
+      "value": 2
+    },
+    "pbmse.v1.EncryptionAlgorithm.ENCRYPTION_ALGORITHM_UNSPECIFIED": {
+      "name": "ENCRYPTION_ALGORITHM_UNSPECIFIED",
+      "full_name": "pbmse.v1.EncryptionAlgorithm.ENCRYPTION_ALGORITHM_UNSPECIFIED",
+      "description": "",
+      "value": 0
+    },
+    "pbmse.v1.EncryptionAlgorithm.ENCRYPTION_ALGORITHM_XCHACHA20POLY1305": {
+      "name": "ENCRYPTION_ALGORITHM_XCHACHA20POLY1305",
+      "full_name": "pbmse.v1.EncryptionAlgorithm.ENCRYPTION_ALGORITHM_XCHACHA20POLY1305",
+      "description": "",
+      "value": 1
+    },
+    "pbmse.v1.EncryptionMode.ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY": {
+      "name": "ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY",
+      "full_name": "pbmse.v1.EncryptionMode.ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY",
+      "description": "",
+      "value": 2
+    },
+    "pbmse.v1.EncryptionMode.ENCRYPTION_MODE_DIRECT": {
+      "name": "ENCRYPTION_MODE_DIRECT",
+      "full_name": "pbmse.v1.EncryptionMode.ENCRYPTION_MODE_DIRECT",
+      "description": "",
+      "value": 1
+    },
+    "pbmse.v1.EncryptionMode.ENCRYPTION_MODE_UNSPECIFIED": {
+      "name": "ENCRYPTION_MODE_UNSPECIFIED",
+      "full_name": "pbmse.v1.EncryptionMode.ENCRYPTION_MODE_UNSPECIFIED",
+      "description": "",
+      "value": 0
+    }
+  }
+}

@@ -13,7 +13,7 @@ from os.path import abspath, relpath, join, dirname
 from platform import system
 from typing import List, Dict, Union
 
-from build_sdks import update_line, clean_dir, get_language_dir
+from build_sdks import update_line, clean_dir, get_language_dir, remove_subdirs
 
 
 def protoc_plugin_versions(key: str = None) -> Union[str, Dict[str, str]]:
@@ -171,16 +171,16 @@ def run_protoc(
 
 def update_golang():
     language_path = get_language_dir("go")
-    go_proto_path = join(language_path, "okapiproto")
-    clean_dir(go_proto_path)
+    go_proto_path = join(language_path, "okapi")
+    remove_subdirs(go_proto_path)
     run_protoc(
-        language_options={"go_out": go_proto_path, "go-grpc_out": go_proto_path},
+        language_options={"go_out": language_path},
         proto_files=get_proto_files(),
     )
-    # Remove okapi proto folder
-    clean_dir(join(go_proto_path, "go"))
     # find and replace the sdk proto with okapi proto
     replace_pairs = {
+        'keys "okapi/keys/v1/keys"': 'keys "github.com/trinsic-id/okapi/go/okapi/keys/v1/keys"',
+        'pbmse "pbmse/v1/pbmse"': 'pbmse "github.com/trinsic-id/okapi/go/pbmse/v1/pbmse"',
     }
     for file_name in glob.glob(join(go_proto_path, "**", "*.go"), recursive=True):
         update_line(file_name, replace_pairs)
@@ -195,12 +195,10 @@ def update_ruby():
     lang_proto_path = join(language_path, "lib")
     # Clean selectively
     services_dir = join(lang_proto_path, "okapi")
-    services_subfolders = [f.path for f in os.scandir(services_dir) if f.is_dir()]
-    for folder in services_subfolders:
-        clean_dir(folder)
+    remove_subdirs(services_dir)
 
     run_protoc(
-        language_options={"ruby_out": lang_proto_path, "grpc_out": lang_proto_path},
+        language_options={"ruby_out": lang_proto_path},
         proto_files=get_proto_files(),
         protoc_executable="grpc_tools_ruby_protoc",
     )
@@ -216,27 +214,21 @@ def update_ruby():
 def update_java():
     language_path = get_language_dir("java")
     lang_proto_path = join(language_path, "src", "main", "java")
-    java_services = join(lang_proto_path, "trinsic", "okapi")
-    for subdir in os.listdir(java_services):
-        java_subdir = join(java_services, subdir)
-        if os.path.isdir(java_subdir):
-            clean_dir(java_subdir)
+    java_proto_path = join(lang_proto_path, "trinsic", "okapi")
+    remove_subdirs(java_proto_path)
 
     run_protoc(
         language_options={
             "java_out": lang_proto_path,
-            "grpc-java_out": lang_proto_path,
         },
         proto_files=get_proto_files(),
         plugin=f"protoc-gen-grpc-java={java_plugin()}",
     )
     run_protoc(
-        language_options={"grpc-kotlin_out": lang_proto_path},
+        language_options={"kotlin_out": lang_proto_path},
         proto_files=get_proto_files(),
         plugin=f"protoc-gen-grpc-kotlin={kotlin_plugin()}",
     )
-    # remove okapi pbmse
-    clean_dir(join(lang_proto_path, "trinsic", "okapi"))
 
     java_files = glob.glob(join(language_path, "**/*.java"), recursive=True)
     subprocess.Popen(
@@ -246,11 +238,12 @@ def update_java():
     ).wait()
 
     kotlin_files = glob.glob(join(language_path, "**/*.kt"), recursive=True)
-    subprocess.Popen(
-        args=f'java -jar {kotlin_format_plugin()} {" ".join(kotlin_files)}',
-        cwd=language_path,
-        shell=True,
-    ).wait()
+    if kotlin_files:
+        subprocess.Popen(
+            args=f'java -jar {kotlin_format_plugin()} {" ".join(kotlin_files)}',
+            cwd=language_path,
+            shell=True,
+        ).wait()
 
 
 def update_markdown():
@@ -292,11 +285,11 @@ def update_python():
 
 def update_dart():
     language_path = get_language_dir("dart")
-    language_proto_path = join(language_path, "lib", "src", "proto")
+    language_proto_path = join(language_path, "lib", "proto")
     clean_dir(language_proto_path)
     # https://github.com/google/protobuf.dart/tree/master/protoc_plugin#how-to-build-and-use
     run_protoc(
-        language_options={"dart_out": f"grpc:{language_proto_path}"},
+        language_options={"dart_out": language_proto_path},
         proto_files=get_proto_files(),
     )
     subprocess.Popen(args="dart format .", cwd=language_path, shell=True).wait()
@@ -304,17 +297,20 @@ def update_dart():
 
 def update_typescript():
     language_path = get_language_dir("wasm")
+    cwd_path = join(language_path, "packages", "okapi")
+    install_cmds = [
+        "npm install",
+        "pwsh ./Generate-Proto.ps1",
+        "prettier --write **/*.ts",
+    ]
 
-    subprocess.Popen(
-        args=f"prettier --write **/*.ts",
-        cwd=language_path,
-        shell=True,
-    ).wait()
+    for install_cmd in install_cmds:
+        subprocess.Popen(install_cmd, cwd=cwd_path, shell=True).wait()
 
 
 def update_none() -> None:
     """
-    This is here so you can specify no language to update - eg just download plugins
+    This is here, so you can specify no language to update - e.g. just download plugins
     """
     pass
 
@@ -351,11 +347,11 @@ def main():
     lang_funcs = {
         "golang": update_golang,
         "ruby": update_ruby,
-        "python": update_python,
         "java": update_java,
-        # "docs": update_markdown,
         "dart": update_dart,
         "typescript": update_typescript,
+        "docs": update_markdown,
+        "python": update_python,
         "none": update_none,
     }
 
