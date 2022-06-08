@@ -9,7 +9,7 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../../google/protobuf/struct.pb.dart' as $1;
+import '../../../google/protobuf/struct.pb.dart' as $0;
 
 import 'keys.pbenum.dart';
 
@@ -125,18 +125,18 @@ class GenerateKeyResponse extends $pb.GeneratedMessage {
             : 'key',
         $pb.PbFieldType.PM,
         subBuilder: JsonWebKey.create)
-    ..aOM<$1.Struct>(
+    ..aOM<$0.Struct>(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'didDocument',
-        subBuilder: $1.Struct.create)
+        subBuilder: $0.Struct.create)
     ..hasRequiredFields = false;
 
   GenerateKeyResponse._() : super();
   factory GenerateKeyResponse({
     $core.Iterable<JsonWebKey>? key,
-    $1.Struct? didDocument,
+    $0.Struct? didDocument,
   }) {
     final _result = create();
     if (key != null) {
@@ -178,9 +178,9 @@ class GenerateKeyResponse extends $pb.GeneratedMessage {
   $core.List<JsonWebKey> get key => $_getList(0);
 
   @$pb.TagNumber(2)
-  $1.Struct get didDocument => $_getN(1);
+  $0.Struct get didDocument => $_getN(1);
   @$pb.TagNumber(2)
-  set didDocument($1.Struct v) {
+  set didDocument($0.Struct v) {
     setField(2, v);
   }
 
@@ -189,7 +189,7 @@ class GenerateKeyResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearDidDocument() => clearField(2);
   @$pb.TagNumber(2)
-  $1.Struct ensureDidDocument() => $_ensure(1);
+  $0.Struct ensureDidDocument() => $_ensure(1);
 }
 
 class ResolveRequest extends $pb.GeneratedMessage {
@@ -269,12 +269,12 @@ class ResolveResponse extends $pb.GeneratedMessage {
               ? ''
               : 'okapi.keys.v1'),
       createEmptyInstance: create)
-    ..aOM<$1.Struct>(
+    ..aOM<$0.Struct>(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'didDocument',
-        subBuilder: $1.Struct.create)
+        subBuilder: $0.Struct.create)
     ..pc<JsonWebKey>(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -286,7 +286,7 @@ class ResolveResponse extends $pb.GeneratedMessage {
 
   ResolveResponse._() : super();
   factory ResolveResponse({
-    $1.Struct? didDocument,
+    $0.Struct? didDocument,
     $core.Iterable<JsonWebKey>? keys,
   }) {
     final _result = create();
@@ -326,9 +326,9 @@ class ResolveResponse extends $pb.GeneratedMessage {
   static ResolveResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $1.Struct get didDocument => $_getN(0);
+  $0.Struct get didDocument => $_getN(0);
   @$pb.TagNumber(1)
-  set didDocument($1.Struct v) {
+  set didDocument($0.Struct v) {
     setField(1, v);
   }
 
@@ -337,7 +337,7 @@ class ResolveResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearDidDocument() => clearField(1);
   @$pb.TagNumber(1)
-  $1.Struct ensureDidDocument() => $_ensure(0);
+  $0.Struct ensureDidDocument() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.List<JsonWebKey> get keys => $_getList(1);

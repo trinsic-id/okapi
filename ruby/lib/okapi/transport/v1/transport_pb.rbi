@@ -2,10 +2,6 @@
 # source: okapi/transport/v1/transport.proto
 # typed: strict
 
-module Okapi; end
-module Okapi::Transport; end
-module Okapi::Transport::V1; end
-
 class Okapi::Transport::V1::SignRequest
   include Google::Protobuf
   include Google::Protobuf::MessageExts

@@ -4,7 +4,10 @@
 from dataclasses import dataclass
 
 import betterproto
+import betterproto.lib.google.protobuf as betterproto_lib_google_protobuf
 from betterproto.grpc.grpclib_server import ServiceBase
+
+from ...keys import v1 as __keys_v1__
 
 
 class LdSuite(betterproto.Enum):
@@ -14,15 +17,21 @@ class LdSuite(betterproto.Enum):
 
 @dataclass(eq=False, repr=False)
 class CreateProofRequest(betterproto.Message):
-    # The input JSON document that will be used to create the LD Proof. This
-    # document must also contain a "proof" object, with the desired values filled
-    # in.
     document: "betterproto_lib_google_protobuf.Struct" = betterproto.message_field(1)
-    # The signer of the proof. This field must include the 'kid' in full URI
-    # format. Example:  did:example:alice#key-1
+    """
+    The input JSON document that will be used to create the LD Proof. This
+    document must also contain a "proof" object, with the desired values filled
+    in.
+    """
+
     key: "__keys_v1__.JsonWebKey" = betterproto.message_field(3)
-    # The LD Suite to use to produce this proof
+    """
+    The signer of the proof. This field must include the 'kid' in full URI
+    format. Example:  did:example:alice#key-1
+    """
+
     suite: "LdSuite" = betterproto.enum_field(4)
+    """The LD Suite to use to produce this proof"""
 
 
 @dataclass(eq=False, repr=False)
@@ -40,7 +49,3 @@ class VerifyProofRequest(betterproto.Message):
 @dataclass(eq=False, repr=False)
 class VerifyProofResponse(betterproto.Message):
     pass
-
-
-from ...keys import v1 as __keys_v1__
-import betterproto.lib.google.protobuf as betterproto_lib_google_protobuf

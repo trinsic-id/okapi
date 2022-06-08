@@ -5,50 +5,49 @@ package trinsic.okapi.metadata;
 
 public final class Metadata {
   private Metadata() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {}
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
   }
 
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
-  }
-  public interface MetadataRequestOrBuilder extends
+  public interface MetadataRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.metadata.MetadataRequest)
-      com.google.protobuf.MessageOrBuilder {
-  }
+      com.google.protobuf.MessageOrBuilder {}
   /**
+   *
+   *
    * <pre>
    * Request custom metadata about the native okapi binaries - cannot get cargo env vars at runtime
    * </pre>
    *
    * Protobuf type {@code okapi.metadata.MetadataRequest}
    */
-  public static final class MetadataRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class MetadataRequest extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.metadata.MetadataRequest)
       MetadataRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use MetadataRequest.newBuilder() to construct.
     private MetadataRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private MetadataRequest() {
-    }
+
+    private MetadataRequest() {}
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new MetadataRequest();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private MetadataRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -67,13 +66,13 @@ public final class Metadata {
             case 0:
               done = true;
               break;
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
               }
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -81,27 +80,30 @@ public final class Metadata {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.metadata.Metadata.internal_static_okapi_metadata_MetadataRequest_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.metadata.Metadata
+          .internal_static_okapi_metadata_MetadataRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.metadata.Metadata.internal_static_okapi_metadata_MetadataRequest_fieldAccessorTable
+      return trinsic.okapi.metadata.Metadata
+          .internal_static_okapi_metadata_MetadataRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.metadata.Metadata.MetadataRequest.class, trinsic.okapi.metadata.Metadata.MetadataRequest.Builder.class);
+              trinsic.okapi.metadata.Metadata.MetadataRequest.class,
+              trinsic.okapi.metadata.Metadata.MetadataRequest.Builder.class);
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -113,8 +115,7 @@ public final class Metadata {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       unknownFields.writeTo(output);
     }
 
@@ -132,12 +133,13 @@ public final class Metadata {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.metadata.Metadata.MetadataRequest)) {
         return super.equals(obj);
       }
-      trinsic.okapi.metadata.Metadata.MetadataRequest other = (trinsic.okapi.metadata.Metadata.MetadataRequest) obj;
+      trinsic.okapi.metadata.Metadata.MetadataRequest other =
+          (trinsic.okapi.metadata.Metadata.MetadataRequest) obj;
 
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -156,87 +158,93 @@ public final class Metadata {
     }
 
     public static trinsic.okapi.metadata.Metadata.MetadataRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.metadata.Metadata.MetadataRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.metadata.Metadata.MetadataRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.metadata.Metadata.MetadataRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.metadata.Metadata.MetadataRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.metadata.Metadata.MetadataRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.metadata.Metadata.MetadataRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.metadata.Metadata.MetadataRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.metadata.Metadata.MetadataRequest parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.metadata.Metadata.MetadataRequest parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.metadata.Metadata.MetadataRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.metadata.Metadata.MetadataRequest parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.metadata.Metadata.MetadataRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.metadata.Metadata.MetadataRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.okapi.metadata.Metadata.MetadataRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -246,27 +254,32 @@ public final class Metadata {
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Request custom metadata about the native okapi binaries - cannot get cargo env vars at runtime
      * </pre>
      *
      * Protobuf type {@code okapi.metadata.MetadataRequest}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.metadata.MetadataRequest)
         trinsic.okapi.metadata.Metadata.MetadataRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.metadata.Metadata.internal_static_okapi_metadata_MetadataRequest_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.metadata.Metadata
+            .internal_static_okapi_metadata_MetadataRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.metadata.Metadata.internal_static_okapi_metadata_MetadataRequest_fieldAccessorTable
+        return trinsic.okapi.metadata.Metadata
+            .internal_static_okapi_metadata_MetadataRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.metadata.Metadata.MetadataRequest.class, trinsic.okapi.metadata.Metadata.MetadataRequest.Builder.class);
+                trinsic.okapi.metadata.Metadata.MetadataRequest.class,
+                trinsic.okapi.metadata.Metadata.MetadataRequest.Builder.class);
       }
 
       // Construct using trinsic.okapi.metadata.Metadata.MetadataRequest.newBuilder()
@@ -274,16 +287,15 @@ public final class Metadata {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -291,9 +303,9 @@ public final class Metadata {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.metadata.Metadata.internal_static_okapi_metadata_MetadataRequest_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.metadata.Metadata
+            .internal_static_okapi_metadata_MetadataRequest_descriptor;
       }
 
       @java.lang.Override
@@ -312,7 +324,8 @@ public final class Metadata {
 
       @java.lang.Override
       public trinsic.okapi.metadata.Metadata.MetadataRequest buildPartial() {
-        trinsic.okapi.metadata.Metadata.MetadataRequest result = new trinsic.okapi.metadata.Metadata.MetadataRequest(this);
+        trinsic.okapi.metadata.Metadata.MetadataRequest result =
+            new trinsic.okapi.metadata.Metadata.MetadataRequest(this);
         onBuilt();
         return result;
       }
@@ -321,38 +334,41 @@ public final class Metadata {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.metadata.Metadata.MetadataRequest) {
-          return mergeFrom((trinsic.okapi.metadata.Metadata.MetadataRequest)other);
+          return mergeFrom((trinsic.okapi.metadata.Metadata.MetadataRequest) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -360,7 +376,8 @@ public final class Metadata {
       }
 
       public Builder mergeFrom(trinsic.okapi.metadata.Metadata.MetadataRequest other) {
-        if (other == trinsic.okapi.metadata.Metadata.MetadataRequest.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.metadata.Metadata.MetadataRequest.getDefaultInstance())
+          return this;
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -380,7 +397,8 @@ public final class Metadata {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.metadata.Metadata.MetadataRequest) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.metadata.Metadata.MetadataRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -389,6 +407,7 @@ public final class Metadata {
         }
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -401,12 +420,12 @@ public final class Metadata {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.metadata.MetadataRequest)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.metadata.MetadataRequest)
     private static final trinsic.okapi.metadata.Metadata.MetadataRequest DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.metadata.Metadata.MetadataRequest();
     }
@@ -415,16 +434,16 @@ public final class Metadata {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<MetadataRequest>
-        PARSER = new com.google.protobuf.AbstractParser<MetadataRequest>() {
-      @java.lang.Override
-      public MetadataRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new MetadataRequest(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<MetadataRequest> PARSER =
+        new com.google.protobuf.AbstractParser<MetadataRequest>() {
+          @java.lang.Override
+          public MetadataRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new MetadataRequest(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<MetadataRequest> parser() {
       return PARSER;
@@ -439,147 +458,173 @@ public final class Metadata {
     public trinsic.okapi.metadata.Metadata.MetadataRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface MetadataResponseOrBuilder extends
+  public interface MetadataResponseOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.metadata.MetadataResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * The full version string from okapi
      * </pre>
      *
      * <code>string version = 1;</code>
+     *
      * @return The version.
      */
     java.lang.String getVersion();
     /**
+     *
+     *
      * <pre>
      * The full version string from okapi
      * </pre>
      *
      * <code>string version = 1;</code>
+     *
      * @return The bytes for version.
      */
-    com.google.protobuf.ByteString
-        getVersionBytes();
+    com.google.protobuf.ByteString getVersionBytes();
 
     /**
+     *
+     *
      * <pre>
      * Major version
      * </pre>
      *
      * <code>int32 version_major = 2;</code>
+     *
      * @return The versionMajor.
      */
     int getVersionMajor();
 
     /**
+     *
+     *
      * <pre>
      * Minor version
      * </pre>
      *
      * <code>int32 version_minor = 3;</code>
+     *
      * @return The versionMinor.
      */
     int getVersionMinor();
 
     /**
+     *
+     *
      * <pre>
      * Patch release version
      * </pre>
      *
      * <code>int32 version_patch = 4;</code>
+     *
      * @return The versionPatch.
      */
     int getVersionPatch();
 
     /**
+     *
+     *
      * <pre>
      * https://doc.rust-lang.org/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-crates
      * </pre>
      *
      * <code>string target_family = 10;</code>
+     *
      * @return The targetFamily.
      */
     java.lang.String getTargetFamily();
     /**
+     *
+     *
      * <pre>
      * https://doc.rust-lang.org/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-crates
      * </pre>
      *
      * <code>string target_family = 10;</code>
+     *
      * @return The bytes for targetFamily.
      */
-    com.google.protobuf.ByteString
-        getTargetFamilyBytes();
+    com.google.protobuf.ByteString getTargetFamilyBytes();
 
     /**
      * <code>string target_os = 11;</code>
+     *
      * @return The targetOs.
      */
     java.lang.String getTargetOs();
     /**
      * <code>string target_os = 11;</code>
+     *
      * @return The bytes for targetOs.
      */
-    com.google.protobuf.ByteString
-        getTargetOsBytes();
+    com.google.protobuf.ByteString getTargetOsBytes();
 
     /**
      * <code>string target_arch = 12;</code>
+     *
      * @return The targetArch.
      */
     java.lang.String getTargetArch();
     /**
      * <code>string target_arch = 12;</code>
+     *
      * @return The bytes for targetArch.
      */
-    com.google.protobuf.ByteString
-        getTargetArchBytes();
+    com.google.protobuf.ByteString getTargetArchBytes();
 
     /**
      * <code>string target_vendor = 13;</code>
+     *
      * @return The targetVendor.
      */
     java.lang.String getTargetVendor();
     /**
      * <code>string target_vendor = 13;</code>
+     *
      * @return The bytes for targetVendor.
      */
-    com.google.protobuf.ByteString
-        getTargetVendorBytes();
+    com.google.protobuf.ByteString getTargetVendorBytes();
 
     /**
      * <code>string target_env = 14;</code>
+     *
      * @return The targetEnv.
      */
     java.lang.String getTargetEnv();
     /**
      * <code>string target_env = 14;</code>
+     *
      * @return The bytes for targetEnv.
      */
-    com.google.protobuf.ByteString
-        getTargetEnvBytes();
+    com.google.protobuf.ByteString getTargetEnvBytes();
   }
   /**
+   *
+   *
    * <pre>
    * Metadata information about the native okapi binaries. Always returns the version information
    * </pre>
    *
    * Protobuf type {@code okapi.metadata.MetadataResponse}
    */
-  public static final class MetadataResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class MetadataResponse extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.metadata.MetadataResponse)
       MetadataResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use MetadataResponse.newBuilder() to construct.
     private MetadataResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private MetadataResponse() {
       version_ = "";
       targetFamily_ = "";
@@ -591,16 +636,15 @@ public final class Metadata {
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new MetadataResponse();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private MetadataResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -619,64 +663,70 @@ public final class Metadata {
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 10:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
 
-              version_ = s;
-              break;
-            }
-            case 16: {
-
-              versionMajor_ = input.readInt32();
-              break;
-            }
-            case 24: {
-
-              versionMinor_ = input.readInt32();
-              break;
-            }
-            case 32: {
-
-              versionPatch_ = input.readInt32();
-              break;
-            }
-            case 82: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              targetFamily_ = s;
-              break;
-            }
-            case 90: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              targetOs_ = s;
-              break;
-            }
-            case 98: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              targetArch_ = s;
-              break;
-            }
-            case 106: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              targetVendor_ = s;
-              break;
-            }
-            case 114: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              targetEnv_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                version_ = s;
+                break;
               }
-              break;
-            }
+            case 16:
+              {
+                versionMajor_ = input.readInt32();
+                break;
+              }
+            case 24:
+              {
+                versionMinor_ = input.readInt32();
+                break;
+              }
+            case 32:
+              {
+                versionPatch_ = input.readInt32();
+                break;
+              }
+            case 82:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                targetFamily_ = s;
+                break;
+              }
+            case 90:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                targetOs_ = s;
+                break;
+              }
+            case 98:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                targetArch_ = s;
+                break;
+              }
+            case 106:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                targetVendor_ = s;
+                break;
+              }
+            case 114:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                targetEnv_ = s;
+                break;
+              }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -684,34 +734,39 @@ public final class Metadata {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.metadata.Metadata.internal_static_okapi_metadata_MetadataResponse_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.metadata.Metadata
+          .internal_static_okapi_metadata_MetadataResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.metadata.Metadata.internal_static_okapi_metadata_MetadataResponse_fieldAccessorTable
+      return trinsic.okapi.metadata.Metadata
+          .internal_static_okapi_metadata_MetadataResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.metadata.Metadata.MetadataResponse.class, trinsic.okapi.metadata.Metadata.MetadataResponse.Builder.class);
+              trinsic.okapi.metadata.Metadata.MetadataResponse.class,
+              trinsic.okapi.metadata.Metadata.MetadataResponse.Builder.class);
     }
 
     public static final int VERSION_FIELD_NUMBER = 1;
     private volatile java.lang.Object version_;
     /**
+     *
+     *
      * <pre>
      * The full version string from okapi
      * </pre>
      *
      * <code>string version = 1;</code>
+     *
      * @return The version.
      */
     @java.lang.Override
@@ -720,29 +775,29 @@ public final class Metadata {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         version_ = s;
         return s;
       }
     }
     /**
+     *
+     *
      * <pre>
      * The full version string from okapi
      * </pre>
      *
      * <code>string version = 1;</code>
+     *
      * @return The bytes for version.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getVersionBytes() {
+    public com.google.protobuf.ByteString getVersionBytes() {
       java.lang.Object ref = version_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         version_ = b;
         return b;
       } else {
@@ -753,11 +808,14 @@ public final class Metadata {
     public static final int VERSION_MAJOR_FIELD_NUMBER = 2;
     private int versionMajor_;
     /**
+     *
+     *
      * <pre>
      * Major version
      * </pre>
      *
      * <code>int32 version_major = 2;</code>
+     *
      * @return The versionMajor.
      */
     @java.lang.Override
@@ -768,11 +826,14 @@ public final class Metadata {
     public static final int VERSION_MINOR_FIELD_NUMBER = 3;
     private int versionMinor_;
     /**
+     *
+     *
      * <pre>
      * Minor version
      * </pre>
      *
      * <code>int32 version_minor = 3;</code>
+     *
      * @return The versionMinor.
      */
     @java.lang.Override
@@ -783,11 +844,14 @@ public final class Metadata {
     public static final int VERSION_PATCH_FIELD_NUMBER = 4;
     private int versionPatch_;
     /**
+     *
+     *
      * <pre>
      * Patch release version
      * </pre>
      *
      * <code>int32 version_patch = 4;</code>
+     *
      * @return The versionPatch.
      */
     @java.lang.Override
@@ -798,11 +862,14 @@ public final class Metadata {
     public static final int TARGET_FAMILY_FIELD_NUMBER = 10;
     private volatile java.lang.Object targetFamily_;
     /**
+     *
+     *
      * <pre>
      * https://doc.rust-lang.org/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-crates
      * </pre>
      *
      * <code>string target_family = 10;</code>
+     *
      * @return The targetFamily.
      */
     @java.lang.Override
@@ -811,29 +878,29 @@ public final class Metadata {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         targetFamily_ = s;
         return s;
       }
     }
     /**
+     *
+     *
      * <pre>
      * https://doc.rust-lang.org/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-crates
      * </pre>
      *
      * <code>string target_family = 10;</code>
+     *
      * @return The bytes for targetFamily.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getTargetFamilyBytes() {
+    public com.google.protobuf.ByteString getTargetFamilyBytes() {
       java.lang.Object ref = targetFamily_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         targetFamily_ = b;
         return b;
       } else {
@@ -845,6 +912,7 @@ public final class Metadata {
     private volatile java.lang.Object targetOs_;
     /**
      * <code>string target_os = 11;</code>
+     *
      * @return The targetOs.
      */
     @java.lang.Override
@@ -853,8 +921,7 @@ public final class Metadata {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         targetOs_ = s;
         return s;
@@ -862,16 +929,15 @@ public final class Metadata {
     }
     /**
      * <code>string target_os = 11;</code>
+     *
      * @return The bytes for targetOs.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getTargetOsBytes() {
+    public com.google.protobuf.ByteString getTargetOsBytes() {
       java.lang.Object ref = targetOs_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         targetOs_ = b;
         return b;
       } else {
@@ -883,6 +949,7 @@ public final class Metadata {
     private volatile java.lang.Object targetArch_;
     /**
      * <code>string target_arch = 12;</code>
+     *
      * @return The targetArch.
      */
     @java.lang.Override
@@ -891,8 +958,7 @@ public final class Metadata {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         targetArch_ = s;
         return s;
@@ -900,16 +966,15 @@ public final class Metadata {
     }
     /**
      * <code>string target_arch = 12;</code>
+     *
      * @return The bytes for targetArch.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getTargetArchBytes() {
+    public com.google.protobuf.ByteString getTargetArchBytes() {
       java.lang.Object ref = targetArch_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         targetArch_ = b;
         return b;
       } else {
@@ -921,6 +986,7 @@ public final class Metadata {
     private volatile java.lang.Object targetVendor_;
     /**
      * <code>string target_vendor = 13;</code>
+     *
      * @return The targetVendor.
      */
     @java.lang.Override
@@ -929,8 +995,7 @@ public final class Metadata {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         targetVendor_ = s;
         return s;
@@ -938,16 +1003,15 @@ public final class Metadata {
     }
     /**
      * <code>string target_vendor = 13;</code>
+     *
      * @return The bytes for targetVendor.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getTargetVendorBytes() {
+    public com.google.protobuf.ByteString getTargetVendorBytes() {
       java.lang.Object ref = targetVendor_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         targetVendor_ = b;
         return b;
       } else {
@@ -959,6 +1023,7 @@ public final class Metadata {
     private volatile java.lang.Object targetEnv_;
     /**
      * <code>string target_env = 14;</code>
+     *
      * @return The targetEnv.
      */
     @java.lang.Override
@@ -967,8 +1032,7 @@ public final class Metadata {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         targetEnv_ = s;
         return s;
@@ -976,16 +1040,15 @@ public final class Metadata {
     }
     /**
      * <code>string target_env = 14;</code>
+     *
      * @return The bytes for targetEnv.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getTargetEnvBytes() {
+    public com.google.protobuf.ByteString getTargetEnvBytes() {
       java.lang.Object ref = targetEnv_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         targetEnv_ = b;
         return b;
       } else {
@@ -994,6 +1057,7 @@ public final class Metadata {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1005,8 +1069,7 @@ public final class Metadata {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(version_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, version_);
       }
@@ -1047,16 +1110,13 @@ public final class Metadata {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, version_);
       }
       if (versionMajor_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, versionMajor_);
+        size += com.google.protobuf.CodedOutputStream.computeInt32Size(2, versionMajor_);
       }
       if (versionMinor_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, versionMinor_);
+        size += com.google.protobuf.CodedOutputStream.computeInt32Size(3, versionMinor_);
       }
       if (versionPatch_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, versionPatch_);
+        size += com.google.protobuf.CodedOutputStream.computeInt32Size(4, versionPatch_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(targetFamily_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, targetFamily_);
@@ -1081,31 +1141,23 @@ public final class Metadata {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.metadata.Metadata.MetadataResponse)) {
         return super.equals(obj);
       }
-      trinsic.okapi.metadata.Metadata.MetadataResponse other = (trinsic.okapi.metadata.Metadata.MetadataResponse) obj;
+      trinsic.okapi.metadata.Metadata.MetadataResponse other =
+          (trinsic.okapi.metadata.Metadata.MetadataResponse) obj;
 
-      if (!getVersion()
-          .equals(other.getVersion())) return false;
-      if (getVersionMajor()
-          != other.getVersionMajor()) return false;
-      if (getVersionMinor()
-          != other.getVersionMinor()) return false;
-      if (getVersionPatch()
-          != other.getVersionPatch()) return false;
-      if (!getTargetFamily()
-          .equals(other.getTargetFamily())) return false;
-      if (!getTargetOs()
-          .equals(other.getTargetOs())) return false;
-      if (!getTargetArch()
-          .equals(other.getTargetArch())) return false;
-      if (!getTargetVendor()
-          .equals(other.getTargetVendor())) return false;
-      if (!getTargetEnv()
-          .equals(other.getTargetEnv())) return false;
+      if (!getVersion().equals(other.getVersion())) return false;
+      if (getVersionMajor() != other.getVersionMajor()) return false;
+      if (getVersionMinor() != other.getVersionMinor()) return false;
+      if (getVersionPatch() != other.getVersionPatch()) return false;
+      if (!getTargetFamily().equals(other.getTargetFamily())) return false;
+      if (!getTargetOs().equals(other.getTargetOs())) return false;
+      if (!getTargetArch().equals(other.getTargetArch())) return false;
+      if (!getTargetVendor().equals(other.getTargetVendor())) return false;
+      if (!getTargetEnv().equals(other.getTargetEnv())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1141,87 +1193,93 @@ public final class Metadata {
     }
 
     public static trinsic.okapi.metadata.Metadata.MetadataResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.metadata.Metadata.MetadataResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.metadata.Metadata.MetadataResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.metadata.Metadata.MetadataResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.metadata.Metadata.MetadataResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.metadata.Metadata.MetadataResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.metadata.Metadata.MetadataResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.metadata.Metadata.MetadataResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.metadata.Metadata.MetadataResponse parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.metadata.Metadata.MetadataResponse parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.metadata.Metadata.MetadataResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.metadata.Metadata.MetadataResponse parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.metadata.Metadata.MetadataResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.metadata.Metadata.MetadataResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.okapi.metadata.Metadata.MetadataResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -1231,27 +1289,32 @@ public final class Metadata {
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Metadata information about the native okapi binaries. Always returns the version information
      * </pre>
      *
      * Protobuf type {@code okapi.metadata.MetadataResponse}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.metadata.MetadataResponse)
         trinsic.okapi.metadata.Metadata.MetadataResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.metadata.Metadata.internal_static_okapi_metadata_MetadataResponse_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.metadata.Metadata
+            .internal_static_okapi_metadata_MetadataResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.metadata.Metadata.internal_static_okapi_metadata_MetadataResponse_fieldAccessorTable
+        return trinsic.okapi.metadata.Metadata
+            .internal_static_okapi_metadata_MetadataResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.metadata.Metadata.MetadataResponse.class, trinsic.okapi.metadata.Metadata.MetadataResponse.Builder.class);
+                trinsic.okapi.metadata.Metadata.MetadataResponse.class,
+                trinsic.okapi.metadata.Metadata.MetadataResponse.Builder.class);
       }
 
       // Construct using trinsic.okapi.metadata.Metadata.MetadataResponse.newBuilder()
@@ -1259,16 +1322,15 @@ public final class Metadata {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -1294,9 +1356,9 @@ public final class Metadata {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.metadata.Metadata.internal_static_okapi_metadata_MetadataResponse_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.metadata.Metadata
+            .internal_static_okapi_metadata_MetadataResponse_descriptor;
       }
 
       @java.lang.Override
@@ -1315,7 +1377,8 @@ public final class Metadata {
 
       @java.lang.Override
       public trinsic.okapi.metadata.Metadata.MetadataResponse buildPartial() {
-        trinsic.okapi.metadata.Metadata.MetadataResponse result = new trinsic.okapi.metadata.Metadata.MetadataResponse(this);
+        trinsic.okapi.metadata.Metadata.MetadataResponse result =
+            new trinsic.okapi.metadata.Metadata.MetadataResponse(this);
         result.version_ = version_;
         result.versionMajor_ = versionMajor_;
         result.versionMinor_ = versionMinor_;
@@ -1333,38 +1396,41 @@ public final class Metadata {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.metadata.Metadata.MetadataResponse) {
-          return mergeFrom((trinsic.okapi.metadata.Metadata.MetadataResponse)other);
+          return mergeFrom((trinsic.okapi.metadata.Metadata.MetadataResponse) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -1372,7 +1438,8 @@ public final class Metadata {
       }
 
       public Builder mergeFrom(trinsic.okapi.metadata.Metadata.MetadataResponse other) {
-        if (other == trinsic.okapi.metadata.Metadata.MetadataResponse.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.metadata.Metadata.MetadataResponse.getDefaultInstance())
+          return this;
         if (!other.getVersion().isEmpty()) {
           version_ = other.version_;
           onChanged();
@@ -1425,7 +1492,8 @@ public final class Metadata {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.okapi.metadata.Metadata.MetadataResponse) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.okapi.metadata.Metadata.MetadataResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1437,18 +1505,20 @@ public final class Metadata {
 
       private java.lang.Object version_ = "";
       /**
+       *
+       *
        * <pre>
        * The full version string from okapi
        * </pre>
        *
        * <code>string version = 1;</code>
+       *
        * @return The version.
        */
       public java.lang.String getVersion() {
         java.lang.Object ref = version_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           version_ = s;
           return s;
@@ -1457,20 +1527,21 @@ public final class Metadata {
         }
       }
       /**
+       *
+       *
        * <pre>
        * The full version string from okapi
        * </pre>
        *
        * <code>string version = 1;</code>
+       *
        * @return The bytes for version.
        */
-      public com.google.protobuf.ByteString
-          getVersionBytes() {
+      public com.google.protobuf.ByteString getVersionBytes() {
         java.lang.Object ref = version_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           version_ = b;
           return b;
         } else {
@@ -1478,66 +1549,76 @@ public final class Metadata {
         }
       }
       /**
+       *
+       *
        * <pre>
        * The full version string from okapi
        * </pre>
        *
        * <code>string version = 1;</code>
+       *
        * @param value The version to set.
        * @return This builder for chaining.
        */
-      public Builder setVersion(
-          java.lang.String value) {
+      public Builder setVersion(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         version_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * The full version string from okapi
        * </pre>
        *
        * <code>string version = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearVersion() {
-        
+
         version_ = getDefaultInstance().getVersion();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * The full version string from okapi
        * </pre>
        *
        * <code>string version = 1;</code>
+       *
        * @param value The bytes for version to set.
        * @return This builder for chaining.
        */
-      public Builder setVersionBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setVersionBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         version_ = value;
         onChanged();
         return this;
       }
 
-      private int versionMajor_ ;
+      private int versionMajor_;
       /**
+       *
+       *
        * <pre>
        * Major version
        * </pre>
        *
        * <code>int32 version_major = 2;</code>
+       *
        * @return The versionMajor.
        */
       @java.lang.Override
@@ -1545,42 +1626,51 @@ public final class Metadata {
         return versionMajor_;
       }
       /**
+       *
+       *
        * <pre>
        * Major version
        * </pre>
        *
        * <code>int32 version_major = 2;</code>
+       *
        * @param value The versionMajor to set.
        * @return This builder for chaining.
        */
       public Builder setVersionMajor(int value) {
-        
+
         versionMajor_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Major version
        * </pre>
        *
        * <code>int32 version_major = 2;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearVersionMajor() {
-        
+
         versionMajor_ = 0;
         onChanged();
         return this;
       }
 
-      private int versionMinor_ ;
+      private int versionMinor_;
       /**
+       *
+       *
        * <pre>
        * Minor version
        * </pre>
        *
        * <code>int32 version_minor = 3;</code>
+       *
        * @return The versionMinor.
        */
       @java.lang.Override
@@ -1588,42 +1678,51 @@ public final class Metadata {
         return versionMinor_;
       }
       /**
+       *
+       *
        * <pre>
        * Minor version
        * </pre>
        *
        * <code>int32 version_minor = 3;</code>
+       *
        * @param value The versionMinor to set.
        * @return This builder for chaining.
        */
       public Builder setVersionMinor(int value) {
-        
+
         versionMinor_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Minor version
        * </pre>
        *
        * <code>int32 version_minor = 3;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearVersionMinor() {
-        
+
         versionMinor_ = 0;
         onChanged();
         return this;
       }
 
-      private int versionPatch_ ;
+      private int versionPatch_;
       /**
+       *
+       *
        * <pre>
        * Patch release version
        * </pre>
        *
        * <code>int32 version_patch = 4;</code>
+       *
        * @return The versionPatch.
        */
       @java.lang.Override
@@ -1631,30 +1730,36 @@ public final class Metadata {
         return versionPatch_;
       }
       /**
+       *
+       *
        * <pre>
        * Patch release version
        * </pre>
        *
        * <code>int32 version_patch = 4;</code>
+       *
        * @param value The versionPatch to set.
        * @return This builder for chaining.
        */
       public Builder setVersionPatch(int value) {
-        
+
         versionPatch_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Patch release version
        * </pre>
        *
        * <code>int32 version_patch = 4;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearVersionPatch() {
-        
+
         versionPatch_ = 0;
         onChanged();
         return this;
@@ -1662,18 +1767,20 @@ public final class Metadata {
 
       private java.lang.Object targetFamily_ = "";
       /**
+       *
+       *
        * <pre>
        * https://doc.rust-lang.org/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-crates
        * </pre>
        *
        * <code>string target_family = 10;</code>
+       *
        * @return The targetFamily.
        */
       public java.lang.String getTargetFamily() {
         java.lang.Object ref = targetFamily_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           targetFamily_ = s;
           return s;
@@ -1682,20 +1789,21 @@ public final class Metadata {
         }
       }
       /**
+       *
+       *
        * <pre>
        * https://doc.rust-lang.org/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-crates
        * </pre>
        *
        * <code>string target_family = 10;</code>
+       *
        * @return The bytes for targetFamily.
        */
-      public com.google.protobuf.ByteString
-          getTargetFamilyBytes() {
+      public com.google.protobuf.ByteString getTargetFamilyBytes() {
         java.lang.Object ref = targetFamily_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           targetFamily_ = b;
           return b;
         } else {
@@ -1703,54 +1811,61 @@ public final class Metadata {
         }
       }
       /**
+       *
+       *
        * <pre>
        * https://doc.rust-lang.org/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-crates
        * </pre>
        *
        * <code>string target_family = 10;</code>
+       *
        * @param value The targetFamily to set.
        * @return This builder for chaining.
        */
-      public Builder setTargetFamily(
-          java.lang.String value) {
+      public Builder setTargetFamily(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         targetFamily_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * https://doc.rust-lang.org/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-crates
        * </pre>
        *
        * <code>string target_family = 10;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearTargetFamily() {
-        
+
         targetFamily_ = getDefaultInstance().getTargetFamily();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * https://doc.rust-lang.org/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-crates
        * </pre>
        *
        * <code>string target_family = 10;</code>
+       *
        * @param value The bytes for targetFamily to set.
        * @return This builder for chaining.
        */
-      public Builder setTargetFamilyBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setTargetFamilyBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         targetFamily_ = value;
         onChanged();
         return this;
@@ -1759,13 +1874,13 @@ public final class Metadata {
       private java.lang.Object targetOs_ = "";
       /**
        * <code>string target_os = 11;</code>
+       *
        * @return The targetOs.
        */
       public java.lang.String getTargetOs() {
         java.lang.Object ref = targetOs_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           targetOs_ = s;
           return s;
@@ -1775,15 +1890,14 @@ public final class Metadata {
       }
       /**
        * <code>string target_os = 11;</code>
+       *
        * @return The bytes for targetOs.
        */
-      public com.google.protobuf.ByteString
-          getTargetOsBytes() {
+      public com.google.protobuf.ByteString getTargetOsBytes() {
         java.lang.Object ref = targetOs_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           targetOs_ = b;
           return b;
         } else {
@@ -1792,41 +1906,42 @@ public final class Metadata {
       }
       /**
        * <code>string target_os = 11;</code>
+       *
        * @param value The targetOs to set.
        * @return This builder for chaining.
        */
-      public Builder setTargetOs(
-          java.lang.String value) {
+      public Builder setTargetOs(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         targetOs_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>string target_os = 11;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearTargetOs() {
-        
+
         targetOs_ = getDefaultInstance().getTargetOs();
         onChanged();
         return this;
       }
       /**
        * <code>string target_os = 11;</code>
+       *
        * @param value The bytes for targetOs to set.
        * @return This builder for chaining.
        */
-      public Builder setTargetOsBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setTargetOsBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         targetOs_ = value;
         onChanged();
         return this;
@@ -1835,13 +1950,13 @@ public final class Metadata {
       private java.lang.Object targetArch_ = "";
       /**
        * <code>string target_arch = 12;</code>
+       *
        * @return The targetArch.
        */
       public java.lang.String getTargetArch() {
         java.lang.Object ref = targetArch_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           targetArch_ = s;
           return s;
@@ -1851,15 +1966,14 @@ public final class Metadata {
       }
       /**
        * <code>string target_arch = 12;</code>
+       *
        * @return The bytes for targetArch.
        */
-      public com.google.protobuf.ByteString
-          getTargetArchBytes() {
+      public com.google.protobuf.ByteString getTargetArchBytes() {
         java.lang.Object ref = targetArch_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           targetArch_ = b;
           return b;
         } else {
@@ -1868,41 +1982,42 @@ public final class Metadata {
       }
       /**
        * <code>string target_arch = 12;</code>
+       *
        * @param value The targetArch to set.
        * @return This builder for chaining.
        */
-      public Builder setTargetArch(
-          java.lang.String value) {
+      public Builder setTargetArch(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         targetArch_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>string target_arch = 12;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearTargetArch() {
-        
+
         targetArch_ = getDefaultInstance().getTargetArch();
         onChanged();
         return this;
       }
       /**
        * <code>string target_arch = 12;</code>
+       *
        * @param value The bytes for targetArch to set.
        * @return This builder for chaining.
        */
-      public Builder setTargetArchBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setTargetArchBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         targetArch_ = value;
         onChanged();
         return this;
@@ -1911,13 +2026,13 @@ public final class Metadata {
       private java.lang.Object targetVendor_ = "";
       /**
        * <code>string target_vendor = 13;</code>
+       *
        * @return The targetVendor.
        */
       public java.lang.String getTargetVendor() {
         java.lang.Object ref = targetVendor_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           targetVendor_ = s;
           return s;
@@ -1927,15 +2042,14 @@ public final class Metadata {
       }
       /**
        * <code>string target_vendor = 13;</code>
+       *
        * @return The bytes for targetVendor.
        */
-      public com.google.protobuf.ByteString
-          getTargetVendorBytes() {
+      public com.google.protobuf.ByteString getTargetVendorBytes() {
         java.lang.Object ref = targetVendor_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           targetVendor_ = b;
           return b;
         } else {
@@ -1944,41 +2058,42 @@ public final class Metadata {
       }
       /**
        * <code>string target_vendor = 13;</code>
+       *
        * @param value The targetVendor to set.
        * @return This builder for chaining.
        */
-      public Builder setTargetVendor(
-          java.lang.String value) {
+      public Builder setTargetVendor(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         targetVendor_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>string target_vendor = 13;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearTargetVendor() {
-        
+
         targetVendor_ = getDefaultInstance().getTargetVendor();
         onChanged();
         return this;
       }
       /**
        * <code>string target_vendor = 13;</code>
+       *
        * @param value The bytes for targetVendor to set.
        * @return This builder for chaining.
        */
-      public Builder setTargetVendorBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setTargetVendorBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         targetVendor_ = value;
         onChanged();
         return this;
@@ -1987,13 +2102,13 @@ public final class Metadata {
       private java.lang.Object targetEnv_ = "";
       /**
        * <code>string target_env = 14;</code>
+       *
        * @return The targetEnv.
        */
       public java.lang.String getTargetEnv() {
         java.lang.Object ref = targetEnv_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           targetEnv_ = s;
           return s;
@@ -2003,15 +2118,14 @@ public final class Metadata {
       }
       /**
        * <code>string target_env = 14;</code>
+       *
        * @return The bytes for targetEnv.
        */
-      public com.google.protobuf.ByteString
-          getTargetEnvBytes() {
+      public com.google.protobuf.ByteString getTargetEnvBytes() {
         java.lang.Object ref = targetEnv_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           targetEnv_ = b;
           return b;
         } else {
@@ -2020,45 +2134,47 @@ public final class Metadata {
       }
       /**
        * <code>string target_env = 14;</code>
+       *
        * @param value The targetEnv to set.
        * @return This builder for chaining.
        */
-      public Builder setTargetEnv(
-          java.lang.String value) {
+      public Builder setTargetEnv(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         targetEnv_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>string target_env = 14;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearTargetEnv() {
-        
+
         targetEnv_ = getDefaultInstance().getTargetEnv();
         onChanged();
         return this;
       }
       /**
        * <code>string target_env = 14;</code>
+       *
        * @param value The bytes for targetEnv to set.
        * @return This builder for chaining.
        */
-      public Builder setTargetEnvBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setTargetEnvBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         targetEnv_ = value;
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -2071,12 +2187,12 @@ public final class Metadata {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.metadata.MetadataResponse)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.metadata.MetadataResponse)
     private static final trinsic.okapi.metadata.Metadata.MetadataResponse DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.metadata.Metadata.MetadataResponse();
     }
@@ -2085,16 +2201,16 @@ public final class Metadata {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<MetadataResponse>
-        PARSER = new com.google.protobuf.AbstractParser<MetadataResponse>() {
-      @java.lang.Override
-      public MetadataResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new MetadataResponse(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<MetadataResponse> PARSER =
+        new com.google.protobuf.AbstractParser<MetadataResponse>() {
+          @java.lang.Override
+          public MetadataResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new MetadataResponse(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<MetadataResponse> parser() {
       return PARSER;
@@ -2109,55 +2225,59 @@ public final class Metadata {
     public trinsic.okapi.metadata.Metadata.MetadataResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_metadata_MetadataRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_metadata_MetadataRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_metadata_MetadataRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_metadata_MetadataResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_metadata_MetadataResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_metadata_MetadataResponse_fieldAccessorTable;
 
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
+  public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
+
+  private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
+
   static {
     java.lang.String[] descriptorData = {
-      "\n\035okapi/metadata/metadata.proto\022\016okapi.m" +
-      "etadata\"\021\n\017MetadataRequest\"\322\001\n\020MetadataR" +
-      "esponse\022\017\n\007version\030\001 \001(\t\022\025\n\rversion_majo" +
-      "r\030\002 \001(\005\022\025\n\rversion_minor\030\003 \001(\005\022\025\n\rversio" +
-      "n_patch\030\004 \001(\005\022\025\n\rtarget_family\030\n \001(\t\022\021\n\t" +
-      "target_os\030\013 \001(\t\022\023\n\013target_arch\030\014 \001(\t\022\025\n\r" +
-      "target_vendor\030\r \001(\t\022\022\n\ntarget_env\030\016 \001(\tB" +
-      "K\n\026trinsic.okapi.metadataZ github.com/tr" +
-      "insic-id/okapiproto\252\002\016Okapi.Metadatab\006pr" +
-      "oto3"
+      "\n\035okapi/metadata/metadata.proto\022\016okapi.m"
+          + "etadata\"\021\n\017MetadataRequest\"\322\001\n\020MetadataR"
+          + "esponse\022\017\n\007version\030\001 \001(\t\022\025\n\rversion_majo"
+          + "r\030\002 \001(\005\022\025\n\rversion_minor\030\003 \001(\005\022\025\n\rversio"
+          + "n_patch\030\004 \001(\005\022\025\n\rtarget_family\030\n \001(\t\022\021\n\t"
+          + "target_os\030\013 \001(\t\022\023\n\013target_arch\030\014 \001(\t\022\025\n\r"
+          + "target_vendor\030\r \001(\t\022\022\n\ntarget_env\030\016 \001(\tB"
+          + "9\n\026trinsic.okapi.metadataZ\016okapi/metadat"
+          + "a\252\002\016Okapi.Metadatab\006proto3"
     };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-        });
+    descriptor =
+        com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
+            descriptorData, new com.google.protobuf.Descriptors.FileDescriptor[] {});
     internal_static_okapi_metadata_MetadataRequest_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_okapi_metadata_MetadataRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_metadata_MetadataRequest_descriptor,
-        new java.lang.String[] { });
+        getDescriptor().getMessageTypes().get(0);
+    internal_static_okapi_metadata_MetadataRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_metadata_MetadataRequest_descriptor, new java.lang.String[] {});
     internal_static_okapi_metadata_MetadataResponse_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_okapi_metadata_MetadataResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_metadata_MetadataResponse_descriptor,
-        new java.lang.String[] { "Version", "VersionMajor", "VersionMinor", "VersionPatch", "TargetFamily", "TargetOs", "TargetArch", "TargetVendor", "TargetEnv", });
+        getDescriptor().getMessageTypes().get(1);
+    internal_static_okapi_metadata_MetadataResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_metadata_MetadataResponse_descriptor,
+            new java.lang.String[] {
+              "Version",
+              "VersionMajor",
+              "VersionMinor",
+              "VersionPatch",
+              "TargetFamily",
+              "TargetOs",
+              "TargetArch",
+              "TargetVendor",
+              "TargetEnv",
+            });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
