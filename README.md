@@ -7,6 +7,10 @@
 [![Ruby](https://github.com/trinsic-id/okapi/actions/workflows/build-ruby.yml/badge.svg)](https://github.com/trinsic-id/okapi/actions/workflows/build-ruby.yml)
 [![Wasm](https://github.com/trinsic-id/okapi/actions/workflows/build-wasm.yml/badge.svg)](https://github.com/trinsic-id/okapi/actions/workflows/build-wasm.yml)
 
+Test Coverage
+
+[![codecov](https://codecov.io/gh/trinsic-id/okapi/branch/main/graph/badge.svg?token=VN26B7NYBM)](https://codecov.io/gh/trinsic-id/okapi)
+
 This repo provides bindings in all popular languages for the core Okapi functionalities:
 
 - Support for working with `did:key` method
