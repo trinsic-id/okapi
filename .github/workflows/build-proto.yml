@@ -1,0 +1,68 @@
+name: Build Proto Files
+on:
+  workflow_call:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "proto/**"
+      - "devops/*.py"
+  pull_request:
+    paths:
+      - "proto/**"
+      - "devops/**"
+
+jobs:
+  compile_proto:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: ^1.17
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v1
+      - name: Configure git credentials
+        uses: OleksiyRudenko/gha-git-credentials@v2
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
+      - name: Install protobuf plugins
+        run: |
+          pip install -r ./devops/requirements.txt
+          python ./devops/generate_proto_files.py --download-plugins --language=none
+          echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
+      - name: Compile proto files
+        run: |
+          python ./devops/generate_proto_files.py --language=all
+
+      - name: Commit Changes
+        run: |
+          if git diff --exit-code; then
+            exit 0;
+          fi
+          git checkout -b "${{ github.head_ref }}-generated-protos"
+          git add .
+          git commit -m "Generated code from proto files"
+          git push --set-upstream origin "${{ github.head_ref }}-generated-protos"
+          echo ${{ secrets.GITHUB_TOKEN }} | gh auth login --with-token
+          gh pr create --base ${{ github.head_ref }} --title "Generated Protos for ${{ github.head_ref }}" --body "Generated files from proto"

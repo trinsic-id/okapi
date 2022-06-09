@@ -58,15 +58,7 @@ func getLibraryName() (string, string) {
 }
 
 func getLibraryPath() string {
-	libFolder, libName := getLibraryName()
-	ldLibPath := os.Getenv("OKAPI_LIBRARY_PATH")
-	// TODO - Check the appropriate folders
-	checkPaths := []string{
-		path.Join(".", libName),
-		path.Join(".", libFolder, libName),
-		path.Join(ldLibPath, libName),
-		path.Join(ldLibPath, libFolder, libName),
-	}
+	checkPaths := getLibraryCheckPaths()
 
 	for _, checkPath := range checkPaths {
 		if _, err := os.Stat(checkPath); errors.Is(err, os.ErrNotExist) {
@@ -79,6 +71,19 @@ func getLibraryPath() string {
 	fmt.Printf("could not find necessary okapi binary. paths searched:\n%s", strings.Join(checkPaths, "\n"))
 	// Fall back to OS handling it
 	return ""
+}
+
+func getLibraryCheckPaths() []string {
+	libFolder, libName := getLibraryName()
+	ldLibPath := os.Getenv("OKAPI_LIBRARY_PATH")
+	// Check the appropriate folders
+	checkPaths := []string{
+		path.Join(ldLibPath, libName),
+		path.Join(ldLibPath, libFolder, libName),
+		path.Join(".", libName),
+		path.Join(".", libFolder, libName),
+	}
+	return checkPaths
 }
 
 func createBuffersFromMessage(requestMessage proto.Message) (ByteBuffer, ByteBuffer, ExternError, error) {

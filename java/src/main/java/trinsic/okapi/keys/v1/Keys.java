@@ -5,72 +5,41 @@ package trinsic.okapi.keys.v1;
 
 public final class Keys {
   private Keys() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
-  }
 
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {}
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  /**
-   * Protobuf enum {@code okapi.keys.v1.KeyType}
-   */
-  public enum KeyType
-      implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>KEY_TYPE_UNSPECIFIED = 0;</code>
-     */
+  /** Protobuf enum {@code okapi.keys.v1.KeyType} */
+  public enum KeyType implements com.google.protobuf.ProtocolMessageEnum {
+    /** <code>KEY_TYPE_UNSPECIFIED = 0;</code> */
     KEY_TYPE_UNSPECIFIED(0),
-    /**
-     * <code>KEY_TYPE_ED25519 = 1;</code>
-     */
+    /** <code>KEY_TYPE_ED25519 = 1;</code> */
     KEY_TYPE_ED25519(1),
-    /**
-     * <code>KEY_TYPE_X25519 = 2;</code>
-     */
+    /** <code>KEY_TYPE_X25519 = 2;</code> */
     KEY_TYPE_X25519(2),
-    /**
-     * <code>KEY_TYPE_P256 = 3;</code>
-     */
+    /** <code>KEY_TYPE_P256 = 3;</code> */
     KEY_TYPE_P256(3),
-    /**
-     * <code>KEY_TYPE_BLS12381G1G2 = 4;</code>
-     */
+    /** <code>KEY_TYPE_BLS12381G1G2 = 4;</code> */
     KEY_TYPE_BLS12381G1G2(4),
-    /**
-     * <code>KEY_TYPE_SECP256K1 = 5;</code>
-     */
+    /** <code>KEY_TYPE_SECP256K1 = 5;</code> */
     KEY_TYPE_SECP256K1(5),
     UNRECOGNIZED(-1),
     ;
 
-    /**
-     * <code>KEY_TYPE_UNSPECIFIED = 0;</code>
-     */
+    /** <code>KEY_TYPE_UNSPECIFIED = 0;</code> */
     public static final int KEY_TYPE_UNSPECIFIED_VALUE = 0;
-    /**
-     * <code>KEY_TYPE_ED25519 = 1;</code>
-     */
+    /** <code>KEY_TYPE_ED25519 = 1;</code> */
     public static final int KEY_TYPE_ED25519_VALUE = 1;
-    /**
-     * <code>KEY_TYPE_X25519 = 2;</code>
-     */
+    /** <code>KEY_TYPE_X25519 = 2;</code> */
     public static final int KEY_TYPE_X25519_VALUE = 2;
-    /**
-     * <code>KEY_TYPE_P256 = 3;</code>
-     */
+    /** <code>KEY_TYPE_P256 = 3;</code> */
     public static final int KEY_TYPE_P256_VALUE = 3;
-    /**
-     * <code>KEY_TYPE_BLS12381G1G2 = 4;</code>
-     */
+    /** <code>KEY_TYPE_BLS12381G1G2 = 4;</code> */
     public static final int KEY_TYPE_BLS12381G1G2_VALUE = 4;
-    /**
-     * <code>KEY_TYPE_SECP256K1 = 5;</code>
-     */
+    /** <code>KEY_TYPE_SECP256K1 = 5;</code> */
     public static final int KEY_TYPE_SECP256K1_VALUE = 5;
-
 
     public final int getNumber() {
       if (this == UNRECOGNIZED) {
@@ -96,52 +65,55 @@ public final class Keys {
      */
     public static KeyType forNumber(int value) {
       switch (value) {
-        case 0: return KEY_TYPE_UNSPECIFIED;
-        case 1: return KEY_TYPE_ED25519;
-        case 2: return KEY_TYPE_X25519;
-        case 3: return KEY_TYPE_P256;
-        case 4: return KEY_TYPE_BLS12381G1G2;
-        case 5: return KEY_TYPE_SECP256K1;
-        default: return null;
+        case 0:
+          return KEY_TYPE_UNSPECIFIED;
+        case 1:
+          return KEY_TYPE_ED25519;
+        case 2:
+          return KEY_TYPE_X25519;
+        case 3:
+          return KEY_TYPE_P256;
+        case 4:
+          return KEY_TYPE_BLS12381G1G2;
+        case 5:
+          return KEY_TYPE_SECP256K1;
+        default:
+          return null;
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<KeyType>
-        internalGetValueMap() {
+    public static com.google.protobuf.Internal.EnumLiteMap<KeyType> internalGetValueMap() {
       return internalValueMap;
     }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        KeyType> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<KeyType>() {
-            public KeyType findValueByNumber(int number) {
-              return KeyType.forNumber(number);
-            }
-          };
 
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
+    private static final com.google.protobuf.Internal.EnumLiteMap<KeyType> internalValueMap =
+        new com.google.protobuf.Internal.EnumLiteMap<KeyType>() {
+          public KeyType findValueByNumber(int number) {
+            return KeyType.forNumber(number);
+          }
+        };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor getValueDescriptor() {
       if (this == UNRECOGNIZED) {
         throw new java.lang.IllegalStateException(
             "Can't get the descriptor of an unrecognized enum value.");
       }
       return getDescriptor().getValues().get(ordinal());
     }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
+
+    public final com.google.protobuf.Descriptors.EnumDescriptor getDescriptorForType() {
       return getDescriptor();
     }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
+
+    public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
       return trinsic.okapi.keys.v1.Keys.getDescriptor().getEnumTypes().get(0);
     }
 
     private static final KeyType[] VALUES = values();
 
-    public static KeyType valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+    public static KeyType valueOf(com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
+        throw new java.lang.IllegalArgumentException("EnumValueDescriptor is not for this type.");
       }
       if (desc.getIndex() == -1) {
         return UNRECOGNIZED;
@@ -158,39 +130,42 @@ public final class Keys {
     // @@protoc_insertion_point(enum_scope:okapi.keys.v1.KeyType)
   }
 
-  public interface GenerateKeyRequestOrBuilder extends
+  public interface GenerateKeyRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.keys.v1.GenerateKeyRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>bytes seed = 1;</code>
+     *
      * @return The seed.
      */
     com.google.protobuf.ByteString getSeed();
 
     /**
      * <code>.okapi.keys.v1.KeyType key_type = 2;</code>
+     *
      * @return The enum numeric value on the wire for keyType.
      */
     int getKeyTypeValue();
     /**
      * <code>.okapi.keys.v1.KeyType key_type = 2;</code>
+     *
      * @return The keyType.
      */
     trinsic.okapi.keys.v1.Keys.KeyType getKeyType();
   }
-  /**
-   * Protobuf type {@code okapi.keys.v1.GenerateKeyRequest}
-   */
-  public static final class GenerateKeyRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code okapi.keys.v1.GenerateKeyRequest} */
+  public static final class GenerateKeyRequest extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.keys.v1.GenerateKeyRequest)
       GenerateKeyRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use GenerateKeyRequest.newBuilder() to construct.
     private GenerateKeyRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private GenerateKeyRequest() {
       seed_ = com.google.protobuf.ByteString.EMPTY;
       keyType_ = 0;
@@ -198,16 +173,15 @@ public final class Keys {
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new GenerateKeyRequest();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private GenerateKeyRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -226,24 +200,25 @@ public final class Keys {
             case 0:
               done = true;
               break;
-            case 10: {
-
-              seed_ = input.readBytes();
-              break;
-            }
-            case 16: {
-              int rawValue = input.readEnum();
-
-              keyType_ = rawValue;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 10:
+              {
+                seed_ = input.readBytes();
+                break;
               }
-              break;
-            }
+            case 16:
+              {
+                int rawValue = input.readEnum();
+
+                keyType_ = rawValue;
+                break;
+              }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -251,30 +226,32 @@ public final class Keys {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
       return trinsic.okapi.keys.v1.Keys.internal_static_okapi_keys_v1_GenerateKeyRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.keys.v1.Keys.internal_static_okapi_keys_v1_GenerateKeyRequest_fieldAccessorTable
+      return trinsic.okapi.keys.v1.Keys
+          .internal_static_okapi_keys_v1_GenerateKeyRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.keys.v1.Keys.GenerateKeyRequest.class, trinsic.okapi.keys.v1.Keys.GenerateKeyRequest.Builder.class);
+              trinsic.okapi.keys.v1.Keys.GenerateKeyRequest.class,
+              trinsic.okapi.keys.v1.Keys.GenerateKeyRequest.Builder.class);
     }
 
     public static final int SEED_FIELD_NUMBER = 1;
     private com.google.protobuf.ByteString seed_;
     /**
      * <code>bytes seed = 1;</code>
+     *
      * @return The seed.
      */
     @java.lang.Override
@@ -286,22 +263,28 @@ public final class Keys {
     private int keyType_;
     /**
      * <code>.okapi.keys.v1.KeyType key_type = 2;</code>
+     *
      * @return The enum numeric value on the wire for keyType.
      */
-    @java.lang.Override public int getKeyTypeValue() {
+    @java.lang.Override
+    public int getKeyTypeValue() {
       return keyType_;
     }
     /**
      * <code>.okapi.keys.v1.KeyType key_type = 2;</code>
+     *
      * @return The keyType.
      */
-    @java.lang.Override public trinsic.okapi.keys.v1.Keys.KeyType getKeyType() {
+    @java.lang.Override
+    public trinsic.okapi.keys.v1.Keys.KeyType getKeyType() {
       @SuppressWarnings("deprecation")
-      trinsic.okapi.keys.v1.Keys.KeyType result = trinsic.okapi.keys.v1.Keys.KeyType.valueOf(keyType_);
+      trinsic.okapi.keys.v1.Keys.KeyType result =
+          trinsic.okapi.keys.v1.Keys.KeyType.valueOf(keyType_);
       return result == null ? trinsic.okapi.keys.v1.Keys.KeyType.UNRECOGNIZED : result;
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -313,8 +296,7 @@ public final class Keys {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!seed_.isEmpty()) {
         output.writeBytes(1, seed_);
       }
@@ -331,12 +313,10 @@ public final class Keys {
 
       size = 0;
       if (!seed_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, seed_);
+        size += com.google.protobuf.CodedOutputStream.computeBytesSize(1, seed_);
       }
       if (keyType_ != trinsic.okapi.keys.v1.Keys.KeyType.KEY_TYPE_UNSPECIFIED.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(2, keyType_);
+        size += com.google.protobuf.CodedOutputStream.computeEnumSize(2, keyType_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -346,15 +326,15 @@ public final class Keys {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.keys.v1.Keys.GenerateKeyRequest)) {
         return super.equals(obj);
       }
-      trinsic.okapi.keys.v1.Keys.GenerateKeyRequest other = (trinsic.okapi.keys.v1.Keys.GenerateKeyRequest) obj;
+      trinsic.okapi.keys.v1.Keys.GenerateKeyRequest other =
+          (trinsic.okapi.keys.v1.Keys.GenerateKeyRequest) obj;
 
-      if (!getSeed()
-          .equals(other.getSeed())) return false;
+      if (!getSeed().equals(other.getSeed())) return false;
       if (keyType_ != other.keyType_) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -376,88 +356,94 @@ public final class Keys {
       return hash;
     }
 
-    public static trinsic.okapi.keys.v1.Keys.GenerateKeyRequest parseFrom(
-        java.nio.ByteBuffer data)
+    public static trinsic.okapi.keys.v1.Keys.GenerateKeyRequest parseFrom(java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.keys.v1.Keys.GenerateKeyRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.keys.v1.Keys.GenerateKeyRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.keys.v1.Keys.GenerateKeyRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.keys.v1.Keys.GenerateKeyRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.keys.v1.Keys.GenerateKeyRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.keys.v1.Keys.GenerateKeyRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.keys.v1.Keys.GenerateKeyRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.okapi.keys.v1.Keys.GenerateKeyRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.keys.v1.Keys.GenerateKeyRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.keys.v1.Keys.GenerateKeyRequest parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.keys.v1.Keys.GenerateKeyRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.keys.v1.Keys.GenerateKeyRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.okapi.keys.v1.Keys.GenerateKeyRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -466,24 +452,25 @@ public final class Keys {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code okapi.keys.v1.GenerateKeyRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code okapi.keys.v1.GenerateKeyRequest} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.keys.v1.GenerateKeyRequest)
         trinsic.okapi.keys.v1.Keys.GenerateKeyRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.keys.v1.Keys.internal_static_okapi_keys_v1_GenerateKeyRequest_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.keys.v1.Keys
+            .internal_static_okapi_keys_v1_GenerateKeyRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.keys.v1.Keys.internal_static_okapi_keys_v1_GenerateKeyRequest_fieldAccessorTable
+        return trinsic.okapi.keys.v1.Keys
+            .internal_static_okapi_keys_v1_GenerateKeyRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.keys.v1.Keys.GenerateKeyRequest.class, trinsic.okapi.keys.v1.Keys.GenerateKeyRequest.Builder.class);
+                trinsic.okapi.keys.v1.Keys.GenerateKeyRequest.class,
+                trinsic.okapi.keys.v1.Keys.GenerateKeyRequest.Builder.class);
       }
 
       // Construct using trinsic.okapi.keys.v1.Keys.GenerateKeyRequest.newBuilder()
@@ -491,16 +478,15 @@ public final class Keys {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -512,9 +498,9 @@ public final class Keys {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.keys.v1.Keys.internal_static_okapi_keys_v1_GenerateKeyRequest_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.keys.v1.Keys
+            .internal_static_okapi_keys_v1_GenerateKeyRequest_descriptor;
       }
 
       @java.lang.Override
@@ -533,7 +519,8 @@ public final class Keys {
 
       @java.lang.Override
       public trinsic.okapi.keys.v1.Keys.GenerateKeyRequest buildPartial() {
-        trinsic.okapi.keys.v1.Keys.GenerateKeyRequest result = new trinsic.okapi.keys.v1.Keys.GenerateKeyRequest(this);
+        trinsic.okapi.keys.v1.Keys.GenerateKeyRequest result =
+            new trinsic.okapi.keys.v1.Keys.GenerateKeyRequest(this);
         result.seed_ = seed_;
         result.keyType_ = keyType_;
         onBuilt();
@@ -544,38 +531,41 @@ public final class Keys {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.keys.v1.Keys.GenerateKeyRequest) {
-          return mergeFrom((trinsic.okapi.keys.v1.Keys.GenerateKeyRequest)other);
+          return mergeFrom((trinsic.okapi.keys.v1.Keys.GenerateKeyRequest) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -583,7 +573,8 @@ public final class Keys {
       }
 
       public Builder mergeFrom(trinsic.okapi.keys.v1.Keys.GenerateKeyRequest other) {
-        if (other == trinsic.okapi.keys.v1.Keys.GenerateKeyRequest.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.keys.v1.Keys.GenerateKeyRequest.getDefaultInstance())
+          return this;
         if (other.getSeed() != com.google.protobuf.ByteString.EMPTY) {
           setSeed(other.getSeed());
         }
@@ -622,6 +613,7 @@ public final class Keys {
       private com.google.protobuf.ByteString seed_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>bytes seed = 1;</code>
+       *
        * @return The seed.
        */
       @java.lang.Override
@@ -630,24 +622,26 @@ public final class Keys {
       }
       /**
        * <code>bytes seed = 1;</code>
+       *
        * @param value The seed to set.
        * @return This builder for chaining.
        */
       public Builder setSeed(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         seed_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>bytes seed = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearSeed() {
-        
+
         seed_ = getDefaultInstance().getSeed();
         onChanged();
         return this;
@@ -656,34 +650,40 @@ public final class Keys {
       private int keyType_ = 0;
       /**
        * <code>.okapi.keys.v1.KeyType key_type = 2;</code>
+       *
        * @return The enum numeric value on the wire for keyType.
        */
-      @java.lang.Override public int getKeyTypeValue() {
+      @java.lang.Override
+      public int getKeyTypeValue() {
         return keyType_;
       }
       /**
        * <code>.okapi.keys.v1.KeyType key_type = 2;</code>
+       *
        * @param value The enum numeric value on the wire for keyType to set.
        * @return This builder for chaining.
        */
       public Builder setKeyTypeValue(int value) {
-        
+
         keyType_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>.okapi.keys.v1.KeyType key_type = 2;</code>
+       *
        * @return The keyType.
        */
       @java.lang.Override
       public trinsic.okapi.keys.v1.Keys.KeyType getKeyType() {
         @SuppressWarnings("deprecation")
-        trinsic.okapi.keys.v1.Keys.KeyType result = trinsic.okapi.keys.v1.Keys.KeyType.valueOf(keyType_);
+        trinsic.okapi.keys.v1.Keys.KeyType result =
+            trinsic.okapi.keys.v1.Keys.KeyType.valueOf(keyType_);
         return result == null ? trinsic.okapi.keys.v1.Keys.KeyType.UNRECOGNIZED : result;
       }
       /**
        * <code>.okapi.keys.v1.KeyType key_type = 2;</code>
+       *
        * @param value The keyType to set.
        * @return This builder for chaining.
        */
@@ -691,21 +691,23 @@ public final class Keys {
         if (value == null) {
           throw new NullPointerException();
         }
-        
+
         keyType_ = value.getNumber();
         onChanged();
         return this;
       }
       /**
        * <code>.okapi.keys.v1.KeyType key_type = 2;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearKeyType() {
-        
+
         keyType_ = 0;
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -718,12 +720,12 @@ public final class Keys {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.keys.v1.GenerateKeyRequest)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.keys.v1.GenerateKeyRequest)
     private static final trinsic.okapi.keys.v1.Keys.GenerateKeyRequest DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.keys.v1.Keys.GenerateKeyRequest();
     }
@@ -732,16 +734,16 @@ public final class Keys {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<GenerateKeyRequest>
-        PARSER = new com.google.protobuf.AbstractParser<GenerateKeyRequest>() {
-      @java.lang.Override
-      public GenerateKeyRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GenerateKeyRequest(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<GenerateKeyRequest> PARSER =
+        new com.google.protobuf.AbstractParser<GenerateKeyRequest>() {
+          @java.lang.Override
+          public GenerateKeyRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new GenerateKeyRequest(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<GenerateKeyRequest> parser() {
       return PARSER;
@@ -756,80 +758,65 @@ public final class Keys {
     public trinsic.okapi.keys.v1.Keys.GenerateKeyRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface GenerateKeyResponseOrBuilder extends
+  public interface GenerateKeyResponseOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.keys.v1.GenerateKeyResponse)
       com.google.protobuf.MessageOrBuilder {
 
-    /**
-     * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-     */
-    java.util.List<trinsic.okapi.keys.v1.Keys.JsonWebKey> 
-        getKeyList();
-    /**
-     * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-     */
+    /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
+    java.util.List<trinsic.okapi.keys.v1.Keys.JsonWebKey> getKeyList();
+    /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
     trinsic.okapi.keys.v1.Keys.JsonWebKey getKey(int index);
-    /**
-     * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-     */
+    /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
     int getKeyCount();
-    /**
-     * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-     */
-    java.util.List<? extends trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder> 
-        getKeyOrBuilderList();
-    /**
-     * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-     */
-    trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getKeyOrBuilder(
-        int index);
+    /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
+    java.util.List<? extends trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder> getKeyOrBuilderList();
+    /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
+    trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getKeyOrBuilder(int index);
 
     /**
      * <code>.google.protobuf.Struct did_document = 2;</code>
+     *
      * @return Whether the didDocument field is set.
      */
     boolean hasDidDocument();
     /**
      * <code>.google.protobuf.Struct did_document = 2;</code>
+     *
      * @return The didDocument.
      */
     com.google.protobuf.Struct getDidDocument();
-    /**
-     * <code>.google.protobuf.Struct did_document = 2;</code>
-     */
+    /** <code>.google.protobuf.Struct did_document = 2;</code> */
     com.google.protobuf.StructOrBuilder getDidDocumentOrBuilder();
   }
-  /**
-   * Protobuf type {@code okapi.keys.v1.GenerateKeyResponse}
-   */
-  public static final class GenerateKeyResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code okapi.keys.v1.GenerateKeyResponse} */
+  public static final class GenerateKeyResponse extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.keys.v1.GenerateKeyResponse)
       GenerateKeyResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use GenerateKeyResponse.newBuilder() to construct.
     private GenerateKeyResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private GenerateKeyResponse() {
       key_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new GenerateKeyResponse();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private GenerateKeyResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -849,35 +836,39 @@ public final class Keys {
             case 0:
               done = true;
               break;
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                key_ = new java.util.ArrayList<trinsic.okapi.keys.v1.Keys.JsonWebKey>();
-                mutable_bitField0_ |= 0x00000001;
+            case 10:
+              {
+                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                  key_ = new java.util.ArrayList<trinsic.okapi.keys.v1.Keys.JsonWebKey>();
+                  mutable_bitField0_ |= 0x00000001;
+                }
+                key_.add(
+                    input.readMessage(
+                        trinsic.okapi.keys.v1.Keys.JsonWebKey.parser(), extensionRegistry));
+                break;
               }
-              key_.add(
-                  input.readMessage(trinsic.okapi.keys.v1.Keys.JsonWebKey.parser(), extensionRegistry));
-              break;
-            }
-            case 18: {
-              com.google.protobuf.Struct.Builder subBuilder = null;
-              if (didDocument_ != null) {
-                subBuilder = didDocument_.toBuilder();
-              }
-              didDocument_ = input.readMessage(com.google.protobuf.Struct.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(didDocument_);
-                didDocument_ = subBuilder.buildPartial();
-              }
+            case 18:
+              {
+                com.google.protobuf.Struct.Builder subBuilder = null;
+                if (didDocument_ != null) {
+                  subBuilder = didDocument_.toBuilder();
+                }
+                didDocument_ =
+                    input.readMessage(com.google.protobuf.Struct.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(didDocument_);
+                  didDocument_ = subBuilder.buildPartial();
+                }
 
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -885,8 +876,7 @@ public final class Keys {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
           key_ = java.util.Collections.unmodifiableList(key_);
@@ -895,56 +885,48 @@ public final class Keys {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.okapi.keys.v1.Keys.internal_static_okapi_keys_v1_GenerateKeyResponse_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.okapi.keys.v1.Keys
+          .internal_static_okapi_keys_v1_GenerateKeyResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.keys.v1.Keys.internal_static_okapi_keys_v1_GenerateKeyResponse_fieldAccessorTable
+      return trinsic.okapi.keys.v1.Keys
+          .internal_static_okapi_keys_v1_GenerateKeyResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.keys.v1.Keys.GenerateKeyResponse.class, trinsic.okapi.keys.v1.Keys.GenerateKeyResponse.Builder.class);
+              trinsic.okapi.keys.v1.Keys.GenerateKeyResponse.class,
+              trinsic.okapi.keys.v1.Keys.GenerateKeyResponse.Builder.class);
     }
 
     public static final int KEY_FIELD_NUMBER = 1;
     private java.util.List<trinsic.okapi.keys.v1.Keys.JsonWebKey> key_;
-    /**
-     * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-     */
+    /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
     @java.lang.Override
     public java.util.List<trinsic.okapi.keys.v1.Keys.JsonWebKey> getKeyList() {
       return key_;
     }
-    /**
-     * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-     */
+    /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
     @java.lang.Override
-    public java.util.List<? extends trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder> 
+    public java.util.List<? extends trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>
         getKeyOrBuilderList() {
       return key_;
     }
-    /**
-     * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-     */
+    /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
     @java.lang.Override
     public int getKeyCount() {
       return key_.size();
     }
-    /**
-     * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-     */
+    /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
     @java.lang.Override
     public trinsic.okapi.keys.v1.Keys.JsonWebKey getKey(int index) {
       return key_.get(index);
     }
-    /**
-     * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-     */
+    /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
     @java.lang.Override
-    public trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getKeyOrBuilder(
-        int index) {
+    public trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getKeyOrBuilder(int index) {
       return key_.get(index);
     }
 
@@ -952,6 +934,7 @@ public final class Keys {
     private com.google.protobuf.Struct didDocument_;
     /**
      * <code>.google.protobuf.Struct did_document = 2;</code>
+     *
      * @return Whether the didDocument field is set.
      */
     @java.lang.Override
@@ -960,21 +943,21 @@ public final class Keys {
     }
     /**
      * <code>.google.protobuf.Struct did_document = 2;</code>
+     *
      * @return The didDocument.
      */
     @java.lang.Override
     public com.google.protobuf.Struct getDidDocument() {
       return didDocument_ == null ? com.google.protobuf.Struct.getDefaultInstance() : didDocument_;
     }
-    /**
-     * <code>.google.protobuf.Struct did_document = 2;</code>
-     */
+    /** <code>.google.protobuf.Struct did_document = 2;</code> */
     @java.lang.Override
     public com.google.protobuf.StructOrBuilder getDidDocumentOrBuilder() {
       return getDidDocument();
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -986,8 +969,7 @@ public final class Keys {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       for (int i = 0; i < key_.size(); i++) {
         output.writeMessage(1, key_.get(i));
       }
@@ -1004,12 +986,10 @@ public final class Keys {
 
       size = 0;
       for (int i = 0; i < key_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, key_.get(i));
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, key_.get(i));
       }
       if (didDocument_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getDidDocument());
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getDidDocument());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1019,19 +999,18 @@ public final class Keys {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.keys.v1.Keys.GenerateKeyResponse)) {
         return super.equals(obj);
       }
-      trinsic.okapi.keys.v1.Keys.GenerateKeyResponse other = (trinsic.okapi.keys.v1.Keys.GenerateKeyResponse) obj;
+      trinsic.okapi.keys.v1.Keys.GenerateKeyResponse other =
+          (trinsic.okapi.keys.v1.Keys.GenerateKeyResponse) obj;
 
-      if (!getKeyList()
-          .equals(other.getKeyList())) return false;
+      if (!getKeyList().equals(other.getKeyList())) return false;
       if (hasDidDocument() != other.hasDidDocument()) return false;
       if (hasDidDocument()) {
-        if (!getDidDocument()
-            .equals(other.getDidDocument())) return false;
+        if (!getDidDocument().equals(other.getDidDocument())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -1057,88 +1036,94 @@ public final class Keys {
       return hash;
     }
 
-    public static trinsic.okapi.keys.v1.Keys.GenerateKeyResponse parseFrom(
-        java.nio.ByteBuffer data)
+    public static trinsic.okapi.keys.v1.Keys.GenerateKeyResponse parseFrom(java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.keys.v1.Keys.GenerateKeyResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.keys.v1.Keys.GenerateKeyResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.keys.v1.Keys.GenerateKeyResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.keys.v1.Keys.GenerateKeyResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.keys.v1.Keys.GenerateKeyResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.okapi.keys.v1.Keys.GenerateKeyResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.keys.v1.Keys.GenerateKeyResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.okapi.keys.v1.Keys.GenerateKeyResponse parseDelimitedFrom(java.io.InputStream input)
+
+    public static trinsic.okapi.keys.v1.Keys.GenerateKeyResponse parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
+
     public static trinsic.okapi.keys.v1.Keys.GenerateKeyResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.keys.v1.Keys.GenerateKeyResponse parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.keys.v1.Keys.GenerateKeyResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.keys.v1.Keys.GenerateKeyResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.okapi.keys.v1.Keys.GenerateKeyResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -1147,24 +1132,25 @@ public final class Keys {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code okapi.keys.v1.GenerateKeyResponse}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code okapi.keys.v1.GenerateKeyResponse} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.keys.v1.GenerateKeyResponse)
         trinsic.okapi.keys.v1.Keys.GenerateKeyResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.okapi.keys.v1.Keys.internal_static_okapi_keys_v1_GenerateKeyResponse_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.okapi.keys.v1.Keys
+            .internal_static_okapi_keys_v1_GenerateKeyResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.keys.v1.Keys.internal_static_okapi_keys_v1_GenerateKeyResponse_fieldAccessorTable
+        return trinsic.okapi.keys.v1.Keys
+            .internal_static_okapi_keys_v1_GenerateKeyResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.keys.v1.Keys.GenerateKeyResponse.class, trinsic.okapi.keys.v1.Keys.GenerateKeyResponse.Builder.class);
+                trinsic.okapi.keys.v1.Keys.GenerateKeyResponse.class,
+                trinsic.okapi.keys.v1.Keys.GenerateKeyResponse.Builder.class);
       }
 
       // Construct using trinsic.okapi.keys.v1.Keys.GenerateKeyResponse.newBuilder()
@@ -1172,17 +1158,17 @@ public final class Keys {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
           getKeyFieldBuilder();
         }
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -1202,9 +1188,9 @@ public final class Keys {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.okapi.keys.v1.Keys.internal_static_okapi_keys_v1_GenerateKeyResponse_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.okapi.keys.v1.Keys
+            .internal_static_okapi_keys_v1_GenerateKeyResponse_descriptor;
       }
 
       @java.lang.Override
@@ -1223,7 +1209,8 @@ public final class Keys {
 
       @java.lang.Override
       public trinsic.okapi.keys.v1.Keys.GenerateKeyResponse buildPartial() {
-        trinsic.okapi.keys.v1.Keys.GenerateKeyResponse result = new trinsic.okapi.keys.v1.Keys.GenerateKeyResponse(this);
+        trinsic.okapi.keys.v1.Keys.GenerateKeyResponse result =
+            new trinsic.okapi.keys.v1.Keys.GenerateKeyResponse(this);
         int from_bitField0_ = bitField0_;
         if (keyBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
@@ -1247,38 +1234,41 @@ public final class Keys {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.keys.v1.Keys.GenerateKeyResponse) {
-          return mergeFrom((trinsic.okapi.keys.v1.Keys.GenerateKeyResponse)other);
+          return mergeFrom((trinsic.okapi.keys.v1.Keys.GenerateKeyResponse) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -1286,7 +1276,8 @@ public final class Keys {
       }
 
       public Builder mergeFrom(trinsic.okapi.keys.v1.Keys.GenerateKeyResponse other) {
-        if (other == trinsic.okapi.keys.v1.Keys.GenerateKeyResponse.getDefaultInstance()) return this;
+        if (other == trinsic.okapi.keys.v1.Keys.GenerateKeyResponse.getDefaultInstance())
+          return this;
         if (keyBuilder_ == null) {
           if (!other.key_.isEmpty()) {
             if (key_.isEmpty()) {
@@ -1305,9 +1296,10 @@ public final class Keys {
               keyBuilder_ = null;
               key_ = other.key_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              keyBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getKeyFieldBuilder() : null;
+              keyBuilder_ =
+                  com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
+                      ? getKeyFieldBuilder()
+                      : null;
             } else {
               keyBuilder_.addAllMessages(other.key_);
             }
@@ -1344,23 +1336,26 @@ public final class Keys {
         }
         return this;
       }
+
       private int bitField0_;
 
       private java.util.List<trinsic.okapi.keys.v1.Keys.JsonWebKey> key_ =
-        java.util.Collections.emptyList();
+          java.util.Collections.emptyList();
+
       private void ensureKeyIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
           key_ = new java.util.ArrayList<trinsic.okapi.keys.v1.Keys.JsonWebKey>(key_);
           bitField0_ |= 0x00000001;
-         }
+        }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          trinsic.okapi.keys.v1.Keys.JsonWebKey, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder, trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder> keyBuilder_;
+              trinsic.okapi.keys.v1.Keys.JsonWebKey,
+              trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder,
+              trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>
+          keyBuilder_;
 
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-       */
+      /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
       public java.util.List<trinsic.okapi.keys.v1.Keys.JsonWebKey> getKeyList() {
         if (keyBuilder_ == null) {
           return java.util.Collections.unmodifiableList(key_);
@@ -1368,9 +1363,7 @@ public final class Keys {
           return keyBuilder_.getMessageList();
         }
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-       */
+      /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
       public int getKeyCount() {
         if (keyBuilder_ == null) {
           return key_.size();
@@ -1378,9 +1371,7 @@ public final class Keys {
           return keyBuilder_.getCount();
         }
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-       */
+      /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
       public trinsic.okapi.keys.v1.Keys.JsonWebKey getKey(int index) {
         if (keyBuilder_ == null) {
           return key_.get(index);
@@ -1388,11 +1379,8 @@ public final class Keys {
           return keyBuilder_.getMessage(index);
         }
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-       */
-      public Builder setKey(
-          int index, trinsic.okapi.keys.v1.Keys.JsonWebKey value) {
+      /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
+      public Builder setKey(int index, trinsic.okapi.keys.v1.Keys.JsonWebKey value) {
         if (keyBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1405,9 +1393,7 @@ public final class Keys {
         }
         return this;
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-       */
+      /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
       public Builder setKey(
           int index, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder builderForValue) {
         if (keyBuilder_ == null) {
@@ -1419,9 +1405,7 @@ public final class Keys {
         }
         return this;
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-       */
+      /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
       public Builder addKey(trinsic.okapi.keys.v1.Keys.JsonWebKey value) {
         if (keyBuilder_ == null) {
           if (value == null) {
@@ -1435,11 +1419,8 @@ public final class Keys {
         }
         return this;
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-       */
-      public Builder addKey(
-          int index, trinsic.okapi.keys.v1.Keys.JsonWebKey value) {
+      /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
+      public Builder addKey(int index, trinsic.okapi.keys.v1.Keys.JsonWebKey value) {
         if (keyBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1452,11 +1433,8 @@ public final class Keys {
         }
         return this;
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-       */
-      public Builder addKey(
-          trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder builderForValue) {
+      /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
+      public Builder addKey(trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder builderForValue) {
         if (keyBuilder_ == null) {
           ensureKeyIsMutable();
           key_.add(builderForValue.build());
@@ -1466,9 +1444,7 @@ public final class Keys {
         }
         return this;
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-       */
+      /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
       public Builder addKey(
           int index, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder builderForValue) {
         if (keyBuilder_ == null) {
@@ -1480,24 +1456,19 @@ public final class Keys {
         }
         return this;
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-       */
+      /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
       public Builder addAllKey(
           java.lang.Iterable<? extends trinsic.okapi.keys.v1.Keys.JsonWebKey> values) {
         if (keyBuilder_ == null) {
           ensureKeyIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, key_);
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(values, key_);
           onChanged();
         } else {
           keyBuilder_.addAllMessages(values);
         }
         return this;
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-       */
+      /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
       public Builder clearKey() {
         if (keyBuilder_ == null) {
           key_ = java.util.Collections.emptyList();
@@ -1508,9 +1479,7 @@ public final class Keys {
         }
         return this;
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-       */
+      /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
       public Builder removeKey(int index) {
         if (keyBuilder_ == null) {
           ensureKeyIsMutable();
@@ -1521,66 +1490,54 @@ public final class Keys {
         }
         return this;
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-       */
-      public trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder getKeyBuilder(
-          int index) {
+      /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
+      public trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder getKeyBuilder(int index) {
         return getKeyFieldBuilder().getBuilder(index);
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-       */
-      public trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getKeyOrBuilder(
-          int index) {
+      /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
+      public trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getKeyOrBuilder(int index) {
         if (keyBuilder_ == null) {
-          return key_.get(index);  } else {
+          return key_.get(index);
+        } else {
           return keyBuilder_.getMessageOrBuilder(index);
         }
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-       */
-      public java.util.List<? extends trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder> 
-           getKeyOrBuilderList() {
+      /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
+      public java.util.List<? extends trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>
+          getKeyOrBuilderList() {
         if (keyBuilder_ != null) {
           return keyBuilder_.getMessageOrBuilderList();
         } else {
           return java.util.Collections.unmodifiableList(key_);
         }
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-       */
+      /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
       public trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder addKeyBuilder() {
-        return getKeyFieldBuilder().addBuilder(
-            trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance());
+        return getKeyFieldBuilder()
+            .addBuilder(trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance());
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-       */
-      public trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder addKeyBuilder(
-          int index) {
-        return getKeyFieldBuilder().addBuilder(
-            index, trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance());
+      /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
+      public trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder addKeyBuilder(int index) {
+        return getKeyFieldBuilder()
+            .addBuilder(index, trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance());
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code>
-       */
-      public java.util.List<trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder> 
-           getKeyBuilderList() {
+      /** <code>repeated .okapi.keys.v1.JsonWebKey key = 1;</code> */
+      public java.util.List<trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder> getKeyBuilderList() {
         return getKeyFieldBuilder().getBuilderList();
       }
+
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          trinsic.okapi.keys.v1.Keys.JsonWebKey, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder, trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder> 
+              trinsic.okapi.keys.v1.Keys.JsonWebKey,
+              trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder,
+              trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>
           getKeyFieldBuilder() {
         if (keyBuilder_ == null) {
-          keyBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              trinsic.okapi.keys.v1.Keys.JsonWebKey, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder, trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>(
-                  key_,
-                  ((bitField0_ & 0x00000001) != 0),
-                  getParentForChildren(),
-                  isClean());
+          keyBuilder_ =
+              new com.google.protobuf.RepeatedFieldBuilderV3<
+                  trinsic.okapi.keys.v1.Keys.JsonWebKey,
+                  trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder,
+                  trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>(
+                  key_, ((bitField0_ & 0x00000001) != 0), getParentForChildren(), isClean());
           key_ = null;
         }
         return keyBuilder_;
@@ -1588,9 +1545,13 @@ public final class Keys {
 
       private com.google.protobuf.Struct didDocument_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder> didDocumentBuilder_;
+              com.google.protobuf.Struct,
+              com.google.protobuf.Struct.Builder,
+              com.google.protobuf.StructOrBuilder>
+          didDocumentBuilder_;
       /**
        * <code>.google.protobuf.Struct did_document = 2;</code>
+       *
        * @return Whether the didDocument field is set.
        */
       public boolean hasDidDocument() {
@@ -1598,18 +1559,19 @@ public final class Keys {
       }
       /**
        * <code>.google.protobuf.Struct did_document = 2;</code>
+       *
        * @return The didDocument.
        */
       public com.google.protobuf.Struct getDidDocument() {
         if (didDocumentBuilder_ == null) {
-          return didDocument_ == null ? com.google.protobuf.Struct.getDefaultInstance() : didDocument_;
+          return didDocument_ == null
+              ? com.google.protobuf.Struct.getDefaultInstance()
+              : didDocument_;
         } else {
           return didDocumentBuilder_.getMessage();
         }
       }
-      /**
-       * <code>.google.protobuf.Struct did_document = 2;</code>
-       */
+      /** <code>.google.protobuf.Struct did_document = 2;</code> */
       public Builder setDidDocument(com.google.protobuf.Struct value) {
         if (didDocumentBuilder_ == null) {
           if (value == null) {
@@ -1623,11 +1585,8 @@ public final class Keys {
 
         return this;
       }
-      /**
-       * <code>.google.protobuf.Struct did_document = 2;</code>
-       */
-      public Builder setDidDocument(
-          com.google.protobuf.Struct.Builder builderForValue) {
+      /** <code>.google.protobuf.Struct did_document = 2;</code> */
+      public Builder setDidDocument(com.google.protobuf.Struct.Builder builderForValue) {
         if (didDocumentBuilder_ == null) {
           didDocument_ = builderForValue.build();
           onChanged();
@@ -1637,14 +1596,12 @@ public final class Keys {
 
         return this;
       }
-      /**
-       * <code>.google.protobuf.Struct did_document = 2;</code>
-       */
+      /** <code>.google.protobuf.Struct did_document = 2;</code> */
       public Builder mergeDidDocument(com.google.protobuf.Struct value) {
         if (didDocumentBuilder_ == null) {
           if (didDocument_ != null) {
             didDocument_ =
-              com.google.protobuf.Struct.newBuilder(didDocument_).mergeFrom(value).buildPartial();
+                com.google.protobuf.Struct.newBuilder(didDocument_).mergeFrom(value).buildPartial();
           } else {
             didDocument_ = value;
           }
@@ -1655,9 +1612,7 @@ public final class Keys {
 
         return this;
       }
-      /**
-       * <code>.google.protobuf.Struct did_document = 2;</code>
-       */
+      /** <code>.google.protobuf.Struct did_document = 2;</code> */
       public Builder clearDidDocument() {
         if (didDocumentBuilder_ == null) {
           didDocument_ = null;
@@ -1669,41 +1624,40 @@ public final class Keys {
 
         return this;
       }
-      /**
-       * <code>.google.protobuf.Struct did_document = 2;</code>
-       */
+      /** <code>.google.protobuf.Struct did_document = 2;</code> */
       public com.google.protobuf.Struct.Builder getDidDocumentBuilder() {
-        
+
         onChanged();
         return getDidDocumentFieldBuilder().getBuilder();
       }
-      /**
-       * <code>.google.protobuf.Struct did_document = 2;</code>
-       */
+      /** <code>.google.protobuf.Struct did_document = 2;</code> */
       public com.google.protobuf.StructOrBuilder getDidDocumentOrBuilder() {
         if (didDocumentBuilder_ != null) {
           return didDocumentBuilder_.getMessageOrBuilder();
         } else {
-          return didDocument_ == null ?
-              com.google.protobuf.Struct.getDefaultInstance() : didDocument_;
+          return didDocument_ == null
+              ? com.google.protobuf.Struct.getDefaultInstance()
+              : didDocument_;
         }
       }
-      /**
-       * <code>.google.protobuf.Struct did_document = 2;</code>
-       */
+      /** <code>.google.protobuf.Struct did_document = 2;</code> */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder> 
+              com.google.protobuf.Struct,
+              com.google.protobuf.Struct.Builder,
+              com.google.protobuf.StructOrBuilder>
           getDidDocumentFieldBuilder() {
         if (didDocumentBuilder_ == null) {
-          didDocumentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder>(
-                  getDidDocument(),
-                  getParentForChildren(),
-                  isClean());
+          didDocumentBuilder_ =
+              new com.google.protobuf.SingleFieldBuilderV3<
+                  com.google.protobuf.Struct,
+                  com.google.protobuf.Struct.Builder,
+                  com.google.protobuf.StructOrBuilder>(
+                  getDidDocument(), getParentForChildren(), isClean());
           didDocument_ = null;
         }
         return didDocumentBuilder_;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1716,12 +1670,12 @@ public final class Keys {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.keys.v1.GenerateKeyResponse)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.keys.v1.GenerateKeyResponse)
     private static final trinsic.okapi.keys.v1.Keys.GenerateKeyResponse DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.keys.v1.Keys.GenerateKeyResponse();
     }
@@ -1730,16 +1684,16 @@ public final class Keys {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<GenerateKeyResponse>
-        PARSER = new com.google.protobuf.AbstractParser<GenerateKeyResponse>() {
-      @java.lang.Override
-      public GenerateKeyResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GenerateKeyResponse(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<GenerateKeyResponse> PARSER =
+        new com.google.protobuf.AbstractParser<GenerateKeyResponse>() {
+          @java.lang.Override
+          public GenerateKeyResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new GenerateKeyResponse(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<GenerateKeyResponse> parser() {
       return PARSER;
@@ -1754,53 +1708,52 @@ public final class Keys {
     public trinsic.okapi.keys.v1.Keys.GenerateKeyResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface ResolveRequestOrBuilder extends
+  public interface ResolveRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.keys.v1.ResolveRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>string did = 1;</code>
+     *
      * @return The did.
      */
     java.lang.String getDid();
     /**
      * <code>string did = 1;</code>
+     *
      * @return The bytes for did.
      */
-    com.google.protobuf.ByteString
-        getDidBytes();
+    com.google.protobuf.ByteString getDidBytes();
   }
-  /**
-   * Protobuf type {@code okapi.keys.v1.ResolveRequest}
-   */
-  public static final class ResolveRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code okapi.keys.v1.ResolveRequest} */
+  public static final class ResolveRequest extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.keys.v1.ResolveRequest)
       ResolveRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use ResolveRequest.newBuilder() to construct.
     private ResolveRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private ResolveRequest() {
       did_ = "";
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new ResolveRequest();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private ResolveRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1819,19 +1772,20 @@ public final class Keys {
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 10:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
 
-              did_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                did_ = s;
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1839,30 +1793,32 @@ public final class Keys {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
       return trinsic.okapi.keys.v1.Keys.internal_static_okapi_keys_v1_ResolveRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.keys.v1.Keys.internal_static_okapi_keys_v1_ResolveRequest_fieldAccessorTable
+      return trinsic.okapi.keys.v1.Keys
+          .internal_static_okapi_keys_v1_ResolveRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.keys.v1.Keys.ResolveRequest.class, trinsic.okapi.keys.v1.Keys.ResolveRequest.Builder.class);
+              trinsic.okapi.keys.v1.Keys.ResolveRequest.class,
+              trinsic.okapi.keys.v1.Keys.ResolveRequest.Builder.class);
     }
 
     public static final int DID_FIELD_NUMBER = 1;
     private volatile java.lang.Object did_;
     /**
      * <code>string did = 1;</code>
+     *
      * @return The did.
      */
     @java.lang.Override
@@ -1871,8 +1827,7 @@ public final class Keys {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         did_ = s;
         return s;
@@ -1880,16 +1835,15 @@ public final class Keys {
     }
     /**
      * <code>string did = 1;</code>
+     *
      * @return The bytes for did.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getDidBytes() {
+    public com.google.protobuf.ByteString getDidBytes() {
       java.lang.Object ref = did_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         did_ = b;
         return b;
       } else {
@@ -1898,6 +1852,7 @@ public final class Keys {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1909,8 +1864,7 @@ public final class Keys {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(did_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, did_);
       }
@@ -1934,15 +1888,15 @@ public final class Keys {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.keys.v1.Keys.ResolveRequest)) {
         return super.equals(obj);
       }
-      trinsic.okapi.keys.v1.Keys.ResolveRequest other = (trinsic.okapi.keys.v1.Keys.ResolveRequest) obj;
+      trinsic.okapi.keys.v1.Keys.ResolveRequest other =
+          (trinsic.okapi.keys.v1.Keys.ResolveRequest) obj;
 
-      if (!getDid()
-          .equals(other.getDid())) return false;
+      if (!getDid().equals(other.getDid())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1961,88 +1915,94 @@ public final class Keys {
       return hash;
     }
 
-    public static trinsic.okapi.keys.v1.Keys.ResolveRequest parseFrom(
-        java.nio.ByteBuffer data)
+    public static trinsic.okapi.keys.v1.Keys.ResolveRequest parseFrom(java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.keys.v1.Keys.ResolveRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.keys.v1.Keys.ResolveRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.keys.v1.Keys.ResolveRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.keys.v1.Keys.ResolveRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.keys.v1.Keys.ResolveRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.keys.v1.Keys.ResolveRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.keys.v1.Keys.ResolveRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.okapi.keys.v1.Keys.ResolveRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.keys.v1.Keys.ResolveRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.keys.v1.Keys.ResolveRequest parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.keys.v1.Keys.ResolveRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.keys.v1.Keys.ResolveRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.okapi.keys.v1.Keys.ResolveRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -2051,24 +2011,24 @@ public final class Keys {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code okapi.keys.v1.ResolveRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code okapi.keys.v1.ResolveRequest} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.keys.v1.ResolveRequest)
         trinsic.okapi.keys.v1.Keys.ResolveRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
         return trinsic.okapi.keys.v1.Keys.internal_static_okapi_keys_v1_ResolveRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.keys.v1.Keys.internal_static_okapi_keys_v1_ResolveRequest_fieldAccessorTable
+        return trinsic.okapi.keys.v1.Keys
+            .internal_static_okapi_keys_v1_ResolveRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.keys.v1.Keys.ResolveRequest.class, trinsic.okapi.keys.v1.Keys.ResolveRequest.Builder.class);
+                trinsic.okapi.keys.v1.Keys.ResolveRequest.class,
+                trinsic.okapi.keys.v1.Keys.ResolveRequest.Builder.class);
       }
 
       // Construct using trinsic.okapi.keys.v1.Keys.ResolveRequest.newBuilder()
@@ -2076,16 +2036,15 @@ public final class Keys {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -2095,8 +2054,7 @@ public final class Keys {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
         return trinsic.okapi.keys.v1.Keys.internal_static_okapi_keys_v1_ResolveRequest_descriptor;
       }
 
@@ -2116,7 +2074,8 @@ public final class Keys {
 
       @java.lang.Override
       public trinsic.okapi.keys.v1.Keys.ResolveRequest buildPartial() {
-        trinsic.okapi.keys.v1.Keys.ResolveRequest result = new trinsic.okapi.keys.v1.Keys.ResolveRequest(this);
+        trinsic.okapi.keys.v1.Keys.ResolveRequest result =
+            new trinsic.okapi.keys.v1.Keys.ResolveRequest(this);
         result.did_ = did_;
         onBuilt();
         return result;
@@ -2126,38 +2085,41 @@ public final class Keys {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.keys.v1.Keys.ResolveRequest) {
-          return mergeFrom((trinsic.okapi.keys.v1.Keys.ResolveRequest)other);
+          return mergeFrom((trinsic.okapi.keys.v1.Keys.ResolveRequest) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -2202,13 +2164,13 @@ public final class Keys {
       private java.lang.Object did_ = "";
       /**
        * <code>string did = 1;</code>
+       *
        * @return The did.
        */
       public java.lang.String getDid() {
         java.lang.Object ref = did_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           did_ = s;
           return s;
@@ -2218,15 +2180,14 @@ public final class Keys {
       }
       /**
        * <code>string did = 1;</code>
+       *
        * @return The bytes for did.
        */
-      public com.google.protobuf.ByteString
-          getDidBytes() {
+      public com.google.protobuf.ByteString getDidBytes() {
         java.lang.Object ref = did_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           did_ = b;
           return b;
         } else {
@@ -2235,45 +2196,47 @@ public final class Keys {
       }
       /**
        * <code>string did = 1;</code>
+       *
        * @param value The did to set.
        * @return This builder for chaining.
        */
-      public Builder setDid(
-          java.lang.String value) {
+      public Builder setDid(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         did_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>string did = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearDid() {
-        
+
         did_ = getDefaultInstance().getDid();
         onChanged();
         return this;
       }
       /**
        * <code>string did = 1;</code>
+       *
        * @param value The bytes for did to set.
        * @return This builder for chaining.
        */
-      public Builder setDidBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setDidBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         did_ = value;
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -2286,12 +2249,12 @@ public final class Keys {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.keys.v1.ResolveRequest)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.keys.v1.ResolveRequest)
     private static final trinsic.okapi.keys.v1.Keys.ResolveRequest DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.keys.v1.Keys.ResolveRequest();
     }
@@ -2300,16 +2263,16 @@ public final class Keys {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ResolveRequest>
-        PARSER = new com.google.protobuf.AbstractParser<ResolveRequest>() {
-      @java.lang.Override
-      public ResolveRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ResolveRequest(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<ResolveRequest> PARSER =
+        new com.google.protobuf.AbstractParser<ResolveRequest>() {
+          @java.lang.Override
+          public ResolveRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new ResolveRequest(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<ResolveRequest> parser() {
       return PARSER;
@@ -2324,80 +2287,65 @@ public final class Keys {
     public trinsic.okapi.keys.v1.Keys.ResolveRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface ResolveResponseOrBuilder extends
+  public interface ResolveResponseOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.keys.v1.ResolveResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>.google.protobuf.Struct did_document = 1;</code>
+     *
      * @return Whether the didDocument field is set.
      */
     boolean hasDidDocument();
     /**
      * <code>.google.protobuf.Struct did_document = 1;</code>
+     *
      * @return The didDocument.
      */
     com.google.protobuf.Struct getDidDocument();
-    /**
-     * <code>.google.protobuf.Struct did_document = 1;</code>
-     */
+    /** <code>.google.protobuf.Struct did_document = 1;</code> */
     com.google.protobuf.StructOrBuilder getDidDocumentOrBuilder();
 
-    /**
-     * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-     */
-    java.util.List<trinsic.okapi.keys.v1.Keys.JsonWebKey> 
-        getKeysList();
-    /**
-     * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-     */
+    /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
+    java.util.List<trinsic.okapi.keys.v1.Keys.JsonWebKey> getKeysList();
+    /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
     trinsic.okapi.keys.v1.Keys.JsonWebKey getKeys(int index);
-    /**
-     * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-     */
+    /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
     int getKeysCount();
-    /**
-     * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-     */
-    java.util.List<? extends trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder> 
-        getKeysOrBuilderList();
-    /**
-     * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-     */
-    trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getKeysOrBuilder(
-        int index);
+    /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
+    java.util.List<? extends trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder> getKeysOrBuilderList();
+    /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
+    trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getKeysOrBuilder(int index);
   }
-  /**
-   * Protobuf type {@code okapi.keys.v1.ResolveResponse}
-   */
-  public static final class ResolveResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code okapi.keys.v1.ResolveResponse} */
+  public static final class ResolveResponse extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.keys.v1.ResolveResponse)
       ResolveResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use ResolveResponse.newBuilder() to construct.
     private ResolveResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private ResolveResponse() {
       keys_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new ResolveResponse();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private ResolveResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2417,35 +2365,39 @@ public final class Keys {
             case 0:
               done = true;
               break;
-            case 10: {
-              com.google.protobuf.Struct.Builder subBuilder = null;
-              if (didDocument_ != null) {
-                subBuilder = didDocument_.toBuilder();
-              }
-              didDocument_ = input.readMessage(com.google.protobuf.Struct.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(didDocument_);
-                didDocument_ = subBuilder.buildPartial();
-              }
+            case 10:
+              {
+                com.google.protobuf.Struct.Builder subBuilder = null;
+                if (didDocument_ != null) {
+                  subBuilder = didDocument_.toBuilder();
+                }
+                didDocument_ =
+                    input.readMessage(com.google.protobuf.Struct.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(didDocument_);
+                  didDocument_ = subBuilder.buildPartial();
+                }
 
-              break;
-            }
-            case 18: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                keys_ = new java.util.ArrayList<trinsic.okapi.keys.v1.Keys.JsonWebKey>();
-                mutable_bitField0_ |= 0x00000001;
+                break;
               }
-              keys_.add(
-                  input.readMessage(trinsic.okapi.keys.v1.Keys.JsonWebKey.parser(), extensionRegistry));
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 18:
+              {
+                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                  keys_ = new java.util.ArrayList<trinsic.okapi.keys.v1.Keys.JsonWebKey>();
+                  mutable_bitField0_ |= 0x00000001;
+                }
+                keys_.add(
+                    input.readMessage(
+                        trinsic.okapi.keys.v1.Keys.JsonWebKey.parser(), extensionRegistry));
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -2453,8 +2405,7 @@ public final class Keys {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
           keys_ = java.util.Collections.unmodifiableList(keys_);
@@ -2463,23 +2414,26 @@ public final class Keys {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
       return trinsic.okapi.keys.v1.Keys.internal_static_okapi_keys_v1_ResolveResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.okapi.keys.v1.Keys.internal_static_okapi_keys_v1_ResolveResponse_fieldAccessorTable
+      return trinsic.okapi.keys.v1.Keys
+          .internal_static_okapi_keys_v1_ResolveResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.keys.v1.Keys.ResolveResponse.class, trinsic.okapi.keys.v1.Keys.ResolveResponse.Builder.class);
+              trinsic.okapi.keys.v1.Keys.ResolveResponse.class,
+              trinsic.okapi.keys.v1.Keys.ResolveResponse.Builder.class);
     }
 
     public static final int DID_DOCUMENT_FIELD_NUMBER = 1;
     private com.google.protobuf.Struct didDocument_;
     /**
      * <code>.google.protobuf.Struct did_document = 1;</code>
+     *
      * @return Whether the didDocument field is set.
      */
     @java.lang.Override
@@ -2488,15 +2442,14 @@ public final class Keys {
     }
     /**
      * <code>.google.protobuf.Struct did_document = 1;</code>
+     *
      * @return The didDocument.
      */
     @java.lang.Override
     public com.google.protobuf.Struct getDidDocument() {
       return didDocument_ == null ? com.google.protobuf.Struct.getDefaultInstance() : didDocument_;
     }
-    /**
-     * <code>.google.protobuf.Struct did_document = 1;</code>
-     */
+    /** <code>.google.protobuf.Struct did_document = 1;</code> */
     @java.lang.Override
     public com.google.protobuf.StructOrBuilder getDidDocumentOrBuilder() {
       return getDidDocument();
@@ -2504,45 +2457,35 @@ public final class Keys {
 
     public static final int KEYS_FIELD_NUMBER = 2;
     private java.util.List<trinsic.okapi.keys.v1.Keys.JsonWebKey> keys_;
-    /**
-     * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-     */
+    /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
     @java.lang.Override
     public java.util.List<trinsic.okapi.keys.v1.Keys.JsonWebKey> getKeysList() {
       return keys_;
     }
-    /**
-     * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-     */
+    /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
     @java.lang.Override
-    public java.util.List<? extends trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder> 
+    public java.util.List<? extends trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>
         getKeysOrBuilderList() {
       return keys_;
     }
-    /**
-     * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-     */
+    /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
     @java.lang.Override
     public int getKeysCount() {
       return keys_.size();
     }
-    /**
-     * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-     */
+    /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
     @java.lang.Override
     public trinsic.okapi.keys.v1.Keys.JsonWebKey getKeys(int index) {
       return keys_.get(index);
     }
-    /**
-     * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-     */
+    /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
     @java.lang.Override
-    public trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getKeysOrBuilder(
-        int index) {
+    public trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getKeysOrBuilder(int index) {
       return keys_.get(index);
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -2554,8 +2497,7 @@ public final class Keys {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (didDocument_ != null) {
         output.writeMessage(1, getDidDocument());
       }
@@ -2572,12 +2514,10 @@ public final class Keys {
 
       size = 0;
       if (didDocument_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getDidDocument());
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getDidDocument());
       }
       for (int i = 0; i < keys_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, keys_.get(i));
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, keys_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2587,20 +2527,19 @@ public final class Keys {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.keys.v1.Keys.ResolveResponse)) {
         return super.equals(obj);
       }
-      trinsic.okapi.keys.v1.Keys.ResolveResponse other = (trinsic.okapi.keys.v1.Keys.ResolveResponse) obj;
+      trinsic.okapi.keys.v1.Keys.ResolveResponse other =
+          (trinsic.okapi.keys.v1.Keys.ResolveResponse) obj;
 
       if (hasDidDocument() != other.hasDidDocument()) return false;
       if (hasDidDocument()) {
-        if (!getDidDocument()
-            .equals(other.getDidDocument())) return false;
+        if (!getDidDocument().equals(other.getDidDocument())) return false;
       }
-      if (!getKeysList()
-          .equals(other.getKeysList())) return false;
+      if (!getKeysList().equals(other.getKeysList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2625,88 +2564,94 @@ public final class Keys {
       return hash;
     }
 
-    public static trinsic.okapi.keys.v1.Keys.ResolveResponse parseFrom(
-        java.nio.ByteBuffer data)
+    public static trinsic.okapi.keys.v1.Keys.ResolveResponse parseFrom(java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.keys.v1.Keys.ResolveResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.keys.v1.Keys.ResolveResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.keys.v1.Keys.ResolveResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.keys.v1.Keys.ResolveResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.keys.v1.Keys.ResolveResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.keys.v1.Keys.ResolveResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.keys.v1.Keys.ResolveResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.okapi.keys.v1.Keys.ResolveResponse parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.keys.v1.Keys.ResolveResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.keys.v1.Keys.ResolveResponse parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.keys.v1.Keys.ResolveResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.keys.v1.Keys.ResolveResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.okapi.keys.v1.Keys.ResolveResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -2715,24 +2660,24 @@ public final class Keys {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code okapi.keys.v1.ResolveResponse}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code okapi.keys.v1.ResolveResponse} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.keys.v1.ResolveResponse)
         trinsic.okapi.keys.v1.Keys.ResolveResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
         return trinsic.okapi.keys.v1.Keys.internal_static_okapi_keys_v1_ResolveResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.keys.v1.Keys.internal_static_okapi_keys_v1_ResolveResponse_fieldAccessorTable
+        return trinsic.okapi.keys.v1.Keys
+            .internal_static_okapi_keys_v1_ResolveResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.keys.v1.Keys.ResolveResponse.class, trinsic.okapi.keys.v1.Keys.ResolveResponse.Builder.class);
+                trinsic.okapi.keys.v1.Keys.ResolveResponse.class,
+                trinsic.okapi.keys.v1.Keys.ResolveResponse.Builder.class);
       }
 
       // Construct using trinsic.okapi.keys.v1.Keys.ResolveResponse.newBuilder()
@@ -2740,17 +2685,17 @@ public final class Keys {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
           getKeysFieldBuilder();
         }
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -2770,8 +2715,7 @@ public final class Keys {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
         return trinsic.okapi.keys.v1.Keys.internal_static_okapi_keys_v1_ResolveResponse_descriptor;
       }
 
@@ -2791,7 +2735,8 @@ public final class Keys {
 
       @java.lang.Override
       public trinsic.okapi.keys.v1.Keys.ResolveResponse buildPartial() {
-        trinsic.okapi.keys.v1.Keys.ResolveResponse result = new trinsic.okapi.keys.v1.Keys.ResolveResponse(this);
+        trinsic.okapi.keys.v1.Keys.ResolveResponse result =
+            new trinsic.okapi.keys.v1.Keys.ResolveResponse(this);
         int from_bitField0_ = bitField0_;
         if (didDocumentBuilder_ == null) {
           result.didDocument_ = didDocument_;
@@ -2815,38 +2760,41 @@ public final class Keys {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.keys.v1.Keys.ResolveResponse) {
-          return mergeFrom((trinsic.okapi.keys.v1.Keys.ResolveResponse)other);
+          return mergeFrom((trinsic.okapi.keys.v1.Keys.ResolveResponse) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -2876,9 +2824,10 @@ public final class Keys {
               keysBuilder_ = null;
               keys_ = other.keys_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              keysBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getKeysFieldBuilder() : null;
+              keysBuilder_ =
+                  com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
+                      ? getKeysFieldBuilder()
+                      : null;
             } else {
               keysBuilder_.addAllMessages(other.keys_);
             }
@@ -2912,13 +2861,18 @@ public final class Keys {
         }
         return this;
       }
+
       private int bitField0_;
 
       private com.google.protobuf.Struct didDocument_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder> didDocumentBuilder_;
+              com.google.protobuf.Struct,
+              com.google.protobuf.Struct.Builder,
+              com.google.protobuf.StructOrBuilder>
+          didDocumentBuilder_;
       /**
        * <code>.google.protobuf.Struct did_document = 1;</code>
+       *
        * @return Whether the didDocument field is set.
        */
       public boolean hasDidDocument() {
@@ -2926,18 +2880,19 @@ public final class Keys {
       }
       /**
        * <code>.google.protobuf.Struct did_document = 1;</code>
+       *
        * @return The didDocument.
        */
       public com.google.protobuf.Struct getDidDocument() {
         if (didDocumentBuilder_ == null) {
-          return didDocument_ == null ? com.google.protobuf.Struct.getDefaultInstance() : didDocument_;
+          return didDocument_ == null
+              ? com.google.protobuf.Struct.getDefaultInstance()
+              : didDocument_;
         } else {
           return didDocumentBuilder_.getMessage();
         }
       }
-      /**
-       * <code>.google.protobuf.Struct did_document = 1;</code>
-       */
+      /** <code>.google.protobuf.Struct did_document = 1;</code> */
       public Builder setDidDocument(com.google.protobuf.Struct value) {
         if (didDocumentBuilder_ == null) {
           if (value == null) {
@@ -2951,11 +2906,8 @@ public final class Keys {
 
         return this;
       }
-      /**
-       * <code>.google.protobuf.Struct did_document = 1;</code>
-       */
-      public Builder setDidDocument(
-          com.google.protobuf.Struct.Builder builderForValue) {
+      /** <code>.google.protobuf.Struct did_document = 1;</code> */
+      public Builder setDidDocument(com.google.protobuf.Struct.Builder builderForValue) {
         if (didDocumentBuilder_ == null) {
           didDocument_ = builderForValue.build();
           onChanged();
@@ -2965,14 +2917,12 @@ public final class Keys {
 
         return this;
       }
-      /**
-       * <code>.google.protobuf.Struct did_document = 1;</code>
-       */
+      /** <code>.google.protobuf.Struct did_document = 1;</code> */
       public Builder mergeDidDocument(com.google.protobuf.Struct value) {
         if (didDocumentBuilder_ == null) {
           if (didDocument_ != null) {
             didDocument_ =
-              com.google.protobuf.Struct.newBuilder(didDocument_).mergeFrom(value).buildPartial();
+                com.google.protobuf.Struct.newBuilder(didDocument_).mergeFrom(value).buildPartial();
           } else {
             didDocument_ = value;
           }
@@ -2983,9 +2933,7 @@ public final class Keys {
 
         return this;
       }
-      /**
-       * <code>.google.protobuf.Struct did_document = 1;</code>
-       */
+      /** <code>.google.protobuf.Struct did_document = 1;</code> */
       public Builder clearDidDocument() {
         if (didDocumentBuilder_ == null) {
           didDocument_ = null;
@@ -2997,57 +2945,57 @@ public final class Keys {
 
         return this;
       }
-      /**
-       * <code>.google.protobuf.Struct did_document = 1;</code>
-       */
+      /** <code>.google.protobuf.Struct did_document = 1;</code> */
       public com.google.protobuf.Struct.Builder getDidDocumentBuilder() {
-        
+
         onChanged();
         return getDidDocumentFieldBuilder().getBuilder();
       }
-      /**
-       * <code>.google.protobuf.Struct did_document = 1;</code>
-       */
+      /** <code>.google.protobuf.Struct did_document = 1;</code> */
       public com.google.protobuf.StructOrBuilder getDidDocumentOrBuilder() {
         if (didDocumentBuilder_ != null) {
           return didDocumentBuilder_.getMessageOrBuilder();
         } else {
-          return didDocument_ == null ?
-              com.google.protobuf.Struct.getDefaultInstance() : didDocument_;
+          return didDocument_ == null
+              ? com.google.protobuf.Struct.getDefaultInstance()
+              : didDocument_;
         }
       }
-      /**
-       * <code>.google.protobuf.Struct did_document = 1;</code>
-       */
+      /** <code>.google.protobuf.Struct did_document = 1;</code> */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder> 
+              com.google.protobuf.Struct,
+              com.google.protobuf.Struct.Builder,
+              com.google.protobuf.StructOrBuilder>
           getDidDocumentFieldBuilder() {
         if (didDocumentBuilder_ == null) {
-          didDocumentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder>(
-                  getDidDocument(),
-                  getParentForChildren(),
-                  isClean());
+          didDocumentBuilder_ =
+              new com.google.protobuf.SingleFieldBuilderV3<
+                  com.google.protobuf.Struct,
+                  com.google.protobuf.Struct.Builder,
+                  com.google.protobuf.StructOrBuilder>(
+                  getDidDocument(), getParentForChildren(), isClean());
           didDocument_ = null;
         }
         return didDocumentBuilder_;
       }
 
       private java.util.List<trinsic.okapi.keys.v1.Keys.JsonWebKey> keys_ =
-        java.util.Collections.emptyList();
+          java.util.Collections.emptyList();
+
       private void ensureKeysIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
           keys_ = new java.util.ArrayList<trinsic.okapi.keys.v1.Keys.JsonWebKey>(keys_);
           bitField0_ |= 0x00000001;
-         }
+        }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          trinsic.okapi.keys.v1.Keys.JsonWebKey, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder, trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder> keysBuilder_;
+              trinsic.okapi.keys.v1.Keys.JsonWebKey,
+              trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder,
+              trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>
+          keysBuilder_;
 
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-       */
+      /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
       public java.util.List<trinsic.okapi.keys.v1.Keys.JsonWebKey> getKeysList() {
         if (keysBuilder_ == null) {
           return java.util.Collections.unmodifiableList(keys_);
@@ -3055,9 +3003,7 @@ public final class Keys {
           return keysBuilder_.getMessageList();
         }
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-       */
+      /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
       public int getKeysCount() {
         if (keysBuilder_ == null) {
           return keys_.size();
@@ -3065,9 +3011,7 @@ public final class Keys {
           return keysBuilder_.getCount();
         }
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-       */
+      /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
       public trinsic.okapi.keys.v1.Keys.JsonWebKey getKeys(int index) {
         if (keysBuilder_ == null) {
           return keys_.get(index);
@@ -3075,11 +3019,8 @@ public final class Keys {
           return keysBuilder_.getMessage(index);
         }
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-       */
-      public Builder setKeys(
-          int index, trinsic.okapi.keys.v1.Keys.JsonWebKey value) {
+      /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
+      public Builder setKeys(int index, trinsic.okapi.keys.v1.Keys.JsonWebKey value) {
         if (keysBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3092,9 +3033,7 @@ public final class Keys {
         }
         return this;
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-       */
+      /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
       public Builder setKeys(
           int index, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder builderForValue) {
         if (keysBuilder_ == null) {
@@ -3106,9 +3045,7 @@ public final class Keys {
         }
         return this;
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-       */
+      /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
       public Builder addKeys(trinsic.okapi.keys.v1.Keys.JsonWebKey value) {
         if (keysBuilder_ == null) {
           if (value == null) {
@@ -3122,11 +3059,8 @@ public final class Keys {
         }
         return this;
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-       */
-      public Builder addKeys(
-          int index, trinsic.okapi.keys.v1.Keys.JsonWebKey value) {
+      /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
+      public Builder addKeys(int index, trinsic.okapi.keys.v1.Keys.JsonWebKey value) {
         if (keysBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3139,11 +3073,8 @@ public final class Keys {
         }
         return this;
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-       */
-      public Builder addKeys(
-          trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder builderForValue) {
+      /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
+      public Builder addKeys(trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder builderForValue) {
         if (keysBuilder_ == null) {
           ensureKeysIsMutable();
           keys_.add(builderForValue.build());
@@ -3153,9 +3084,7 @@ public final class Keys {
         }
         return this;
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-       */
+      /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
       public Builder addKeys(
           int index, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder builderForValue) {
         if (keysBuilder_ == null) {
@@ -3167,24 +3096,19 @@ public final class Keys {
         }
         return this;
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-       */
+      /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
       public Builder addAllKeys(
           java.lang.Iterable<? extends trinsic.okapi.keys.v1.Keys.JsonWebKey> values) {
         if (keysBuilder_ == null) {
           ensureKeysIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, keys_);
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(values, keys_);
           onChanged();
         } else {
           keysBuilder_.addAllMessages(values);
         }
         return this;
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-       */
+      /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
       public Builder clearKeys() {
         if (keysBuilder_ == null) {
           keys_ = java.util.Collections.emptyList();
@@ -3195,9 +3119,7 @@ public final class Keys {
         }
         return this;
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-       */
+      /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
       public Builder removeKeys(int index) {
         if (keysBuilder_ == null) {
           ensureKeysIsMutable();
@@ -3208,70 +3130,59 @@ public final class Keys {
         }
         return this;
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-       */
-      public trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder getKeysBuilder(
-          int index) {
+      /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
+      public trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder getKeysBuilder(int index) {
         return getKeysFieldBuilder().getBuilder(index);
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-       */
-      public trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getKeysOrBuilder(
-          int index) {
+      /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
+      public trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder getKeysOrBuilder(int index) {
         if (keysBuilder_ == null) {
-          return keys_.get(index);  } else {
+          return keys_.get(index);
+        } else {
           return keysBuilder_.getMessageOrBuilder(index);
         }
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-       */
-      public java.util.List<? extends trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder> 
-           getKeysOrBuilderList() {
+      /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
+      public java.util.List<? extends trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>
+          getKeysOrBuilderList() {
         if (keysBuilder_ != null) {
           return keysBuilder_.getMessageOrBuilderList();
         } else {
           return java.util.Collections.unmodifiableList(keys_);
         }
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-       */
+      /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
       public trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder addKeysBuilder() {
-        return getKeysFieldBuilder().addBuilder(
-            trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance());
+        return getKeysFieldBuilder()
+            .addBuilder(trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance());
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-       */
-      public trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder addKeysBuilder(
-          int index) {
-        return getKeysFieldBuilder().addBuilder(
-            index, trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance());
+      /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
+      public trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder addKeysBuilder(int index) {
+        return getKeysFieldBuilder()
+            .addBuilder(index, trinsic.okapi.keys.v1.Keys.JsonWebKey.getDefaultInstance());
       }
-      /**
-       * <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code>
-       */
-      public java.util.List<trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder> 
-           getKeysBuilderList() {
+      /** <code>repeated .okapi.keys.v1.JsonWebKey keys = 2;</code> */
+      public java.util.List<trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder> getKeysBuilderList() {
         return getKeysFieldBuilder().getBuilderList();
       }
+
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          trinsic.okapi.keys.v1.Keys.JsonWebKey, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder, trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder> 
+              trinsic.okapi.keys.v1.Keys.JsonWebKey,
+              trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder,
+              trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>
           getKeysFieldBuilder() {
         if (keysBuilder_ == null) {
-          keysBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              trinsic.okapi.keys.v1.Keys.JsonWebKey, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder, trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>(
-                  keys_,
-                  ((bitField0_ & 0x00000001) != 0),
-                  getParentForChildren(),
-                  isClean());
+          keysBuilder_ =
+              new com.google.protobuf.RepeatedFieldBuilderV3<
+                  trinsic.okapi.keys.v1.Keys.JsonWebKey,
+                  trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder,
+                  trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder>(
+                  keys_, ((bitField0_ & 0x00000001) != 0), getParentForChildren(), isClean());
           keys_ = null;
         }
         return keysBuilder_;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -3284,12 +3195,12 @@ public final class Keys {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.keys.v1.ResolveResponse)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.keys.v1.ResolveResponse)
     private static final trinsic.okapi.keys.v1.Keys.ResolveResponse DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.keys.v1.Keys.ResolveResponse();
     }
@@ -3298,16 +3209,16 @@ public final class Keys {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ResolveResponse>
-        PARSER = new com.google.protobuf.AbstractParser<ResolveResponse>() {
-      @java.lang.Override
-      public ResolveResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ResolveResponse(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<ResolveResponse> PARSER =
+        new com.google.protobuf.AbstractParser<ResolveResponse>() {
+          @java.lang.Override
+          public ResolveResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new ResolveResponse(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<ResolveResponse> parser() {
       return PARSER;
@@ -3322,121 +3233,138 @@ public final class Keys {
     public trinsic.okapi.keys.v1.Keys.ResolveResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface JsonWebKeyOrBuilder extends
+  public interface JsonWebKeyOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:okapi.keys.v1.JsonWebKey)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>string kid = 1;</code>
+     *
      * @return The kid.
      */
     java.lang.String getKid();
     /**
      * <code>string kid = 1;</code>
+     *
      * @return The bytes for kid.
      */
-    com.google.protobuf.ByteString
-        getKidBytes();
+    com.google.protobuf.ByteString getKidBytes();
 
     /**
+     *
+     *
      * <pre>
      * public_key
      * </pre>
      *
      * <code>string x = 2;</code>
+     *
      * @return The x.
      */
     java.lang.String getX();
     /**
+     *
+     *
      * <pre>
      * public_key
      * </pre>
      *
      * <code>string x = 2;</code>
+     *
      * @return The bytes for x.
      */
-    com.google.protobuf.ByteString
-        getXBytes();
+    com.google.protobuf.ByteString getXBytes();
 
     /**
+     *
+     *
      * <pre>
      * public_key
      * </pre>
      *
      * <code>string y = 3;</code>
+     *
      * @return The y.
      */
     java.lang.String getY();
     /**
+     *
+     *
      * <pre>
      * public_key
      * </pre>
      *
      * <code>string y = 3;</code>
+     *
      * @return The bytes for y.
      */
-    com.google.protobuf.ByteString
-        getYBytes();
+    com.google.protobuf.ByteString getYBytes();
 
     /**
+     *
+     *
      * <pre>
      * secret_key
      * </pre>
      *
      * <code>string d = 4;</code>
+     *
      * @return The d.
      */
     java.lang.String getD();
     /**
+     *
+     *
      * <pre>
      * secret_key
      * </pre>
      *
      * <code>string d = 4;</code>
+     *
      * @return The bytes for d.
      */
-    com.google.protobuf.ByteString
-        getDBytes();
+    com.google.protobuf.ByteString getDBytes();
 
     /**
      * <code>string crv = 5;</code>
+     *
      * @return The crv.
      */
     java.lang.String getCrv();
     /**
      * <code>string crv = 5;</code>
+     *
      * @return The bytes for crv.
      */
-    com.google.protobuf.ByteString
-        getCrvBytes();
+    com.google.protobuf.ByteString getCrvBytes();
 
     /**
      * <code>string kty = 6;</code>
+     *
      * @return The kty.
      */
     java.lang.String getKty();
     /**
      * <code>string kty = 6;</code>
+     *
      * @return The bytes for kty.
      */
-    com.google.protobuf.ByteString
-        getKtyBytes();
+    com.google.protobuf.ByteString getKtyBytes();
   }
-  /**
-   * Protobuf type {@code okapi.keys.v1.JsonWebKey}
-   */
-  public static final class JsonWebKey extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  /** Protobuf type {@code okapi.keys.v1.JsonWebKey} */
+  public static final class JsonWebKey extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:okapi.keys.v1.JsonWebKey)
       JsonWebKeyOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use JsonWebKey.newBuilder() to construct.
     private JsonWebKey(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private JsonWebKey() {
       kid_ = "";
       x_ = "";
@@ -3448,16 +3376,15 @@ public final class Keys {
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new JsonWebKey();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private JsonWebKey(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -3476,49 +3403,55 @@ public final class Keys {
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 10:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
 
-              kid_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              x_ = s;
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              y_ = s;
-              break;
-            }
-            case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              d_ = s;
-              break;
-            }
-            case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              crv_ = s;
-              break;
-            }
-            case 50: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              kty_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                kid_ = s;
+                break;
               }
-              break;
-            }
+            case 18:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                x_ = s;
+                break;
+              }
+            case 26:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                y_ = s;
+                break;
+              }
+            case 34:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                d_ = s;
+                break;
+              }
+            case 42:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                crv_ = s;
+                break;
+              }
+            case 50:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                kty_ = s;
+                break;
+              }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -3526,15 +3459,14 @@ public final class Keys {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
       return trinsic.okapi.keys.v1.Keys.internal_static_okapi_keys_v1_JsonWebKey_descriptor;
     }
 
@@ -3543,13 +3475,15 @@ public final class Keys {
         internalGetFieldAccessorTable() {
       return trinsic.okapi.keys.v1.Keys.internal_static_okapi_keys_v1_JsonWebKey_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.okapi.keys.v1.Keys.JsonWebKey.class, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder.class);
+              trinsic.okapi.keys.v1.Keys.JsonWebKey.class,
+              trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder.class);
     }
 
     public static final int KID_FIELD_NUMBER = 1;
     private volatile java.lang.Object kid_;
     /**
      * <code>string kid = 1;</code>
+     *
      * @return The kid.
      */
     @java.lang.Override
@@ -3558,8 +3492,7 @@ public final class Keys {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         kid_ = s;
         return s;
@@ -3567,16 +3500,15 @@ public final class Keys {
     }
     /**
      * <code>string kid = 1;</code>
+     *
      * @return The bytes for kid.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getKidBytes() {
+    public com.google.protobuf.ByteString getKidBytes() {
       java.lang.Object ref = kid_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         kid_ = b;
         return b;
       } else {
@@ -3587,11 +3519,14 @@ public final class Keys {
     public static final int X_FIELD_NUMBER = 2;
     private volatile java.lang.Object x_;
     /**
+     *
+     *
      * <pre>
      * public_key
      * </pre>
      *
      * <code>string x = 2;</code>
+     *
      * @return The x.
      */
     @java.lang.Override
@@ -3600,29 +3535,29 @@ public final class Keys {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         x_ = s;
         return s;
       }
     }
     /**
+     *
+     *
      * <pre>
      * public_key
      * </pre>
      *
      * <code>string x = 2;</code>
+     *
      * @return The bytes for x.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getXBytes() {
+    public com.google.protobuf.ByteString getXBytes() {
       java.lang.Object ref = x_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         x_ = b;
         return b;
       } else {
@@ -3633,11 +3568,14 @@ public final class Keys {
     public static final int Y_FIELD_NUMBER = 3;
     private volatile java.lang.Object y_;
     /**
+     *
+     *
      * <pre>
      * public_key
      * </pre>
      *
      * <code>string y = 3;</code>
+     *
      * @return The y.
      */
     @java.lang.Override
@@ -3646,29 +3584,29 @@ public final class Keys {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         y_ = s;
         return s;
       }
     }
     /**
+     *
+     *
      * <pre>
      * public_key
      * </pre>
      *
      * <code>string y = 3;</code>
+     *
      * @return The bytes for y.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getYBytes() {
+    public com.google.protobuf.ByteString getYBytes() {
       java.lang.Object ref = y_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         y_ = b;
         return b;
       } else {
@@ -3679,11 +3617,14 @@ public final class Keys {
     public static final int D_FIELD_NUMBER = 4;
     private volatile java.lang.Object d_;
     /**
+     *
+     *
      * <pre>
      * secret_key
      * </pre>
      *
      * <code>string d = 4;</code>
+     *
      * @return The d.
      */
     @java.lang.Override
@@ -3692,29 +3633,29 @@ public final class Keys {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         d_ = s;
         return s;
       }
     }
     /**
+     *
+     *
      * <pre>
      * secret_key
      * </pre>
      *
      * <code>string d = 4;</code>
+     *
      * @return The bytes for d.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getDBytes() {
+    public com.google.protobuf.ByteString getDBytes() {
       java.lang.Object ref = d_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         d_ = b;
         return b;
       } else {
@@ -3726,6 +3667,7 @@ public final class Keys {
     private volatile java.lang.Object crv_;
     /**
      * <code>string crv = 5;</code>
+     *
      * @return The crv.
      */
     @java.lang.Override
@@ -3734,8 +3676,7 @@ public final class Keys {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         crv_ = s;
         return s;
@@ -3743,16 +3684,15 @@ public final class Keys {
     }
     /**
      * <code>string crv = 5;</code>
+     *
      * @return The bytes for crv.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getCrvBytes() {
+    public com.google.protobuf.ByteString getCrvBytes() {
       java.lang.Object ref = crv_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         crv_ = b;
         return b;
       } else {
@@ -3764,6 +3704,7 @@ public final class Keys {
     private volatile java.lang.Object kty_;
     /**
      * <code>string kty = 6;</code>
+     *
      * @return The kty.
      */
     @java.lang.Override
@@ -3772,8 +3713,7 @@ public final class Keys {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         kty_ = s;
         return s;
@@ -3781,16 +3721,15 @@ public final class Keys {
     }
     /**
      * <code>string kty = 6;</code>
+     *
      * @return The bytes for kty.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getKtyBytes() {
+    public com.google.protobuf.ByteString getKtyBytes() {
       java.lang.Object ref = kty_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         kty_ = b;
         return b;
       } else {
@@ -3799,6 +3738,7 @@ public final class Keys {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -3810,8 +3750,7 @@ public final class Keys {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(kid_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, kid_);
       }
@@ -3865,25 +3804,19 @@ public final class Keys {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.okapi.keys.v1.Keys.JsonWebKey)) {
         return super.equals(obj);
       }
       trinsic.okapi.keys.v1.Keys.JsonWebKey other = (trinsic.okapi.keys.v1.Keys.JsonWebKey) obj;
 
-      if (!getKid()
-          .equals(other.getKid())) return false;
-      if (!getX()
-          .equals(other.getX())) return false;
-      if (!getY()
-          .equals(other.getY())) return false;
-      if (!getD()
-          .equals(other.getD())) return false;
-      if (!getCrv()
-          .equals(other.getCrv())) return false;
-      if (!getKty()
-          .equals(other.getKty())) return false;
+      if (!getKid().equals(other.getKid())) return false;
+      if (!getX().equals(other.getX())) return false;
+      if (!getY().equals(other.getY())) return false;
+      if (!getD().equals(other.getD())) return false;
+      if (!getCrv().equals(other.getCrv())) return false;
+      if (!getKty().equals(other.getKty())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3912,88 +3845,94 @@ public final class Keys {
       return hash;
     }
 
-    public static trinsic.okapi.keys.v1.Keys.JsonWebKey parseFrom(
-        java.nio.ByteBuffer data)
+    public static trinsic.okapi.keys.v1.Keys.JsonWebKey parseFrom(java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.keys.v1.Keys.JsonWebKey parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.keys.v1.Keys.JsonWebKey parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.keys.v1.Keys.JsonWebKey parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.keys.v1.Keys.JsonWebKey parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.okapi.keys.v1.Keys.JsonWebKey parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.okapi.keys.v1.Keys.JsonWebKey parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.keys.v1.Keys.JsonWebKey parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.okapi.keys.v1.Keys.JsonWebKey parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
+
     public static trinsic.okapi.keys.v1.Keys.JsonWebKey parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.okapi.keys.v1.Keys.JsonWebKey parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.okapi.keys.v1.Keys.JsonWebKey parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.okapi.keys.v1.Keys.JsonWebKey parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.okapi.keys.v1.Keys.JsonWebKey prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -4002,24 +3941,24 @@ public final class Keys {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code okapi.keys.v1.JsonWebKey}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    /** Protobuf type {@code okapi.keys.v1.JsonWebKey} */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:okapi.keys.v1.JsonWebKey)
         trinsic.okapi.keys.v1.Keys.JsonWebKeyOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
         return trinsic.okapi.keys.v1.Keys.internal_static_okapi_keys_v1_JsonWebKey_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.okapi.keys.v1.Keys.internal_static_okapi_keys_v1_JsonWebKey_fieldAccessorTable
+        return trinsic.okapi.keys.v1.Keys
+            .internal_static_okapi_keys_v1_JsonWebKey_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.okapi.keys.v1.Keys.JsonWebKey.class, trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder.class);
+                trinsic.okapi.keys.v1.Keys.JsonWebKey.class,
+                trinsic.okapi.keys.v1.Keys.JsonWebKey.Builder.class);
       }
 
       // Construct using trinsic.okapi.keys.v1.Keys.JsonWebKey.newBuilder()
@@ -4027,16 +3966,15 @@ public final class Keys {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -4056,8 +3994,7 @@ public final class Keys {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
         return trinsic.okapi.keys.v1.Keys.internal_static_okapi_keys_v1_JsonWebKey_descriptor;
       }
 
@@ -4077,7 +4014,8 @@ public final class Keys {
 
       @java.lang.Override
       public trinsic.okapi.keys.v1.Keys.JsonWebKey buildPartial() {
-        trinsic.okapi.keys.v1.Keys.JsonWebKey result = new trinsic.okapi.keys.v1.Keys.JsonWebKey(this);
+        trinsic.okapi.keys.v1.Keys.JsonWebKey result =
+            new trinsic.okapi.keys.v1.Keys.JsonWebKey(this);
         result.kid_ = kid_;
         result.x_ = x_;
         result.y_ = y_;
@@ -4092,38 +4030,41 @@ public final class Keys {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.okapi.keys.v1.Keys.JsonWebKey) {
-          return mergeFrom((trinsic.okapi.keys.v1.Keys.JsonWebKey)other);
+          return mergeFrom((trinsic.okapi.keys.v1.Keys.JsonWebKey) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -4188,13 +4129,13 @@ public final class Keys {
       private java.lang.Object kid_ = "";
       /**
        * <code>string kid = 1;</code>
+       *
        * @return The kid.
        */
       public java.lang.String getKid() {
         java.lang.Object ref = kid_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           kid_ = s;
           return s;
@@ -4204,15 +4145,14 @@ public final class Keys {
       }
       /**
        * <code>string kid = 1;</code>
+       *
        * @return The bytes for kid.
        */
-      public com.google.protobuf.ByteString
-          getKidBytes() {
+      public com.google.protobuf.ByteString getKidBytes() {
         java.lang.Object ref = kid_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           kid_ = b;
           return b;
         } else {
@@ -4221,41 +4161,42 @@ public final class Keys {
       }
       /**
        * <code>string kid = 1;</code>
+       *
        * @param value The kid to set.
        * @return This builder for chaining.
        */
-      public Builder setKid(
-          java.lang.String value) {
+      public Builder setKid(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         kid_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>string kid = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearKid() {
-        
+
         kid_ = getDefaultInstance().getKid();
         onChanged();
         return this;
       }
       /**
        * <code>string kid = 1;</code>
+       *
        * @param value The bytes for kid to set.
        * @return This builder for chaining.
        */
-      public Builder setKidBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setKidBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         kid_ = value;
         onChanged();
         return this;
@@ -4263,18 +4204,20 @@ public final class Keys {
 
       private java.lang.Object x_ = "";
       /**
+       *
+       *
        * <pre>
        * public_key
        * </pre>
        *
        * <code>string x = 2;</code>
+       *
        * @return The x.
        */
       public java.lang.String getX() {
         java.lang.Object ref = x_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           x_ = s;
           return s;
@@ -4283,20 +4226,21 @@ public final class Keys {
         }
       }
       /**
+       *
+       *
        * <pre>
        * public_key
        * </pre>
        *
        * <code>string x = 2;</code>
+       *
        * @return The bytes for x.
        */
-      public com.google.protobuf.ByteString
-          getXBytes() {
+      public com.google.protobuf.ByteString getXBytes() {
         java.lang.Object ref = x_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           x_ = b;
           return b;
         } else {
@@ -4304,54 +4248,61 @@ public final class Keys {
         }
       }
       /**
+       *
+       *
        * <pre>
        * public_key
        * </pre>
        *
        * <code>string x = 2;</code>
+       *
        * @param value The x to set.
        * @return This builder for chaining.
        */
-      public Builder setX(
-          java.lang.String value) {
+      public Builder setX(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         x_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * public_key
        * </pre>
        *
        * <code>string x = 2;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearX() {
-        
+
         x_ = getDefaultInstance().getX();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * public_key
        * </pre>
        *
        * <code>string x = 2;</code>
+       *
        * @param value The bytes for x to set.
        * @return This builder for chaining.
        */
-      public Builder setXBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setXBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         x_ = value;
         onChanged();
         return this;
@@ -4359,18 +4310,20 @@ public final class Keys {
 
       private java.lang.Object y_ = "";
       /**
+       *
+       *
        * <pre>
        * public_key
        * </pre>
        *
        * <code>string y = 3;</code>
+       *
        * @return The y.
        */
       public java.lang.String getY() {
         java.lang.Object ref = y_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           y_ = s;
           return s;
@@ -4379,20 +4332,21 @@ public final class Keys {
         }
       }
       /**
+       *
+       *
        * <pre>
        * public_key
        * </pre>
        *
        * <code>string y = 3;</code>
+       *
        * @return The bytes for y.
        */
-      public com.google.protobuf.ByteString
-          getYBytes() {
+      public com.google.protobuf.ByteString getYBytes() {
         java.lang.Object ref = y_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           y_ = b;
           return b;
         } else {
@@ -4400,54 +4354,61 @@ public final class Keys {
         }
       }
       /**
+       *
+       *
        * <pre>
        * public_key
        * </pre>
        *
        * <code>string y = 3;</code>
+       *
        * @param value The y to set.
        * @return This builder for chaining.
        */
-      public Builder setY(
-          java.lang.String value) {
+      public Builder setY(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         y_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * public_key
        * </pre>
        *
        * <code>string y = 3;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearY() {
-        
+
         y_ = getDefaultInstance().getY();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * public_key
        * </pre>
        *
        * <code>string y = 3;</code>
+       *
        * @param value The bytes for y to set.
        * @return This builder for chaining.
        */
-      public Builder setYBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setYBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         y_ = value;
         onChanged();
         return this;
@@ -4455,18 +4416,20 @@ public final class Keys {
 
       private java.lang.Object d_ = "";
       /**
+       *
+       *
        * <pre>
        * secret_key
        * </pre>
        *
        * <code>string d = 4;</code>
+       *
        * @return The d.
        */
       public java.lang.String getD() {
         java.lang.Object ref = d_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           d_ = s;
           return s;
@@ -4475,20 +4438,21 @@ public final class Keys {
         }
       }
       /**
+       *
+       *
        * <pre>
        * secret_key
        * </pre>
        *
        * <code>string d = 4;</code>
+       *
        * @return The bytes for d.
        */
-      public com.google.protobuf.ByteString
-          getDBytes() {
+      public com.google.protobuf.ByteString getDBytes() {
         java.lang.Object ref = d_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           d_ = b;
           return b;
         } else {
@@ -4496,54 +4460,61 @@ public final class Keys {
         }
       }
       /**
+       *
+       *
        * <pre>
        * secret_key
        * </pre>
        *
        * <code>string d = 4;</code>
+       *
        * @param value The d to set.
        * @return This builder for chaining.
        */
-      public Builder setD(
-          java.lang.String value) {
+      public Builder setD(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         d_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * secret_key
        * </pre>
        *
        * <code>string d = 4;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearD() {
-        
+
         d_ = getDefaultInstance().getD();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * secret_key
        * </pre>
        *
        * <code>string d = 4;</code>
+       *
        * @param value The bytes for d to set.
        * @return This builder for chaining.
        */
-      public Builder setDBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setDBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         d_ = value;
         onChanged();
         return this;
@@ -4552,13 +4523,13 @@ public final class Keys {
       private java.lang.Object crv_ = "";
       /**
        * <code>string crv = 5;</code>
+       *
        * @return The crv.
        */
       public java.lang.String getCrv() {
         java.lang.Object ref = crv_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           crv_ = s;
           return s;
@@ -4568,15 +4539,14 @@ public final class Keys {
       }
       /**
        * <code>string crv = 5;</code>
+       *
        * @return The bytes for crv.
        */
-      public com.google.protobuf.ByteString
-          getCrvBytes() {
+      public com.google.protobuf.ByteString getCrvBytes() {
         java.lang.Object ref = crv_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           crv_ = b;
           return b;
         } else {
@@ -4585,41 +4555,42 @@ public final class Keys {
       }
       /**
        * <code>string crv = 5;</code>
+       *
        * @param value The crv to set.
        * @return This builder for chaining.
        */
-      public Builder setCrv(
-          java.lang.String value) {
+      public Builder setCrv(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         crv_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>string crv = 5;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearCrv() {
-        
+
         crv_ = getDefaultInstance().getCrv();
         onChanged();
         return this;
       }
       /**
        * <code>string crv = 5;</code>
+       *
        * @param value The bytes for crv to set.
        * @return This builder for chaining.
        */
-      public Builder setCrvBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setCrvBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         crv_ = value;
         onChanged();
         return this;
@@ -4628,13 +4599,13 @@ public final class Keys {
       private java.lang.Object kty_ = "";
       /**
        * <code>string kty = 6;</code>
+       *
        * @return The kty.
        */
       public java.lang.String getKty() {
         java.lang.Object ref = kty_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           kty_ = s;
           return s;
@@ -4644,15 +4615,14 @@ public final class Keys {
       }
       /**
        * <code>string kty = 6;</code>
+       *
        * @return The bytes for kty.
        */
-      public com.google.protobuf.ByteString
-          getKtyBytes() {
+      public com.google.protobuf.ByteString getKtyBytes() {
         java.lang.Object ref = kty_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           kty_ = b;
           return b;
         } else {
@@ -4661,45 +4631,47 @@ public final class Keys {
       }
       /**
        * <code>string kty = 6;</code>
+       *
        * @param value The kty to set.
        * @return This builder for chaining.
        */
-      public Builder setKty(
-          java.lang.String value) {
+      public Builder setKty(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         kty_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>string kty = 6;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearKty() {
-        
+
         kty_ = getDefaultInstance().getKty();
         onChanged();
         return this;
       }
       /**
        * <code>string kty = 6;</code>
+       *
        * @param value The bytes for kty to set.
        * @return This builder for chaining.
        */
-      public Builder setKtyBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setKtyBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         kty_ = value;
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4712,12 +4684,12 @@ public final class Keys {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:okapi.keys.v1.JsonWebKey)
     }
 
     // @@protoc_insertion_point(class_scope:okapi.keys.v1.JsonWebKey)
     private static final trinsic.okapi.keys.v1.Keys.JsonWebKey DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.okapi.keys.v1.Keys.JsonWebKey();
     }
@@ -4726,16 +4698,16 @@ public final class Keys {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<JsonWebKey>
-        PARSER = new com.google.protobuf.AbstractParser<JsonWebKey>() {
-      @java.lang.Override
-      public JsonWebKey parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new JsonWebKey(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<JsonWebKey> PARSER =
+        new com.google.protobuf.AbstractParser<JsonWebKey>() {
+          @java.lang.Override
+          public JsonWebKey parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new JsonWebKey(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<JsonWebKey> parser() {
       return PARSER;
@@ -4750,97 +4722,114 @@ public final class Keys {
     public trinsic.okapi.keys.v1.Keys.JsonWebKey getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_keys_v1_GenerateKeyRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_keys_v1_GenerateKeyRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_keys_v1_GenerateKeyRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_keys_v1_GenerateKeyResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_keys_v1_GenerateKeyResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_keys_v1_GenerateKeyResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_keys_v1_ResolveRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_keys_v1_ResolveRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_keys_v1_ResolveRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_keys_v1_ResolveResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_keys_v1_ResolveResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_keys_v1_ResolveResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_okapi_keys_v1_JsonWebKey_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_okapi_keys_v1_JsonWebKey_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_okapi_keys_v1_JsonWebKey_fieldAccessorTable;
 
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
+  public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
+
+  private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
+
   static {
     java.lang.String[] descriptorData = {
-      "\n\030okapi/keys/v1/keys.proto\022\rokapi.keys.v" +
-      "1\032\034google/protobuf/struct.proto\"L\n\022Gener" +
-      "ateKeyRequest\022\014\n\004seed\030\001 \001(\014\022(\n\010key_type\030" +
-      "\002 \001(\0162\026.okapi.keys.v1.KeyType\"l\n\023Generat" +
-      "eKeyResponse\022&\n\003key\030\001 \003(\0132\031.okapi.keys.v" +
-      "1.JsonWebKey\022-\n\014did_document\030\002 \001(\0132\027.goo" +
-      "gle.protobuf.Struct\"\035\n\016ResolveRequest\022\013\n" +
-      "\003did\030\001 \001(\t\"i\n\017ResolveResponse\022-\n\014did_doc" +
-      "ument\030\001 \001(\0132\027.google.protobuf.Struct\022\'\n\004" +
-      "keys\030\002 \003(\0132\031.okapi.keys.v1.JsonWebKey\"T\n" +
-      "\nJsonWebKey\022\013\n\003kid\030\001 \001(\t\022\t\n\001x\030\002 \001(\t\022\t\n\001y" +
-      "\030\003 \001(\t\022\t\n\001d\030\004 \001(\t\022\013\n\003crv\030\005 \001(\t\022\013\n\003kty\030\006 " +
-      "\001(\t*\224\001\n\007KeyType\022\030\n\024KEY_TYPE_UNSPECIFIED\020" +
-      "\000\022\024\n\020KEY_TYPE_ED25519\020\001\022\023\n\017KEY_TYPE_X255" +
-      "19\020\002\022\021\n\rKEY_TYPE_P256\020\003\022\031\n\025KEY_TYPE_BLS1" +
-      "2381G1G2\020\004\022\026\n\022KEY_TYPE_SECP256K1\020\005BI\n\025tr" +
-      "insic.okapi.keys.v1Z github.com/trinsic-" +
-      "id/okapiproto\252\002\rOkapi.Keys.V1b\006proto3"
+      "\n"
+          + "\030okapi/keys/v1/keys.proto\022\r"
+          + "okapi.keys.v1\032\034google/protobuf/struct.proto\"L\n"
+          + "\022GenerateKeyRequest\022\014\n"
+          + "\004seed\030\001 \001(\014\022(\n"
+          + "\010key_type\030\002 \001(\0162\026.okapi.keys.v1.KeyType\"l\n"
+          + "\023GenerateKeyResponse\022&\n"
+          + "\003key\030\001 \003(\0132\031.okapi.keys.v1.JsonWebKey\022-\n"
+          + "\014did_document\030\002 \001(\0132\027.google.protobuf.Struct\"\035\n"
+          + "\016ResolveRequest\022\013\n"
+          + "\003did\030\001 \001(\t\"i\n"
+          + "\017ResolveResponse\022-\n"
+          + "\014did_document\030\001 \001(\0132\027.google.protobuf.Struct\022\'\n"
+          + "\004keys\030\002 \003(\0132\031.okapi.keys.v1.JsonWebKey\"T\n"
+          + "\n"
+          + "JsonWebKey\022\013\n"
+          + "\003kid\030\001 \001(\t\022\t\n"
+          + "\001x\030\002 \001(\t\022\t\n"
+          + "\001y\030\003 \001(\t\022\t\n"
+          + "\001d\030\004 \001(\t\022\013\n"
+          + "\003crv\030\005 \001(\t\022\013\n"
+          + "\003kty\030\006 \001(\t*\224\001\n"
+          + "\007KeyType\022\030\n"
+          + "\024KEY_TYPE_UNSPECIFIED\020\000\022\024\n"
+          + "\020KEY_TYPE_ED25519\020\001\022\023\n"
+          + "\017KEY_TYPE_X25519\020\002\022\021\n\r"
+          + "KEY_TYPE_P256\020\003\022\031\n"
+          + "\025KEY_TYPE_BLS12381G1G2\020\004\022\026\n"
+          + "\022KEY_TYPE_SECP256K1\020\005B;\n"
+          + "\025trinsic.okapi.keys.v1Z\022okapi/keys/v1/keys\252\002\r"
+          + "Okapi.Keys.V1b\006proto3"
     };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.google.protobuf.StructProto.getDescriptor(),
-        });
+    descriptor =
+        com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
+            descriptorData,
+            new com.google.protobuf.Descriptors.FileDescriptor[] {
+              com.google.protobuf.StructProto.getDescriptor(),
+            });
     internal_static_okapi_keys_v1_GenerateKeyRequest_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_okapi_keys_v1_GenerateKeyRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_keys_v1_GenerateKeyRequest_descriptor,
-        new java.lang.String[] { "Seed", "KeyType", });
+        getDescriptor().getMessageTypes().get(0);
+    internal_static_okapi_keys_v1_GenerateKeyRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_keys_v1_GenerateKeyRequest_descriptor,
+            new java.lang.String[] {
+              "Seed", "KeyType",
+            });
     internal_static_okapi_keys_v1_GenerateKeyResponse_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_okapi_keys_v1_GenerateKeyResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_keys_v1_GenerateKeyResponse_descriptor,
-        new java.lang.String[] { "Key", "DidDocument", });
+        getDescriptor().getMessageTypes().get(1);
+    internal_static_okapi_keys_v1_GenerateKeyResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_keys_v1_GenerateKeyResponse_descriptor,
+            new java.lang.String[] {
+              "Key", "DidDocument",
+            });
     internal_static_okapi_keys_v1_ResolveRequest_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_okapi_keys_v1_ResolveRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_keys_v1_ResolveRequest_descriptor,
-        new java.lang.String[] { "Did", });
+        getDescriptor().getMessageTypes().get(2);
+    internal_static_okapi_keys_v1_ResolveRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_keys_v1_ResolveRequest_descriptor,
+            new java.lang.String[] {
+              "Did",
+            });
     internal_static_okapi_keys_v1_ResolveResponse_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_okapi_keys_v1_ResolveResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_keys_v1_ResolveResponse_descriptor,
-        new java.lang.String[] { "DidDocument", "Keys", });
-    internal_static_okapi_keys_v1_JsonWebKey_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_okapi_keys_v1_JsonWebKey_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_okapi_keys_v1_JsonWebKey_descriptor,
-        new java.lang.String[] { "Kid", "X", "Y", "D", "Crv", "Kty", });
+        getDescriptor().getMessageTypes().get(3);
+    internal_static_okapi_keys_v1_ResolveResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_keys_v1_ResolveResponse_descriptor,
+            new java.lang.String[] {
+              "DidDocument", "Keys",
+            });
+    internal_static_okapi_keys_v1_JsonWebKey_descriptor = getDescriptor().getMessageTypes().get(4);
+    internal_static_okapi_keys_v1_JsonWebKey_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_okapi_keys_v1_JsonWebKey_descriptor,
+            new java.lang.String[] {
+              "Kid", "X", "Y", "D", "Crv", "Kty",
+            });
     com.google.protobuf.StructProto.getDescriptor();
   }
 

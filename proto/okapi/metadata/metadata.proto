@@ -3,7 +3,7 @@ syntax = "proto3";
 package okapi.metadata;
 
 option csharp_namespace = "Okapi.Metadata";
-option go_package = "github.com/trinsic-id/okapiproto";
+option go_package = "okapi/metadata";
 option java_package = "trinsic.okapi.metadata";
 // Request custom metadata about the native okapi binaries - cannot get cargo env vars at runtime
 message MetadataRequest {

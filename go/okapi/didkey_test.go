@@ -4,11 +4,10 @@ import (
 	"encoding/base64"
 	"encoding/hex"
 	"fmt"
+	"github.com/trinsic-id/okapi/go/okapi/keys/v1/keys"
 
 	"github.com/btcsuite/btcutil/base58"
 	"github.com/stretchr/testify/assert"
-	"github.com/trinsic-id/okapi/go/okapiproto"
-
 	"testing"
 )
 
@@ -16,8 +15,8 @@ func TestGenerateKey(t *testing.T) {
 	assert := assert.New(t)
 	dk := DidKey()
 
-	request := okapiproto.GenerateKeyRequest{}
-	request.KeyType = okapiproto.KeyType_KEY_TYPE_ED25519
+	request := keys.GenerateKeyRequest{}
+	request.KeyType = keys.KeyType_KEY_TYPE_ED25519
 	request.Seed = []byte{1, 2, 3}
 
 	response, err := dk.Generate(&request)
@@ -29,8 +28,8 @@ func TestGenerateKey(t *testing.T) {
 func TestGenerateKeyNoSeed(t *testing.T) {
 	dk := DidKey()
 
-	request := okapiproto.GenerateKeyRequest{}
-	request.KeyType = okapiproto.KeyType_KEY_TYPE_ED25519
+	request := keys.GenerateKeyRequest{}
+	request.KeyType = keys.KeyType_KEY_TYPE_ED25519
 
 	response, err := dk.Generate(&request)
 	assert.Nil(t, err)
@@ -41,7 +40,7 @@ func TestResolveKey(t *testing.T) {
 	dk := DidKey()
 
 	key := "did:key:z6Mkt6QT8FPajKXDrtMefkjxRQENd9wFzKkDFomdQAVFzpzm#z6LSfDq6DuofPeZUqNEmdZsxpvfHvSoUXGEWFhw7JHk4cynN"
-	request := &okapiproto.ResolveRequest{}
+	request := &keys.ResolveRequest{}
 	request.Did = key
 
 	response, err := dk.Resolve(request)
@@ -52,7 +51,7 @@ func TestResolveKey(t *testing.T) {
 func TestGenerateKeyThrowsInvalidKeyType(t *testing.T) {
 	dk := DidKey()
 
-	request := okapiproto.GenerateKeyRequest{}
+	request := keys.GenerateKeyRequest{}
 	request.KeyType = -1
 
 	_, err := dk.Generate(&request)
@@ -61,7 +60,7 @@ func TestGenerateKeyThrowsInvalidKeyType(t *testing.T) {
 }
 
 type DataArgument struct {
-	keyType       okapiproto.KeyType
+	keyType       keys.KeyType
 	keyTypeString string
 	seed          string
 	response      string
@@ -70,10 +69,10 @@ type DataArgument struct {
 func TestGenerateKeyFromSeed(t *testing.T) {
 	dk := DidKey()
 
-	dataArguments := []DataArgument{{keyType: okapiproto.KeyType_KEY_TYPE_ED25519, keyTypeString: "Ed25519",
+	dataArguments := []DataArgument{{keyType: keys.KeyType_KEY_TYPE_ED25519, keyTypeString: "Ed25519",
 		seed:     "4f66b355aa7b0980ff901f2295b9c562ac3061be4df86703eb28c612faae6578",
 		response: "6fioC1zcDPyPEL19pXRS2E4iJ46zH7xP6uSgAaPdwDrx"},
-		{keyType: okapiproto.KeyType_KEY_TYPE_X25519, keyTypeString: "X25519",
+		{keyType: keys.KeyType_KEY_TYPE_X25519, keyTypeString: "X25519",
 			seed:     "9b29d42b38ddd52ed39c0ff70b39572a6eb9b3cac201918dc6d6a84b4c88d2a5",
 			response: "3EK9AYXoUV4Unn5AjvYY39hyK91n7gg4ExC8rKKSUQXJ"},
 	}
@@ -84,7 +83,7 @@ func TestGenerateKeyFromSeed(t *testing.T) {
 			if err != nil {
 				assert.Failf(t, "Failed to decode hex", argument.seed)
 			}
-			request := okapiproto.GenerateKeyRequest{KeyType: argument.keyType, Seed: hex}
+			request := keys.GenerateKeyRequest{KeyType: argument.keyType, Seed: hex}
 			response, err := dk.Generate(&request)
 			assert.Nil(t, err)
 
@@ -94,7 +93,7 @@ func TestGenerateKeyFromSeed(t *testing.T) {
 	}
 }
 
-func assertValidKeyGenerated(t *testing.T, response *okapiproto.GenerateKeyResponse, crvOptional ...string) []byte {
+func assertValidKeyGenerated(t *testing.T, response *keys.GenerateKeyResponse, crvOptional ...string) []byte {
 	crv := "Ed25519"
 	if len(crvOptional) > 0 {
 		crv = crvOptional[0]

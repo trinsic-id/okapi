@@ -1,16 +1,16 @@
 package okapi
 
-import "github.com/trinsic-id/okapi/go/okapiproto"
+import "github.com/trinsic-id/okapi/go/okapi/security/v1/security"
 
 // Oberoner implements Oberon authentication
 type Oberoner interface {
-	CreateKey(request *okapiproto.CreateOberonKeyRequest) (*okapiproto.CreateOberonKeyResponse, error)
-	CreateToken(request *okapiproto.CreateOberonTokenRequest) (*okapiproto.CreateOberonTokenResponse, error)
-	BlindToken(request *okapiproto.BlindOberonTokenRequest) (*okapiproto.BlindOberonTokenResponse, error)
-	UnBlindToken(request *okapiproto.UnBlindOberonTokenRequest) (*okapiproto.UnBlindOberonTokenResponse, error)
-	VerifyToken(request *okapiproto.VerifyOberonTokenRequest) (*okapiproto.VerifyOberonTokenResponse, error)
-	CreateProof(request *okapiproto.CreateOberonProofRequest) (*okapiproto.CreateOberonProofResponse, error)
-	VerifyProof(request *okapiproto.VerifyOberonProofRequest) (*okapiproto.VerifyOberonProofResponse, error)
+	CreateKey(request *security.CreateOberonKeyRequest) (*security.CreateOberonKeyResponse, error)
+	CreateToken(request *security.CreateOberonTokenRequest) (*security.CreateOberonTokenResponse, error)
+	BlindToken(request *security.BlindOberonTokenRequest) (*security.BlindOberonTokenResponse, error)
+	UnBlindToken(request *security.UnBlindOberonTokenRequest) (*security.UnBlindOberonTokenResponse, error)
+	VerifyToken(request *security.VerifyOberonTokenRequest) (*security.VerifyOberonTokenResponse, error)
+	CreateProof(request *security.CreateOberonProofRequest) (*security.CreateOberonProofResponse, error)
+	VerifyProof(request *security.VerifyOberonProofRequest) (*security.VerifyOberonProofResponse, error)
 }
 
 // Oberon implements Oberon authentication
@@ -20,44 +20,44 @@ func Oberon() Oberoner {
 
 type oberon struct{}
 
-func (d *oberon) VerifyToken(request *okapiproto.VerifyOberonTokenRequest) (*okapiproto.VerifyOberonTokenResponse, error) {
-	response := okapiproto.VerifyOberonTokenResponse{}
+func (d *oberon) VerifyToken(request *security.VerifyOberonTokenRequest) (*security.VerifyOberonTokenResponse, error) {
+	response := security.VerifyOberonTokenResponse{}
 	err := callOkapiNative(request, &response, "oberon_verify_token")
 	return &response, err
 }
 
-func (d *oberon) CreateKey(request *okapiproto.CreateOberonKeyRequest) (*okapiproto.CreateOberonKeyResponse, error) {
-	response := okapiproto.CreateOberonKeyResponse{}
+func (d *oberon) CreateKey(request *security.CreateOberonKeyRequest) (*security.CreateOberonKeyResponse, error) {
+	response := security.CreateOberonKeyResponse{}
 	err := callOkapiNative(request, &response, "oberon_create_key")
 	return &response, err
 }
 
-func (d *oberon) CreateToken(request *okapiproto.CreateOberonTokenRequest) (*okapiproto.CreateOberonTokenResponse, error) {
-	response := okapiproto.CreateOberonTokenResponse{}
+func (d *oberon) CreateToken(request *security.CreateOberonTokenRequest) (*security.CreateOberonTokenResponse, error) {
+	response := security.CreateOberonTokenResponse{}
 	err := callOkapiNative(request, &response, "oberon_create_token")
 	return &response, err
 }
 
-func (d *oberon) BlindToken(request *okapiproto.BlindOberonTokenRequest) (*okapiproto.BlindOberonTokenResponse, error) {
-	response := okapiproto.BlindOberonTokenResponse{}
+func (d *oberon) BlindToken(request *security.BlindOberonTokenRequest) (*security.BlindOberonTokenResponse, error) {
+	response := security.BlindOberonTokenResponse{}
 	err := callOkapiNative(request, &response, "oberon_blind_token")
 	return &response, err
 }
 
-func (d *oberon) UnBlindToken(request *okapiproto.UnBlindOberonTokenRequest) (*okapiproto.UnBlindOberonTokenResponse, error) {
-	response := okapiproto.UnBlindOberonTokenResponse{}
+func (d *oberon) UnBlindToken(request *security.UnBlindOberonTokenRequest) (*security.UnBlindOberonTokenResponse, error) {
+	response := security.UnBlindOberonTokenResponse{}
 	err := callOkapiNative(request, &response, "oberon_unblind_token")
 	return &response, err
 }
 
-func (d *oberon) CreateProof(request *okapiproto.CreateOberonProofRequest) (*okapiproto.CreateOberonProofResponse, error) {
-	response := okapiproto.CreateOberonProofResponse{}
+func (d *oberon) CreateProof(request *security.CreateOberonProofRequest) (*security.CreateOberonProofResponse, error) {
+	response := security.CreateOberonProofResponse{}
 	err := callOkapiNative(request, &response, "oberon_create_proof")
 	return &response, err
 }
 
-func (d *oberon) VerifyProof(request *okapiproto.VerifyOberonProofRequest) (*okapiproto.VerifyOberonProofResponse, error) {
-	response := okapiproto.VerifyOberonProofResponse{}
+func (d *oberon) VerifyProof(request *security.VerifyOberonProofRequest) (*security.VerifyOberonProofResponse, error) {
+	response := security.VerifyOberonProofResponse{}
 	err := callOkapiNative(request, &response, "oberon_verify_proof")
 	return &response, err
 }

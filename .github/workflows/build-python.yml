@@ -58,10 +58,18 @@ jobs:
       
       - name: Build, Test, Pack
         run: |
+          python -m pip install -r requirements.txt
+          python -m pip install pytest pytest-cov
           python ../devops/build_sdks.py --language=python
-          python -m pytest --cache-clear ./tests --junitxml=test_output.xml --cov=.
+          python -m pytest --cache-clear ./tests --cov=./ --cov-report=xml
         shell: pwsh
         working-directory: python
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
           OKAPI_LIBRARY_PATH: "${{ github.workspace }}/libs/${{ matrix.os-artifact[1] }}"
+      - name: "Upload coverage to Codecov"
+        uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: true
+          directory: python
+          token: ${{ secrets.CODECOV_TOKEN }}

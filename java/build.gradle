@@ -1,11 +1,15 @@
 buildscript {
     repositories {
+        mavenLocal()
         mavenCentral()
+
+        maven { url "https://repo1.maven.org/maven2/" }
     }
 }
 plugins {
     id 'java'
     id 'maven-publish'
+    id 'jacoco'
 }
 
 // Gradle doesn't allow these at the top of the file - go figure?
@@ -54,6 +58,15 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = true
+    }
+    executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
 }
 
 jar {

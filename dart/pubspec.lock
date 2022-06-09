@@ -51,7 +51,7 @@ packages:
     source: hosted
     version: "3.0.1"
   coverage:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: coverage
       url: "https://pub.dartlang.org"
@@ -352,4 +352,4 @@ packages:
     source: hosted
     version: "3.1.1"
 sdks:
-  dart: ">=2.16.0 <3.0.0"
+  dart: ">=2.16.2 <3.0.0"

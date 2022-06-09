@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from typing import List
 
 import betterproto
+import betterproto.lib.google.protobuf as betterproto_lib_google_protobuf
 from betterproto.grpc.grpclib_server import ServiceBase
 
 
@@ -52,6 +53,3 @@ class JsonWebKey(betterproto.Message):
     d: str = betterproto.string_field(4)
     crv: str = betterproto.string_field(5)
     kty: str = betterproto.string_field(6)
-
-
-import betterproto.lib.google.protobuf as betterproto_lib_google_protobuf

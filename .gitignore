@@ -460,3 +460,5 @@ python/lib64
 wasm/packages/okapi/src/native_browser/
 wasm/packages/okapi/src/native_node/
 wasm/packages/okapi/.config/coverage/
+
+devops/protoc-plugins/

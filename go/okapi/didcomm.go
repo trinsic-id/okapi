@@ -1,15 +1,13 @@
 package okapi
 
-import (
-	"github.com/trinsic-id/okapi/go/okapiproto"
-)
+import "github.com/trinsic-id/okapi/go/okapi/transport/v1/transport"
 
 // DidCommer implements the DIDComm Messaging protocol
 type DidCommer interface {
-	Pack(request *okapiproto.PackRequest) (*okapiproto.PackResponse, error)
-	Unpack(request *okapiproto.UnpackRequest) (*okapiproto.UnpackResponse, error)
-	Sign(request *okapiproto.SignRequest) (*okapiproto.SignResponse, error)
-	Verify(request *okapiproto.VerifyRequest) (*okapiproto.VerifyResponse, error)
+	Pack(request *transport.PackRequest) (*transport.PackResponse, error)
+	Unpack(request *transport.UnpackRequest) (*transport.UnpackResponse, error)
+	Sign(request *transport.SignRequest) (*transport.SignResponse, error)
+	Verify(request *transport.VerifyRequest) (*transport.VerifyResponse, error)
 }
 
 // DidComm implements the DIDComm Messaging protocol
@@ -19,26 +17,26 @@ func DidComm() DidCommer {
 
 type didComm struct{}
 
-func (d *didComm) Pack(request *okapiproto.PackRequest) (*okapiproto.PackResponse, error) {
-	response := okapiproto.PackResponse{}
+func (d *didComm) Pack(request *transport.PackRequest) (*transport.PackResponse, error) {
+	response := transport.PackResponse{}
 	err := callOkapiNative(request, &response, "didcomm_pack")
 	return &response, err
 }
 
-func (d *didComm) Unpack(request *okapiproto.UnpackRequest) (*okapiproto.UnpackResponse, error) {
-	response := okapiproto.UnpackResponse{}
+func (d *didComm) Unpack(request *transport.UnpackRequest) (*transport.UnpackResponse, error) {
+	response := transport.UnpackResponse{}
 	err := callOkapiNative(request, &response, "didcomm_unpack")
 	return &response, err
 }
 
-func (d *didComm) Sign(request *okapiproto.SignRequest) (*okapiproto.SignResponse, error) {
-	response := okapiproto.SignResponse{}
+func (d *didComm) Sign(request *transport.SignRequest) (*transport.SignResponse, error) {
+	response := transport.SignResponse{}
 	err := callOkapiNative(request, &response, "didcomm_sign")
 	return &response, err
 }
 
-func (d *didComm) Verify(request *okapiproto.VerifyRequest) (*okapiproto.VerifyResponse, error) {
-	response := okapiproto.VerifyResponse{}
+func (d *didComm) Verify(request *transport.VerifyRequest) (*transport.VerifyResponse, error) {
+	response := transport.VerifyResponse{}
 	err := callOkapiNative(request, &response, "didcomm_verify")
 	return &response, err
 }

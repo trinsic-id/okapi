@@ -2,11 +2,23 @@
 # sources: okapi/examples/v1/examples.proto
 # plugin: python-betterproto
 from dataclasses import dataclass
-from typing import AsyncIterator, Dict, List, Optional
+from typing import (
+    TYPE_CHECKING,
+    AsyncIterator,
+    Dict,
+    Optional,
+)
 
 import betterproto
-from betterproto.grpc.grpclib_server import ServiceBase
 import grpclib
+from betterproto.grpc.grpclib_server import ServiceBase
+
+from ....pbmse import v1 as ___pbmse_v1__
+
+
+if TYPE_CHECKING:
+    from betterproto.grpc.grpclib_client import MetadataLike
+    from grpclib.metadata import Deadline
 
 
 @dataclass(eq=False, repr=False)
@@ -17,106 +29,60 @@ class BasicMessage(betterproto.Message):
 class SecureExampleServiceStub(betterproto.ServiceStub):
     async def unary(
         self,
-        *,
-        iv: bytes = b"",
-        aad: bytes = b"",
-        ciphertext: bytes = b"",
-        tag: bytes = b"",
-        recipients: Optional[List["EncryptionRecipient"]] = None
+        pbmse_v1_encrypted_message: "___pbmse_v1__.EncryptedMessage",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "___pbmse_v1__.EncryptedMessage":
-        recipients = recipients or []
-
-        request = ___pbmse_v1__.EncryptedMessage()
-        request.iv = iv
-        request.aad = aad
-        request.ciphertext = ciphertext
-        request.tag = tag
-        if recipients is not None:
-            request.recipients = recipients
-
         return await self._unary_unary(
             "/okapi.examples.v1.SecureExampleService/Unary",
-            request,
+            pbmse_v1_encrypted_message,
             ___pbmse_v1__.EncryptedMessage,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def server_streaming(
         self,
-        *,
-        iv: bytes = b"",
-        aad: bytes = b"",
-        ciphertext: bytes = b"",
-        tag: bytes = b"",
-        recipients: Optional[List["EncryptionRecipient"]] = None
+        pbmse_v1_encrypted_message: "___pbmse_v1__.EncryptedMessage",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> AsyncIterator["___pbmse_v1__.EncryptedMessage"]:
-        recipients = recipients or []
-
-        request = ___pbmse_v1__.EncryptedMessage()
-        request.iv = iv
-        request.aad = aad
-        request.ciphertext = ciphertext
-        request.tag = tag
-        if recipients is not None:
-            request.recipients = recipients
-
         async for response in self._unary_stream(
             "/okapi.examples.v1.SecureExampleService/ServerStreaming",
-            request,
+            pbmse_v1_encrypted_message,
             ___pbmse_v1__.EncryptedMessage,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         ):
             yield response
 
 
 class SecureExampleServiceBase(ServiceBase):
     async def unary(
-        self,
-        iv: bytes,
-        aad: bytes,
-        ciphertext: bytes,
-        tag: bytes,
-        recipients: Optional[List["EncryptionRecipient"]],
+        self, pbmse_v1_encrypted_message: "___pbmse_v1__.EncryptedMessage"
     ) -> "___pbmse_v1__.EncryptedMessage":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def server_streaming(
-        self,
-        iv: bytes,
-        aad: bytes,
-        ciphertext: bytes,
-        tag: bytes,
-        recipients: Optional[List["EncryptionRecipient"]],
+        self, pbmse_v1_encrypted_message: "___pbmse_v1__.EncryptedMessage"
     ) -> AsyncIterator["___pbmse_v1__.EncryptedMessage"]:
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def __rpc_unary(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "iv": request.iv,
-            "aad": request.aad,
-            "ciphertext": request.ciphertext,
-            "tag": request.tag,
-            "recipients": request.recipients,
-        }
-
-        response = await self.unary(**request_kwargs)
+        response = await self.unary(request)
         await stream.send_message(response)
 
     async def __rpc_server_streaming(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "iv": request.iv,
-            "aad": request.aad,
-            "ciphertext": request.ciphertext,
-            "tag": request.tag,
-            "recipients": request.recipients,
-        }
-
         await self._call_rpc_handler_server_stream(
             self.server_streaming,
             stream,
-            request_kwargs,
+            request,
         )
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
@@ -134,6 +100,3 @@ class SecureExampleServiceBase(ServiceBase):
                 ___pbmse_v1__.EncryptedMessage,
             ),
         }
-
-
-from ....pbmse import v1 as ___pbmse_v1__

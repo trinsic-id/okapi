@@ -56,3 +56,9 @@ jobs:
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
           OKAPI_LIBRARY_PATH: "${{ github.workspace }}/libs"
+      - name: "Upload coverage to Codecov"
+        uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: true
+          directory: java/build/reports/jacoco/test
+          token: ${{ secrets.CODECOV_TOKEN }}

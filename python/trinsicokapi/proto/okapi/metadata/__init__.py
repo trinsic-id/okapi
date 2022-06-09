@@ -28,9 +28,12 @@ class MetadataResponse(betterproto.Message):
     version_major: int = betterproto.int32_field(2)
     version_minor: int = betterproto.int32_field(3)
     version_patch: int = betterproto.int32_field(4)
-    # https://doc.rust-lang.org/cargo/reference/environment-
-    # variables.html#environment-variables-cargo-sets-for-crates
     target_family: str = betterproto.string_field(10)
+    """
+    https://doc.rust-lang.org/cargo/reference/environment-
+    variables.html#environment-variables-cargo-sets-for-crates
+    """
+
     target_os: str = betterproto.string_field(11)
     target_arch: str = betterproto.string_field(12)
     target_vendor: str = betterproto.string_field(13)

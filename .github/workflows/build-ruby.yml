@@ -66,3 +66,9 @@ jobs:
         with:
           rubocop_dir: ruby/
           rubocop: true
+      - name: "Upload coverage to Codecov"
+        uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: true
+          directory: ruby
+          token: ${{ secrets.CODECOV_TOKEN }}

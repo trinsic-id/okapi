@@ -35,13 +35,6 @@ jobs:
           path: ./libs/${{ matrix.os-artifact[1] }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           name: ${{ matrix.os-artifact[1] }}
-      - name: Download C header artifact
-        uses: dawidd6/action-download-artifact@v2.17.0
-        with:
-          workflow: "build-libs.yml"
-          path: ./libs/${{ matrix.os-artifact[1] }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          name: C_header
       - name: Set up Go (default)
         uses: actions/setup-go@v2
         with:
@@ -50,23 +43,22 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
-      - name: Set up Go (Okapi)
-        run: |
-          go version
-          go install github.com/jstemmer/go-junit-report@latest
-          go install github.com/posener/goreadme/cmd/goreadme@latest
-          python ../../devops/build_sdks.py --language=golang
-        shell: pwsh
-        working-directory: go/okapi
-        env:
-          GO111MODULE: on
-          
       - name: Build and Test Golang
         run: |
+          go version
+          python ../../devops/build_sdks.py --language=golang
           go build
-          go test -v | go-junit-report > test_output.xml
+          go get .out
+          go test -v -race -covermode atomic -coverprofile coverage.out
         shell: pwsh
         working-directory: go/okapi
         env:
-          OKAPI_LIBRARY_PATH: ${{ env.GOLANG_LD_PATH }}
+          OKAPI_LIBRARY_PATH: "${{ github.workspace }}/libs"
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+          GO111MODULE: on
+      - name: "Upload coverage to Codecov"
+        uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: true
+          directory: go/okapi
+          token: ${{ secrets.CODECOV_TOKEN }}
