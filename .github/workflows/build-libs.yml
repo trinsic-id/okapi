@@ -172,9 +172,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.4.0
-
+      - uses: nttld/setup-ndk@v1
+        id: setup-ndk
+        with:
+          ndk-version: r21e
+          add-to-path: false
       - run: ./devops/BuildLibraries.ps1 -Platform Android -OutLocation ./libs/android
         shell: pwsh
+        env:
+          ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
       - uses: actions/upload-artifact@v2
         with:
           name: android
