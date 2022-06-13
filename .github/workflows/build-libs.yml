@@ -175,7 +175,7 @@ jobs:
       - uses: nttld/setup-ndk@v1
         id: setup-ndk
         with:
-          ndk-version: r21e
+          ndk-version: r22
       - run: ./devops/BuildLibraries.ps1 -Platform Android -OutLocation ./libs/android
         shell: pwsh
       - uses: actions/upload-artifact@v2

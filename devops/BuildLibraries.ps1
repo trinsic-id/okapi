@@ -48,14 +48,10 @@ try {
         Linux-ARM {
             sudo apt-get update
             sudo apt-get install gcc-arm-linux-gnueabihf gcc-aarch64-linux-gnu
-            rustup target add armv7-unknown-linux-gnueabihf aarch64-unknown-linux-gnu
-            cargo build --release --target armv7-unknown-linux-gnueabihf
+            rustup target add aarch64-unknown-linux-gnu
             cargo build --release --target aarch64-unknown-linux-gnu
 
-            mkdir -p $TargetOutput/linux-armv7/
             mkdir -p $TargetOutput/linux-aarch64/
-            Copy-Item -Path .\target\armv7-unknown-linux-gnueabihf\release\libokapi.so -Destination "$TargetOutput/linux-armv7"
-            Copy-Item -Path .\target\armv7-unknown-linux-gnueabihf\release\libokapi.a -Destination "$TargetOutput/linux-armv7"
             Copy-Item -Path .\target\aarch64-unknown-linux-gnu\release\libokapi.so -Destination "$TargetOutput/linux-aarch64"
             Copy-Item -Path .\target\aarch64-unknown-linux-gnu\release\libokapi.a -Destination "$TargetOutput/linux-aarch64"
             break
@@ -99,9 +95,8 @@ try {
         }
         Android {
             cargo install cargo-ndk
-            rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-android x86_64-linux-android
-            cargo ndk --target armv7-linux-androideabi --target aarch64-linux-android -o "$TargetOutput" build --release
-            cargo ndk --target x86_64-linux-android --target i686-linux-android -o "$TargetOutput" build --release
+            rustup target add aarch64-linux-android x86_64-linux-android
+            cargo ndk --target x86_64-linux-android --target aarch64-linux-android -o "$TargetOutput" build --release
             break
         }
 
