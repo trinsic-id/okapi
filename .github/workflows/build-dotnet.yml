@@ -43,6 +43,7 @@ jobs:
       - name: Build and Test coverage
         run: |
           dotnet workload install macos ios maccatalyst
+          dotnet workload restore
           ./BuildAndTest.ps1
         working-directory: ./dotnet
         shell: pwsh
