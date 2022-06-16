@@ -42,8 +42,7 @@ jobs:
           dotnet-version: '6.0.x'
       - name: Build and Test coverage
         run: |
-          dotnet workload install ios
-          dotnet workload install maccatalyst
+          dotnet workload install macos ios maccatalyst
           ./BuildAndTest.ps1
         working-directory: ./dotnet
         shell: pwsh
