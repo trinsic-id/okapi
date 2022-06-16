@@ -26,7 +26,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows], [macos-latest, macos] ]
+        os-artifact: [ [windows-latest, windows], [macos-latest, macos] ]  # [ubuntu-latest, linux] - doesn't support ios
     steps:
       - name: Checkout
         uses: actions/checkout@v2.4.0
@@ -43,7 +43,6 @@ jobs:
       - name: Build and Test coverage
         run: |
           dotnet workload install macos ios maccatalyst
-          dotnet workload restore
           ./BuildAndTest.ps1
         working-directory: ./dotnet
         shell: pwsh
