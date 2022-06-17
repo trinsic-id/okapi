@@ -3,7 +3,7 @@
     <PropertyGroup>
         <AssemblyName>Okapi.Net</AssemblyName>
         <PackageId>Okapi.Net</PackageId>
-    <TargetFrameworks>net6.0;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
+        <TargetFrameworks>net6.0;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
         <LangVersion>latest</LangVersion>
         <SkipNativeLibsCopy>false</SkipNativeLibsCopy>
     </PropertyGroup>
@@ -53,19 +53,19 @@
     </ItemGroup>
 
     <ItemGroup Condition="'$(SkipNativeLibsCopy)' != 'true'">
-        <Content Include="..\..\..\libs\windows\okapi.dll" Condition="'$([MSBuild]::IsOsPlatform(Windows))'">
+        <Content Include="..\..\..\libs\windows\okapi.dll" Condition="$(RuntimeIdentifier.StartsWith('win')) Or $([MSBuild]::IsOsPlatform(Windows))">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
             <Link>okapi.dll</Link>
             <Visible>false</Visible>
             <Pack>false</Pack>
         </Content>
-        <Content Include="..\..\..\libs\linux\libokapi.so" Condition="'$([MSBuild]::IsOsPlatform(Linux))'">
+        <Content Include="..\..\..\libs\linux\libokapi.so" Condition="$(RuntimeIdentifier.StartsWith('linux')) Or $([MSBuild]::IsOsPlatform(Linux))">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
             <Link>libokapi.so</Link>
             <Visible>false</Visible>
             <Pack>false</Pack>
         </Content>
-        <Content Include="..\..\..\libs\macos\libokapi.dylib" Condition="'$([MSBuild]::IsOsPlatform(OSX))'">
+        <Content Include="..\..\..\libs\macos\libokapi.dylib" Condition="$(RuntimeIdentifier.StartsWith('osx')) Or $([MSBuild]::IsOsPlatform(OSX))">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
             <Link>libokapi.dylib</Link>
             <Visible>false</Visible>
