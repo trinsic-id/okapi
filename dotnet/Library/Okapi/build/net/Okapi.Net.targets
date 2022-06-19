@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <ItemGroup Condition="'$(RuntimeIdentifier)' != 'browser-wasm'">
-        <Content Include="$(MSBuildThisFileDirectory)..\..\native\windows\okapi.dll" Condition="'$([MSBuild]::IsOsPlatform(Windows))'">
+        <Content Include="$(MSBuildThisFileDirectory)..\..\native\windows\okapi.dll" Condition="$(RuntimeIdentifier.StartsWith('win')) Or ($(RuntimeIdentifier) == '' And $([MSBuild]::IsOsPlatform(Windows)))">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
             <Link>okapi.dll</Link>
             <Visible>false</Visible>
         </Content>
-        <Content Include="$(MSBuildThisFileDirectory)..\..\native\linux\libokapi.so" Condition="'$([MSBuild]::IsOsPlatform(Linux))'">
+        <Content Include="$(MSBuildThisFileDirectory)..\..\native\linux\libokapi.so" Condition="$(RuntimeIdentifier.StartsWith('linux')) Or ($(RuntimeIdentifier) == '' And $([MSBuild]::IsOsPlatform(Linux)))">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
             <Link>libokapi.so</Link>
             <Visible>false</Visible>
         </Content>
-        <Content Include="$(MSBuildThisFileDirectory)..\..\native\macos\libokapi.dylib" Condition="'$([MSBuild]::IsOsPlatform(OSX))'">
+        <Content Include="$(MSBuildThisFileDirectory)..\..\native\macos\libokapi.dylib" Condition="$(RuntimeIdentifier.StartsWith('osx')) Or ($(RuntimeIdentifier) == '' And $([MSBuild]::IsOsPlatform(OSX)))">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
             <Link>libokapi.dylib</Link>
             <Visible>false</Visible>
