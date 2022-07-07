@@ -35,7 +35,6 @@ jobs:
           rustup toolchain uninstall stable
           rustup toolchain install stable
           rustup toolchain install stable --target wasm32-unknown-unknown
-          npm install -g change-package-name
       - uses: trinsic-id/set-version@v0.1
         id: setversion
         with:
@@ -44,10 +43,10 @@ jobs:
       - run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
       - run: |
           npm install
-          npx change-package-name "@trinsic/okapi-${{ matrix.target }}"
+          npm run rename:${{ matrix.target }}
           npm version ${{ steps.setversion.outputs.packageVersion }} --no-git-tag-version --yes
           npm run build
-          npm run build:${{ matrix.target }}
+          npm run package:${{ matrix.target }}
           npm publish --no-git-tag-version --yes --no-verify-access
         shell: pwsh
         working-directory: ./wasm/packages/okapi

@@ -1,5 +1,5 @@
 {
-  "name": "@trinsic/okapi",
+  "name": "@trinsic/okapi-node",
   "version": "1.0.0",
   "description": "Okapi native binaries wrapper for node and web.",
   "browser": {
@@ -14,13 +14,15 @@
   "scripts": {
     "build": "npm run build:proto && npm run build:wasm",
     "build:proto": "pwsh ./Generate-Proto.ps1",
-    "build:node": "npx tsc -p tsconfig.json && copyfiles -u 1 src/native_node/* ./lib",
-    "build:browser": "npx tsc -p tsconfig.web.json && copyfiles -u 1 src/native_browser/* ./lib",
     "build:wasm": "npm run build:wasm:node && npm run build:wasm:browser",
     "build:wasm:node": "npx wasm-pack build --target nodejs --out-dir packages/okapi/src/native_node && npm run build:clean",
     "build:wasm:browser": "npx wasm-pack build --target bundler --out-dir packages/okapi/src/native_browser && npm run build:clean",
     "build:clean": "rimraf ./src/native_*/package.json ./src/native_*/README.md ./src/native_*/.gitignore ./src/native_*/LICENSE",
     "clean:all": "rimraf ./src/native_*",
+    "package:node": "npx tsc -p tsconfig.json && copyfiles -u 1 src/native_node/* ./lib",
+    "package:browser": "npx tsc -p tsconfig.web.json && copyfiles -u 1 src/native_browser/* ./lib",
+    "rename:node": "npx change-package-name @trinsic/okapi-node",
+    "rename:browser": "npx change-package-name @trinsic/okapi-web",
     "test:node": "jest --config .config/jest.config.cjs",
     "test:browser": "karma start .config/karma.conf.cjs"
   },
