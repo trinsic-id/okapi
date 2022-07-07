@@ -1,1 +1,0 @@
-Swift Package Manager requires its own github repository. See here: https://github.com/trinsic-id/okapi-swift
