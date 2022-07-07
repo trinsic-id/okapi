@@ -1,0 +1,3 @@
+[submodule "swift"]
+	path = swift
+	url = https://github.com/trinsic-id/okapi-swift.git
