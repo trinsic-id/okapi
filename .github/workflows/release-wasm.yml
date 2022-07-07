@@ -14,10 +14,10 @@ jobs:
     name: Publish Npm
     environment:
       name: npmjs.com
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        package-name: [ 'okapi-node', 'okapi-web' ]
+        target: ['node', 'browser' ]
     defaults:
       run:
         working-directory: ./wasm
@@ -44,9 +44,10 @@ jobs:
       - run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
       - run: |
           npm install
-          npx change-package-name "@trinsic/${{ matrix.package-name }}"
+          npx change-package-name "@trinsic/okapi-${{ matrix.target }}"
           npm version ${{ steps.setversion.outputs.packageVersion }} --no-git-tag-version --yes
           npm run build
+          npm run build:${{ matrix.target }}
           npm publish --no-git-tag-version --yes --no-verify-access
         shell: pwsh
         working-directory: ./wasm/packages/okapi
