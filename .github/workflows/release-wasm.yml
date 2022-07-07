@@ -15,6 +15,9 @@ jobs:
     environment:
       name: npmjs.com
     runs-on: macos-latest
+    strategy:
+      matrix:
+        package-name: [ 'okapi-node', 'okapi-web' ]
     defaults:
       run:
         working-directory: ./wasm
@@ -32,6 +35,7 @@ jobs:
           rustup toolchain uninstall stable
           rustup toolchain install stable
           rustup toolchain install stable --target wasm32-unknown-unknown
+          npm install -g change-package-name
       - uses: trinsic-id/set-version@v0.1
         id: setversion
         with:
@@ -40,6 +44,7 @@ jobs:
       - run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
       - run: |
           npm install
+          npx change-package-name "@trinsic/${{ matrix.package-name }}"
           npm version ${{ steps.setversion.outputs.packageVersion }} --no-git-tag-version --yes
           npm run build
           npm publish --no-git-tag-version --yes --no-verify-access
