@@ -55,6 +55,7 @@ jobs:
         shell: pwsh
         working-directory: ./wasm/packages/okapi
       - name: "Upload coverage to Codecov"
+        if: ${{ matrix.target }} == 'node'
         uses: codecov/codecov-action@v2
         with:
           fail_ci_if_error: true
