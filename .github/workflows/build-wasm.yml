@@ -58,5 +58,5 @@ jobs:
         uses: codecov/codecov-action@v2
         with:
           fail_ci_if_error: true
-          directory: ./wasm/packages/okapi
+          directory: ./wasm/packages/okapi/.config/coverage
           token: ${{ secrets.CODECOV_TOKEN }}
