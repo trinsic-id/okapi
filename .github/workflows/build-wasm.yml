@@ -60,4 +60,4 @@ jobs:
           fail_ci_if_error: true
           directory: ./wasm/packages/okapi
           token: ${{ secrets.CODECOV_TOKEN }}
-        if: ${{ matrix.target }} == 'node'
+        if: ${{ matrix.target == 'node' }}
