@@ -58,9 +58,6 @@ module.exports = async (config) => {
         webpack: {
             mode: "development",
             devtool: "inline-source-map",
-            entry: {
-                wallet: "../test/web.spec.ts",
-            },
             module: {
                 rules: [
                     {
@@ -68,7 +65,7 @@ module.exports = async (config) => {
                         exclude: /node_modules/,
                         loader: "ts-loader",
                         options: {
-                            configFile: 'tsconfig.json',
+                            configFile: 'tsconfig.web.json',
                         }
                     }
                 ],

@@ -14,7 +14,10 @@ jobs:
     name: Publish Npm
     environment:
       name: npmjs.com
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target: ['node', 'browser' ]
     defaults:
       run:
         working-directory: ./wasm
@@ -40,8 +43,10 @@ jobs:
       - run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
       - run: |
           npm install
+          npm run rename:${{ matrix.target }}
           npm version ${{ steps.setversion.outputs.packageVersion }} --no-git-tag-version --yes
           npm run build
+          npm run package:${{ matrix.target }}
           npm publish --no-git-tag-version --yes --no-verify-access
         shell: pwsh
         working-directory: ./wasm/packages/okapi
