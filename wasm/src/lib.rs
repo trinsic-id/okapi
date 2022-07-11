@@ -18,3 +18,4 @@ pub mod didkey;
 pub mod ldproofs;
 pub mod oberon;
 pub mod hashing;
+pub mod metadata;

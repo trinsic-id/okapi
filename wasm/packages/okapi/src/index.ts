@@ -215,7 +215,7 @@ export class OkapiMetadata {
     await initialize();
     const request = proto.MetadataRequest.fromPartial({});
     return proto.MetadataResponse.decode(
-        native.sha256_hash(proto.MetadataRequest.encode(request).finish())
+        native.okapi_metadata(proto.MetadataRequest.encode(request).finish())
     );
   }
 }
