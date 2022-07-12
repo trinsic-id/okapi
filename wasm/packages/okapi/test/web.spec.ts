@@ -97,5 +97,6 @@ describe("Web Okapi Tests", () => {
     expect(response.version).not.toBeNull();
     expect(response.version).not.toBeUndefined();
     expect(response.version.trim().length > 0).toBeTruthy();
+    expect(response.version).toContain("1.");
   });
 });
