@@ -95,11 +95,6 @@ jobs:
       - name: Run build script
         run: ./devops/BuildLibraries.ps1 -Platform Linux-ARM -OutLocation ./libs/linux-arm
         shell: pwsh
-      - name: Upload Linux-ARMv7 artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: linux-armv7
-          path: ./libs/linux-arm/linux-armv7/*
       - name: Upload Linux-aarch64 artifact
         uses: actions/upload-artifact@v2
         with:
