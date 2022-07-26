@@ -2,23 +2,17 @@
   "name": "@trinsic/okapi-node",
   "version": "1.0.0",
   "description": "Okapi native binaries wrapper for node and web.",
-  "browser": {
-    "./lib/native_node/okapi_wasm.js": "./lib/native_browser/okapi_wasm.js",
-    "./lib/native_node/okapi_wasm_bg.wasm": "./lib/native_browser/okapi_wasm_bg.wasm"
-  },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
     "lib/*"
   ],
   "scripts": {
-    "build": "npm run build:proto && npm run build:wasm",
     "build:proto": "pwsh ./Generate-Proto.ps1",
-    "build:wasm": "npm run build:wasm:node && npm run build:wasm:browser",
-    "build:wasm:node": "npx wasm-pack build --target nodejs --out-dir packages/okapi/src/native_node && npm run build:clean",
-    "build:wasm:browser": "npx wasm-pack build --target bundler --out-dir packages/okapi/src/native_browser && npm run build:clean",
-    "build:clean": "rimraf ./src/native_*/package.json ./src/native_*/README.md ./src/native_*/.gitignore ./src/native_*/LICENSE",
-    "clean:all": "rimraf ./src/native_*",
+    "build:wasm:node": "npx wasm-pack build --target nodejs --out-dir packages/okapi/src/native && npm run build:clean",
+    "build:wasm:browser": "npx wasm-pack build --target bundler --out-dir packages/okapi/src/native && npm run build:clean",
+    "build:clean": "rimraf ./src/native/package.json ./src/native/README.md ./src/native/.gitignore ./src/native/LICENSE",
+    "clean:all": "rimraf ./src/native",
     "package:node": "npx tsc -p tsconfig.json && copyfiles -u 1 src/native_node/* ./lib",
     "package:browser": "npx tsc -p tsconfig.web.json && copyfiles -u 1 src/native_browser/* ./lib",
     "rename:node": "npx change-package-name @trinsic/okapi-node",
@@ -69,6 +63,7 @@
     "karma-sourcemap-loader": "^0.3.8",
     "karma-typescript": "^5.5.3",
     "karma-webpack": "^5.0.0",
+    "lerna": "^5.2.0",
     "recursive-copy-cli": "^1.0.20",
     "ts-jest": "^28.0.5",
     "ts-loader": "^9.3.1",

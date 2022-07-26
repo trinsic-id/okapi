@@ -45,7 +45,8 @@ jobs:
           npm install
           npm run rename:${{ matrix.target }}
           npm version ${{ steps.setversion.outputs.packageVersion }} --no-git-tag-version --yes
-          npm run build
+          npm run build:proto
+          npm run build:wasm:${{ matrix.target }}
           npm run package:${{ matrix.target }}
           npm publish --no-git-tag-version --yes --no-verify-access
         shell: pwsh
