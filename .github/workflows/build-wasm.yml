@@ -50,7 +50,8 @@ jobs:
           rustup toolchain install stable --target wasm32-unknown-unknown
       - run: |
           npm install
-          npm run build
+          npm run build:proto
+          npm run build:wasm:${{ matrix.target }}
           npm run test:${{ matrix.target }}
         shell: pwsh
         working-directory: ./wasm/packages/okapi

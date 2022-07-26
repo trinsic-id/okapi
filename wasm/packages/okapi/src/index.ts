@@ -1,7 +1,7 @@
 import * as proto from "./proto";
 export * from "./proto";
 // Type information for exported functions
-// import * as native from "./native_node/okapi_wasm"
+// import * as native from "./native/okapi_wasm"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let native: any;
@@ -9,8 +9,8 @@ let initialized = false;
 
 async function initialize() {
   if (!initialized) {
-    // Using the package.json "browser" tag, we can override this to use the `native_web` version.
-      native = await import("./native_node/okapi_wasm");
+    // @ts-ignore
+    native = await import("./native/okapi_wasm");
     initialized = true;
   }
 }
