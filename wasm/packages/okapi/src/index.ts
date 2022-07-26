@@ -9,6 +9,7 @@ let initialized = false;
 
 async function initialize() {
   if (!initialized) {
+    // @ts-ignore
     native = await import("./native/okapi_wasm");
     initialized = true;
   }
