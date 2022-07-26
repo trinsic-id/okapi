@@ -61,10 +61,6 @@ module.exports = async (config) => {
             module: {
                 rules: [
                     {
-                        test: /\.wasm$/,
-                        loader: "wasm-loader"
-                    },
-                    {
                         test: /\.tsx?$/,
                         exclude: /node_modules/,
                         loader: "ts-loader",
