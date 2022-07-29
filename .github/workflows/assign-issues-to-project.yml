@@ -1,0 +1,27 @@
+name: Assign Issues to Project
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+  issues:
+    types: [ opened, reopened, closed ]
+
+permissions:
+  actions: read
+  repository-projects: write
+  issues: write
+  contents: write
+
+jobs:
+  assign_issues_action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: trinsic-id/assign-issues-to-project@v0.1.2
+        id: assignissues
+        with:
+          githubToken: ${{ secrets.API_GITHUB_TOKEN }}
+          projectNumber: 4
+          orgName: trinsic-id
+          repoName: sdk  # TODO - ${{ github.event.repository.name }} ?
