@@ -24,4 +24,4 @@ jobs:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}
           projectNumber: 4
           orgName: trinsic-id
-          repoName: sdk  # TODO - ${{ github.event.repository.name }} ?
+          repoName: okapi  # TODO - ${{ github.event.repository.name }} ?
