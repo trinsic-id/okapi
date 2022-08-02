@@ -5,7 +5,6 @@ from dataclasses import dataclass
 
 import betterproto
 import betterproto.lib.google.protobuf as betterproto_lib_google_protobuf
-from betterproto.grpc.grpclib_server import ServiceBase
 
 from ...keys import v1 as __keys_v1__
 
