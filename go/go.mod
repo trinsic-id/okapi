@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/btcsuite/btcutil v1.0.2
-	github.com/coreos/pkg v0.0.0-20180928190104-399ea9e2e55f
+	github.com/coreos/pkg v0.0.0-20220709002704-04386ae12ed0
 	github.com/stretchr/testify v1.7.0
 	google.golang.org/protobuf v1.27.1
 )
