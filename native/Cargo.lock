@@ -212,12 +212,6 @@ dependencies = [
 
 [[package]]
 name = "bs58"
-version = "0.3.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "476e9cd489f9e121e02ffa6014a8ef220ecb15c05ed23fc34cca13925dc283fb"
-
-[[package]]
-name = "bs58"
 version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "771fe0050b883fcc3ea2359b1a96bcfbc090b7116eae7c3c512c7a083fdf23d3"
@@ -477,7 +471,7 @@ dependencies = [
  "arrayref",
  "base64 0.13.0",
  "bls12_381_plus 0.6.0",
- "bs58 0.4.0",
+ "bs58",
  "curve25519-dalek",
  "did_url",
  "ed25519-dalek",
@@ -1013,7 +1007,7 @@ version = "0.1.0"
 dependencies = [
  "base64 0.13.0",
  "blake3",
- "bs58 0.3.1",
+ "bs58",
  "cbindgen",
  "chacha20poly1305",
  "did-key",
