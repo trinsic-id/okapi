@@ -28,7 +28,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v2.4.2
         with:
           submodules: "true"
       - name: Run build script
@@ -46,7 +46,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v2.4.2
         with:
           submodules: "true"
       - name: Run build script
@@ -64,7 +64,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v2.4.2
         with:
           submodules: "true"
 
@@ -88,7 +88,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v2.4.2
         with:
           submodules: "true"
 
@@ -107,7 +107,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v2.4.2
         with:
           submodules: "true"
       - name: Setup Xcode version
@@ -148,7 +148,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v2.4.2
         with:
           submodules: "true"
 
@@ -166,7 +166,7 @@ jobs:
     if: "! contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v2.4.2
       - uses: nttld/setup-ndk@v1
         id: setup-ndk
         with:
@@ -186,7 +186,7 @@ jobs:
     if: "! contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v2.4.2
       - uses: mymindstorm/setup-emsdk@v11
         with:
           version: '2.0.34'

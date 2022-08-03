@@ -23,7 +23,7 @@ jobs:
         working-directory: ./wasm
         shell: pwsh
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v2.4.2
       - name: Setup protoc
         uses: arduino/setup-protoc@v1.1.2
         with:
