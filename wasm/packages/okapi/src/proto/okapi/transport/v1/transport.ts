@@ -1,6 +1,4 @@
 /* eslint-disable */
-import Long from "long";
-import * as _m0 from "protobufjs/minimal";
 import {
   EncryptionMode,
   EncryptionAlgorithm,
@@ -11,7 +9,9 @@ import {
   encryptionModeToJSON,
   encryptionAlgorithmToJSON,
 } from "../../../pbmse/v1/pbmse";
-import { JsonWebKey } from "../../../okapi/keys/v1/keys";
+import Long from "long";
+import { JsonWebKey } from "../../keys/v1/keys";
+import _m0 from "protobufjs/minimal";
 
 export interface SignRequest {
   payload: Uint8Array;
