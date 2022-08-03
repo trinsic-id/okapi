@@ -1,6 +1,5 @@
 /* eslint-disable */
-import Long from "long";
-import * as _m0 from "protobufjs/minimal";
+import _m0 from "protobufjs/minimal";
 import { Struct } from "../../../google/protobuf/struct";
 
 export enum KeyType {
@@ -54,8 +53,9 @@ export function keyTypeToJSON(object: KeyType): string {
       return "KEY_TYPE_BLS12381G1G2";
     case KeyType.KEY_TYPE_SECP256K1:
       return "KEY_TYPE_SECP256K1";
+    case KeyType.UNRECOGNIZED:
     default:
-      return "UNKNOWN";
+      return "UNRECOGNIZED";
   }
 }
 
@@ -510,11 +510,6 @@ type DeepPartial<T> = T extends Builtin
   : T extends {}
   ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
-
-if (_m0.util.Long !== Long) {
-  _m0.util.Long = Long as any;
-  _m0.configure();
-}
 
 function isObject(value: any): boolean {
   return typeof value === "object" && value !== null;

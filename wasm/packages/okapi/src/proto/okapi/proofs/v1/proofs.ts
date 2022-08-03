@@ -1,7 +1,6 @@
 /* eslint-disable */
-import Long from "long";
-import * as _m0 from "protobufjs/minimal";
-import { JsonWebKey } from "../../../okapi/keys/v1/keys";
+import { JsonWebKey } from "../../keys/v1/keys";
+import _m0 from "protobufjs/minimal";
 import { Struct } from "../../../google/protobuf/struct";
 
 export enum LdSuite {
@@ -31,8 +30,9 @@ export function ldSuiteToJSON(object: LdSuite): string {
       return "LD_SUITE_UNSPECIFIED";
     case LdSuite.LD_SUITE_JCSED25519SIGNATURE2020:
       return "LD_SUITE_JCSED25519SIGNATURE2020";
+    case LdSuite.UNRECOGNIZED:
     default:
-      return "UNKNOWN";
+      return "UNRECOGNIZED";
   }
 }
 
@@ -304,11 +304,6 @@ type DeepPartial<T> = T extends Builtin
   : T extends {}
   ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
-
-if (_m0.util.Long !== Long) {
-  _m0.util.Long = Long as any;
-  _m0.configure();
-}
 
 function isObject(value: any): boolean {
   return typeof value === "object" && value !== null;
