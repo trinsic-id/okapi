@@ -13,19 +13,19 @@
       "parent": "okapi.examples.v1.BasicMessage"
     },
     "okapi.examples.v1.SecureExampleService": {
-      "type": "serviceProto",
+      "type": "service",
       "collection": "services",
       "file": "okapi/examples/v1/examples.proto",
       "parent": ""
     },
     "okapi.examples.v1.SecureExampleService.ServerStreaming": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "okapi/examples/v1/examples.proto",
       "parent": ""
     },
     "okapi.examples.v1.SecureExampleService.Unary": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "okapi/examples/v1/examples.proto",
       "parent": ""

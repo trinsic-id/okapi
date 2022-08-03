@@ -6,7 +6,6 @@ from typing import List
 
 import betterproto
 import betterproto.lib.google.protobuf as betterproto_lib_google_protobuf
-from betterproto.grpc.grpclib_server import ServiceBase
 
 
 class KeyType(betterproto.Enum):

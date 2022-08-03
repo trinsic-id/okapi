@@ -1,6 +1,5 @@
 /* eslint-disable */
-import Long from "long";
-import * as _m0 from "protobufjs/minimal";
+import _m0 from "protobufjs/minimal";
 
 export enum EncryptionMode {
   ENCRYPTION_MODE_UNSPECIFIED = 0,
@@ -35,8 +34,9 @@ export function encryptionModeToJSON(object: EncryptionMode): string {
       return "ENCRYPTION_MODE_DIRECT";
     case EncryptionMode.ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY:
       return "ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY";
+    case EncryptionMode.UNRECOGNIZED:
     default:
-      return "UNKNOWN";
+      return "UNRECOGNIZED";
   }
 }
 
@@ -73,8 +73,9 @@ export function encryptionAlgorithmToJSON(object: EncryptionAlgorithm): string {
       return "ENCRYPTION_ALGORITHM_XCHACHA20POLY1305";
     case EncryptionAlgorithm.ENCRYPTION_ALGORITHM_AES_GCM:
       return "ENCRYPTION_ALGORITHM_AES_GCM";
+    case EncryptionAlgorithm.UNRECOGNIZED:
     default:
-      return "UNKNOWN";
+      return "UNRECOGNIZED";
   }
 }
 
@@ -658,11 +659,6 @@ type DeepPartial<T> = T extends Builtin
   : T extends {}
   ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
-
-if (_m0.util.Long !== Long) {
-  _m0.util.Long = Long as any;
-  _m0.configure();
-}
 
 function isSet(value: any): boolean {
   return value !== null && value !== undefined;
