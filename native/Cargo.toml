@@ -45,7 +45,7 @@ cbindgen = "0.20.0"
 
 [dev-dependencies]
 fluid = "0.4"
-wasm-bindgen-test = "0.3.13"
+wasm-bindgen-test = "0.3.32"
 
 [package.metadata.deb]
 maintainer = "Tomislav Markovski <tomislav@trinsic.id>"
