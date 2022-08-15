@@ -40,7 +40,7 @@ ffi = []
 hashing = []
 
 [build-dependencies]
-prost-build = "0.8"
+prost-build = "0.11"
 cbindgen = "0.20.0"
 
 [dev-dependencies]
