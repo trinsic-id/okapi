@@ -41,7 +41,7 @@ hashing = []
 
 [build-dependencies]
 prost-build = "0.8"
-cbindgen = "0.20.0"
+cbindgen = "0.24.3"
 
 [dev-dependencies]
 fluid = "0.4"
