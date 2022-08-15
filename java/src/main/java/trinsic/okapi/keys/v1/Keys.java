@@ -130,6 +130,110 @@ public final class Keys {
     // @@protoc_insertion_point(enum_scope:okapi.keys.v1.KeyType)
   }
 
+  /** Protobuf enum {@code okapi.keys.v1.DocumentKeyFormat} */
+  public enum DocumentKeyFormat implements com.google.protobuf.ProtocolMessageEnum {
+    /** <code>DOCUMENT_KEY_FORMAT_UNSPECIFIED = 0;</code> */
+    DOCUMENT_KEY_FORMAT_UNSPECIFIED(0),
+    /** <code>DOCUMENT_KEY_FORMAT_LD = 1;</code> */
+    DOCUMENT_KEY_FORMAT_LD(1),
+    /** <code>DOCUMENT_KEY_FORMAT_JOSE = 2;</code> */
+    DOCUMENT_KEY_FORMAT_JOSE(2),
+    UNRECOGNIZED(-1),
+    ;
+
+    /** <code>DOCUMENT_KEY_FORMAT_UNSPECIFIED = 0;</code> */
+    public static final int DOCUMENT_KEY_FORMAT_UNSPECIFIED_VALUE = 0;
+    /** <code>DOCUMENT_KEY_FORMAT_LD = 1;</code> */
+    public static final int DOCUMENT_KEY_FORMAT_LD_VALUE = 1;
+    /** <code>DOCUMENT_KEY_FORMAT_JOSE = 2;</code> */
+    public static final int DOCUMENT_KEY_FORMAT_JOSE_VALUE = 2;
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static DocumentKeyFormat valueOf(int value) {
+      return forNumber(value);
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
+    public static DocumentKeyFormat forNumber(int value) {
+      switch (value) {
+        case 0:
+          return DOCUMENT_KEY_FORMAT_UNSPECIFIED;
+        case 1:
+          return DOCUMENT_KEY_FORMAT_LD;
+        case 2:
+          return DOCUMENT_KEY_FORMAT_JOSE;
+        default:
+          return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<DocumentKeyFormat>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+
+    private static final com.google.protobuf.Internal.EnumLiteMap<DocumentKeyFormat>
+        internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<DocumentKeyFormat>() {
+              public DocumentKeyFormat findValueByNumber(int number) {
+                return DocumentKeyFormat.forNumber(number);
+              }
+            };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
+      return getDescriptor().getValues().get(ordinal());
+    }
+
+    public final com.google.protobuf.Descriptors.EnumDescriptor getDescriptorForType() {
+      return getDescriptor();
+    }
+
+    public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
+      return trinsic.okapi.keys.v1.Keys.getDescriptor().getEnumTypes().get(1);
+    }
+
+    private static final DocumentKeyFormat[] VALUES = values();
+
+    public static DocumentKeyFormat valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException("EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private DocumentKeyFormat(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:okapi.keys.v1.DocumentKeyFormat)
+  }
+
   public interface GenerateKeyRequestOrBuilder
       extends
       // @@protoc_insertion_point(interface_extends:okapi.keys.v1.GenerateKeyRequest)
@@ -154,6 +258,19 @@ public final class Keys {
      * @return The keyType.
      */
     trinsic.okapi.keys.v1.Keys.KeyType getKeyType();
+
+    /**
+     * <code>.okapi.keys.v1.DocumentKeyFormat key_format = 3;</code>
+     *
+     * @return The enum numeric value on the wire for keyFormat.
+     */
+    int getKeyFormatValue();
+    /**
+     * <code>.okapi.keys.v1.DocumentKeyFormat key_format = 3;</code>
+     *
+     * @return The keyFormat.
+     */
+    trinsic.okapi.keys.v1.Keys.DocumentKeyFormat getKeyFormat();
   }
   /** Protobuf type {@code okapi.keys.v1.GenerateKeyRequest} */
   public static final class GenerateKeyRequest extends com.google.protobuf.GeneratedMessageV3
@@ -169,6 +286,7 @@ public final class Keys {
     private GenerateKeyRequest() {
       seed_ = com.google.protobuf.ByteString.EMPTY;
       keyType_ = 0;
+      keyFormat_ = 0;
     }
 
     @java.lang.Override
@@ -210,6 +328,13 @@ public final class Keys {
                 int rawValue = input.readEnum();
 
                 keyType_ = rawValue;
+                break;
+              }
+            case 24:
+              {
+                int rawValue = input.readEnum();
+
+                keyFormat_ = rawValue;
                 break;
               }
             default:
@@ -283,6 +408,30 @@ public final class Keys {
       return result == null ? trinsic.okapi.keys.v1.Keys.KeyType.UNRECOGNIZED : result;
     }
 
+    public static final int KEY_FORMAT_FIELD_NUMBER = 3;
+    private int keyFormat_;
+    /**
+     * <code>.okapi.keys.v1.DocumentKeyFormat key_format = 3;</code>
+     *
+     * @return The enum numeric value on the wire for keyFormat.
+     */
+    @java.lang.Override
+    public int getKeyFormatValue() {
+      return keyFormat_;
+    }
+    /**
+     * <code>.okapi.keys.v1.DocumentKeyFormat key_format = 3;</code>
+     *
+     * @return The keyFormat.
+     */
+    @java.lang.Override
+    public trinsic.okapi.keys.v1.Keys.DocumentKeyFormat getKeyFormat() {
+      @SuppressWarnings("deprecation")
+      trinsic.okapi.keys.v1.Keys.DocumentKeyFormat result =
+          trinsic.okapi.keys.v1.Keys.DocumentKeyFormat.valueOf(keyFormat_);
+      return result == null ? trinsic.okapi.keys.v1.Keys.DocumentKeyFormat.UNRECOGNIZED : result;
+    }
+
     private byte memoizedIsInitialized = -1;
 
     @java.lang.Override
@@ -303,6 +452,11 @@ public final class Keys {
       if (keyType_ != trinsic.okapi.keys.v1.Keys.KeyType.KEY_TYPE_UNSPECIFIED.getNumber()) {
         output.writeEnum(2, keyType_);
       }
+      if (keyFormat_
+          != trinsic.okapi.keys.v1.Keys.DocumentKeyFormat.DOCUMENT_KEY_FORMAT_UNSPECIFIED
+              .getNumber()) {
+        output.writeEnum(3, keyFormat_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -317,6 +471,11 @@ public final class Keys {
       }
       if (keyType_ != trinsic.okapi.keys.v1.Keys.KeyType.KEY_TYPE_UNSPECIFIED.getNumber()) {
         size += com.google.protobuf.CodedOutputStream.computeEnumSize(2, keyType_);
+      }
+      if (keyFormat_
+          != trinsic.okapi.keys.v1.Keys.DocumentKeyFormat.DOCUMENT_KEY_FORMAT_UNSPECIFIED
+              .getNumber()) {
+        size += com.google.protobuf.CodedOutputStream.computeEnumSize(3, keyFormat_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -336,6 +495,7 @@ public final class Keys {
 
       if (!getSeed().equals(other.getSeed())) return false;
       if (keyType_ != other.keyType_) return false;
+      if (keyFormat_ != other.keyFormat_) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -351,6 +511,8 @@ public final class Keys {
       hash = (53 * hash) + getSeed().hashCode();
       hash = (37 * hash) + KEY_TYPE_FIELD_NUMBER;
       hash = (53 * hash) + keyType_;
+      hash = (37 * hash) + KEY_FORMAT_FIELD_NUMBER;
+      hash = (53 * hash) + keyFormat_;
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -494,6 +656,8 @@ public final class Keys {
 
         keyType_ = 0;
 
+        keyFormat_ = 0;
+
         return this;
       }
 
@@ -523,6 +687,7 @@ public final class Keys {
             new trinsic.okapi.keys.v1.Keys.GenerateKeyRequest(this);
         result.seed_ = seed_;
         result.keyType_ = keyType_;
+        result.keyFormat_ = keyFormat_;
         onBuilt();
         return result;
       }
@@ -580,6 +745,9 @@ public final class Keys {
         }
         if (other.keyType_ != 0) {
           setKeyTypeValue(other.getKeyTypeValue());
+        }
+        if (other.keyFormat_ != 0) {
+          setKeyFormatValue(other.getKeyFormatValue());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -704,6 +872,67 @@ public final class Keys {
       public Builder clearKeyType() {
 
         keyType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int keyFormat_ = 0;
+      /**
+       * <code>.okapi.keys.v1.DocumentKeyFormat key_format = 3;</code>
+       *
+       * @return The enum numeric value on the wire for keyFormat.
+       */
+      @java.lang.Override
+      public int getKeyFormatValue() {
+        return keyFormat_;
+      }
+      /**
+       * <code>.okapi.keys.v1.DocumentKeyFormat key_format = 3;</code>
+       *
+       * @param value The enum numeric value on the wire for keyFormat to set.
+       * @return This builder for chaining.
+       */
+      public Builder setKeyFormatValue(int value) {
+
+        keyFormat_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.okapi.keys.v1.DocumentKeyFormat key_format = 3;</code>
+       *
+       * @return The keyFormat.
+       */
+      @java.lang.Override
+      public trinsic.okapi.keys.v1.Keys.DocumentKeyFormat getKeyFormat() {
+        @SuppressWarnings("deprecation")
+        trinsic.okapi.keys.v1.Keys.DocumentKeyFormat result =
+            trinsic.okapi.keys.v1.Keys.DocumentKeyFormat.valueOf(keyFormat_);
+        return result == null ? trinsic.okapi.keys.v1.Keys.DocumentKeyFormat.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.okapi.keys.v1.DocumentKeyFormat key_format = 3;</code>
+       *
+       * @param value The keyFormat to set.
+       * @return This builder for chaining.
+       */
+      public Builder setKeyFormat(trinsic.okapi.keys.v1.Keys.DocumentKeyFormat value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+
+        keyFormat_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.okapi.keys.v1.DocumentKeyFormat key_format = 3;</code>
+       *
+       * @return This builder for chaining.
+       */
+      public Builder clearKeyFormat() {
+
+        keyFormat_ = 0;
         onChanged();
         return this;
       }
@@ -4755,10 +4984,11 @@ public final class Keys {
     java.lang.String[] descriptorData = {
       "\n"
           + "\030okapi/keys/v1/keys.proto\022\r"
-          + "okapi.keys.v1\032\034google/protobuf/struct.proto\"L\n"
+          + "okapi.keys.v1\032\034google/protobuf/struct.proto\"\202\001\n"
           + "\022GenerateKeyRequest\022\014\n"
           + "\004seed\030\001 \001(\014\022(\n"
-          + "\010key_type\030\002 \001(\0162\026.okapi.keys.v1.KeyType\"l\n"
+          + "\010key_type\030\002 \001(\0162\026.okapi.keys.v1.KeyType\0224\n\n"
+          + "key_format\030\003 \001(\0162 .okapi.keys.v1.DocumentKeyFormat\"l\n"
           + "\023GenerateKeyResponse\022&\n"
           + "\003key\030\001 \003(\0132\031.okapi.keys.v1.JsonWebKey\022-\n"
           + "\014did_document\030\002 \001(\0132\027.google.protobuf.Struct\"\035\n"
@@ -4766,8 +4996,7 @@ public final class Keys {
           + "\003did\030\001 \001(\t\"i\n"
           + "\017ResolveResponse\022-\n"
           + "\014did_document\030\001 \001(\0132\027.google.protobuf.Struct\022\'\n"
-          + "\004keys\030\002 \003(\0132\031.okapi.keys.v1.JsonWebKey\"T\n"
-          + "\n"
+          + "\004keys\030\002 \003(\0132\031.okapi.keys.v1.JsonWebKey\"T\n\n"
           + "JsonWebKey\022\013\n"
           + "\003kid\030\001 \001(\t\022\t\n"
           + "\001x\030\002 \001(\t\022\t\n"
@@ -4781,7 +5010,11 @@ public final class Keys {
           + "\017KEY_TYPE_X25519\020\002\022\021\n\r"
           + "KEY_TYPE_P256\020\003\022\031\n"
           + "\025KEY_TYPE_BLS12381G1G2\020\004\022\026\n"
-          + "\022KEY_TYPE_SECP256K1\020\005B;\n"
+          + "\022KEY_TYPE_SECP256K1\020\005*r\n"
+          + "\021DocumentKeyFormat\022#\n"
+          + "\037DOCUMENT_KEY_FORMAT_UNSPECIFIED\020\000\022\032\n"
+          + "\026DOCUMENT_KEY_FORMAT_LD\020\001\022\034\n"
+          + "\030DOCUMENT_KEY_FORMAT_JOSE\020\002B;\n"
           + "\025trinsic.okapi.keys.v1Z\022okapi/keys/v1/keys\252\002\r"
           + "Okapi.Keys.V1b\006proto3"
     };
@@ -4797,7 +5030,7 @@ public final class Keys {
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_okapi_keys_v1_GenerateKeyRequest_descriptor,
             new java.lang.String[] {
-              "Seed", "KeyType",
+              "Seed", "KeyType", "KeyFormat",
             });
     internal_static_okapi_keys_v1_GenerateKeyResponse_descriptor =
         getDescriptor().getMessageTypes().get(1);

@@ -59,9 +59,49 @@ export function keyTypeToJSON(object: KeyType): string {
   }
 }
 
+export enum DocumentKeyFormat {
+  DOCUMENT_KEY_FORMAT_UNSPECIFIED = 0,
+  DOCUMENT_KEY_FORMAT_LD = 1,
+  DOCUMENT_KEY_FORMAT_JOSE = 2,
+  UNRECOGNIZED = -1,
+}
+
+export function documentKeyFormatFromJSON(object: any): DocumentKeyFormat {
+  switch (object) {
+    case 0:
+    case "DOCUMENT_KEY_FORMAT_UNSPECIFIED":
+      return DocumentKeyFormat.DOCUMENT_KEY_FORMAT_UNSPECIFIED;
+    case 1:
+    case "DOCUMENT_KEY_FORMAT_LD":
+      return DocumentKeyFormat.DOCUMENT_KEY_FORMAT_LD;
+    case 2:
+    case "DOCUMENT_KEY_FORMAT_JOSE":
+      return DocumentKeyFormat.DOCUMENT_KEY_FORMAT_JOSE;
+    case -1:
+    case "UNRECOGNIZED":
+    default:
+      return DocumentKeyFormat.UNRECOGNIZED;
+  }
+}
+
+export function documentKeyFormatToJSON(object: DocumentKeyFormat): string {
+  switch (object) {
+    case DocumentKeyFormat.DOCUMENT_KEY_FORMAT_UNSPECIFIED:
+      return "DOCUMENT_KEY_FORMAT_UNSPECIFIED";
+    case DocumentKeyFormat.DOCUMENT_KEY_FORMAT_LD:
+      return "DOCUMENT_KEY_FORMAT_LD";
+    case DocumentKeyFormat.DOCUMENT_KEY_FORMAT_JOSE:
+      return "DOCUMENT_KEY_FORMAT_JOSE";
+    case DocumentKeyFormat.UNRECOGNIZED:
+    default:
+      return "UNRECOGNIZED";
+  }
+}
+
 export interface GenerateKeyRequest {
   seed: Uint8Array;
   keyType: KeyType;
+  keyFormat: DocumentKeyFormat;
 }
 
 export interface GenerateKeyResponse {
@@ -91,7 +131,7 @@ export interface JsonWebKey {
 }
 
 function createBaseGenerateKeyRequest(): GenerateKeyRequest {
-  return { seed: new Uint8Array(), keyType: 0 };
+  return { seed: new Uint8Array(), keyType: 0, keyFormat: 0 };
 }
 
 export const GenerateKeyRequest = {
@@ -104,6 +144,9 @@ export const GenerateKeyRequest = {
     }
     if (message.keyType !== 0) {
       writer.uint32(16).int32(message.keyType);
+    }
+    if (message.keyFormat !== 0) {
+      writer.uint32(24).int32(message.keyFormat);
     }
     return writer;
   },
@@ -121,6 +164,9 @@ export const GenerateKeyRequest = {
         case 2:
           message.keyType = reader.int32() as any;
           break;
+        case 3:
+          message.keyFormat = reader.int32() as any;
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -135,6 +181,9 @@ export const GenerateKeyRequest = {
         ? bytesFromBase64(object.seed)
         : new Uint8Array(),
       keyType: isSet(object.keyType) ? keyTypeFromJSON(object.keyType) : 0,
+      keyFormat: isSet(object.keyFormat)
+        ? documentKeyFormatFromJSON(object.keyFormat)
+        : 0,
     };
   },
 
@@ -146,6 +195,8 @@ export const GenerateKeyRequest = {
       ));
     message.keyType !== undefined &&
       (obj.keyType = keyTypeToJSON(message.keyType));
+    message.keyFormat !== undefined &&
+      (obj.keyFormat = documentKeyFormatToJSON(message.keyFormat));
     return obj;
   },
 
@@ -153,6 +204,7 @@ export const GenerateKeyRequest = {
     const message = createBaseGenerateKeyRequest();
     message.seed = object.seed ?? new Uint8Array();
     message.keyType = object.keyType ?? 0;
+    message.keyFormat = object.keyFormat ?? 0;
     return message;
   },
 };

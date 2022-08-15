@@ -51,6 +51,18 @@ public object GenerateKeyRequestKt {
     public fun clearKeyType() {
       _builder.clearKeyType()
     }
+
+    /** <code>.okapi.keys.v1.DocumentKeyFormat key_format = 3;</code> */
+    public var keyFormat: trinsic.okapi.keys.v1.Keys.DocumentKeyFormat
+      @JvmName("getKeyFormat") get() = _builder.getKeyFormat()
+      @JvmName("setKeyFormat")
+      set(value) {
+        _builder.setKeyFormat(value)
+      }
+    /** <code>.okapi.keys.v1.DocumentKeyFormat key_format = 3;</code> */
+    public fun clearKeyFormat() {
+      _builder.clearKeyFormat()
+    }
   }
 }
 
