@@ -171,6 +171,7 @@ Protocol buffer message signing and encryption
 | ----- | ---- | ----------- |
 | seed | [bytes](/reference/proto#bytes) |  |
 | key_type | [KeyType](/reference/proto#okapi-keys-v1-KeyType) |  |
+| key_format | [DocumentKeyFormat](/reference/proto#okapi-keys-v1-DocumentKeyFormat) |  |
 
 
 
@@ -244,6 +245,19 @@ Protocol buffer message signing and encryption
 
 
  <!-- end messages -->
+
+
+<a name="okapi-keys-v1-DocumentKeyFormat"></a>
+
+### DocumentKeyFormat
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| DOCUMENT_KEY_FORMAT_UNSPECIFIED | 0 |  |
+| DOCUMENT_KEY_FORMAT_LD | 1 |  |
+| DOCUMENT_KEY_FORMAT_JOSE | 2 |  |
+
 
 
 <a name="okapi-keys-v1-KeyType"></a>

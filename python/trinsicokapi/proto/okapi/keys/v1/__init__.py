@@ -18,10 +18,17 @@ class KeyType(betterproto.Enum):
     KEY_TYPE_SECP256K1 = 5
 
 
+class DocumentKeyFormat(betterproto.Enum):
+    DOCUMENT_KEY_FORMAT_UNSPECIFIED = 0
+    DOCUMENT_KEY_FORMAT_LD = 1
+    DOCUMENT_KEY_FORMAT_JOSE = 2
+
+
 @dataclass(eq=False, repr=False)
 class GenerateKeyRequest(betterproto.Message):
     seed: bytes = betterproto.bytes_field(1)
     key_type: "KeyType" = betterproto.enum_field(2)
+    key_format: "DocumentKeyFormat" = betterproto.enum_field(3)
 
 
 @dataclass(eq=False, repr=False)

@@ -30,12 +30,14 @@ class Okapi::Keys::V1::GenerateKeyRequest
   sig do
     params(
       seed: T.nilable(String),
-      key_type: T.nilable(T.any(Symbol, String, Integer))
+      key_type: T.nilable(T.any(Symbol, String, Integer)),
+      key_format: T.nilable(T.any(Symbol, String, Integer))
     ).void
   end
   def initialize(
     seed: "",
-    key_type: :KEY_TYPE_UNSPECIFIED
+    key_type: :KEY_TYPE_UNSPECIFIED,
+    key_format: :DOCUMENT_KEY_FORMAT_UNSPECIFIED
   )
   end
 
@@ -61,6 +63,18 @@ class Okapi::Keys::V1::GenerateKeyRequest
 
   sig { void }
   def clear_key_type
+  end
+
+  sig { returns(Symbol) }
+  def key_format
+  end
+
+  sig { params(value: T.any(Symbol, String, Integer)).void }
+  def key_format=(value)
+  end
+
+  sig { void }
+  def clear_key_format
   end
 
   sig { params(field: String).returns(T.untyped) }
@@ -421,6 +435,24 @@ module Okapi::Keys::V1::KeyType
   self::KEY_TYPE_P256 = T.let(3, Integer)
   self::KEY_TYPE_BLS12381G1G2 = T.let(4, Integer)
   self::KEY_TYPE_SECP256K1 = T.let(5, Integer)
+
+  sig { params(value: Integer).returns(T.nilable(Symbol)) }
+  def self.lookup(value)
+  end
+
+  sig { params(value: Symbol).returns(T.nilable(Integer)) }
+  def self.resolve(value)
+  end
+
+  sig { returns(::Google::Protobuf::EnumDescriptor) }
+  def self.descriptor
+  end
+end
+
+module Okapi::Keys::V1::DocumentKeyFormat
+  self::DOCUMENT_KEY_FORMAT_UNSPECIFIED = T.let(0, Integer)
+  self::DOCUMENT_KEY_FORMAT_LD = T.let(1, Integer)
+  self::DOCUMENT_KEY_FORMAT_JOSE = T.let(2, Integer)
 
   sig { params(value: Integer).returns(T.nilable(Symbol)) }
   def self.lookup(value)

@@ -17,9 +17,16 @@ enum KeyType {
     KEY_TYPE_SECP256K1 = 5;
 }
 
+enum DocumentKeyFormat {
+    DOCUMENT_KEY_FORMAT_UNSPECIFIED = 0;
+    DOCUMENT_KEY_FORMAT_LD = 1;
+    DOCUMENT_KEY_FORMAT_JOSE = 2;
+}
+
 message GenerateKeyRequest {
     bytes seed = 1;
     KeyType key_type = 2;
+    DocumentKeyFormat key_format = 3;
 }
 
 message GenerateKeyResponse {

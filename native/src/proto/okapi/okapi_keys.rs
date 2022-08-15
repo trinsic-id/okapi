@@ -4,6 +4,8 @@ pub struct GenerateKeyRequest {
     pub seed: ::prost::alloc::vec::Vec<u8>,
     #[prost(enumeration = "KeyType", tag = "2")]
     pub key_type: i32,
+    #[prost(enumeration = "DocumentKeyFormat", tag = "3")]
+    pub key_format: i32,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct GenerateKeyResponse {
@@ -51,4 +53,11 @@ pub enum KeyType {
     P256 = 3,
     Bls12381g1g2 = 4,
     Secp256k1 = 5,
+}
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[repr(i32)]
+pub enum DocumentKeyFormat {
+    Unspecified = 0,
+    Ld = 1,
+    Jose = 2,
 }
