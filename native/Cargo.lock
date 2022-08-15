@@ -1022,7 +1022,7 @@ dependencies = [
  "oberon",
  "prost 0.11.0",
  "prost-build",
- "prost-types",
+ "prost-types 0.11.1",
  "rand 0.8.5",
  "regex",
  "serde",
@@ -1167,7 +1167,7 @@ dependencies = [
  "multimap",
  "petgraph",
  "prost 0.8.0",
- "prost-types",
+ "prost-types 0.8.0",
  "tempfile",
  "which",
 ]
@@ -1206,6 +1206,16 @@ checksum = "603bbd6394701d13f3f25aada59c7de9d35a6a5887cfc156181234a44002771b"
 dependencies = [
  "bytes",
  "prost 0.8.0",
+]
+
+[[package]]
+name = "prost-types"
+version = "0.11.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4dfaa718ad76a44b3415e6c4d53b17c8f99160dcb3a99b10470fce8ad43f6e3e"
+dependencies = [
+ "bytes",
+ "prost 0.11.0",
 ]
 
 [[package]]
