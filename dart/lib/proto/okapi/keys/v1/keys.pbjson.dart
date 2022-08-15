@@ -25,6 +25,19 @@ const KeyType$json = const {
 /// Descriptor for `KeyType`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List keyTypeDescriptor = $convert.base64Decode(
     'CgdLZXlUeXBlEhgKFEtFWV9UWVBFX1VOU1BFQ0lGSUVEEAASFAoQS0VZX1RZUEVfRUQyNTUxORABEhMKD0tFWV9UWVBFX1gyNTUxORACEhEKDUtFWV9UWVBFX1AyNTYQAxIZChVLRVlfVFlQRV9CTFMxMjM4MUcxRzIQBBIWChJLRVlfVFlQRV9TRUNQMjU2SzEQBQ==');
+@$core.Deprecated('Use documentKeyFormatDescriptor instead')
+const DocumentKeyFormat$json = const {
+  '1': 'DocumentKeyFormat',
+  '2': const [
+    const {'1': 'DOCUMENT_KEY_FORMAT_UNSPECIFIED', '2': 0},
+    const {'1': 'DOCUMENT_KEY_FORMAT_LD', '2': 1},
+    const {'1': 'DOCUMENT_KEY_FORMAT_JOSE', '2': 2},
+  ],
+};
+
+/// Descriptor for `DocumentKeyFormat`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List documentKeyFormatDescriptor = $convert.base64Decode(
+    'ChFEb2N1bWVudEtleUZvcm1hdBIjCh9ET0NVTUVOVF9LRVlfRk9STUFUX1VOU1BFQ0lGSUVEEAASGgoWRE9DVU1FTlRfS0VZX0ZPUk1BVF9MRBABEhwKGERPQ1VNRU5UX0tFWV9GT1JNQVRfSk9TRRAC');
 @$core.Deprecated('Use generateKeyRequestDescriptor instead')
 const GenerateKeyRequest$json = const {
   '1': 'GenerateKeyRequest',
@@ -38,12 +51,20 @@ const GenerateKeyRequest$json = const {
       '6': '.okapi.keys.v1.KeyType',
       '10': 'keyType'
     },
+    const {
+      '1': 'key_format',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.okapi.keys.v1.DocumentKeyFormat',
+      '10': 'keyFormat'
+    },
   ],
 };
 
 /// Descriptor for `GenerateKeyRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List generateKeyRequestDescriptor = $convert.base64Decode(
-    'ChJHZW5lcmF0ZUtleVJlcXVlc3QSEgoEc2VlZBgBIAEoDFIEc2VlZBIxCghrZXlfdHlwZRgCIAEoDjIWLm9rYXBpLmtleXMudjEuS2V5VHlwZVIHa2V5VHlwZQ==');
+    'ChJHZW5lcmF0ZUtleVJlcXVlc3QSEgoEc2VlZBgBIAEoDFIEc2VlZBIxCghrZXlfdHlwZRgCIAEoDjIWLm9rYXBpLmtleXMudjEuS2V5VHlwZVIHa2V5VHlwZRI/CgprZXlfZm9ybWF0GAMgASgOMiAub2thcGkua2V5cy52MS5Eb2N1bWVudEtleUZvcm1hdFIJa2V5Rm9ybWF0');
 @$core.Deprecated('Use generateKeyResponseDescriptor instead')
 const GenerateKeyResponse$json = const {
   '1': 'GenerateKeyResponse',
