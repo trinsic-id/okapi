@@ -40,12 +40,22 @@ class GenerateKeyRequest extends $pb.GeneratedMessage {
         defaultOrMaker: KeyType.KEY_TYPE_UNSPECIFIED,
         valueOf: KeyType.valueOf,
         enumValues: KeyType.values)
+    ..e<DocumentKeyFormat>(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'keyFormat',
+        $pb.PbFieldType.OE,
+        defaultOrMaker: DocumentKeyFormat.DOCUMENT_KEY_FORMAT_UNSPECIFIED,
+        valueOf: DocumentKeyFormat.valueOf,
+        enumValues: DocumentKeyFormat.values)
     ..hasRequiredFields = false;
 
   GenerateKeyRequest._() : super();
   factory GenerateKeyRequest({
     $core.List<$core.int>? seed,
     KeyType? keyType,
+    DocumentKeyFormat? keyFormat,
   }) {
     final _result = create();
     if (seed != null) {
@@ -53,6 +63,9 @@ class GenerateKeyRequest extends $pb.GeneratedMessage {
     }
     if (keyType != null) {
       _result.keyType = keyType;
+    }
+    if (keyFormat != null) {
+      _result.keyFormat = keyFormat;
     }
     return _result;
   }
@@ -106,6 +119,18 @@ class GenerateKeyRequest extends $pb.GeneratedMessage {
   $core.bool hasKeyType() => $_has(1);
   @$pb.TagNumber(2)
   void clearKeyType() => clearField(2);
+
+  @$pb.TagNumber(3)
+  DocumentKeyFormat get keyFormat => $_getN(2);
+  @$pb.TagNumber(3)
+  set keyFormat(DocumentKeyFormat v) {
+    setField(3, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasKeyFormat() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearKeyFormat() => clearField(3);
 }
 
 class GenerateKeyResponse extends $pb.GeneratedMessage {

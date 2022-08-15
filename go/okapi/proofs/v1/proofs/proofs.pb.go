@@ -81,7 +81,8 @@ type CreateProofRequest struct {
 	// The signer of the proof. This field must include
 	// the 'kid' in full URI format.
 	// Example:
-	//  did:example:alice#key-1
+	//
+	//	did:example:alice#key-1
 	Key *keys.JsonWebKey `protobuf:"bytes,3,opt,name=key,proto3" json:"key,omitempty"`
 	// The LD Suite to use to produce this proof
 	Suite LdSuite `protobuf:"varint,4,opt,name=suite,proto3,enum=okapi.proofs.v1.LdSuite" json:"suite,omitempty"`

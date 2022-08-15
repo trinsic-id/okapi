@@ -56,3 +56,34 @@ class KeyType extends $pb.ProtobufEnum {
 
   const KeyType._($core.int v, $core.String n) : super(v, n);
 }
+
+class DocumentKeyFormat extends $pb.ProtobufEnum {
+  static const DocumentKeyFormat DOCUMENT_KEY_FORMAT_UNSPECIFIED =
+      DocumentKeyFormat._(
+          0,
+          const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+              ? ''
+              : 'DOCUMENT_KEY_FORMAT_UNSPECIFIED');
+  static const DocumentKeyFormat DOCUMENT_KEY_FORMAT_LD = DocumentKeyFormat._(
+      1,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'DOCUMENT_KEY_FORMAT_LD');
+  static const DocumentKeyFormat DOCUMENT_KEY_FORMAT_JOSE = DocumentKeyFormat._(
+      2,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'DOCUMENT_KEY_FORMAT_JOSE');
+
+  static const $core.List<DocumentKeyFormat> values = <DocumentKeyFormat>[
+    DOCUMENT_KEY_FORMAT_UNSPECIFIED,
+    DOCUMENT_KEY_FORMAT_LD,
+    DOCUMENT_KEY_FORMAT_JOSE,
+  ];
+
+  static final $core.Map<$core.int, DocumentKeyFormat> _byValue =
+      $pb.ProtobufEnum.initByValue(values);
+  static DocumentKeyFormat? valueOf($core.int value) => _byValue[value];
+
+  const DocumentKeyFormat._($core.int v, $core.String n) : super(v, n);
+}

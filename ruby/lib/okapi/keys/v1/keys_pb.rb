@@ -10,6 +10,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "okapi.keys.v1.GenerateKeyRequest" do
       optional :seed, :bytes, 1
       optional :key_type, :enum, 2, "okapi.keys.v1.KeyType"
+      optional :key_format, :enum, 3, "okapi.keys.v1.DocumentKeyFormat"
     end
     add_message "okapi.keys.v1.GenerateKeyResponse" do
       repeated :key, :message, 1, "okapi.keys.v1.JsonWebKey"
@@ -38,6 +39,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       value :KEY_TYPE_BLS12381G1G2, 4
       value :KEY_TYPE_SECP256K1, 5
     end
+    add_enum "okapi.keys.v1.DocumentKeyFormat" do
+      value :DOCUMENT_KEY_FORMAT_UNSPECIFIED, 0
+      value :DOCUMENT_KEY_FORMAT_LD, 1
+      value :DOCUMENT_KEY_FORMAT_JOSE, 2
+    end
   end
 end
 
@@ -50,6 +56,7 @@ module Okapi
       ResolveResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("okapi.keys.v1.ResolveResponse").msgclass
       JsonWebKey = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("okapi.keys.v1.JsonWebKey").msgclass
       KeyType = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("okapi.keys.v1.KeyType").enummodule
+      DocumentKeyFormat = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("okapi.keys.v1.DocumentKeyFormat").enummodule
     end
   end
 end

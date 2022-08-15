@@ -138,11 +138,41 @@
       "file": "okapi/hashing/v1/hashing.proto",
       "parent": "okapi.hashing.v1.SHA256HashResponse"
     },
+    "okapi.keys.v1.DocumentKeyFormat": {
+      "type": "enum",
+      "collection": "enums",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": ""
+    },
+    "okapi.keys.v1.DocumentKeyFormat.DOCUMENT_KEY_FORMAT_JOSE": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": "okapi.keys.v1.DocumentKeyFormat"
+    },
+    "okapi.keys.v1.DocumentKeyFormat.DOCUMENT_KEY_FORMAT_LD": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": "okapi.keys.v1.DocumentKeyFormat"
+    },
+    "okapi.keys.v1.DocumentKeyFormat.DOCUMENT_KEY_FORMAT_UNSPECIFIED": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": "okapi.keys.v1.DocumentKeyFormat"
+    },
     "okapi.keys.v1.GenerateKeyRequest": {
       "type": "message",
       "collection": "messages",
       "file": "okapi/keys/v1/keys.proto",
       "parent": ""
+    },
+    "okapi.keys.v1.GenerateKeyRequest.key_format": {
+      "type": "field",
+      "collection": "fields",
+      "file": "okapi/keys/v1/keys.proto",
+      "parent": "okapi.keys.v1.GenerateKeyRequest"
     },
     "okapi.keys.v1.GenerateKeyRequest.key_type": {
       "type": "field",
@@ -1125,6 +1155,7 @@
       "fields": [
         "okapi.keys.v1.GenerateKeyRequest.seed",
         "okapi.keys.v1.GenerateKeyRequest.key_type",
+        "okapi.keys.v1.GenerateKeyRequest.key_format",
         "okapi.keys.v1.GenerateKeyResponse.key",
         "okapi.keys.v1.GenerateKeyResponse.did_document",
         "okapi.keys.v1.ResolveRequest.did",
@@ -1138,7 +1169,8 @@
         "okapi.keys.v1.JsonWebKey.kty"
       ],
       "enums": [
-        "okapi.keys.v1.KeyType"
+        "okapi.keys.v1.KeyType",
+        "okapi.keys.v1.DocumentKeyFormat"
       ],
       "enum_values": [
         "okapi.keys.v1.KeyType.KEY_TYPE_UNSPECIFIED",
@@ -1146,7 +1178,10 @@
         "okapi.keys.v1.KeyType.KEY_TYPE_X25519",
         "okapi.keys.v1.KeyType.KEY_TYPE_P256",
         "okapi.keys.v1.KeyType.KEY_TYPE_BLS12381G1G2",
-        "okapi.keys.v1.KeyType.KEY_TYPE_SECP256K1"
+        "okapi.keys.v1.KeyType.KEY_TYPE_SECP256K1",
+        "okapi.keys.v1.DocumentKeyFormat.DOCUMENT_KEY_FORMAT_UNSPECIFIED",
+        "okapi.keys.v1.DocumentKeyFormat.DOCUMENT_KEY_FORMAT_LD",
+        "okapi.keys.v1.DocumentKeyFormat.DOCUMENT_KEY_FORMAT_JOSE"
       ]
     },
     "okapi/metadata/metadata.proto": {
@@ -1473,7 +1508,8 @@
       "description": "",
       "fields": [
         "okapi.keys.v1.GenerateKeyRequest.seed",
-        "okapi.keys.v1.GenerateKeyRequest.key_type"
+        "okapi.keys.v1.GenerateKeyRequest.key_type",
+        "okapi.keys.v1.GenerateKeyRequest.key_format"
       ],
       "messages": [],
       "enums": []
@@ -2007,6 +2043,14 @@
       "label": "LABEL_OPTIONAL",
       "type": "bytes",
       "full_type": "bytes",
+      "description": ""
+    },
+    "okapi.keys.v1.GenerateKeyRequest.key_format": {
+      "name": "key_format",
+      "full_name": "okapi.keys.v1.GenerateKeyRequest.key_format",
+      "label": "LABEL_OPTIONAL",
+      "type": "DocumentKeyFormat",
+      "full_type": "okapi.keys.v1.DocumentKeyFormat",
       "description": ""
     },
     "okapi.keys.v1.GenerateKeyRequest.key_type": {
@@ -2771,6 +2815,16 @@
     }
   },
   "enums": {
+    "okapi.keys.v1.DocumentKeyFormat": {
+      "name": "DocumentKeyFormat",
+      "full_name": "okapi.keys.v1.DocumentKeyFormat",
+      "description": "",
+      "values": [
+        "okapi.keys.v1.DocumentKeyFormat.DOCUMENT_KEY_FORMAT_UNSPECIFIED",
+        "okapi.keys.v1.DocumentKeyFormat.DOCUMENT_KEY_FORMAT_LD",
+        "okapi.keys.v1.DocumentKeyFormat.DOCUMENT_KEY_FORMAT_JOSE"
+      ]
+    },
     "okapi.keys.v1.KeyType": {
       "name": "KeyType",
       "full_name": "okapi.keys.v1.KeyType",
@@ -2815,6 +2869,24 @@
     }
   },
   "enum_values": {
+    "okapi.keys.v1.DocumentKeyFormat.DOCUMENT_KEY_FORMAT_JOSE": {
+      "name": "DOCUMENT_KEY_FORMAT_JOSE",
+      "full_name": "okapi.keys.v1.DocumentKeyFormat.DOCUMENT_KEY_FORMAT_JOSE",
+      "description": "",
+      "value": 2
+    },
+    "okapi.keys.v1.DocumentKeyFormat.DOCUMENT_KEY_FORMAT_LD": {
+      "name": "DOCUMENT_KEY_FORMAT_LD",
+      "full_name": "okapi.keys.v1.DocumentKeyFormat.DOCUMENT_KEY_FORMAT_LD",
+      "description": "",
+      "value": 1
+    },
+    "okapi.keys.v1.DocumentKeyFormat.DOCUMENT_KEY_FORMAT_UNSPECIFIED": {
+      "name": "DOCUMENT_KEY_FORMAT_UNSPECIFIED",
+      "full_name": "okapi.keys.v1.DocumentKeyFormat.DOCUMENT_KEY_FORMAT_UNSPECIFIED",
+      "description": "",
+      "value": 0
+    },
     "okapi.keys.v1.KeyType.KEY_TYPE_BLS12381G1G2": {
       "name": "KEY_TYPE_BLS12381G1G2",
       "full_name": "okapi.keys.v1.KeyType.KEY_TYPE_BLS12381G1G2",
