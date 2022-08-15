@@ -68,6 +68,7 @@ impl From<Document> for Struct {
 impl crate::DIDKey {
     pub fn generate<'a>(request: &GenerateKeyRequest) -> Result<GenerateKeyResponse, Error<'a>> {
         let key_type = unwrap_or_return!(KeyType::from_i32(request.key_type), Error::InvalidField("key_type"));
+        let key_format = unwrap_or_return!(DocumentKeyFormat::from_i32(request.key_format), Error::InvalidField("key_format"));
 
         let did_key = match key_type {
             KeyType::Ed25519 => generate::<Ed25519KeyPair>(Some(request.seed.as_slice())),
@@ -77,7 +78,11 @@ impl crate::DIDKey {
             KeyType::Secp256k1 => generate::<Secp256k1KeyPair>(Some(request.seed.as_slice())),
             KeyType::Unspecified => unimplemented!(),
         };
-        let did_document = did_key.get_did_document(CONFIG_LD_PRIVATE);
+        let did_document = did_key.get_did_document(match key_format {
+            DocumentKeyFormat::Unspecified => CONFIG_LD_PRIVATE,
+            DocumentKeyFormat::Ld => CONFIG_LD_PRIVATE,
+            DocumentKeyFormat::Jose => CONFIG_JOSE_PRIVATE,
+        });
         let jwk_keys: Vec<JsonWebKey> = did_key
             .get_verification_methods(CONFIG_JOSE_PRIVATE, did_document.id.as_str())
             .iter()
