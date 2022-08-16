@@ -1,6 +1,6 @@
 use super::{AeadSuite, EncryptResult};
-use chacha20poly1305::aead::{AeadInPlace, NewAead};
-use chacha20poly1305::{Key, XChaCha20Poly1305, XNonce}; // Or `XChaCha20Poly1305`
+use chacha20poly1305::aead::AeadInPlace;
+use chacha20poly1305::{Key, KeyInit, XChaCha20Poly1305, XNonce}; // Or `XChaCha20Poly1305`
 
 pub struct XChaCha {
     aead: XChaCha20Poly1305,
