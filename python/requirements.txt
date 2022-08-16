@@ -1,7 +1,7 @@
 base58==2.1.1
 betterproto~=2.0.0b4
 grpcio-tools==1.44.0
-grpclib~=0.4.3rc2
+grpclib==0.4.3
 requests==2.27.1
 setuptools==60.10.0
 black
