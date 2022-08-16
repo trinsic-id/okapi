@@ -1,5 +1,5 @@
 use js_sys::Uint8Array;
-use okapi::{proto::security::*, Oberon, MessageFormatter};
+use okapi::{proto::security::*, MessageFormatter, Oberon};
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
