@@ -15,7 +15,7 @@ mod macros {
 }
 pub mod didcomm;
 pub mod didkey;
-pub mod ldproofs;
-pub mod oberon;
 pub mod hashing;
+pub mod ldproofs;
 pub mod metadata;
+pub mod oberon;

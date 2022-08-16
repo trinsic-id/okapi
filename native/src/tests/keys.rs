@@ -11,6 +11,7 @@ fn test_generate_key_no_seed(key_type: KeyType, public_key_size: usize) {
     let request = GenerateKeyRequest {
         seed: vec![],
         key_type: key_type as i32,
+        ..Default::default()
     };
 
     let response = DIDKey::generate(&request).expect("invalid response");
@@ -35,6 +36,7 @@ fn test_generate_key_no_seed_1() {
     let request = GenerateKeyRequest {
         seed: vec![],
         key_type: key_type as i32,
+        ..Default::default()
     };
 
     let response = DIDKey::generate(&request).expect("invalid response");
@@ -58,6 +60,7 @@ fn test_ffi_generate_key_no_seed(key_type: KeyType) {
     let request = GenerateKeyRequest {
         seed: vec![],
         key_type: key_type as i32,
+        ..Default::default()
     };
 
     let req_buf = ByteBuffer::from_vec(request.to_vec());
@@ -151,6 +154,7 @@ fn test_generate_key_with_seed(key_type: KeyType, seed: &str, public_key: &str) 
     let request = GenerateKeyRequest {
         seed: hex::decode(seed).expect("invalid hex string"),
         key_type: key_type as i32,
+        ..Default::default()
     };
 
     let response = DIDKey::generate(&request).expect("invalid response");
@@ -171,6 +175,7 @@ fn test_generate_key_with_seed_1() {
     let request = GenerateKeyRequest {
         seed: hex::decode(seed).expect("invalid hex string"),
         key_type: key_type.into(),
+        ..Default::default()
     };
 
     let response = DIDKey::generate(&request).expect("invalid response");

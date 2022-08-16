@@ -1,5 +1,5 @@
 use js_sys::Uint8Array;
-use okapi::{proto::metadata::*, Metadata, MessageFormatter};
+use okapi::{proto::metadata::*, MessageFormatter, Metadata};
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
