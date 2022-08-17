@@ -14,7 +14,7 @@ jobs:
       name: buf.build
     steps:
       - uses: actions/checkout@v3
-      - uses: bufbuild/buf-setup-action@v0.5.0
+      - uses: bufbuild/buf-setup-action@v1.7.0
       - uses: bufbuild/buf-push-action@v1
         with:
           input: 'proto'
