@@ -1,6 +1,6 @@
 module github.com/trinsic-id/okapi/go
 
-go 1.17
+go 1.19
 
 require (
 	github.com/btcsuite/btcutil v1.0.2
