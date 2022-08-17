@@ -29,7 +29,7 @@ jobs:
         os-artifact: [ [windows-latest, windows], [macos-latest, macos] ]  # [ubuntu-latest, linux] - doesn't support ios
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.4.2
+        uses: actions/checkout@v3.0.2
       - name: Download workflow artifact
         uses: dawidd6/action-download-artifact@v2.21.1
         with:
