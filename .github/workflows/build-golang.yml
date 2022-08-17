@@ -27,16 +27,16 @@ jobs:
       matrix:
         os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows-gnu], [macos-latest, macos] ]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Download workflow artifact
-        uses: dawidd6/action-download-artifact@v2.21.1
+        uses: dawidd6/action-download-artifact@v2
         with:
           workflow: "build-libs.yml"
           path: ./libs/${{ matrix.os-artifact[1] }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           name: ${{ matrix.os-artifact[1] }}
       - name: Set up Go (default)
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v3
         with:
           go-version: ^1.17
       - name: Set up Python

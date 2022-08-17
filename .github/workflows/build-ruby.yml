@@ -30,7 +30,7 @@ jobs:
         ruby-version: [ '2.6', '2.7', '3.0', '3.1' ]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -43,7 +43,7 @@ jobs:
           cache: 'pip'
 
       - name: Download workflow artifact
-        uses: dawidd6/action-download-artifact@v2.21.1
+        uses: dawidd6/action-download-artifact@v2
         with:
           workflow: "build-libs.yml"
           path: ./libs/${{ matrix.os-artifact[1] }}
@@ -62,7 +62,7 @@ jobs:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
           OKAPI_LIBRARY_PATH: "${{ github.workspace }}/libs/${{ matrix.os-artifact[1] }}"
       - name: Run linters
-        uses: wearerequired/lint-action@v1.11.1
+        uses: wearerequired/lint-action@v2.0.1
         with:
           rubocop_dir: ruby/
           rubocop: true

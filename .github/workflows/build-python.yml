@@ -28,7 +28,7 @@ jobs:
         os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows], [macos-latest, macos] ]
         python-version: [3.7, 3.8, 3.9, '3.10' ]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
@@ -36,7 +36,7 @@ jobs:
           cache: 'pip'
             
       - name: Download workflow artifact
-        uses: dawidd6/action-download-artifact@v2.21.1
+        uses: dawidd6/action-download-artifact@v2
         with:
           workflow: "build-libs.yml"
           path: ./libs/${{ matrix.os-artifact[1] }}
@@ -49,7 +49,7 @@ jobs:
         working-directory: python
 
       - name: Run linters
-        uses: wearerequired/lint-action@v1.11.1
+        uses: wearerequired/lint-action@v2.0.1
         with:
           black_dir: python/
           flake8_dir: python/

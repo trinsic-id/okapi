@@ -10,7 +10,7 @@ jobs:
     name: Upload libs.zip artifact
     runs-on: ubuntu-latest
     steps:
-      - uses: dawidd6/action-download-artifact@v2.21.1
+      - uses: dawidd6/action-download-artifact@v2
         with:
           workflow: "build-libs.yml"
           path: ./libs

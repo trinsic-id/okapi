@@ -13,7 +13,7 @@ jobs:
     environment:
       name: buf.build
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: bufbuild/buf-setup-action@v1.7.0
       - uses: bufbuild/buf-push-action@v1
         with:
@@ -23,13 +23,13 @@ jobs:
   compile_proto:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up Python 3.9
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
       - name: Set up Go
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v3
         with:
           go-version: ^1.16
       - name: Install Protoc

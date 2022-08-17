@@ -28,14 +28,14 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.4.2
+        uses: actions/checkout@v3.0.2
         with:
           submodules: "true"
       - name: Run build script
         run: ./devops/BuildLibraries.ps1 -Platform Windows -OutLocation ./libs/windows
         shell: pwsh
       - name: Upload Windows artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: windows
           path: ./libs/windows/*
@@ -46,14 +46,14 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.4.2
+        uses: actions/checkout@v3.0.2
         with:
           submodules: "true"
       - name: Run build script
         run: ./devops/BuildLibraries.ps1 -Platform Windows-GNU -OutLocation ./libs/windows-gnu
         shell: pwsh
       - name: Upload Windows-GNU artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: windows-gnu
           path: ./libs/windows-gnu/*
@@ -64,7 +64,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.4.2
+        uses: actions/checkout@v3.0.2
         with:
           submodules: "true"
 
@@ -72,12 +72,12 @@ jobs:
         run: ./devops/BuildLibraries.ps1 -Platform Linux -OutLocation ./libs/linux
         shell: pwsh
       - name: Upload Linux artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: linux
           path: ./libs/linux/*
       - name: Upload C header artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: C_header
           path: ./include/okapi.h
@@ -88,7 +88,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.4.2
+        uses: actions/checkout@v3.0.2
         with:
           submodules: "true"
 
@@ -96,7 +96,7 @@ jobs:
         run: ./devops/BuildLibraries.ps1 -Platform Linux-ARM -OutLocation ./libs/linux-arm
         shell: pwsh
       - name: Upload Linux-aarch64 artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: linux-aarch64
           path: ./libs/linux-arm/linux-aarch64/*
@@ -107,7 +107,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.4.2
+        uses: actions/checkout@v3.0.2
         with:
           submodules: "true"
       - name: Setup Xcode version
@@ -135,7 +135,7 @@ jobs:
         shell: pwsh
         working-directory: ./libs/macos
       - name: Upload MacOS artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: macos
           path: |
@@ -148,7 +148,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.4.2
+        uses: actions/checkout@v3.0.2
         with:
           submodules: "true"
 
@@ -156,7 +156,7 @@ jobs:
         run: ./devops/BuildLibraries.ps1 -Platform iOS -OutLocation ./libs/ios
         shell: pwsh
       - name: Upload iOS artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: ios
           path: ./libs/ios/*
@@ -166,7 +166,7 @@ jobs:
     if: "! contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.4.2
+      - uses: actions/checkout@v3.0.2
       - uses: nttld/setup-ndk@v1
         id: setup-ndk
         with:
@@ -176,7 +176,7 @@ jobs:
         shell: pwsh
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: android
           path: ./libs/android/*
@@ -186,13 +186,13 @@ jobs:
     if: "! contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.4.2
+      - uses: actions/checkout@v3.0.2
       - uses: mymindstorm/setup-emsdk@v11
         with:
           version: '2.0.34'
       - run: ./devops/BuildLibraries.ps1 -Platform Wasm -OutLocation ./libs/wasm
         shell: pwsh
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: wasm
           path: ./libs/wasm/*
