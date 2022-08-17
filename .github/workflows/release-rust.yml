@@ -31,7 +31,7 @@ jobs:
           tar -czvf okapi-${{ steps.setversion.outputs.packageVersion }}.tar.gz okapi
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: archive
           path: |
@@ -79,7 +79,7 @@ jobs:
         working-directory: native
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: deb
           path: |
@@ -129,7 +129,7 @@ jobs:
           tar -czvf okapi-vendor-${{ steps.setversion.outputs.packageVersion }}.tar.gz okapi
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: nix
           path: |
@@ -168,7 +168,7 @@ jobs:
         working-directory: native
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: wix
           path: |

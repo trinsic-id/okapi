@@ -35,7 +35,7 @@ jobs:
         run: ./devops/BuildLibraries.ps1 -Platform Windows -OutLocation ./libs/windows
         shell: pwsh
       - name: Upload Windows artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: windows
           path: ./libs/windows/*
@@ -53,7 +53,7 @@ jobs:
         run: ./devops/BuildLibraries.ps1 -Platform Windows-GNU -OutLocation ./libs/windows-gnu
         shell: pwsh
       - name: Upload Windows-GNU artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: windows-gnu
           path: ./libs/windows-gnu/*
@@ -72,12 +72,12 @@ jobs:
         run: ./devops/BuildLibraries.ps1 -Platform Linux -OutLocation ./libs/linux
         shell: pwsh
       - name: Upload Linux artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: linux
           path: ./libs/linux/*
       - name: Upload C header artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: C_header
           path: ./include/okapi.h
@@ -96,7 +96,7 @@ jobs:
         run: ./devops/BuildLibraries.ps1 -Platform Linux-ARM -OutLocation ./libs/linux-arm
         shell: pwsh
       - name: Upload Linux-aarch64 artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: linux-aarch64
           path: ./libs/linux-arm/linux-aarch64/*
@@ -135,7 +135,7 @@ jobs:
         shell: pwsh
         working-directory: ./libs/macos
       - name: Upload MacOS artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: macos
           path: |
@@ -156,7 +156,7 @@ jobs:
         run: ./devops/BuildLibraries.ps1 -Platform iOS -OutLocation ./libs/ios
         shell: pwsh
       - name: Upload iOS artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: ios
           path: ./libs/ios/*
@@ -176,7 +176,7 @@ jobs:
         shell: pwsh
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: android
           path: ./libs/android/*
@@ -192,7 +192,7 @@ jobs:
           version: '2.0.34'
       - run: ./devops/BuildLibraries.ps1 -Platform Wasm -OutLocation ./libs/wasm
         shell: pwsh
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: wasm
           path: ./libs/wasm/*
