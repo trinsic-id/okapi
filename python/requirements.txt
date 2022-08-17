@@ -3,7 +3,7 @@ betterproto~=2.0.0b4
 grpcio-tools==1.47.0
 grpclib==0.4.3
 requests==2.27.1
-setuptools==60.10.0
+setuptools==65.0.2
 black
 flake8
 pytest
