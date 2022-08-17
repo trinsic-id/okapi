@@ -25,7 +25,7 @@ jobs:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}
           overrideVersion: ${{ github.event.inputs.packageVersion }}
       - name: release-downloader
-        uses: robinraju/release-downloader@v1.3
+        uses: robinraju/release-downloader@v1.4
         with:
           repository: trinsic-id/okapi
           latest: true

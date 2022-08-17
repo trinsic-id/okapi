@@ -22,7 +22,7 @@ jobs:
         with:
           python-version: 3.9
       - name: release-downloader
-        uses: robinraju/release-downloader@v1.3
+        uses: robinraju/release-downloader@v1.4
         with:
           repository: trinsic-id/okapi
           latest: true
