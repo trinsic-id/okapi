@@ -23,19 +23,19 @@ jobs:
         working-directory: ./wasm
         shell: pwsh
     steps:
-      - uses: actions/checkout@v2.4.2
+      - uses: actions/checkout@v2
       - name: Setup protoc
-        uses: arduino/setup-protoc@v1.1.2
+        uses: arduino/setup-protoc@v1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: jetli/wasm-pack-action@v0.3.0
+      - uses: jetli/wasm-pack-action@v0
         with:
           version: 'latest'
       - run: |
           rustup toolchain uninstall stable
           rustup toolchain install stable
           rustup toolchain install stable --target wasm32-unknown-unknown
-      - uses: trinsic-id/set-version@v0.1
+      - uses: trinsic-id/set-version@v0
         id: setversion
         with:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}

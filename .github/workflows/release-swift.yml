@@ -15,21 +15,21 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.4.2
+        uses: actions/checkout@v2
 
       - name: Set up Python 3.9
         uses: actions/setup-python@v1
         with:
           python-version: 3.9
       - name: release-downloader
-        uses: robinraju/release-downloader@v1.3
+        uses: robinraju/release-downloader@v1
         with:
           repository: trinsic-id/okapi
           latest: true
           token: ${{ secrets.API_GITHUB_TOKEN }}
           fileName: "libs.zip"
 
-      - uses: trinsic-id/set-version@v0.1
+      - uses: trinsic-id/set-version@v0
         id: setversion
         with:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}

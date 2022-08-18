@@ -15,9 +15,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.4.2
+        uses: actions/checkout@v2
 
-      - uses: trinsic-id/set-version@v0.1
+      - uses: trinsic-id/set-version@v0
         id: setversion
         with:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}
@@ -63,9 +63,9 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.4.2
+        uses: actions/checkout@v2
 
-      - uses: trinsic-id/set-version@v0.1
+      - uses: trinsic-id/set-version@v0
         id: setversion
         with:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}
@@ -101,9 +101,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.4.2
+        uses: actions/checkout@v2
 
-      - uses: trinsic-id/set-version@v0.1
+      - uses: trinsic-id/set-version@v0
         id: setversion
         with:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}
@@ -150,9 +150,9 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.4.2
+        uses: actions/checkout@v2
 
-      - uses: trinsic-id/set-version@v0.1
+      - uses: trinsic-id/set-version@v0
         id: setversion
         with:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}
