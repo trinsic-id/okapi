@@ -37,7 +37,7 @@ jobs:
         uses: arduino/setup-protoc@v1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: jetli/wasm-pack-action@v0.3
+      - uses: jetli/wasm-pack-action@v0.3.0
         with:
           version: 'latest'
       - uses: actions/setup-node@v3
