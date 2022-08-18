@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Set up Ruby 2.7
-        uses: ruby/setup-ruby@v1.76.0
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7
       - name: Set up Python 3.9
@@ -33,7 +33,7 @@ jobs:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}
           overrideVersion: ${{ github.event.inputs.packageVersion }}
       - name: release-downloader
-        uses: robinraju/release-downloader@v1.3
+        uses: robinraju/release-downloader@v1
         with:
           repository: trinsic-id/okapi
           latest: true

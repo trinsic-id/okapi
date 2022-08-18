@@ -28,7 +28,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3.0.2
+        uses: actions/checkout@v3
         with:
           submodules: "true"
       - name: Run build script
@@ -46,7 +46,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3.0.2
+        uses: actions/checkout@v3
         with:
           submodules: "true"
       - name: Run build script
@@ -64,7 +64,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3.0.2
+        uses: actions/checkout@v3
         with:
           submodules: "true"
 
@@ -88,7 +88,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3.0.2
+        uses: actions/checkout@v3
         with:
           submodules: "true"
 
@@ -107,11 +107,11 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3.0.2
+        uses: actions/checkout@v3
         with:
           submodules: "true"
       - name: Setup Xcode version
-        uses: maxim-lobanov/setup-xcode@v1.4.1
+        uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: latest-stable
       - name: Run build script
@@ -148,7 +148,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3.0.2
+        uses: actions/checkout@v3
         with:
           submodules: "true"
 
@@ -166,7 +166,7 @@ jobs:
     if: "! contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.0.2
+      - uses: actions/checkout@v3
       - uses: nttld/setup-ndk@v1
         id: setup-ndk
         with:
@@ -186,7 +186,7 @@ jobs:
     if: "! contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.0.2
+      - uses: actions/checkout@v3
       - uses: mymindstorm/setup-emsdk@v11
         with:
           version: '2.0.34'
