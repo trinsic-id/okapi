@@ -28,14 +28,14 @@ jobs:
         uses: arduino/setup-protoc@v1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: jetli/wasm-pack-action@v0
+      - uses: jetli/wasm-pack-action@v0.3
         with:
           version: 'latest'
       - run: |
           rustup toolchain uninstall stable
           rustup toolchain install stable
           rustup toolchain install stable --target wasm32-unknown-unknown
-      - uses: trinsic-id/set-version@v0
+      - uses: trinsic-id/set-version@v0.1
         id: setversion
         with:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}

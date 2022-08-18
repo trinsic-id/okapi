@@ -29,7 +29,7 @@ jobs:
           token: ${{ secrets.API_GITHUB_TOKEN }}
           fileName: "libs.zip"
 
-      - uses: trinsic-id/set-version@v0
+      - uses: trinsic-id/set-version@v0.1
         id: setversion
         with:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}

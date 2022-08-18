@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: trinsic-id/assign-issues-to-project@v0
+      - uses: trinsic-id/assign-issues-to-project@v0.1.2
         id: assignissues
         with:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}

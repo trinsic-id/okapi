@@ -17,7 +17,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - uses: trinsic-id/set-version@v0
+      - uses: trinsic-id/set-version@v0.1
         id: setversion
         with:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}
@@ -65,7 +65,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - uses: trinsic-id/set-version@v0
+      - uses: trinsic-id/set-version@v0.1
         id: setversion
         with:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}
@@ -103,7 +103,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - uses: trinsic-id/set-version@v0
+      - uses: trinsic-id/set-version@v0.1
         id: setversion
         with:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}
@@ -152,7 +152,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - uses: trinsic-id/set-version@v0
+      - uses: trinsic-id/set-version@v0.1
         id: setversion
         with:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}
