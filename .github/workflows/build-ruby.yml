@@ -30,14 +30,14 @@ jobs:
         ruby-version: [ '2.6', '2.7', '3.0', '3.1' ]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby-version }}
           bundler-cache: true
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: 3.9
           cache: 'pip'
@@ -62,12 +62,12 @@ jobs:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
           OKAPI_LIBRARY_PATH: "${{ github.workspace }}/libs/${{ matrix.os-artifact[1] }}"
       - name: Run linters
-        uses: wearerequired/lint-action@v1
+        uses: wearerequired/lint-action@v2
         with:
           rubocop_dir: ruby/
           rubocop: true
       - name: "Upload coverage to Codecov"
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
         with:
           fail_ci_if_error: true
           directory: ruby

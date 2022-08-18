@@ -28,9 +28,9 @@ jobs:
         os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows], [macos-latest, macos] ]
         python-version: [3.7, 3.8, 3.9, '3.10' ]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
           cache: 'pip'
@@ -49,7 +49,7 @@ jobs:
         working-directory: python
 
       - name: Run linters
-        uses: wearerequired/lint-action@v1.11.1
+        uses: wearerequired/lint-action@v2.0.1
         with:
           black_dir: python/
           flake8_dir: python/
@@ -68,7 +68,7 @@ jobs:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
           OKAPI_LIBRARY_PATH: "${{ github.workspace }}/libs/${{ matrix.os-artifact[1] }}"
       - name: "Upload coverage to Codecov"
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
         with:
           fail_ci_if_error: true
           directory: python

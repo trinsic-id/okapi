@@ -22,7 +22,7 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.head_ref }}
       - name: Set up Python 3.9
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: 3.9
       - name: Set up Ruby
@@ -30,7 +30,7 @@ jobs:
         with:
           ruby-version: 3.0
       - name: Set up Go
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v3
         with:
           go-version: ^1.17
       - name: Set up JDK

@@ -29,7 +29,7 @@ jobs:
         os-artifact: [ [windows-latest, windows], [macos-latest, macos] ]  # [ubuntu-latest, linux] - doesn't support ios
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Download workflow artifact
         uses: dawidd6/action-download-artifact@v2
         with:
@@ -37,7 +37,7 @@ jobs:
           path: ./libs/${{ matrix.os-artifact[1] }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           name: ${{ matrix.os-artifact[1] }}
-      - uses: actions/setup-dotnet@v1
+      - uses: actions/setup-dotnet@v2
         with:
           dotnet-version: '6.0.x'
       - name: Build and Test coverage
@@ -47,7 +47,7 @@ jobs:
         working-directory: ./dotnet
         shell: pwsh
       - name: "Upload coverage to Codecov"
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
         with:
           fail_ci_if_error: true
           directory: dotnet

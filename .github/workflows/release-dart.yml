@@ -18,11 +18,11 @@ jobs:
     name: Release Dart Package
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up Dart
         uses: dart-lang/setup-dart@v1
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: 3.9
       - uses: trinsic-id/set-version@v0
