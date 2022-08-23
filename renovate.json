@@ -1,21 +1,15 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "schedule": [
+    "every Sunday"
+  ]
   "extends": [
     "group:allNonMajor"
   ],
   "packageRules": [
     {
-      "matchPaths": ["dart/**"],
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"]
-    },
-    {
-      "matchPaths": ["docs/**"],
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"]
-    },,
-    {
-      "matchPaths": ["dotnet/**"],
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"]
-    },
+    }
   ],
   "prHourlyLimit": 20
 }
