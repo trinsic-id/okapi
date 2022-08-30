@@ -152,6 +152,144 @@ Protocol buffer message signing and encryption
 
 
 
+<a name="okapi_hashing_v1_hashing-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## okapi/hashing/v1/hashing.proto
+
+
+ <!-- end services -->
+
+
+<a name="okapi-hashing-v1-Blake3DeriveKeyRequest"></a>
+
+### Blake3DeriveKeyRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| context | [bytes](/reference/proto#bytes) |  |
+| key_material | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-Blake3DeriveKeyResponse"></a>
+
+### Blake3DeriveKeyResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| digest | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-Blake3HashRequest"></a>
+
+### Blake3HashRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| data | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-Blake3HashResponse"></a>
+
+### Blake3HashResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| digest | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-Blake3KeyedHashRequest"></a>
+
+### Blake3KeyedHashRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| data | [bytes](/reference/proto#bytes) |  |
+| key | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-Blake3KeyedHashResponse"></a>
+
+### Blake3KeyedHashResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| digest | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-SHA256HashRequest"></a>
+
+### SHA256HashRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| data | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-SHA256HashResponse"></a>
+
+### SHA256HashResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| digest | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
 <a name="okapi_keys_v1_keys-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
@@ -521,6 +659,57 @@ Contains the verification result for the oberon token
 
 
 
+<a name="okapi_metadata_metadata-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## okapi/metadata/metadata.proto
+
+
+ <!-- end services -->
+
+
+<a name="okapi-metadata-MetadataRequest"></a>
+
+### MetadataRequest
+Request custom metadata about the native okapi binaries - cannot get cargo env vars at runtime
+
+repeated string variables = 1; // optional field, can contain any of the cargo env vars
+
+
+
+
+
+
+<a name="okapi-metadata-MetadataResponse"></a>
+
+### MetadataResponse
+Metadata information about the native okapi binaries. Always returns the version information
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| version | [string](/reference/proto#string) | The full version string from okapi |
+| version_major | [int32](/reference/proto#int32) | Major version |
+| version_minor | [int32](/reference/proto#int32) | Minor version |
+| version_patch | [int32](/reference/proto#int32) | Patch release version |
+| target_family | [string](/reference/proto#string) | https://doc.rust-lang.org/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-crates |
+| target_os | [string](/reference/proto#string) |  |
+| target_arch | [string](/reference/proto#string) |  |
+| target_vendor | [string](/reference/proto#string) |  |
+| target_env | [string](/reference/proto#string) |  |
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
 <a name="okapi_proofs_v1_proofs-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
@@ -594,186 +783,6 @@ Contains the verification result for the oberon token
 | LD_SUITE_UNSPECIFIED | 0 |  |
 | LD_SUITE_JCSED25519SIGNATURE2020 | 1 |  |
 
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-
-<a name="okapi_hashing_v1_hashing-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## okapi/hashing/v1/hashing.proto
-
-
- <!-- end services -->
-
-
-<a name="okapi-hashing-v1-Blake3DeriveKeyRequest"></a>
-
-### Blake3DeriveKeyRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| context | [bytes](/reference/proto#bytes) |  |
-| key_material | [bytes](/reference/proto#bytes) |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-Blake3DeriveKeyResponse"></a>
-
-### Blake3DeriveKeyResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| digest | [bytes](/reference/proto#bytes) |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-Blake3HashRequest"></a>
-
-### Blake3HashRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| data | [bytes](/reference/proto#bytes) |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-Blake3HashResponse"></a>
-
-### Blake3HashResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| digest | [bytes](/reference/proto#bytes) |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-Blake3KeyedHashRequest"></a>
-
-### Blake3KeyedHashRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| data | [bytes](/reference/proto#bytes) |  |
-| key | [bytes](/reference/proto#bytes) |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-Blake3KeyedHashResponse"></a>
-
-### Blake3KeyedHashResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| digest | [bytes](/reference/proto#bytes) |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-SHA256HashRequest"></a>
-
-### SHA256HashRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| data | [bytes](/reference/proto#bytes) |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-SHA256HashResponse"></a>
-
-### SHA256HashResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| digest | [bytes](/reference/proto#bytes) |  |
-
-
-
-
-
- <!-- end messages -->
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-
-<a name="okapi_examples_v1_examples-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## okapi/examples/v1/examples.proto
-
-
-
-<a name="okapi-examples-v1-SecureExampleService"></a>
-
-### Service - SecureExampleService
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| Unary | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) |  |
-| ServerStreaming | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) stream |  |
-
- <!-- end services -->
-
-
-<a name="okapi-examples-v1-BasicMessage"></a>
-
-### BasicMessage
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| text | [string](/reference/proto#string) |  |
-
-
-
-
-
- <!-- end messages -->
 
  <!-- end enums -->
 
@@ -948,44 +957,35 @@ Contains the verification result for the oberon token
 
 
 
-<a name="okapi_metadata_metadata-proto"></a>
+<a name="okapi_examples_v1_examples-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## okapi/metadata/metadata.proto
+## okapi/examples/v1/examples.proto
 
+
+
+<a name="okapi-examples-v1-SecureExampleService"></a>
+
+### Service - SecureExampleService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| Unary | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) |  |
+| ServerStreaming | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) stream |  |
 
  <!-- end services -->
 
 
-<a name="okapi-metadata-MetadataRequest"></a>
+<a name="okapi-examples-v1-BasicMessage"></a>
 
-### MetadataRequest
-Request custom metadata about the native okapi binaries - cannot get cargo env vars at runtime
+### BasicMessage
 
-repeated string variables = 1; // optional field, can contain any of the cargo env vars
-
-
-
-
-
-
-<a name="okapi-metadata-MetadataResponse"></a>
-
-### MetadataResponse
-Metadata information about the native okapi binaries. Always returns the version information
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| version | [string](/reference/proto#string) | The full version string from okapi |
-| version_major | [int32](/reference/proto#int32) | Major version |
-| version_minor | [int32](/reference/proto#int32) | Minor version |
-| version_patch | [int32](/reference/proto#int32) | Patch release version |
-| target_family | [string](/reference/proto#string) | https://doc.rust-lang.org/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-crates |
-| target_os | [string](/reference/proto#string) |  |
-| target_arch | [string](/reference/proto#string) |  |
-| target_vendor | [string](/reference/proto#string) |  |
-| target_env | [string](/reference/proto#string) |  |
+| text | [string](/reference/proto#string) |  |
 
 
 
