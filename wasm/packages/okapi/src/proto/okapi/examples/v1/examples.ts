@@ -1,6 +1,6 @@
 /* eslint-disable */
-import { EncryptedMessage } from "../../../pbmse/v1/pbmse";
 import _m0 from "protobufjs/minimal";
+import { EncryptedMessage } from "../../../pbmse/v1/pbmse";
 
 export interface BasicMessage {
   text: string;
@@ -11,10 +11,7 @@ function createBaseBasicMessage(): BasicMessage {
 }
 
 export const BasicMessage = {
-  encode(
-    message: BasicMessage,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: BasicMessage, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.text !== "") {
       writer.uint32(10).string(message.text);
     }
@@ -40,9 +37,7 @@ export const BasicMessage = {
   },
 
   fromJSON(object: any): BasicMessage {
-    return {
-      text: isSet(object.text) ? String(object.text) : "",
-    };
+    return { text: isSet(object.text) ? String(object.text) : "" };
   },
 
   toJSON(message: BasicMessage): unknown {
@@ -58,8 +53,7 @@ export const BasicMessage = {
   },
 };
 
-export type SecureExampleServiceDefinition =
-  typeof SecureExampleServiceDefinition;
+export type SecureExampleServiceDefinition = typeof SecureExampleServiceDefinition;
 export const SecureExampleServiceDefinition = {
   name: "SecureExampleService",
   fullName: "okapi.examples.v1.SecureExampleService",
@@ -83,23 +77,11 @@ export const SecureExampleServiceDefinition = {
   },
 } as const;
 
-type Builtin =
-  | Date
-  | Function
-  | Uint8Array
-  | string
-  | number
-  | boolean
-  | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
-type DeepPartial<T> = T extends Builtin
-  ? T
-  : T extends Array<infer U>
-  ? Array<DeepPartial<U>>
-  : T extends ReadonlyArray<infer U>
-  ? ReadonlyArray<DeepPartial<U>>
-  : T extends {}
-  ? { [K in keyof T]?: DeepPartial<T[K]> }
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
 
 function isSet(value: any): boolean {

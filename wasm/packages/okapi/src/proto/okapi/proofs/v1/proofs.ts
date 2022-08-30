@@ -1,7 +1,7 @@
 /* eslint-disable */
-import { JsonWebKey } from "../../keys/v1/keys";
 import _m0 from "protobufjs/minimal";
 import { Struct } from "../../../google/protobuf/struct";
+import { JsonWebKey } from "../../keys/v1/keys";
 
 export enum LdSuite {
   LD_SUITE_UNSPECIFIED = 0,
@@ -43,14 +43,18 @@ export interface CreateProofRequest {
    * also contain a "proof" object, with the desired
    * values filled in.
    */
-  document: { [key: string]: any } | undefined;
+  document:
+    | { [key: string]: any }
+    | undefined;
   /**
    * The signer of the proof. This field must include
    * the 'kid' in full URI format.
    * Example:
    *  did:example:alice#key-1
    */
-  key: JsonWebKey | undefined;
+  key:
+    | JsonWebKey
+    | undefined;
   /** The LD Suite to use to produce this proof */
   suite: LdSuite;
 }
@@ -59,24 +63,20 @@ export interface CreateProofResponse {
   signedDocument: { [key: string]: any } | undefined;
 }
 
-export interface VerifyProofRequest {}
+export interface VerifyProofRequest {
+}
 
-export interface VerifyProofResponse {}
+export interface VerifyProofResponse {
+}
 
 function createBaseCreateProofRequest(): CreateProofRequest {
   return { document: undefined, key: undefined, suite: 0 };
 }
 
 export const CreateProofRequest = {
-  encode(
-    message: CreateProofRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: CreateProofRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.document !== undefined) {
-      Struct.encode(
-        Struct.wrap(message.document),
-        writer.uint32(10).fork()
-      ).ldelim();
+      Struct.encode(Struct.wrap(message.document), writer.uint32(10).fork()).ldelim();
     }
     if (message.key !== undefined) {
       JsonWebKey.encode(message.key, writer.uint32(26).fork()).ldelim();
@@ -95,9 +95,7 @@ export const CreateProofRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.document = Struct.unwrap(
-            Struct.decode(reader, reader.uint32())
-          );
+          message.document = Struct.unwrap(Struct.decode(reader, reader.uint32()));
           break;
         case 3:
           message.key = JsonWebKey.decode(reader, reader.uint32());
@@ -124,8 +122,7 @@ export const CreateProofRequest = {
   toJSON(message: CreateProofRequest): unknown {
     const obj: any = {};
     message.document !== undefined && (obj.document = message.document);
-    message.key !== undefined &&
-      (obj.key = message.key ? JsonWebKey.toJSON(message.key) : undefined);
+    message.key !== undefined && (obj.key = message.key ? JsonWebKey.toJSON(message.key) : undefined);
     message.suite !== undefined && (obj.suite = ldSuiteToJSON(message.suite));
     return obj;
   },
@@ -133,10 +130,7 @@ export const CreateProofRequest = {
   fromPartial(object: DeepPartial<CreateProofRequest>): CreateProofRequest {
     const message = createBaseCreateProofRequest();
     message.document = object.document ?? undefined;
-    message.key =
-      object.key !== undefined && object.key !== null
-        ? JsonWebKey.fromPartial(object.key)
-        : undefined;
+    message.key = (object.key !== undefined && object.key !== null) ? JsonWebKey.fromPartial(object.key) : undefined;
     message.suite = object.suite ?? 0;
     return message;
   },
@@ -147,15 +141,9 @@ function createBaseCreateProofResponse(): CreateProofResponse {
 }
 
 export const CreateProofResponse = {
-  encode(
-    message: CreateProofResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: CreateProofResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.signedDocument !== undefined) {
-      Struct.encode(
-        Struct.wrap(message.signedDocument),
-        writer.uint32(10).fork()
-      ).ldelim();
+      Struct.encode(Struct.wrap(message.signedDocument), writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
@@ -168,9 +156,7 @@ export const CreateProofResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.signedDocument = Struct.unwrap(
-            Struct.decode(reader, reader.uint32())
-          );
+          message.signedDocument = Struct.unwrap(Struct.decode(reader, reader.uint32()));
           break;
         default:
           reader.skipType(tag & 7);
@@ -181,17 +167,12 @@ export const CreateProofResponse = {
   },
 
   fromJSON(object: any): CreateProofResponse {
-    return {
-      signedDocument: isObject(object.signedDocument)
-        ? object.signedDocument
-        : undefined,
-    };
+    return { signedDocument: isObject(object.signedDocument) ? object.signedDocument : undefined };
   },
 
   toJSON(message: CreateProofResponse): unknown {
     const obj: any = {};
-    message.signedDocument !== undefined &&
-      (obj.signedDocument = message.signedDocument);
+    message.signedDocument !== undefined && (obj.signedDocument = message.signedDocument);
     return obj;
   },
 
@@ -207,10 +188,7 @@ function createBaseVerifyProofRequest(): VerifyProofRequest {
 }
 
 export const VerifyProofRequest = {
-  encode(
-    _: VerifyProofRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(_: VerifyProofRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
 
@@ -249,10 +227,7 @@ function createBaseVerifyProofResponse(): VerifyProofResponse {
 }
 
 export const VerifyProofResponse = {
-  encode(
-    _: VerifyProofResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(_: VerifyProofResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
 
@@ -286,23 +261,11 @@ export const VerifyProofResponse = {
   },
 };
 
-type Builtin =
-  | Date
-  | Function
-  | Uint8Array
-  | string
-  | number
-  | boolean
-  | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
-type DeepPartial<T> = T extends Builtin
-  ? T
-  : T extends Array<infer U>
-  ? Array<DeepPartial<U>>
-  : T extends ReadonlyArray<infer U>
-  ? ReadonlyArray<DeepPartial<U>>
-  : T extends {}
-  ? { [K in keyof T]?: DeepPartial<T[K]> }
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
 
 function isObject(value: any): boolean {
