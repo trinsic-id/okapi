@@ -33,7 +33,7 @@ prost = "0.11"
 prost-types = "0.11.1"
 base64 = "0.13.0"
 hex = "0.4.3"
-getrandom = { version = "0.2", features = ["js"] }
+getrandom = { version = "0.2.7", features = ["js"] }
 regex = "1"
 did-key = "0.1"
 serde = "1.0"
