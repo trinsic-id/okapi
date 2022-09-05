@@ -75,6 +75,7 @@ class SecureExampleServiceBase(ServiceBase):
         self, pbmse_v1_encrypted_message: "___pbmse_v1__.EncryptedMessage"
     ) -> AsyncIterator["___pbmse_v1__.EncryptedMessage"]:
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+        yield ___pbmse_v1__.EncryptedMessage()
 
     async def __rpc_unary(
         self,
