@@ -135,10 +135,7 @@ function createBaseGenerateKeyRequest(): GenerateKeyRequest {
 }
 
 export const GenerateKeyRequest = {
-  encode(
-    message: GenerateKeyRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: GenerateKeyRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.seed.length !== 0) {
       writer.uint32(10).bytes(message.seed);
     }
@@ -177,26 +174,18 @@ export const GenerateKeyRequest = {
 
   fromJSON(object: any): GenerateKeyRequest {
     return {
-      seed: isSet(object.seed)
-        ? bytesFromBase64(object.seed)
-        : new Uint8Array(),
+      seed: isSet(object.seed) ? bytesFromBase64(object.seed) : new Uint8Array(),
       keyType: isSet(object.keyType) ? keyTypeFromJSON(object.keyType) : 0,
-      keyFormat: isSet(object.keyFormat)
-        ? documentKeyFormatFromJSON(object.keyFormat)
-        : 0,
+      keyFormat: isSet(object.keyFormat) ? documentKeyFormatFromJSON(object.keyFormat) : 0,
     };
   },
 
   toJSON(message: GenerateKeyRequest): unknown {
     const obj: any = {};
-    message.seed !== undefined &&
-      (obj.seed = base64FromBytes(
-        message.seed !== undefined ? message.seed : new Uint8Array()
-      ));
-    message.keyType !== undefined &&
-      (obj.keyType = keyTypeToJSON(message.keyType));
-    message.keyFormat !== undefined &&
-      (obj.keyFormat = documentKeyFormatToJSON(message.keyFormat));
+    message.seed !== undefined
+      && (obj.seed = base64FromBytes(message.seed !== undefined ? message.seed : new Uint8Array()));
+    message.keyType !== undefined && (obj.keyType = keyTypeToJSON(message.keyType));
+    message.keyFormat !== undefined && (obj.keyFormat = documentKeyFormatToJSON(message.keyFormat));
     return obj;
   },
 
@@ -214,18 +203,12 @@ function createBaseGenerateKeyResponse(): GenerateKeyResponse {
 }
 
 export const GenerateKeyResponse = {
-  encode(
-    message: GenerateKeyResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: GenerateKeyResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     for (const v of message.key) {
       JsonWebKey.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.didDocument !== undefined) {
-      Struct.encode(
-        Struct.wrap(message.didDocument),
-        writer.uint32(18).fork()
-      ).ldelim();
+      Struct.encode(Struct.wrap(message.didDocument), writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
@@ -241,9 +224,7 @@ export const GenerateKeyResponse = {
           message.key.push(JsonWebKey.decode(reader, reader.uint32()));
           break;
         case 2:
-          message.didDocument = Struct.unwrap(
-            Struct.decode(reader, reader.uint32())
-          );
+          message.didDocument = Struct.unwrap(Struct.decode(reader, reader.uint32()));
           break;
         default:
           reader.skipType(tag & 7);
@@ -255,24 +236,19 @@ export const GenerateKeyResponse = {
 
   fromJSON(object: any): GenerateKeyResponse {
     return {
-      key: Array.isArray(object?.key)
-        ? object.key.map((e: any) => JsonWebKey.fromJSON(e))
-        : [],
-      didDocument: isObject(object.didDocument)
-        ? object.didDocument
-        : undefined,
+      key: Array.isArray(object?.key) ? object.key.map((e: any) => JsonWebKey.fromJSON(e)) : [],
+      didDocument: isObject(object.didDocument) ? object.didDocument : undefined,
     };
   },
 
   toJSON(message: GenerateKeyResponse): unknown {
     const obj: any = {};
     if (message.key) {
-      obj.key = message.key.map((e) => (e ? JsonWebKey.toJSON(e) : undefined));
+      obj.key = message.key.map((e) => e ? JsonWebKey.toJSON(e) : undefined);
     } else {
       obj.key = [];
     }
-    message.didDocument !== undefined &&
-      (obj.didDocument = message.didDocument);
+    message.didDocument !== undefined && (obj.didDocument = message.didDocument);
     return obj;
   },
 
@@ -289,10 +265,7 @@ function createBaseResolveRequest(): ResolveRequest {
 }
 
 export const ResolveRequest = {
-  encode(
-    message: ResolveRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: ResolveRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.did !== "") {
       writer.uint32(10).string(message.did);
     }
@@ -318,9 +291,7 @@ export const ResolveRequest = {
   },
 
   fromJSON(object: any): ResolveRequest {
-    return {
-      did: isSet(object.did) ? String(object.did) : "",
-    };
+    return { did: isSet(object.did) ? String(object.did) : "" };
   },
 
   toJSON(message: ResolveRequest): unknown {
@@ -341,15 +312,9 @@ function createBaseResolveResponse(): ResolveResponse {
 }
 
 export const ResolveResponse = {
-  encode(
-    message: ResolveResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: ResolveResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.didDocument !== undefined) {
-      Struct.encode(
-        Struct.wrap(message.didDocument),
-        writer.uint32(10).fork()
-      ).ldelim();
+      Struct.encode(Struct.wrap(message.didDocument), writer.uint32(10).fork()).ldelim();
     }
     for (const v of message.keys) {
       JsonWebKey.encode(v!, writer.uint32(18).fork()).ldelim();
@@ -365,9 +330,7 @@ export const ResolveResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.didDocument = Struct.unwrap(
-            Struct.decode(reader, reader.uint32())
-          );
+          message.didDocument = Struct.unwrap(Struct.decode(reader, reader.uint32()));
           break;
         case 2:
           message.keys.push(JsonWebKey.decode(reader, reader.uint32()));
@@ -382,23 +345,16 @@ export const ResolveResponse = {
 
   fromJSON(object: any): ResolveResponse {
     return {
-      didDocument: isObject(object.didDocument)
-        ? object.didDocument
-        : undefined,
-      keys: Array.isArray(object?.keys)
-        ? object.keys.map((e: any) => JsonWebKey.fromJSON(e))
-        : [],
+      didDocument: isObject(object.didDocument) ? object.didDocument : undefined,
+      keys: Array.isArray(object?.keys) ? object.keys.map((e: any) => JsonWebKey.fromJSON(e)) : [],
     };
   },
 
   toJSON(message: ResolveResponse): unknown {
     const obj: any = {};
-    message.didDocument !== undefined &&
-      (obj.didDocument = message.didDocument);
+    message.didDocument !== undefined && (obj.didDocument = message.didDocument);
     if (message.keys) {
-      obj.keys = message.keys.map((e) =>
-        e ? JsonWebKey.toJSON(e) : undefined
-      );
+      obj.keys = message.keys.map((e) => e ? JsonWebKey.toJSON(e) : undefined);
     } else {
       obj.keys = [];
     }
@@ -418,10 +374,7 @@ function createBaseJsonWebKey(): JsonWebKey {
 }
 
 export const JsonWebKey = {
-  encode(
-    message: JsonWebKey,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: JsonWebKey, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.kid !== "") {
       writer.uint32(10).string(message.kid);
     }
@@ -514,53 +467,51 @@ declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
 var globalThis: any = (() => {
-  if (typeof globalThis !== "undefined") return globalThis;
-  if (typeof self !== "undefined") return self;
-  if (typeof window !== "undefined") return window;
-  if (typeof global !== "undefined") return global;
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
   throw "Unable to locate global object";
 })();
 
-const atob: (b64: string) => string =
-  globalThis.atob ||
-  ((b64) => globalThis.Buffer.from(b64, "base64").toString("binary"));
 function bytesFromBase64(b64: string): Uint8Array {
-  const bin = atob(b64);
-  const arr = new Uint8Array(bin.length);
-  for (let i = 0; i < bin.length; ++i) {
-    arr[i] = bin.charCodeAt(i);
+  if (globalThis.Buffer) {
+    return Uint8Array.from(globalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = globalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
   }
-  return arr;
 }
 
-const btoa: (bin: string) => string =
-  globalThis.btoa ||
-  ((bin) => globalThis.Buffer.from(bin, "binary").toString("base64"));
 function base64FromBytes(arr: Uint8Array): string {
-  const bin: string[] = [];
-  arr.forEach((byte) => {
-    bin.push(String.fromCharCode(byte));
-  });
-  return btoa(bin.join(""));
+  if (globalThis.Buffer) {
+    return globalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(String.fromCharCode(byte));
+    });
+    return globalThis.btoa(bin.join(""));
+  }
 }
 
-type Builtin =
-  | Date
-  | Function
-  | Uint8Array
-  | string
-  | number
-  | boolean
-  | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
-type DeepPartial<T> = T extends Builtin
-  ? T
-  : T extends Array<infer U>
-  ? Array<DeepPartial<U>>
-  : T extends ReadonlyArray<infer U>
-  ? ReadonlyArray<DeepPartial<U>>
-  : T extends {}
-  ? { [K in keyof T]?: DeepPartial<T[K]> }
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
 
 function isObject(value: any): boolean {

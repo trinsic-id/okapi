@@ -121,20 +121,14 @@ function createBaseCreateOberonKeyRequest(): CreateOberonKeyRequest {
 }
 
 export const CreateOberonKeyRequest = {
-  encode(
-    message: CreateOberonKeyRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: CreateOberonKeyRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.seed.length !== 0) {
       writer.uint32(10).bytes(message.seed);
     }
     return writer;
   },
 
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): CreateOberonKeyRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): CreateOberonKeyRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCreateOberonKeyRequest();
@@ -153,25 +147,17 @@ export const CreateOberonKeyRequest = {
   },
 
   fromJSON(object: any): CreateOberonKeyRequest {
-    return {
-      seed: isSet(object.seed)
-        ? bytesFromBase64(object.seed)
-        : new Uint8Array(),
-    };
+    return { seed: isSet(object.seed) ? bytesFromBase64(object.seed) : new Uint8Array() };
   },
 
   toJSON(message: CreateOberonKeyRequest): unknown {
     const obj: any = {};
-    message.seed !== undefined &&
-      (obj.seed = base64FromBytes(
-        message.seed !== undefined ? message.seed : new Uint8Array()
-      ));
+    message.seed !== undefined
+      && (obj.seed = base64FromBytes(message.seed !== undefined ? message.seed : new Uint8Array()));
     return obj;
   },
 
-  fromPartial(
-    object: DeepPartial<CreateOberonKeyRequest>
-  ): CreateOberonKeyRequest {
+  fromPartial(object: DeepPartial<CreateOberonKeyRequest>): CreateOberonKeyRequest {
     const message = createBaseCreateOberonKeyRequest();
     message.seed = object.seed ?? new Uint8Array();
     return message;
@@ -183,10 +169,7 @@ function createBaseCreateOberonKeyResponse(): CreateOberonKeyResponse {
 }
 
 export const CreateOberonKeyResponse = {
-  encode(
-    message: CreateOberonKeyResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: CreateOberonKeyResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.sk.length !== 0) {
       writer.uint32(18).bytes(message.sk);
     }
@@ -196,10 +179,7 @@ export const CreateOberonKeyResponse = {
     return writer;
   },
 
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): CreateOberonKeyResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): CreateOberonKeyResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCreateOberonKeyResponse();
@@ -229,20 +209,12 @@ export const CreateOberonKeyResponse = {
 
   toJSON(message: CreateOberonKeyResponse): unknown {
     const obj: any = {};
-    message.sk !== undefined &&
-      (obj.sk = base64FromBytes(
-        message.sk !== undefined ? message.sk : new Uint8Array()
-      ));
-    message.pk !== undefined &&
-      (obj.pk = base64FromBytes(
-        message.pk !== undefined ? message.pk : new Uint8Array()
-      ));
+    message.sk !== undefined && (obj.sk = base64FromBytes(message.sk !== undefined ? message.sk : new Uint8Array()));
+    message.pk !== undefined && (obj.pk = base64FromBytes(message.pk !== undefined ? message.pk : new Uint8Array()));
     return obj;
   },
 
-  fromPartial(
-    object: DeepPartial<CreateOberonKeyResponse>
-  ): CreateOberonKeyResponse {
+  fromPartial(object: DeepPartial<CreateOberonKeyResponse>): CreateOberonKeyResponse {
     const message = createBaseCreateOberonKeyResponse();
     message.sk = object.sk ?? new Uint8Array();
     message.pk = object.pk ?? new Uint8Array();
@@ -255,10 +227,7 @@ function createBaseCreateOberonTokenRequest(): CreateOberonTokenRequest {
 }
 
 export const CreateOberonTokenRequest = {
-  encode(
-    message: CreateOberonTokenRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: CreateOberonTokenRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.sk.length !== 0) {
       writer.uint32(10).bytes(message.sk);
     }
@@ -271,10 +240,7 @@ export const CreateOberonTokenRequest = {
     return writer;
   },
 
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): CreateOberonTokenRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): CreateOberonTokenRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCreateOberonTokenRequest();
@@ -301,38 +267,25 @@ export const CreateOberonTokenRequest = {
   fromJSON(object: any): CreateOberonTokenRequest {
     return {
       sk: isSet(object.sk) ? bytesFromBase64(object.sk) : new Uint8Array(),
-      data: isSet(object.data)
-        ? bytesFromBase64(object.data)
-        : new Uint8Array(),
-      blinding: Array.isArray(object?.blinding)
-        ? object.blinding.map((e: any) => bytesFromBase64(e))
-        : [],
+      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array(),
+      blinding: Array.isArray(object?.blinding) ? object.blinding.map((e: any) => bytesFromBase64(e)) : [],
     };
   },
 
   toJSON(message: CreateOberonTokenRequest): unknown {
     const obj: any = {};
-    message.sk !== undefined &&
-      (obj.sk = base64FromBytes(
-        message.sk !== undefined ? message.sk : new Uint8Array()
-      ));
-    message.data !== undefined &&
-      (obj.data = base64FromBytes(
-        message.data !== undefined ? message.data : new Uint8Array()
-      ));
+    message.sk !== undefined && (obj.sk = base64FromBytes(message.sk !== undefined ? message.sk : new Uint8Array()));
+    message.data !== undefined
+      && (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
     if (message.blinding) {
-      obj.blinding = message.blinding.map((e) =>
-        base64FromBytes(e !== undefined ? e : new Uint8Array())
-      );
+      obj.blinding = message.blinding.map((e) => base64FromBytes(e !== undefined ? e : new Uint8Array()));
     } else {
       obj.blinding = [];
     }
     return obj;
   },
 
-  fromPartial(
-    object: DeepPartial<CreateOberonTokenRequest>
-  ): CreateOberonTokenRequest {
+  fromPartial(object: DeepPartial<CreateOberonTokenRequest>): CreateOberonTokenRequest {
     const message = createBaseCreateOberonTokenRequest();
     message.sk = object.sk ?? new Uint8Array();
     message.data = object.data ?? new Uint8Array();
@@ -346,20 +299,14 @@ function createBaseCreateOberonTokenResponse(): CreateOberonTokenResponse {
 }
 
 export const CreateOberonTokenResponse = {
-  encode(
-    message: CreateOberonTokenResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: CreateOberonTokenResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.token.length !== 0) {
       writer.uint32(10).bytes(message.token);
     }
     return writer;
   },
 
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): CreateOberonTokenResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): CreateOberonTokenResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCreateOberonTokenResponse();
@@ -378,25 +325,17 @@ export const CreateOberonTokenResponse = {
   },
 
   fromJSON(object: any): CreateOberonTokenResponse {
-    return {
-      token: isSet(object.token)
-        ? bytesFromBase64(object.token)
-        : new Uint8Array(),
-    };
+    return { token: isSet(object.token) ? bytesFromBase64(object.token) : new Uint8Array() };
   },
 
   toJSON(message: CreateOberonTokenResponse): unknown {
     const obj: any = {};
-    message.token !== undefined &&
-      (obj.token = base64FromBytes(
-        message.token !== undefined ? message.token : new Uint8Array()
-      ));
+    message.token !== undefined
+      && (obj.token = base64FromBytes(message.token !== undefined ? message.token : new Uint8Array()));
     return obj;
   },
 
-  fromPartial(
-    object: DeepPartial<CreateOberonTokenResponse>
-  ): CreateOberonTokenResponse {
+  fromPartial(object: DeepPartial<CreateOberonTokenResponse>): CreateOberonTokenResponse {
     const message = createBaseCreateOberonTokenResponse();
     message.token = object.token ?? new Uint8Array();
     return message;
@@ -404,19 +343,11 @@ export const CreateOberonTokenResponse = {
 };
 
 function createBaseCreateOberonProofRequest(): CreateOberonProofRequest {
-  return {
-    data: new Uint8Array(),
-    token: new Uint8Array(),
-    blinding: [],
-    nonce: new Uint8Array(),
-  };
+  return { data: new Uint8Array(), token: new Uint8Array(), blinding: [], nonce: new Uint8Array() };
 }
 
 export const CreateOberonProofRequest = {
-  encode(
-    message: CreateOberonProofRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: CreateOberonProofRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.data.length !== 0) {
       writer.uint32(10).bytes(message.data);
     }
@@ -432,10 +363,7 @@ export const CreateOberonProofRequest = {
     return writer;
   },
 
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): CreateOberonProofRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): CreateOberonProofRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCreateOberonProofRequest();
@@ -464,48 +392,30 @@ export const CreateOberonProofRequest = {
 
   fromJSON(object: any): CreateOberonProofRequest {
     return {
-      data: isSet(object.data)
-        ? bytesFromBase64(object.data)
-        : new Uint8Array(),
-      token: isSet(object.token)
-        ? bytesFromBase64(object.token)
-        : new Uint8Array(),
-      blinding: Array.isArray(object?.blinding)
-        ? object.blinding.map((e: any) => bytesFromBase64(e))
-        : [],
-      nonce: isSet(object.nonce)
-        ? bytesFromBase64(object.nonce)
-        : new Uint8Array(),
+      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array(),
+      token: isSet(object.token) ? bytesFromBase64(object.token) : new Uint8Array(),
+      blinding: Array.isArray(object?.blinding) ? object.blinding.map((e: any) => bytesFromBase64(e)) : [],
+      nonce: isSet(object.nonce) ? bytesFromBase64(object.nonce) : new Uint8Array(),
     };
   },
 
   toJSON(message: CreateOberonProofRequest): unknown {
     const obj: any = {};
-    message.data !== undefined &&
-      (obj.data = base64FromBytes(
-        message.data !== undefined ? message.data : new Uint8Array()
-      ));
-    message.token !== undefined &&
-      (obj.token = base64FromBytes(
-        message.token !== undefined ? message.token : new Uint8Array()
-      ));
+    message.data !== undefined
+      && (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
+    message.token !== undefined
+      && (obj.token = base64FromBytes(message.token !== undefined ? message.token : new Uint8Array()));
     if (message.blinding) {
-      obj.blinding = message.blinding.map((e) =>
-        base64FromBytes(e !== undefined ? e : new Uint8Array())
-      );
+      obj.blinding = message.blinding.map((e) => base64FromBytes(e !== undefined ? e : new Uint8Array()));
     } else {
       obj.blinding = [];
     }
-    message.nonce !== undefined &&
-      (obj.nonce = base64FromBytes(
-        message.nonce !== undefined ? message.nonce : new Uint8Array()
-      ));
+    message.nonce !== undefined
+      && (obj.nonce = base64FromBytes(message.nonce !== undefined ? message.nonce : new Uint8Array()));
     return obj;
   },
 
-  fromPartial(
-    object: DeepPartial<CreateOberonProofRequest>
-  ): CreateOberonProofRequest {
+  fromPartial(object: DeepPartial<CreateOberonProofRequest>): CreateOberonProofRequest {
     const message = createBaseCreateOberonProofRequest();
     message.data = object.data ?? new Uint8Array();
     message.token = object.token ?? new Uint8Array();
@@ -520,20 +430,14 @@ function createBaseCreateOberonProofResponse(): CreateOberonProofResponse {
 }
 
 export const CreateOberonProofResponse = {
-  encode(
-    message: CreateOberonProofResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: CreateOberonProofResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.proof.length !== 0) {
       writer.uint32(18).bytes(message.proof);
     }
     return writer;
   },
 
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): CreateOberonProofResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): CreateOberonProofResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCreateOberonProofResponse();
@@ -552,25 +456,17 @@ export const CreateOberonProofResponse = {
   },
 
   fromJSON(object: any): CreateOberonProofResponse {
-    return {
-      proof: isSet(object.proof)
-        ? bytesFromBase64(object.proof)
-        : new Uint8Array(),
-    };
+    return { proof: isSet(object.proof) ? bytesFromBase64(object.proof) : new Uint8Array() };
   },
 
   toJSON(message: CreateOberonProofResponse): unknown {
     const obj: any = {};
-    message.proof !== undefined &&
-      (obj.proof = base64FromBytes(
-        message.proof !== undefined ? message.proof : new Uint8Array()
-      ));
+    message.proof !== undefined
+      && (obj.proof = base64FromBytes(message.proof !== undefined ? message.proof : new Uint8Array()));
     return obj;
   },
 
-  fromPartial(
-    object: DeepPartial<CreateOberonProofResponse>
-  ): CreateOberonProofResponse {
+  fromPartial(object: DeepPartial<CreateOberonProofResponse>): CreateOberonProofResponse {
     const message = createBaseCreateOberonProofResponse();
     message.proof = object.proof ?? new Uint8Array();
     return message;
@@ -578,19 +474,11 @@ export const CreateOberonProofResponse = {
 };
 
 function createBaseVerifyOberonProofRequest(): VerifyOberonProofRequest {
-  return {
-    proof: new Uint8Array(),
-    data: new Uint8Array(),
-    nonce: new Uint8Array(),
-    pk: new Uint8Array(),
-  };
+  return { proof: new Uint8Array(), data: new Uint8Array(), nonce: new Uint8Array(), pk: new Uint8Array() };
 }
 
 export const VerifyOberonProofRequest = {
-  encode(
-    message: VerifyOberonProofRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: VerifyOberonProofRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.proof.length !== 0) {
       writer.uint32(10).bytes(message.proof);
     }
@@ -606,10 +494,7 @@ export const VerifyOberonProofRequest = {
     return writer;
   },
 
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): VerifyOberonProofRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): VerifyOberonProofRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseVerifyOberonProofRequest();
@@ -638,43 +523,26 @@ export const VerifyOberonProofRequest = {
 
   fromJSON(object: any): VerifyOberonProofRequest {
     return {
-      proof: isSet(object.proof)
-        ? bytesFromBase64(object.proof)
-        : new Uint8Array(),
-      data: isSet(object.data)
-        ? bytesFromBase64(object.data)
-        : new Uint8Array(),
-      nonce: isSet(object.nonce)
-        ? bytesFromBase64(object.nonce)
-        : new Uint8Array(),
+      proof: isSet(object.proof) ? bytesFromBase64(object.proof) : new Uint8Array(),
+      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array(),
+      nonce: isSet(object.nonce) ? bytesFromBase64(object.nonce) : new Uint8Array(),
       pk: isSet(object.pk) ? bytesFromBase64(object.pk) : new Uint8Array(),
     };
   },
 
   toJSON(message: VerifyOberonProofRequest): unknown {
     const obj: any = {};
-    message.proof !== undefined &&
-      (obj.proof = base64FromBytes(
-        message.proof !== undefined ? message.proof : new Uint8Array()
-      ));
-    message.data !== undefined &&
-      (obj.data = base64FromBytes(
-        message.data !== undefined ? message.data : new Uint8Array()
-      ));
-    message.nonce !== undefined &&
-      (obj.nonce = base64FromBytes(
-        message.nonce !== undefined ? message.nonce : new Uint8Array()
-      ));
-    message.pk !== undefined &&
-      (obj.pk = base64FromBytes(
-        message.pk !== undefined ? message.pk : new Uint8Array()
-      ));
+    message.proof !== undefined
+      && (obj.proof = base64FromBytes(message.proof !== undefined ? message.proof : new Uint8Array()));
+    message.data !== undefined
+      && (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
+    message.nonce !== undefined
+      && (obj.nonce = base64FromBytes(message.nonce !== undefined ? message.nonce : new Uint8Array()));
+    message.pk !== undefined && (obj.pk = base64FromBytes(message.pk !== undefined ? message.pk : new Uint8Array()));
     return obj;
   },
 
-  fromPartial(
-    object: DeepPartial<VerifyOberonProofRequest>
-  ): VerifyOberonProofRequest {
+  fromPartial(object: DeepPartial<VerifyOberonProofRequest>): VerifyOberonProofRequest {
     const message = createBaseVerifyOberonProofRequest();
     message.proof = object.proof ?? new Uint8Array();
     message.data = object.data ?? new Uint8Array();
@@ -689,20 +557,14 @@ function createBaseVerifyOberonProofResponse(): VerifyOberonProofResponse {
 }
 
 export const VerifyOberonProofResponse = {
-  encode(
-    message: VerifyOberonProofResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: VerifyOberonProofResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.valid === true) {
       writer.uint32(8).bool(message.valid);
     }
     return writer;
   },
 
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): VerifyOberonProofResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): VerifyOberonProofResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseVerifyOberonProofResponse();
@@ -721,9 +583,7 @@ export const VerifyOberonProofResponse = {
   },
 
   fromJSON(object: any): VerifyOberonProofResponse {
-    return {
-      valid: isSet(object.valid) ? Boolean(object.valid) : false,
-    };
+    return { valid: isSet(object.valid) ? Boolean(object.valid) : false };
   },
 
   toJSON(message: VerifyOberonProofResponse): unknown {
@@ -732,9 +592,7 @@ export const VerifyOberonProofResponse = {
     return obj;
   },
 
-  fromPartial(
-    object: DeepPartial<VerifyOberonProofResponse>
-  ): VerifyOberonProofResponse {
+  fromPartial(object: DeepPartial<VerifyOberonProofResponse>): VerifyOberonProofResponse {
     const message = createBaseVerifyOberonProofResponse();
     message.valid = object.valid ?? false;
     return message;
@@ -746,10 +604,7 @@ function createBaseBlindOberonTokenRequest(): BlindOberonTokenRequest {
 }
 
 export const BlindOberonTokenRequest = {
-  encode(
-    message: BlindOberonTokenRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: BlindOberonTokenRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.token.length !== 0) {
       writer.uint32(10).bytes(message.token);
     }
@@ -759,10 +614,7 @@ export const BlindOberonTokenRequest = {
     return writer;
   },
 
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): BlindOberonTokenRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): BlindOberonTokenRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseBlindOberonTokenRequest();
@@ -785,34 +637,24 @@ export const BlindOberonTokenRequest = {
 
   fromJSON(object: any): BlindOberonTokenRequest {
     return {
-      token: isSet(object.token)
-        ? bytesFromBase64(object.token)
-        : new Uint8Array(),
-      blinding: Array.isArray(object?.blinding)
-        ? object.blinding.map((e: any) => bytesFromBase64(e))
-        : [],
+      token: isSet(object.token) ? bytesFromBase64(object.token) : new Uint8Array(),
+      blinding: Array.isArray(object?.blinding) ? object.blinding.map((e: any) => bytesFromBase64(e)) : [],
     };
   },
 
   toJSON(message: BlindOberonTokenRequest): unknown {
     const obj: any = {};
-    message.token !== undefined &&
-      (obj.token = base64FromBytes(
-        message.token !== undefined ? message.token : new Uint8Array()
-      ));
+    message.token !== undefined
+      && (obj.token = base64FromBytes(message.token !== undefined ? message.token : new Uint8Array()));
     if (message.blinding) {
-      obj.blinding = message.blinding.map((e) =>
-        base64FromBytes(e !== undefined ? e : new Uint8Array())
-      );
+      obj.blinding = message.blinding.map((e) => base64FromBytes(e !== undefined ? e : new Uint8Array()));
     } else {
       obj.blinding = [];
     }
     return obj;
   },
 
-  fromPartial(
-    object: DeepPartial<BlindOberonTokenRequest>
-  ): BlindOberonTokenRequest {
+  fromPartial(object: DeepPartial<BlindOberonTokenRequest>): BlindOberonTokenRequest {
     const message = createBaseBlindOberonTokenRequest();
     message.token = object.token ?? new Uint8Array();
     message.blinding = object.blinding?.map((e) => e) || [];
@@ -825,20 +667,14 @@ function createBaseBlindOberonTokenResponse(): BlindOberonTokenResponse {
 }
 
 export const BlindOberonTokenResponse = {
-  encode(
-    message: BlindOberonTokenResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: BlindOberonTokenResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.token.length !== 0) {
       writer.uint32(10).bytes(message.token);
     }
     return writer;
   },
 
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): BlindOberonTokenResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): BlindOberonTokenResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseBlindOberonTokenResponse();
@@ -857,25 +693,17 @@ export const BlindOberonTokenResponse = {
   },
 
   fromJSON(object: any): BlindOberonTokenResponse {
-    return {
-      token: isSet(object.token)
-        ? bytesFromBase64(object.token)
-        : new Uint8Array(),
-    };
+    return { token: isSet(object.token) ? bytesFromBase64(object.token) : new Uint8Array() };
   },
 
   toJSON(message: BlindOberonTokenResponse): unknown {
     const obj: any = {};
-    message.token !== undefined &&
-      (obj.token = base64FromBytes(
-        message.token !== undefined ? message.token : new Uint8Array()
-      ));
+    message.token !== undefined
+      && (obj.token = base64FromBytes(message.token !== undefined ? message.token : new Uint8Array()));
     return obj;
   },
 
-  fromPartial(
-    object: DeepPartial<BlindOberonTokenResponse>
-  ): BlindOberonTokenResponse {
+  fromPartial(object: DeepPartial<BlindOberonTokenResponse>): BlindOberonTokenResponse {
     const message = createBaseBlindOberonTokenResponse();
     message.token = object.token ?? new Uint8Array();
     return message;
@@ -887,10 +715,7 @@ function createBaseUnBlindOberonTokenRequest(): UnBlindOberonTokenRequest {
 }
 
 export const UnBlindOberonTokenRequest = {
-  encode(
-    message: UnBlindOberonTokenRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: UnBlindOberonTokenRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.token.length !== 0) {
       writer.uint32(10).bytes(message.token);
     }
@@ -900,10 +725,7 @@ export const UnBlindOberonTokenRequest = {
     return writer;
   },
 
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): UnBlindOberonTokenRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): UnBlindOberonTokenRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseUnBlindOberonTokenRequest();
@@ -926,34 +748,24 @@ export const UnBlindOberonTokenRequest = {
 
   fromJSON(object: any): UnBlindOberonTokenRequest {
     return {
-      token: isSet(object.token)
-        ? bytesFromBase64(object.token)
-        : new Uint8Array(),
-      blinding: Array.isArray(object?.blinding)
-        ? object.blinding.map((e: any) => bytesFromBase64(e))
-        : [],
+      token: isSet(object.token) ? bytesFromBase64(object.token) : new Uint8Array(),
+      blinding: Array.isArray(object?.blinding) ? object.blinding.map((e: any) => bytesFromBase64(e)) : [],
     };
   },
 
   toJSON(message: UnBlindOberonTokenRequest): unknown {
     const obj: any = {};
-    message.token !== undefined &&
-      (obj.token = base64FromBytes(
-        message.token !== undefined ? message.token : new Uint8Array()
-      ));
+    message.token !== undefined
+      && (obj.token = base64FromBytes(message.token !== undefined ? message.token : new Uint8Array()));
     if (message.blinding) {
-      obj.blinding = message.blinding.map((e) =>
-        base64FromBytes(e !== undefined ? e : new Uint8Array())
-      );
+      obj.blinding = message.blinding.map((e) => base64FromBytes(e !== undefined ? e : new Uint8Array()));
     } else {
       obj.blinding = [];
     }
     return obj;
   },
 
-  fromPartial(
-    object: DeepPartial<UnBlindOberonTokenRequest>
-  ): UnBlindOberonTokenRequest {
+  fromPartial(object: DeepPartial<UnBlindOberonTokenRequest>): UnBlindOberonTokenRequest {
     const message = createBaseUnBlindOberonTokenRequest();
     message.token = object.token ?? new Uint8Array();
     message.blinding = object.blinding?.map((e) => e) || [];
@@ -966,20 +778,14 @@ function createBaseUnBlindOberonTokenResponse(): UnBlindOberonTokenResponse {
 }
 
 export const UnBlindOberonTokenResponse = {
-  encode(
-    message: UnBlindOberonTokenResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: UnBlindOberonTokenResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.token.length !== 0) {
       writer.uint32(10).bytes(message.token);
     }
     return writer;
   },
 
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): UnBlindOberonTokenResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): UnBlindOberonTokenResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseUnBlindOberonTokenResponse();
@@ -998,25 +804,17 @@ export const UnBlindOberonTokenResponse = {
   },
 
   fromJSON(object: any): UnBlindOberonTokenResponse {
-    return {
-      token: isSet(object.token)
-        ? bytesFromBase64(object.token)
-        : new Uint8Array(),
-    };
+    return { token: isSet(object.token) ? bytesFromBase64(object.token) : new Uint8Array() };
   },
 
   toJSON(message: UnBlindOberonTokenResponse): unknown {
     const obj: any = {};
-    message.token !== undefined &&
-      (obj.token = base64FromBytes(
-        message.token !== undefined ? message.token : new Uint8Array()
-      ));
+    message.token !== undefined
+      && (obj.token = base64FromBytes(message.token !== undefined ? message.token : new Uint8Array()));
     return obj;
   },
 
-  fromPartial(
-    object: DeepPartial<UnBlindOberonTokenResponse>
-  ): UnBlindOberonTokenResponse {
+  fromPartial(object: DeepPartial<UnBlindOberonTokenResponse>): UnBlindOberonTokenResponse {
     const message = createBaseUnBlindOberonTokenResponse();
     message.token = object.token ?? new Uint8Array();
     return message;
@@ -1024,18 +822,11 @@ export const UnBlindOberonTokenResponse = {
 };
 
 function createBaseVerifyOberonTokenRequest(): VerifyOberonTokenRequest {
-  return {
-    token: new Uint8Array(),
-    pk: new Uint8Array(),
-    data: new Uint8Array(),
-  };
+  return { token: new Uint8Array(), pk: new Uint8Array(), data: new Uint8Array() };
 }
 
 export const VerifyOberonTokenRequest = {
-  encode(
-    message: VerifyOberonTokenRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: VerifyOberonTokenRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.token.length !== 0) {
       writer.uint32(10).bytes(message.token);
     }
@@ -1048,10 +839,7 @@ export const VerifyOberonTokenRequest = {
     return writer;
   },
 
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): VerifyOberonTokenRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): VerifyOberonTokenRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseVerifyOberonTokenRequest();
@@ -1077,36 +865,23 @@ export const VerifyOberonTokenRequest = {
 
   fromJSON(object: any): VerifyOberonTokenRequest {
     return {
-      token: isSet(object.token)
-        ? bytesFromBase64(object.token)
-        : new Uint8Array(),
+      token: isSet(object.token) ? bytesFromBase64(object.token) : new Uint8Array(),
       pk: isSet(object.pk) ? bytesFromBase64(object.pk) : new Uint8Array(),
-      data: isSet(object.data)
-        ? bytesFromBase64(object.data)
-        : new Uint8Array(),
+      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array(),
     };
   },
 
   toJSON(message: VerifyOberonTokenRequest): unknown {
     const obj: any = {};
-    message.token !== undefined &&
-      (obj.token = base64FromBytes(
-        message.token !== undefined ? message.token : new Uint8Array()
-      ));
-    message.pk !== undefined &&
-      (obj.pk = base64FromBytes(
-        message.pk !== undefined ? message.pk : new Uint8Array()
-      ));
-    message.data !== undefined &&
-      (obj.data = base64FromBytes(
-        message.data !== undefined ? message.data : new Uint8Array()
-      ));
+    message.token !== undefined
+      && (obj.token = base64FromBytes(message.token !== undefined ? message.token : new Uint8Array()));
+    message.pk !== undefined && (obj.pk = base64FromBytes(message.pk !== undefined ? message.pk : new Uint8Array()));
+    message.data !== undefined
+      && (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
     return obj;
   },
 
-  fromPartial(
-    object: DeepPartial<VerifyOberonTokenRequest>
-  ): VerifyOberonTokenRequest {
+  fromPartial(object: DeepPartial<VerifyOberonTokenRequest>): VerifyOberonTokenRequest {
     const message = createBaseVerifyOberonTokenRequest();
     message.token = object.token ?? new Uint8Array();
     message.pk = object.pk ?? new Uint8Array();
@@ -1120,20 +895,14 @@ function createBaseVerifyOberonTokenResponse(): VerifyOberonTokenResponse {
 }
 
 export const VerifyOberonTokenResponse = {
-  encode(
-    message: VerifyOberonTokenResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: VerifyOberonTokenResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.valid === true) {
       writer.uint32(8).bool(message.valid);
     }
     return writer;
   },
 
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): VerifyOberonTokenResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): VerifyOberonTokenResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseVerifyOberonTokenResponse();
@@ -1152,9 +921,7 @@ export const VerifyOberonTokenResponse = {
   },
 
   fromJSON(object: any): VerifyOberonTokenResponse {
-    return {
-      valid: isSet(object.valid) ? Boolean(object.valid) : false,
-    };
+    return { valid: isSet(object.valid) ? Boolean(object.valid) : false };
   },
 
   toJSON(message: VerifyOberonTokenResponse): unknown {
@@ -1163,9 +930,7 @@ export const VerifyOberonTokenResponse = {
     return obj;
   },
 
-  fromPartial(
-    object: DeepPartial<VerifyOberonTokenResponse>
-  ): VerifyOberonTokenResponse {
+  fromPartial(object: DeepPartial<VerifyOberonTokenResponse>): VerifyOberonTokenResponse {
     const message = createBaseVerifyOberonTokenResponse();
     message.valid = object.valid ?? false;
     return message;
@@ -1176,53 +941,51 @@ declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
 var globalThis: any = (() => {
-  if (typeof globalThis !== "undefined") return globalThis;
-  if (typeof self !== "undefined") return self;
-  if (typeof window !== "undefined") return window;
-  if (typeof global !== "undefined") return global;
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
   throw "Unable to locate global object";
 })();
 
-const atob: (b64: string) => string =
-  globalThis.atob ||
-  ((b64) => globalThis.Buffer.from(b64, "base64").toString("binary"));
 function bytesFromBase64(b64: string): Uint8Array {
-  const bin = atob(b64);
-  const arr = new Uint8Array(bin.length);
-  for (let i = 0; i < bin.length; ++i) {
-    arr[i] = bin.charCodeAt(i);
+  if (globalThis.Buffer) {
+    return Uint8Array.from(globalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = globalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
   }
-  return arr;
 }
 
-const btoa: (bin: string) => string =
-  globalThis.btoa ||
-  ((bin) => globalThis.Buffer.from(bin, "binary").toString("base64"));
 function base64FromBytes(arr: Uint8Array): string {
-  const bin: string[] = [];
-  arr.forEach((byte) => {
-    bin.push(String.fromCharCode(byte));
-  });
-  return btoa(bin.join(""));
+  if (globalThis.Buffer) {
+    return globalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(String.fromCharCode(byte));
+    });
+    return globalThis.btoa(bin.join(""));
+  }
 }
 
-type Builtin =
-  | Date
-  | Function
-  | Uint8Array
-  | string
-  | number
-  | boolean
-  | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
-type DeepPartial<T> = T extends Builtin
-  ? T
-  : T extends Array<infer U>
-  ? Array<DeepPartial<U>>
-  : T extends ReadonlyArray<infer U>
-  ? ReadonlyArray<DeepPartial<U>>
-  : T extends {}
-  ? { [K in keyof T]?: DeepPartial<T[K]> }
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
 
 function isSet(value: any): boolean {

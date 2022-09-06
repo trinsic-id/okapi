@@ -123,10 +123,7 @@ function createBaseSignedMessage(): SignedMessage {
 }
 
 export const SignedMessage = {
-  encode(
-    message: SignedMessage,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: SignedMessage, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.payload.length !== 0) {
       writer.uint32(10).bytes(message.payload);
     }
@@ -159,25 +156,17 @@ export const SignedMessage = {
 
   fromJSON(object: any): SignedMessage {
     return {
-      payload: isSet(object.payload)
-        ? bytesFromBase64(object.payload)
-        : new Uint8Array(),
-      signatures: Array.isArray(object?.signatures)
-        ? object.signatures.map((e: any) => Signature.fromJSON(e))
-        : [],
+      payload: isSet(object.payload) ? bytesFromBase64(object.payload) : new Uint8Array(),
+      signatures: Array.isArray(object?.signatures) ? object.signatures.map((e: any) => Signature.fromJSON(e)) : [],
     };
   },
 
   toJSON(message: SignedMessage): unknown {
     const obj: any = {};
-    message.payload !== undefined &&
-      (obj.payload = base64FromBytes(
-        message.payload !== undefined ? message.payload : new Uint8Array()
-      ));
+    message.payload !== undefined
+      && (obj.payload = base64FromBytes(message.payload !== undefined ? message.payload : new Uint8Array()));
     if (message.signatures) {
-      obj.signatures = message.signatures.map((e) =>
-        e ? Signature.toJSON(e) : undefined
-      );
+      obj.signatures = message.signatures.map((e) => e ? Signature.toJSON(e) : undefined);
     } else {
       obj.signatures = [];
     }
@@ -187,8 +176,7 @@ export const SignedMessage = {
   fromPartial(object: DeepPartial<SignedMessage>): SignedMessage {
     const message = createBaseSignedMessage();
     message.payload = object.payload ?? new Uint8Array();
-    message.signatures =
-      object.signatures?.map((e) => Signature.fromPartial(e)) || [];
+    message.signatures = object.signatures?.map((e) => Signature.fromPartial(e)) || [];
     return message;
   },
 };
@@ -198,10 +186,7 @@ function createBaseSignature(): Signature {
 }
 
 export const Signature = {
-  encode(
-    message: Signature,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: Signature, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.header.length !== 0) {
       writer.uint32(10).bytes(message.header);
     }
@@ -234,25 +219,17 @@ export const Signature = {
 
   fromJSON(object: any): Signature {
     return {
-      header: isSet(object.header)
-        ? bytesFromBase64(object.header)
-        : new Uint8Array(),
-      signature: isSet(object.signature)
-        ? bytesFromBase64(object.signature)
-        : new Uint8Array(),
+      header: isSet(object.header) ? bytesFromBase64(object.header) : new Uint8Array(),
+      signature: isSet(object.signature) ? bytesFromBase64(object.signature) : new Uint8Array(),
     };
   },
 
   toJSON(message: Signature): unknown {
     const obj: any = {};
-    message.header !== undefined &&
-      (obj.header = base64FromBytes(
-        message.header !== undefined ? message.header : new Uint8Array()
-      ));
-    message.signature !== undefined &&
-      (obj.signature = base64FromBytes(
-        message.signature !== undefined ? message.signature : new Uint8Array()
-      ));
+    message.header !== undefined
+      && (obj.header = base64FromBytes(message.header !== undefined ? message.header : new Uint8Array()));
+    message.signature !== undefined
+      && (obj.signature = base64FromBytes(message.signature !== undefined ? message.signature : new Uint8Array()));
     return obj;
   },
 
@@ -269,10 +246,7 @@ function createBaseSignatureHeader(): SignatureHeader {
 }
 
 export const SignatureHeader = {
-  encode(
-    message: SignatureHeader,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: SignatureHeader, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.algorithm !== "") {
       writer.uint32(10).string(message.algorithm);
     }
@@ -336,10 +310,7 @@ function createBaseEncryptedMessage(): EncryptedMessage {
 }
 
 export const EncryptedMessage = {
-  encode(
-    message: EncryptedMessage,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: EncryptedMessage, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.iv.length !== 0) {
       writer.uint32(10).bytes(message.iv);
     }
@@ -378,9 +349,7 @@ export const EncryptedMessage = {
           message.tag = reader.bytes();
           break;
         case 5:
-          message.recipients.push(
-            EncryptionRecipient.decode(reader, reader.uint32())
-          );
+          message.recipients.push(EncryptionRecipient.decode(reader, reader.uint32()));
           break;
         default:
           reader.skipType(tag & 7);
@@ -394,9 +363,7 @@ export const EncryptedMessage = {
     return {
       iv: isSet(object.iv) ? bytesFromBase64(object.iv) : new Uint8Array(),
       aad: isSet(object.aad) ? bytesFromBase64(object.aad) : new Uint8Array(),
-      ciphertext: isSet(object.ciphertext)
-        ? bytesFromBase64(object.ciphertext)
-        : new Uint8Array(),
+      ciphertext: isSet(object.ciphertext) ? bytesFromBase64(object.ciphertext) : new Uint8Array(),
       tag: isSet(object.tag) ? bytesFromBase64(object.tag) : new Uint8Array(),
       recipients: Array.isArray(object?.recipients)
         ? object.recipients.map((e: any) => EncryptionRecipient.fromJSON(e))
@@ -406,26 +373,15 @@ export const EncryptedMessage = {
 
   toJSON(message: EncryptedMessage): unknown {
     const obj: any = {};
-    message.iv !== undefined &&
-      (obj.iv = base64FromBytes(
-        message.iv !== undefined ? message.iv : new Uint8Array()
-      ));
-    message.aad !== undefined &&
-      (obj.aad = base64FromBytes(
-        message.aad !== undefined ? message.aad : new Uint8Array()
-      ));
-    message.ciphertext !== undefined &&
-      (obj.ciphertext = base64FromBytes(
-        message.ciphertext !== undefined ? message.ciphertext : new Uint8Array()
-      ));
-    message.tag !== undefined &&
-      (obj.tag = base64FromBytes(
-        message.tag !== undefined ? message.tag : new Uint8Array()
-      ));
+    message.iv !== undefined && (obj.iv = base64FromBytes(message.iv !== undefined ? message.iv : new Uint8Array()));
+    message.aad !== undefined
+      && (obj.aad = base64FromBytes(message.aad !== undefined ? message.aad : new Uint8Array()));
+    message.ciphertext !== undefined
+      && (obj.ciphertext = base64FromBytes(message.ciphertext !== undefined ? message.ciphertext : new Uint8Array()));
+    message.tag !== undefined
+      && (obj.tag = base64FromBytes(message.tag !== undefined ? message.tag : new Uint8Array()));
     if (message.recipients) {
-      obj.recipients = message.recipients.map((e) =>
-        e ? EncryptionRecipient.toJSON(e) : undefined
-      );
+      obj.recipients = message.recipients.map((e) => e ? EncryptionRecipient.toJSON(e) : undefined);
     } else {
       obj.recipients = [];
     }
@@ -438,8 +394,7 @@ export const EncryptedMessage = {
     message.aad = object.aad ?? new Uint8Array();
     message.ciphertext = object.ciphertext ?? new Uint8Array();
     message.tag = object.tag ?? new Uint8Array();
-    message.recipients =
-      object.recipients?.map((e) => EncryptionRecipient.fromPartial(e)) || [];
+    message.recipients = object.recipients?.map((e) => EncryptionRecipient.fromPartial(e)) || [];
     return message;
   },
 };
@@ -449,10 +404,7 @@ function createBaseEncryptionHeader(): EncryptionHeader {
 }
 
 export const EncryptionHeader = {
-  encode(
-    message: EncryptionHeader,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: EncryptionHeader, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.mode !== 0) {
       writer.uint32(8).int32(message.mode);
     }
@@ -498,9 +450,7 @@ export const EncryptionHeader = {
   fromJSON(object: any): EncryptionHeader {
     return {
       mode: isSet(object.enc) ? encryptionModeFromJSON(object.enc) : 0,
-      algorithm: isSet(object.alg)
-        ? encryptionAlgorithmFromJSON(object.alg)
-        : 0,
+      algorithm: isSet(object.alg) ? encryptionAlgorithmFromJSON(object.alg) : 0,
       keyId: isSet(object.kid) ? String(object.kid) : "",
       senderKeyId: isSet(object.skid) ? String(object.skid) : "",
     };
@@ -508,10 +458,8 @@ export const EncryptionHeader = {
 
   toJSON(message: EncryptionHeader): unknown {
     const obj: any = {};
-    message.mode !== undefined &&
-      (obj.enc = encryptionModeToJSON(message.mode));
-    message.algorithm !== undefined &&
-      (obj.alg = encryptionAlgorithmToJSON(message.algorithm));
+    message.mode !== undefined && (obj.enc = encryptionModeToJSON(message.mode));
+    message.algorithm !== undefined && (obj.alg = encryptionAlgorithmToJSON(message.algorithm));
     message.keyId !== undefined && (obj.kid = message.keyId);
     message.senderKeyId !== undefined && (obj.skid = message.senderKeyId);
     return obj;
@@ -532,15 +480,9 @@ function createBaseEncryptionRecipient(): EncryptionRecipient {
 }
 
 export const EncryptionRecipient = {
-  encode(
-    message: EncryptionRecipient,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: EncryptionRecipient, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.header !== undefined) {
-      EncryptionHeader.encode(
-        message.header,
-        writer.uint32(10).fork()
-      ).ldelim();
+      EncryptionHeader.encode(message.header, writer.uint32(10).fork()).ldelim();
     }
     if (message.contentEncryptionKey.length !== 0) {
       writer.uint32(18).bytes(message.contentEncryptionKey);
@@ -571,38 +513,28 @@ export const EncryptionRecipient = {
 
   fromJSON(object: any): EncryptionRecipient {
     return {
-      header: isSet(object.unprotected)
-        ? EncryptionHeader.fromJSON(object.unprotected)
-        : undefined,
-      contentEncryptionKey: isSet(object.cek)
-        ? bytesFromBase64(object.cek)
-        : new Uint8Array(),
+      header: isSet(object.unprotected) ? EncryptionHeader.fromJSON(object.unprotected) : undefined,
+      contentEncryptionKey: isSet(object.cek) ? bytesFromBase64(object.cek) : new Uint8Array(),
     };
   },
 
   toJSON(message: EncryptionRecipient): unknown {
     const obj: any = {};
-    message.header !== undefined &&
-      (obj.unprotected = message.header
-        ? EncryptionHeader.toJSON(message.header)
-        : undefined);
-    message.contentEncryptionKey !== undefined &&
-      (obj.cek = base64FromBytes(
-        message.contentEncryptionKey !== undefined
-          ? message.contentEncryptionKey
-          : new Uint8Array()
+    message.header !== undefined
+      && (obj.unprotected = message.header ? EncryptionHeader.toJSON(message.header) : undefined);
+    message.contentEncryptionKey !== undefined
+      && (obj.cek = base64FromBytes(
+        message.contentEncryptionKey !== undefined ? message.contentEncryptionKey : new Uint8Array(),
       ));
     return obj;
   },
 
   fromPartial(object: DeepPartial<EncryptionRecipient>): EncryptionRecipient {
     const message = createBaseEncryptionRecipient();
-    message.header =
-      object.header !== undefined && object.header !== null
-        ? EncryptionHeader.fromPartial(object.header)
-        : undefined;
-    message.contentEncryptionKey =
-      object.contentEncryptionKey ?? new Uint8Array();
+    message.header = (object.header !== undefined && object.header !== null)
+      ? EncryptionHeader.fromPartial(object.header)
+      : undefined;
+    message.contentEncryptionKey = object.contentEncryptionKey ?? new Uint8Array();
     return message;
   },
 };
@@ -611,53 +543,51 @@ declare var self: any | undefined;
 declare var window: any | undefined;
 declare var global: any | undefined;
 var globalThis: any = (() => {
-  if (typeof globalThis !== "undefined") return globalThis;
-  if (typeof self !== "undefined") return self;
-  if (typeof window !== "undefined") return window;
-  if (typeof global !== "undefined") return global;
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
   throw "Unable to locate global object";
 })();
 
-const atob: (b64: string) => string =
-  globalThis.atob ||
-  ((b64) => globalThis.Buffer.from(b64, "base64").toString("binary"));
 function bytesFromBase64(b64: string): Uint8Array {
-  const bin = atob(b64);
-  const arr = new Uint8Array(bin.length);
-  for (let i = 0; i < bin.length; ++i) {
-    arr[i] = bin.charCodeAt(i);
+  if (globalThis.Buffer) {
+    return Uint8Array.from(globalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = globalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
   }
-  return arr;
 }
 
-const btoa: (bin: string) => string =
-  globalThis.btoa ||
-  ((bin) => globalThis.Buffer.from(bin, "binary").toString("base64"));
 function base64FromBytes(arr: Uint8Array): string {
-  const bin: string[] = [];
-  arr.forEach((byte) => {
-    bin.push(String.fromCharCode(byte));
-  });
-  return btoa(bin.join(""));
+  if (globalThis.Buffer) {
+    return globalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(String.fromCharCode(byte));
+    });
+    return globalThis.btoa(bin.join(""));
+  }
 }
 
-type Builtin =
-  | Date
-  | Function
-  | Uint8Array
-  | string
-  | number
-  | boolean
-  | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
-type DeepPartial<T> = T extends Builtin
-  ? T
-  : T extends Array<infer U>
-  ? Array<DeepPartial<U>>
-  : T extends ReadonlyArray<infer U>
-  ? ReadonlyArray<DeepPartial<U>>
-  : T extends {}
-  ? { [K in keyof T]?: DeepPartial<T[K]> }
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
 
 function isSet(value: any): boolean {

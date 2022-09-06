@@ -2,7 +2,8 @@
 import _m0 from "protobufjs/minimal";
 
 /** Request custom metadata about the native okapi binaries - cannot get cargo env vars at runtime */
-export interface MetadataRequest {}
+export interface MetadataRequest {
+}
 
 /** Metadata information about the native okapi binaries. Always returns the version information */
 export interface MetadataResponse {
@@ -27,10 +28,7 @@ function createBaseMetadataRequest(): MetadataRequest {
 }
 
 export const MetadataRequest = {
-  encode(
-    _: MetadataRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(_: MetadataRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     return writer;
   },
 
@@ -79,10 +77,7 @@ function createBaseMetadataResponse(): MetadataResponse {
 }
 
 export const MetadataResponse = {
-  encode(
-    message: MetadataResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
+  encode(message: MetadataResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.version !== "") {
       writer.uint32(10).string(message.version);
     }
@@ -158,23 +153,13 @@ export const MetadataResponse = {
   fromJSON(object: any): MetadataResponse {
     return {
       version: isSet(object.version) ? String(object.version) : "",
-      versionMajor: isSet(object.versionMajor)
-        ? Number(object.versionMajor)
-        : 0,
-      versionMinor: isSet(object.versionMinor)
-        ? Number(object.versionMinor)
-        : 0,
-      versionPatch: isSet(object.versionPatch)
-        ? Number(object.versionPatch)
-        : 0,
-      targetFamily: isSet(object.targetFamily)
-        ? String(object.targetFamily)
-        : "",
+      versionMajor: isSet(object.versionMajor) ? Number(object.versionMajor) : 0,
+      versionMinor: isSet(object.versionMinor) ? Number(object.versionMinor) : 0,
+      versionPatch: isSet(object.versionPatch) ? Number(object.versionPatch) : 0,
+      targetFamily: isSet(object.targetFamily) ? String(object.targetFamily) : "",
       targetOs: isSet(object.targetOs) ? String(object.targetOs) : "",
       targetArch: isSet(object.targetArch) ? String(object.targetArch) : "",
-      targetVendor: isSet(object.targetVendor)
-        ? String(object.targetVendor)
-        : "",
+      targetVendor: isSet(object.targetVendor) ? String(object.targetVendor) : "",
       targetEnv: isSet(object.targetEnv) ? String(object.targetEnv) : "",
     };
   },
@@ -182,18 +167,13 @@ export const MetadataResponse = {
   toJSON(message: MetadataResponse): unknown {
     const obj: any = {};
     message.version !== undefined && (obj.version = message.version);
-    message.versionMajor !== undefined &&
-      (obj.versionMajor = Math.round(message.versionMajor));
-    message.versionMinor !== undefined &&
-      (obj.versionMinor = Math.round(message.versionMinor));
-    message.versionPatch !== undefined &&
-      (obj.versionPatch = Math.round(message.versionPatch));
-    message.targetFamily !== undefined &&
-      (obj.targetFamily = message.targetFamily);
+    message.versionMajor !== undefined && (obj.versionMajor = Math.round(message.versionMajor));
+    message.versionMinor !== undefined && (obj.versionMinor = Math.round(message.versionMinor));
+    message.versionPatch !== undefined && (obj.versionPatch = Math.round(message.versionPatch));
+    message.targetFamily !== undefined && (obj.targetFamily = message.targetFamily);
     message.targetOs !== undefined && (obj.targetOs = message.targetOs);
     message.targetArch !== undefined && (obj.targetArch = message.targetArch);
-    message.targetVendor !== undefined &&
-      (obj.targetVendor = message.targetVendor);
+    message.targetVendor !== undefined && (obj.targetVendor = message.targetVendor);
     message.targetEnv !== undefined && (obj.targetEnv = message.targetEnv);
     return obj;
   },
@@ -213,23 +193,11 @@ export const MetadataResponse = {
   },
 };
 
-type Builtin =
-  | Date
-  | Function
-  | Uint8Array
-  | string
-  | number
-  | boolean
-  | undefined;
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
 
-type DeepPartial<T> = T extends Builtin
-  ? T
-  : T extends Array<infer U>
-  ? Array<DeepPartial<U>>
-  : T extends ReadonlyArray<infer U>
-  ? ReadonlyArray<DeepPartial<U>>
-  : T extends {}
-  ? { [K in keyof T]?: DeepPartial<T[K]> }
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
 
 function isSet(value: any): boolean {
