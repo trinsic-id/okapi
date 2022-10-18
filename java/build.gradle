@@ -11,6 +11,11 @@ plugins {
     id 'maven-publish'
     id 'jacoco'
 }
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
 
 // Gradle doesn't allow these at the top of the file - go figure?
 def jarDomainId = "id"
