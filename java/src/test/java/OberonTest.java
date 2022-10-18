@@ -35,7 +35,7 @@ class OberonTest {
                 .setProof(proof.getProof())
                 .build());
 
-    Assertions.assertTrue(256 == proof.getProof().size());
+    Assertions.assertEquals(256, proof.getProof().size());
     Assertions.assertTrue(result.getValid());
   }
 
