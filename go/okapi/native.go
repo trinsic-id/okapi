@@ -82,6 +82,13 @@ func getLibraryCheckPaths() []string {
 		path.Join(ldLibPath, libFolder, libName),
 		path.Join(".", libName),
 		path.Join(".", libFolder, libName),
+		path.Join(libName),
+		libName,
+	}
+	if runtime.GOOS == "darwin" {
+		checkPaths = append(checkPaths, path.Join("/opt/homebrew/lib", libName),
+			path.Join("/usr/local/lib", libName),
+		)
 	}
 	return checkPaths
 }
