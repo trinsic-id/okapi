@@ -154,7 +154,7 @@ jobs:
       - name: Setup Xcode version
         uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: latest-stable
+          xcode-version: '11.1'
       - name: Run build script
         run: ./devops/BuildLibraries.ps1 -Platform iOS -OutLocation ./libs/ios
         shell: pwsh
