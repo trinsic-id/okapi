@@ -91,7 +91,7 @@ func getLibraryCheckPaths() []string {
 		)
 	}
 	if runtime.GOOS == "linux" {
-		checkPaths = append(checkPaths, path.Join("/usr/local/lib", libName))	
+		checkPaths = append(checkPaths, path.Join("/usr/local/lib", libName))
 	}
 	return checkPaths
 }
