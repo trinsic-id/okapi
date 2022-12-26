@@ -1,0 +1,1 @@
+int string trinsic_library_appname 0xff00ff00
