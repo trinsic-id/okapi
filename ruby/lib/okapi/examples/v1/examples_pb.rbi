@@ -3,9 +3,9 @@
 # typed: strict
 
 class Okapi::Examples::V1::BasicMessage
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Examples::V1::BasicMessage) }
   def self.decode(str)
@@ -23,7 +23,7 @@ class Okapi::Examples::V1::BasicMessage
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 

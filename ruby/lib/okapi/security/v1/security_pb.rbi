@@ -3,9 +3,9 @@
 # typed: strict
 
 class Okapi::Security::V1::CreateOberonKeyRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Security::V1::CreateOberonKeyRequest) }
   def self.decode(str)
@@ -23,7 +23,7 @@ class Okapi::Security::V1::CreateOberonKeyRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -63,9 +63,9 @@ class Okapi::Security::V1::CreateOberonKeyRequest
 end
 
 class Okapi::Security::V1::CreateOberonKeyResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Security::V1::CreateOberonKeyResponse) }
   def self.decode(str)
@@ -83,7 +83,7 @@ class Okapi::Security::V1::CreateOberonKeyResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -137,9 +137,9 @@ class Okapi::Security::V1::CreateOberonKeyResponse
 end
 
 class Okapi::Security::V1::CreateOberonTokenRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Security::V1::CreateOberonTokenRequest) }
   def self.decode(str)
@@ -157,7 +157,7 @@ class Okapi::Security::V1::CreateOberonTokenRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -203,7 +203,7 @@ class Okapi::Security::V1::CreateOberonTokenRequest
   def blinding
   end
 
-  sig { params(value: Google::Protobuf::RepeatedField).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
   def blinding=(value)
   end
 
@@ -225,9 +225,9 @@ class Okapi::Security::V1::CreateOberonTokenRequest
 end
 
 class Okapi::Security::V1::CreateOberonTokenResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Security::V1::CreateOberonTokenResponse) }
   def self.decode(str)
@@ -245,7 +245,7 @@ class Okapi::Security::V1::CreateOberonTokenResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -285,9 +285,9 @@ class Okapi::Security::V1::CreateOberonTokenResponse
 end
 
 class Okapi::Security::V1::CreateOberonProofRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Security::V1::CreateOberonProofRequest) }
   def self.decode(str)
@@ -305,7 +305,7 @@ class Okapi::Security::V1::CreateOberonProofRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -353,7 +353,7 @@ class Okapi::Security::V1::CreateOberonProofRequest
   def blinding
   end
 
-  sig { params(value: Google::Protobuf::RepeatedField).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
   def blinding=(value)
   end
 
@@ -387,9 +387,9 @@ class Okapi::Security::V1::CreateOberonProofRequest
 end
 
 class Okapi::Security::V1::CreateOberonProofResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Security::V1::CreateOberonProofResponse) }
   def self.decode(str)
@@ -407,7 +407,7 @@ class Okapi::Security::V1::CreateOberonProofResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -447,9 +447,9 @@ class Okapi::Security::V1::CreateOberonProofResponse
 end
 
 class Okapi::Security::V1::VerifyOberonProofRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Security::V1::VerifyOberonProofRequest) }
   def self.decode(str)
@@ -467,7 +467,7 @@ class Okapi::Security::V1::VerifyOberonProofRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -549,9 +549,9 @@ class Okapi::Security::V1::VerifyOberonProofRequest
 end
 
 class Okapi::Security::V1::VerifyOberonProofResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Security::V1::VerifyOberonProofResponse) }
   def self.decode(str)
@@ -569,7 +569,7 @@ class Okapi::Security::V1::VerifyOberonProofResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -609,9 +609,9 @@ class Okapi::Security::V1::VerifyOberonProofResponse
 end
 
 class Okapi::Security::V1::BlindOberonTokenRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Security::V1::BlindOberonTokenRequest) }
   def self.decode(str)
@@ -629,7 +629,7 @@ class Okapi::Security::V1::BlindOberonTokenRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -661,7 +661,7 @@ class Okapi::Security::V1::BlindOberonTokenRequest
   def blinding
   end
 
-  sig { params(value: Google::Protobuf::RepeatedField).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
   def blinding=(value)
   end
 
@@ -683,9 +683,9 @@ class Okapi::Security::V1::BlindOberonTokenRequest
 end
 
 class Okapi::Security::V1::BlindOberonTokenResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Security::V1::BlindOberonTokenResponse) }
   def self.decode(str)
@@ -703,7 +703,7 @@ class Okapi::Security::V1::BlindOberonTokenResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -743,9 +743,9 @@ class Okapi::Security::V1::BlindOberonTokenResponse
 end
 
 class Okapi::Security::V1::UnBlindOberonTokenRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Security::V1::UnBlindOberonTokenRequest) }
   def self.decode(str)
@@ -763,7 +763,7 @@ class Okapi::Security::V1::UnBlindOberonTokenRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -795,7 +795,7 @@ class Okapi::Security::V1::UnBlindOberonTokenRequest
   def blinding
   end
 
-  sig { params(value: Google::Protobuf::RepeatedField).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
   def blinding=(value)
   end
 
@@ -817,9 +817,9 @@ class Okapi::Security::V1::UnBlindOberonTokenRequest
 end
 
 class Okapi::Security::V1::UnBlindOberonTokenResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Security::V1::UnBlindOberonTokenResponse) }
   def self.decode(str)
@@ -837,7 +837,7 @@ class Okapi::Security::V1::UnBlindOberonTokenResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -877,9 +877,9 @@ class Okapi::Security::V1::UnBlindOberonTokenResponse
 end
 
 class Okapi::Security::V1::VerifyOberonTokenRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Security::V1::VerifyOberonTokenRequest) }
   def self.decode(str)
@@ -897,7 +897,7 @@ class Okapi::Security::V1::VerifyOberonTokenRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -965,9 +965,9 @@ class Okapi::Security::V1::VerifyOberonTokenRequest
 end
 
 class Okapi::Security::V1::VerifyOberonTokenResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Security::V1::VerifyOberonTokenResponse) }
   def self.decode(str)
@@ -985,7 +985,7 @@ class Okapi::Security::V1::VerifyOberonTokenResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
