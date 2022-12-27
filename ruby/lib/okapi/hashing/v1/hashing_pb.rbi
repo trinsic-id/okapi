@@ -3,9 +3,9 @@
 # typed: strict
 
 class Okapi::Hashing::V1::Blake3HashRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Hashing::V1::Blake3HashRequest) }
   def self.decode(str)
@@ -23,7 +23,7 @@ class Okapi::Hashing::V1::Blake3HashRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -63,9 +63,9 @@ class Okapi::Hashing::V1::Blake3HashRequest
 end
 
 class Okapi::Hashing::V1::Blake3HashResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Hashing::V1::Blake3HashResponse) }
   def self.decode(str)
@@ -83,7 +83,7 @@ class Okapi::Hashing::V1::Blake3HashResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -123,9 +123,9 @@ class Okapi::Hashing::V1::Blake3HashResponse
 end
 
 class Okapi::Hashing::V1::Blake3KeyedHashRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Hashing::V1::Blake3KeyedHashRequest) }
   def self.decode(str)
@@ -143,7 +143,7 @@ class Okapi::Hashing::V1::Blake3KeyedHashRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -197,9 +197,9 @@ class Okapi::Hashing::V1::Blake3KeyedHashRequest
 end
 
 class Okapi::Hashing::V1::Blake3KeyedHashResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Hashing::V1::Blake3KeyedHashResponse) }
   def self.decode(str)
@@ -217,7 +217,7 @@ class Okapi::Hashing::V1::Blake3KeyedHashResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -257,9 +257,9 @@ class Okapi::Hashing::V1::Blake3KeyedHashResponse
 end
 
 class Okapi::Hashing::V1::Blake3DeriveKeyRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Hashing::V1::Blake3DeriveKeyRequest) }
   def self.decode(str)
@@ -277,7 +277,7 @@ class Okapi::Hashing::V1::Blake3DeriveKeyRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -331,9 +331,9 @@ class Okapi::Hashing::V1::Blake3DeriveKeyRequest
 end
 
 class Okapi::Hashing::V1::Blake3DeriveKeyResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Hashing::V1::Blake3DeriveKeyResponse) }
   def self.decode(str)
@@ -351,7 +351,7 @@ class Okapi::Hashing::V1::Blake3DeriveKeyResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -391,9 +391,9 @@ class Okapi::Hashing::V1::Blake3DeriveKeyResponse
 end
 
 class Okapi::Hashing::V1::SHA256HashRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Hashing::V1::SHA256HashRequest) }
   def self.decode(str)
@@ -411,7 +411,7 @@ class Okapi::Hashing::V1::SHA256HashRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -451,9 +451,9 @@ class Okapi::Hashing::V1::SHA256HashRequest
 end
 
 class Okapi::Hashing::V1::SHA256HashResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Hashing::V1::SHA256HashResponse) }
   def self.decode(str)
@@ -471,7 +471,7 @@ class Okapi::Hashing::V1::SHA256HashResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 

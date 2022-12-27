@@ -35,5 +35,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'minitest-reporters', '~>1.4'
   spec.add_development_dependency 'simplecov', '~> 0.21'
   spec.add_development_dependency 'simplecov-cobertura', '~> 1.4'
-  spec.metadata['rubygems_mfa_required'] = 'false'
+  spec.metadata['rubygems_mfa_required'] = 'true'
 end

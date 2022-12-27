@@ -8,111 +8,160 @@ This page documents the Protobuf Services and Messages which compose the Trinsic
 
 
 
-<a name="pbmse_v1_pbmse-proto"></a>
+<a name="okapi_transport_v1_transport-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## pbmse/v1/pbmse.proto
+## okapi/transport/v1/transport.proto
 
 
  <!-- end services -->
 
 
-<a name="pbmse-v1-EncryptedMessage"></a>
+<a name="okapi-transport-v1-CoreMessage"></a>
 
-### EncryptedMessage
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| iv | [bytes](/reference/proto#bytes) |  |
-| aad | [bytes](/reference/proto#bytes) |  |
-| ciphertext | [bytes](/reference/proto#bytes) |  |
-| tag | [bytes](/reference/proto#bytes) |  |
-| recipients | [EncryptionRecipient](/reference/proto#pbmse-v1-EncryptionRecipient)[] |  |
-
-
-
-
-
-
-<a name="pbmse-v1-EncryptionHeader"></a>
-
-### EncryptionHeader
+### CoreMessage
 
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| mode | [EncryptionMode](/reference/proto#pbmse-v1-EncryptionMode) |  |
-| algorithm | [EncryptionAlgorithm](/reference/proto#pbmse-v1-EncryptionAlgorithm) |  |
-| key_id | [string](/reference/proto#string) |  |
-| sender_key_id | [string](/reference/proto#string) |  |
+| id | [string](/reference/proto#string) |  |
+| type | [string](/reference/proto#string) |  |
+| body | [bytes](/reference/proto#bytes) |  |
+| to | [string](/reference/proto#string)[] |  |
+| from | [string](/reference/proto#string) |  |
+| created | [int64](/reference/proto#int64) |  |
+| expires | [int64](/reference/proto#int64) |  |
 
 
 
 
 
 
-<a name="pbmse-v1-EncryptionRecipient"></a>
+<a name="okapi-transport-v1-PackRequest"></a>
 
-### EncryptionRecipient
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| header | [EncryptionHeader](/reference/proto#pbmse-v1-EncryptionHeader) |  |
-| content_encryption_key | [bytes](/reference/proto#bytes) |  |
-
-
-
-
-
-
-<a name="pbmse-v1-Signature"></a>
-
-### Signature
+### PackRequest
 
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| header | [bytes](/reference/proto#bytes) |  |
-| signature | [bytes](/reference/proto#bytes) |  |
+| sender_key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
+| receiver_key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
+| associated_data | [bytes](/reference/proto#bytes) |  |
+| plaintext | [bytes](/reference/proto#bytes) |  |
+| mode | [pbmse.v1.EncryptionMode](/reference/proto#pbmse-v1-EncryptionMode) |  |
+| algorithm | [pbmse.v1.EncryptionAlgorithm](/reference/proto#pbmse-v1-EncryptionAlgorithm) |  |
 
 
 
 
 
 
-<a name="pbmse-v1-SignatureHeader"></a>
+<a name="okapi-transport-v1-PackResponse"></a>
 
-### SignatureHeader
+### PackResponse
 
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| algorithm | [string](/reference/proto#string) |  |
-| key_id | [string](/reference/proto#string) |  |
+| message | [pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) |  |
 
 
 
 
 
 
-<a name="pbmse-v1-SignedMessage"></a>
+<a name="okapi-transport-v1-SignRequest"></a>
 
-### SignedMessage
-JWS
-Protocol buffer message signing and encryption
+### SignRequest
+
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | payload | [bytes](/reference/proto#bytes) |  |
-| signatures | [Signature](/reference/proto#pbmse-v1-Signature)[] |  |
+| key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
+| append_to | [pbmse.v1.SignedMessage](/reference/proto#pbmse-v1-SignedMessage) |  |
+
+
+
+
+
+
+<a name="okapi-transport-v1-SignResponse"></a>
+
+### SignResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| message | [pbmse.v1.SignedMessage](/reference/proto#pbmse-v1-SignedMessage) |  |
+
+
+
+
+
+
+<a name="okapi-transport-v1-UnpackRequest"></a>
+
+### UnpackRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| sender_key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
+| receiver_key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
+| message | [pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) |  |
+
+
+
+
+
+
+<a name="okapi-transport-v1-UnpackResponse"></a>
+
+### UnpackResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| plaintext | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-transport-v1-VerifyRequest"></a>
+
+### VerifyRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| message | [pbmse.v1.SignedMessage](/reference/proto#pbmse-v1-SignedMessage) |  |
+| key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
+
+
+
+
+
+
+<a name="okapi-transport-v1-VerifyResponse"></a>
+
+### VerifyResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| is_valid | [bool](/reference/proto#bool) |  |
 
 
 
@@ -120,163 +169,41 @@ Protocol buffer message signing and encryption
 
  <!-- end messages -->
 
-
-<a name="pbmse-v1-EncryptionAlgorithm"></a>
-
-### EncryptionAlgorithm
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| ENCRYPTION_ALGORITHM_UNSPECIFIED | 0 |  |
-| ENCRYPTION_ALGORITHM_XCHACHA20POLY1305 | 1 |  |
-| ENCRYPTION_ALGORITHM_AES_GCM | 2 |  |
-
-
-
-<a name="pbmse-v1-EncryptionMode"></a>
-
-### EncryptionMode
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| ENCRYPTION_MODE_UNSPECIFIED | 0 |  |
-| ENCRYPTION_MODE_DIRECT | 1 |  |
-| ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY | 2 |  |
-
-
  <!-- end enums -->
 
  <!-- end HasExtensions -->
 
 
 
-<a name="okapi_hashing_v1_hashing-proto"></a>
+<a name="okapi_examples_v1_examples-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## okapi/hashing/v1/hashing.proto
+## okapi/examples/v1/examples.proto
 
+
+
+<a name="okapi-examples-v1-SecureExampleService"></a>
+
+### Service - SecureExampleService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| Unary | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) |  |
+| ServerStreaming | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) stream |  |
 
  <!-- end services -->
 
 
-<a name="okapi-hashing-v1-Blake3DeriveKeyRequest"></a>
+<a name="okapi-examples-v1-BasicMessage"></a>
 
-### Blake3DeriveKeyRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| context | [bytes](/reference/proto#bytes) |  |
-| key_material | [bytes](/reference/proto#bytes) |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-Blake3DeriveKeyResponse"></a>
-
-### Blake3DeriveKeyResponse
+### BasicMessage
 
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| digest | [bytes](/reference/proto#bytes) |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-Blake3HashRequest"></a>
-
-### Blake3HashRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| data | [bytes](/reference/proto#bytes) |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-Blake3HashResponse"></a>
-
-### Blake3HashResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| digest | [bytes](/reference/proto#bytes) |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-Blake3KeyedHashRequest"></a>
-
-### Blake3KeyedHashRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| data | [bytes](/reference/proto#bytes) |  |
-| key | [bytes](/reference/proto#bytes) |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-Blake3KeyedHashResponse"></a>
-
-### Blake3KeyedHashResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| digest | [bytes](/reference/proto#bytes) |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-SHA256HashRequest"></a>
-
-### SHA256HashRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| data | [bytes](/reference/proto#bytes) |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-SHA256HashResponse"></a>
-
-### SHA256HashResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| digest | [bytes](/reference/proto#bytes) |  |
+| text | [string](/reference/proto#string) |  |
 
 
 
@@ -412,6 +339,137 @@ Protocol buffer message signing and encryption
 | KEY_TYPE_BLS12381G1G2 | 4 |  |
 | KEY_TYPE_SECP256K1 | 5 |  |
 
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="okapi_proofs_v1_proofs-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## okapi/proofs/v1/proofs.proto
+
+
+ <!-- end services -->
+
+
+<a name="okapi-proofs-v1-CreateProofRequest"></a>
+
+### CreateProofRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| document | [google.protobuf.Struct](/reference/proto#google-protobuf-Struct) | The input JSON document that will be used to create the LD Proof. This document must also contain a "proof" object, with the desired values filled in. |
+| key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) | The signer of the proof. This field must include the 'kid' in full URI format. Example: did:example:alice#key-1 |
+| suite | [LdSuite](/reference/proto#okapi-proofs-v1-LdSuite) | The LD Suite to use to produce this proof |
+
+
+
+
+
+
+<a name="okapi-proofs-v1-CreateProofResponse"></a>
+
+### CreateProofResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| signed_document | [google.protobuf.Struct](/reference/proto#google-protobuf-Struct) |  |
+
+
+
+
+
+
+<a name="okapi-proofs-v1-VerifyProofRequest"></a>
+
+### VerifyProofRequest
+
+
+
+
+
+
+
+<a name="okapi-proofs-v1-VerifyProofResponse"></a>
+
+### VerifyProofResponse
+
+
+
+
+
+
+ <!-- end messages -->
+
+
+<a name="okapi-proofs-v1-LdSuite"></a>
+
+### LdSuite
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| LD_SUITE_UNSPECIFIED | 0 |  |
+| LD_SUITE_JCSED25519SIGNATURE2020 | 1 |  |
+
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="okapi_metadata_metadata-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## okapi/metadata/metadata.proto
+
+
+ <!-- end services -->
+
+
+<a name="okapi-metadata-MetadataRequest"></a>
+
+### MetadataRequest
+Request custom metadata about the native okapi binaries - cannot get cargo env vars at runtime
+
+repeated string variables = 1; // optional field, can contain any of the cargo env vars
+
+
+
+
+
+
+<a name="okapi-metadata-MetadataResponse"></a>
+
+### MetadataResponse
+Metadata information about the native okapi binaries. Always returns the version information
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| version | [string](/reference/proto#string) | The full version string from okapi |
+| version_major | [int32](/reference/proto#int32) | Major version |
+| version_minor | [int32](/reference/proto#int32) | Minor version |
+| version_patch | [int32](/reference/proto#int32) | Patch release version |
+| target_family | [string](/reference/proto#string) | https://doc.rust-lang.org/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-crates |
+| target_os | [string](/reference/proto#string) |  |
+| target_arch | [string](/reference/proto#string) |  |
+| target_vendor | [string](/reference/proto#string) |  |
+| target_env | [string](/reference/proto#string) |  |
+
+
+
+
+
+ <!-- end messages -->
 
  <!-- end enums -->
 
@@ -659,44 +717,131 @@ Contains the verification result for the oberon token
 
 
 
-<a name="okapi_metadata_metadata-proto"></a>
+<a name="okapi_hashing_v1_hashing-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## okapi/metadata/metadata.proto
+## okapi/hashing/v1/hashing.proto
 
 
  <!-- end services -->
 
 
-<a name="okapi-metadata-MetadataRequest"></a>
+<a name="okapi-hashing-v1-Blake3DeriveKeyRequest"></a>
 
-### MetadataRequest
-Request custom metadata about the native okapi binaries - cannot get cargo env vars at runtime
+### Blake3DeriveKeyRequest
 
-repeated string variables = 1; // optional field, can contain any of the cargo env vars
-
-
-
-
-
-
-<a name="okapi-metadata-MetadataResponse"></a>
-
-### MetadataResponse
-Metadata information about the native okapi binaries. Always returns the version information
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| version | [string](/reference/proto#string) | The full version string from okapi |
-| version_major | [int32](/reference/proto#int32) | Major version |
-| version_minor | [int32](/reference/proto#int32) | Minor version |
-| version_patch | [int32](/reference/proto#int32) | Patch release version |
-| target_family | [string](/reference/proto#string) | https://doc.rust-lang.org/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-crates |
-| target_os | [string](/reference/proto#string) |  |
-| target_arch | [string](/reference/proto#string) |  |
-| target_vendor | [string](/reference/proto#string) |  |
-| target_env | [string](/reference/proto#string) |  |
+| context | [bytes](/reference/proto#bytes) |  |
+| key_material | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-Blake3DeriveKeyResponse"></a>
+
+### Blake3DeriveKeyResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| digest | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-Blake3HashRequest"></a>
+
+### Blake3HashRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| data | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-Blake3HashResponse"></a>
+
+### Blake3HashResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| digest | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-Blake3KeyedHashRequest"></a>
+
+### Blake3KeyedHashRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| data | [bytes](/reference/proto#bytes) |  |
+| key | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-Blake3KeyedHashResponse"></a>
+
+### Blake3KeyedHashResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| digest | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-SHA256HashRequest"></a>
+
+### SHA256HashRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| data | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-SHA256HashResponse"></a>
+
+### SHA256HashResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| digest | [bytes](/reference/proto#bytes) |  |
 
 
 
@@ -710,240 +855,111 @@ Metadata information about the native okapi binaries. Always returns the version
 
 
 
-<a name="okapi_proofs_v1_proofs-proto"></a>
+<a name="pbmse_v1_pbmse-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## okapi/proofs/v1/proofs.proto
+## pbmse/v1/pbmse.proto
 
 
  <!-- end services -->
 
 
-<a name="okapi-proofs-v1-CreateProofRequest"></a>
+<a name="pbmse-v1-EncryptedMessage"></a>
 
-### CreateProofRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| document | [google.protobuf.Struct](/reference/proto#google-protobuf-Struct) | The input JSON document that will be used to create the LD Proof. This document must also contain a "proof" object, with the desired values filled in. |
-| key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) | The signer of the proof. This field must include the 'kid' in full URI format. Example: did:example:alice#key-1 |
-| suite | [LdSuite](/reference/proto#okapi-proofs-v1-LdSuite) | The LD Suite to use to produce this proof |
-
-
-
-
-
-
-<a name="okapi-proofs-v1-CreateProofResponse"></a>
-
-### CreateProofResponse
+### EncryptedMessage
 
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| signed_document | [google.protobuf.Struct](/reference/proto#google-protobuf-Struct) |  |
+| iv | [bytes](/reference/proto#bytes) |  |
+| aad | [bytes](/reference/proto#bytes) |  |
+| ciphertext | [bytes](/reference/proto#bytes) |  |
+| tag | [bytes](/reference/proto#bytes) |  |
+| recipients | [EncryptionRecipient](/reference/proto#pbmse-v1-EncryptionRecipient)[] |  |
 
 
 
 
 
 
-<a name="okapi-proofs-v1-VerifyProofRequest"></a>
+<a name="pbmse-v1-EncryptionHeader"></a>
 
-### VerifyProofRequest
-
-
-
-
-
-
-
-<a name="okapi-proofs-v1-VerifyProofResponse"></a>
-
-### VerifyProofResponse
-
-
-
-
-
-
- <!-- end messages -->
-
-
-<a name="okapi-proofs-v1-LdSuite"></a>
-
-### LdSuite
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| LD_SUITE_UNSPECIFIED | 0 |  |
-| LD_SUITE_JCSED25519SIGNATURE2020 | 1 |  |
-
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-
-<a name="okapi_transport_v1_transport-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## okapi/transport/v1/transport.proto
-
-
- <!-- end services -->
-
-
-<a name="okapi-transport-v1-CoreMessage"></a>
-
-### CoreMessage
+### EncryptionHeader
 
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) |  |
-| type | [string](/reference/proto#string) |  |
-| body | [bytes](/reference/proto#bytes) |  |
-| to | [string](/reference/proto#string)[] |  |
-| from | [string](/reference/proto#string) |  |
-| created | [int64](/reference/proto#int64) |  |
-| expires | [int64](/reference/proto#int64) |  |
+| mode | [EncryptionMode](/reference/proto#pbmse-v1-EncryptionMode) |  |
+| algorithm | [EncryptionAlgorithm](/reference/proto#pbmse-v1-EncryptionAlgorithm) |  |
+| key_id | [string](/reference/proto#string) |  |
+| sender_key_id | [string](/reference/proto#string) |  |
 
 
 
 
 
 
-<a name="okapi-transport-v1-PackRequest"></a>
+<a name="pbmse-v1-EncryptionRecipient"></a>
 
-### PackRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| sender_key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
-| receiver_key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
-| associated_data | [bytes](/reference/proto#bytes) |  |
-| plaintext | [bytes](/reference/proto#bytes) |  |
-| mode | [pbmse.v1.EncryptionMode](/reference/proto#pbmse-v1-EncryptionMode) |  |
-| algorithm | [pbmse.v1.EncryptionAlgorithm](/reference/proto#pbmse-v1-EncryptionAlgorithm) |  |
-
-
-
-
-
-
-<a name="okapi-transport-v1-PackResponse"></a>
-
-### PackResponse
+### EncryptionRecipient
 
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| message | [pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) |  |
+| header | [EncryptionHeader](/reference/proto#pbmse-v1-EncryptionHeader) |  |
+| content_encryption_key | [bytes](/reference/proto#bytes) |  |
 
 
 
 
 
 
-<a name="okapi-transport-v1-SignRequest"></a>
+<a name="pbmse-v1-Signature"></a>
 
-### SignRequest
+### Signature
 
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| header | [bytes](/reference/proto#bytes) |  |
+| signature | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="pbmse-v1-SignatureHeader"></a>
+
+### SignatureHeader
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| algorithm | [string](/reference/proto#string) |  |
+| key_id | [string](/reference/proto#string) |  |
+
+
+
+
+
+
+<a name="pbmse-v1-SignedMessage"></a>
+
+### SignedMessage
+JWS
+Protocol buffer message signing and encryption
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | payload | [bytes](/reference/proto#bytes) |  |
-| key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
-| append_to | [pbmse.v1.SignedMessage](/reference/proto#pbmse-v1-SignedMessage) |  |
-
-
-
-
-
-
-<a name="okapi-transport-v1-SignResponse"></a>
-
-### SignResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| message | [pbmse.v1.SignedMessage](/reference/proto#pbmse-v1-SignedMessage) |  |
-
-
-
-
-
-
-<a name="okapi-transport-v1-UnpackRequest"></a>
-
-### UnpackRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| sender_key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
-| receiver_key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
-| message | [pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) |  |
-
-
-
-
-
-
-<a name="okapi-transport-v1-UnpackResponse"></a>
-
-### UnpackResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| plaintext | [bytes](/reference/proto#bytes) |  |
-
-
-
-
-
-
-<a name="okapi-transport-v1-VerifyRequest"></a>
-
-### VerifyRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| message | [pbmse.v1.SignedMessage](/reference/proto#pbmse-v1-SignedMessage) |  |
-| key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
-
-
-
-
-
-
-<a name="okapi-transport-v1-VerifyResponse"></a>
-
-### VerifyResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| is_valid | [bool](/reference/proto#bool) |  |
+| signatures | [Signature](/reference/proto#pbmse-v1-Signature)[] |  |
 
 
 
@@ -951,47 +967,31 @@ Metadata information about the native okapi binaries. Always returns the version
 
  <!-- end messages -->
 
- <!-- end enums -->
 
- <!-- end HasExtensions -->
+<a name="pbmse-v1-EncryptionAlgorithm"></a>
 
-
-
-<a name="okapi_examples_v1_examples-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## okapi/examples/v1/examples.proto
+### EncryptionAlgorithm
 
 
-
-<a name="okapi-examples-v1-SecureExampleService"></a>
-
-### Service - SecureExampleService
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| Unary | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) |  |
-| ServerStreaming | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) stream |  |
-
- <!-- end services -->
-
-
-<a name="okapi-examples-v1-BasicMessage"></a>
-
-### BasicMessage
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| ENCRYPTION_ALGORITHM_UNSPECIFIED | 0 |  |
+| ENCRYPTION_ALGORITHM_XCHACHA20POLY1305 | 1 |  |
+| ENCRYPTION_ALGORITHM_AES_GCM | 2 |  |
 
 
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| text | [string](/reference/proto#string) |  |
+<a name="pbmse-v1-EncryptionMode"></a>
+
+### EncryptionMode
 
 
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| ENCRYPTION_MODE_UNSPECIFIED | 0 |  |
+| ENCRYPTION_MODE_DIRECT | 1 |  |
+| ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY | 2 |  |
 
-
-
- <!-- end messages -->
 
  <!-- end enums -->
 
