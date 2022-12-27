@@ -3,9 +3,9 @@
 # typed: strict
 
 class Pbmse::V1::SignedMessage
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Pbmse::V1::SignedMessage) }
   def self.decode(str)
@@ -23,7 +23,7 @@ class Pbmse::V1::SignedMessage
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -55,7 +55,7 @@ class Pbmse::V1::SignedMessage
   def signatures
   end
 
-  sig { params(value: Google::Protobuf::RepeatedField).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
   def signatures=(value)
   end
 
@@ -77,9 +77,9 @@ class Pbmse::V1::SignedMessage
 end
 
 class Pbmse::V1::Signature
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Pbmse::V1::Signature) }
   def self.decode(str)
@@ -97,7 +97,7 @@ class Pbmse::V1::Signature
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -151,9 +151,9 @@ class Pbmse::V1::Signature
 end
 
 class Pbmse::V1::SignatureHeader
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Pbmse::V1::SignatureHeader) }
   def self.decode(str)
@@ -171,7 +171,7 @@ class Pbmse::V1::SignatureHeader
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -225,9 +225,9 @@ class Pbmse::V1::SignatureHeader
 end
 
 class Pbmse::V1::EncryptedMessage
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Pbmse::V1::EncryptedMessage) }
   def self.decode(str)
@@ -245,7 +245,7 @@ class Pbmse::V1::EncryptedMessage
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -319,7 +319,7 @@ class Pbmse::V1::EncryptedMessage
   def recipients
   end
 
-  sig { params(value: Google::Protobuf::RepeatedField).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
   def recipients=(value)
   end
 
@@ -341,9 +341,9 @@ class Pbmse::V1::EncryptedMessage
 end
 
 class Pbmse::V1::EncryptionHeader
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Pbmse::V1::EncryptionHeader) }
   def self.decode(str)
@@ -361,7 +361,7 @@ class Pbmse::V1::EncryptionHeader
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -443,9 +443,9 @@ class Pbmse::V1::EncryptionHeader
 end
 
 class Pbmse::V1::EncryptionRecipient
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Pbmse::V1::EncryptionRecipient) }
   def self.decode(str)
@@ -463,7 +463,7 @@ class Pbmse::V1::EncryptionRecipient
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
