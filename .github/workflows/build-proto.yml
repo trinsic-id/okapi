@@ -12,6 +12,7 @@ on:
     paths:
       - "proto/**"
       - "devops/**"
+      - ".github/workflows/build-proto.yml"
 
 jobs:
   compile_proto:
