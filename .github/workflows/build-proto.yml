@@ -12,6 +12,7 @@ on:
     paths:
       - "proto/**"
       - "devops/**"
+      - ".github/workflows/build-proto.yml"
 
 jobs:
   compile_proto:
@@ -42,6 +43,8 @@ jobs:
         uses: dart-lang/setup-dart@v1
       - name: Install Protoc
         uses: arduino/setup-protoc@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Configure git credentials
         uses: OleksiyRudenko/gha-git-credentials@v2
         with:
@@ -55,14 +58,23 @@ jobs:
         run: |
           python ./devops/generate_proto_files.py --language=all
 
-      - name: Commit Changes
-        run: |
-          if git diff --exit-code; then
-            exit 0;
-          fi
-          git checkout -b "${{ github.head_ref }}-generated-protos"
-          git add .
-          git commit -m "Generated code from proto files"
-          git push --set-upstream origin "${{ github.head_ref }}-generated-protos"
-          echo ${{ secrets.GITHUB_TOKEN }} | gh auth login --with-token
-          gh pr create --base ${{ github.head_ref }} --title "Generated Protos for ${{ github.head_ref }}" --body "Generated files from proto"
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        id: commit_changes
+        with:
+            author_name: Mewmba
+            author_email: mewmba@trinsic.id
+            message: 'Generated okapi sdk code from proto files on branch'
+            new_branch: 'mewmba-generated-proto-code'
+            push: --set-upstream origin mewmba-generated-proto-code --force
+
+      - name: pull-request
+        uses: repo-sync/pull-request@v2
+        if: ${{ steps.commit_changes.outputs.committed == 'true' }}
+        with:
+            source_branch: 'mewmba-generated-proto-code'  # From previous step
+            destination_branch: ${{ github.head_ref }}
+            pr_title: 'Generated Protos for Okapi'
+            pr_body: ":rocket: Generated protos"
+            pr_allow_empty: false
+            github_token: ${{ secrets.GITHUB_TOKEN }}
