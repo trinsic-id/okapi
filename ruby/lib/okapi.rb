@@ -18,7 +18,7 @@ module Okapi
   end
 
   def self.library_directory
-    return 'windows' if OS.windows?
+    return 'windows' if OS.windows? # TODO - support windows on ARM64
     return 'linux' if OS.linux? # TODO: Support linux on ARM
     return 'macos' if OS.mac?
 
