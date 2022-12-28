@@ -3,9 +3,9 @@
 # typed: strict
 
 class Okapi::Metadata::MetadataRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Metadata::MetadataRequest) }
   def self.decode(str)
@@ -23,7 +23,7 @@ class Okapi::Metadata::MetadataRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -44,9 +44,9 @@ class Okapi::Metadata::MetadataRequest
 end
 
 class Okapi::Metadata::MetadataResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Metadata::MetadataResponse) }
   def self.decode(str)
@@ -64,7 +64,7 @@ class Okapi::Metadata::MetadataResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 

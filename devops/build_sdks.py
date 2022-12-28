@@ -160,6 +160,10 @@ def build_java(args) -> None:
         join(java_dir, "build.gradle"),
         {"def jarVersion": f'def jarVersion = "{get_package_versions(args)}"'},
     )
+    update_line(
+        join(java_dir, "AndroidManifest.xml"),
+        {"android:versionName": f'android:versionName="{get_package_versions(args)}" >'},
+    )
     copy_okapi_libs(abspath(join(java_dir, "..", "libs")))
 
 

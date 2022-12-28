@@ -3,9 +3,9 @@
 # typed: strict
 
 class Okapi::Transport::V1::SignRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Transport::V1::SignRequest) }
   def self.decode(str)
@@ -23,7 +23,7 @@ class Okapi::Transport::V1::SignRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -91,9 +91,9 @@ class Okapi::Transport::V1::SignRequest
 end
 
 class Okapi::Transport::V1::SignResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Transport::V1::SignResponse) }
   def self.decode(str)
@@ -111,7 +111,7 @@ class Okapi::Transport::V1::SignResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -151,9 +151,9 @@ class Okapi::Transport::V1::SignResponse
 end
 
 class Okapi::Transport::V1::VerifyRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Transport::V1::VerifyRequest) }
   def self.decode(str)
@@ -171,7 +171,7 @@ class Okapi::Transport::V1::VerifyRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -225,9 +225,9 @@ class Okapi::Transport::V1::VerifyRequest
 end
 
 class Okapi::Transport::V1::VerifyResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Transport::V1::VerifyResponse) }
   def self.decode(str)
@@ -245,7 +245,7 @@ class Okapi::Transport::V1::VerifyResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -285,9 +285,9 @@ class Okapi::Transport::V1::VerifyResponse
 end
 
 class Okapi::Transport::V1::PackRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Transport::V1::PackRequest) }
   def self.decode(str)
@@ -305,7 +305,7 @@ class Okapi::Transport::V1::PackRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -415,9 +415,9 @@ class Okapi::Transport::V1::PackRequest
 end
 
 class Okapi::Transport::V1::PackResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Transport::V1::PackResponse) }
   def self.decode(str)
@@ -435,7 +435,7 @@ class Okapi::Transport::V1::PackResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -475,9 +475,9 @@ class Okapi::Transport::V1::PackResponse
 end
 
 class Okapi::Transport::V1::UnpackRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Transport::V1::UnpackRequest) }
   def self.decode(str)
@@ -495,7 +495,7 @@ class Okapi::Transport::V1::UnpackRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -563,9 +563,9 @@ class Okapi::Transport::V1::UnpackRequest
 end
 
 class Okapi::Transport::V1::UnpackResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Transport::V1::UnpackResponse) }
   def self.decode(str)
@@ -583,7 +583,7 @@ class Okapi::Transport::V1::UnpackResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -623,9 +623,9 @@ class Okapi::Transport::V1::UnpackResponse
 end
 
 class Okapi::Transport::V1::CoreMessage
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Transport::V1::CoreMessage) }
   def self.decode(str)
@@ -643,7 +643,7 @@ class Okapi::Transport::V1::CoreMessage
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -709,7 +709,7 @@ class Okapi::Transport::V1::CoreMessage
   def to
   end
 
-  sig { params(value: Google::Protobuf::RepeatedField).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
   def to=(value)
   end
 
