@@ -42,7 +42,7 @@ jobs:
           fileName: "libs.zip"
       - name: Publish package
         run: |
-          Expand-Archive ${{ github.workspace }}/../libs.zip -DestinationPath ${{ github.workspace }}/../
+          Expand-Archive ${{ github.workspace }}/libs.zip -DestinationPath ${{ github.workspace }}/
           python ../devops/build_sdks.py --package-version=${{ steps.setversion.outputs.packageVersion }} --language=java
           gradle jar
         working-directory: java
