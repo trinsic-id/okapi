@@ -51,10 +51,19 @@ jobs:
           DYLD_FALLBACK_LIBRARY_PATH: "${{ github.workspace }}/libs"
           DYLD_LIBRARY_PATH: "${{ github.workspace }}/libs"
 
-      - uses: svenstaro/upload-release-action@v2
+      - name: Upload desktop (jar) artifact
+        uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.API_GITHUB_TOKEN }}
-          file: java/build/libs/trinsic-okapi-${{ steps.setversion.outputs.packageVersion }}.*ar
-          asset_name: trinsic-okapi-${{ steps.setversion.outputs.packageVersion }}.*ar
+          file: java/build/libs/trinsic-okapi-${{ steps.setversion.outputs.packageVersion }}.jar
+          asset_name: trinsic-okapi-${{ steps.setversion.outputs.packageVersion }}.jar
+          tag: ${{ steps.setversion.outputs.releaseVersion }}
+          overwrite: true
+      - name: Upload Android (aar) artifact
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.API_GITHUB_TOKEN }}
+          file: java/build/libs/trinsic-okapi-${{ steps.setversion.outputs.packageVersion }}.aar
+          asset_name: trinsic-okapi-${{ steps.setversion.outputs.packageVersion }}.aar
           tag: ${{ steps.setversion.outputs.releaseVersion }}
           overwrite: true
