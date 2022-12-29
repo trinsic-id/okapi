@@ -22,20 +22,10 @@ def jarDomainId = "id"
 def jarGroupId = "trinsic"
 def jarArtifactId = "okapi"
 def jarVersion = "1.6.1"
-
-publishing {
-    publications {
-        gpr(MavenPublication) {
-            groupId = jarDomainId + "." + jarGroupId
-            artifactId = jarArtifactId
-            version = jarVersion
-            from(components.java)
-        }
-    }
-}
+def baseArchiveName = "trinsic-$jarArtifactId"
 
 group = jarDomainId + "." + jarGroupId + '.' + jarArtifactId
-archivesBaseName = 'trinsic-' + jarArtifactId
+//archivesBaseName = 'trinsic-' + jarArtifactId
 version = jarVersion
 
 repositories {
@@ -78,18 +68,18 @@ def serverJar = tasks.register("serverJar", Jar) {
     from(sourceSets.main.output) {
         include "**"
     }
-    archiveBaseName.set(getArchivesBaseName())
+    archiveBaseName.set(baseArchiveName)
     archiveVersion.set(jarVersion)
     from("../libs") {
-        include 'linux*/libokapi.so'
-        include 'windows/okapi.dll'
-        include 'macos/libokapi.dylib'
+        include('linux**/**/*.so').into('/')
+        include('windows/**/*.dll').into('/')
+        include('macos/**/*.dylib').into('/')
     }
 }
 
 def androidAar = tasks.register("androidAar", Jar) {
     dependsOn(classes, classesJar)
-    archiveBaseName.set(getArchivesBaseName())
+    archiveBaseName.set(baseArchiveName)
     archiveVersion.set(jarVersion)
     archiveExtension.set("aar")
     from("../libs/android") {
