@@ -44,9 +44,27 @@ def _check_path(path_string: str, lib_name: str) -> str:
 
 
 def _platform_dir() -> str:
-    # TODO - Linux on ARM?
-    platforms = {"Windows": "windows", "Darwin": "macos", "Linux": "linux"}
-    return platforms[platform.system()]
+    system = platform.system().lower()
+    machine = platform.machine().lower()
+    if system == "windows":
+        if machine == 'amd64':
+            return "windows"
+        else:
+            # TODO - windows ARM64
+            raise NotImplementedError(f"Windows on {machine},{system} not yet supported")
+    elif system == "linux":
+        if machine == 'x86_64':
+            return "linux"
+        elif machine == "arm64":
+            return "linux-aarch64"
+        elif machine == 'armv7':
+            return "linux-armv7"
+        else:
+            raise NotImplementedError(f"Linux on {machine},{system} not yet supported")
+    elif system == 'darwin':
+        return 'macos'
+    else:
+        raise NotImplementedError(f"Unsupported system:{system}")
 
 
 def find_native_lib() -> str:

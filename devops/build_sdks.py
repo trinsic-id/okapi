@@ -138,7 +138,7 @@ def build_python(args) -> None:
         join(python_dir, "setup.cfg"),
         {"version = ": f"version = {get_package_versions(args)}"},
     )
-    # TODO - Support ARM
+    # TODO - Support Windows on ARM
     copy_okapi_file(
         abspath(join(dirname(__file__), "..", "libs", "windows", "okapi.dll")),
         abspath(join(python_dir, "libs", "windows")),
@@ -150,6 +150,14 @@ def build_python(args) -> None:
     copy_okapi_file(
         abspath(join(dirname(__file__), "..", "libs", "linux", "libokapi.so")),
         abspath(join(python_dir, "libs", "linux")),
+    )
+    copy_okapi_file(
+        abspath(join(dirname(__file__), "..", "libs", "linux-aarch64", "libokapi.so")),
+        abspath(join(python_dir, "libs", "linux-aarch64")),
+    )
+    copy_okapi_file(
+        abspath(join(dirname(__file__), "..", "libs", "linux-armv7", "libokapi.so")),
+        abspath(join(python_dir, "libs", "linux-armv7")),
     )
 
 
@@ -174,7 +182,7 @@ def build_ruby(args) -> None:
         join(ruby_dir, "lib", "version.rb"),
         {"  VERSION =": f"  VERSION = '{get_package_versions(args)}'"},
     )
-    # TODO - Support Ruby on ARM
+    # TODO - Support Windows on ARM
     copy_okapi_file(
         abspath(join(dirname(__file__), "..", "libs", "windows", "okapi.dll")),
         abspath(join(ruby_dir, "libs", "windows")),
@@ -186,6 +194,14 @@ def build_ruby(args) -> None:
     copy_okapi_file(
         abspath(join(dirname(__file__), "..", "libs", "linux", "libokapi.so")),
         abspath(join(ruby_dir, "libs", "linux")),
+    )
+    copy_okapi_file(
+        abspath(join(dirname(__file__), "..", "libs", "linux-aarch64", "libokapi.so")),
+        abspath(join(python_dir, "libs", "linux-aarch64")),
+    )
+    copy_okapi_file(
+        abspath(join(dirname(__file__), "..", "libs", "linux-armv7", "libokapi.so")),
+        abspath(join(python_dir, "libs", "linux-armv7")),
     )
 
 
