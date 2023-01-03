@@ -3,9 +3,9 @@
 # typed: strict
 
 class Okapi::Keys::V1::GenerateKeyRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Keys::V1::GenerateKeyRequest) }
   def self.decode(str)
@@ -23,7 +23,7 @@ class Okapi::Keys::V1::GenerateKeyRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -91,9 +91,9 @@ class Okapi::Keys::V1::GenerateKeyRequest
 end
 
 class Okapi::Keys::V1::GenerateKeyResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Keys::V1::GenerateKeyResponse) }
   def self.decode(str)
@@ -111,7 +111,7 @@ class Okapi::Keys::V1::GenerateKeyResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -131,7 +131,7 @@ class Okapi::Keys::V1::GenerateKeyResponse
   def key
   end
 
-  sig { params(value: Google::Protobuf::RepeatedField).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
   def key=(value)
   end
 
@@ -165,9 +165,9 @@ class Okapi::Keys::V1::GenerateKeyResponse
 end
 
 class Okapi::Keys::V1::ResolveRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Keys::V1::ResolveRequest) }
   def self.decode(str)
@@ -185,7 +185,7 @@ class Okapi::Keys::V1::ResolveRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -225,9 +225,9 @@ class Okapi::Keys::V1::ResolveRequest
 end
 
 class Okapi::Keys::V1::ResolveResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Keys::V1::ResolveResponse) }
   def self.decode(str)
@@ -245,7 +245,7 @@ class Okapi::Keys::V1::ResolveResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -277,7 +277,7 @@ class Okapi::Keys::V1::ResolveResponse
   def keys
   end
 
-  sig { params(value: Google::Protobuf::RepeatedField).void }
+  sig { params(value: ::Google::Protobuf::RepeatedField).void }
   def keys=(value)
   end
 
@@ -299,9 +299,9 @@ class Okapi::Keys::V1::ResolveResponse
 end
 
 class Okapi::Keys::V1::JsonWebKey
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Keys::V1::JsonWebKey) }
   def self.decode(str)
@@ -319,7 +319,7 @@ class Okapi::Keys::V1::JsonWebKey
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 

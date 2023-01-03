@@ -3,9 +3,9 @@
 # typed: strict
 
 class Okapi::Proofs::V1::CreateProofRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Proofs::V1::CreateProofRequest) }
   def self.decode(str)
@@ -23,7 +23,7 @@ class Okapi::Proofs::V1::CreateProofRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -91,9 +91,9 @@ class Okapi::Proofs::V1::CreateProofRequest
 end
 
 class Okapi::Proofs::V1::CreateProofResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Proofs::V1::CreateProofResponse) }
   def self.decode(str)
@@ -111,7 +111,7 @@ class Okapi::Proofs::V1::CreateProofResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -151,9 +151,9 @@ class Okapi::Proofs::V1::CreateProofResponse
 end
 
 class Okapi::Proofs::V1::VerifyProofRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Proofs::V1::VerifyProofRequest) }
   def self.decode(str)
@@ -171,7 +171,7 @@ class Okapi::Proofs::V1::VerifyProofRequest
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
@@ -192,9 +192,9 @@ class Okapi::Proofs::V1::VerifyProofRequest
 end
 
 class Okapi::Proofs::V1::VerifyProofResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
+  include ::Google::Protobuf
+  include ::Google::Protobuf::MessageExts
+  extend ::Google::Protobuf::MessageExts::ClassMethods
 
   sig { params(str: String).returns(Okapi::Proofs::V1::VerifyProofResponse) }
   def self.decode(str)
@@ -212,7 +212,7 @@ class Okapi::Proofs::V1::VerifyProofResponse
   def self.encode_json(msg, **kw)
   end
 
-  sig { returns(Google::Protobuf::Descriptor) }
+  sig { returns(::Google::Protobuf::Descriptor) }
   def self.descriptor
   end
 
