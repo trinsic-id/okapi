@@ -20,10 +20,10 @@ module Okapi
   def self.library_directory
     host_cpu = RbConfig::CONFIG['host_cpu']
     bits = OS.bits
-    return 'windows' if OS.windows? # TODO - support windows on ARM64
-    return 'linux' if OS.linux? and host_cpu == 'x64'
-    return 'linux-aarch64' if OS.linux? and bits == 64
-    return 'linux-armv7' if OS.linux? and bits == 32
+    return 'windows' if OS.windows? # TODO: - support windows on ARM64
+    return 'linux' if OS.linux? && (host_cpu == 'x64')
+    return 'linux-aarch64' if OS.linux? && (bits == 64)
+    return 'linux-armv7' if OS.linux? && (bits == 32)
     return 'macos' if OS.mac?
 
     raise NotImplementedError

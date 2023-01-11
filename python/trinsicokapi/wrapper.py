@@ -51,7 +51,9 @@ def _platform_dir() -> str:
             return "windows"
         else:
             # TODO - windows ARM64
-            raise NotImplementedError(f"Windows on {machine},{system} not yet supported")
+            raise NotImplementedError(
+                f"Windows on {machine},{system} not yet supported"
+            )
     elif system == "linux":
         if machine == 'x86_64':
             return "linux"
