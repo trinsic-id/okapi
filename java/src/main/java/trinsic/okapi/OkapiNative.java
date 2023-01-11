@@ -3,6 +3,7 @@ package trinsic.okapi;
 import com.google.protobuf.GeneratedMessageV3;
 import com.sun.jna.Native;
 import com.sun.jna.Platform;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -23,13 +24,52 @@ public class OkapiNative {
   }
 
   private static String getLibraryName() {
-    if (Platform.isWindows()) return "okapi.dll";
-    if (Platform.isMac()) return "libokapi.dylib";
-    // Default is linux
-    return "libokapi.so";
+    return System.mapLibraryName("okapi");
+  }
+
+  private static String getLibraryResourceFolder() {
+    if (Platform.isAndroid()) {
+      if (Platform.isARM()) {
+        if (Platform.is64Bit()) {
+          return "android/arm64-v8a";
+        } else {
+          return "android/armeabi-v7a";
+        }
+      } else {
+        if (Platform.is64Bit()) {
+          return "android/x86_64";
+        } else {
+          return "android/x86";
+        }
+      }
+    } else if (Platform.isWindows()) {
+      return "windows";
+    } else if (Platform.isMac()) {
+      return "macos";
+    } else if (Platform.isLinux()) {
+      if (Platform.isARM()) {
+        if (Platform.is64Bit()) return "linux-aarch64";
+        else return "linux-armv7";
+      } else {
+        return "linux";
+      }
+    } else {
+      throw new UnsupportedOperationException("Unsupported platform");
+    }
   }
 
   public static String getLibraryPath() {
+    // Attempt to load the bundled libraries
+    try {
+      // Don't use Paths.get because that uses backslashes on Windows
+      var path = "/" + getLibraryResourceFolder() + "/" + getLibraryName();
+      System.out.println("Loading internal resource:" + path);
+      return Native.extractFromResourcePath(path).getAbsolutePath();
+    } catch (IOException ignored) {
+      // This is okay, lets fall back to the old model.
+      System.out.println("Failed to load internal library: " + ignored.toString());
+    }
+
     // Explicit path to entire library name
     if (overrideLibraryPath != null && overrideLibraryPath.strip().length() > 0)
       return Paths.get(overrideLibraryPath).toAbsolutePath().toString();

@@ -43,18 +43,29 @@ jobs:
       - name: Publish package
         run: |
           python ../devops/build_sdks.py --package-version=${{ steps.setversion.outputs.packageVersion }} --language=java
+          Expand-Archive ${{ github.workspace }}/libs.zip -DestinationPath ${{ github.workspace }}/ -Force
           gradle jar
         working-directory: java
+        shell: pwsh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
           DYLD_FALLBACK_LIBRARY_PATH: "${{ github.workspace }}/libs"
           DYLD_LIBRARY_PATH: "${{ github.workspace }}/libs"
 
-      - uses: svenstaro/upload-release-action@v2
+      - name: Upload desktop (jar) artifact
+        uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.API_GITHUB_TOKEN }}
           file: java/build/libs/trinsic-okapi-${{ steps.setversion.outputs.packageVersion }}.jar
           asset_name: trinsic-okapi-${{ steps.setversion.outputs.packageVersion }}.jar
+          tag: ${{ steps.setversion.outputs.releaseVersion }}
+          overwrite: true
+      - name: Upload Android (aar) artifact
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.API_GITHUB_TOKEN }}
+          file: java/build/libs/trinsic-okapi-${{ steps.setversion.outputs.packageVersion }}.aar
+          asset_name: trinsic-okapi-${{ steps.setversion.outputs.packageVersion }}.aar
           tag: ${{ steps.setversion.outputs.releaseVersion }}
           overwrite: true

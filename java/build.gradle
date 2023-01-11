@@ -21,31 +21,11 @@ java {
 def jarDomainId = "id"
 def jarGroupId = "trinsic"
 def jarArtifactId = "okapi"
-def jarVersion = "1.6.0"
-
-publishing {
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = "https://maven.pkg.github.com/trinsic-id/okapi"
-            credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
-            }
-        }
-    }
-    publications {
-        gpr(MavenPublication) {
-            groupId = jarDomainId + "." + jarGroupId
-            artifactId = jarArtifactId
-            version = jarVersion
-            from(components.java)
-        }
-    }
-}
+def jarVersion = "1.6.1"
+def baseArchiveName = "trinsic-$jarArtifactId"
 
 group = jarDomainId + "." + jarGroupId + '.' + jarArtifactId
-archivesBaseName = 'trinsic-' + jarArtifactId
+//archivesBaseName = 'trinsic-' + jarArtifactId
 version = jarVersion
 
 repositories {
@@ -57,7 +37,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
     testImplementation 'org.junit.jupiter:junit-jupiter-params:5.9.0'
-    implementation group: 'com.google.protobuf', name: 'protobuf-java', version: '3.21.5'
+    implementation group: 'com.google.protobuf', name: 'protobuf-java', version: '3.21.7'
     implementation group: 'net.java.dev.jna', name: 'jna', version: '5.12.1'
 }
 
@@ -74,7 +54,43 @@ jacocoTestReport {
     executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
 }
 
-jar {
-    archiveBaseName.set(getArchivesBaseName())
-    archiveVersion.set(jarVersion)
+def classesJar = tasks.register('classesJar', Jar) {
+    dependsOn(classes)
+    from(sourceSets.main.output) {
+        include "**"
+    }
+    archiveBaseName.set("classes")
+    archiveVersion.set("")
 }
+
+def serverJar = tasks.register("serverJar", Jar) {
+    dependsOn(classes)
+    from(sourceSets.main.output) {
+        include "**"
+    }
+    archiveBaseName.set(baseArchiveName)
+    archiveVersion.set(jarVersion)
+    from("../libs") {
+        include('linux**/**/*.so').into('/')
+        include('windows/**/*.dll').into('/')
+        include('macos/**/*.dylib').into('/')
+    }
+}
+
+def androidAar = tasks.register("androidAar", Jar) {
+    dependsOn(classes, classesJar)
+    archiveBaseName.set(baseArchiveName)
+    archiveVersion.set(jarVersion)
+    archiveExtension.set("aar")
+    from("../libs/android") {
+        include('**/*.so').into("jni")
+    }
+    from(classesJar.get().outputs.files.first().getAbsolutePath()).into("/")
+    from("R.txt").include()
+    from("AndroidManifest.xml").include()
+    from("./") {
+        include("AndroidValues.xml").into("res/values")
+    }
+}
+
+jar.dependsOn(classesJar, serverJar, androidAar)
