@@ -1,7 +1,6 @@
-
-
 def run():
     import trinsicokapi.__main__ as m
+
     m.run()
 
 
