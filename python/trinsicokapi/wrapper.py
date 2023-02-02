@@ -79,6 +79,10 @@ def find_native_lib() -> str:
     # since LINUX Python doesn't always work. :(
     found_lib_path = (
         _check_path(
+            os.path.abspath(os.path.join(os.path.dirname(__file__), "libs")),
+            lib_name,
+        )
+        or _check_path(
             os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "libs")),
             lib_name,
         )

@@ -141,23 +141,23 @@ def build_python(args) -> None:
     # TODO - Support Windows on ARM
     copy_okapi_file(
         abspath(join(dirname(__file__), "..", "libs", "windows", "okapi.dll")),
-        abspath(join(python_dir, "libs", "windows")),
+        abspath(join(python_dir, "trinsicokapi", "libs", "windows")),
     )
     copy_okapi_file(
         abspath(join(dirname(__file__), "..", "libs", "macos", "libokapi.dylib")),
-        abspath(join(python_dir, "libs", "macos")),
+        abspath(join(python_dir, "trinsicokapi", "libs", "macos")),
     )
     copy_okapi_file(
         abspath(join(dirname(__file__), "..", "libs", "linux", "libokapi.so")),
-        abspath(join(python_dir, "libs", "linux")),
+        abspath(join(python_dir, "trinsicokapi", "libs", "linux")),
     )
     copy_okapi_file(
         abspath(join(dirname(__file__), "..", "libs", "linux-aarch64", "libokapi.so")),
-        abspath(join(python_dir, "libs", "linux-aarch64")),
+        abspath(join(python_dir, "trinsicokapi", "libs", "linux-aarch64")),
     )
     copy_okapi_file(
         abspath(join(dirname(__file__), "..", "libs", "linux-armv7", "libokapi.so")),
-        abspath(join(python_dir, "libs", "linux-armv7")),
+        abspath(join(python_dir, "trinsicokapi", "libs", "linux-armv7")),
     )
 
 
