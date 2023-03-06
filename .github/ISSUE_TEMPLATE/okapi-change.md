@@ -15,6 +15,5 @@ Languages:
 - [ ] Java
 - [ ] Dart
 - [ ] Python
-- [ ] Ruby
 - [ ] Swift
 - [ ] Wasm

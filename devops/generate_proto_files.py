@@ -190,27 +190,6 @@ def update_golang():
     ).wait()
 
 
-def update_ruby():
-    language_path = get_language_dir("ruby")
-    lang_proto_path = join(language_path, "lib")
-    # Clean selectively
-    services_dir = join(lang_proto_path, "okapi")
-    remove_subdirs(services_dir)
-
-    run_protoc(
-        language_options={"ruby_out": lang_proto_path},
-        proto_files=get_proto_files(),
-        protoc_executable="grpc_tools_ruby_protoc",
-    )
-    # Ruby type specifications
-    run_protoc(
-        language_options={"rbi_out": f"grpc=true:{lang_proto_path}"},
-        proto_files=get_proto_files(),
-    )
-
-    subprocess.Popen(args="rubocop -A", cwd=language_path, shell=True).wait()
-
-
 def update_java():
     language_path = get_language_dir("java")
     lang_proto_path = join(language_path, "src", "main", "java")
@@ -322,7 +301,7 @@ def parse_arguments():
     )
     parser.add_argument(
         "--language",
-        help="Comma-separated languages to build (all/golang/ruby/python/java/docs)",
+        help="Comma-separated languages to build (all/golang/python/java/docs)",
         default="all",
     )
     parser.add_argument(
@@ -347,7 +326,6 @@ def main():
     # Mapping of (language -> compilation function)
     lang_funcs = {
         "golang": update_golang,
-        "ruby": update_ruby,
         "java": update_java,
         "dart": update_dart,
         "typescript": update_typescript,

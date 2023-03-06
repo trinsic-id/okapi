@@ -2,6 +2,7 @@
 # sources: okapi/transport/v1/transport.proto
 # plugin: python-betterproto
 # This file has been @generated
+
 from dataclasses import dataclass
 from typing import List
 
