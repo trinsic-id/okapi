@@ -28,7 +28,6 @@ Manual steps are instructions that need to be taken in order to have a full rele
   - [ ] nuget.org
   - [ ] npmjs.com
   - [ ] pypi.org
-  - [ ] rubygems.org
   - [ ] golang tag
   - [ ] Dart pub.dev
   - [ ] Java jar file uploaded to release

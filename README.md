@@ -4,7 +4,6 @@
 [![Java](https://github.com/trinsic-id/okapi/actions/workflows/build-java.yml/badge.svg)](https://github.com/trinsic-id/okapi/actions/workflows/build-java.yml)
 [![Platform Libraries](https://github.com/trinsic-id/okapi/actions/workflows/build-libs.yml/badge.svg)](https://github.com/trinsic-id/okapi/actions/workflows/build-libs.yml)
 [![Python](https://github.com/trinsic-id/okapi/actions/workflows/build-python.yml/badge.svg)](https://github.com/trinsic-id/okapi/actions/workflows/build-python.yml)
-[![Ruby](https://github.com/trinsic-id/okapi/actions/workflows/build-ruby.yml/badge.svg)](https://github.com/trinsic-id/okapi/actions/workflows/build-ruby.yml)
 [![Wasm](https://github.com/trinsic-id/okapi/actions/workflows/build-wasm.yml/badge.svg)](https://github.com/trinsic-id/okapi/actions/workflows/build-wasm.yml)
 
 Test Coverage
@@ -21,7 +20,6 @@ This repo provides bindings in all popular languages for the core Okapi function
 
 Library is available for use with different languages
 
-[![Gem](https://img.shields.io/gem/v/trinsic-okapi?color=e9563f)](https://rubygems.org/gems/trinsic-okapi)
 [![Go)](https://img.shields.io/github/go-mod/go-version/trinsic-id/okapi?color=01ADD8&filename=go%2Fgo.mod&label=go)](https://github.com/trinsic-id/okapi/tree/main/go/)
 [![Nuget](https://img.shields.io/nuget/v/okapi.net)](https://www.nuget.org/packages/Okapi.Net/)
 [![npm](https://img.shields.io/npm/v/@trinsic/okapi?color=CC3534)](https://www.npmjs.com/package/@trinsic/okapi)
@@ -123,7 +121,7 @@ var key = DIDKey.generate(request);
 
 ### Compile Protobuf
 
-Some languages have support for compiling the protobuf definitions directly (.NET, node, rust), some (Java, Go, Python, Ruby) require use of a separate Python script located `./devops/generate_proto_files.py`. The github action [Push to buf.build](https://github.com/trinsic-id/okapi/actions/workflows/buf-push.yml) will also create a branch called `update-protobuf-generated-files` with any changes.
+Some languages have support for compiling the protobuf definitions directly (.NET, node, rust), some (Java, Go, Python) require use of a separate Python script located `./devops/generate_proto_files.py`. The github action [Push to buf.build](https://github.com/trinsic-id/okapi/actions/workflows/buf-push.yml) will also create a branch called `update-protobuf-generated-files` with any changes.
 
 ## Stats
 

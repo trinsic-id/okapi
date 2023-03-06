@@ -50,10 +50,6 @@ jobs:
     uses: ./.github/workflows/release-python.yml
     needs: publish_binaries_bundle
 
-  release-ruby-wrapper:
-    uses: ./.github/workflows/release-ruby.yml
-    needs: publish_binaries_bundle
-
   release-rust-wrapper:
     uses: ./.github/workflows/release-rust.yml
     needs: publish_binaries_bundle

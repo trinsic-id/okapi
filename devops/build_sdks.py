@@ -175,36 +175,6 @@ def build_java(args) -> None:
     copy_okapi_libs(abspath(join(java_dir, "..", "libs")))
 
 
-def build_ruby(args) -> None:
-    # Update version in setup.cfg
-    ruby_dir = get_language_dir("ruby")
-    update_line(
-        join(ruby_dir, "lib", "version.rb"),
-        {"  VERSION =": f"  VERSION = '{get_package_versions(args)}'"},
-    )
-    # TODO - Support Windows on ARM
-    copy_okapi_file(
-        abspath(join(dirname(__file__), "..", "libs", "windows", "okapi.dll")),
-        abspath(join(ruby_dir, "libs", "windows")),
-    )
-    copy_okapi_file(
-        abspath(join(dirname(__file__), "..", "libs", "macos", "libokapi.dylib")),
-        abspath(join(ruby_dir, "libs", "macos")),
-    )
-    copy_okapi_file(
-        abspath(join(dirname(__file__), "..", "libs", "linux", "libokapi.so")),
-        abspath(join(ruby_dir, "libs", "linux")),
-    )
-    copy_okapi_file(
-        abspath(join(dirname(__file__), "..", "libs", "linux-aarch64", "libokapi.so")),
-        abspath(join(python_dir, "libs", "linux-aarch64")),
-    )
-    copy_okapi_file(
-        abspath(join(dirname(__file__), "..", "libs", "linux-armv7", "libokapi.so")),
-        abspath(join(python_dir, "libs", "linux-armv7")),
-    )
-
-
 def build_golang(args) -> None:
     # Copy in Okapi libraries
     golang_dir = abspath(join(get_language_dir("go"), "okapi"))
@@ -341,8 +311,6 @@ def main():
         continue_on_error(build_python, args)
     if build_all or "java" in langs_to_build:
         continue_on_error(build_java, args)
-    if build_all or "ruby" in langs_to_build:
-        continue_on_error(build_ruby, args)
     if build_all or "golang" in langs_to_build:
         continue_on_error(build_golang, args)
     if build_all or "dart" in langs_to_build:
