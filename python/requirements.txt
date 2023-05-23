@@ -2,7 +2,7 @@ base58==2.1.1
 betterproto~=2.0.0b4
 grpcio-tools==1.47.0
 grpclib==0.4.3
-requests==2.28.1
+requests==2.31.0
 setuptools==65.5.1
 black
 flake8
