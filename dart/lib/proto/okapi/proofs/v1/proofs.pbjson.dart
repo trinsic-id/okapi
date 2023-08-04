@@ -1,31 +1,37 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: okapi/proofs/v1/proofs.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,deprecated_member_use_from_same_package,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
-import 'dart:core' as $core;
+// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
+
 import 'dart:convert' as $convert;
+import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
 @$core.Deprecated('Use ldSuiteDescriptor instead')
-const LdSuite$json = const {
+const LdSuite$json = {
   '1': 'LdSuite',
-  '2': const [
-    const {'1': 'LD_SUITE_UNSPECIFIED', '2': 0},
-    const {'1': 'LD_SUITE_JCSED25519SIGNATURE2020', '2': 1},
+  '2': [
+    {'1': 'LD_SUITE_UNSPECIFIED', '2': 0},
+    {'1': 'LD_SUITE_JCSED25519SIGNATURE2020', '2': 1},
   ],
 };
 
 /// Descriptor for `LdSuite`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List ldSuiteDescriptor = $convert.base64Decode(
-    'CgdMZFN1aXRlEhgKFExEX1NVSVRFX1VOU1BFQ0lGSUVEEAASJAogTERfU1VJVEVfSkNTRUQyNTUxOVNJR05BVFVSRTIwMjAQAQ==');
+    'CgdMZFN1aXRlEhgKFExEX1NVSVRFX1VOU1BFQ0lGSUVEEAASJAogTERfU1VJVEVfSkNTRUQyNT'
+    'UxOVNJR05BVFVSRTIwMjAQAQ==');
+
 @$core.Deprecated('Use createProofRequestDescriptor instead')
-const CreateProofRequest$json = const {
+const CreateProofRequest$json = {
   '1': 'CreateProofRequest',
-  '2': const [
-    const {
+  '2': [
+    {
       '1': 'document',
       '3': 1,
       '4': 1,
@@ -33,7 +39,7 @@ const CreateProofRequest$json = const {
       '6': '.google.protobuf.Struct',
       '10': 'document'
     },
-    const {
+    {
       '1': 'key',
       '3': 3,
       '4': 1,
@@ -41,7 +47,7 @@ const CreateProofRequest$json = const {
       '6': '.okapi.keys.v1.JsonWebKey',
       '10': 'key'
     },
-    const {
+    {
       '1': 'suite',
       '3': 4,
       '4': 1,
@@ -54,12 +60,16 @@ const CreateProofRequest$json = const {
 
 /// Descriptor for `CreateProofRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createProofRequestDescriptor = $convert.base64Decode(
-    'ChJDcmVhdGVQcm9vZlJlcXVlc3QSMwoIZG9jdW1lbnQYASABKAsyFy5nb29nbGUucHJvdG9idWYuU3RydWN0Ughkb2N1bWVudBIrCgNrZXkYAyABKAsyGS5va2FwaS5rZXlzLnYxLkpzb25XZWJLZXlSA2tleRIuCgVzdWl0ZRgEIAEoDjIYLm9rYXBpLnByb29mcy52MS5MZFN1aXRlUgVzdWl0ZQ==');
+    'ChJDcmVhdGVQcm9vZlJlcXVlc3QSMwoIZG9jdW1lbnQYASABKAsyFy5nb29nbGUucHJvdG9idW'
+    'YuU3RydWN0Ughkb2N1bWVudBIrCgNrZXkYAyABKAsyGS5va2FwaS5rZXlzLnYxLkpzb25XZWJL'
+    'ZXlSA2tleRIuCgVzdWl0ZRgEIAEoDjIYLm9rYXBpLnByb29mcy52MS5MZFN1aXRlUgVzdWl0ZQ'
+    '==');
+
 @$core.Deprecated('Use createProofResponseDescriptor instead')
-const CreateProofResponse$json = const {
+const CreateProofResponse$json = {
   '1': 'CreateProofResponse',
-  '2': const [
-    const {
+  '2': [
+    {
       '1': 'signed_document',
       '3': 1,
       '4': 1,
@@ -72,17 +82,20 @@ const CreateProofResponse$json = const {
 
 /// Descriptor for `CreateProofResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createProofResponseDescriptor = $convert.base64Decode(
-    'ChNDcmVhdGVQcm9vZlJlc3BvbnNlEkAKD3NpZ25lZF9kb2N1bWVudBgBIAEoCzIXLmdvb2dsZS5wcm90b2J1Zi5TdHJ1Y3RSDnNpZ25lZERvY3VtZW50');
+    'ChNDcmVhdGVQcm9vZlJlc3BvbnNlEkAKD3NpZ25lZF9kb2N1bWVudBgBIAEoCzIXLmdvb2dsZS'
+    '5wcm90b2J1Zi5TdHJ1Y3RSDnNpZ25lZERvY3VtZW50');
+
 @$core.Deprecated('Use verifyProofRequestDescriptor instead')
-const VerifyProofRequest$json = const {
+const VerifyProofRequest$json = {
   '1': 'VerifyProofRequest',
 };
 
 /// Descriptor for `VerifyProofRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List verifyProofRequestDescriptor =
     $convert.base64Decode('ChJWZXJpZnlQcm9vZlJlcXVlc3Q=');
+
 @$core.Deprecated('Use verifyProofResponseDescriptor instead')
-const VerifyProofResponse$json = const {
+const VerifyProofResponse$json = {
   '1': 'VerifyProofResponse',
 };
 

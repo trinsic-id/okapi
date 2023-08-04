@@ -1,34 +1,34 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: okapi/metadata/metadata.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
+
+// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class MetadataRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'MetadataRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.metadata'),
-      createEmptyInstance: create)
-    ..hasRequiredFields = false;
-
-  MetadataRequest._() : super();
   factory MetadataRequest() => create();
+  MetadataRequest._() : super();
   factory MetadataRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory MetadataRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'MetadataRequest',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'okapi.metadata'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -38,8 +38,10 @@ class MetadataRequest extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   MetadataRequest copyWith(void Function(MetadataRequest) updates) =>
       super.copyWith((message) => updates(message as MetadataRequest))
-          as MetadataRequest; // ignore: deprecated_member_use
+          as MetadataRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static MetadataRequest create() => MetadataRequest._();
   MetadataRequest createEmptyInstance() => create();
@@ -52,113 +54,30 @@ class MetadataRequest extends $pb.GeneratedMessage {
 }
 
 class MetadataResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'MetadataResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.metadata'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'version')
-    ..a<$core.int>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'versionMajor',
-        $pb.PbFieldType.O3)
-    ..a<$core.int>(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'versionMinor',
-        $pb.PbFieldType.O3)
-    ..a<$core.int>(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'versionPatch',
-        $pb.PbFieldType.O3)
-    ..aOS(
-        10,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'targetFamily')
-    ..aOS(
-        11,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'targetOs')
-    ..aOS(
-        12,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'targetArch')
-    ..aOS(
-        13,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'targetVendor')
-    ..aOS(
-        14,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'targetEnv')
-    ..hasRequiredFields = false;
-
+  factory MetadataResponse() => create();
   MetadataResponse._() : super();
-  factory MetadataResponse({
-    $core.String? version,
-    $core.int? versionMajor,
-    $core.int? versionMinor,
-    $core.int? versionPatch,
-    $core.String? targetFamily,
-    $core.String? targetOs,
-    $core.String? targetArch,
-    $core.String? targetVendor,
-    $core.String? targetEnv,
-  }) {
-    final _result = create();
-    if (version != null) {
-      _result.version = version;
-    }
-    if (versionMajor != null) {
-      _result.versionMajor = versionMajor;
-    }
-    if (versionMinor != null) {
-      _result.versionMinor = versionMinor;
-    }
-    if (versionPatch != null) {
-      _result.versionPatch = versionPatch;
-    }
-    if (targetFamily != null) {
-      _result.targetFamily = targetFamily;
-    }
-    if (targetOs != null) {
-      _result.targetOs = targetOs;
-    }
-    if (targetArch != null) {
-      _result.targetArch = targetArch;
-    }
-    if (targetVendor != null) {
-      _result.targetVendor = targetVendor;
-    }
-    if (targetEnv != null) {
-      _result.targetEnv = targetEnv;
-    }
-    return _result;
-  }
   factory MetadataResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory MetadataResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'MetadataResponse',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'okapi.metadata'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'version')
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'versionMajor', $pb.PbFieldType.O3)
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'versionMinor', $pb.PbFieldType.O3)
+    ..a<$core.int>(4, _omitFieldNames ? '' : 'versionPatch', $pb.PbFieldType.O3)
+    ..aOS(10, _omitFieldNames ? '' : 'targetFamily')
+    ..aOS(11, _omitFieldNames ? '' : 'targetOs')
+    ..aOS(12, _omitFieldNames ? '' : 'targetArch')
+    ..aOS(13, _omitFieldNames ? '' : 'targetVendor')
+    ..aOS(14, _omitFieldNames ? '' : 'targetEnv')
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -168,8 +87,10 @@ class MetadataResponse extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   MetadataResponse copyWith(void Function(MetadataResponse) updates) =>
       super.copyWith((message) => updates(message as MetadataResponse))
-          as MetadataResponse; // ignore: deprecated_member_use
+          as MetadataResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static MetadataResponse create() => MetadataResponse._();
   MetadataResponse createEmptyInstance() => create();
@@ -288,3 +209,7 @@ class MetadataResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(14)
   void clearTargetEnv() => clearField(14);
 }
+
+const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
+const _omitMessageNames =
+    $core.bool.fromEnvironment('protobuf.omit_message_names');

@@ -1,48 +1,37 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: okapi/security/v1/security.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
+
+// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class CreateOberonKeyRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'CreateOberonKeyRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.security.v1'),
-      createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'seed',
-        $pb.PbFieldType.OY)
-    ..hasRequiredFields = false;
-
+  factory CreateOberonKeyRequest() => create();
   CreateOberonKeyRequest._() : super();
-  factory CreateOberonKeyRequest({
-    $core.List<$core.int>? seed,
-  }) {
-    final _result = create();
-    if (seed != null) {
-      _result.seed = seed;
-    }
-    return _result;
-  }
   factory CreateOberonKeyRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory CreateOberonKeyRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'CreateOberonKeyRequest',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'okapi.security.v1'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'seed', $pb.PbFieldType.OY)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -54,8 +43,10 @@ class CreateOberonKeyRequest extends $pb.GeneratedMessage {
   CreateOberonKeyRequest copyWith(
           void Function(CreateOberonKeyRequest) updates) =>
       super.copyWith((message) => updates(message as CreateOberonKeyRequest))
-          as CreateOberonKeyRequest; // ignore: deprecated_member_use
+          as CreateOberonKeyRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static CreateOberonKeyRequest create() => CreateOberonKeyRequest._();
   CreateOberonKeyRequest createEmptyInstance() => create();
@@ -80,49 +71,26 @@ class CreateOberonKeyRequest extends $pb.GeneratedMessage {
 }
 
 class CreateOberonKeyResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'CreateOberonKeyResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.security.v1'),
-      createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'sk',
-        $pb.PbFieldType.OY)
-    ..a<$core.List<$core.int>>(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'pk',
-        $pb.PbFieldType.OY)
-    ..hasRequiredFields = false;
-
+  factory CreateOberonKeyResponse() => create();
   CreateOberonKeyResponse._() : super();
-  factory CreateOberonKeyResponse({
-    $core.List<$core.int>? sk,
-    $core.List<$core.int>? pk,
-  }) {
-    final _result = create();
-    if (sk != null) {
-      _result.sk = sk;
-    }
-    if (pk != null) {
-      _result.pk = pk;
-    }
-    return _result;
-  }
   factory CreateOberonKeyResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory CreateOberonKeyResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'CreateOberonKeyResponse',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'okapi.security.v1'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        2, _omitFieldNames ? '' : 'sk', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        3, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.OY)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -134,8 +102,10 @@ class CreateOberonKeyResponse extends $pb.GeneratedMessage {
   CreateOberonKeyResponse copyWith(
           void Function(CreateOberonKeyResponse) updates) =>
       super.copyWith((message) => updates(message as CreateOberonKeyResponse))
-          as CreateOberonKeyResponse; // ignore: deprecated_member_use
+          as CreateOberonKeyResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static CreateOberonKeyResponse create() => CreateOberonKeyResponse._();
   CreateOberonKeyResponse createEmptyInstance() => create();
@@ -172,59 +142,28 @@ class CreateOberonKeyResponse extends $pb.GeneratedMessage {
 }
 
 class CreateOberonTokenRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'CreateOberonTokenRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.security.v1'),
-      createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'sk',
-        $pb.PbFieldType.OY)
-    ..a<$core.List<$core.int>>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'data',
-        $pb.PbFieldType.OY)
-    ..p<$core.List<$core.int>>(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'blinding',
-        $pb.PbFieldType.PY)
-    ..hasRequiredFields = false;
-
+  factory CreateOberonTokenRequest() => create();
   CreateOberonTokenRequest._() : super();
-  factory CreateOberonTokenRequest({
-    $core.List<$core.int>? sk,
-    $core.List<$core.int>? data,
-    $core.Iterable<$core.List<$core.int>>? blinding,
-  }) {
-    final _result = create();
-    if (sk != null) {
-      _result.sk = sk;
-    }
-    if (data != null) {
-      _result.data = data;
-    }
-    if (blinding != null) {
-      _result.blinding.addAll(blinding);
-    }
-    return _result;
-  }
   factory CreateOberonTokenRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory CreateOberonTokenRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'CreateOberonTokenRequest',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'okapi.security.v1'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'sk', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        2, _omitFieldNames ? '' : 'data', $pb.PbFieldType.OY)
+    ..p<$core.List<$core.int>>(
+        3, _omitFieldNames ? '' : 'blinding', $pb.PbFieldType.PY)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -236,8 +175,10 @@ class CreateOberonTokenRequest extends $pb.GeneratedMessage {
   CreateOberonTokenRequest copyWith(
           void Function(CreateOberonTokenRequest) updates) =>
       super.copyWith((message) => updates(message as CreateOberonTokenRequest))
-          as CreateOberonTokenRequest; // ignore: deprecated_member_use
+          as CreateOberonTokenRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static CreateOberonTokenRequest create() => CreateOberonTokenRequest._();
   CreateOberonTokenRequest createEmptyInstance() => create();
@@ -277,39 +218,24 @@ class CreateOberonTokenRequest extends $pb.GeneratedMessage {
 }
 
 class CreateOberonTokenResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'CreateOberonTokenResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.security.v1'),
-      createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'token',
-        $pb.PbFieldType.OY)
-    ..hasRequiredFields = false;
-
+  factory CreateOberonTokenResponse() => create();
   CreateOberonTokenResponse._() : super();
-  factory CreateOberonTokenResponse({
-    $core.List<$core.int>? token,
-  }) {
-    final _result = create();
-    if (token != null) {
-      _result.token = token;
-    }
-    return _result;
-  }
   factory CreateOberonTokenResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory CreateOberonTokenResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'CreateOberonTokenResponse',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'okapi.security.v1'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'token', $pb.PbFieldType.OY)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -321,8 +247,10 @@ class CreateOberonTokenResponse extends $pb.GeneratedMessage {
   CreateOberonTokenResponse copyWith(
           void Function(CreateOberonTokenResponse) updates) =>
       super.copyWith((message) => updates(message as CreateOberonTokenResponse))
-          as CreateOberonTokenResponse; // ignore: deprecated_member_use
+          as CreateOberonTokenResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static CreateOberonTokenResponse create() => CreateOberonTokenResponse._();
   CreateOberonTokenResponse createEmptyInstance() => create();
@@ -347,69 +275,30 @@ class CreateOberonTokenResponse extends $pb.GeneratedMessage {
 }
 
 class CreateOberonProofRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'CreateOberonProofRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.security.v1'),
-      createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'data',
-        $pb.PbFieldType.OY)
-    ..a<$core.List<$core.int>>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'token',
-        $pb.PbFieldType.OY)
-    ..p<$core.List<$core.int>>(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'blinding',
-        $pb.PbFieldType.PY)
-    ..a<$core.List<$core.int>>(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'nonce',
-        $pb.PbFieldType.OY)
-    ..hasRequiredFields = false;
-
+  factory CreateOberonProofRequest() => create();
   CreateOberonProofRequest._() : super();
-  factory CreateOberonProofRequest({
-    $core.List<$core.int>? data,
-    $core.List<$core.int>? token,
-    $core.Iterable<$core.List<$core.int>>? blinding,
-    $core.List<$core.int>? nonce,
-  }) {
-    final _result = create();
-    if (data != null) {
-      _result.data = data;
-    }
-    if (token != null) {
-      _result.token = token;
-    }
-    if (blinding != null) {
-      _result.blinding.addAll(blinding);
-    }
-    if (nonce != null) {
-      _result.nonce = nonce;
-    }
-    return _result;
-  }
   factory CreateOberonProofRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory CreateOberonProofRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'CreateOberonProofRequest',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'okapi.security.v1'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'data', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        2, _omitFieldNames ? '' : 'token', $pb.PbFieldType.OY)
+    ..p<$core.List<$core.int>>(
+        3, _omitFieldNames ? '' : 'blinding', $pb.PbFieldType.PY)
+    ..a<$core.List<$core.int>>(
+        4, _omitFieldNames ? '' : 'nonce', $pb.PbFieldType.OY)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -421,8 +310,10 @@ class CreateOberonProofRequest extends $pb.GeneratedMessage {
   CreateOberonProofRequest copyWith(
           void Function(CreateOberonProofRequest) updates) =>
       super.copyWith((message) => updates(message as CreateOberonProofRequest))
-          as CreateOberonProofRequest; // ignore: deprecated_member_use
+          as CreateOberonProofRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static CreateOberonProofRequest create() => CreateOberonProofRequest._();
   CreateOberonProofRequest createEmptyInstance() => create();
@@ -474,39 +365,24 @@ class CreateOberonProofRequest extends $pb.GeneratedMessage {
 }
 
 class CreateOberonProofResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'CreateOberonProofResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.security.v1'),
-      createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'proof',
-        $pb.PbFieldType.OY)
-    ..hasRequiredFields = false;
-
+  factory CreateOberonProofResponse() => create();
   CreateOberonProofResponse._() : super();
-  factory CreateOberonProofResponse({
-    $core.List<$core.int>? proof,
-  }) {
-    final _result = create();
-    if (proof != null) {
-      _result.proof = proof;
-    }
-    return _result;
-  }
   factory CreateOberonProofResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory CreateOberonProofResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'CreateOberonProofResponse',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'okapi.security.v1'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        2, _omitFieldNames ? '' : 'proof', $pb.PbFieldType.OY)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -518,8 +394,10 @@ class CreateOberonProofResponse extends $pb.GeneratedMessage {
   CreateOberonProofResponse copyWith(
           void Function(CreateOberonProofResponse) updates) =>
       super.copyWith((message) => updates(message as CreateOberonProofResponse))
-          as CreateOberonProofResponse; // ignore: deprecated_member_use
+          as CreateOberonProofResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static CreateOberonProofResponse create() => CreateOberonProofResponse._();
   CreateOberonProofResponse createEmptyInstance() => create();
@@ -544,69 +422,30 @@ class CreateOberonProofResponse extends $pb.GeneratedMessage {
 }
 
 class VerifyOberonProofRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'VerifyOberonProofRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.security.v1'),
-      createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'proof',
-        $pb.PbFieldType.OY)
-    ..a<$core.List<$core.int>>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'data',
-        $pb.PbFieldType.OY)
-    ..a<$core.List<$core.int>>(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'nonce',
-        $pb.PbFieldType.OY)
-    ..a<$core.List<$core.int>>(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'pk',
-        $pb.PbFieldType.OY)
-    ..hasRequiredFields = false;
-
+  factory VerifyOberonProofRequest() => create();
   VerifyOberonProofRequest._() : super();
-  factory VerifyOberonProofRequest({
-    $core.List<$core.int>? proof,
-    $core.List<$core.int>? data,
-    $core.List<$core.int>? nonce,
-    $core.List<$core.int>? pk,
-  }) {
-    final _result = create();
-    if (proof != null) {
-      _result.proof = proof;
-    }
-    if (data != null) {
-      _result.data = data;
-    }
-    if (nonce != null) {
-      _result.nonce = nonce;
-    }
-    if (pk != null) {
-      _result.pk = pk;
-    }
-    return _result;
-  }
   factory VerifyOberonProofRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory VerifyOberonProofRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'VerifyOberonProofRequest',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'okapi.security.v1'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'proof', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        2, _omitFieldNames ? '' : 'data', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        3, _omitFieldNames ? '' : 'nonce', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        4, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.OY)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -618,8 +457,10 @@ class VerifyOberonProofRequest extends $pb.GeneratedMessage {
   VerifyOberonProofRequest copyWith(
           void Function(VerifyOberonProofRequest) updates) =>
       super.copyWith((message) => updates(message as VerifyOberonProofRequest))
-          as VerifyOberonProofRequest; // ignore: deprecated_member_use
+          as VerifyOberonProofRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static VerifyOberonProofRequest create() => VerifyOberonProofRequest._();
   VerifyOberonProofRequest createEmptyInstance() => create();
@@ -680,38 +521,23 @@ class VerifyOberonProofRequest extends $pb.GeneratedMessage {
 }
 
 class VerifyOberonProofResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'VerifyOberonProofResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.security.v1'),
-      createEmptyInstance: create)
-    ..aOB(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'valid')
-    ..hasRequiredFields = false;
-
+  factory VerifyOberonProofResponse() => create();
   VerifyOberonProofResponse._() : super();
-  factory VerifyOberonProofResponse({
-    $core.bool? valid,
-  }) {
-    final _result = create();
-    if (valid != null) {
-      _result.valid = valid;
-    }
-    return _result;
-  }
   factory VerifyOberonProofResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory VerifyOberonProofResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'VerifyOberonProofResponse',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'okapi.security.v1'),
+      createEmptyInstance: create)
+    ..aOB(1, _omitFieldNames ? '' : 'valid')
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -723,8 +549,10 @@ class VerifyOberonProofResponse extends $pb.GeneratedMessage {
   VerifyOberonProofResponse copyWith(
           void Function(VerifyOberonProofResponse) updates) =>
       super.copyWith((message) => updates(message as VerifyOberonProofResponse))
-          as VerifyOberonProofResponse; // ignore: deprecated_member_use
+          as VerifyOberonProofResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static VerifyOberonProofResponse create() => VerifyOberonProofResponse._();
   VerifyOberonProofResponse createEmptyInstance() => create();
@@ -749,49 +577,26 @@ class VerifyOberonProofResponse extends $pb.GeneratedMessage {
 }
 
 class BlindOberonTokenRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'BlindOberonTokenRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.security.v1'),
-      createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'token',
-        $pb.PbFieldType.OY)
-    ..p<$core.List<$core.int>>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'blinding',
-        $pb.PbFieldType.PY)
-    ..hasRequiredFields = false;
-
+  factory BlindOberonTokenRequest() => create();
   BlindOberonTokenRequest._() : super();
-  factory BlindOberonTokenRequest({
-    $core.List<$core.int>? token,
-    $core.Iterable<$core.List<$core.int>>? blinding,
-  }) {
-    final _result = create();
-    if (token != null) {
-      _result.token = token;
-    }
-    if (blinding != null) {
-      _result.blinding.addAll(blinding);
-    }
-    return _result;
-  }
   factory BlindOberonTokenRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory BlindOberonTokenRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'BlindOberonTokenRequest',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'okapi.security.v1'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'token', $pb.PbFieldType.OY)
+    ..p<$core.List<$core.int>>(
+        2, _omitFieldNames ? '' : 'blinding', $pb.PbFieldType.PY)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -803,8 +608,10 @@ class BlindOberonTokenRequest extends $pb.GeneratedMessage {
   BlindOberonTokenRequest copyWith(
           void Function(BlindOberonTokenRequest) updates) =>
       super.copyWith((message) => updates(message as BlindOberonTokenRequest))
-          as BlindOberonTokenRequest; // ignore: deprecated_member_use
+          as BlindOberonTokenRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static BlindOberonTokenRequest create() => BlindOberonTokenRequest._();
   BlindOberonTokenRequest createEmptyInstance() => create();
@@ -832,39 +639,24 @@ class BlindOberonTokenRequest extends $pb.GeneratedMessage {
 }
 
 class BlindOberonTokenResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'BlindOberonTokenResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.security.v1'),
-      createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'token',
-        $pb.PbFieldType.OY)
-    ..hasRequiredFields = false;
-
+  factory BlindOberonTokenResponse() => create();
   BlindOberonTokenResponse._() : super();
-  factory BlindOberonTokenResponse({
-    $core.List<$core.int>? token,
-  }) {
-    final _result = create();
-    if (token != null) {
-      _result.token = token;
-    }
-    return _result;
-  }
   factory BlindOberonTokenResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory BlindOberonTokenResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'BlindOberonTokenResponse',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'okapi.security.v1'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'token', $pb.PbFieldType.OY)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -876,8 +668,10 @@ class BlindOberonTokenResponse extends $pb.GeneratedMessage {
   BlindOberonTokenResponse copyWith(
           void Function(BlindOberonTokenResponse) updates) =>
       super.copyWith((message) => updates(message as BlindOberonTokenResponse))
-          as BlindOberonTokenResponse; // ignore: deprecated_member_use
+          as BlindOberonTokenResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static BlindOberonTokenResponse create() => BlindOberonTokenResponse._();
   BlindOberonTokenResponse createEmptyInstance() => create();
@@ -902,49 +696,26 @@ class BlindOberonTokenResponse extends $pb.GeneratedMessage {
 }
 
 class UnBlindOberonTokenRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'UnBlindOberonTokenRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.security.v1'),
-      createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'token',
-        $pb.PbFieldType.OY)
-    ..p<$core.List<$core.int>>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'blinding',
-        $pb.PbFieldType.PY)
-    ..hasRequiredFields = false;
-
+  factory UnBlindOberonTokenRequest() => create();
   UnBlindOberonTokenRequest._() : super();
-  factory UnBlindOberonTokenRequest({
-    $core.List<$core.int>? token,
-    $core.Iterable<$core.List<$core.int>>? blinding,
-  }) {
-    final _result = create();
-    if (token != null) {
-      _result.token = token;
-    }
-    if (blinding != null) {
-      _result.blinding.addAll(blinding);
-    }
-    return _result;
-  }
   factory UnBlindOberonTokenRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory UnBlindOberonTokenRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'UnBlindOberonTokenRequest',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'okapi.security.v1'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'token', $pb.PbFieldType.OY)
+    ..p<$core.List<$core.int>>(
+        2, _omitFieldNames ? '' : 'blinding', $pb.PbFieldType.PY)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -956,8 +727,10 @@ class UnBlindOberonTokenRequest extends $pb.GeneratedMessage {
   UnBlindOberonTokenRequest copyWith(
           void Function(UnBlindOberonTokenRequest) updates) =>
       super.copyWith((message) => updates(message as UnBlindOberonTokenRequest))
-          as UnBlindOberonTokenRequest; // ignore: deprecated_member_use
+          as UnBlindOberonTokenRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static UnBlindOberonTokenRequest create() => UnBlindOberonTokenRequest._();
   UnBlindOberonTokenRequest createEmptyInstance() => create();
@@ -985,39 +758,24 @@ class UnBlindOberonTokenRequest extends $pb.GeneratedMessage {
 }
 
 class UnBlindOberonTokenResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'UnBlindOberonTokenResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.security.v1'),
-      createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'token',
-        $pb.PbFieldType.OY)
-    ..hasRequiredFields = false;
-
+  factory UnBlindOberonTokenResponse() => create();
   UnBlindOberonTokenResponse._() : super();
-  factory UnBlindOberonTokenResponse({
-    $core.List<$core.int>? token,
-  }) {
-    final _result = create();
-    if (token != null) {
-      _result.token = token;
-    }
-    return _result;
-  }
   factory UnBlindOberonTokenResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory UnBlindOberonTokenResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'UnBlindOberonTokenResponse',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'okapi.security.v1'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'token', $pb.PbFieldType.OY)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -1030,8 +788,10 @@ class UnBlindOberonTokenResponse extends $pb.GeneratedMessage {
           void Function(UnBlindOberonTokenResponse) updates) =>
       super.copyWith(
               (message) => updates(message as UnBlindOberonTokenResponse))
-          as UnBlindOberonTokenResponse; // ignore: deprecated_member_use
+          as UnBlindOberonTokenResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static UnBlindOberonTokenResponse create() => UnBlindOberonTokenResponse._();
   UnBlindOberonTokenResponse createEmptyInstance() => create();
@@ -1056,59 +816,28 @@ class UnBlindOberonTokenResponse extends $pb.GeneratedMessage {
 }
 
 class VerifyOberonTokenRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'VerifyOberonTokenRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.security.v1'),
-      createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'token',
-        $pb.PbFieldType.OY)
-    ..a<$core.List<$core.int>>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'pk',
-        $pb.PbFieldType.OY)
-    ..a<$core.List<$core.int>>(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'data',
-        $pb.PbFieldType.OY)
-    ..hasRequiredFields = false;
-
+  factory VerifyOberonTokenRequest() => create();
   VerifyOberonTokenRequest._() : super();
-  factory VerifyOberonTokenRequest({
-    $core.List<$core.int>? token,
-    $core.List<$core.int>? pk,
-    $core.List<$core.int>? data,
-  }) {
-    final _result = create();
-    if (token != null) {
-      _result.token = token;
-    }
-    if (pk != null) {
-      _result.pk = pk;
-    }
-    if (data != null) {
-      _result.data = data;
-    }
-    return _result;
-  }
   factory VerifyOberonTokenRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory VerifyOberonTokenRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'VerifyOberonTokenRequest',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'okapi.security.v1'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'token', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        2, _omitFieldNames ? '' : 'pk', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        3, _omitFieldNames ? '' : 'data', $pb.PbFieldType.OY)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -1120,8 +849,10 @@ class VerifyOberonTokenRequest extends $pb.GeneratedMessage {
   VerifyOberonTokenRequest copyWith(
           void Function(VerifyOberonTokenRequest) updates) =>
       super.copyWith((message) => updates(message as VerifyOberonTokenRequest))
-          as VerifyOberonTokenRequest; // ignore: deprecated_member_use
+          as VerifyOberonTokenRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static VerifyOberonTokenRequest create() => VerifyOberonTokenRequest._();
   VerifyOberonTokenRequest createEmptyInstance() => create();
@@ -1170,38 +901,23 @@ class VerifyOberonTokenRequest extends $pb.GeneratedMessage {
 }
 
 class VerifyOberonTokenResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'VerifyOberonTokenResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.security.v1'),
-      createEmptyInstance: create)
-    ..aOB(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'valid')
-    ..hasRequiredFields = false;
-
+  factory VerifyOberonTokenResponse() => create();
   VerifyOberonTokenResponse._() : super();
-  factory VerifyOberonTokenResponse({
-    $core.bool? valid,
-  }) {
-    final _result = create();
-    if (valid != null) {
-      _result.valid = valid;
-    }
-    return _result;
-  }
   factory VerifyOberonTokenResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory VerifyOberonTokenResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'VerifyOberonTokenResponse',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'okapi.security.v1'),
+      createEmptyInstance: create)
+    ..aOB(1, _omitFieldNames ? '' : 'valid')
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -1213,8 +929,10 @@ class VerifyOberonTokenResponse extends $pb.GeneratedMessage {
   VerifyOberonTokenResponse copyWith(
           void Function(VerifyOberonTokenResponse) updates) =>
       super.copyWith((message) => updates(message as VerifyOberonTokenResponse))
-          as VerifyOberonTokenResponse; // ignore: deprecated_member_use
+          as VerifyOberonTokenResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static VerifyOberonTokenResponse create() => VerifyOberonTokenResponse._();
   VerifyOberonTokenResponse createEmptyInstance() => create();
@@ -1237,3 +955,7 @@ class VerifyOberonTokenResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearValid() => clearField(1);
 }
+
+const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
+const _omitMessageNames =
+    $core.bool.fromEnvironment('protobuf.omit_message_names');
