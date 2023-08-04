@@ -1,9 +1,13 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: pbmse/v1/pbmse.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
+
+// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
 import 'dart:core' as $core;
 
@@ -14,50 +18,25 @@ import 'pbmse.pbenum.dart';
 export 'pbmse.pbenum.dart';
 
 class SignedMessage extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'SignedMessage',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'pbmse.v1'),
-      createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'payload',
-        $pb.PbFieldType.OY)
-    ..pc<Signature>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'signatures',
-        $pb.PbFieldType.PM,
-        subBuilder: Signature.create)
-    ..hasRequiredFields = false;
-
+  factory SignedMessage() => create();
   SignedMessage._() : super();
-  factory SignedMessage({
-    $core.List<$core.int>? payload,
-    $core.Iterable<Signature>? signatures,
-  }) {
-    final _result = create();
-    if (payload != null) {
-      _result.payload = payload;
-    }
-    if (signatures != null) {
-      _result.signatures.addAll(signatures);
-    }
-    return _result;
-  }
   factory SignedMessage.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory SignedMessage.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'SignedMessage',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'pbmse.v1'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'payload', $pb.PbFieldType.OY)
+    ..pc<Signature>(2, _omitFieldNames ? '' : 'signatures', $pb.PbFieldType.PM,
+        subBuilder: Signature.create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -67,8 +46,10 @@ class SignedMessage extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   SignedMessage copyWith(void Function(SignedMessage) updates) =>
       super.copyWith((message) => updates(message as SignedMessage))
-          as SignedMessage; // ignore: deprecated_member_use
+          as SignedMessage;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static SignedMessage create() => SignedMessage._();
   SignedMessage createEmptyInstance() => create();
@@ -96,49 +77,25 @@ class SignedMessage extends $pb.GeneratedMessage {
 }
 
 class Signature extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'Signature',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'pbmse.v1'),
-      createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'header',
-        $pb.PbFieldType.OY)
-    ..a<$core.List<$core.int>>(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'signature',
-        $pb.PbFieldType.OY)
-    ..hasRequiredFields = false;
-
+  factory Signature() => create();
   Signature._() : super();
-  factory Signature({
-    $core.List<$core.int>? header,
-    $core.List<$core.int>? signature,
-  }) {
-    final _result = create();
-    if (header != null) {
-      _result.header = header;
-    }
-    if (signature != null) {
-      _result.signature = signature;
-    }
-    return _result;
-  }
   factory Signature.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory Signature.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'Signature',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'pbmse.v1'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'header', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        3, _omitFieldNames ? '' : 'signature', $pb.PbFieldType.OY)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -147,9 +104,10 @@ class Signature extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   Signature copyWith(void Function(Signature) updates) =>
-      super.copyWith((message) => updates(message as Signature))
-          as Signature; // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as Signature)) as Signature;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static Signature create() => Signature._();
   Signature createEmptyInstance() => create();
@@ -185,47 +143,23 @@ class Signature extends $pb.GeneratedMessage {
 }
 
 class SignatureHeader extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'SignatureHeader',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'pbmse.v1'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'algorithm')
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'keyId')
-    ..hasRequiredFields = false;
-
+  factory SignatureHeader() => create();
   SignatureHeader._() : super();
-  factory SignatureHeader({
-    $core.String? algorithm,
-    $core.String? keyId,
-  }) {
-    final _result = create();
-    if (algorithm != null) {
-      _result.algorithm = algorithm;
-    }
-    if (keyId != null) {
-      _result.keyId = keyId;
-    }
-    return _result;
-  }
   factory SignatureHeader.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory SignatureHeader.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'SignatureHeader',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'pbmse.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'algorithm')
+    ..aOS(2, _omitFieldNames ? '' : 'keyId')
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -235,8 +169,10 @@ class SignatureHeader extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   SignatureHeader copyWith(void Function(SignatureHeader) updates) =>
       super.copyWith((message) => updates(message as SignatureHeader))
-          as SignatureHeader; // ignore: deprecated_member_use
+          as SignatureHeader;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static SignatureHeader create() => SignatureHeader._();
   SignatureHeader createEmptyInstance() => create();
@@ -273,80 +209,32 @@ class SignatureHeader extends $pb.GeneratedMessage {
 }
 
 class EncryptedMessage extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'EncryptedMessage',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'pbmse.v1'),
-      createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'iv',
-        $pb.PbFieldType.OY)
-    ..a<$core.List<$core.int>>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'aad',
-        $pb.PbFieldType.OY)
-    ..a<$core.List<$core.int>>(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'ciphertext',
-        $pb.PbFieldType.OY)
-    ..a<$core.List<$core.int>>(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'tag',
-        $pb.PbFieldType.OY)
-    ..pc<EncryptionRecipient>(
-        5,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'recipients',
-        $pb.PbFieldType.PM,
-        subBuilder: EncryptionRecipient.create)
-    ..hasRequiredFields = false;
-
+  factory EncryptedMessage() => create();
   EncryptedMessage._() : super();
-  factory EncryptedMessage({
-    $core.List<$core.int>? iv,
-    $core.List<$core.int>? aad,
-    $core.List<$core.int>? ciphertext,
-    $core.List<$core.int>? tag,
-    $core.Iterable<EncryptionRecipient>? recipients,
-  }) {
-    final _result = create();
-    if (iv != null) {
-      _result.iv = iv;
-    }
-    if (aad != null) {
-      _result.aad = aad;
-    }
-    if (ciphertext != null) {
-      _result.ciphertext = ciphertext;
-    }
-    if (tag != null) {
-      _result.tag = tag;
-    }
-    if (recipients != null) {
-      _result.recipients.addAll(recipients);
-    }
-    return _result;
-  }
   factory EncryptedMessage.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory EncryptedMessage.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'EncryptedMessage',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'pbmse.v1'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'iv', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        2, _omitFieldNames ? '' : 'aad', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        3, _omitFieldNames ? '' : 'ciphertext', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        4, _omitFieldNames ? '' : 'tag', $pb.PbFieldType.OY)
+    ..pc<EncryptionRecipient>(
+        5, _omitFieldNames ? '' : 'recipients', $pb.PbFieldType.PM,
+        subBuilder: EncryptionRecipient.create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -356,8 +244,10 @@ class EncryptedMessage extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   EncryptedMessage copyWith(void Function(EncryptedMessage) updates) =>
       super.copyWith((message) => updates(message as EncryptedMessage))
-          as EncryptedMessage; // ignore: deprecated_member_use
+          as EncryptedMessage;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static EncryptedMessage create() => EncryptedMessage._();
   EncryptedMessage createEmptyInstance() => create();
@@ -421,77 +311,34 @@ class EncryptedMessage extends $pb.GeneratedMessage {
 }
 
 class EncryptionHeader extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'EncryptionHeader',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'pbmse.v1'),
-      createEmptyInstance: create)
-    ..e<EncryptionMode>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'enc',
-        $pb.PbFieldType.OE,
-        protoName: 'mode',
-        defaultOrMaker: EncryptionMode.ENCRYPTION_MODE_UNSPECIFIED,
-        valueOf: EncryptionMode.valueOf,
-        enumValues: EncryptionMode.values)
-    ..e<EncryptionAlgorithm>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'alg',
-        $pb.PbFieldType.OE,
-        protoName: 'algorithm',
-        defaultOrMaker: EncryptionAlgorithm.ENCRYPTION_ALGORITHM_UNSPECIFIED,
-        valueOf: EncryptionAlgorithm.valueOf,
-        enumValues: EncryptionAlgorithm.values)
-    ..aOS(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'kid',
-        protoName: 'key_id')
-    ..aOS(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'skid',
-        protoName: 'sender_key_id')
-    ..hasRequiredFields = false;
-
+  factory EncryptionHeader() => create();
   EncryptionHeader._() : super();
-  factory EncryptionHeader({
-    EncryptionMode? mode,
-    EncryptionAlgorithm? algorithm,
-    $core.String? keyId,
-    $core.String? senderKeyId,
-  }) {
-    final _result = create();
-    if (mode != null) {
-      _result.mode = mode;
-    }
-    if (algorithm != null) {
-      _result.algorithm = algorithm;
-    }
-    if (keyId != null) {
-      _result.keyId = keyId;
-    }
-    if (senderKeyId != null) {
-      _result.senderKeyId = senderKeyId;
-    }
-    return _result;
-  }
   factory EncryptionHeader.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory EncryptionHeader.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'EncryptionHeader',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'pbmse.v1'),
+      createEmptyInstance: create)
+    ..e<EncryptionMode>(1, _omitFieldNames ? '' : 'enc', $pb.PbFieldType.OE,
+        protoName: 'mode',
+        defaultOrMaker: EncryptionMode.ENCRYPTION_MODE_UNSPECIFIED,
+        valueOf: EncryptionMode.valueOf,
+        enumValues: EncryptionMode.values)
+    ..e<EncryptionAlgorithm>(
+        2, _omitFieldNames ? '' : 'alg', $pb.PbFieldType.OE,
+        protoName: 'algorithm',
+        defaultOrMaker: EncryptionAlgorithm.ENCRYPTION_ALGORITHM_UNSPECIFIED,
+        valueOf: EncryptionAlgorithm.valueOf,
+        enumValues: EncryptionAlgorithm.values)
+    ..aOS(3, _omitFieldNames ? '' : 'kid', protoName: 'key_id')
+    ..aOS(4, _omitFieldNames ? '' : 'skid', protoName: 'sender_key_id')
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -501,8 +348,10 @@ class EncryptionHeader extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   EncryptionHeader copyWith(void Function(EncryptionHeader) updates) =>
       super.copyWith((message) => updates(message as EncryptionHeader))
-          as EncryptionHeader; // ignore: deprecated_member_use
+          as EncryptionHeader;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static EncryptionHeader create() => EncryptionHeader._();
   EncryptionHeader createEmptyInstance() => create();
@@ -563,51 +412,26 @@ class EncryptionHeader extends $pb.GeneratedMessage {
 }
 
 class EncryptionRecipient extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'EncryptionRecipient',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'pbmse.v1'),
-      createEmptyInstance: create)
-    ..aOM<EncryptionHeader>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'unprotected',
-        protoName: 'header',
-        subBuilder: EncryptionHeader.create)
-    ..a<$core.List<$core.int>>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'cek',
-        $pb.PbFieldType.OY,
-        protoName: 'content_encryption_key')
-    ..hasRequiredFields = false;
-
+  factory EncryptionRecipient() => create();
   EncryptionRecipient._() : super();
-  factory EncryptionRecipient({
-    EncryptionHeader? header,
-    $core.List<$core.int>? contentEncryptionKey,
-  }) {
-    final _result = create();
-    if (header != null) {
-      _result.header = header;
-    }
-    if (contentEncryptionKey != null) {
-      _result.contentEncryptionKey = contentEncryptionKey;
-    }
-    return _result;
-  }
   factory EncryptionRecipient.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory EncryptionRecipient.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'EncryptionRecipient',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'pbmse.v1'),
+      createEmptyInstance: create)
+    ..aOM<EncryptionHeader>(1, _omitFieldNames ? '' : 'unprotected',
+        protoName: 'header', subBuilder: EncryptionHeader.create)
+    ..a<$core.List<$core.int>>(
+        2, _omitFieldNames ? '' : 'cek', $pb.PbFieldType.OY,
+        protoName: 'content_encryption_key')
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -617,8 +441,10 @@ class EncryptionRecipient extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   EncryptionRecipient copyWith(void Function(EncryptionRecipient) updates) =>
       super.copyWith((message) => updates(message as EncryptionRecipient))
-          as EncryptionRecipient; // ignore: deprecated_member_use
+          as EncryptionRecipient;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static EncryptionRecipient create() => EncryptionRecipient._();
   EncryptionRecipient createEmptyInstance() => create();
@@ -655,3 +481,7 @@ class EncryptionRecipient extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearContentEncryptionKey() => clearField(2);
 }
+
+const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
+const _omitMessageNames =
+    $core.bool.fromEnvironment('protobuf.omit_message_names');
