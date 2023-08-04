@@ -10,23 +10,23 @@ import 'dart:async' as $async;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'dart:core' as $core;
-import '../../../pbmse/v1/pbmse.pb.dart' as $2;
+import '../../../pbmse/v1/pbmse.pb.dart' as $0;
 import 'examples.pbjson.dart';
 
 export 'examples.pb.dart';
 
 abstract class SecureExampleServiceBase extends $pb.GeneratedService {
-  $async.Future<$2.EncryptedMessage> unary(
-      $pb.ServerContext ctx, $2.EncryptedMessage request);
-  $async.Future<$2.EncryptedMessage> serverStreaming(
-      $pb.ServerContext ctx, $2.EncryptedMessage request);
+  $async.Future<$0.EncryptedMessage> unary(
+      $pb.ServerContext ctx, $0.EncryptedMessage request);
+  $async.Future<$0.EncryptedMessage> serverStreaming(
+      $pb.ServerContext ctx, $0.EncryptedMessage request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
       case 'Unary':
-        return $2.EncryptedMessage();
+        return $0.EncryptedMessage();
       case 'ServerStreaming':
-        return $2.EncryptedMessage();
+        return $0.EncryptedMessage();
       default:
         throw $core.ArgumentError('Unknown method: $method');
     }
@@ -36,9 +36,9 @@ abstract class SecureExampleServiceBase extends $pb.GeneratedService {
       $core.String method, $pb.GeneratedMessage request) {
     switch (method) {
       case 'Unary':
-        return this.unary(ctx, request as $2.EncryptedMessage);
+        return this.unary(ctx, request as $0.EncryptedMessage);
       case 'ServerStreaming':
-        return this.serverStreaming(ctx, request as $2.EncryptedMessage);
+        return this.serverStreaming(ctx, request as $0.EncryptedMessage);
       default:
         throw $core.ArgumentError('Unknown method: $method');
     }

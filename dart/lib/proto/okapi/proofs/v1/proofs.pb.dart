@@ -9,8 +9,8 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../../google/protobuf/struct.pb.dart' as $0;
-import '../../keys/v1/keys.pb.dart' as $1;
+import '../../../google/protobuf/struct.pb.dart' as $1;
+import '../../keys/v1/keys.pb.dart' as $2;
 
 import 'proofs.pbenum.dart';
 
@@ -26,18 +26,18 @@ class CreateProofRequest extends $pb.GeneratedMessage {
               ? ''
               : 'okapi.proofs.v1'),
       createEmptyInstance: create)
-    ..aOM<$0.Struct>(
+    ..aOM<$1.Struct>(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'document',
-        subBuilder: $0.Struct.create)
-    ..aOM<$1.JsonWebKey>(
+        subBuilder: $1.Struct.create)
+    ..aOM<$2.JsonWebKey>(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'key',
-        subBuilder: $1.JsonWebKey.create)
+        subBuilder: $2.JsonWebKey.create)
     ..e<LdSuite>(
         4,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -51,8 +51,8 @@ class CreateProofRequest extends $pb.GeneratedMessage {
 
   CreateProofRequest._() : super();
   factory CreateProofRequest({
-    $0.Struct? document,
-    $1.JsonWebKey? key,
+    $1.Struct? document,
+    $2.JsonWebKey? key,
     LdSuite? suite,
   }) {
     final _result = create();
@@ -95,9 +95,9 @@ class CreateProofRequest extends $pb.GeneratedMessage {
   static CreateProofRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $0.Struct get document => $_getN(0);
+  $1.Struct get document => $_getN(0);
   @$pb.TagNumber(1)
-  set document($0.Struct v) {
+  set document($1.Struct v) {
     setField(1, v);
   }
 
@@ -106,12 +106,12 @@ class CreateProofRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearDocument() => clearField(1);
   @$pb.TagNumber(1)
-  $0.Struct ensureDocument() => $_ensure(0);
+  $1.Struct ensureDocument() => $_ensure(0);
 
   @$pb.TagNumber(3)
-  $1.JsonWebKey get key => $_getN(1);
+  $2.JsonWebKey get key => $_getN(1);
   @$pb.TagNumber(3)
-  set key($1.JsonWebKey v) {
+  set key($2.JsonWebKey v) {
     setField(3, v);
   }
 
@@ -120,7 +120,7 @@ class CreateProofRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearKey() => clearField(3);
   @$pb.TagNumber(3)
-  $1.JsonWebKey ensureKey() => $_ensure(1);
+  $2.JsonWebKey ensureKey() => $_ensure(1);
 
   @$pb.TagNumber(4)
   LdSuite get suite => $_getN(2);
@@ -145,17 +145,17 @@ class CreateProofResponse extends $pb.GeneratedMessage {
               ? ''
               : 'okapi.proofs.v1'),
       createEmptyInstance: create)
-    ..aOM<$0.Struct>(
+    ..aOM<$1.Struct>(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'signedDocument',
-        subBuilder: $0.Struct.create)
+        subBuilder: $1.Struct.create)
     ..hasRequiredFields = false;
 
   CreateProofResponse._() : super();
   factory CreateProofResponse({
-    $0.Struct? signedDocument,
+    $1.Struct? signedDocument,
   }) {
     final _result = create();
     if (signedDocument != null) {
@@ -191,9 +191,9 @@ class CreateProofResponse extends $pb.GeneratedMessage {
   static CreateProofResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $0.Struct get signedDocument => $_getN(0);
+  $1.Struct get signedDocument => $_getN(0);
   @$pb.TagNumber(1)
-  set signedDocument($0.Struct v) {
+  set signedDocument($1.Struct v) {
     setField(1, v);
   }
 
@@ -202,7 +202,7 @@ class CreateProofResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearSignedDocument() => clearField(1);
   @$pb.TagNumber(1)
-  $0.Struct ensureSignedDocument() => $_ensure(0);
+  $1.Struct ensureSignedDocument() => $_ensure(0);
 }
 
 class VerifyProofRequest extends $pb.GeneratedMessage {
