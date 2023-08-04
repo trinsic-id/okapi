@@ -1,74 +1,46 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: okapi/transport/v1/transport.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
+
+// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
 import 'dart:core' as $core;
 
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../keys/v1/keys.pb.dart' as $2;
-import '../../../pbmse/v1/pbmse.pb.dart' as $0;
-
-import '../../../pbmse/v1/pbmse.pbenum.dart' as $0;
+import '../../../pbmse/v1/pbmse.pb.dart' as $2;
+import '../../../pbmse/v1/pbmse.pbenum.dart' as $2;
+import '../../keys/v1/keys.pb.dart' as $1;
 
 class SignRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'SignRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.transport.v1'),
-      createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'payload',
-        $pb.PbFieldType.OY)
-    ..aOM<$2.JsonWebKey>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'key',
-        subBuilder: $2.JsonWebKey.create)
-    ..aOM<$0.SignedMessage>(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'appendTo',
-        subBuilder: $0.SignedMessage.create)
-    ..hasRequiredFields = false;
-
+  factory SignRequest() => create();
   SignRequest._() : super();
-  factory SignRequest({
-    $core.List<$core.int>? payload,
-    $2.JsonWebKey? key,
-    $0.SignedMessage? appendTo,
-  }) {
-    final _result = create();
-    if (payload != null) {
-      _result.payload = payload;
-    }
-    if (key != null) {
-      _result.key = key;
-    }
-    if (appendTo != null) {
-      _result.appendTo = appendTo;
-    }
-    return _result;
-  }
   factory SignRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory SignRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'SignRequest',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'okapi.transport.v1'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'payload', $pb.PbFieldType.OY)
+    ..aOM<$1.JsonWebKey>(2, _omitFieldNames ? '' : 'key',
+        subBuilder: $1.JsonWebKey.create)
+    ..aOM<$2.SignedMessage>(3, _omitFieldNames ? '' : 'appendTo',
+        subBuilder: $2.SignedMessage.create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -78,8 +50,10 @@ class SignRequest extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   SignRequest copyWith(void Function(SignRequest) updates) =>
       super.copyWith((message) => updates(message as SignRequest))
-          as SignRequest; // ignore: deprecated_member_use
+          as SignRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static SignRequest create() => SignRequest._();
   SignRequest createEmptyInstance() => create();
@@ -102,9 +76,9 @@ class SignRequest extends $pb.GeneratedMessage {
   void clearPayload() => clearField(1);
 
   @$pb.TagNumber(2)
-  $2.JsonWebKey get key => $_getN(1);
+  $1.JsonWebKey get key => $_getN(1);
   @$pb.TagNumber(2)
-  set key($2.JsonWebKey v) {
+  set key($1.JsonWebKey v) {
     setField(2, v);
   }
 
@@ -113,12 +87,12 @@ class SignRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearKey() => clearField(2);
   @$pb.TagNumber(2)
-  $2.JsonWebKey ensureKey() => $_ensure(1);
+  $1.JsonWebKey ensureKey() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $0.SignedMessage get appendTo => $_getN(2);
+  $2.SignedMessage get appendTo => $_getN(2);
   @$pb.TagNumber(3)
-  set appendTo($0.SignedMessage v) {
+  set appendTo($2.SignedMessage v) {
     setField(3, v);
   }
 
@@ -127,43 +101,28 @@ class SignRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearAppendTo() => clearField(3);
   @$pb.TagNumber(3)
-  $0.SignedMessage ensureAppendTo() => $_ensure(2);
+  $2.SignedMessage ensureAppendTo() => $_ensure(2);
 }
 
 class SignResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'SignResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.transport.v1'),
-      createEmptyInstance: create)
-    ..aOM<$0.SignedMessage>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'message',
-        subBuilder: $0.SignedMessage.create)
-    ..hasRequiredFields = false;
-
+  factory SignResponse() => create();
   SignResponse._() : super();
-  factory SignResponse({
-    $0.SignedMessage? message,
-  }) {
-    final _result = create();
-    if (message != null) {
-      _result.message = message;
-    }
-    return _result;
-  }
   factory SignResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory SignResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'SignResponse',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'okapi.transport.v1'),
+      createEmptyInstance: create)
+    ..aOM<$2.SignedMessage>(1, _omitFieldNames ? '' : 'message',
+        subBuilder: $2.SignedMessage.create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -173,8 +132,10 @@ class SignResponse extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   SignResponse copyWith(void Function(SignResponse) updates) =>
       super.copyWith((message) => updates(message as SignResponse))
-          as SignResponse; // ignore: deprecated_member_use
+          as SignResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static SignResponse create() => SignResponse._();
   SignResponse createEmptyInstance() => create();
@@ -186,9 +147,9 @@ class SignResponse extends $pb.GeneratedMessage {
   static SignResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $0.SignedMessage get message => $_getN(0);
+  $2.SignedMessage get message => $_getN(0);
   @$pb.TagNumber(1)
-  set message($0.SignedMessage v) {
+  set message($2.SignedMessage v) {
     setField(1, v);
   }
 
@@ -197,53 +158,30 @@ class SignResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearMessage() => clearField(1);
   @$pb.TagNumber(1)
-  $0.SignedMessage ensureMessage() => $_ensure(0);
+  $2.SignedMessage ensureMessage() => $_ensure(0);
 }
 
 class VerifyRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'VerifyRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.transport.v1'),
-      createEmptyInstance: create)
-    ..aOM<$0.SignedMessage>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'message',
-        subBuilder: $0.SignedMessage.create)
-    ..aOM<$2.JsonWebKey>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'key',
-        subBuilder: $2.JsonWebKey.create)
-    ..hasRequiredFields = false;
-
+  factory VerifyRequest() => create();
   VerifyRequest._() : super();
-  factory VerifyRequest({
-    $0.SignedMessage? message,
-    $2.JsonWebKey? key,
-  }) {
-    final _result = create();
-    if (message != null) {
-      _result.message = message;
-    }
-    if (key != null) {
-      _result.key = key;
-    }
-    return _result;
-  }
   factory VerifyRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory VerifyRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'VerifyRequest',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'okapi.transport.v1'),
+      createEmptyInstance: create)
+    ..aOM<$2.SignedMessage>(1, _omitFieldNames ? '' : 'message',
+        subBuilder: $2.SignedMessage.create)
+    ..aOM<$1.JsonWebKey>(2, _omitFieldNames ? '' : 'key',
+        subBuilder: $1.JsonWebKey.create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -253,8 +191,10 @@ class VerifyRequest extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   VerifyRequest copyWith(void Function(VerifyRequest) updates) =>
       super.copyWith((message) => updates(message as VerifyRequest))
-          as VerifyRequest; // ignore: deprecated_member_use
+          as VerifyRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static VerifyRequest create() => VerifyRequest._();
   VerifyRequest createEmptyInstance() => create();
@@ -266,9 +206,9 @@ class VerifyRequest extends $pb.GeneratedMessage {
   static VerifyRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $0.SignedMessage get message => $_getN(0);
+  $2.SignedMessage get message => $_getN(0);
   @$pb.TagNumber(1)
-  set message($0.SignedMessage v) {
+  set message($2.SignedMessage v) {
     setField(1, v);
   }
 
@@ -277,12 +217,12 @@ class VerifyRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearMessage() => clearField(1);
   @$pb.TagNumber(1)
-  $0.SignedMessage ensureMessage() => $_ensure(0);
+  $2.SignedMessage ensureMessage() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $2.JsonWebKey get key => $_getN(1);
+  $1.JsonWebKey get key => $_getN(1);
   @$pb.TagNumber(2)
-  set key($2.JsonWebKey v) {
+  set key($1.JsonWebKey v) {
     setField(2, v);
   }
 
@@ -291,42 +231,27 @@ class VerifyRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearKey() => clearField(2);
   @$pb.TagNumber(2)
-  $2.JsonWebKey ensureKey() => $_ensure(1);
+  $1.JsonWebKey ensureKey() => $_ensure(1);
 }
 
 class VerifyResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'VerifyResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.transport.v1'),
-      createEmptyInstance: create)
-    ..aOB(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'isValid')
-    ..hasRequiredFields = false;
-
+  factory VerifyResponse() => create();
   VerifyResponse._() : super();
-  factory VerifyResponse({
-    $core.bool? isValid,
-  }) {
-    final _result = create();
-    if (isValid != null) {
-      _result.isValid = isValid;
-    }
-    return _result;
-  }
   factory VerifyResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory VerifyResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'VerifyResponse',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'okapi.transport.v1'),
+      createEmptyInstance: create)
+    ..aOB(1, _omitFieldNames ? '' : 'isValid')
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -336,8 +261,10 @@ class VerifyResponse extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   VerifyResponse copyWith(void Function(VerifyResponse) updates) =>
       super.copyWith((message) => updates(message as VerifyResponse))
-          as VerifyResponse; // ignore: deprecated_member_use
+          as VerifyResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static VerifyResponse create() => VerifyResponse._();
   VerifyResponse createEmptyInstance() => create();
@@ -362,95 +289,39 @@ class VerifyResponse extends $pb.GeneratedMessage {
 }
 
 class PackRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'PackRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.transport.v1'),
-      createEmptyInstance: create)
-    ..aOM<$2.JsonWebKey>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'senderKey',
-        subBuilder: $2.JsonWebKey.create)
-    ..aOM<$2.JsonWebKey>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'receiverKey',
-        subBuilder: $2.JsonWebKey.create)
-    ..a<$core.List<$core.int>>(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'associatedData',
-        $pb.PbFieldType.OY)
-    ..a<$core.List<$core.int>>(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'plaintext',
-        $pb.PbFieldType.OY)
-    ..e<$0.EncryptionMode>(
-        5,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'mode',
-        $pb.PbFieldType.OE,
-        defaultOrMaker: $0.EncryptionMode.ENCRYPTION_MODE_UNSPECIFIED,
-        valueOf: $0.EncryptionMode.valueOf,
-        enumValues: $0.EncryptionMode.values)
-    ..e<$0.EncryptionAlgorithm>(
-        6,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'algorithm',
-        $pb.PbFieldType.OE,
-        defaultOrMaker: $0.EncryptionAlgorithm.ENCRYPTION_ALGORITHM_UNSPECIFIED,
-        valueOf: $0.EncryptionAlgorithm.valueOf,
-        enumValues: $0.EncryptionAlgorithm.values)
-    ..hasRequiredFields = false;
-
+  factory PackRequest() => create();
   PackRequest._() : super();
-  factory PackRequest({
-    $2.JsonWebKey? senderKey,
-    $2.JsonWebKey? receiverKey,
-    $core.List<$core.int>? associatedData,
-    $core.List<$core.int>? plaintext,
-    $0.EncryptionMode? mode,
-    $0.EncryptionAlgorithm? algorithm,
-  }) {
-    final _result = create();
-    if (senderKey != null) {
-      _result.senderKey = senderKey;
-    }
-    if (receiverKey != null) {
-      _result.receiverKey = receiverKey;
-    }
-    if (associatedData != null) {
-      _result.associatedData = associatedData;
-    }
-    if (plaintext != null) {
-      _result.plaintext = plaintext;
-    }
-    if (mode != null) {
-      _result.mode = mode;
-    }
-    if (algorithm != null) {
-      _result.algorithm = algorithm;
-    }
-    return _result;
-  }
   factory PackRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory PackRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'PackRequest',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'okapi.transport.v1'),
+      createEmptyInstance: create)
+    ..aOM<$1.JsonWebKey>(1, _omitFieldNames ? '' : 'senderKey',
+        subBuilder: $1.JsonWebKey.create)
+    ..aOM<$1.JsonWebKey>(2, _omitFieldNames ? '' : 'receiverKey',
+        subBuilder: $1.JsonWebKey.create)
+    ..a<$core.List<$core.int>>(
+        3, _omitFieldNames ? '' : 'associatedData', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        4, _omitFieldNames ? '' : 'plaintext', $pb.PbFieldType.OY)
+    ..e<$2.EncryptionMode>(5, _omitFieldNames ? '' : 'mode', $pb.PbFieldType.OE,
+        defaultOrMaker: $2.EncryptionMode.ENCRYPTION_MODE_UNSPECIFIED,
+        valueOf: $2.EncryptionMode.valueOf,
+        enumValues: $2.EncryptionMode.values)
+    ..e<$2.EncryptionAlgorithm>(
+        6, _omitFieldNames ? '' : 'algorithm', $pb.PbFieldType.OE,
+        defaultOrMaker: $2.EncryptionAlgorithm.ENCRYPTION_ALGORITHM_UNSPECIFIED,
+        valueOf: $2.EncryptionAlgorithm.valueOf,
+        enumValues: $2.EncryptionAlgorithm.values)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -460,8 +331,10 @@ class PackRequest extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   PackRequest copyWith(void Function(PackRequest) updates) =>
       super.copyWith((message) => updates(message as PackRequest))
-          as PackRequest; // ignore: deprecated_member_use
+          as PackRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static PackRequest create() => PackRequest._();
   PackRequest createEmptyInstance() => create();
@@ -472,9 +345,9 @@ class PackRequest extends $pb.GeneratedMessage {
   static PackRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $2.JsonWebKey get senderKey => $_getN(0);
+  $1.JsonWebKey get senderKey => $_getN(0);
   @$pb.TagNumber(1)
-  set senderKey($2.JsonWebKey v) {
+  set senderKey($1.JsonWebKey v) {
     setField(1, v);
   }
 
@@ -483,12 +356,12 @@ class PackRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearSenderKey() => clearField(1);
   @$pb.TagNumber(1)
-  $2.JsonWebKey ensureSenderKey() => $_ensure(0);
+  $1.JsonWebKey ensureSenderKey() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $2.JsonWebKey get receiverKey => $_getN(1);
+  $1.JsonWebKey get receiverKey => $_getN(1);
   @$pb.TagNumber(2)
-  set receiverKey($2.JsonWebKey v) {
+  set receiverKey($1.JsonWebKey v) {
     setField(2, v);
   }
 
@@ -497,7 +370,7 @@ class PackRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearReceiverKey() => clearField(2);
   @$pb.TagNumber(2)
-  $2.JsonWebKey ensureReceiverKey() => $_ensure(1);
+  $1.JsonWebKey ensureReceiverKey() => $_ensure(1);
 
   @$pb.TagNumber(3)
   $core.List<$core.int> get associatedData => $_getN(2);
@@ -524,9 +397,9 @@ class PackRequest extends $pb.GeneratedMessage {
   void clearPlaintext() => clearField(4);
 
   @$pb.TagNumber(5)
-  $0.EncryptionMode get mode => $_getN(4);
+  $2.EncryptionMode get mode => $_getN(4);
   @$pb.TagNumber(5)
-  set mode($0.EncryptionMode v) {
+  set mode($2.EncryptionMode v) {
     setField(5, v);
   }
 
@@ -536,9 +409,9 @@ class PackRequest extends $pb.GeneratedMessage {
   void clearMode() => clearField(5);
 
   @$pb.TagNumber(6)
-  $0.EncryptionAlgorithm get algorithm => $_getN(5);
+  $2.EncryptionAlgorithm get algorithm => $_getN(5);
   @$pb.TagNumber(6)
-  set algorithm($0.EncryptionAlgorithm v) {
+  set algorithm($2.EncryptionAlgorithm v) {
     setField(6, v);
   }
 
@@ -549,39 +422,24 @@ class PackRequest extends $pb.GeneratedMessage {
 }
 
 class PackResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'PackResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.transport.v1'),
-      createEmptyInstance: create)
-    ..aOM<$0.EncryptedMessage>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'message',
-        subBuilder: $0.EncryptedMessage.create)
-    ..hasRequiredFields = false;
-
+  factory PackResponse() => create();
   PackResponse._() : super();
-  factory PackResponse({
-    $0.EncryptedMessage? message,
-  }) {
-    final _result = create();
-    if (message != null) {
-      _result.message = message;
-    }
-    return _result;
-  }
   factory PackResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory PackResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'PackResponse',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'okapi.transport.v1'),
+      createEmptyInstance: create)
+    ..aOM<$2.EncryptedMessage>(1, _omitFieldNames ? '' : 'message',
+        subBuilder: $2.EncryptedMessage.create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -591,8 +449,10 @@ class PackResponse extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   PackResponse copyWith(void Function(PackResponse) updates) =>
       super.copyWith((message) => updates(message as PackResponse))
-          as PackResponse; // ignore: deprecated_member_use
+          as PackResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static PackResponse create() => PackResponse._();
   PackResponse createEmptyInstance() => create();
@@ -604,9 +464,9 @@ class PackResponse extends $pb.GeneratedMessage {
   static PackResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $0.EncryptedMessage get message => $_getN(0);
+  $2.EncryptedMessage get message => $_getN(0);
   @$pb.TagNumber(1)
-  set message($0.EncryptedMessage v) {
+  set message($2.EncryptedMessage v) {
     setField(1, v);
   }
 
@@ -615,63 +475,32 @@ class PackResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearMessage() => clearField(1);
   @$pb.TagNumber(1)
-  $0.EncryptedMessage ensureMessage() => $_ensure(0);
+  $2.EncryptedMessage ensureMessage() => $_ensure(0);
 }
 
 class UnpackRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'UnpackRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.transport.v1'),
-      createEmptyInstance: create)
-    ..aOM<$2.JsonWebKey>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'senderKey',
-        subBuilder: $2.JsonWebKey.create)
-    ..aOM<$2.JsonWebKey>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'receiverKey',
-        subBuilder: $2.JsonWebKey.create)
-    ..aOM<$0.EncryptedMessage>(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'message',
-        subBuilder: $0.EncryptedMessage.create)
-    ..hasRequiredFields = false;
-
+  factory UnpackRequest() => create();
   UnpackRequest._() : super();
-  factory UnpackRequest({
-    $2.JsonWebKey? senderKey,
-    $2.JsonWebKey? receiverKey,
-    $0.EncryptedMessage? message,
-  }) {
-    final _result = create();
-    if (senderKey != null) {
-      _result.senderKey = senderKey;
-    }
-    if (receiverKey != null) {
-      _result.receiverKey = receiverKey;
-    }
-    if (message != null) {
-      _result.message = message;
-    }
-    return _result;
-  }
   factory UnpackRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory UnpackRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'UnpackRequest',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'okapi.transport.v1'),
+      createEmptyInstance: create)
+    ..aOM<$1.JsonWebKey>(1, _omitFieldNames ? '' : 'senderKey',
+        subBuilder: $1.JsonWebKey.create)
+    ..aOM<$1.JsonWebKey>(2, _omitFieldNames ? '' : 'receiverKey',
+        subBuilder: $1.JsonWebKey.create)
+    ..aOM<$2.EncryptedMessage>(3, _omitFieldNames ? '' : 'message',
+        subBuilder: $2.EncryptedMessage.create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -681,8 +510,10 @@ class UnpackRequest extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   UnpackRequest copyWith(void Function(UnpackRequest) updates) =>
       super.copyWith((message) => updates(message as UnpackRequest))
-          as UnpackRequest; // ignore: deprecated_member_use
+          as UnpackRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static UnpackRequest create() => UnpackRequest._();
   UnpackRequest createEmptyInstance() => create();
@@ -694,9 +525,9 @@ class UnpackRequest extends $pb.GeneratedMessage {
   static UnpackRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $2.JsonWebKey get senderKey => $_getN(0);
+  $1.JsonWebKey get senderKey => $_getN(0);
   @$pb.TagNumber(1)
-  set senderKey($2.JsonWebKey v) {
+  set senderKey($1.JsonWebKey v) {
     setField(1, v);
   }
 
@@ -705,12 +536,12 @@ class UnpackRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearSenderKey() => clearField(1);
   @$pb.TagNumber(1)
-  $2.JsonWebKey ensureSenderKey() => $_ensure(0);
+  $1.JsonWebKey ensureSenderKey() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $2.JsonWebKey get receiverKey => $_getN(1);
+  $1.JsonWebKey get receiverKey => $_getN(1);
   @$pb.TagNumber(2)
-  set receiverKey($2.JsonWebKey v) {
+  set receiverKey($1.JsonWebKey v) {
     setField(2, v);
   }
 
@@ -719,12 +550,12 @@ class UnpackRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearReceiverKey() => clearField(2);
   @$pb.TagNumber(2)
-  $2.JsonWebKey ensureReceiverKey() => $_ensure(1);
+  $1.JsonWebKey ensureReceiverKey() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $0.EncryptedMessage get message => $_getN(2);
+  $2.EncryptedMessage get message => $_getN(2);
   @$pb.TagNumber(3)
-  set message($0.EncryptedMessage v) {
+  set message($2.EncryptedMessage v) {
     setField(3, v);
   }
 
@@ -733,43 +564,28 @@ class UnpackRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearMessage() => clearField(3);
   @$pb.TagNumber(3)
-  $0.EncryptedMessage ensureMessage() => $_ensure(2);
+  $2.EncryptedMessage ensureMessage() => $_ensure(2);
 }
 
 class UnpackResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'UnpackResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.transport.v1'),
-      createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'plaintext',
-        $pb.PbFieldType.OY)
-    ..hasRequiredFields = false;
-
+  factory UnpackResponse() => create();
   UnpackResponse._() : super();
-  factory UnpackResponse({
-    $core.List<$core.int>? plaintext,
-  }) {
-    final _result = create();
-    if (plaintext != null) {
-      _result.plaintext = plaintext;
-    }
-    return _result;
-  }
   factory UnpackResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory UnpackResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'UnpackResponse',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'okapi.transport.v1'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'plaintext', $pb.PbFieldType.OY)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -779,8 +595,10 @@ class UnpackResponse extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   UnpackResponse copyWith(void Function(UnpackResponse) updates) =>
       super.copyWith((message) => updates(message as UnpackResponse))
-          as UnpackResponse; // ignore: deprecated_member_use
+          as UnpackResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static UnpackResponse create() => UnpackResponse._();
   UnpackResponse createEmptyInstance() => create();
@@ -805,95 +623,30 @@ class UnpackResponse extends $pb.GeneratedMessage {
 }
 
 class CoreMessage extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'CoreMessage',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.transport.v1'),
-      createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'id')
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'type')
-    ..a<$core.List<$core.int>>(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'body',
-        $pb.PbFieldType.OY)
-    ..pPS(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'to')
-    ..aOS(
-        5,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'from')
-    ..aInt64(
-        6,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'created_time',
-        protoName: 'created')
-    ..aInt64(
-        7,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'expires_time',
-        protoName: 'expires')
-    ..hasRequiredFields = false;
-
+  factory CoreMessage() => create();
   CoreMessage._() : super();
-  factory CoreMessage({
-    $core.String? id,
-    $core.String? type,
-    $core.List<$core.int>? body,
-    $core.Iterable<$core.String>? to,
-    $core.String? from,
-    $fixnum.Int64? created,
-    $fixnum.Int64? expires,
-  }) {
-    final _result = create();
-    if (id != null) {
-      _result.id = id;
-    }
-    if (type != null) {
-      _result.type = type;
-    }
-    if (body != null) {
-      _result.body = body;
-    }
-    if (to != null) {
-      _result.to.addAll(to);
-    }
-    if (from != null) {
-      _result.from = from;
-    }
-    if (created != null) {
-      _result.created = created;
-    }
-    if (expires != null) {
-      _result.expires = expires;
-    }
-    return _result;
-  }
   factory CoreMessage.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory CoreMessage.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'CoreMessage',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'okapi.transport.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..aOS(2, _omitFieldNames ? '' : 'type')
+    ..a<$core.List<$core.int>>(
+        3, _omitFieldNames ? '' : 'body', $pb.PbFieldType.OY)
+    ..pPS(4, _omitFieldNames ? '' : 'to')
+    ..aOS(5, _omitFieldNames ? '' : 'from')
+    ..aInt64(6, _omitFieldNames ? '' : 'created_time', protoName: 'created')
+    ..aInt64(7, _omitFieldNames ? '' : 'expires_time', protoName: 'expires')
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -903,8 +656,10 @@ class CoreMessage extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   CoreMessage copyWith(void Function(CoreMessage) updates) =>
       super.copyWith((message) => updates(message as CoreMessage))
-          as CoreMessage; // ignore: deprecated_member_use
+          as CoreMessage;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static CoreMessage create() => CoreMessage._();
   CoreMessage createEmptyInstance() => create();
@@ -989,3 +744,7 @@ class CoreMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(7)
   void clearExpires() => clearField(7);
 }
+
+const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
+const _omitMessageNames =
+    $core.bool.fromEnvironment('protobuf.omit_message_names');

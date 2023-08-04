@@ -152,35 +152,131 @@ Protocol buffer message signing and encryption
 
 
 
-<a name="okapi_examples_v1_examples-proto"></a>
+<a name="okapi_hashing_v1_hashing-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## okapi/examples/v1/examples.proto
+## okapi/hashing/v1/hashing.proto
 
-
-
-<a name="okapi-examples-v1-SecureExampleService"></a>
-
-### Service - SecureExampleService
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| Unary | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) |  |
-| ServerStreaming | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) stream |  |
 
  <!-- end services -->
 
 
-<a name="okapi-examples-v1-BasicMessage"></a>
+<a name="okapi-hashing-v1-Blake3DeriveKeyRequest"></a>
 
-### BasicMessage
+### Blake3DeriveKeyRequest
 
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| text | [string](/reference/proto#string) |  |
+| context | [bytes](/reference/proto#bytes) |  |
+| key_material | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-Blake3DeriveKeyResponse"></a>
+
+### Blake3DeriveKeyResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| digest | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-Blake3HashRequest"></a>
+
+### Blake3HashRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| data | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-Blake3HashResponse"></a>
+
+### Blake3HashResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| digest | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-Blake3KeyedHashRequest"></a>
+
+### Blake3KeyedHashRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| data | [bytes](/reference/proto#bytes) |  |
+| key | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-Blake3KeyedHashResponse"></a>
+
+### Blake3KeyedHashResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| digest | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-SHA256HashRequest"></a>
+
+### SHA256HashRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| data | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-hashing-v1-SHA256HashResponse"></a>
+
+### SHA256HashResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| digest | [bytes](/reference/proto#bytes) |  |
 
 
 
@@ -267,6 +363,173 @@ Protocol buffer message signing and encryption
 | LD_SUITE_UNSPECIFIED | 0 |  |
 | LD_SUITE_JCSED25519SIGNATURE2020 | 1 |  |
 
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="okapi_transport_v1_transport-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## okapi/transport/v1/transport.proto
+
+
+ <!-- end services -->
+
+
+<a name="okapi-transport-v1-CoreMessage"></a>
+
+### CoreMessage
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) |  |
+| type | [string](/reference/proto#string) |  |
+| body | [bytes](/reference/proto#bytes) |  |
+| to | [string](/reference/proto#string)[] |  |
+| from | [string](/reference/proto#string) |  |
+| created | [int64](/reference/proto#int64) |  |
+| expires | [int64](/reference/proto#int64) |  |
+
+
+
+
+
+
+<a name="okapi-transport-v1-PackRequest"></a>
+
+### PackRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| sender_key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
+| receiver_key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
+| associated_data | [bytes](/reference/proto#bytes) |  |
+| plaintext | [bytes](/reference/proto#bytes) |  |
+| mode | [pbmse.v1.EncryptionMode](/reference/proto#pbmse-v1-EncryptionMode) |  |
+| algorithm | [pbmse.v1.EncryptionAlgorithm](/reference/proto#pbmse-v1-EncryptionAlgorithm) |  |
+
+
+
+
+
+
+<a name="okapi-transport-v1-PackResponse"></a>
+
+### PackResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| message | [pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) |  |
+
+
+
+
+
+
+<a name="okapi-transport-v1-SignRequest"></a>
+
+### SignRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| payload | [bytes](/reference/proto#bytes) |  |
+| key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
+| append_to | [pbmse.v1.SignedMessage](/reference/proto#pbmse-v1-SignedMessage) |  |
+
+
+
+
+
+
+<a name="okapi-transport-v1-SignResponse"></a>
+
+### SignResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| message | [pbmse.v1.SignedMessage](/reference/proto#pbmse-v1-SignedMessage) |  |
+
+
+
+
+
+
+<a name="okapi-transport-v1-UnpackRequest"></a>
+
+### UnpackRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| sender_key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
+| receiver_key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
+| message | [pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) |  |
+
+
+
+
+
+
+<a name="okapi-transport-v1-UnpackResponse"></a>
+
+### UnpackResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| plaintext | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="okapi-transport-v1-VerifyRequest"></a>
+
+### VerifyRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| message | [pbmse.v1.SignedMessage](/reference/proto#pbmse-v1-SignedMessage) |  |
+| key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
+
+
+
+
+
+
+<a name="okapi-transport-v1-VerifyResponse"></a>
+
+### VerifyResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| is_valid | [bool](/reference/proto#bool) |  |
+
+
+
+
+
+ <!-- end messages -->
 
  <!-- end enums -->
 
@@ -643,298 +906,35 @@ Contains the verification result for the oberon token
 
 
 
-<a name="okapi_transport_v1_transport-proto"></a>
+<a name="okapi_examples_v1_examples-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## okapi/transport/v1/transport.proto
+## okapi/examples/v1/examples.proto
 
+
+
+<a name="okapi-examples-v1-SecureExampleService"></a>
+
+### Service - SecureExampleService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| Unary | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) |  |
+| ServerStreaming | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) stream |  |
 
  <!-- end services -->
 
 
-<a name="okapi-transport-v1-CoreMessage"></a>
+<a name="okapi-examples-v1-BasicMessage"></a>
 
-### CoreMessage
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) |  |
-| type | [string](/reference/proto#string) |  |
-| body | [bytes](/reference/proto#bytes) |  |
-| to | [string](/reference/proto#string)[] |  |
-| from | [string](/reference/proto#string) |  |
-| created | [int64](/reference/proto#int64) |  |
-| expires | [int64](/reference/proto#int64) |  |
-
-
-
-
-
-
-<a name="okapi-transport-v1-PackRequest"></a>
-
-### PackRequest
+### BasicMessage
 
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| sender_key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
-| receiver_key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
-| associated_data | [bytes](/reference/proto#bytes) |  |
-| plaintext | [bytes](/reference/proto#bytes) |  |
-| mode | [pbmse.v1.EncryptionMode](/reference/proto#pbmse-v1-EncryptionMode) |  |
-| algorithm | [pbmse.v1.EncryptionAlgorithm](/reference/proto#pbmse-v1-EncryptionAlgorithm) |  |
-
-
-
-
-
-
-<a name="okapi-transport-v1-PackResponse"></a>
-
-### PackResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| message | [pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) |  |
-
-
-
-
-
-
-<a name="okapi-transport-v1-SignRequest"></a>
-
-### SignRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| payload | [bytes](/reference/proto#bytes) |  |
-| key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
-| append_to | [pbmse.v1.SignedMessage](/reference/proto#pbmse-v1-SignedMessage) |  |
-
-
-
-
-
-
-<a name="okapi-transport-v1-SignResponse"></a>
-
-### SignResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| message | [pbmse.v1.SignedMessage](/reference/proto#pbmse-v1-SignedMessage) |  |
-
-
-
-
-
-
-<a name="okapi-transport-v1-UnpackRequest"></a>
-
-### UnpackRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| sender_key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
-| receiver_key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
-| message | [pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) |  |
-
-
-
-
-
-
-<a name="okapi-transport-v1-UnpackResponse"></a>
-
-### UnpackResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| plaintext | [bytes](/reference/proto#bytes) |  |
-
-
-
-
-
-
-<a name="okapi-transport-v1-VerifyRequest"></a>
-
-### VerifyRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| message | [pbmse.v1.SignedMessage](/reference/proto#pbmse-v1-SignedMessage) |  |
-| key | [okapi.keys.v1.JsonWebKey](/reference/proto#okapi-keys-v1-JsonWebKey) |  |
-
-
-
-
-
-
-<a name="okapi-transport-v1-VerifyResponse"></a>
-
-### VerifyResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| is_valid | [bool](/reference/proto#bool) |  |
-
-
-
-
-
- <!-- end messages -->
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-
-<a name="okapi_hashing_v1_hashing-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## okapi/hashing/v1/hashing.proto
-
-
- <!-- end services -->
-
-
-<a name="okapi-hashing-v1-Blake3DeriveKeyRequest"></a>
-
-### Blake3DeriveKeyRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| context | [bytes](/reference/proto#bytes) |  |
-| key_material | [bytes](/reference/proto#bytes) |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-Blake3DeriveKeyResponse"></a>
-
-### Blake3DeriveKeyResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| digest | [bytes](/reference/proto#bytes) |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-Blake3HashRequest"></a>
-
-### Blake3HashRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| data | [bytes](/reference/proto#bytes) |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-Blake3HashResponse"></a>
-
-### Blake3HashResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| digest | [bytes](/reference/proto#bytes) |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-Blake3KeyedHashRequest"></a>
-
-### Blake3KeyedHashRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| data | [bytes](/reference/proto#bytes) |  |
-| key | [bytes](/reference/proto#bytes) |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-Blake3KeyedHashResponse"></a>
-
-### Blake3KeyedHashResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| digest | [bytes](/reference/proto#bytes) |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-SHA256HashRequest"></a>
-
-### SHA256HashRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| data | [bytes](/reference/proto#bytes) |  |
-
-
-
-
-
-
-<a name="okapi-hashing-v1-SHA256HashResponse"></a>
-
-### SHA256HashResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| digest | [bytes](/reference/proto#bytes) |  |
+| text | [string](/reference/proto#string) |  |
 
 
 
