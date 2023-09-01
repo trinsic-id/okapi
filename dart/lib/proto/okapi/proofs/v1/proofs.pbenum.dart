@@ -1,25 +1,23 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: okapi/proofs/v1/proofs.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
-// ignore_for_file: UNDEFINED_SHOWN_NAME
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
+
 import 'dart:core' as $core;
+
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class LdSuite extends $pb.ProtobufEnum {
-  static const LdSuite LD_SUITE_UNSPECIFIED = LdSuite._(
-      0,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'LD_SUITE_UNSPECIFIED');
-  static const LdSuite LD_SUITE_JCSED25519SIGNATURE2020 = LdSuite._(
-      1,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'LD_SUITE_JCSED25519SIGNATURE2020');
+  static const LdSuite LD_SUITE_UNSPECIFIED =
+      LdSuite._(0, _omitEnumNames ? '' : 'LD_SUITE_UNSPECIFIED');
+  static const LdSuite LD_SUITE_JCSED25519SIGNATURE2020 =
+      LdSuite._(1, _omitEnumNames ? '' : 'LD_SUITE_JCSED25519SIGNATURE2020');
 
   static const $core.List<LdSuite> values = <LdSuite>[
     LD_SUITE_UNSPECIFIED,
@@ -32,3 +30,5 @@ class LdSuite extends $pb.ProtobufEnum {
 
   const LdSuite._($core.int v, $core.String n) : super(v, n);
 }
+
+const _omitEnumNames = $core.bool.fromEnvironment('protobuf.omit_enum_names');
