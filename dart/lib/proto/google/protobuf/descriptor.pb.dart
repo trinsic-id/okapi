@@ -1936,7 +1936,7 @@ class FileOptions extends $pb.GeneratedMessage {
     $core.bool? javaGenericServices,
     $core.bool? pyGenericServices,
     @$core.Deprecated('This field is deprecated.')
-        $core.bool? javaGenerateEqualsAndHash,
+    $core.bool? javaGenerateEqualsAndHash,
     $core.bool? deprecated,
     $core.bool? javaStringCheckUtf8,
     $core.bool? ccEnableArenas,

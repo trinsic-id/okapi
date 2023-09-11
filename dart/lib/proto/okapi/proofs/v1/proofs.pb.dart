@@ -1,9 +1,13 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: okapi/proofs/v1/proofs.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
+
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
 import 'dart:core' as $core;
 
@@ -11,68 +15,51 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 import '../../../google/protobuf/struct.pb.dart' as $0;
 import '../../keys/v1/keys.pb.dart' as $1;
-
 import 'proofs.pbenum.dart';
 
 export 'proofs.pbenum.dart';
 
 class CreateProofRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'CreateProofRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.proofs.v1'),
-      createEmptyInstance: create)
-    ..aOM<$0.Struct>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'document',
-        subBuilder: $0.Struct.create)
-    ..aOM<$1.JsonWebKey>(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'key',
-        subBuilder: $1.JsonWebKey.create)
-    ..e<LdSuite>(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'suite',
-        $pb.PbFieldType.OE,
-        defaultOrMaker: LdSuite.LD_SUITE_UNSPECIFIED,
-        valueOf: LdSuite.valueOf,
-        enumValues: LdSuite.values)
-    ..hasRequiredFields = false;
-
-  CreateProofRequest._() : super();
   factory CreateProofRequest({
     $0.Struct? document,
     $1.JsonWebKey? key,
     LdSuite? suite,
   }) {
-    final _result = create();
+    final $result = create();
     if (document != null) {
-      _result.document = document;
+      $result.document = document;
     }
     if (key != null) {
-      _result.key = key;
+      $result.key = key;
     }
     if (suite != null) {
-      _result.suite = suite;
+      $result.suite = suite;
     }
-    return _result;
+    return $result;
   }
+  CreateProofRequest._() : super();
   factory CreateProofRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory CreateProofRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'CreateProofRequest',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'okapi.proofs.v1'),
+      createEmptyInstance: create)
+    ..aOM<$0.Struct>(1, _omitFieldNames ? '' : 'document',
+        subBuilder: $0.Struct.create)
+    ..aOM<$1.JsonWebKey>(3, _omitFieldNames ? '' : 'key',
+        subBuilder: $1.JsonWebKey.create)
+    ..e<LdSuite>(4, _omitFieldNames ? '' : 'suite', $pb.PbFieldType.OE,
+        defaultOrMaker: LdSuite.LD_SUITE_UNSPECIFIED,
+        valueOf: LdSuite.valueOf,
+        enumValues: LdSuite.values)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -82,8 +69,10 @@ class CreateProofRequest extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   CreateProofRequest copyWith(void Function(CreateProofRequest) updates) =>
       super.copyWith((message) => updates(message as CreateProofRequest))
-          as CreateProofRequest; // ignore: deprecated_member_use
+          as CreateProofRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static CreateProofRequest create() => CreateProofRequest._();
   CreateProofRequest createEmptyInstance() => create();
@@ -94,6 +83,10 @@ class CreateProofRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<CreateProofRequest>(create);
   static CreateProofRequest? _defaultInstance;
 
+  /// The input JSON document that will be used
+  /// to create the LD Proof. This document must
+  /// also contain a "proof" object, with the desired
+  /// values filled in.
   @$pb.TagNumber(1)
   $0.Struct get document => $_getN(0);
   @$pb.TagNumber(1)
@@ -108,6 +101,10 @@ class CreateProofRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $0.Struct ensureDocument() => $_ensure(0);
 
+  /// The signer of the proof. This field must include
+  /// the 'kid' in full URI format.
+  /// Example:
+  ///  did:example:alice#key-1
   @$pb.TagNumber(3)
   $1.JsonWebKey get key => $_getN(1);
   @$pb.TagNumber(3)
@@ -122,6 +119,7 @@ class CreateProofRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $1.JsonWebKey ensureKey() => $_ensure(1);
 
+  /// The LD Suite to use to produce this proof
   @$pb.TagNumber(4)
   LdSuite get suite => $_getN(2);
   @$pb.TagNumber(4)
@@ -136,39 +134,32 @@ class CreateProofRequest extends $pb.GeneratedMessage {
 }
 
 class CreateProofResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'CreateProofResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.proofs.v1'),
-      createEmptyInstance: create)
-    ..aOM<$0.Struct>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'signedDocument',
-        subBuilder: $0.Struct.create)
-    ..hasRequiredFields = false;
-
-  CreateProofResponse._() : super();
   factory CreateProofResponse({
     $0.Struct? signedDocument,
   }) {
-    final _result = create();
+    final $result = create();
     if (signedDocument != null) {
-      _result.signedDocument = signedDocument;
+      $result.signedDocument = signedDocument;
     }
-    return _result;
+    return $result;
   }
+  CreateProofResponse._() : super();
   factory CreateProofResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory CreateProofResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'CreateProofResponse',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'okapi.proofs.v1'),
+      createEmptyInstance: create)
+    ..aOM<$0.Struct>(1, _omitFieldNames ? '' : 'signedDocument',
+        subBuilder: $0.Struct.create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -178,8 +169,10 @@ class CreateProofResponse extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   CreateProofResponse copyWith(void Function(CreateProofResponse) updates) =>
       super.copyWith((message) => updates(message as CreateProofResponse))
-          as CreateProofResponse; // ignore: deprecated_member_use
+          as CreateProofResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static CreateProofResponse create() => CreateProofResponse._();
   CreateProofResponse createEmptyInstance() => create();
@@ -206,25 +199,22 @@ class CreateProofResponse extends $pb.GeneratedMessage {
 }
 
 class VerifyProofRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'VerifyProofRequest',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.proofs.v1'),
-      createEmptyInstance: create)
-    ..hasRequiredFields = false;
-
-  VerifyProofRequest._() : super();
   factory VerifyProofRequest() => create();
+  VerifyProofRequest._() : super();
   factory VerifyProofRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory VerifyProofRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'VerifyProofRequest',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'okapi.proofs.v1'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -234,8 +224,10 @@ class VerifyProofRequest extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   VerifyProofRequest copyWith(void Function(VerifyProofRequest) updates) =>
       super.copyWith((message) => updates(message as VerifyProofRequest))
-          as VerifyProofRequest; // ignore: deprecated_member_use
+          as VerifyProofRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static VerifyProofRequest create() => VerifyProofRequest._();
   VerifyProofRequest createEmptyInstance() => create();
@@ -248,25 +240,22 @@ class VerifyProofRequest extends $pb.GeneratedMessage {
 }
 
 class VerifyProofResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'VerifyProofResponse',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'okapi.proofs.v1'),
-      createEmptyInstance: create)
-    ..hasRequiredFields = false;
-
-  VerifyProofResponse._() : super();
   factory VerifyProofResponse() => create();
+  VerifyProofResponse._() : super();
   factory VerifyProofResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory VerifyProofResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'VerifyProofResponse',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'okapi.proofs.v1'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
@@ -276,8 +265,10 @@ class VerifyProofResponse extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   VerifyProofResponse copyWith(void Function(VerifyProofResponse) updates) =>
       super.copyWith((message) => updates(message as VerifyProofResponse))
-          as VerifyProofResponse; // ignore: deprecated_member_use
+          as VerifyProofResponse;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static VerifyProofResponse create() => VerifyProofResponse._();
   VerifyProofResponse createEmptyInstance() => create();
@@ -288,3 +279,7 @@ class VerifyProofResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<VerifyProofResponse>(create);
   static VerifyProofResponse? _defaultInstance;
 }
+
+const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
+const _omitMessageNames =
+    $core.bool.fromEnvironment('protobuf.omit_message_names');
