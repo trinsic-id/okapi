@@ -5,8 +5,8 @@ go 1.19
 require (
 	github.com/btcsuite/btcutil v1.0.2
 	github.com/coreos/pkg v0.0.0-20220810130054-c7d1c02cb6cf
-	github.com/stretchr/testify v1.8.0
-	google.golang.org/protobuf v1.28.1
+	github.com/stretchr/testify v1.8.4
+	google.golang.org/protobuf v1.31.0
 )
 
 require (
