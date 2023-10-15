@@ -12,6 +12,6 @@ name = "okapi_wasm"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-wasm-bindgen = "0.2.82"
+wasm-bindgen = "0.2.87"
 js-sys = "0.3"
 okapi = { path = "../native", default-features = false, features = ["hashing"] }
